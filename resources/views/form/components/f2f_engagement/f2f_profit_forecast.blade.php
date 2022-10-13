@@ -6,17 +6,6 @@
     <section>
         <div class="table-responsive-md" id="no-more-tables">
             <table class="table table-bordered table-hover">
-                {{-- <thead class="table-dark">
-                    <tr class="text-center">
-                        <th class="title-th" scope="col" width=20%></th>
-                        <th class="title-middle" scope="col" style="font-size: 0.9rem;"></th>
-                        <th class="title-middle px-4" width=15% scope="col"></th>
-                        <th class="title-middle" scope="col" style="font-size: 0.9rem;"></th>
-                        <th class="title-middle" scope="col" style="font-size: 0.9rem;" width=10%></th>
-                        <th class="title-th" scope="col" width=15%></th>
-                        <th class="title-th" scope="col" width=15%></th>
-                    </tr>
-                </thead> --}}
                 <tbody>
                     <tr>
                         <td class="profit-forecast-start text-dark" scope="col" width=20%>

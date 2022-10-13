@@ -1,20 +1,7 @@
-{{-- datepicker css --}}
-{{-- <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css"> --}}
-{{-- tooltip css --}}
-{{-- <link rel="stylesheet" href="{{ url('css/tooltip-css/jquery.mytooltip.min.css') }}"> --}}
-{{-- <link rel="stylesheet" href="{{ url('css/tooltip-css/demo/style.css') }}"> --}}
-{{-- datepicker js --}}
-{{-- <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script> --}}
-{{-- tooltip js --}}
-{{-- <script src="{{ url('js/tooltipJs/jquery-1.11.3.min.js') }}"></script> --}}
-{{-- <script src="{{ url('js/tooltipJs/jquery.mytooltip.js') }}"></script>
-<script src="{{ url('js/tooltipJs/demo/script.js') }}"></script> --}}
-
-{{-- p --}}
 <div class="card-header">
     <h4 class="card-title">Information</h4>
 </div>
+
 <div class="form-body container">
     <!------------ STATUS ------------>
     <div class="form-group row mb-4">
@@ -237,7 +224,7 @@
                     <fieldset class="row justify-content-center" id="dateRows">
                         <div class="col-lg-1 col-md-1">
                             <div class="px-0">
-                                    <label class="fw-bold invisible mb-4">Add</label>
+                                    <label class="fw-bold invisible overflow-hidden mb-4">Add</label>
                                     <a href="javascript:void(0)" class="text-success font-18 px-0" title="Add"
                                     id="addDates"><i class="fa fa-plus"></i></a>
                             </div>

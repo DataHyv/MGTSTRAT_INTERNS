@@ -58,8 +58,8 @@
         {!! Toastr::message() !!}
 
         {{-- <form id="login" target="embededReport1" method="post" action="https://login.microsoftonline.com/dd8dd9b8-4c2e-4eba-8bfa-f71866c09e1f/oauth2/authorize?client_id=871c010f-5e61-4fb1-83ac-98610a7e9110&response_type=code%20id_token&scope=openid%20profile%20offline_access&state=OpenIdConnect.AuthenticationProperties%3DWnSbDceGIUZ3ebYzS3J5gF0GFwdZBdaY1RsdbiZ1krcSWITmsYPik61Xr4Lppxl4XYEUF0--2QkDKJuxocTM4MEezVVnZxBE0flKspfQPEV7M5WDXA3TLh9C1nNfAj0qIf0H3VF1MInQhprbLJpT38fjeHA7r-Fn5PeWjmt9DqKwuENyiWpu7arAwNnyrSmw0Auw_H-glCWpxqgGI3952PqDIP31FGy3zdgLu4izRFI&response_mode=form_post&nonce=638010634702643622.NTY5MDgyZTAtYTUwOC00YWNmLTk2NWUtN2UzMzA4MTFkN2VkNTg5MGRiNDQtMmVlYS00MGNkLWI3MmQtZmJjOGVlNzMxYzY3&site_id=500453&redirect_uri=https%3A%2F%2Fapp.powerbi.com%2Fsigninredirect&post_logout_redirect_uri=https%3A%2F%2Fapp.powerbi.com%2FautoAuthLogin.cshtml%3FnoSignUpCheck%3D1%26ctid%3Ddd8dd9b8-4c2e-4eba-8bfa-f71866c09e1f&resource=https%3A%2F%2Fanalysis.windows.net%2Fpowerbi%2Fapi&nux=1&x-client-SKU=ID_NET461&x-client-ver=5.6.0.0">
-            <input type="hidden" name="username" value="bisupport@datahyv.com" />
-            <input type="hidden" name="password" value="B1suppor+" />
+            <input type="hidden" name="username" value="" />
+            <input type="hidden" name="password" value="" />
         </form> --}}
 
         <div class="page-content">

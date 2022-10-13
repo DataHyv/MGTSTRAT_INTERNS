@@ -1,10 +1,12 @@
 <div class="card-header">
     <h4 class="card-title">Engagement Fees</h4>
 </div>
+
 <div class="form-body container">
     <section>
         <div class="table-responsive-md" id="no-more-tables">
-            <table class="table table-bordered table-hover" id="f2f-ef-table">
+            <table class="table table-bordered" id="f2f-ef-table">
+                <!------------------------------------------------TABLE HEADING------------------------------------------------------------------>
                 <thead class="table">
                     <tr class="text-center th-blue-grey">
                         <th class="title-th" scope="col" width=20%></th>
@@ -20,7 +22,6 @@
                     </tr>
                 </thead>
 
-
                 <!------------------------------------------------CONSULTING------------------------------------------------------------------>
                 <tr class="th-blue-grey-lighten">
                     <th class="px-4 title  ">1. CONSULTING</th>
@@ -33,6 +34,7 @@
                     <th class="total-td"></th>
 
                 </tr>
+
                 <!------------------------------------------------LEAD CONSULTANT------------------------------------------------------------->
                 <tbody id="tableLeadconsultant">
                     <tr class="th-blue-grey-lighten-2" id="leadConsultant1">
@@ -113,6 +115,7 @@
                         </td>
                     </tr>
                 </tbody>
+
                 <!------------------------------------------------ANALYST--------------------------------------------------------------------->
                 <tbody id="ef_TableAnalyst">
                     <tr class="th-blue-grey-lighten-2" id="ef_RowAnalyst">
@@ -165,6 +168,7 @@
                         </td>
                     </tr>
                 </tbody>
+
                 <!------------------------------------------------SUBTOTAL-------------------------------------------------------------------->
                 <tr class="">
                     <td class="title fw-bold text-dark fst-italic">Subtotal</td>
@@ -194,6 +198,7 @@
                     <td class="total-td"></td>
                     <td class="total-td"></td>
                 </tr>
+
                 <!------------------------------------------------DESIGNER-------------------------------------------------------------------->
                 <tbody id="ef_TableDesigner">
                     <tr class="th-blue-grey-lighten-2" id="ef_RowDesigner">
@@ -276,6 +281,7 @@
                     <td class="total-td"></td>
                     <td class="total-td"></td>
                 </tr>
+
                 <!------------------------------------------------LEAD FACILITATOR------------------------------------------------------------>
                 <tbody id="ef_TableLeadFaci">
                     <tr class="th-blue-grey-lighten-2" id="ef_RowLeadFaci">
@@ -325,6 +331,7 @@
                         </td>
                     </tr>
                 </tbody>
+
                 <!------------------------------------------------CO-FACILITATOR-------------------------------------------------------------->
                 <tbody id="ef_TableCoFaci">
                     <tr class="th-blue-grey-lighten-2" id="ef_RowCoFaci">
@@ -371,6 +378,7 @@
                         </td>
                     </tr>
                 </tbody>
+
                 <!------------------------------------------------ACTION LEARNING COACH------------------------------------------------------->
                 <tbody id="ef_TableActionLearn">
                     <tr class="th-blue-grey-lighten-2" id="ef_RowActionLearn">
@@ -416,6 +424,7 @@
                         </td>
                     </tr>
                 </tbody>
+
                 <!------------------------------------------------MARSHAL--------------------------------------------------------------------->
                 <tbody id="ef_TableMarshal">
                     <tr class="th-blue-grey-lighten-2" id="ef_RowMarshal">
@@ -461,6 +470,7 @@
                         </td>
                     </tr>
                 </tbody>
+
                 <!------------------------------------------------ONSITE PC------------------------------------------------------------------->
                 <tbody id="ef_TableOnsite">
                     <tr class="th-blue-grey-lighten-2" id="ef_RowOnsite">
@@ -527,6 +537,7 @@
                         </td>
                     </tr>
                 </tbody>
+
                 <!------------------------------------------------SUBTOTAL-------------------------------------------------------------------->
                 <tr class="">
                     <td class="title fw-bold text-dark fst-italic">Subtotal</td>
@@ -544,8 +555,8 @@
                     </td>
                     <td class="border border-white"></td>
                 </tr>
-                <!------------------------------------------------OTHER ROLES----------------------------------------------------------------->
 
+                <!------------------------------------------------OTHER ROLES----------------------------------------------------------------->
                 <tr class="th-blue-grey-lighten">
                     <th class="title px-4 text-dark">4. OTHER ROLES</th>
                     <td></td>
@@ -556,6 +567,7 @@
                     <td class="total-td"></td>
                     <td class="total-td"></td>
                 </tr>
+
                 <!------------------------------------------------DOCUMENTOR------------------------------------------------------------------>
                 <tbody id="ef_TableDocumentor">
                     <tr class="th-blue-grey-lighten-2" id="ef_RowDocumentor">
@@ -601,6 +613,7 @@
                         </td>
                     </tr>
                 </tbody>
+
                 <!------------------------------------------------PER DIEM-------------------------------------------------------------------->
                 <tr class="th-blue-grey-lighten">
                     <th class="title px-4 text-dark">5. PER DIEM</th>
@@ -690,11 +703,9 @@
 
                 </tr>
 
-
                 </tbody>
             </table>
-            <p> * TRAVEL DAYS/NIGHT SHIFT/WEEKENDS/HOLIDAYS - no double charging for the same day I.e. Saturday night
-                travel is only charged one 20% surcharge</p>
+            <p> * TRAVEL DAYS/NIGHT SHIFT/WEEKENDS/HOLIDAYS - no double charging for the same day I.e. Saturday night travel is only charged one 20% surcharge</p>
         </div>
     </section>
 </div>
