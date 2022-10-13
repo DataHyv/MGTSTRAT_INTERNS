@@ -140,7 +140,7 @@
                                                 3% - 1st contract with a new client, or with a 2-year dormant client<br>
                                                 <br>
                                                 When in doubt, check with Joi on who referror is.
-                                                
+
                                                 </i>"
                                         data-mytooltip-theme="dark" data-mytooltip-action="focus"
                                         data-mytooltip-direction="right" style="background-color:#ffcccc; color:red;">
@@ -289,8 +289,8 @@
                                 <h4 class="text-center lead" id="ec_LeadconsultantTotal">-</h4>
                             </td>
                             <td class="total-td table-light">
-                                <textarea class="form-control input-table @error('') is-invalid @enderror"
-                                    name="cost_rooster[]" id="" rows="2" cols="55"></textarea>
+                                <input class="form-control input-table @error('') is-invalid @enderror"
+                                    name="cost_rooster[]" id="rooster">
                             </td>
                             <td class="total-td table-light">
                                 <textarea class="form-control input-table @error('') is-invalid @enderror"
@@ -349,7 +349,7 @@
                             </td>
                         </tr>
                     </tbody>
-                    
+
                     <tr class="table-secondary">
                         <td class="title fw-bold text-dark fst-italic">Subtotal</td>
                         <td></td>
@@ -362,7 +362,7 @@
                         <td class="total-td"></td>
                         <td class="total-td"></td>
                         <td class="border border-white add-row invisible"> </td>
-                    </tr>   
+                    </tr>
 
                 <!----------------------------------------------------------------DESIGN---------------------------------------------------------------------->
                     <tr class="table-light">
@@ -603,7 +603,7 @@
                             </td>
                         </tr>
                     </tbody>
-                    
+
                     <tbody id="ec_TableAlCoach">
                         <tr class="table-warning">
                             <td class="title table-light">
@@ -1005,4 +1005,4 @@
 <!------------ END OF FORM BODY ------------>
 
 <!------------ CE ENGAGEMENT COST SCRIPT ------------>
-@include('form.components.customized_engagement.add.script.ce_engagement_cost')
+@include('form.components.customized_engagement.add.script.ce_engagement_cost');

@@ -25,6 +25,7 @@
         </div>
 
 @include('form.components.clients_register.modal')
+@include('form.components.clients_register.view_contract')
 
         {{-- message --}}
         {!! Toastr::message() !!}
@@ -47,7 +48,7 @@
                                 <th>Sales Person</th>
                                 <th>Industry</th>
                                 <th>Old/ New</th>
-                                <th>Total Contract</th>
+                                <th class="text-center">Total Contract</th>
                                 <th>Latest Engagement</th>
                                 <th class="text-center">Modify</th>
                             </tr>
@@ -55,46 +56,29 @@
                         <tbody>
                             @foreach ($data as $key => $client)
                                 <tr>
-                                    {{-- <td class="id">{{ ++$key }}</td> --}}
-                                    <td class="name">
-                                        {{$client->cstmzd_eng_form_id}}
-                                    </td>
-                                    <td class="name">
-                                        {{$client->company_name}}
-                                    </td>
-                                    <td class="name">
-                                        {{$client->status}}
-                                    </td>
-                                    {{-- @if ($client->client_class == 'ACTIVE')
-                                        <td class=""><span
-                                                class="badge bg-info">{{ $client->client_class }}</span></td>
-                                    @endif
-                                    @if ($client->client_class == 'INACTIVE')
-                                        <td class=""><span
-                                                class="badge bg-warning">{{ $client->client_class }}</span></td>
-                                    @endif --}}
-                                    {{-- <td class="status">{{$client->old_new}}</td> --}}
-                                    {{-- @if ($client->old_new == 'NEW')
-                                        <td class=""><span
-                                                class="badge bg-primary">{{ $client->old_new }}</span></td>
-                                    @endif
-                                    @if ($client->old_new == 'OLD')
-                                        <td class=""><span
-                                                class="badge bg-dark">{{ $client->old_new }}</span></td>
-                                    @endif --}}
+                                    <td class="name"> {{$client->cstmzd_eng_form_id}} </td>
+                                    <td class="name"> {{$client->company_name}} </td>
+                                    <td class="name"> {{$client->status}} </td>
                                     <td class="status">{{$client->sales_person}}</td>
                                     <td class="status">{{$client->industry}}</td>
                                     <td class="status">{{$client->old_new}}</td>
-                                    <td class="status">{{ DB::table('customized_engagement_forms')->where('client_id', $client->id)->count() }}</td>
-                                    {{-- <td class="status">{{$client->first_eng}}</td> --}}
+                                    <td class="status text-center">
+                                        <a data-toggle="modal" href="#contractModal">
+                                            <span class="badge bg-success">
+                                                <i class="fa-solid fa-book"></i> VIEW CONTRACTS
+                                            </span>
+                                        </a>
+                                    </td>
                                     <td class="status">{{$client->latest_eng}}</td>
                                     <td class="text-center">
                                         <a href="{{ url('form/view/detail/' . $client->id) }}" >
                                             <span class="badge bg-success"><i class="bi bi-pencil-square" data-target="#exampleModal"></i></span>
                                         </a>
+
                                         <a href="{{ url('deleteClients/' . $client->id) }}"
                                             onclick="return confirm('Are you sure to want to delete it?')"><span
-                                                class="badge bg-danger"><i class="bi bi-trash"></i></span></a>
+                                                class="badge bg-danger"><i class="bi bi-trash"></i></span>
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach

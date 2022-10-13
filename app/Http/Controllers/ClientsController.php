@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Client;
+use App\Models\Customized_engagement_form;
 use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -16,8 +17,9 @@ class ClientsController extends Controller
     {
 
         $data = DB::table('clients')->get();
-        return view('form.clients',compact('data'));
-        return view('form.clients');
+        $data2 = Customized_engagement_form::with('client')->get();
+        return view('form.clients',compact('data', 'data2'));
+        // dd($data2);
 
     }
 

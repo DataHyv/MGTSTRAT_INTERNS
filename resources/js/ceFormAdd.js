@@ -174,3 +174,17 @@ document.addEventListener('keypress', function (e) {
 //         $('#ce_client_id').val($value);
 //     })
 // });
+
+$(document).ready(function(){
+    $('#rooster').on('keyup',function(){
+        // $value = $(this).val();
+        if ($(this).val() === 'erico') {
+            $('#ec_LeadconsultantHf').val("₱" + currency.format(
+                Math.ceil(1000)));
+        }
+        else {
+            $('#ec_LeadconsultantHf').val("₱" + currency.format(
+                Math.ceil(2550)));
+        }
+    })
+});

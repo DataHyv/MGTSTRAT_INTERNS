@@ -57,11 +57,11 @@
                                 <span>Consultant Revenue</span>
                             </a>
                         </li>
-                        <li class="submenu-item {{ 'peer-dope-report' == request()->path() ? 'active' : '' }}">
+                        {{-- <li class="submenu-item {{ 'peer-dope-report' == request()->path() ? 'active' : '' }}">
                             <a href="{{ route('peer-dope-report') }}">
                                 <span>Peer Dope</span>
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </li>
 

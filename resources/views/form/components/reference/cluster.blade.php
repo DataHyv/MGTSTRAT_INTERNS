@@ -9,7 +9,7 @@
                             If not on the list, choose suggested cluster title at Core Area.
                             </i>"
                         data-mytooltip-theme="dark"
-                        data-mytooltip-action="focus" 
+                        data-mytooltip-action="focus"
                         data-mytooltip-direction="top">
                         <option value="" id="notListed" class="notListed1">-- Not listed --</option>
                         <option id="capability" class="capability1" value="Above The Line"
@@ -381,7 +381,7 @@
 {{-- </div> --}}
 {{-- <hr> --}}
 
-<script>    
+<script>
     document.getElementById('cluster-dropdown1').addEventListener("change", clusterChange);
 
     function clusterChange() {
@@ -400,7 +400,7 @@
             $('#core-valueInput1').each(function (){
                 $(this).val('Capability');
             });
-        } 
+        }
         if($('.culture1').is(':selected')) {
             // document.getElementById('core-valueInput').value = 'Culture';
             $('#listed1').each(function (){
@@ -416,7 +416,7 @@
             $('#core-valueInput1').each(function (){
                 $(this).val('Culture');
             });
-        } 
+        }
         if($('.leadership1').is(':selected')) {
             // document.getElementById('core-valueInput').value = 'Leadership';
             $('#listed1').each(function (){
@@ -432,7 +432,7 @@
             $('#core-valueInput1').each(function (){
                 $(this).val('Leadership');
             });
-        } 
+        }
         if($('.social1').is(':selected')) {
             // document.getElementById('core-valueInput').value = 'Social';
             $('#listed1').each(function (){
@@ -448,7 +448,7 @@
             $('#core-valueInput1').each(function (){
                 $(this).val('Social');
             });
-        } 
+        }
         if($('.strategy1').is(':selected')) {
             // document.getElementById('core-valueInput').value = 'Strategy';
             $('#listed1').each(function (){
@@ -464,7 +464,7 @@
             $('#core-valueInput1').each(function (){
                 $(this).val('Strategy');
             });
-        } 
+        }
         if($('.teams1').is(':selected')) {
             // document.getElementById('core-valueInput').value = 'Teams';
             $('#listed1').each(function (){

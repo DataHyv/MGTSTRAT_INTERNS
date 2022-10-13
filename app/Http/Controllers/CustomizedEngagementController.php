@@ -13,12 +13,9 @@ use DB;
 
 class CustomizedEngagementController extends Controller
 {
+    // Customized Engagement Form
     public function index(Request $request)
     {
-        // $cluster = DB::table('reference')->whereNotNull('cluster')->get();
-        // $cluster = DB::table('reference')->get();
-        // return view('form.customized_engagement',compact('cluster'));
-        // return view('form.customized_engagement')->with('companyList', $companyList);
         $companyList = Client::orderBy('company_name')->get();
         $data = DB::table('customized_engagement_forms')->where('client_id', $request->client)->count();
         return view('form.customized_engagement', compact('companyList', 'data'));
@@ -27,9 +24,6 @@ class CustomizedEngagementController extends Controller
     // view record
     public function viewRecord()
     {
-        // $data = DB::table('customized_engagement_forms')->get();
-        // $data       = DB::table('customized_engagement_forms')->latest()->get();
-        // $data       = DB::table('customized_engagement_forms')->latest()->get();
         $data = Customized_engagement_form::with('client')->latest()->get();
         $dataJoin1  = DB::table('customized_engagement_forms')
             ->join('engagement_fees', 'customized_engagement_forms.cstmzd_eng_form_id', '=', 'engagement_fees.cstmzd_eng_form_id')
@@ -39,8 +33,6 @@ class CustomizedEngagementController extends Controller
             ->join('engagement_costs', 'customized_engagement_forms.cstmzd_eng_form_id', '=', 'engagement_costs.cstmzd_eng_form_id')
             ->select('customized_engagement_forms.*', 'engagement_costs.*')
             ->get();
-        // $companyList = Client::get();
-        // return view('view_record.ce_record.ce_view_record',compact('data', 'dataJoin1', 'dataJoin2'));
         return view('view_record.ce_record.ce_view_record',compact('data', 'dataJoin1', 'dataJoin2'));
     }
 
@@ -54,6 +46,7 @@ class CustomizedEngagementController extends Controller
     //     return redirect()->route('form/customizedEngagement/detail');
     // }
 
+    /* Delete record */
     public function viewDelete(Request $request)
     {
         DB::beginTransaction();
@@ -83,6 +76,7 @@ class CustomizedEngagementController extends Controller
         }
     }
 
+    /* Update Record */
     public function updateRecord($cstmzd_eng_form_id)
     {
         $data = DB::table('customized_engagement_forms')->where('cstmzd_eng_form_id',$cstmzd_eng_form_id)->first();
@@ -117,6 +111,7 @@ class CustomizedEngagementController extends Controller
         // return view('form.budgetForm_update.ce_update',compact('data','dataJoin1','dataJoin2'));
     }
 
+    /* Save Record */
     public function store(Request $request)
     {
         $request->validate([
@@ -202,7 +197,7 @@ class CustomizedEngagementController extends Controller
         // return redirect('form/customizedEngagement/save');
     }
 
-    /** update customized engagement record */
+    /* update customized engagement record */
     public function ceUpdateRecord(Request $request)
     {
         $request->validate([
@@ -278,6 +273,7 @@ class CustomizedEngagementController extends Controller
         }
     }
 
+    /* Delete CE row data */
     public function deleteRow(Request $request)
     {
         $id = $request->id;

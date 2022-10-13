@@ -21,7 +21,7 @@ class Customized_engagement_form extends Model
 
     public function client()
     {
-        return $this->belongsTo(Client::class);
+        return $this->belongsTo(Client::class, 'client_id', 'id');
     	// return $this->belongsTo('App\Models\Client', 'clients_id','id');
         // return $this->hasMany('App\Models\Client');
     }

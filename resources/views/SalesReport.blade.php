@@ -56,19 +56,20 @@
         </div>
         {{-- message --}}
         {!! Toastr::message() !!}
+
+        {{-- <form id="login" target="embededReport1" method="post" action="https://login.microsoftonline.com/dd8dd9b8-4c2e-4eba-8bfa-f71866c09e1f/oauth2/authorize?client_id=871c010f-5e61-4fb1-83ac-98610a7e9110&response_type=code%20id_token&scope=openid%20profile%20offline_access&state=OpenIdConnect.AuthenticationProperties%3DWnSbDceGIUZ3ebYzS3J5gF0GFwdZBdaY1RsdbiZ1krcSWITmsYPik61Xr4Lppxl4XYEUF0--2QkDKJuxocTM4MEezVVnZxBE0flKspfQPEV7M5WDXA3TLh9C1nNfAj0qIf0H3VF1MInQhprbLJpT38fjeHA7r-Fn5PeWjmt9DqKwuENyiWpu7arAwNnyrSmw0Auw_H-glCWpxqgGI3952PqDIP31FGy3zdgLu4izRFI&response_mode=form_post&nonce=638010634702643622.NTY5MDgyZTAtYTUwOC00YWNmLTk2NWUtN2UzMzA4MTFkN2VkNTg5MGRiNDQtMmVlYS00MGNkLWI3MmQtZmJjOGVlNzMxYzY3&site_id=500453&redirect_uri=https%3A%2F%2Fapp.powerbi.com%2Fsigninredirect&post_logout_redirect_uri=https%3A%2F%2Fapp.powerbi.com%2FautoAuthLogin.cshtml%3FnoSignUpCheck%3D1%26ctid%3Ddd8dd9b8-4c2e-4eba-8bfa-f71866c09e1f&resource=https%3A%2F%2Fanalysis.windows.net%2Fpowerbi%2Fapi&nux=1&x-client-SKU=ID_NET461&x-client-ver=5.6.0.0">
+            <input type="hidden" name="username" value="bisupport@datahyv.com" />
+            <input type="hidden" name="password" value="B1suppor+" />
+        </form> --}}
+
         <div class="page-content">
             <section class="row">
                 <div class="col-12 col-lg-12">
                     @if ('sales-report' == request()->path())
                     {{-- POWERBI REPORT 1 --}}
-                    {{-- <div class="col-12 col-lg-12 bg-white">
-                        <div class="d-flex justify-content-start">
-                            <button class="btn btn-dark btn-sm px-1" onclick="goFullscreen('embededReport1'); return false"><i class="fas fa-fw fa-expand"></i> Fullscreen</button>
-                        </div>
-                    </div> --}}
-
                     <div class="pbi-iframe">
-                        <iframe title="MgtStrat Sales Report Dashboard" id="embededReport1" class="responsive-iframe" src="https://app.powerbi.com/reportEmbed?reportId=91c53520-da62-4365-9271-9e43e3fe0375&autoAuth=true&ctid=dd8dd9b8-4c2e-4eba-8bfa-f71866c09e1f&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXNvdXRoLWVhc3QtYXNpYS1iLXByaW1hcnktcmVkaXJlY3QuYW5hbHlzaXMud2luZG93cy5uZXQvIn0%3D" frameborder="0" allowFullScreen="true"></iframe>
+                        {{-- <iframe title="MgtStrat Sales Report Dashboard" name="embededReport1" id="embededReport1" class="responsive-iframe" src="https://app.powerbi.com/reportEmbed?reportId=91c53520-da62-4365-9271-9e43e3fe0375&autoAuth=true&ctid=dd8dd9b8-4c2e-4eba-8bfa-f71866c09e1f&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXNvdXRoLWVhc3QtYXNpYS1iLXByaW1hcnktcmVkaXJlY3QuYW5hbHlzaXMud2luZG93cy5uZXQvIn0%3D" frameborder="0" allowFullScreen="true"></iframe> --}}
+                        <iframe title="MgtStrat Sales Report Dashboard" name="embededReport1" id="embededReport1" class="responsive-iframe" src="https://app.powerbi.com/reportEmbed?reportId=91c53520-da62-4365-9271-9e43e3fe0375&autoAuth=true&ctid=dd8dd9b8-4c2e-4eba-8bfa-f71866c09e1f&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXNvdXRoLWVhc3QtYXNpYS1iLXByaW1hcnktcmVkaXJlY3QuYW5hbHlzaXMud2luZG93cy5uZXQvIn0%3D" frameborder="0" allowFullScreen="true"></iframe>
                         <button class="btn btn-dark btn-sm px-1 mx-3" onclick="goFullscreen('embededReport1'); return false"><i class="fas fa-fw fa-expand"></i> Fullscreen</button>
                     </div>
                     <br>
@@ -76,12 +77,6 @@
 
                     @if ('people-and-culture' == request()->path())
                     {{-- POWERBI REPORT 2 --}}
-                    {{-- <div class="col-12 col-lg-12 bg-white">
-                        <div class="d-flex justify-content-center">
-                            <button class="btn btn-dark btn-sm px-1" onclick="goFullscreen('embededReport2'); return false"><i class="fas fa-fw fa-expand"></i> Fullscreen</button>
-                        </div>
-                    </div> --}}
-
                     <div class="pbi-iframe">
                         <iframe title="MgtStrat Sales Report Dashboard" id="embededReport2" class="responsive-iframe" src="https://app.powerbi.com/reportEmbed?reportId=bd4078f0-709b-42a6-aecb-a0e2cab04a76&autoAuth=true&ctid=dd8dd9b8-4c2e-4eba-8bfa-f71866c09e1f" frameborder="0" allowFullScreen="true"></iframe>
                         {{-- FULLSCREEN BUTTON --}}
@@ -91,12 +86,6 @@
 
                     @if ('cash-position-report' == request()->path())
                     {{-- POWERBI REPORT 3 --}}
-                    {{-- <div class="col-12 col-lg-12 bg-white">
-                        <div class="d-flex justify-content-center">
-                            <button class="btn btn-dark btn-sm px-1" onclick="goFullscreen('embededReport3'); return false"><i class="fas fa-fw fa-expand"></i> Fullscreen</button>
-                        </div>
-                    </div> --}}
-
                     <div class="pbi-iframe">
                         <iframe title="MgtStrat Sales Report Dashboard" id="embededReport3" class="responsive-iframe" src="https://app.powerbi.com/reportEmbed?reportId=62cab871-abe5-4f53-b6ff-b1ac48d59871&autoAuth=true&ctid=dd8dd9b8-4c2e-4eba-8bfa-f71866c09e1f" frameborder="0" allowFullScreen="true"></iframe>
 
@@ -107,12 +96,6 @@
 
                     @if ('consultant-revenue-report' == request()->path())
                     {{-- POWERBI REPORT 4 --}}
-                    {{-- <div class="col-12 col-lg-12 bg-white">
-                        <div class="d-flex justify-content-center">
-                            <button class="btn btn-dark btn-sm px-1" onclick="goFullscreen('embededReport4'); return false"><i class="fas fa-fw fa-expand"></i> Fullscreen</button>
-                        </div>
-                    </div> --}}
-
                     <div class="pbi-iframe">
                         <iframe title="MgtStrat Sales Report Dashboard" id="embededReport4" class="responsive-iframe" src="https://app.powerbi.com/reportEmbed?reportId=d507cf40-4da4-4edc-80fc-fb942de12ca2&autoAuth=true&ctid=dd8dd9b8-4c2e-4eba-8bfa-f71866c09e1f" frameborder="0" allowFullScreen="true"></iframe>
 
@@ -123,11 +106,6 @@
 
                     @if ('peer-dope-report' == request()->path())
                     {{-- POWERBI REPORT 5 --}}
-                    {{-- <div class="col-12 col-lg-12 bg-white">
-                        <div class="d-flex justify-content-center">
-                            <button class="btn btn-dark btn-sm px-1" onclick="goFullscreen('embededReport5'); return false"><i class="fas fa-fw fa-expand"></i> Fullscreen</button>
-                        </div>
-                    </div> --}}
                     <div class="pbi-iframe">
                         <iframe title="MgtStrat Sales Report Dashboard" id="embededReport5" class="responsive-iframe" src="https://app.powerbi.com/reportEmbed?reportId=fccd1bb6-1bfe-47f4-b31c-5200a18145db&autoAuth=true&ctid=dd8dd9b8-4c2e-4eba-8bfa-f71866c09e1f" frameborder="0" allowFullScreen="true"></iframe>
 
@@ -257,23 +235,23 @@
     </div>
 
     <script>
-    // var input = document.getElementById("main");
-    // input.addEventListener("keypress", function(event) {
-    // if (event.key === "Enter") {
-    //     event.preventDefault();
-    //     document.getElementById("embededReport1").click();
-    // }
-    // });
-    // function myFunction() {
-    //     alert("You pressed a key inside the input field");
-    // }
-    function goFullscreen(id) {
-        var element = document.getElementById(id);
-        if (element.mozRequestFullScreen) {
-          element.mozRequestFullScreen();
-        } else if (element.webkitRequestFullScreen) {
-          element.webkitRequestFullScreen();
+        // submit the form into iframe for login into remote site
+        // document.getElementById('login').submit();
+
+        // once you're logged in, change the source url (if needed)
+        // var iframe = document.getElementById('embededReport1');
+        // iframe.onload = function() {
+        //     if (iframe.src != "https://app.powerbi.com/reportEmbed?reportId=91c53520-da62-4365-9271-9e43e3fe0375&autoAuth=true&ctid=dd8dd9b8-4c2e-4eba-8bfa-f71866c09e1f&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXNvdXRoLWVhc3QtYXNpYS1iLXByaW1hcnktcmVkaXJlY3QuYW5hbHlzaXMud2luZG93cy5uZXQvIn0%3D") {
+        //         iframe.src = "https://app.powerbi.com/reportEmbed?reportId=91c53520-da62-4365-9271-9e43e3fe0375&autoAuth=true&ctid=dd8dd9b8-4c2e-4eba-8bfa-f71866c09e1f&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXNvdXRoLWVhc3QtYXNpYS1iLXByaW1hcnktcmVkaXJlY3QuYW5hbHlzaXMud2luZG93cy5uZXQvIn0%3D";
+        //     }
+        // }
+        function goFullscreen(id) {
+            var element = document.getElementById(id);
+            if (element.mozRequestFullScreen) {
+            element.mozRequestFullScreen();
+            } else if (element.webkitRequestFullScreen) {
+            element.webkitRequestFullScreen();
+            }
         }
-    }
     </script>
 @endsection

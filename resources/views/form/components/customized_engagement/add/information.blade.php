@@ -223,7 +223,6 @@
             </div>
 
         <!------------ DATE COVERED BY ENGAGEMENT ------------>
-            {{-- <div class="row justify-content-center g-3 gx-5 mt-2" id="dcbe"> --}}
             <div class="row justify-content-center mt-3" id="dcbe">
                 <h5 class="text-center mt-5 fst-italic">Date Covered by Engagement</h5>
                 <div class="d-flex justify-content-center mt-4" id="dateRows1">
@@ -233,7 +232,7 @@
                             <fieldset class="row justify-content-center" id="dateRows">
                                 <div class="col-lg-1 col-md-1">
                                     <div class="px-0">
-                                            <label class="fw-bold invisible mb-4">Add</label>
+                                            <label class="fw-bold invisible overflow-hidden mb-4">Add</label>
                                             <a href="javascript:void(0)" class="text-success font-18 px-0" title="Add"
                                             id="addDates"><i class="fa fa-plus"></i></a>
                                     </div>
@@ -332,7 +331,7 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-1 col-md-1">
                                 <div class="px-0">
-                                    <label class="fw-bold invisible mb-4">Add</label>
+                                    <label class="fw-bold invisible overflow-hidden mb-4">Add</label>
                                     <a href="javascript:void(0)" class="text-danger font-18 remove px-0" title="Remove">
                                         <i class="fa fa-trash-o"></i>
                                     </a>
