@@ -25,10 +25,15 @@ class HomeController extends Controller
     public function index()
     {
         $data = DB::table('users')->get();
-        $webinarforms = DB::table('webinarforms')->count();
+        $BudgetForm = DB::table('customized_engagement_forms')->count();
         $users = DB::table('users')->count();
         $user_activity_logs = DB::table('user_activity_logs')->count();
         $activity_logs = DB::table('activity_logs')->count();
-        return view('home',compact('webinarforms','users','user_activity_logs','activity_logs','data'));
+        return view('home',compact('BudgetForm','users','user_activity_logs','activity_logs','data'));
+    }
+
+    public function SalesReport()
+    {
+        return view('SalesReport');
     }
 }

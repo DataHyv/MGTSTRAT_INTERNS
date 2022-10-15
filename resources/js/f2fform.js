@@ -15,18 +15,18 @@ $("#ef_AnalystPdf").on({
     },
 });
 
-$("#ef_LeadconsultantHf").on({
-    keyup: function () {
-        let input_val = $(this).val();
-        input_val = numberToCurrency(input_val);
-        $(this).val(input_val);
-    },
-    blur: function () {
-        let input_val = $(this).val();
-        input_val = numberToCurrency(input_val, true, true);
-        $(this).val(input_val);
-    },
-});
+// $("#ef_LeadconsultantHf").on({
+//     keyup: function () {
+//         let input_val = $(this).val();
+//         input_val = numberToCurrency(input_val);
+//         $(this).val(input_val);
+//     },
+//     blur: function () {
+//         let input_val = $(this).val();
+//         input_val = numberToCurrency(input_val, true, true);
+//         $(this).val(input_val);
+//     },
+// });
 
 $("#ef_LeadFaciPdf").on({
     keyup: function () {
@@ -106,7 +106,6 @@ $("#ef_PDPdf").on({
     },
 });
 
-//Engagement Cost
 //ENGAGEMENT COST
 $("#ec_LeadconsultantsPd").on({
     keyup: function () {
@@ -368,7 +367,7 @@ $(document).on(
         //Co Facilitator
         sumCoFaci = 0;
 
-        //Action Learning 
+        //Action Learning
         sumActionLearn = 0;
 
         //Marshal
@@ -444,7 +443,7 @@ $(document).on(
             $("#ec_LeadconsultantsNod1").val($("#ef_LeadconsultantNoh1").val());
             $("#ec_LeadconsultantsNwh1").val($("#ef_LeadconsultantNwh1").val());
             $("#ec_LeadconsultantsAtd1").val($("#ef_LeadconsultantAtd1").val());
-    
+
             sumLc =
                 $(this).find(`#ef_LeadconsultantNoc${rowIndx}`).val() *
                 +$(this).find("#ef_LeadconsultantHf").val().replace(/,/g, "") *
@@ -472,9 +471,9 @@ $(document).on(
 
             sumEf += +sumLc;
         });
-        
+
         //Lead Consultant (Engagement Cost)
-        $("#tableofLeadConsultant > tr").each(function () { 
+        $("#tableofLeadConsultant > tr").each(function () {
             ecleadConsultant++;
 
             sumofecLeadconsultant =
@@ -529,7 +528,7 @@ $(document).on(
 
                 $(this).find("#analyst-total").html(currency.format(Math.ceil(sumAnlst)));
             });
-               
+
             //Analyst (Engagement Cost)
             $("#tableofAnalyst > tr").each(function () {
                 ecAnalyst++;
@@ -590,10 +589,10 @@ $(document).on(
                         (document.getElementById("ga-only-dropdown").value / 100);
                 }
                 sumEf += +sumDesigner;
-                
+
                 $(this).find("#subtotal-design").html(currency.format(Math.ceil(sumDesigner)));
             });
-                
+
             //Designer (Engagement Cost)
             $("#tableofDesigner > tr").each(function () {
                 ecDesigner++;
@@ -621,7 +620,7 @@ $(document).on(
 
             // Lead Facilitator
             $("#ef_TableLeadFaci > tr").each(function () {
-                
+
                 rowLeadFaci++;
 
                 $("#ec_LeadfacilitatorsNoc1").val($("#ef_LeadFaciNoc1").val());
@@ -678,10 +677,10 @@ $(document).on(
                 ecProgramSubtotal += +sumofecLeadfacilitator;
                 sumofEngagementCost += +sumofecLeadfacilitator;
 
-               
+
                 // $("#subtotal-LeadFaci").html(currency.format(Math.ceil(sumEf)));
             });
-            
+
             // Co Facilitator
             $("#ef_TableCoFaci > tr").each(function () {
                 rowCoFaci++;
@@ -715,7 +714,7 @@ $(document).on(
                 sumEf += +sumCoFaci;
 
                 $(this).find("#subtotal-coFacilitator").html(currency.format(Math.ceil(sumCoFaci)));
-               
+
             });
 
             //Co-Facilitator (Engagement Cost)
@@ -851,7 +850,7 @@ $(document).on(
             });
 
             // $("#subtotal-Documentor").html("₱" + currency.format(Math.ceil(sumDocumentor)));
-            
+
             // Per Diem
             $("#ef_PDPdf").each(function () {
                 sumPD +=
@@ -936,7 +935,7 @@ $(document).on(
 
             // }
             // ); line issue
-        
+
             //end of engagement fees
 
             //start of F2F engagement cost
@@ -962,8 +961,8 @@ $(document).on(
                     ($("#input_totalPackages").val().replace(/\₱|,/g, "") / 100) *
                     $(this).find("#inputforReferrals").val().replace(/%/g, "");
 
-                    $(this).find("#referralsTotal").html("₱" + currency.format(Math.ceil(sumofReferral)));                
-                    
+                    $(this).find("#referralsTotal").html("₱" + currency.format(Math.ceil(sumofReferral)));
+
                 sumofEngagementCost += +sumofReferral;
             });
 
@@ -985,7 +984,7 @@ $(document).on(
                 sumofOffsitepc =
                     ($("#input_totalPackages").val().replace(/\₱|,/g, "") / 100 -
                     $("#subtotalConsulting").val() - $("#subtotal-PD").val()) *
-                    $(this).find("#ec_offsitePc").val() || 
+                    $(this).find("#ec_offsitePc").val() ||
                     ($("#input_totalPackages").val().replace(/\₱|,/g, "") / 100 -
                     $("#subtotalConsulting").val() - $("#subtotal-PD").val()) *
                     $(this).find("#inputforOffsite").val().replace(/\%|,/g, "");
@@ -1011,7 +1010,7 @@ $(document).on(
                 sumofEngagementCost += +sumofecCreators;
             });
                 $("#ec_DesignsSubtotal").html("₱" + currency.format(Math.ceil(ecDesignSubtotal)));
-            
+
 
             //Action Learning Coach (Engagement Cost)
             $("#tableofActionLearningCoach > tr").each(function () {
@@ -1032,13 +1031,13 @@ $(document).on(
                     0.2);
 
             $(this).find("#ec_ActionlearningcoachTotal").html(currency.format(Math.ceil(sumofecActionlearningcoach)));
-            
+
             ecProgramSubtotal += +sumofecActionlearningcoach;
             sumofEngagementCost += +sumofecActionlearningcoach;
-            
+
             });
 
-            
+
             //Marshal (Engagement Cost)
             $("#tableofMarshal > tr").each(function () {
                 ecMarshal++;
@@ -1060,7 +1059,7 @@ $(document).on(
                     $(this).find("#ec_MarshalTotal").html(
                         currency.format(Math.ceil(sumofecMarshal))
                     );
-            
+
             ecProgramSubtotal += +sumofecMarshal;
             sumofEngagementCost += +sumofecMarshal;
 
@@ -1088,11 +1087,11 @@ $(document).on(
                     $(this).find("#ec_OnsitepcTotal").html(
                         currency.format(Math.ceil(sumofecOnsitepc))
                     );
-            
+
             ecProgramSubtotal += +sumofecOnsitepc;
             sumofEngagementCost += +sumofecOnsitepc;
 
-            
+
         });
             $("#ec_ProgramsSubtotal").html(
                 "₱" + currency.format(
@@ -1251,181 +1250,197 @@ $(document).on(
     }
 );
 //cluster reference
-document.getElementById("cluster-dropdown").addEventListener("change", cluster);
-document.getElementById("input-notListed").disabled = false;
-document.getElementById("core-valueInput").disabled = false;
-function cluster() {
-    var clusterDropdown = document.getElementById("cluster-dropdown");
-    var capability = document.getElementById("capability");
-    var culture = document.getElementById("culture");
+// document.getElementById("cluster-dropdown").addEventListener("change", cluster);
+// document.getElementById("input-notListed").disabled = false;
+// document.getElementById("core-valueInput").disabled = false;
+// function cluster() {
+//     var clusterDropdown = document.getElementById("cluster-dropdown");
+//     var capability = document.getElementById("capability");
+//     var culture = document.getElementById("culture");
 
-    //Capability
-    if (
-        clusterDropdown.value == "Above The Line" ||
-        clusterDropdown.value == "Anxiety 2 (Capability)" ||
-        clusterDropdown.value == "Art of Asking Questions 1 (Capability)" ||
-        clusterDropdown.value == "Assertive Communication 1 (Capability)" ||
-        clusterDropdown.value ==
-        "Building Effective Relationships 1 (Capability)" ||
-        clusterDropdown.value == "Business Analytics 1 (Capability)" ||
-        clusterDropdown.value == "Business Storytelling" ||
-        clusterDropdown.value == "Change Management 2 (Capability)" ||
-        clusterDropdown.value == "Choose Flourish 1 (Capability)" ||
-        clusterDropdown.value == "Collaborative Leadership 2 (Capability)" ||
-        clusterDropdown.value == "Communicate for Success" ||
-        clusterDropdown.value == "Communicating Across the Organization" ||
-        clusterDropdown.value == "Communication" ||
-        clusterDropdown.value == "Competency Building" ||
-        clusterDropdown.value == "Conflict Resolution" ||
-        clusterDropdown.value == "Create Authentic Connections" ||
-        clusterDropdown.value == "Creativity" ||
-        clusterDropdown.value == "Emotional Intelligence" ||
-        clusterDropdown.value == "Enhance My Credibility" ||
-        clusterDropdown.value == "Everyday Innovation" ||
-        clusterDropdown.value == "Facilitating Virtual Meetings" ||
-        clusterDropdown.value == "Feedback" ||
-        clusterDropdown.value == "Growth Mindset" ||
-        clusterDropdown.value == "Improv 1 (Capability)" ||
-        clusterDropdown.value == "Influencing" ||
-        clusterDropdown.value == "Innovation" ||
-        clusterDropdown.value == "Knowledge Management" ||
-        clusterDropdown.value == "Leading Virtual Teams" ||
-        clusterDropdown.value == "Leading with Questions 2 (Capability)" ||
-        clusterDropdown.value == "Learning Evolution" ||
-        clusterDropdown.value == "Learning How to Set Goals" ||
-        clusterDropdown.value == "Mental Health" ||
-        clusterDropdown.value == "Mindfulness" ||
-        clusterDropdown.value == "Owning My Career" ||
-        clusterDropdown.value == "Persuasive Communication" ||
-        clusterDropdown.value == "Problem-Solving" ||
-        clusterDropdown.value == "Productivity" ||
-        clusterDropdown.value == "Project Management" ||
-        clusterDropdown.value == "Psychological First Aid" ||
-        clusterDropdown.value == "Radical Candor" ||
-        clusterDropdown.value == "Stakeholder Management" ||
-        clusterDropdown.value == "Strategic Execution" ||
-        clusterDropdown.value == "Strategic Agility" ||
-        clusterDropdown.value == "Talent Building" ||
-        clusterDropdown.value == "Work From Home"
-    ) {
-        document.getElementById("core-valueInput").value = "Capability";
-        document.getElementById("input-notListed").disabled = true;
-        document.getElementById("div-notListed").style.visibility = "hidden";
-        document.getElementById("core-valueInput").disabled = true;
+//     //Capability
+//     if (
+//         clusterDropdown.value == "Above The Line" ||
+//         clusterDropdown.value == "Anxiety 2 (Capability)" ||
+//         clusterDropdown.value == "Art of Asking Questions 1 (Capability)" ||
+//         clusterDropdown.value == "Assertive Communication 1 (Capability)" ||
+//         clusterDropdown.value ==
+//         "Building Effective Relationships 1 (Capability)" ||
+//         clusterDropdown.value == "Business Analytics 1 (Capability)" ||
+//         clusterDropdown.value == "Business Storytelling" ||
+//         clusterDropdown.value == "Change Management 2 (Capability)" ||
+//         clusterDropdown.value == "Choose Flourish 1 (Capability)" ||
+//         clusterDropdown.value == "Collaborative Leadership 2 (Capability)" ||
+//         clusterDropdown.value == "Communicate for Success" ||
+//         clusterDropdown.value == "Communicating Across the Organization" ||
+//         clusterDropdown.value == "Communication" ||
+//         clusterDropdown.value == "Competency Building" ||
+//         clusterDropdown.value == "Conflict Resolution" ||
+//         clusterDropdown.value == "Create Authentic Connections" ||
+//         clusterDropdown.value == "Creativity" ||
+//         clusterDropdown.value == "Emotional Intelligence" ||
+//         clusterDropdown.value == "Enhance My Credibility" ||
+//         clusterDropdown.value == "Everyday Innovation" ||
+//         clusterDropdown.value == "Facilitating Virtual Meetings" ||
+//         clusterDropdown.value == "Feedback" ||
+//         clusterDropdown.value == "Growth Mindset" ||
+//         clusterDropdown.value == "Improv 1 (Capability)" ||
+//         clusterDropdown.value == "Influencing" ||
+//         clusterDropdown.value == "Innovation" ||
+//         clusterDropdown.value == "Knowledge Management" ||
+//         clusterDropdown.value == "Leading Virtual Teams" ||
+//         clusterDropdown.value == "Leading with Questions 2 (Capability)" ||
+//         clusterDropdown.value == "Learning Evolution" ||
+//         clusterDropdown.value == "Learning How to Set Goals" ||
+//         clusterDropdown.value == "Mental Health" ||
+//         clusterDropdown.value == "Mindfulness" ||
+//         clusterDropdown.value == "Owning My Career" ||
+//         clusterDropdown.value == "Persuasive Communication" ||
+//         clusterDropdown.value == "Problem-Solving" ||
+//         clusterDropdown.value == "Productivity" ||
+//         clusterDropdown.value == "Project Management" ||
+//         clusterDropdown.value == "Psychological First Aid" ||
+//         clusterDropdown.value == "Radical Candor" ||
+//         clusterDropdown.value == "Stakeholder Management" ||
+//         clusterDropdown.value == "Strategic Execution" ||
+//         clusterDropdown.value == "Strategic Agility" ||
+//         clusterDropdown.value == "Talent Building" ||
+//         clusterDropdown.value == "Work From Home"
+//     ) {
+//         document.getElementById("core-valueInput").value = "Capability";
+//         document.getElementById("input-notListed").disabled = true;
+//         document.getElementById("div-notListed").style.visibility = "hidden";
+//         document.getElementById("core-valueInput").disabled = true;
 
-        //Culture
-    } else if (
-        clusterDropdown.value == "Action Learning" ||
-        clusterDropdown.value == "Anxiety 1 (Culture)" ||
-        clusterDropdown.value == "Business Transformation 1 (Culture)" ||
-        clusterDropdown.value == "Diversity & Inclusion" ||
-        clusterDropdown.value == "Find Your Why 2 (Culture)" ||
-        clusterDropdown.value == "Habit Formation" ||
-        clusterDropdown.value ==
-        "Organizational Development (OD) 1 (Culture)" ||
-        clusterDropdown.value == "Psychological Safety 1 (Culture)" ||
-        clusterDropdown.value == "Well-being"
-    ) {
-        document.getElementById("core-valueInput").value = "Culture";
-        document.getElementById("input-notListed").disabled = true;
-        document.getElementById("div-notListed").style.visibility = "hidden";
-        document.getElementById("core-valueInput").disabled = true;
+//         //Culture
+//     } else if (
+//         clusterDropdown.value == "Action Learning" ||
+//         clusterDropdown.value == "Anxiety 1 (Culture)" ||
+//         clusterDropdown.value == "Business Transformation 1 (Culture)" ||
+//         clusterDropdown.value == "Diversity & Inclusion" ||
+//         clusterDropdown.value == "Find Your Why 2 (Culture)" ||
+//         clusterDropdown.value == "Habit Formation" ||
+//         clusterDropdown.value ==
+//         "Organizational Development (OD) 1 (Culture)" ||
+//         clusterDropdown.value == "Psychological Safety 1 (Culture)" ||
+//         clusterDropdown.value == "Well-being"
+//     ) {
+//         document.getElementById("core-valueInput").value = "Culture";
+//         document.getElementById("input-notListed").disabled = true;
+//         document.getElementById("div-notListed").style.visibility = "hidden";
+//         document.getElementById("core-valueInput").disabled = true;
 
-        //Leadership
-    } else if (
-        clusterDropdown.value == "Art of Asking Questions 2 (Leadership)" ||
-        clusterDropdown.value == "Assertive Communication 2 (Leadership)" ||
-        clusterDropdown.value ==
-        "Building Effective Relationships 2 (Leadership)" ||
-        clusterDropdown.value == "Business Transformation 2 (Leadership)" ||
-        clusterDropdown.value == "Change Management 1 (Leadership)" ||
-        clusterDropdown.value == "Choose to Flourish 2 (Leadership)" ||
-        clusterDropdown.value == "Coaching" ||
-        clusterDropdown.value == "Collaborative Leadership 1 (Leadership)" ||
-        clusterDropdown.value == "Find Your Why 1 (Leadership)" ||
-        clusterDropdown.value == "Future Proof Leadership" ||
-        clusterDropdown.value == "Leadership Brand" ||
-        clusterDropdown.value == "Leadership Presence" ||
-        clusterDropdown.value == "Leadership Hybrid Teams" ||
-        clusterDropdown.value == "Leading with Emotional Intelligence" ||
-        clusterDropdown.value == "Leading with Questions 1 (Leadership)" ||
-        clusterDropdown.value == "Mentoring" ||
-        clusterDropdown.value == "Mission & Vision Review 2 (Leadership)" ||
-        clusterDropdown.value == "Psychological Safety 2 (Leadership)" ||
-        clusterDropdown.value == "Purpose" ||
-        clusterDropdown.value == "Situational Leadership" ||
-        clusterDropdown.value == "Strategic Leadership" ||
-        clusterDropdown.value == "Strengths"
-    ) {
-        document.getElementById("core-valueInput").value = "Leadership";
-        document.getElementById("input-notListed").disabled = true;
-        document.getElementById("div-notListed").style.visibility = "hidden";
-        document.getElementById("core-valueInput").disabled = true;
+//         //Leadership
+//     } else if (
+//         clusterDropdown.value == "Art of Asking Questions 2 (Leadership)" ||
+//         clusterDropdown.value == "Assertive Communication 2 (Leadership)" ||
+//         clusterDropdown.value ==
+//         "Building Effective Relationships 2 (Leadership)" ||
+//         clusterDropdown.value == "Business Transformation 2 (Leadership)" ||
+//         clusterDropdown.value == "Change Management 1 (Leadership)" ||
+//         clusterDropdown.value == "Choose to Flourish 2 (Leadership)" ||
+//         clusterDropdown.value == "Coaching" ||
+//         clusterDropdown.value == "Collaborative Leadership 1 (Leadership)" ||
+//         clusterDropdown.value == "Find Your Why 1 (Leadership)" ||
+//         clusterDropdown.value == "Future Proof Leadership" ||
+//         clusterDropdown.value == "Leadership Brand" ||
+//         clusterDropdown.value == "Leadership Presence" ||
+//         clusterDropdown.value == "Leadership Hybrid Teams" ||
+//         clusterDropdown.value == "Leading with Emotional Intelligence" ||
+//         clusterDropdown.value == "Leading with Questions 1 (Leadership)" ||
+//         clusterDropdown.value == "Mentoring" ||
+//         clusterDropdown.value == "Mission & Vision Review 2 (Leadership)" ||
+//         clusterDropdown.value == "Psychological Safety 2 (Leadership)" ||
+//         clusterDropdown.value == "Purpose" ||
+//         clusterDropdown.value == "Situational Leadership" ||
+//         clusterDropdown.value == "Strategic Leadership" ||
+//         clusterDropdown.value == "Strengths"
+//     ) {
+//         document.getElementById("core-valueInput").value = "Leadership";
+//         document.getElementById("input-notListed").disabled = true;
+//         document.getElementById("div-notListed").style.visibility = "hidden";
+//         document.getElementById("core-valueInput").disabled = true;
 
-        //Strategy
-    } else if (
-        clusterDropdown.value == "Business Analytics 2 (Strategy)" ||
-        clusterDropdown.value == "Goal Setting" ||
-        clusterDropdown.value == "Mission & Vision Review 1 (Strategy)" ||
-        clusterDropdown.value ==
-        "Organizational Development (OD) 2 (Capability)" ||
-        clusterDropdown.value == "Visioning" ||
-        clusterDropdown.value == "World Cafe"
-    ) {
-        document.getElementById("core-valueInput").value = "Strategy";
-        document.getElementById("input-notListed").disabled = true;
-        document.getElementById("div-notListed").style.visibility = "hidden";
-        document.getElementById("core-valueInput").disabled = true;
+//         //Strategy
+//     } else if (
+//         clusterDropdown.value == "Business Analytics 2 (Strategy)" ||
+//         clusterDropdown.value == "Goal Setting" ||
+//         clusterDropdown.value == "Mission & Vision Review 1 (Strategy)" ||
+//         clusterDropdown.value ==
+//         "Organizational Development (OD) 2 (Capability)" ||
+//         clusterDropdown.value == "Visioning" ||
+//         clusterDropdown.value == "World Cafe"
+//     ) {
+//         document.getElementById("core-valueInput").value = "Strategy";
+//         document.getElementById("input-notListed").disabled = true;
+//         document.getElementById("div-notListed").style.visibility = "hidden";
+//         document.getElementById("core-valueInput").disabled = true;
 
-        //Teams
-    } else if (
-        clusterDropdown.value == "Game Night" ||
-        clusterDropdown.value == "Heroes Assemble" ||
-        clusterDropdown.value == "Improv 2 (Teams)" ||
-        clusterDropdown.value == "Lip Sync Battle" ||
-        clusterDropdown.value == "Squid Game" ||
-        clusterDropdown.value == "Team Engagement" ||
-        clusterDropdown.value == "The Heist" ||
-        clusterDropdown.value == "The Lab" ||
-        clusterDropdown.value == "Virtual Team Building"
-    ) {
-        document.getElementById("core-valueInput").value = "Teams";
-        document.getElementById("input-notListed").disabled = true;
-        document.getElementById("input-notListed").style.visibility = "hidden";
-        document.getElementById("core-valueInput").disabled = true;
+//         //Teams
+//     } else if (
+//         clusterDropdown.value == "Game Night" ||
+//         clusterDropdown.value == "Heroes Assemble" ||
+//         clusterDropdown.value == "Improv 2 (Teams)" ||
+//         clusterDropdown.value == "Lip Sync Battle" ||
+//         clusterDropdown.value == "Squid Game" ||
+//         clusterDropdown.value == "Team Engagement" ||
+//         clusterDropdown.value == "The Heist" ||
+//         clusterDropdown.value == "The Lab" ||
+//         clusterDropdown.value == "Virtual Team Building"
+//     ) {
+//         document.getElementById("core-valueInput").value = "Teams";
+//         document.getElementById("input-notListed").disabled = true;
+//         document.getElementById("input-notListed").style.visibility = "hidden";
+//         document.getElementById("core-valueInput").disabled = true;
 
-        //Society
-    } else if (clusterDropdown.value == "Parenting") {
-        document.getElementById("core-valueInput").value = "Society";
-        document.getElementById("input-notListed").disabled = true;
-        document.getElementById("div-notListed").style.visibility = "hidden";
-        document.getElementById("core-valueInput").disabled = true;
+//         //Society
+//     } else if (clusterDropdown.value == "Parenting") {
+//         document.getElementById("core-valueInput").value = "Society";
+//         document.getElementById("input-notListed").disabled = true;
+//         document.getElementById("div-notListed").style.visibility = "hidden";
+//         document.getElementById("core-valueInput").disabled = true;
 
-        //Not listed
-    } else {
-        document.getElementById("core-valueInput").value = "Cluster";
-        document.getElementById("input-notListed").disabled = false;
-        document.getElementById("div-notListed").style.visibility = "";
-        document.getElementById("core-valueInput").disabled = false;
-    }
-};
+//         //Not listed
+//     } else {
+//         document.getElementById("core-valueInput").value = "Cluster";
+//         document.getElementById("input-notListed").disabled = false;
+//         document.getElementById("div-notListed").style.visibility = "";
+//         document.getElementById("core-valueInput").disabled = false;
+//     }
+// };
 
 //To be announce
 document.getElementById("dcbeCheck").addEventListener("click", myFunction);
 function myFunction() {
-    var checkBox = document.getElementById("dcbeCheck");
-    var DatesCoveredByEngagement = document.getElementById("dcbe");
+var checkBox = document.getElementById("dcbeCheck");
+var DatesCoveredByEngagement = $("#dcbe");
+var DateRows = $("#dateRows");
+    // $("#dcacl").children().attr("disabled","disabled");
     if (checkBox.checked == false) {
-        DatesCoveredByEngagement.style.visibility = "";
+        DatesCoveredByEngagement.show();
+        DateRows.removeAttr("disabled","disabled");
     } else {
-        DatesCoveredByEngagement.style.visibility = "hidden";
+        DatesCoveredByEngagement.hide();
+        DateRows.attr("disabled","disabled");
+        $(".date").val("");
+        $(".start-time").val("");
+        $(".end-time").val("");
     }
 };
 
 //datepicker
-$(function () {
-    $("#datepicker").datepicker();
-    $("#datepicker").on("change", function () {
-        $("#datepicker").datepicker("option", "dateFormat", "MM d, yy");
+$(document).on("click change focus", "#dcbe", function() {
+    $(".datepicker").each(function () {
+        $(this).datepicker();
+        $(this).on("change", function () {
+            $(this).datepicker("option", "dateFormat", "M d, yy");
+        });
     });
+
+    // $(function () {
+    //     $("#datepicker").datepicker();
+    //     $("#datepicker").on("change", function () {
+    //         $("#datepicker").datepicker("option", "dateFormat", "M d, yy");
+    //     });
+    // });
 });

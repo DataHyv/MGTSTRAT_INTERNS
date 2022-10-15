@@ -6,17 +6,6 @@
     <section>
         <div class="table-responsive-md" id="no-more-tables">
             <table class="table table-bordered table-hover">
-                {{-- <thead class="table-dark">
-                    <tr class="text-center">
-                        <th class="title-th" scope="col" width=20%></th>
-                        <th class="title-middle" scope="col" style="font-size: 0.9rem;"></th>
-                        <th class="title-middle px-4" width=15% scope="col"></th>
-                        <th class="title-middle" scope="col" style="font-size: 0.9rem;"></th>
-                        <th class="title-middle" scope="col" style="font-size: 0.9rem;" width=10%></th>
-                        <th class="title-th" scope="col" width=15%></th>
-                        <th class="title-th" scope="col" width=15%></th>
-                    </tr>
-                </thead> --}}
                 <tbody>
                     <tr>
                         <td class="profit-forecast-start text-dark" scope="col" width=20%>
@@ -41,10 +30,10 @@
                                 <select class="input js-mytooltip form-select @error('') is-invalid @enderror" name="" id="LessCTO_NOC"
                                     data-mytooltip-content="<i>
                                         35% Standard, <br>
-                                        15% for NGO's 
+                                        15% for NGO's
                                         </i>"
                                     data-mytooltip-theme="dark"
-                                    data-mytooltip-action="focus" 
+                                    data-mytooltip-action="focus"
                                     data-mytooltip-direction="right"
                                     style="background-color:#ffcccc; color:red;">
                                     <option value="35" {{ old('') == '35' ? 'selected="selected"' : '' }} >
@@ -104,9 +93,9 @@
 </div>
 
 <script>
-$('input[type="number"]').on('input', function () {
-    this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null
-});
+// $('input[type="number"]').on('input', function () {
+//     this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null
+// });
 
-$('input[type="number"]').attr('min', '0');
+// $('input[type="number"]').attr('min', '0');
 </script>

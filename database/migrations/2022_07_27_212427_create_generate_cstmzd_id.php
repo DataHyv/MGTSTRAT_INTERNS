@@ -10,6 +10,7 @@ class CreateGenerateCstmzdId extends Migration
      * Run the migrations.
      *
      * @return void
+     * YEAR(CURDATE())
      */
     public function up()
     {
@@ -17,7 +18,7 @@ class CreateGenerateCstmzdId extends Migration
             CREATE TRIGGER generate_cstmzd_id BEFORE INSERT ON customized_engagement_forms FOR EACH ROW
             BEGIN
                 INSERT INTO sequence_customized_engagement_form VALUES (NULL);
-                SET NEW.cstmzd_eng_form_id = CONCAT("CSTMZD_", LPAD(LAST_INSERT_ID(), 6, YEAR(CURDATE())));
+                SET NEW.cstmzd_eng_form_id = CONCAT("CSTMZD_", LPAD(LAST_INSERT_ID(), 6, "0"));
             END
         ');
     }

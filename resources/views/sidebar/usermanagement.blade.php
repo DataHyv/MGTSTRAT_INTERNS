@@ -7,7 +7,7 @@
                             srcset=""></a>
                 </div>
                 <div class="toggler">
-                    <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
+                    <a href="#" id="SidebarHide" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
                 </div>
             </div>
         </div>
@@ -72,10 +72,18 @@
                         </ul>
                     </li>
                 @endif
+
                 <li class="sidebar-item">
                     <a href="{{ route('change/password') }}" class='sidebar-link'>
                         <i class="bi bi-shield-lock"></i>
                         <span>Change Password</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item">
+                    <a href="{{ route('form/clients/new') }}" class='sidebar-link'>
+                        <i class="bi bi-building"></i>
+                        <span>Clients</span>
                     </a>
                 </li>
 
@@ -104,7 +112,7 @@
                     </a>
                     <ul class="submenu">
                         <li class="submenu-item">
-                            <a href="{{ route('form/view/detail') }}">Customized Engagement</a>
+                            <a href="{{ route('form/customizedEngagement/detail') }}">Customized Engagement</a>
                         </li>
                     </ul>
                 </li>

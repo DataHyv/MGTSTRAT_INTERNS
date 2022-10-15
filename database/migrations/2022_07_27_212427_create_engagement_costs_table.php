@@ -15,6 +15,7 @@ class CreateEngagementCostsTable extends Migration
     {
         Schema::create('engagement_costs', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('client_id')->nullable()->constrained()->onDelete('cascade');
             $table->string('cstmzd_eng_form_id', 15);
             $table->string('type', 50)->nullable($value = true);
             $table->integer('consultant_num')->nullable($value = true);
@@ -22,6 +23,7 @@ class CreateEngagementCostsTable extends Migration
             $table->integer('hour_num')->nullable($value = true);
             $table->integer('nswh')->nullable($value = true);
             $table->string('rooster')->nullable($value = true);
+            $table->string('notes')->nullable($value = true);
         });
     }
 

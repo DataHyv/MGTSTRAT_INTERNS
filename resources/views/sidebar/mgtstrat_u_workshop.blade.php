@@ -7,7 +7,7 @@
                             src="{{ URL::to('assets/images/logo/main-logo1.png') }}" alt="Logo" srcset=""></a>
                 </div>
                 <div class="toggler">
-                    <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
+                    <a href="#" id="SidebarHide" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
                 </div>
             </div>
         </div>
@@ -73,6 +73,20 @@
                     </li>
                 @endif
 
+                <li class="sidebar-item">
+                    <a href="{{ route('change/password') }}" class='sidebar-link'>
+                        <i class="bi bi-shield-lock"></i>
+                        <span>Change Password</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item">
+                    <a href="{{ route('form/clients/new') }}" class='sidebar-link'>
+                        <i class="bi bi-building"></i>
+                        <span>Clients</span>
+                    </a>
+                </li>
+                
                 <li class="sidebar-title">Forms &amp; Tables</li>
                 <li class="sidebar-item  has-sub active">
                     <a href="#" class='sidebar-link'>
@@ -99,7 +113,7 @@
                     </a>
                     <ul class="submenu">
                         <li class="submenu-item">
-                            <a href="{{ route('form/view/detail') }}">Customized Engagement</a>
+                            <a href="{{ route('form/customizedEngagement/detail') }}">Customized Engagement</a>
                         </li>
                     </ul>
                 </li>

@@ -1,4 +1,5 @@
 @section('title', 'Change Password')
+<link rel="shortcut icon" type="image/png" href="{{ URL::to('assets/images/logo/logo.png') }}">
 @extends('layouts.master')
 @section('menu')
     @extends('sidebar.change_password')

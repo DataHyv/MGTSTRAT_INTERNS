@@ -1,15 +1,17 @@
 @section('title', 'Dashboard')
+<link rel="shortcut icon" type="image/png" href="{{ URL::to('assets/images/logo/logo.png') }}">
 @extends('layouts.master')
 <style>
-        .pbi-iframe {
+    .pbi-iframe {
         position: relative;
         width: 100%;
         overflow: hidden;
         padding-top: 56.25%; /* 16:9 Aspect Ratio */
     }
-    
+
     .responsive-iframe {
         position: absolute;
+        /* position: relative; */
         top: 0;
         left: 0;
         bottom: 0;
@@ -101,7 +103,7 @@
                                         </div>
                                         <div class="col-md-8">
                                             <h5 class="text-muted font-semibold">Saved Record</h5>
-                                            <h5 class="font-extrabold mb-0">{{ $webinarforms }}</h5>
+                                            <h5 class="font-extrabold mb-0">{{ $BudgetForm }}</h5>
                                         </div>
                                     </div>
                                 </div>
@@ -109,11 +111,7 @@
                         </div>
                     </div>
 
-                    {{-- powerBi embed iframe --}}
-                    <div class="pbi-iframe">
-                        <iframe title="MgtStrat Sales Report Dashboard" class="responsive-iframe" src="https://app.powerbi.com/reportEmbed?reportId=91c53520-da62-4365-9271-9e43e3fe0375&autoAuth=true&ctid=dd8dd9b8-4c2e-4eba-8bfa-f71866c09e1f&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXNvdXRoLWVhc3QtYXNpYS1iLXByaW1hcnktcmVkaXJlY3QuYW5hbHlzaXMud2luZG93cy5uZXQvIn0%3D" frameborder="0" allowFullScreen="true"></iframe>
-                        {{-- <iframe title="MgtStrat Sales Report Dashboard - Home" class="responsive-iframe" src="https://app.powerbi.com/view?r=eyJrIjoiZTUzZjgwYjMtYTQ5Yy00MTI2LTgxYmQtZDI5OWJiMTVhZjdiIiwidCI6ImRkOGRkOWI4LTRjMmUtNGViYS04YmZhLWY3MTg2NmMwOWUxZiIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe> --}}
-                    </div>
+
 
                     {{-- <div class="row">
                     <div class="col-12">
@@ -376,4 +374,15 @@
             </div>
         </footer>
     </div>
+
+    <script>
+    function goFullscreen(id) {
+        var element = document.getElementById(id);
+        if (element.mozRequestFullScreen) {
+          element.mozRequestFullScreen();
+        } else if (element.webkitRequestFullScreen) {
+          element.webkitRequestFullScreen();
+        }
+    }
+    </script>
 @endsection

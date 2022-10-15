@@ -1,5 +1,5 @@
 {{-- <div class="form-group row justify-content-center clusterRows" id="clusterRows"> --}}
-    <div class="col-lg-3 col-md-3 listed" id="listed1" style="display: none">
+    <div class="col-lg-3 col-md-3 listed" id="listed1">
         <div class="form-group has-icon-left">
             <label class="fw-bold required">Cluster</label>
             <div class="position-relative">
@@ -9,11 +9,11 @@
                             If not on the list, choose suggested cluster title at Core Area.
                             </i>"
                         data-mytooltip-theme="dark"
-                        data-mytooltip-action="focus" 
-                        data-mytooltip-direction="top" disabled>
-                        <option value="" id="notListed" class="notListed1" selected>-- Not listed --</option>
+                        data-mytooltip-action="focus"
+                        data-mytooltip-direction="top">
+                        <option value="" id="notListed" class="notListed1">-- Not listed --</option>
                         <option id="capability" class="capability1" value="Above The Line"
-                            {{ old('') == 'Above The Line' ? 'selected="selected"' : '' }}>
+                            {{ old('') == 'Above The Line' ? 'selected="selected"' : '' }} selected>
                             Above The Line
                         </option>
                         <option id="culture" class="culture1" value="Action Learning"
@@ -330,12 +330,12 @@
         </div>
     </div>
 
-    <div class="col-lg-3 col-md-3 div-notListed" id="div-notListed1">
+    <div class="col-lg-3 col-md-3 div-notListed" id="div-notListed1" style="display: none">
         <div class="form-group has-icon-right">
             <label class="fw-bold required">Cluster</label>
             <div class="position-relative">
                 <input type="text" class="form-control input-notListed @error('') is-invalid @enderror" value="{{ old('') }}"
-                    name="cluster[]" id="input-notListed1">
+                    name="cluster[]" id="input-notListed1" disabled>
                 <div class="form-control-icon">
                     <a href="javascript:void(0)" class="remove-not-listed" name="cluster[]" id="remove-not-listed1">
                         <i class="fa-solid fa-square-xmark text-danger" title="remove"></i>
@@ -381,7 +381,7 @@
 {{-- </div> --}}
 {{-- <hr> --}}
 
-<script>    
+<script>
     document.getElementById('cluster-dropdown1').addEventListener("change", clusterChange);
 
     function clusterChange() {
@@ -400,7 +400,7 @@
             $('#core-valueInput1').each(function (){
                 $(this).val('Capability');
             });
-        } 
+        }
         if($('.culture1').is(':selected')) {
             // document.getElementById('core-valueInput').value = 'Culture';
             $('#listed1').each(function (){
@@ -416,7 +416,7 @@
             $('#core-valueInput1').each(function (){
                 $(this).val('Culture');
             });
-        } 
+        }
         if($('.leadership1').is(':selected')) {
             // document.getElementById('core-valueInput').value = 'Leadership';
             $('#listed1').each(function (){
@@ -432,7 +432,7 @@
             $('#core-valueInput1').each(function (){
                 $(this).val('Leadership');
             });
-        } 
+        }
         if($('.social1').is(':selected')) {
             // document.getElementById('core-valueInput').value = 'Social';
             $('#listed1').each(function (){
@@ -448,7 +448,7 @@
             $('#core-valueInput1').each(function (){
                 $(this).val('Social');
             });
-        } 
+        }
         if($('.strategy1').is(':selected')) {
             // document.getElementById('core-valueInput').value = 'Strategy';
             $('#listed1').each(function (){
@@ -464,7 +464,7 @@
             $('#core-valueInput1').each(function (){
                 $(this).val('Strategy');
             });
-        } 
+        }
         if($('.teams1').is(':selected')) {
             // document.getElementById('core-valueInput').value = 'Teams';
             $('#listed1').each(function (){

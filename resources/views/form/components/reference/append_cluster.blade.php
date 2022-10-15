@@ -1,5 +1,5 @@
 {{-- <div class="form-group row justify-content-center clusterRows" id="clusterRows"> --}}
-    <div class="col-lg-3 col-md-3 listed" id="listed[${dates}]" style="display: none">
+    <div class="col-lg-3 col-md-3 listed" id="listed[${dates}]">
         <div class="form-group has-icon-left">
             <label class="fw-bold required">Cluster</label>
             <div class="position-relative">
@@ -68,11 +68,10 @@
                         </i>"
                     data-mytooltip-theme="dark"
                     data-mytooltip-action="focus" 
-                    data-mytooltip-direction="top"
-                    disabled>
-                        <option value="" id="notListed" class="notListed" selected>-- Not listed --</option>
+                    data-mytooltip-direction="top">
+                        <option value="" id="notListed" class="notListed">-- Not listed --</option>
                         <option id="capability" class="capability${dates}" value="Above The Line"
-                            {{ old('') == 'Above The Line' ? 'selected="selected"' : '' }}>
+                            {{ old('') == 'Above The Line' ? 'selected="selected"' : '' }} selected>
                             Above The Line
                         </option>
                         <option id="culture" class="culture${dates}" value="Action Learning"
@@ -399,12 +398,12 @@
         </div>
     </div>
 
-    <div class="col-lg-3 col-md-3 div-notListed" id="div-notListed[${dates}]">
+    <div class="col-lg-3 col-md-3 div-notListed" id="div-notListed[${dates}]" style="display: none">
         <div class="form-group has-icon-right">
             <label class="fw-bold required">Cluster</label>
             <div class="position-relative">
                 <input type="text" class="form-control input-notListed @error('') is-invalid @enderror" value="{{ old('') }}"
-                    name="cluster[]" id="input-notListed[${dates}]">
+                    name="cluster[]" id="input-notListed[${dates}]" disabled>
                 <div class="form-control-icon">
                     <a href="javascript:void(0)" class="remove-not-listed" id="remove-not-listed[${dates}]"
                     onclick="

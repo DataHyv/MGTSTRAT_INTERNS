@@ -10,11 +10,11 @@
             <div class="form-group row mb-4">
                 <div class="col-md-2">
                     <label class="fw-bold required">Status: </label>
-                </div> 
+                </div>
 
                 <div class="col-md-2" id="">
                     <select class="input js-mytooltip form-select @error('') is-invalid @enderror"
-                        name="status" id="status" value="{{ old('') }}" data-mytooltip-content="<i>Please Choose Status</i>" 
+                        name="status" id="status" value="{{ old('') }}" data-mytooltip-content="<i>Please Choose Status</i>"
                         data-mytooltip-theme="dark" data-mytooltip-action="focus" data-mytooltip-direction="right">
                         <option value="Trial" {{ old('') == 'Trial' ? 'selected="selected"' : '' }}>
                             Trial
@@ -32,6 +32,29 @@
                             Lost
                         </option>
                     </select>
+                </div>
+            </div>
+
+            <div class="form-group row d-none">
+                <div class="col-md-2">
+                    <label class="fw-bold required">Batch Number: </label>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group has-icon-left">
+                        <div class="position-relative">
+                            <input type="text" class="form-control @error('batch_number') is-invalid @enderror" value="" name="batch_number" id="BatchNumber" readonly>
+                            <div class="form-control-icon">
+                                <i class="fa-solid fa-file-lines"></i>
+                            </div>
+                            <div class="invalid-feedback">
+                            @error('batch_number')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -97,19 +120,32 @@
             </div>
 
         <!------------ CLIENT NAME ------------>
+            {{-- @if(isset($companyList)) --}}
             <div class="form-group row">
                 <div class="col-md-2">
                     <label class="fw-bold required">Client: </label>
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-6">
                     <div class="form-group has-icon-left">
                         <div class="position-relative">
-                            <input type="text" class="form-control @error('') is-invalid @enderror" value="{{ old('') }}"
-                                name="client" id="fourth">
+                            <select class="select select2s-hidden-accessible @error('client_id') is-invalid @enderror"
+                            id="client_id"
+                            name="client_id"
+                            style="width: 100%;"
+                            tabindex="-1"
+                            aria-hidden="true">
+                                <option value="Select">-- Select --</option>
+                                @foreach ($companyList as $key=>$client)
+                                    <option value="{{ $client->id }}"
+                                        data-first_eng={{ $client->first_eng }}>
+                                        {{ $client->company_name }}
+                                    </option>
+                                @endforeach
+                            </select>
                             <div class="form-control-icon">
-                                <i class="fa-solid fa-user"></i>
+                                <i class="fa-solid fa-clients"></i>
                             </div>
-                            @error('')
+                            @error('client_id')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -118,7 +154,7 @@
                     </div>
                 </div>
             </div>
-
+            {{-- @endif --}}
         <!------------ ENGAGEMENT TITLE AND NUMBER OF PAX ------------>
             <div class="form-group row">
                 <div class="col-md-2">
@@ -127,12 +163,12 @@
                 <div class="col-md-6">
                     <div class="form-group has-icon-left">
                         <div class="position-relative">
-                            <input type="text" class="form-control @error('') is-invalid @enderror" value="{{ old('') }}"
-                                name="engagement_title" id="">
+                            <input type="text" class="form-control @error('engagement_title') is-invalid @enderror" value="{{ old('') }}"
+                                name="engagement_title" id="engagement_title">
                             <div class="form-control-icon">
                                 <i class="fa-solid fa-t"></i>
                             </div>
-                            @error('')
+                            @error('engagement_title')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -147,7 +183,7 @@
                     </div>
                 </div>
             </div>
-        
+
             <div class="form-group row">
                 <div class="col-md-2">
                     <label class="fw-bold required">Number of pax </label>
@@ -187,34 +223,26 @@
             </div>
 
         <!------------ DATE COVERED BY ENGAGEMENT ------------>
-            {{-- <div class="row justify-content-center g-3 gx-5 mt-2" id="dcbe"> --}}
             <div class="row justify-content-center mt-3" id="dcbe">
                 <h5 class="text-center mt-5 fst-italic">Date Covered by Engagement</h5>
                 <div class="d-flex justify-content-center mt-4" id="dateRows1">
-                    {{-- <div class="align-self-center mb-2">
-                        <div class="form-group has-icon-left">
-                            <label class="fw-bold invisible">Add</label>
-                            <a href="javascript:void(0)" class="text-success font-18" title="Add"
-                            id="addDates"><i class="fa fa-plus"></i></a>
-                            <div class="position-relative invisible">
-                            </div>
-                        </div>
-                    </div> --}}
+
                     <div class="flex-column">
                         <div>
-                            <div class="row justify-content-center" id="dateRows">
+                            <fieldset class="row justify-content-center" id="dateRows">
                                 <div class="col-lg-1 col-md-1">
                                     <div class="px-0">
-                                            <label class="fw-bold invisible mb-4">Add</label>
+                                            <label class="fw-bold invisible overflow-hidden mb-4">Add</label>
                                             <a href="javascript:void(0)" class="text-success font-18 px-0" title="Add"
                                             id="addDates"><i class="fa fa-plus"></i></a>
                                     </div>
                                 </div>
+
                                 <div class="col-lg-2 col-md-2">
                                     <div class="form-group has-icon-left">
                                         <label class="fw-bold required">Date</label>
                                         <div class="position-relative">
-                                            <input type="text" class="form-control datepicker @error('doe') is-invalid @enderror"
+                                            <input type="text" class="form-control date datepicker @error('doe') is-invalid @enderror"
                                                 value="{{ old('doe') }}" placeholder="Enter Date" name="program_dates[]" id="datepicker"
                                                 size="30">
                                             <div class="form-control-icon">
@@ -228,11 +256,12 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="col-lg-2 col-md-2">
                                     <div class="form-group has-icon-left">
                                         <label class="fw-bold required">Start Time</label>
                                         <div class="position-relative">
-                                            <input type="text" class="form-control timepicker @error('dot') is-invalid @enderror"
+                                            <input type="text" class="form-control start-time timepicker @error('dot') is-invalid @enderror"
                                                 value="{{ old('dot') }}" placeholder="Enter Time" id="program_start_time" name="program_start_time[]">
                                             <div class="form-control-icon">
                                                 <i class="bi bi-clock"></i>
@@ -245,11 +274,12 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="col-lg-2 col-md-2">
                                     <div class="form-group has-icon-left">
                                         <label class="fw-bold required">End Time</label>
                                         <div class="position-relative">
-                                            <input type="text" class="form-control timepicker @error('dot') is-invalid @enderror"
+                                            <input type="text" class="form-control end-time timepicker @error('dot') is-invalid @enderror"
                                                 value="{{ old('dot') }}" placeholder="Enter Time" id="program_end_time" name="program_end_time[]">
                                             <div class="form-control-icon">
                                                 <i class="fa-solid fa-hourglass-end"></i>
@@ -262,198 +292,111 @@
                                         </div>
                                     </div>
                                 </div>
-                                @include('form.components.reference.cluster')     
-                            </div>
+
+                                @include('form.components.reference.cluster')
+
+                            </fieldset>
                         </div>
 
                         {{-- <div>
-                            @include('form.components.reference.cluster')     
+                            @include('form.components.reference.cluster')
                         </div> --}}
-            
+
                     </div>
 
-                    {{-- <div class="align-self-center p-0">
-                        <div class="form-group has-icon-left">
-                            <label class="fw-bold invisible">Add</label>
-                            <a href="javascript:void(0)" class="text-success font-18" title="Add"
-                            id="addDates"><i class="fa fa-plus"></i></a>
-                            <div class="position-relative invisible">
-                            </div>
-                        </div>
-                    </div> --}}
                 </div>
             <hr class="mt-3">
             </div>
     </div>
 <!------------ END OF FORM BODY ------------>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
+    $(document).ready(function() {
+        $('.select2s-hidden-accessible').select2({
+            // closeOnSelect: false
+            placeholder: 'Enter Client',
+            tags: true,
+        });
+    });
+
     $('document').ready(function() {
-        /*************************************STATUS**************************************/
-            //DEFAULT COLOR
-            $('#status').css('background-color', '#007bff')
-            $('#status').css('color', 'white')
-            $('#status option').css('background-color', 'white')
-            $('#status option').css('color', 'black')
-
-            //ASSIGN EVENT LISTENER IN STATUS
-            document.getElementById("status").addEventListener("change", status);
-
-            //EVENT OF STATUS
-            function status() { 
-                var status = document.getElementById("status").value;
-                if(status == "Confirmed"){
-                    $('#status').css('background-color', '#007bff')
-                    $('#status').css('color', 'white')
-                    $('#status option').css('background-color', 'white')
-                    $('#status option').css('color', 'black')
-                } else if(status == "In-progress"){
-                    $('#status').css('background-color', '#ffc107')
-                    $('#status').css('color', 'black')
-                    $('#status option').css('background-color', 'white')
-                    $('#status option').css('color', 'black')
-                } else if(status == "Completed"){
-                    $('#status').css('background-color', '#28a745')
-                    $('#status').css('color', 'white')
-                    $('#status option').css('background-color', 'white')
-                    $('#status option').css('color', 'black')
-                } else if(status == "Lost"){
-                    $('#status').css('background-color', '#dc3545')
-                    $('#status').css('color', 'white')
-                    $('#status option').css('background-color', 'white')
-                    $('#status option').css('color', 'black')
-                } else if(status == "Trial"){
-                    $('#status').css('background-color', '#17a2b8')
-                    $('#status').css('color', 'white')
-                    $('#status option').css('background-color', 'white')
-                    $('#status option').css('color', 'black')
-                }
-            };
-
-        /*************************************DATE OF ENGAGEMENT**************************************/
-            var dates = 1;
-            $("#addDates").on("click", function() {
-                // Adding a row inside the tbody.
-                $("#dcbe").append(`
-                <div class="d-flex justify-content-center mt-4" id="dateRows${++dates}">
-                    <div class="flex-column">
-                        <div>
-                            <div class="row justify-content-center">
-                                <div class="col-lg-1 col-md-1">
-                                    <div class="px-0">
-                                        <label class="fw-bold invisible mb-4">Add</label>
-                                        <a href="javascript:void(0)" class="text-danger font-18 remove px-0" title="Remove">
-                                            <i class="fa fa-trash-o"></i>
-                                        </a>
-                                    </div>
+        //DATE OF ENGAGEMENT
+        var dates = 1;
+        $("#addDates").on("click", function() {
+            // Adding a row inside the tbody.
+            $("#dcbe").append(`
+            <fieldset class="d-flex justify-content-center mt-4" id="dateRows${++dates}">
+                <div class="flex-column">
+                    <div>
+                        <div class="row justify-content-center">
+                            <div class="col-lg-1 col-md-1">
+                                <div class="px-0">
+                                    <label class="fw-bold invisible overflow-hidden mb-4">Add</label>
+                                    <a href="javascript:void(0)" class="text-danger font-18 remove px-0" title="Remove">
+                                        <i class="fa fa-trash-o"></i>
+                                    </a>
                                 </div>
-                                <div class="col-lg-2 col-md-2">
-                                    <div class="form-group has-icon-left">
-                                        <label class="fw-bold required">Date</label>
-                                        <div class="position-relative">
-                                            <input type="text" class="form-control datepicker @error('doe') is-invalid @enderror"
-                                                value="{{ old('doe') }}" placeholder="Enter Date" name="program_dates[]" id="datepicker${dates}"
-                                                size="30">
-                                            <div class="form-control-icon">
-                                                <i class="bi bi-calendar"></i>
-                                            </div>
-                                            @error('doe')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 col-md-2">
-                                    <div class="form-group has-icon-left">
-                                        <label class="fw-bold required">Start Time</label>
-                                        <div class="position-relative">
-                                            <input type="text" class="form-control timepicker @error('dot') is-invalid @enderror"
-                                                value="{{ old('dot') }}" placeholder="Enter Time" id="program_start_time" name="program_start_time[]">
-                                            <div class="form-control-icon">
-                                                <i class="bi bi-clock"></i>
-                                            </div>
-                                            @error('dot')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 col-md-2">
-                                    <div class="form-group has-icon-left">
-                                        <label class="fw-bold required">End Time</label>
-                                        <div class="position-relative">
-                                            <input type="text" class="form-control timepicker @error('dot') is-invalid @enderror"
-                                                value="{{ old('dot') }}" placeholder="Enter Time" id="program_end_time" name="program_end_time[]">
-                                            <div class="form-control-icon">
-                                                <i class="fa-solid fa-hourglass-end"></i>
-                                            </div>
-                                            @error('dot')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div>
-                                @include('form.components.reference.append_cluster') 
                             </div>
+                            <div class="col-lg-2 col-md-2">
+                                <div class="form-group has-icon-left">
+                                    <label class="fw-bold required">Date</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control date datepicker @error('doe') is-invalid @enderror"
+                                            value="{{ old('doe') }}" placeholder="Enter Date" name="program_dates[]" id="datepicker${dates}"
+                                            size="30">
+                                        <div class="form-control-icon">
+                                            <i class="bi bi-calendar"></i>
+                                        </div>
+                                        @error('doe')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2">
+                                <div class="form-group has-icon-left">
+                                    <label class="fw-bold required">Start Time</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control start-time timepicker @error('dot') is-invalid @enderror"
+                                            value="{{ old('dot') }}" placeholder="Enter Time" id="program_start_time" name="program_start_time[]">
+                                        <div class="form-control-icon">
+                                            <i class="bi bi-clock"></i>
+                                        </div>
+                                        @error('dot')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2">
+                                <div class="form-group has-icon-left">
+                                    <label class="fw-bold required">End Time</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control end-time timepicker @error('dot') is-invalid @enderror"
+                                            value="{{ old('dot') }}" placeholder="Enter Time" id="program_end_time" name="program_end_time[]">
+                                        <div class="form-control-icon">
+                                            <i class="fa-solid fa-hourglass-end"></i>
+                                        </div>
+                                        @error('dot')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            @include('form.components.reference.append_cluster')
                         </div>
-            
                     </div>
 
+                </div>
 
-                </div>`);
-                $('.timepicker').timepicker({
-                    timeFormat: 'h:mm p',
-                    interval: 30,
-                    minTime: '06',
-                    maxTime: '10:00pm',
-                    // defaultTime: '06',
-                    startTime: '06:00',
-                    dynamic: false,
-                    dropdown: true,
-                    scrollbar: true
-                });
-            });
 
-            $("#dcbe").on("click", ".remove", function () {
-                // Getting all the rows next to the row
-                // containing the clicked button
-                var child = $(this).closest('.d-flex').nextAll();
-
-                // Iterating across all the rows
-                // obtained to change the index
-                child.each(function () {
-                    // Getting <tr> id.
-                    var id = $(this).attr("id");
-
-                    // Getting the <input> inside the .noc, .noh, .nwh class.
-                    // var noc = $(this).children(".noc").children("input");
-                    // var noh = $(this).children(".noh").children("input");
-                    // var nwh = $(this).children(".nwh").children("input");
-
-                    // Gets the row number from <tr> id.
-                    var dig = parseInt(id.substring(8));
-
-                    // Modifying row id.
-                    $(this).attr("id", `dateRows${dig - 1}`);
-
-                    // Modifying row index.
-                    // noc.attr("id", `ec_LeadfacilitatorNoc${dig - 1}`);
-                    // noh.attr("id", `ec_LeadfacilitatorNoh${dig - 1}`);
-                    // nwh.attr("id", `ec_LeadfacilitatorNwh${dig - 1}`);
-                });
-
-                // Removing the current row.
-                $(this).closest('.d-flex').remove();
-
-                // Decreasing total number of rows by 1.
-                dates--;
-            });
-
+            </fieldset>`);
             $('.timepicker').timepicker({
                 timeFormat: 'h:mm p',
                 interval: 30,
@@ -465,6 +408,53 @@
                 dropdown: true,
                 scrollbar: true
             });
-            
+        });
+
+        $("#dcbe").on("click", ".remove", function () {
+            // Getting all the rows next to the row
+            // containing the clicked button
+            var child = $(this).closest('.d-flex').nextAll();
+
+            // Iterating across all the rows
+            // obtained to change the index
+            child.each(function () {
+                // Getting <tr> id.
+                var id = $(this).attr("id");
+
+                // Getting the <input> inside the .noc, .noh, .nwh class.
+                // var noc = $(this).children(".noc").children("input");
+                // var noh = $(this).children(".noh").children("input");
+                // var nwh = $(this).children(".nwh").children("input");
+
+                // Gets the row number from <tr> id.
+                var dig = parseInt(id.substring(8));
+
+                // Modifying row id.
+                $(this).attr("id", `dateRows${dig - 1}`);
+
+                // Modifying row index.
+                // noc.attr("id", `ec_LeadfacilitatorNoc${dig - 1}`);
+                // noh.attr("id", `ec_LeadfacilitatorNoh${dig - 1}`);
+                // nwh.attr("id", `ec_LeadfacilitatorNwh${dig - 1}`);
+            });
+
+            // Removing the current row.
+            $(this).closest('.d-flex').remove();
+
+            // Decreasing total number of rows by 1.
+            dates--;
+        });
+
+        $('.timepicker').timepicker({
+            timeFormat: 'h:mm p',
+            interval: 30,
+            minTime: '06',
+            maxTime: '10:00pm',
+            // defaultTime: '06',
+            startTime: '06:00',
+            dynamic: false,
+            dropdown: true,
+            scrollbar: true
+        });
     });
 </script>

@@ -17,16 +17,27 @@ for(var i = 0; i < sidebarItems.length; i++) {
 
 window.addEventListener('DOMContentLoaded', (event) => {
     var w = window.innerWidth;
-    if(w < 1200) {
+    if(w < 1367) {
         document.getElementById('sidebar').classList.remove('active');
+        document.getElementById('burgerBtn').classList.remove('d-xl-none');
+        document.getElementById('SidebarHide').classList.remove('d-xl-none');
+    }
+    else if (w > 1367) {
+        document.getElementById('sidebar').classList.add('active');
+        document.getElementById('burgerBtn').classList.add('d-xl-none');
+        document.getElementById('SidebarHide').classList.add('d-xl-none');
     }
 });
 window.addEventListener('resize', (event) => {
     var w = window.innerWidth;
-    if(w < 1200) {
+    if (w < 1367) {
         document.getElementById('sidebar').classList.remove('active');
-    }else{
+        document.getElementById('burgerBtn').classList.remove('d-xl-none');
+        document.getElementById('SidebarHide').classList.remove('d-xl-none');
+    }else if (w > 1367) {
         document.getElementById('sidebar').classList.add('active');
+        document.getElementById('burgerBtn').classList.add('d-xl-none');
+        document.getElementById('SidebarHide').classList.add('d-xl-none');
     }
 });
 

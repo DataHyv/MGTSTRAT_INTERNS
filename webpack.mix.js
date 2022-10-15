@@ -13,6 +13,8 @@ const mix = require("laravel-mix");
 
 mix.js("resources/js/app.js", "public/js")
     .js("resources/js/ceform.js", "public/js")
+    .js("resources/js/ceFormAdd.js", "public/js")
+    .js("resources/js/ceFormUpdate.js", "public/js")
     .js("resources/js/f2fform.js", "public/js")
     .js("resources/js/components/MultiStep.js", "public/js")
     .js("resources/js/components/currencyFormat.js", "public/js")

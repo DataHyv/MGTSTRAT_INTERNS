@@ -1,5 +1,5 @@
 <script>
-    
+
     //SALES
     var ecsaleNum = 1;
     $(document).ready(function() {
@@ -24,7 +24,11 @@
                                 <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                     value="{{ old('') }}" name="" id="">
                             </td>
-                            <td><a href="javascript:void(0)" class="text-danger font-18 remove" title="Remove"><i class="fa fa-trash-o"></i></a></td>
+                            <td style="background-color: #FFFFFF;" class="border border-white">
+                                <a href="javascript:void(0)" class="text-danger font-18 remove" title="Remove">
+                                    <i class="fa fa-trash-o"></i>
+                                </a>
+                            </td>
                 </tr>`);
 
             const ecsaleId = document.querySelectorAll("#ec_sale");
@@ -34,15 +38,14 @@
 
             if (ecsaleNum > 1) {
                 document.getElementById("dropdownforSale").style.display =
-                    "none"; 
+                    "none";
                 document.getElementById("inputforSale").style.display =
-                    ""; 
+                    "";
                 document.getElementById("inputforSale").disabled =
                     false;
-            
+
             }
         });
-
         $("#tableofSale").on("click", ".remove", function() {
             var child = $(this).closest("tr").nextAll();
 
@@ -53,7 +56,7 @@
                 document.getElementById("inputforSale").style.display = "none";
                 document.getElementById("ec_sale").value = "0";
                 document.getElementById("dropdownforSale").style.display = "";
-                document.getElementById("inputforSale").value = ""; 
+                document.getElementById("inputforSale").value = "";
             }
 
         });
@@ -84,7 +87,11 @@
                                 <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                     value="{{ old('') }}" name="" id="">
                             </td>
-                            <td><a href="javascript:void(0)" class="text-danger font-18 remove" title="Remove"><i class="fa fa-trash-o"></i></a></td>
+                            <td style="background-color: #FFFFFF;" class="border border-white">
+                                <a href="javascript:void(0)" class="text-danger font-18 remove" title="Remove">
+                                    <i class="fa fa-trash-o"></i>
+                                </a>
+                            </td>
                 </tr>`);
 
             const ecreferralsId = document.querySelectorAll("#referrals");
@@ -94,12 +101,12 @@
 
             if (ecreferralsNum > 1) {
                 document.getElementById("dropdownforReferrals").style.display =
-                    "none"; 
+                    "none";
                 document.getElementById("inputforReferrals").style.display =
-                    ""; 
+                    "";
                 document.getElementById("inputforReferrals").disabled =
                     false;
-            
+
             }
         });
 
@@ -113,7 +120,7 @@
                 document.getElementById("inputforReferrals").style.display = "none";
                 document.getElementById("referrals").value = "0";
                 document.getElementById("dropdownforReferrals").style.display = "";
-                document.getElementById("inputforReferrals").value = ""; 
+                document.getElementById("inputforReferrals").value = "";
             }
 
         });
@@ -144,7 +151,11 @@
                                 <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                     value="{{ old('') }}" name="" id="">
                             </td>
-                            <td><a href="javascript:void(0)" class="text-danger font-18 remove" title="Remove"><i class="fa fa-trash-o"></i></a></td>
+                            <td style="background-color: #FFFFFF;" class="border border-white">
+                                <a href="javascript:void(0)" class="text-danger font-18 remove" title="Remove">
+                                    <i class="fa fa-trash-o"></i>
+                                </a>
+                            </td>
                 </tr>`);
 
             const ecengagementId = document.querySelectorAll("#ecengagementManager");
@@ -154,12 +165,12 @@
 
             if (ecengagementNum > 1) {
                 document.getElementById("dropdownforEngagementManager").style.display =
-                    "none"; 
+                    "none";
                 document.getElementById("inputforEngagementManager").style.display =
-                    ""; 
+                    "";
                 document.getElementById("inputforEngagementManager").disabled =
                     false;
-            
+
             }
         });
 
@@ -173,7 +184,7 @@
                 document.getElementById("inputforEngagementManager").style.display = "none";
                 document.getElementById("ecengagementManager").value = "0";
                 document.getElementById("dropdownforEngagementManager").style.display = "";
-                document.getElementById("inputforEngagementManager").value = ""; 
+                document.getElementById("inputforEngagementManager").value = "";
             }
 
         });
@@ -186,25 +197,29 @@
         $("#ecaddButton4").on("click", function() {
             $("#tableofOffsite").append(
                 `<tr class="th-blue-grey-lighten" id="rowofOffsite${++ecoffsiteNum}">
-                            <td class="title fw-bold text-dark">OFFSITE PC(3%/4%/5%)</td>
-                            <td></td>
-                            <td>
-                                <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="" id="inputforOffsite"
-                                onblur="this.value = this.value.replace('%', '') + '%';"
-                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
-                            </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td class="total-td tbl-engmt-cost">
-                                <h4 class="text-center" id="ec_offsitePcTotal">-</h4>
-                            </td>
-                            <td class="total-td">
-                                <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="" id="">
-                            </td>
-                            <td><a href="javascript:void(0)" class="text-danger font-18 remove" title="Remove"><i class="fa fa-trash-o"></i></a></td>
+                        <td class="title fw-bold text-dark">OFFSITE PC(3%/4%/5%)</td>
+                        <td></td>
+                        <td>
+                            <input type="text" class="form-control input-table @error('') is-invalid @enderror"
+                            value="{{ old('') }}" name="" id="inputforOffsite"
+                            onblur="this.value = this.value.replace('%', '') + '%';"
+                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="total-td tbl-engmt-cost">
+                            <h4 class="text-center" id="ec_offsitePcTotal">-</h4>
+                        </td>
+                        <td class="total-td">
+                            <input type="text" class="form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="" id="">
+                        </td>
+                        <td style="background-color: #FFFFFF;" class="border border-white">
+                            <a href="javascript:void(0)" class="text-danger font-18 remove" title="Remove">
+                                <i class="fa fa-trash-o"></i>
+                            </a>
+                        </td>
                 </tr>`);
 
             const ecoffsiteId = document.querySelectorAll("#ec_offsitePc");
@@ -214,12 +229,12 @@
 
             if (ecoffsiteNum > 1) {
                 document.getElementById("dropdownforOffsite").style.display =
-                    "none"; 
+                    "none";
                 document.getElementById("inputforOffsite").style.display =
-                    ""; 
+                    "";
                 document.getElementById("inputforOffsite").disabled =
                     false;
-            
+
             }
         });
 
@@ -233,7 +248,7 @@
                 document.getElementById("inputforOffsite").style.display = "none";
                 document.getElementById("ec_offsitePc").value = "0";
                 document.getElementById("dropdownforOffsite").style.display = "";
-                document.getElementById("inputforOffsite").value = ""; 
+                document.getElementById("inputforOffsite").value = "";
             }
 
         });
@@ -288,14 +303,14 @@
                     </td>
                 </tr>
             `);
-        }); 
- 
+        });
+
         $("#tableofLeadConsultant").on("click", ".remove", function () {
-            
+
             // Getting all the rows next to the row
             // containing the clicked button
             var child = $(this).closest("tr").nextAll();
-            
+
             // Iterating across all the rows
             // obtained to change the index
             child.each(function () {
@@ -325,7 +340,7 @@
             $(this).closest("tr").remove();
             // Decreasing total number of rows by 1.
             ecleadConsultant--;
-        });    
+        });
 
     });
 
@@ -377,14 +392,14 @@
                     </td>
                 </tr>
             `);
-        }); 
- 
+        });
+
         $("#tableofAnalyst").on("click", ".remove", function () {
-            
+
             // Getting all the rows next to the row
             // containing the clicked button
             var child = $(this).closest("tr").nextAll();
-            
+
             // Iterating across all the rows
             // obtained to change the index
             child.each(function () {
@@ -414,7 +429,7 @@
             $(this).closest("tr").remove();
             // Decreasing total number of rows by 1.
             ecAnalyst--;
-        });    
+        });
 
     });
 
@@ -466,14 +481,14 @@
                     </td>
                 </tr>
             `);
-        }); 
- 
+        });
+
         $("#tableofDesigner").on("click", ".remove", function () {
-            
+
             // Getting all the rows next to the row
             // containing the clicked button
             var child = $(this).closest("tr").nextAll();
-            
+
             // Iterating across all the rows
             // obtained to change the index
             child.each(function () {
@@ -503,7 +518,7 @@
             $(this).closest("tr").remove();
             // Decreasing total number of rows by 1.
             ecDesigner--;
-        });    
+        });
 
     });
 
@@ -517,8 +532,7 @@
                             <td class="noc">
                                 <input type="number"
                                     class="text-center form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="" id="ec_CreatorNoc${ecCreator}" max="100"
-                                    >
+                                    value="{{ old('') }}" name="" id="ec_CreatorNoc${ecCreator}" max="100">
                             </td>
                             <td class="pd">
                                 <fieldset>
@@ -528,7 +542,7 @@
                                             500 - Creators Fee is the creator is the lead, for the 2nd session onwards<br><br>
                                             1,000 - Creators Fee if creator is NOT the lead, for the 2nd session onwards</i>"
                                         data-mytooltip-theme="dark"
-                                        data-mytooltip-action="focus" 
+                                        data-mytooltip-action="focus"
                                         data-mytooltip-direction="right"
                                         style="background-color:#ffcccc; color:red;">
                                         <option value="0" {{ old('') == '0' ? 'selected="selected"' : '' }} title="">
@@ -565,19 +579,21 @@
                                     value="{{ old('') }}" name="" id="">
                             </td>
                             </td>
-                            <td>
-                            <a href="javascript:void(0)" class="text-danger font-18 removed" title="Remove"><i class="fa fa-trash-o"></i></a>
+                            <td style="background-color: #FFFFFF;" class="border border-white">
+                            <a href="javascript:void(0)" class="text-danger font-18 removed" title="Remove">
+                                <i class="fa fa-trash-o"></i>
+                            </a>
                             </td>
                         </tr>
                     `);
-                }); 
+                });
 
             $("#tableofCreator").on("click", ".removed", function () {
-            
+
             // Getting all the rows next to the row
             // containing the clicked button
             var child = $(this).closest("tr").nextAll();
-            
+
             // Iterating across all the rows
             // obtained to change the index
             child.each(function () {
@@ -603,7 +619,7 @@
             $(this).closest("tr").remove();
             // Decreasing total number of rows by 1.
             ecCreator--;
-        });    
+        });
 
     });
 
@@ -655,14 +671,14 @@
                     </td>
                 </tr>
             `);
-        }); 
- 
+        });
+
         $("#tableofLeadFacilitator").on("click", ".remove", function () {
-            
+
             // Getting all the rows next to the row
             // containing the clicked button
             var child = $(this).closest("tr").nextAll();
-            
+
             // Iterating across all the rows
             // obtained to change the index
             child.each(function () {
@@ -692,7 +708,7 @@
             $(this).closest("tr").remove();
             // Decreasing total number of rows by 1.
             ecLeadFacilitator--;
-        });    
+        });
 
     });
 
@@ -744,14 +760,14 @@
                     </td>
                 </tr>
             `);
-        }); 
- 
+        });
+
         $("#tableofCoFacilitator").on("click", ".remove", function () {
-            
+
             // Getting all the rows next to the row
             // containing the clicked button
             var child = $(this).closest("tr").nextAll();
-            
+
             // Iterating across all the rows
             // obtained to change the index
             child.each(function () {
@@ -781,10 +797,10 @@
             $(this).closest("tr").remove();
             // Decreasing total number of rows by 1.
             ecCoFacilitator--;
-        });    
+        });
 
     });
-    
+
     //ACTION LEARNING COACH
     var ecActionLearning = 1;
     $(document).ready(function () {
@@ -833,14 +849,14 @@
                     </td>
                 </tr>
             `);
-        }); 
- 
+        });
+
         $("#tableofActionLearningCoach").on("click", ".remove", function () {
-            
+
             // Getting all the rows next to the row
             // containing the clicked button
             var child = $(this).closest("tr").nextAll();
-            
+
             // Iterating across all the rows
             // obtained to change the index
             child.each(function () {
@@ -870,7 +886,7 @@
             $(this).closest("tr").remove();
             // Decreasing total number of rows by 1.
             ecActionLearning--;
-        });    
+        });
 
     });
 
@@ -922,14 +938,14 @@
                     </td>
                 </tr>
             `);
-        }); 
- 
+        });
+
         $("#tableofMarshal").on("click", ".remove", function () {
-            
+
             // Getting all the rows next to the row
             // containing the clicked button
             var child = $(this).closest("tr").nextAll();
-            
+
             // Iterating across all the rows
             // obtained to change the index
             child.each(function () {
@@ -959,7 +975,7 @@
             $(this).closest("tr").remove();
             // Decreasing total number of rows by 1.
             ecMarshal--;
-        });    
+        });
 
     });
 
@@ -986,7 +1002,7 @@
                                             P6,600<br/>
                                             P8,500</i>"
                                         data-mytooltip-theme="dark"
-                                        data-mytooltip-action="focus" 
+                                        data-mytooltip-action="focus"
                                         data-mytooltip-direction="right">
                                         <option value="4400" {{ old('') == '4400' ? 'selected="selected"' : '' }} title="">
                                             &#8369;4,400
@@ -1037,14 +1053,14 @@
                         </tr>
                     `);
                });
-            
+
             $("#tableofOnsitePC").on("click", ".remove", function () {
-            
+
 
             // Getting all the rows next to the row
             // containing the clicked button
             var child = $(this).closest("tr").nextAll();
-            
+
             // Iterating across all the rows
             // obtained to change the index
             child.each(function () {
@@ -1074,7 +1090,7 @@
             $(this).closest("tr").remove();
             // Decreasing total number of rows by 1.
             ecOnsite--;
-        });    
+        });
 
     });
 
@@ -1126,14 +1142,14 @@
                     </td>
                 </tr>
             `);
-        }); 
- 
+        });
+
         $("#tableofDocumentor").on("click", ".remove", function () {
-            
+
             // Getting all the rows next to the row
             // containing the clicked button
             var child = $(this).closest("tr").nextAll();
-            
+
             // Iterating across all the rows
             // obtained to change the index
             child.each(function () {
@@ -1163,7 +1179,7 @@
             $(this).closest("tr").remove();
             // Decreasing total number of rows by 1.
             ecDocumentor--;
-        });    
+        });
 
     });
 

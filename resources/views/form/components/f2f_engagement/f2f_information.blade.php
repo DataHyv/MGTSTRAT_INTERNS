@@ -1,36 +1,74 @@
-{{-- datepicker css --}}
-<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
-{{-- tooltip css --}}
-<link rel="stylesheet" href="{{ url('css/tooltip-css/jquery.mytooltip.min.css') }}">
-{{-- <link rel="stylesheet" href="{{ url('css/tooltip-css/demo/style.css') }}"> --}}
-{{-- datepicker js --}}
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
-{{-- tooltip js --}}
-{{-- <script src="{{ url('js/tooltipJs/jquery-1.11.3.min.js') }}"></script> --}}
-<script src="{{ url('js/tooltipJs/jquery.mytooltip.js') }}"></script>
-<script src="{{ url('js/tooltipJs/demo/script.js') }}"></script>
-
-{{-- p --}}
 <div class="card-header">
     <h4 class="card-title">Information</h4>
 </div>
+
 <div class="form-body container">
+    <!------------ STATUS ------------>
+    <div class="form-group row mb-4">
+        <div class="col-md-2">
+            <label class="fw-bold required">Status: </label>
+        </div>
+
+        <div class="col-md-2" id="">
+            <select class="input js-mytooltip form-select @error('') is-invalid @enderror" name="status" id="status"
+                value="{{ old('') }}" data-mytooltip-content="<i>Please Choose Status</i>"
+                data-mytooltip-theme="dark" data-mytooltip-action="focus" data-mytooltip-direction="right">
+                <option value="Trial" {{ old('') == 'Trial' ? 'selected="selected"' : '' }}>
+                    Trial
+                </option>
+                <option value="Confirmed" {{ old('') == 'Confirmed' ? 'selected="selected"' : '' }} selected>
+                    Confirmed
+                </option>
+                <option value="In-progress" {{ old('') == 'In-progress' ? 'selected="selected"' : '' }}>
+                    In-progress
+                </option>
+                <option value="Completed" {{ old('') == 'Completed' ? 'selected="selected"' : '' }}>
+                    Completed
+                </option>
+                <option value="Lost" {{ old('') == 'Lost' ? 'selected="selected"' : '' }}>
+                    Lost
+                </option>
+            </select>
+        </div>
+    </div>
     <div class="form-group row">
+        <div class="col-md-2">
+            <label class="fw-bold required">Batch Number: </label>
+        </div>
         <div class="col-md-3">
+            <div class="form-group has-icon-left">
+                <div class="position-relative">
+                    <input type="text" class="form-control @error('batch_number') is-invalid @enderror"
+                        value="{{ old('batch_number') }}" name="batch_number" id="batchNumber">
+                    <div class="form-control-icon">
+                        <i class="fa-solid fa-file-lines"></i>
+                    </div>
+                    <div class="invalid-feedback">
+                        @error('batch_number')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!------------ CUSTOMIZED TYPE ------------>
+    <div class="form-group row">
+        <div class="col-md-2">
             <label class="fw-bold required">Customized Type: </label>
         </div>
         <div class="col-md-6">
             <div class="form-group has-icon-left">
                 <div class="position-relative">
                     <select class="input js-mytooltip form-select customized-type @error('') is-invalid @enderror"
-                        name="" id="" value="{{ old('') }}"
+                        name="customized_type" id="" value="{{ old('customized_type') }}"
                         data-mytooltip-content="<i>
-                            Please Choose
-                            </i>"
-                        data-mytooltip-theme="dark"
-                        data-mytooltip-action="focus" 
-                        data-mytooltip-direction="right">
+                                    Please Choose
+                                    </i>"
+                        data-mytooltip-theme="dark" data-mytooltip-action="focus" data-mytooltip-direction="right">
                         <option value="Hybrid" {{ old('') == 'Hybrid' ? 'selected="selected"' : '' }}>Hybrid
                         </option>
                         <option value="Virtual" {{ old('') == 'Virtual' ? 'selected="selected"' : '' }} selected>
@@ -56,18 +94,13 @@
                 </div>
             </div>
         </div>
-        {{-- <div class="col-md-1">
-           <p class="text-muted">Applicable to G.A only</p> 
-        </div> --}}
         <div class="col-md-2" id="dropdown-ga" style="visibility: hidden;">
-            <select class="input js-mytooltip ga-only-dropdown form-select @error('') is-invalid @enderror" name="" id="ga-only-dropdown"
-                value="{{ old('') }}"
+            <select class="input js-mytooltip ga-only-dropdown form-select @error('') is-invalid @enderror"
+                name="ga_percent" id="ga-only-dropdown" value="{{ old('') }}"
                 data-mytooltip-content="<i>
-                    Please Choose 0% if not G.A
-                    </i>"
-                data-mytooltip-theme="dark"
-                data-mytooltip-action="focus" 
-                data-mytooltip-direction="right">
+                            Please Choose 0% if not G.A
+                            </i>"
+                data-mytooltip-theme="dark" data-mytooltip-action="focus" data-mytooltip-direction="right">
                 <option value="0" {{ old('') == '0' ? 'selected="selected"' : '' }} selected>
                     0%
                 </option>
@@ -84,17 +117,26 @@
                 </option>
             </select>
         </div>
+    </div>
 
-        <div class="col-md-3">
+    <!------------ CLIENT NAME ------------>
+    <div class="form-group row">
+        <div class="col-md-2">
             <label class="fw-bold required">Client: </label>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-6">
             <div class="form-group has-icon-left">
                 <div class="position-relative">
-                    <input type="text" class="form-control @error('') is-invalid @enderror" value="{{ old('') }}"
-                        name="" id="fourth" title="asdasdasd">
+                    <select class="select select2s-hidden-accessible" style="width: 100%;" tabindex="-1"
+                        aria-hidden="true" id="client" name="client">
+                        <option value="Select">-- Select --</option>
+                        @foreach ($companyList as $key => $clients)
+                            <option value="{{ $clients->company_name }}" data-first_eng={{ $clients->first_eng }}>
+                                {{ $clients->company_name }}</option>
+                        @endforeach
+                    </select>
                     <div class="form-control-icon">
-                        <i class="fa-solid fa-user"></i>
+                        <i class="fa-solid fa-clients"></i>
                     </div>
                     @error('')
                         <span class="invalid-feedback" role="alert">
@@ -104,15 +146,17 @@
                 </div>
             </div>
         </div>
-
-        <div class="col-md-3">
+    </div>
+    <!------------ ENGAGEMENT TITLE AND NUMBER OF PAX ------------>
+    <div class="form-group row">
+        <div class="col-md-2">
             <label class="fw-bold required">Engagement Title: </label>
         </div>
         <div class="col-md-6">
             <div class="form-group has-icon-left">
                 <div class="position-relative">
-                    <input type="text" class="form-control @error('') is-invalid @enderror" value="{{ old('') }}"
-                        name="" id="">
+                    <input type="text" class="form-control @error('') is-invalid @enderror"
+                        value="{{ old('') }}" name="engagement_title" id="">
                     <div class="form-control-icon">
                         <i class="fa-solid fa-t"></i>
                     </div>
@@ -130,470 +174,10 @@
                 <label class="form-check-label" for="flexSwitchCheckDefault">Pilot</label>
             </div>
         </div>
+    </div>
 
-        <div class="col-md-3">
-            <label class="fw-bold required">Cluster </label>
-        </div>
-        <div class="col-md-4">
-            <div class="form-group has-icon-left">
-                <div class="position-relative">
-                    <fieldset class="form-group">
-                        <select class="input js-mytooltip form-select @error('') is-invalid @enderror" name="" id="cluster-dropdown"
-                        data-mytooltip-content="<i>
-                            If not on the list, choose suggested cluster title at Core Area.
-                            </i>"
-                        data-mytooltip-theme="dark"
-                        data-mytooltip-action="focus" 
-                        data-mytooltip-direction="right">
-                            <option value="" selected>-- Not listed --</option>
-                            <option id="capability" class="capability" value="Above The Line"
-                                {{ old('') == 'Above The Line' ? 'selected="selected"' : '' }}>
-                                Above The Line
-                            </option>
-                            <option id="culture" class="culture" value="Action Learning"
-                                {{ old('') == 'Action Learning' ? 'selected="selected"' : '' }}>
-                                Action Learning
-                            </option>
-                            <option id="culture" class="culture" value="Anxiety 1 (Culture)"
-                                {{ old('') == 'Anxiety 1 (Culture)' ? 'selected="selected"' : '' }}>
-                                Anxiety 1 (Culture)
-                            </option>
-                            <option id="capability" class="capability" value="Anxiety 2 (Capability)"
-                                {{ old('') == 'Anxiety 2 (Capability)' ? 'selected="selected"' : '' }}>
-                                Anxiety 2 (Capability)
-                            </option>
-                            <option id="capability" class="capability"
-                                value="Art of Asking Questions 1 (Capability)"
-                                {{ old('') == 'Art of Asking Questions 2 (Capability)' ? 'selected="selected"' : '' }}>
-                                Art of Asking Questions 1 (Capability)
-                            </option>
-                            <option id="leadership" class="leadership"
-                                value="Art of Asking Questions 2 (Leadership)"
-                                {{ old('') == 'Art of Asking Questions 2 (Capability)' ? 'selected="selected"' : '' }}>
-                                Art of Asking Questions 2 (Leadership)
-                            </option>
-                            <option id="capability" class="capability"
-                                value="Assertive Communication 1 (Capability)"
-                                {{ old('') == 'Assertive Communication 1 (Capability)' ? 'selected="selected"' : '' }}>
-                                Assertive Communication 1 (Capability)
-                            </option>
-                            <option id="leadership" class="leadership"
-                                value="Assertive Communication 2 (Leadership)"
-                                {{ old('') == 'Assertive Communication 2 (Leadership)' ? 'selected="selected"' : '' }}>
-                                Assertive Communication 2 (Leadership)
-                            </option>
-                            <option id="capability" class="capability"
-                                value="Building Effective Relationships 1 (Capability)"
-                                {{ old('') == 'Building Effective Relationships 1 (Capability)' ? 'selected="selected"' : '' }}>
-                                Building Effective Relationships 1 (Capability)
-                            </option>
-                            <option id="leadership" class="leadership"
-                                value="Building Effective Relationships 2 (Leadership)"
-                                {{ old('') == 'Building Effective Relationships 2 (Leadership)' ? 'selected="selected"' : '' }}>
-                                Building Effective Relationships 2 (Leadership)
-                            </option>
-                            <option id="capability" class="capability" value="Business Analytics 1 (Capability)"
-                                {{ old('') == 'Business Analytics 1 (Capability)' ? 'selected="selected"' : '' }}>
-                                Business Analytics 1 (Capability)
-                            </option>
-                            <option id="strategy" class="strategy" value="Business Analytics 2 (Strategy)"
-                                {{ old('') == 'Business Analytics 2 (Strategy)' ? 'selected="selected"' : '' }}>
-                                Business Analytics 2 (Strategy)
-                            </option>
-                            <option id="capability" class="capability" value="Business Storytelling"
-                                {{ old('') == 'Business Storytelling' ? 'selected="selected"' : '' }}>
-                                Business Storytelling
-                            </option>
-                            <option id="culture" class="culture" value="Business Transformation 1 (Culture)"
-                                {{ old('') == 'Business Transformation 1 (Culture)' ? 'selected="selected"' : '' }}>
-                                Business Transformation 1 (Culture)
-                            </option>
-                            <option id="leadership" class="leadership"
-                                value="Business Transformation 2 (Leadership)"
-                                {{ old('') == 'Business Transformation 2 (Leadership)' ? 'selected="selected"' : '' }}>
-                                Business Transformation 2 (Leadership)
-                            </option>
-                            <option id="leadership" class="leadership" value="Change Management 1 (Leadership)"
-                                {{ old('') == 'Change Management 1 (Leadership)' ? 'selected="selected"' : '' }}>
-                                Change Management 1 (Leadership)
-                            </option>
-                            <option id="capability" class="capability" value="Change Management 2 (Capability)"
-                                {{ old('') == 'Change Management 2 (Capability)' ? 'selected="selected"' : '' }}>
-                                Change Management 2 (Capability)
-                            </option>
-                            <option id="capability" class="capability" value="Choose Flourish 1 (Capability)"
-                                {{ old('') == 'Choose Flourish 1 (Capability)' ? 'selected="selected"' : '' }}>
-                                Choose Flourish 1 (Capability)
-                            </option>
-                            <option id="leadership" class="leadership" value="Choose to Flourish 2 (Leadership)"
-                                {{ old('') == 'Choose to Flourish 2 (Leadership)' ? 'selected="selected"' : '' }}>
-                                Choose to Flourish 2 (Leadership)
-                            </option>
-                            <option id="leadership" class="leadership"
-                                value="Collaborative Leadership 1 (Leadership)"
-                                {{ old('') == 'Collaborative Leadership 1 (Leadership)' ? 'selected="selected"' : '' }}>
-                                Collaborative Leadership 1 (Leadership)
-                            </option>
-                            <option id="capability" class="capability"
-                                value="Collaborative Leadership 2 (Capability)"
-                                {{ old('') == 'Collaborative Leadership 2 (Capability)' ? 'selected="selected"' : '' }}>
-                                Collaborative Leadership 2 (Capability)
-                            </option>
-                            <option id="capability" class="capability" value="Communicate for Success"
-                                {{ old('') == 'Communicate for Success' ? 'selected="selected"' : '' }}>
-                                Communicate for Success
-                            </option>
-                            <option id="capability" class="capability" value="Communicating Across the Organization"
-                                {{ old('') == 'Communicating Across the Organization' ? 'selected="selected"' : '' }}>
-                                Communicating Across the Organization
-                            </option>
-                            <option id="capability" class="capability" value="Communication"
-                                {{ old('') == 'Communication' ? 'selected="selected"' : '' }}>
-                                Communication
-                            </option>
-                            <option id="capability" class="capability" value="Competency Building"
-                                {{ old('') == 'Competency Building' ? 'selected="selected"' : '' }}>
-                                Competency Building
-                            </option>
-                            <option id="capability" class="capability" value="Conflict Resolution"
-                                {{ old('') == 'Conflict Resolution' ? 'selected="selected"' : '' }}>
-                                Conflict Resolution
-                            </option>
-                            <option id="capability" class="capability" value="Create Authentic Connections"
-                                {{ old('') == 'Create Authentic Connections' ? 'selected="selected"' : '' }}>
-                                Create Authentic Connections
-                            </option>
-                            <option id="capability" class="capability" value="Creativity"
-                                {{ old('') == 'Creativity' ? 'selected="selected"' : '' }}>
-                                Creativity
-                            </option>
-                            <option id="culture" class="culture" value="Diversity & Inclusion"
-                                {{ old('') == 'Diversity & Inclusion' ? 'selected="selected"' : '' }}>
-                                Diversity & Inclusion
-                            </option>
-                            <option id="capability" class="capability" value="Emotional Intelligence"
-                                {{ old('') == 'Emotional Intelligence' ? 'selected="selected"' : '' }}>
-                                Emotional Intelligence
-                            </option>
-                            <option id="capability" class="capability" value="Enhance My Credibility"
-                                {{ old('') == 'Enhance My Credibility' ? 'selected="selected"' : '' }}>
-                                Enhance My Credibility
-                            </option>
-                            <option id="capability" class="capability" value="Everyday Innovation"
-                                {{ old('') == 'Everyday Innovation' ? 'selected="selected"' : '' }}>
-                                Everyday Innovation
-                            </option>
-                            <option id="capability" class="capability" value="Facilitating Virtual Meetings"
-                                {{ old('') == 'Facilitating Virtual Meetings' ? 'selected="selected"' : '' }}>
-                                Facilitating Virtual Meetings
-                            </option>
-                            <option id="capability" class="capability" value="Feedback"
-                                {{ old('') == 'Feedback' ? 'selected="selected"' : '' }}>
-                                Feedback
-                            </option>
-                            <option id="leadership" class="leadership" value="Find Your Why 1 (Leadership)"
-                                {{ old('') == 'Find Your Why 1 (Leadership)' ? 'selected="selected"' : '' }}>
-                                Find Your Why 1 (Leadership)
-                            </option>
-                            <option id="culture" class="culture" value="Find Your Why 2 (Culture)"
-                                {{ old('') == 'Find Your Why 2 (Culture)' ? 'selected="selected"' : '' }}>
-                                Find Your Why 2 (Culture)
-                            </option>
-                            <option id="leadership" class="leadership" value="Future Proof Leadership"
-                                {{ old('') == 'Future Proof Leadership' ? 'selected="selected"' : '' }}>
-                                Future Proof Leadership
-                            </option>
-                            <option id="teams" class="teams" value="Game Night"
-                                {{ old('') == 'Game Night' ? 'selected="selected"' : '' }}>
-                                Game Night
-                            </option>
-                            <option id="strategy" class="strategy" value="Goal Setting"
-                                {{ old('') == 'Goal Setting' ? 'selected="selected"' : '' }}>
-                                Goal Setting
-                            </option>
-                            <option id="capability" class="capability" value="Growth Mindset"
-                                {{ old('') == 'Growth Mindset' ? 'selected="selected"' : '' }}>
-                                Growth Mindset
-                            </option>
-                            <option id="culture" class="culture" value="Habit Formation"
-                                {{ old('') == 'Habit Formation' ? 'selected="selected"' : '' }}>
-                                Habit Formation
-                            </option>
-                            <option id="teams" class="teams" value="Heroes Assemble"
-                                {{ old('') == 'Heroes Assemble' ? 'selected="selected"' : '' }}>
-                                Heroes Assemble
-                            </option>
-                            <option id="capability" class="capability" value="Improv 1 (Capability)"
-                                {{ old('') == 'Improv 1 (Capability)' ? 'selected="selected"' : '' }}>
-                                Improv 1 (Capability)
-                            </option>
-                            <option id="teams" class="teams" value="Improv 2 (Teams)"
-                                {{ old('') == 'Improv 2 (Teams)' ? 'selected="selected"' : '' }}>
-                                Improv 2 (Teams)
-                            </option>
-                            <option id="capability" class="capability" value="Influencing"
-                                {{ old('') == 'Influencing' ? 'selected="selected"' : '' }}>
-                                Influencing
-                            </option>
-                            <option id="capability" class="capability" value="Innovation"
-                                {{ old('') == 'Innovation' ? 'selected="selected"' : '' }}>
-                                Innovation
-                            </option>
-                            <option id="capability" class="capability" value="Knowledge Management"
-                                {{ old('') == 'Knowledge Management' ? 'selected="selected"' : '' }}>
-                                Knowledge Management
-                            </option>
-                            <option id="leadership" class="leadership" value="Leadership Brand"
-                                {{ old('') == 'Leadership Brand' ? 'selected="selected"' : '' }}>
-                                Leadership Brand
-                            </option>
-                            <option id="leadership" class="leadership" value="Leadership Presence"
-                                {{ old('') == 'Leadership Presence' ? 'selected="selected"' : '' }}>
-                                Leadership Presence
-                            </option>
-                            <option id="leadership" class="leadership" value="Leadership Hybrid Teams"
-                                {{ old('') == 'Leadership Hybrid Teams' ? 'selected="selected"' : '' }}>
-                                Leadership Hybrid Teams
-                            </option>
-                            <option id="capability" class="capability" value="Leading Virtual Teams"
-                                {{ old('') == 'Leading Virtual Teams' ? 'selected="selected"' : '' }}>
-                                Leading Virtual Teams
-                            </option>
-                            <option id="leadership" class="leadership" value="Leading with Emotional Intelligence"
-                                {{ old('') == 'Leading with Emotional Intelligence' ? 'selected="selected"' : '' }}>
-                                Leading with Emotional Intelligence
-                            </option>
-                            <option id="leadership" class="leadership" value="Leading with Questions 1 (Leadership)"
-                                {{ old('') == 'Leading with Questions 1 (Leadership)' ? 'selected="selected"' : '' }}>
-                                Leading with Questions 1 (Leadership)
-                            </option>
-                            <option id="capability" class="capability" value="Leading with Questions 2 (Capability)"
-                                {{ old('') == 'Leading with Questions 2 (Capability)' ? 'selected="selected"' : '' }}>
-                                Leading with Questions 2 (Capability)
-                            </option>
-                            <option id="capability" class="capability" value="Learning Evolution"
-                                {{ old('') == 'Learning Evolution' ? 'selected="selected"' : '' }}>
-                                Learning Evolution
-                            </option>
-                            <option id="capability" class="capability" value="Learning How to Set Goals"
-                                {{ old('') == 'Learning How to Set Goals' ? 'selected="selected"' : '' }}>
-                                Learning How to Set Goals
-                            </option>
-                            <option id="teams" class="teams" value="Lip Sync Battle"
-                                {{ old('') == 'Lip Sync Battle' ? 'selected="selected"' : '' }}>
-                                Lip Sync Battle
-                            </option>
-                            <option id="capability" class="capability" value="Mental Health"
-                                {{ old('') == 'Mental Health' ? 'selected="selected"' : '' }}>
-                                Mental Health
-                            </option>
-                            <option id="leadership" class="leadership" value="Mentoring"
-                                {{ old('') == 'Mentoring' ? 'selected="selected"' : '' }}>
-                                Mentoring
-                            </option>
-                            <option id="capability" class="capability" value="Mindfulness"
-                                {{ old('') == 'Mindfulness' ? 'selected="selected"' : '' }}>
-                                Mindfulness
-                            </option>
-                            <option id="strategy" class="strategy" value="Mission & Vision Review 1 (Strategy)"
-                                {{ old('') == 'Mission & Vision Review 1 (Strategy)' ? 'selected="selected"' : '' }}>
-                                Mission & Vision Review 1 (Strategy)
-                            </option>
-                            <option id="leadership" class="leadership"
-                                value="Mission & Vision Review 2 (Leadership)"
-                                {{ old('') == 'Mission & Vision Review 2 (Leadership)' ? 'selected="selected"' : '' }}>
-                                Mission & Vision Review 2 (Leadership)
-                            </option>
-                            <option id="culture" class="culture"
-                                value="Organizational Development (OD) 1 (Culture)"
-                                {{ old('') == 'Organizational Development (OD) 1 (Culture)' ? 'selected="selected"' : '' }}>
-                                Organizational Development (OD) 1 (Culture)
-                            </option>
-                            <option id="strategy" class="strategy"
-                                value="Organizational Development (OD) 2 (Strategy)"
-                                {{ old('') == 'Organizational Development (OD) 2 (Strategy)' ? 'selected="selected"' : '' }}>
-                                Organizational Development (OD) 2 (Strategy)
-                            </option>
-                            <option id="capability" class="capability" value="Owning My Career"
-                                {{ old('') == 'Owning My Career' ? 'selected="selected"' : '' }}>
-                                Owning My Career
-                            </option>
-                            <option id="society" class="society" value="Parenting"
-                                {{ old('') == 'Parenting' ? 'selected="selected"' : '' }}>
-                                Parenting
-                            </option>
-                            <option id="capability" class="capability" value="Persuasive Communication"
-                                {{ old('') == 'Persuasive Communication' ? 'selected="selected"' : '' }}>
-                                Persuasive Communication
-                            </option>
-                            <option id="capability" class="capability" value="Problem-Solving"
-                                {{ old('') == 'Problem-Solving' ? 'selected="selected"' : '' }}>
-                                Problem-Solving
-                            </option>
-                            <option id="capability" class="capability" value="Productivity"
-                                {{ old('') == 'Productivity' ? 'selected="selected"' : '' }}>
-                                Productivity
-                            </option>
-                            <option id="capability" class="capability" value="Project Management"
-                                {{ old('') == 'Project Management' ? 'selected="selected"' : '' }}>
-                                Project Management
-                            </option>
-                            <option id="capability" class="capability" value="Psychological First Aid"
-                                {{ old('') == 'Psychological First Aid' ? 'selected="selected"' : '' }}>
-                                Psychological First Aid
-                            </option>
-                            <option id="culture" class="culture" value="Psychological Safety 1 (Culture)"
-                                {{ old('') == 'Psychological Safety 1 (Culture)' ? 'selected="selected"' : '' }}>
-                                Psychological Safety 1 (Culture)
-                            </option>
-                            <option id="leadership" class="leadership" value="Psychological Safety 2 (Leadership)"
-                                {{ old('') == 'Psychological Safety 2 (Leadership)' ? 'selected="selected"' : '' }}>
-                                Psychological Safety 2 (Leadership)
-                            </option>
-                            <option id="leadership" class="leadership" value="Purpose"
-                                {{ old('') == 'Purpose' ? 'selected="selected"' : '' }}>
-                                Purpose
-                            </option>
-                            <option id="capability" class="capability" value="Radical Candor"
-                                {{ old('') == 'Radical Candor' ? 'selected="selected"' : '' }}>
-                                Radical Candor
-                            </option>
-                            <option id="leadership" class="leadership" value="Situational Leadership"
-                                {{ old('') == 'Situational Leadership' ? 'selected="selected"' : '' }}>
-                                Situational Leadership
-                            </option>
-                            <option id="teams" class="teams" value="Squid Game"
-                                {{ old('') == 'Squid Game' ? 'selected="selected"' : '' }}>
-                                Squid Game
-                            </option>
-                            <option id="capability" class="capability" value="Stakeholder Management"
-                                {{ old('') == 'Stakeholder Management' ? 'selected="selected"' : '' }}>
-                                Stakeholder Management
-                            </option>
-                            <option id="capability" class="capability" value="Strategic Agility"
-                                {{ old('') == 'Strategic Agility' ? 'selected="selected"' : '' }}>
-                                Strategic Agility
-                            </option>
-                            <option id="capability" class="capability" value="Strategic Execution"
-                                {{ old('') == 'Strategic Execution' ? 'selected="selected"' : '' }}>
-                                Strategic Execution
-                            </option>
-                            <option id="capability" class="capability" value="Strategic Leadership"
-                                {{ old('') == 'Strategic Leadership' ? 'selected="selected"' : '' }}>
-                                Strategic Leadership
-                            </option>
-                            <option id="leadership" class="leadership" value="Strengths"
-                                {{ old('') == 'Strengths' ? 'selected="selected"' : '' }}>
-                                Strengths
-                            </option>
-                            <option id="capability" class="capability" value="Talent Building"
-                                {{ old('') == 'Talent Building' ? 'selected="selected"' : '' }}>
-                                Talent Building
-                            </option>
-                            <option id="teams" class="teams" value="Team Engagement"
-                                {{ old('') == 'Team Engagement' ? 'selected="selected"' : '' }}>
-                                Team Engagement
-                            </option>
-                            <option id="teams" class="teams" value="The Heist"
-                                {{ old('') == 'The Heist' ? 'selected="selected"' : '' }}>
-                                The Heist
-                            </option>
-                            <option id="teams" class="teams" value="The Lab"
-                                {{ old('') == 'The Lab' ? 'selected="selected"' : '' }}>
-                                The Lab
-                            </option>
-                            <option id="teams" class="teams" value="Virtual Team Building"
-                                {{ old('') == 'Virtual Team Building' ? 'selected="selected"' : '' }}>
-                                Virtual Team Building
-                            </option>
-                            <option id="Strategy" class="Strategy" value="Visioning"
-                                {{ old('') == 'Visioning' ? 'selected="selected"' : '' }}>
-                                Visioning
-                            </option>
-                            <option id="culture" class="culture" value="Well-being"
-                                {{ old('') == 'Well-being' ? 'selected="selected"' : '' }}>
-                                Well-being
-                            </option>
-                            <option id="capability" class="capability" value="Work From Home"
-                                {{ old('') == 'Work From Home' ? 'selected="selected"' : '' }}>
-                                Work From Home
-                            </option>
-                            <option id="Strategy" class="Strategy" value="World Cafe"
-                                {{ old('') == 'World Cafe' ? 'selected="selected"' : '' }}>
-                                World Cafe
-                            </option>
-
-
-                            {{-- <option value="{{ $data[0]->cluster }}"
-                                {{ $data[0]->cluster == $data[0]->cluster ? 'selected' : '' }}>
-                                {{ $data[0]->cluster }}
-                            </option>
-                            @foreach ($cluster as $key => $value)
-                                <option value="{{ $value->role_type }}">
-                                    {{ $value->role_type }}</option>
-                            @endforeach --}}
-                        </select>
-                        <div class="form-control-icon">
-                            <i class="fa-solid fa-diagram-project"></i>
-                        </div>
-                        @error('')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </fieldset>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4" id="div-notListed">
-            <div class="form-group has-icon-left">
-                <div class="position-relative">
-                    <input type="text" class="form-control @error('') is-invalid @enderror"
-                        value="{{ old('') }}" name="" id="input-notListed" disabled>
-                    <div class="form-control-icon">
-                        <i class="fa-solid fa-t"></i>
-                    </div>
-                    @error('')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <label class="fw-bold required">Core Area </label>
-        </div>
-        <div class="col-md-8">
-            <div class="form-group has-icon-left">
-                <div class="position-relative">
-                    {{-- <input type="text" class="form-control @error('') is-invalid @enderror"
-                        value="{{ old('') }}" name="" id="core-valueInput" disabled> --}}
-                    <fieldset class="form-group">
-                        <select class="form-select @error('') is-invalid @enderror" name="" id="core-valueInput"
-                            disabled>
-                            <option value="Culture" selected>Culture</option>
-                            <option value="Capability">Capability</option>
-                            <option value="Leadership">Leadership</option>
-                            <option value="Social">Social</option>
-                            <option value="Strategy">Strategy</option>
-                            <option value="Teams">Teams</option>
-                        </select>
-                    </fieldset>
-                    <div class="form-control-icon">
-                        <i class="fa-solid fa-circle-nodes"></i>
-                    </div>
-                    @error('')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3">
+    <div class="form-group row">
+        <div class="col-md-2">
             <label class="fw-bold required">Number of pax </label>
         </div>
 
@@ -614,74 +198,290 @@
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="row">
-            <div class="col-md-3">
-                <label class="fw-bold required">Date Covered by Engagement </label>
-            </div>
-
-            <div class="col-md-3">
-                <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="dcbeCheck">
-                    <label class="form-check-label" for="dcbeCheck">To Be Announced</label>
-                </div>
-            </div>
+    <!------------ TO BE ANNOUNCE ------------>
+    <div class="row">
+        <div class="col-md-2">
+            <label class="fw-bold required">Date </label>
         </div>
 
-        <div class="row justify-content-center g-3 gx-5" id="dcbe">
-            <h6 class="text-center mt-3 fst-italic">Date</h3>
-                <div class="col-md-3">
-                    <div class="form-group has-icon-left">
-                        <label class="fw-bold required">Date</label>
-                        <div class="position-relative">
-                            <input type="text" class="form-control datepicker @error('doe') is-invalid @enderror"
-                                value="{{ old('doe') }}" placeholder="Enter Date" name="doe" id="datepicker"
-                                size="30">
-                            <div class="form-control-icon">
-                                <i class="bi bi-calendar"></i>
-                            </div>
-                            @error('doe')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group has-icon-left">
-                        <label class="fw-bold required">Start Time</label>
-                        <div class="position-relative">
-                            <input type="time" class="form-control @error('dot') is-invalid @enderror"
-                                value="{{ old('dot') }}" placeholder="Enter Time" name="dot">
-                            <div class="form-control-icon">
-                                <i class="bi bi-clock"></i>
-                            </div>
-                            @error('dot')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group has-icon-left">
-                        <label class="fw-bold required">End Time</label>
-                        <div class="position-relative">
-                            <input type="time" class="form-control @error('dot') is-invalid @enderror"
-                                value="{{ old('dot') }}" placeholder="Enter Time" name="dot">
-                            <div class="form-control-icon">
-                                <i class="fa-solid fa-hourglass-end"></i>
-                            </div>
-                            @error('dot')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </div>
-                </div>
+        <div class="col-md-2">
+            <div class="form-check form-switch mt-1">
+                <input class="form-check-input" type="checkbox" role="switch" id="dcbeCheck">
+                <label class="form-check-label" for="dcbeCheck">To Be Announced</label>
+            </div>
         </div>
     </div>
+
+    <!------------ DATE COVERED BY ENGAGEMENT ------------>
+    <div class="row justify-content-center mt-3" id="dcbe">
+        <h5 class="text-center mt-5 fst-italic">Date Covered by Engagement</h5>
+        <div class="d-flex justify-content-center mt-4" id="dateRows1">
+
+            <div class="flex-column">
+                <div>
+                    <fieldset class="row justify-content-center" id="dateRows">
+                        <div class="col-lg-1 col-md-1">
+                            <div class="px-0">
+                                    <label class="fw-bold invisible overflow-hidden mb-4">Add</label>
+                                    <a href="javascript:void(0)" class="text-success font-18 px-0" title="Add"
+                                    id="addDates"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-2 col-md-2">
+                            <div class="form-group has-icon-left">
+                                <label class="fw-bold required">Date</label>
+                                <div class="position-relative">
+                                    <input type="text" class="form-control date datepicker @error('doe') is-invalid @enderror"
+                                        value="{{ old('doe') }}" placeholder="Enter Date" name="program_dates[]" id="datepicker"
+                                        size="30">
+                                    <div class="form-control-icon">
+                                        <i class="bi bi-calendar"></i>
+                                    </div>
+                                    @error('doe')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-2 col-md-2">
+                            <div class="form-group has-icon-left">
+                                <label class="fw-bold required">Start Time</label>
+                                <div class="position-relative">
+                                    <input type="text" class="form-control start-time timepicker @error('dot') is-invalid @enderror"
+                                        value="{{ old('dot') }}" placeholder="Enter Time" id="program_start_time" name="program_start_time[]">
+                                    <div class="form-control-icon">
+                                        <i class="bi bi-clock"></i>
+                                    </div>
+                                    @error('dot')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-2 col-md-2">
+                            <div class="form-group has-icon-left">
+                                <label class="fw-bold required">End Time</label>
+                                <div class="position-relative">
+                                    <input type="text" class="form-control end-time timepicker @error('dot') is-invalid @enderror"
+                                        value="{{ old('dot') }}" placeholder="Enter Time" id="program_end_time" name="program_end_time[]">
+                                    <div class="form-control-icon">
+                                        <i class="fa-solid fa-hourglass-end"></i>
+                                    </div>
+                                    @error('dot')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        @include('form.components.reference.cluster')
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+        <hr class="mt-3">
+    </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.select2s-hidden-accessible').select2({
+            // closeOnSelect: false
+            placeholder: 'Enter Client',
+            tags: true,
+        });
+    });
+
+    //INFORMATION
+    $('document').ready(function() {
+        /*************************************STATUS**************************************/
+        //DEFAULT COLOR
+        $('#status').css('background-color', '#007bff')
+        $('#status').css('color', 'white')
+        $('#status option').css('background-color', 'white')
+        $('#status option').css('color', 'black')
+
+        //ASSIGN EVENT LISTENER IN STATUS
+        document.getElementById("status").addEventListener("change", status);
+
+        //EVENT OF STATUS
+        function status() {
+            var status = document.getElementById("status").value;
+            if(status == "Confirmed"){
+                $('#status').css('background-color', '#007bff')
+                $('#status').css('color', 'white')
+                $('#status option').css('background-color', 'white')
+                $('#status option').css('color', 'black')
+            } else if(status == "In-progress"){
+                $('#status').css('background-color', '#ffc107')
+                $('#status').css('color', 'black')
+                $('#status option').css('background-color', 'white')
+                $('#status option').css('color', 'black')
+            } else if(status == "Completed"){
+                $('#status').css('background-color', '#28a745')
+                $('#status').css('color', 'white')
+                $('#status option').css('background-color', 'white')
+                $('#status option').css('color', 'black')
+            } else if(status == "Lost"){
+                $('#status').css('background-color', '#dc3545')
+                $('#status').css('color', 'white')
+                $('#status option').css('background-color', 'white')
+                $('#status option').css('color', 'black')
+            } else if(status == "Trial"){
+                $('#status').css('background-color', '#17a2b8')
+                $('#status').css('color', 'white')
+                $('#status option').css('background-color', 'white')
+                $('#status option').css('color', 'black')
+            }
+        };
+    });
+
+    //DATE OF ENGAGEMENT
+    $('document').ready(function() {
+        var dates = 1;
+        $("#addDates").on("click", function() {
+            // Adding a row inside the tbody.
+            $("#dcbe").append(`
+            <fieldset class="d-flex justify-content-center mt-4" id="dateRows${++dates}">
+                <div class="flex-column">
+                    <div>
+                        <div class="row justify-content-center">
+                            <div class="col-lg-1 col-md-1">
+                                <div class="px-0">
+                                    <label class="fw-bold invisible mb-4">Add</label>
+                                    <a href="javascript:void(0)" class="text-danger font-18 remove px-0" title="Remove">
+                                        <i class="fa fa-trash-o"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2">
+                                <div class="form-group has-icon-left">
+                                    <label class="fw-bold required">Date</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control date datepicker @error('doe') is-invalid @enderror"
+                                            value="{{ old('doe') }}" placeholder="Enter Date" name="program_dates[]" id="datepicker${dates}"
+                                            size="30">
+                                        <div class="form-control-icon">
+                                            <i class="bi bi-calendar"></i>
+                                        </div>
+                                        @error('doe')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2">
+                                <div class="form-group has-icon-left">
+                                    <label class="fw-bold required">Start Time</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control start-time timepicker @error('dot') is-invalid @enderror"
+                                            value="{{ old('dot') }}" placeholder="Enter Time" id="program_start_time" name="program_start_time[]">
+                                        <div class="form-control-icon">
+                                            <i class="bi bi-clock"></i>
+                                        </div>
+                                        @error('dot')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2">
+                                <div class="form-group has-icon-left">
+                                    <label class="fw-bold required">End Time</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control end-time timepicker @error('dot') is-invalid @enderror"
+                                            value="{{ old('dot') }}" placeholder="Enter Time" id="program_end_time" name="program_end_time[]">
+                                        <div class="form-control-icon">
+                                            <i class="fa-solid fa-hourglass-end"></i>
+                                        </div>
+                                        @error('dot')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            @include('form.components.reference.append_cluster')
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </fieldset>`);
+            $('.timepicker').timepicker({
+                timeFormat: 'h:mm p',
+                interval: 30,
+                minTime: '06',
+                maxTime: '10:00pm',
+                // defaultTime: '06',
+                startTime: '06:00',
+                dynamic: false,
+                dropdown: true,
+                scrollbar: true
+            });
+        });
+
+        $("#dcbe").on("click", ".remove", function () {
+            // Getting all the rows next to the row
+            // containing the clicked button
+            var child = $(this).closest('.d-flex').nextAll();
+
+            // Iterating across all the rows
+            // obtained to change the index
+            child.each(function () {
+                // Getting <tr> id.
+                var id = $(this).attr("id");
+
+                // Getting the <input> inside the .noc, .noh, .nwh class.
+                // var noc = $(this).children(".noc").children("input");
+                // var noh = $(this).children(".noh").children("input");
+                // var nwh = $(this).children(".nwh").children("input");
+
+                // Gets the row number from <tr> id.
+                var dig = parseInt(id.substring(8));
+
+                // Modifying row id.
+                $(this).attr("id", `dateRows${dig - 1}`);
+
+                // Modifying row index.
+                // noc.attr("id", `ec_LeadfacilitatorNoc${dig - 1}`);
+                // noh.attr("id", `ec_LeadfacilitatorNoh${dig - 1}`);
+                // nwh.attr("id", `ec_LeadfacilitatorNwh${dig - 1}`);
+            });
+
+            // Removing the current row.
+            $(this).closest('.d-flex').remove();
+
+            // Decreasing total number of rows by 1.
+            dates--;
+        });
+
+        $('.timepicker').timepicker({
+            timeFormat: 'h:mm p',
+            interval: 30,
+            minTime: '06',
+            maxTime: '10:00pm',
+            // defaultTime: '06',
+            startTime: '06:00',
+            dynamic: false,
+            dropdown: true,
+            scrollbar: true
+        });
+    });
+</script>

@@ -941,9 +941,9 @@
     font-weight: 700
 }
 
-.sidebar-wrapper .sidebar-header img {
-    /* height: 1.2rem */
-}
+/* .sidebar-wrapper .sidebar-header img {
+    height: 1.2rem
+} */
 
 .sidebar-wrapper .sidebar-toggler.x {
     position: absolute;
@@ -1060,9 +1060,10 @@
     margin-left: .3rem
 }
 
-@media screen and (max-width:1199px) {
+@media screen and (max-width:1366px) {
     .sidebar-wrapper {
-        position: absolute;
+        /* position: absolute; */
+        position: fixed;
         left: -300px
     }
 
@@ -1418,7 +1419,7 @@
     padding: 2rem
 }
 
-@media screen and (max-width:1199px) {
+@media screen and (max-width:1366px) {
     #main {
         margin-left: 0
     }

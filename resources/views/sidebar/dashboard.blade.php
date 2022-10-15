@@ -8,19 +8,55 @@
                             srcset=""></a>
                 </div>
                 <div class="toggler">
-                    <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
+                    <a href="#" id="SidebarHide" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
                 </div>
             </div>
         </div>
         <div class="sidebar-menu">
             <ul class="menu">
                 <li class="sidebar-title">Menu</li>
-                <li class="sidebar-item active">
+                <li class="sidebar-item {{ 'home' == request()->path() ? 'active' : '' }}">
                     <a href="{{ route('home') }}" class='sidebar-link'>
                         <i class="bi bi-house-fill"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
+
+                <li class="sidebar-item has-sub">
+                    <a href="#" class='sidebar-link'>
+                        <i class="bi bi-file-earmark-medical-fill"></i>
+                        <span>Dashboard Report</span>
+                    </a>
+
+                    <ul class="submenu">
+                        <li class="submenu-item {{ 'sales-report' == request()->path() ? 'active' : '' }}">
+                            <a href="{{ route('sales-report') }}">
+                                <span>Sales</span>
+                            </a>
+                        </li>
+                        <li class="submenu-item {{ 'people-and-culture' == request()->path() ? 'active' : '' }}">
+                            <a href="{{ route('people-and-culture') }}">
+                                <span>People & Culture</span>
+                            </a>
+                        </li>
+                        <li class="submenu-item {{ 'cash-position-report' == request()->path() ? 'active' : '' }}">
+                            <a href="{{ route('cash-position-report') }}">
+                                <span>Cash Position</span>
+                            </a>
+                        </li>
+                        <li class="submenu-item {{ 'consultant-revenue-report' == request()->path() ? 'active' : '' }}">
+                            <a href="{{ route('consultant-revenue-report') }}">
+                                <span>Consultant Revenue</span>
+                            </a>
+                        </li>
+                        {{-- <li class="submenu-item {{ 'peer-dope-report' == request()->path() ? 'active' : '' }}">
+                            <a href="{{ route('peer-dope-report') }}">
+                                <span>Peer Dope</span>
+                            </a>
+                        </li> --}}
+                    </ul>
+                </li>
+
                 {{-- <li class="sidebar-item">
                     <div class="card-body">
                         <div class="badges">
@@ -74,6 +110,20 @@
                     </li>
                 @endif
 
+                <li class="sidebar-item">
+                    <a href="{{ route('change/password') }}" class='sidebar-link'>
+                        <i class="bi bi-shield-lock"></i>
+                        <span>Change Password</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item">
+                    <a href="{{ route('form/clients/new') }}" class='sidebar-link'>
+                        <i class="bi bi-building"></i>
+                        <span>Clients</span>
+                    </a>
+                </li>
+
                 <li class="sidebar-title">Forms &amp; Tables</li>
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
@@ -90,6 +140,7 @@
                         <li class="submenu-item">
                             <a href="{{ route('form/mgtstratu_workshops/new') }}">MGTSTRAT-U WORKSHOPS</a>
                         </li>
+                    </ul>
                 </li>
 
                 <li class="sidebar-item  has-sub">
@@ -99,11 +150,11 @@
                     </a>
                     <ul class="submenu">
                         <li class="submenu-item">
-                            <a href="{{ route('form/view/detail') }}">Customized Engagement</a>
+                            <a href="{{ route('form/customizedEngagement/detail') }}">Customized Engagement</a>
                         </li>
                     </ul>
                 </li>
-                
+
             </ul>
             {{-- <li class="sidebar-item">
                     <a href="{{ route('logout') }}" class='sidebar-link'>

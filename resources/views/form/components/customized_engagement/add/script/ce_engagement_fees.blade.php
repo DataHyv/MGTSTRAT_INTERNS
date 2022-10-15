@@ -58,16 +58,15 @@
                             oninput="document.getElementById('ec_LeadconsultantNoh${rowIdx}').value = document.getElementById('ef_LeadconsultantNoh${rowIdx}').value;">
                     </td>
                     <td class="nwh">
-                        <input type="number" class="form-control input-table @error('') is-invalid @enderror"
-                            value="{{ old('') }}" name="fee_nswh[]" id="ef_LeadconsultantNwh${rowIdx}"
-                            oninput="document.getElementById('ec_LeadconsultantNwh${rowIdx}').value = document.getElementById('ef_LeadconsultantNwh${rowIdx}').value;">
+                        <input type="number" class="form-control input-table @error('') is-invalid @enderror" value="{{ old('') }}" name="fee_nswh[]" id="ef_LeadconsultantNwh${rowIdx}" oninput="document.getElementById('ec_LeadconsultantNwh${rowIdx}').value = document.getElementById('ef_LeadconsultantNwh${rowIdx}').value;">
+                        <input type="text" class="nswh-percent-value" name="nswh_percent[]" hidden>
                     </td>
                     <td class="total-td table-light">
                         <h4 class="text-center lead" id="leadTotal">-</h4>
                     </td>
                     <td class="total-td table-light">
-                        <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                            value="{{ old('') }}" name="fee_notes[]" id="">
+                                <textarea class="form-control input-table @error('') is-invalid @enderror"
+                                    name="fee_notes[]" id="" rows="2" cols="55"></textarea>
                     </td>
                     <td class="border border-white" style="background-color: #FFFFFF;">
                         <a href="javascript:void(0)" class="text-danger font-18 remove" title="Remove" onclick="$('#ecButton${rowIdx}').trigger('click');">
@@ -152,13 +151,14 @@
                             <input type="number" class="form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="fee_nswh[]" id="ef_AnalystNwh${efAnalyst}"
                                 oninput="document.getElementById('ec_AnalystNwh${efAnalyst}').value = document.getElementById('ef_AnalystNwh${efAnalyst}').value;">
+                            <input type="text" class="nswh-percent-value" name="nswh_percent[]" hidden>
                         </td>
                         <td class="total-td table-light">
                             <h4 class="text-center lead" id="analyst-total">-</h4>
                         </td>
                         <td class="total-td table-light">
-                            <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="fee_notes[]" id="">
+                                <textarea class="form-control input-table @error('') is-invalid @enderror"
+                                    name="fee_notes[]" id="" rows="2" cols="55"></textarea>
                         </td>
                         <td class="border border-white" style="background-color: #FFFFFF;">
                             <a href="javascript:void(0)" class="text-danger font-18 remove" title="Remove" onclick="$('#ecAnalystRemove${efAnalyst}').trigger('click');">
@@ -263,13 +263,14 @@
                     <input type="number" class="form-control input-table @error('') is-invalid @enderror"
                         value="{{ old('') }}" name="fee_nswh[]" id="ef_DesignerNwh${efDesigner}"
                         oninput="document.getElementById('ec_DesignerNwh${efDesigner}').value = document.getElementById('ef_DesignerNwh${efDesigner}').value;">
+                    <input type="text" class="nswh-percent-value" name="nswh_percent[]" hidden>
                 </td>
                 <td class="total-td table-light" style="background-color: rgba(146, 146, 146, 0.727)">
                     <h4 class="text-center" id="subtotal-design">-</h4>
                 </td>
                 <td class="total-td table-light">
-                    <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                        value="{{ old('') }}" name="fee_notes[]" id="">
+                                <textarea class="form-control input-table @error('') is-invalid @enderror"
+                                    name="fee_notes[]" id="" rows="2" cols="55"></textarea>
                 </td>
                 <td class="border border-white" style="background-color: #FFFFFF;">
                     <a href="javascript:void(0)" class="text-danger font-18 remove" onclick="$('#ecDesignerRemove${efDesigner}').trigger('click');" title="Remove">
@@ -344,7 +345,7 @@
                                             $('#inputLeadfaci${efLeadfaci}').css('display', 'none');
                                             $('#ef_LeadfacilitatorHf${efLeadfaci}').prop('disabled', false);
                                             $('#ef_LeadfacilitatorHf${efLeadfaci}').css('display', '');
-                                            $('#ef_LeadfacilitatorHf${efLeadfaci}').val(12000);">
+                                            $('#ef_LeadfacilitatorHf${efLeadfaci}').val('₱12,000');">
                                         <i class="fa-solid fa-square-xmark text-danger"></i>
                                     </a>
                                 </div>
@@ -367,13 +368,13 @@
                                         } else {
                                             $('#inputLeadfaci${efLeadfaci}').css('display', 'none')
                                         }">
-                                <option value="₱10000" {{ old('') == '₱10000' ? 'selected="selected"' : '' }}>
+                                <option value="₱10,000" {{ old('') == '₱10,000' ? 'selected="selected"' : '' }}>
                                     &#8369;10,000
                                 </option>
-                                <option value="₱11000" {{ old('') == '₱11000' ? 'selected="selected"' : '' }}>
+                                <option value="₱11,000" {{ old('') == '₱11,000' ? 'selected="selected"' : '' }}>
                                     &#8369;11,000
                                 </option>
-                                <option value="₱12000" {{ old('') == '₱12000' ? 'selected="selected"' : '' }} selected>
+                                <option value="₱12,000" {{ old('') == '₱12,000' ? 'selected="selected"' : '' }} selected>
                                     &#8369;12,000
                                 </option>
                                 <option id="others${efLeadfaci}" value="others" {{ old('') == 'others' ? 'selected="selected"' : '' }}>
@@ -400,13 +401,14 @@
                     <td class="nwh">
                         <input type="number" class="form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="fee_nswh[]" id="ef_LeadfacilitatorNwh${efLeadfaci}" oninput="document.getElementById('ec_LeadfacilitatorNwh${efLeadfaci}').value = document.getElementById('ef_LeadfacilitatorNwh${efLeadfaci}').value;">
+                        <input type="text" class="nswh-percent-value" name="nswh_percent[]" hidden>
                     </td>
                     <td class="total-td table-light">
                         <h4 class="text-center lead" id="subtotal-lead">-</h4>
                     </td>
                     <td class="total-td table-light">
-                        <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                            value="{{ old('') }}" name="fee_notes[]" id="">
+                                <textarea class="form-control input-table @error('') is-invalid @enderror"
+                                    name="fee_notes[]" id="" rows="2" cols="55"></textarea>
                     </td>
                     <td class="border border-white" style="background-color: #FFFFFF;">
                         <a href="javascript:void(0)" class="text-danger font-18 remove" onclick="$('#ecLeadfaciRemove${efLeadfaci}').trigger('click');" title="Remove">
@@ -483,13 +485,14 @@
                         <input type="number" class="form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="fee_nswh[]" id="ef_CofaciNwh${efCofaci}" 
                             oninput="document.getElementById('ec_CofacilitatorNwh${efCofaci}').value = document.getElementById('ef_CofaciNwh${efCofaci}').value;">
+                        <input type="text" class="nswh-percent-value" name="nswh_percent[]" hidden>
                     </td>
                     <td class="total-td table-light">
                         <h4 class="text-center lead" id="subtotal-coFacilitator">-</h4>
                     </td>
                     <td class="total-td table-light">
-                        <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                            value="{{ old('') }}" name="fee_notes[]" id="">
+                                <textarea class="form-control input-table @error('') is-invalid @enderror"
+                                    name="fee_notes[]" id="" rows="2" cols="55"></textarea>
                     </td>
                     <td class="border border-white" style="background-color: #FFFFFF;">
                         <a href="javascript:void(0)" class="text-danger font-18 remove" title="Remove" onclick="$('#ecCofaciRemove${efCofaci}').trigger('click');">
@@ -567,13 +570,14 @@
                     <input type="number" class="form-control input-table @error('') is-invalid @enderror"
                         value="{{ old('') }}" name="fee_nswh[]" id="ef_ModeratorNwh${efModerator}"
                         oninput="document.getElementById('ec_ModeratorNwh${efModerator}').value = document.getElementById('ef_ModeratorNwh${efModerator}').value;">
+                    <input type="text" class="nswh-percent-value" name="nswh_percent[]" hidden>
                 </td>
                 <td class="total-td table-light">
                     <h4 class="text-center lead" id="subtotal-moderator">-</h4>
                 </td>
                 <td class="total-td table-light">
-                    <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                        value="{{ old('') }}" name="fee_notes[]" id="">
+                                <textarea class="form-control input-table @error('') is-invalid @enderror"
+                                    name="fee_notes[]" id="" rows="2" cols="55"></textarea>
                 </td>
                 <td class="border border-white" style="background-color: #FFFFFF;">
                     <a href="javascript:void(0)" class="text-danger font-18 remove" title="Remove" onclick="$('#ecModeratorRemove${efModerator}').trigger('click');">
@@ -649,13 +653,14 @@
                 <td class="nwh">
                     <input type="number" class="form-control input-table @error('') is-invalid @enderror"
                         value="{{ old('') }}" name="fee_nswh[]" id="ef_ProducerNwh${efProducer}" oninput="document.getElementById('ec_ProducerNwh${efProducer}').value = document.getElementById('ef_ProducerNwh${efProducer}').value;">
+                    <input type="text" class="nswh-percent-value" name="nswh_percent[]" hidden>
                 </td>
                 <td class="total-td table-light">
                     <h4 class="text-center lead" id="subtotal-producer">-</h4>
                 </td>
                 <td class="total-td table-light">
-                    <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                        value="{{ old('') }}" name="fee_notes[]" id="">
+                                <textarea class="form-control input-table @error('') is-invalid @enderror"
+                                    name="fee_notes[]" id="" rows="2" cols="55"></textarea>
                 </td>
                 <td class="border border-white" style="background-color: #FFFFFF;">
                     <a href="javascript:void(0)" class="text-danger font-18 remove" onclick="$('#ecProducerRemove${efProducer}').trigger('click');" title="Remove">
@@ -734,13 +739,14 @@
                         <input type="number" class="form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="fee_nswh[]" id="ef_DocumentorNwh${efDocumentor}"
                             oninput="document.getElementById('ec_DocumentorNwh${efDocumentor}').value = document.getElementById('ef_DocumentorNwh${efDocumentor}').value;">
+                        <input type="text" class="nswh-percent-value" name="nswh_percent[]" hidden>
                     </td>
                     <td class="total-td table-light" style="background-color: rgba(146, 146, 146, 0.727">
                         <h4 class="text-center" id="subtotal-documentor">-</h4>
                     </td>
                     <td class="total-td table-light">
-                        <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                            value="{{ old('') }}" name="fee_notes[]" id="">
+                                <textarea class="form-control input-table @error('') is-invalid @enderror"
+                                    name="fee_notes[]" id="" rows="2" cols="55"></textarea>
                     </td>
                     <td class="border border-white" style="background-color: #FFFFFF;">
                         <a href="javascript:void(0)" class="text-danger font-18 remove" onclick="$('#ecDocumentorRemove${efDocumentor}').trigger('click');" title="Remove">
