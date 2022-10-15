@@ -60,7 +60,7 @@
                                                     4% - discounted<br>
                                                     5% - packaged rate</i>"
                                                 data-mytooltip-theme="dark"
-                                                data-mytooltip-action="focus" 
+                                                data-mytooltip-action="focus"
                                                 data-mytooltip-direction="right"
                                                 style="background-color:#ffcccc; color:red;">
                                                 <option value="0" {{ old('') == '0' ? 'selected="selected"' : '' }}
@@ -100,8 +100,10 @@
                                         <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                             value="{{ old('') }}" name="" id="">
                                     </td>
-                                    <td><a href="javascript:void(0)" class="text-success font-18" title="Add" id="muaddButton"><i
-                                        class="fa fa-plus"></i></a>
+                                    <td style="background-color: #FFFFFF;" class="border border-white">
+                                        <a href="javascript:void(0)" class="text-success font-18" title="Add" id="muaddButton">
+                                            <i class="fa fa-plus"></i>
+                                        </a>
                                     </td>
                                 </tr>
                             </tbody>
@@ -163,8 +165,10 @@
                                     <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                         value="{{ old('') }}" name="" id="">
                                 </td>
-                                <td><a href="javascript:void(0)" class="text-success font-18" title="Add"
-                                        id="muaddButton2"><i class="fa fa-plus"></i></a>
+                                <td style="background-color: #FFFFFF;" class="border border-white">
+                                    <a href="javascript:void(0)" class="text-success font-18" title="Add" id="muaddButton2">
+                                        <i class="fa fa-plus"></i>
+                                    </a>
                                 </td>
                             </tr>
                             </tbody>
@@ -225,8 +229,10 @@
                                     <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                         value="{{ old('') }}" name="" id="">
                                 </td>
-                                <td><a href="javascript:void(0)" class="text-success font-18" title="Add"
-                                        id="muaddButton3"><i class="fa fa-plus"></i></a>
+                                <td style="background-color: #FFFFFF;" class="border border-white">
+                                    <a href="javascript:void(0)" class="text-success font-18" title="Add" id="muaddButton3">
+                                        <i class="fa fa-plus"></i>
+                                    </a>
                                 </td>
                             </tr>
                         </tbody>
@@ -287,8 +293,10 @@
                                     <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                         value="{{ old('') }}" name="" id="">
                                 </td>
-                                <td><a href="javascript:void(0)" class="text-success font-18" title="Add"
-                                    id="muaddButton4"><i class="fa fa-plus"></i></a>
+                                <td style="background-color: #FFFFFF;" class="border border-white">
+                                    <a href="javascript:void(0)" class="text-success font-18" title="Add" id="muaddButton4">
+                                    <i class="fa fa-plus"></i>
+                                </a>
                             </td>
                             </tr>
                         </tbody>
@@ -338,8 +346,9 @@
                                     <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                         value="{{ old('') }}" name="" id="">
                                 </td>
-                                <td><a href="javascript:void(0)" class="text-success font-18" title="Add"
-                                        id="muaddButton5"><i class="fa fa-plus"></i></a>
+                                <td style="background-color: #FFFFFF;" class="border border-white">
+                                    <a href="javascript:void(0)" class="text-success font-18" title="Add" id="muaddButton5">
+                                        <i class="fa fa-plus"></i></a>
                                 </td>
                             </tr>
                         </tbody>
@@ -404,8 +413,10 @@
                                     <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                         value="{{ old('') }}" name="" id="">
                                 </td>
-                                <td><a href="javascript:void(0)" class="text-success font-18" title="Add"
-                                    id="muaddButton6"><i class="fa fa-plus"></i></a>
+                                <td style="background-color: #FFFFFF;" class="border border-white">
+                                    <a href="javascript:void(0)" class="text-success font-18" title="Add" id="muaddButton6">
+                                        <i class="fa fa-plus"></i>
+                                    </a>
                                 </td>
                             </tr>
                         </tbody>
@@ -461,8 +472,10 @@
                                     <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                         value="{{ old('') }}" name="" id="">
                                 </td>
-                                <td><a href="javascript:void(0)" class="text-success font-18" title="Add"
-                                    id="muaddButton7"><i class="fa fa-plus"></i></a>
+                                <td style="background-color: #FFFFFF;" class="border border-white">
+                                    <a href="javascript:void(0)" class="text-success font-18" title="Add" id="muaddButton7">
+                                        <i class="fa fa-plus"></i>
+                                    </a>
                                 </td>
                             </tr>
                         </tbody>
@@ -492,8 +505,10 @@
                                     <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                         value="{{ old('') }}" name="" id="">
                                 </td>
-                                <td><a href="javascript:void(0)" class="text-success font-18" title="Add"
-                                    id="muaddButton8"><i class="fa fa-plus"></i></a>
+                                <td style="background-color: #FFFFFF;" class="border border-white">
+                                    <a href="javascript:void(0)" class="text-success font-18" title="Add" id="muaddButton8">
+                                        <i class="fa fa-plus"></i>
+                                    </a>
                                 </td>
                             </tr>
                         </tbody>
