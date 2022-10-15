@@ -6,12 +6,11 @@
     // $('input[type="number"]').attr('min', '0');
 
     var rowIndx = 1;
-    // $("#addBtn1").on("click", function() {
     $("#addBtn1").on("click", function() {
         // Adding a row inside the tbody.
         $("#tableLeadconsultant").append
         (`
-            <tr id="leadConsultant${++rowIndx}" class="table-warning">
+            <tr id="leadConsultant${++rowIndx}" class="th-blue-grey-lighten-2">
                 <td class="title">Lead Consultant</td>
                 <td data-title="# OF CONSULTANTS" class="noc">
                     <input type="number" class="input js-mytooltip input-table form-control  @error('') is-invalid @enderror"
@@ -149,7 +148,7 @@
         // Adding a row inside the tbody.
         $("#ef_TableAnalyst").append
         (`
-            <tr id="ef_RowAnalyst${++rowAnalyst}" class="table-warning">
+            <tr id="ef_RowAnalyst${++rowAnalyst}" class="th-blue-grey-lighten-2">
                 <td class="title">Analyst</td>
                         <td class="noc">
                             <input type="number" class=" input js-mytooltip form-control input-table @error('') is-invalid @enderror"
@@ -251,7 +250,7 @@
         // Adding a row inside the tbody.
         $("#ef_TableDesigner").append
         (`
-            <tr id="ef_RowDesigner${++rowDesigner}" class="table-warning">
+            <tr id="ef_RowDesigner${++rowDesigner}" class="th-blue-grey-lighten-2">
                 <td class="title">Designer</td>
                         <td class="noc">
                             <input type="number" class="noc-b18 input js-mytooltip form-control input-table @error('') is-invalid @enderror"
@@ -370,7 +369,7 @@
         // Adding a row inside the tbody.
         $("#ef_TableLeadFaci").append
         (`
-            <tr id="ef_RowLeadFaci${++rowLeadFaci}" class="table-warning">
+            <tr id="ef_RowLeadFaci${++rowLeadFaci}" class="th-blue-grey-lighten-2">
                 <td class="title">Lead Facilitator</td>
                         <td class="noc">
                             <input type="number" class="noc-b21 form-control input-table @error('') is-invalid @enderror"
@@ -463,7 +462,7 @@
         // Adding a row inside the tbody.
         $("#ef_TableCoFaci").append
         (`
-            <tr id="ef_RowCoFaci${++rowCoFaci}" class="table-warning">
+            <tr id="ef_RowCoFaci${++rowCoFaci}" class="th-blue-grey-lighten-2">
                 <td class="title">Co-facilitator / Resource Speaker</td>
                         <td class ="noc">
                             <input type="number" class="noc-b22 form-control input-table @error('') is-invalid @enderror"
@@ -554,7 +553,7 @@
         // Adding a row inside the tbody.
         $("#ef_TableActionLearn").append
         (`
-            <tr id="ef_RowActionLearn${++rowActionLearn}" class="table-warning">
+            <tr id="ef_RowActionLearn${++rowActionLearn}" class="th-blue-grey-lighten-2">
                 <td class="title">Action Learning Coach</td>
                         <td class ="noc">
                             <input type="number" class="noc-b23 form-control input-table @error('') is-invalid @enderror"
@@ -642,7 +641,7 @@
         // Adding a row inside the tbody.
         $("#ef_TableMarshal").append
         (`
-            <tr id="ef_RowMarshal${++rowMarshal}" class="table-warning">
+            <tr id="ef_RowMarshal${++rowMarshal}" class="th-blue-grey-lighten-2">
                 <td class="title">Marshal</td>
                         <td class="noc">
                             <input type="number" class="noc-b23 form-control input-table @error('') is-invalid @enderror"
@@ -729,7 +728,7 @@
         // Adding a row inside the tbody.
         $("#ef_TableOnsite").append
         (`
-            <tr id="ef_RowOnsite${++rowOnsite}" class="table-warning">
+            <tr id="ef_RowOnsite${++rowOnsite}" class="th-blue-grey-lighten-2">
                 <td class="title">On-site PC (P20K / P25K / P30K)</td>
                         <td class="noc">
                             <input type="number" class="noc-b23 form-control input-table @error('') is-invalid @enderror"
@@ -841,7 +840,7 @@
         // Adding a row inside the tbody.
         $("#ef_TableDocumentor").append
         (`
-            <tr id="ef_RowDocumentor${++rowDocumentor}" class="table-warning">
+            <tr id="ef_RowDocumentor${++rowDocumentor}" class="th-blue-grey-lighten-2">
                 <td class="title">Documentor</td>
                         <td class="noc">
                             <input type="number" class="noc-b28 form-control input-table @error('') is-invalid @enderror"
