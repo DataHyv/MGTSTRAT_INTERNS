@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="{{ URL::asset('css/custom.css') }}">
 @extends('layouts.master')
 @section('menu')
-    @extends('sidebar.mgtstrat_u_workshop')
+    @extends('sidebar.dashboard')
 @endsection
 @section('content')
     <div id="main">

@@ -12,6 +12,7 @@ use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\LockScreen;
 use App\Http\Controllers\CustomizedEngagementController;
 use App\Http\Controllers\ClientsController;
+use App\Http\Controllers\ConsultantFeesController;
 
 
 /*
@@ -94,8 +95,6 @@ Route::controller(CustomizedEngagementController::class)->group(function () {
 Route::get('form/customizedEngagement/new', [CustomizedEngagementController::class, 'index'])->middleware('auth')->name('form/customizedEngagement/new');
 Route::get('form/customizedEngagement/detail', [CustomizedEngagementController::class, 'viewRecord'])->middleware('auth')->name('form/customizedEngagement/detail');
 Route::get('form/customizedEngagement/detail/{cstmzd_eng_form_id}', [CustomizedEngagementController::class, 'updateRecord'])->middleware('auth');
-// Route::get('delete/{id}', [CustomizedEngagementController::class, 'viewDelete'])->middleware('auth');
-// Route::get("new",[CustomizedEngagementController::class,'index']);
 
 Route::post('save', [CustomizedEngagementController::class, 'store'])->name('save');
 Route::put('update', [CustomizedEngagementController::class, 'ceUpdateRecord','ceAddDeleteRecord'])->middleware('auth')->name('update');
@@ -117,10 +116,5 @@ Route::get('deleteClients/{id}', [App\Http\Controllers\ClientsController::class,
 Route::get('form/view/detail/{id}', [App\Http\Controllers\ClientsController::class, 'viewDetailClient'])->middleware('auth');
 Route::post('update', [App\Http\Controllers\ClientsController::class, 'updateClient'])->name('update');
 
-// ----------------------------- WEBINAR form ------------------------------//
-// Route::get('form/budget/new', [App\Http\Controllers\WebinarformController::class, 'index'])->middleware('auth')->name('form/budget/new');
-// Route::post('form/save', [App\Http\Controllers\WebinarformController::class, 'saveRecord'])->name('form/save');
-// Route::get('form/view/detail', [App\Http\Controllers\WebinarformController::class, 'viewRecord'])->middleware('auth')->name('form/view/detail');
-// Route::get('form/view/detail/{id}', [App\Http\Controllers\WebinarformController::class, 'viewDetail'])->middleware('auth');
-// Route::post('form/view/update', [App\Http\Controllers\WebinarformController::class, 'viewUpdate'])->name('form/view/update');
-// Route::get('delete/{id}', [App\Http\Controllers\WebinarformController::class, 'viewDelete'])->middleware('auth');
+// ----------------------------- Client Management -----------------------//
+Route::resource('form/consultant-fees', 'App\Http\Controllers\ConsultantFeesController');

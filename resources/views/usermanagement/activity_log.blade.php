@@ -2,7 +2,7 @@
 <link rel="shortcut icon" type="image/png" href="{{ URL::to('assets/images/logo/logo.png') }}">
 @extends('layouts.master')
 @section('menu')
-    @extends('sidebar.activity_log')
+    @extends('sidebar.dashboard')
 @endsection
 @section('content')
     <div id="main">

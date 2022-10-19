@@ -15,36 +15,36 @@
         <div class="sidebar-menu">
             <ul class="menu">
                 <li class="sidebar-title">Menu</li>
-                <li class="sidebar-item {{ 'home' == request()->path() ? 'active' : '' }}">
+                <li class="sidebar-item {{ Request::routeIs('home') ? 'active' : '' }}">
                     <a href="{{ route('home') }}" class='sidebar-link'>
                         <i class="bi bi-house-fill"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
 
-                <li class="sidebar-item has-sub">
+                <li class="sidebar-item has-sub {{ Request::routeIs('people-and-culture', 'sales-report', 'cash-position-report' , 'consultant-revenue-report') ? 'active' : '' }}">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-file-earmark-medical-fill"></i>
                         <span>Dashboard Report</span>
                     </a>
 
-                    <ul class="submenu">
-                        <li class="submenu-item {{ 'sales-report' == request()->path() ? 'active' : '' }}">
+                    <ul class="submenu {{ Request::routeIs('people-and-culture', 'sales-report', 'cash-position-report' , 'consultant-revenue-report') ? 'active' : '' }}">
+                        <li class="submenu-item {{ Request::routeIs('sales-report') ? 'active' : '' }}">
                             <a href="{{ route('sales-report') }}">
                                 <span>Sales</span>
                             </a>
                         </li>
-                        <li class="submenu-item {{ 'people-and-culture' == request()->path() ? 'active' : '' }}">
+                        <li class="submenu-item {{ Request::routeIs('people-and-culture') ? 'active' : '' }}">
                             <a href="{{ route('people-and-culture') }}">
                                 <span>People & Culture</span>
                             </a>
                         </li>
-                        <li class="submenu-item {{ 'cash-position-report' == request()->path() ? 'active' : '' }}">
+                        <li class="submenu-item {{ Request::routeIs('cash-position-report') ? 'active' : '' }}">
                             <a href="{{ route('cash-position-report') }}">
                                 <span>Cash Position</span>
                             </a>
                         </li>
-                        <li class="submenu-item {{ 'consultant-revenue-report' == request()->path() ? 'active' : '' }}">
+                        <li class="submenu-item {{ Request::routeIs('consultant-revenue-report') ? 'active' : '' }}">
                             <a href="{{ route('consultant-revenue-report') }}">
                                 <span>Consultant Revenue</span>
                             </a>
@@ -91,65 +91,72 @@
 
                 @if (Auth::user()->role_name == 'Admin')
                     <li class="sidebar-title">Page &amp; Controller</li>
-                    <li class="sidebar-item  has-sub">
+                    <li class="sidebar-item  has-sub {{ Request::routeIs('userManagement', 'activity/log', 'activity/login/logout') ? 'active' : '' }}">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-hexagon-fill"></i>
                             <span>Maintenance</span>
                         </a>
-                        <ul class="submenu">
-                            <li class="submenu-item">
+                        <ul class="submenu {{ Request::routeIs('userManagement', 'activity/log', 'activity/login/logout') ? 'active' : '' }}">
+                            <li class="submenu-item {{ Request::routeIs('userManagement') ? 'active' : '' }}">
                                 <a href="{{ route('userManagement') }}">User Control</a>
                             </li>
-                            <li class="submenu-item">
+                            <li class="submenu-item {{ Request::routeIs('activity/log') ? 'active' : '' }}">
                                 <a href="{{ route('activity/log') }}">User Activity Log</a>
                             </li>
-                            <li class="submenu-item">
+                            <li class="submenu-item {{ Request::routeIs('activity/login/logout') ? 'active' : '' }}">
                                 <a href="{{ route('activity/login/logout') }}">Activity Log</a>
                             </li>
                         </ul>
                     </li>
                 @endif
 
-                <li class="sidebar-item">
+                <li class="sidebar-item {{ Request::routeIs('change/password') ? 'active' : '' }}">
                     <a href="{{ route('change/password') }}" class='sidebar-link'>
                         <i class="bi bi-shield-lock"></i>
                         <span>Change Password</span>
                     </a>
                 </li>
 
-                <li class="sidebar-item">
+                <li class="sidebar-item {{ Request::routeIs('form/clients/new') ? 'active' : '' }}">
                     <a href="{{ route('form/clients/new') }}" class='sidebar-link'>
                         <i class="bi bi-building"></i>
                         <span>Clients</span>
                     </a>
                 </li>
 
+                <li class="sidebar-item {{ 'form/consultant-fees' == request()->path() ? 'active' : '' }}">
+                    <a href="{{ url('form/consultant-fees') }}" class='sidebar-link'>
+                        <i class="bi bi-building"></i>
+                        <span>Consultant Fees</span>
+                    </a>
+                </li>
+
                 <li class="sidebar-title">Forms &amp; Tables</li>
-                <li class="sidebar-item  has-sub">
+                <li class="sidebar-item has-sub {{ Request::routeIs('form/customizedEngagement/new', 'form/f2f_engagement/new', 'form/mgtstratu_workshops/new') ? 'active' : '' }}">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-file-earmark-medical-fill"></i>
                         <span>Budget Form</span>
                     </a>
-                    <ul class="submenu">
-                        <li class="submenu-item">
+                    <ul class="submenu {{ Request::routeIs('form/customizedEngagement/new', 'form/f2f_engagement/new', 'form/mgtstratu_workshops/new') ? 'active' : '' }}">
+                        <li class="submenu-item {{ Request::routeIs('form/customizedEngagement/new') ? 'active' : '' }}">
                             <a href="{{ route('form/customizedEngagement/new') }}">CUSTOMIZED ENGAGEMENT</a>
                         </li>
-                        <li class="submenu-item">
+                        <li class="submenu-item {{ Request::routeIs('form/f2f_engagement/new') ? 'active' : '' }}">
                             <a href="{{ route('form/f2f_engagement/new') }}">F2F ENGAGEMENT</a>
                         </li>
-                        <li class="submenu-item">
+                        <li class="submenu-item {{ Request::routeIs('form/mgtstratu_workshops/new') ? 'active' : '' }}">
                             <a href="{{ route('form/mgtstratu_workshops/new') }}">MGTSTRAT-U WORKSHOPS</a>
                         </li>
                     </ul>
                 </li>
 
-                <li class="sidebar-item  has-sub">
+                <li class="sidebar-item has-sub {{ Request::routeIs('form/customizedEngagement/detail') ? 'active' : '' }}">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-grid-1x2-fill"></i>
                         <span>View Record</span>
                     </a>
-                    <ul class="submenu">
-                        <li class="submenu-item">
+                    <ul class="submenu {{ Request::routeIs('form/customizedEngagement/detail') ? 'active' : '' }}">
+                        <li class="submenu-item {{ Request::routeIs('form/customizedEngagement/detail') ? 'active' : '' }}">
                             <a href="{{ route('form/customizedEngagement/detail') }}">Customized Engagement</a>
                         </li>
                     </ul>

@@ -31,7 +31,7 @@
     }
 </style>
 @section('menu')
-    @extends('sidebar.report')
+    @extends('sidebar.dashboard')
 @endsection
 @section('content')
     <div id="main">
