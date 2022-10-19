@@ -72,203 +72,204 @@
         <div class="col-md-3">
             <label class="fw-bold required">MGTSTRAT-U Workshop Title</label>
         </div>
-        <div class="col-md-4">
+
+        <div class="col-md-7">
             <div class="form-group has-icon-left">
                 <div class="position-relative">
                     <fieldset class="form-group">
                         <select class="input js-mytooltip form-select @error('') is-invalid @enderror" name="" id="Mgtstrat-U-Titles" data-mytooltip-content="<i>
                             If not on the list, choose suggested cluster title at Core Area.
                             </i>" data-mytooltip-theme="dark" data-mytooltip-action="focus" data-mytooltip-direction="right">
-                            <option id="not-listed" value="Not Listed" selected>-- Not listed --</option>
-                            <option id="mindfullness" class="mindfulness" value="A Case for Mindfulness: A Strategic Approach to Stress" {{
+                            <option class="not-listed" id="not-listed" value="Not Listed" selected>-- Not listed --</option>
+                            <option class="mindfullness" id="mindfullness" value="A Case for Mindfulness: A Strategic Approach to Stress" {{
                                 old('')=='A Case for Mindfulness: A Strategic Approach to Stress'
                                 ? 'selected="selected"' : '' }}>
                                 A Case for Mindfulness: A Strategic Approach to Stress
                             </option>
-                            <option value="ABC's of Gen XYZ">
+                            <option class="diversity-and-inclusion" id="" value="ABC's of Gen XYZ">
                                 ABC's of Gen XYZ
                             </option>
-                            <option value="Activating the Growth Mindset">
+                            <option class="growth-mindset" id="" value="Activating the Growth Mindset">
                                 Activating the Growth Mindset
                             </option>
-                            <option value="Brand Called You">
-                                Brand Called You
-                            </option>
-                            <option value="Anxiety Parties">
+                            <option class="anxiety" id="" value="Anxiety Parties">
                                 Anxiety Parties
                             </option>
-                            <option value="Choose Your Own Adventure">
+                            <option class="leadership-brand" id="" value="Brand Called You">
+                                Brand Called You
+                            </option>
+                            <option class="virtual-team-building" id="" value="Choose Your Own Adventure">
                                 Choose Your Own Adventure
                             </option>
-                            <option value="Co-operative Power and the Willingness to Resolve">
+                            <option class="conflict-resolution" id="" value="Co-operative Power and the Willingness to Resolve">
                                 Co-operative Power and the Willingness to Resolve
                             </option>
-                            <option value="Collaboration on the Fly">
+                            <option class="collaborative-leadership" id="" value="Collaboration on the Fly">
                                 Collaboration on the Fly
                             </option>
-                            <option value="Creating Digital Bonds (Collborative Leadership)">
+                            <option class="collaborative-leadership" id="" value="Creating Digital Bonds (Collborative Leadership)">
                                 Creating Digital Bonds (Collborative Leadership)
                             </option>
-                            <option value="Creative Thinking in the Workplace">
+                            <option class="creativity" id="" value="Creative Thinking in the Workplace">
                                 Creative Thinking in the Workplace
                             </option>
-                            <option value="Culture Driven Team Building">
+                            <option class="virtual-team-building" id="" value="Culture Driven Team Building">
                                 Culture Driven Team Building
                             </option>
-                            <option value="Deep Dive: Psychological Resilience">
+                            <option class="mental-health" id="" value="Deep Dive: Psychological Resilience">
                                 Deep Dive: Psychological Resilience
                             </option>
-                            <option value="Deep Dive: The Role of Positive Emotions">
+                            <option class="mental-health" id="" value="Deep Dive: The Role of Positive Emotions">
                                 Deep Dive: The Role of Positive Emotions
                             </option>
-                            <option value="Deep Diving with Strengths">
+                            <option class="strengths" id="" value="Deep Diving with Strengths">
                                 Deep Diving with Strengths
                             </option>
-                            <option value="Designing Slides for Non-Designers">
+                            <option class="learning-evolution" id="" value="Designing Slides for Non-Designers">
                                 Designing Slides for Non-Designers
                             </option>
-                            <option value="Designing Virtual Learning">
+                            <option class="learning-evolution" id="" value="Designing Virtual Learning">
                                 Designing Virtual Learning
                             </option>
-                            <option value="Developing the Growth Mindset">
+                            <option class="growth-mindset" id="" value="Developing the Growth Mindset">
                                 Developing the Growth Mindset
                             </option>
-                            <option value="Effective Virtual Communication">
+                            <option class="communication" id="" value="Effective Virtual Communication">
                                 Effective Virtual Communication
                             </option>
-                            <option value="Everyday Workplace Innovation">
+                            <option class="everyday-innovation" id="" value="Everyday Workplace Innovation">
                                 Everyday Workplace Innovation
                             </option>
-                            <option value="Facilitating Virtual Learning">
+                            <option class="learning-evolution" id="" value="Facilitating Virtual Learning">
                                 Facilitating Virtual Learning
                             </option>
-                            <option value="Facilitating Virtual Meetings">
+                            <option class="facilitating-virtual-meetings" id="" value="Facilitating Virtual Meetings">
                                 Facilitating Virtual Meetings
                             </option>
-                            <option value="Feedback with Candor (Feedback)">
+                            <option class="feedback" id="" value="Feedback with Candor (Feedback)">
                                 Feedback with Candor (Feedback)
                             </option>
-                            <option value="Feedback with Candor (Radical Candor)">
+                            <option class="radical-candor" id="" value="Feedback with Candor (Radical Candor)">
                                 Feedback with Candor (Radical Candor)
                             </option>
-                            <option value="Find Your Why">
+                            <option class="find-your-why" id="" value="Find Your Why">
                                 Find Your Why
                             </option>
-                            <option value="Foundations of Conflict Resolution">
+                            <option class="conflict-resolution" id="" value="Foundations of Conflict Resolution">
                                 Foundations of Conflict Resolution
                             </option>
-                            <option value="Foundations of Strategic Agility">
+                            <option class="strategic-agility" id="" value="Foundations of Strategic Agility">
                                 Foundations of Strategic Agility
                             </option>
-                            <option value="Foundations of Strengths Based Development">
+                            <option class="strengths" id="" value="Foundations of Strengths Based Development">
                                 Foundations of Strengths Based Development
                             </option>
-                            <option value="Fundamentals of Collaboration">
+                            <option class="collaborative-leadership" id="" value="Fundamentals of Collaboration">
                                 Fundamentals of Collaboration
                             </option>
-                            <option value="Future Proof Leadership">
+                            <option class="future-proof-leadership" id="" value="Future Proof Leadership">
                                 Future Proof Leadership
                             </option>
-                            <option value="Future-Backwards">
+                            <option class="business-transformation" id="" value="Future-Backwards">
                                 Future-Backwards
                             </option>
-                            <option value="Game Nights">
+                            <option class="game-night" id="" value="Game Nights">
                                 Game Nights
                             </option>
-                            <option value="Giving and Receiving Feedback">
+                            <option class="feedback" id="" value="Giving and Receiving Feedback">
                                 Giving and Receiving Feedback
                             </option>
-                            <option value="Graphic Gameplanning">
+                            <option class="business-transformation" id="" value="Graphic Gameplanning">
                                 Graphic Gameplanning
                             </option>
-                            <option value="Heroes Assemble">
+                            <option class="heroes-assemble" id="" value="Heroes Assemble">
                                 Heroes Assemble
                             </option>
-                            <option value="Inclusion is your Competitive Advantage">
+                            <option class="diversity-inclusion" id="" value="Inclusion is your Competitive Advantage">
                                 Inclusion is your Competitive Advantage
                             </option>
-                            <option value="Just Say &quot;Yes, And&quot; to Improv">
+                            <option class="improv" id="" value="Just Say &quot;Yes, And&quot; to Improv">
                                 Just Say "Yes, And" to Improv
                             </option>
-                            <option value="Leading Hybrid Teams">
+                            <option class="leading-hybrid-teams" id="" value="Leading Hybrid Teams">
                                 Leading Hybrid Teams
                             </option>
-                            <option value="Leading Virtual Teams">
+                            <option class="leading-virtual-teams" id="" value="Leading Virtual Teams">
                                 Leading Virtual Teams
                             </option>
-                            <option value="Leading with Emotional Intelligence">
+                            <option class="leading-emotional-intelligence" id="" value="Leading with Emotional Intelligence">
                                 Leading with Emotional Intelligence
                             </option>
-                            <option value="Leading with the Growth Mindset">
+                            <option class="growth-mindset" id="" value="Leading with the Growth Mindset">
                                 Leading with the Growth Mindset
                             </option>
-                            <option value="Lip Sync Battle">
+                            <option class="lip-sync-battle" id="" value="Lip Sync Battle">
                                 Lip Sync Battle
                             </option>
-                            <option value="Live Your Why">
+                            <option class="find-your-why" id="" value="Live Your Why">
                                 Live Your Why
                             </option>
-                            <option value="Magic of Habits">
+                            <option class="habit-formation" id="" value="Magic of Habits">
                                 Magic of Habits
                             </option>
-                            <option value="Making Emotional Intelligence Visible">
+                            <option class="emotional-intelligence" id="" value="Making Emotional Intelligence Visible">
                                 Making Emotional Intelligence Visible
                             </option>
-                            <option value="Managing Relationship thru EI">
+                            <option class="emotional-intelligence" id="" value="Managing Relationship thru EI">
                                 Managing Relationship thru EI
                             </option>
-                            <option value="Mapping the Conflict and Design Options">
+                            <option class="conflict-resolution" id="" value="Mapping the Conflict and Design Options">
                                 Mapping the Conflict and Design Options
                             </option>
-                            <option value="Mental Health Foundations">
+                            <option class="mental-health" id="" value="Mental Health Foundations">
                                 Mental Health Foundations
                             </option>
-                            <option value="Points of You">
+                            <option class="virtual-team-building" id="" value="Points of You">
                                 Points of You
                             </option>
-                            <option value="Power of Influence">
+                            <option class="influencing" id="" value="Power of Influence">
                                 Power of Influence
                             </option>
-                            <option value="Productivity Sprint: Designing your Flow State">
+                            <option class="productivity" id="" value="Productivity Sprint: Designing your Flow State">
                                 Productivity Sprint: Designing your Flow State
                             </option>
-                            <option value="Productivity Sprint: Flow State on Demand">
+                            <option class="productivity" id="" value="Productivity Sprint: Flow State on Demand">
                                 Productivity Sprint: Flow State on Demand
                             </option>
-                            <option value="Riding the Wave">
+                            <option class="anxiety" id="" value="Riding the Wave">
                                 Riding the Wave
                             </option>
-                            <option value="Secret Ingredient to High Performing Teams">
+                            <option class="psychological-safety" id="" value="Secret Ingredient to High Performing Teams">
                                 Secret Ingredient to High Performing Teams
                             </option>
-                            <option value="Squid Games">
+                            <option class="virtual-team-building" id="" value="Squid Games">
                                 Squid Games
                             </option>
-                            <option value="The Emotional Agility Toolbox">
+                            <option class="emotional-intelligence" id="" value="The Emotional Agility Toolbox">
                                 The Emotional Agility Toolbox
                             </option>
-                            <option value="The Heist">
+                            <option class="the-heist" id="" value="The Heist">
                                 The Heist
                             </option>
-                            <option value="The Lab">
+                            <option class="the-lab" id="" value="The Lab">
                                 The Lab
                             </option>
-                            <option value="The Power of Yet (Growth MIndset)">
+                            <option class="growth-mindset" id="" value="The Power of Yet (Growth MIndset)">
                                 The Power of Yet (Growth MIndset)
                             </option>
-                            <option value="Time and Energy Management: Rethinking our Productivity Models">
+                            <option class="productivity" id="" value="Time and Energy Management: Rethinking our Productivity Models">
                                 Time and Energy Management: Rethinking our Productivity Models
                             </option>
-                            <option value="Unconscious Bias">
+                            <option class="diversity-inclusion" id="" value="Unconscious Bias">
                                 Unconscious Bias
                             </option>
-                            <option value="Virtual Teaming">
+                            <option class="virtual-team-building" id="" value="Virtual Teaming">
                                 Virtual Teaming
                             </option>
-                            <option value="Win over Anxiety: Addressing the Worrisome Thoughts in your Head">
+                            <option class="mindfullness" id="" value="Win over Anxiety: Addressing the Worrisome Thoughts in your Head">
                                 Win over Anxiety: Addressing the Worrisome Thoughts in your Head
                             </option>
-                            <option value="Work from Home Essentials">
+                            <option class="work-from-home" id="" value="Work from Home Essentials">
                                 Work from Home Essentials
                             </option>
                         </select>
@@ -284,37 +285,51 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4" id="div-notListed">
-            <div class="form-group has-icon-left">
-                <div class="position-relative">
-                    <input type="text" class="form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="" id="input-notListed" disabled>
-                    <div class="form-control-icon">
-                        <i class="fa-solid fa-t"></i>
-                    </div>
-                    @error('')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
-            </div>
-        </div>
 
         <div class="col-md-3">
             <label class="fw-bold required">CLUSTER</label>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-7">
             <div class="form-group has-icon-left">
                 <div class="position-relative">
                     <fieldset class="form-group">
                         <select class="form-select @error('') is-invalid @enderror" name="" id="cluster" disabled>
-                            <option value="" selected></option>
+                            <option value="Anxiety">Anxiety</option>
+                            <option value="Business Transformation">Business Transformation</option>
+                            <option value="Collaborative Leadership">Collaborative Leadership</option>
+                            <option value="Communication">Communication</option>
+                            <option value="Conflict Resolution">Conflict Resolution</option>
+                            <option value="Creativity">Creativity</option>
+                            <option value="Diversity & Inclusion">Diversity & Inclusion</option>
+                            <option value="Emotional Intelligence">Emotional Intelligence</option>
+                            <option value="Everyday Innovation">Everyday Innovation</option>
+                            <option value="Facilitating Virtual Meetings">Facilitating Virtual Meetings</option>
+                            <option value="Feedback">Feedback</option>
+                            <option value="Find Your Why">Find Your Why</option>
+                            <option value="Future Proof Leadership">Future Proof Leadership</option>
+                            <option value="Game Night">Game Night</option>
+                            <option value="Growth Mindset">Growth Mindset</option>
+                            <option value="Habit Formation">Habit Formation</option>
+                            <option value="Heroes Assemble">Heroes Assemble</option>
+                            <option value="Improv">Improv</option>
+                            <option value="Influencing">Influencing</option>
+                            <option value="Leadership Brand">Leadership Brand</option>
+                            <option value="Leading Hybrid Teams">Leading Hybrid Teams</option>
+                            <option value="Leading Virtual Teams">Leading Virtual Teams</option>
+                            <option value="Leading with Emotional Intelligence">Leading with Emotional Intelligence</option>
+                            <option value="Learning Evolution">Learning Evolution</option>
+                            <option value="Lip Sync Battle">Lip Sync Battle</option>
+                            <option value="Mental Health">Mental Health</option>
                             <option value="Mindfullness">Mindfullness</option>
-                            <option value="Capability">Capability</option>
-                            <option value="Leadership">Leadership</option>
-                            <option value="Social">Social</option>
-                            <option value="Strategy">Strategy</option>
-                            <option value="Teams">Teams</option>
+                            <option value="Productivity">Productivity</option>
+                            <option value="Psychological Safety">Psychological Safety</option>
+                            <option value="Radical Candor">Radical Candor</option>
+                            <option value="Strategic Agility">Strategic Agility</option>
+                            <option value="Strengths">Strengths</option>
+                            <option value="The Heist">The Heist</option>
+                            <option value="The Lab">The Lab</option>
+                            <option value="Virtual Team Building">Virtual Team Building</option>
+                            <option value="Work From Home">Work From Home</option>
                         </select>
                     </fieldset>
                     <div class="form-control-icon">
@@ -328,22 +343,23 @@
                 </div>
             </div>
         </div>
+
         <div class="col-md-3">
             <label class="fw-bold required">INTELLIGENCE:</label>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-7">
             <div class="form-group has-icon-left">
                 <div class="position-relative">
                     {{-- <input type="text" class="form-control @error('') is-invalid @enderror" value="{{ old('') }}"
                     name="" id="core-valueInput" disabled> --}}
                     <fieldset class="form-group">
-                        <select class="form-select @error('') is-invalid @enderror" name="" id="core-valueInput" disabled>
-                            <option value="Culture" selected>Culture</option>
-                            <option value="Capability">Capability</option>
-                            <option value="Leadership">Leadership</option>
-                            <option value="Social">Social</option>
-                            <option value="Strategy">Strategy</option>
-                            <option value="Teams">Teams</option>
+                        <select class="form-select @error('') is-invalid @enderror" name="" id="intelligence" disabled>
+                            <option value="Contextual">Contextual</option>
+                            <option value="Generative">Generative</option>
+                            <option value="Moral">Moral</option>
+                            <option value="Social & Emotional">Social & Emotional</option>
+                            <option value="Technological">Technological</option>
+                            <option value="Transformative">Transformative</option>
                         </select>
                     </fieldset>
                     <div class="form-control-icon">
@@ -361,7 +377,6 @@
         <div class="col-md-3">
             <label class="fw-bold required">Number of pax </label>
         </div>
-
         <div class="col-md-3">
             <div class="form-group has-icon-left">
                 <div class="position-relative">
@@ -382,7 +397,6 @@
             <div class="col-md-3">
                 <label class="fw-bold required">Date Covered by Engagement </label>
             </div>
-
             <div class="col-md-3">
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" role="switch" id="dcbeCheck">
@@ -446,14 +460,180 @@
     </div>
 </div>
 <script>
-    // var titles = $('#Mgtstrat-U-Titles').val();
     document.getElementById('Mgtstrat-U-Titles').addEventListener("change", titles);
+    // var title = $("#Mgtstrat-U-Titles");
     function titles() {
-        if($('#mindfullness').is(':selected')){
-            $('#cluster').val('Mindfullness');
-        }
-        else{
-            $('#cluster').val('');
-        }
+        $( "#Mgtstrat-U-Titles option:selected" ).each(function() {
+            if($('.mindfullness').is(':selected')){
+                $('#cluster').val('Mindfullness');
+                $('#intelligence').val('Social & Emotional');
+            }
+            else if($('.diversity-and-inclusion').is(':selected')) {
+                $('#cluster').val('Diversity & Inclusion');
+                $('#intelligence').val('Moral');
+            }
+            else if($('.growth-mindset').is(':selected')) {
+                $('#cluster').val('Growth Mindset');
+                $('#intelligence').val('Transformative');
+            }
+            else if ($('.anxiety').is(':selected')) {
+                $('#cluster').val('Anxiety');
+                $('#intelligence').val('Social & Emotional');
+            }
+            else if ($('.leadership-brand').is(':selected')) {
+                $('#cluster').val('Leadership Brand');
+                $('#intelligence').val('Moral');
+            }
+            else if ($('.virtual-team-building').is(':selected')) {
+                $('#cluster').val('Virtual Team Building');
+                $('#intelligence').val('Generative');
+            }
+            else if ($('.conflict-resolution').is(':selected')) {
+                $('#cluster').val('Conflict Resolution');
+                $('#intelligence').val('Social & Emotional');
+            }
+            else if ($('.collaborative-leadership').is(':selected') ) {
+                $('#cluster').val('Collaborative Leadership');
+                $('#intelligence').val('Generative');
+            }
+            else if ($('.creativity').is(':selected')) {
+                $('#cluster').val('Creativity');
+                $('#intelligence').val('Generative');
+            }
+            else if ($('.mental-health').is(':selected')) {
+                $('#cluster').val('Mental Health');
+                $('#intelligence').val('Social & Emotional');
+            }
+            else if ($('.strengths').is(':selected')) {
+                $('#cluster').val('Strengths');
+                $('#intelligence').val('Moral');
+            }
+            else if ($('.learning-evolution').is(':selected')) {
+                $('#cluster').val('Learning Evolution');
+                $('#intelligence').val('Technological');
+            }
+            else if ($('.communication').is(':selected')) {
+                $('#cluster').val('Communication');
+                $('#intelligence').val('Social & Emotional');
+            }
+            else if ($('.everyday-innovation').is(':selected')) {
+                $('#cluster').val('Everyday Innovation');
+                $('#intelligence').val('Generative');
+            }
+            else if ($('.facilitating-virtual-meetings').is(':selected')) {
+                $('#cluster').val('Facilitating Virtual Meetings');
+                $('#intelligence').val('Technological');
+            }
+            else if ($('.feedback').is(':selected')) {
+                $('#cluster').val('Feedback');
+                $('#intelligence').val('Social & Emotional');
+            }
+            else if ($('.radical-candor').is(':selected')) {
+                $('#cluster').val('Radical Candor');
+                $('#intelligence').val('Social & Emotional');
+            }
+            else if ($('.find-your-why').is(':selected')) {
+                $('#cluster').val('Find Your Why');
+                $('#intelligence').val('Moral');
+            }
+            else if ($('.strategic-agility').is(':selected')) {
+                $('#cluster').val('Strategic Agility');
+                $('#intelligence').val('Contextual');
+            }
+            else if ($('.future-proof-leadership').is(':selected')) {
+                $('#cluster').val('Future Proof Leadership');
+                $('#intelligence').val('Contextual');
+            }
+            else if ($('.business-transformation').is(':selected')) {
+                $('#cluster').val('Business Transformation');
+                $('#intelligence').val('Transformative');
+            }
+            else if ($('.game-night').is(':selected')) {
+                $('#cluster').val('Game Night');
+                $('#intelligence').val('Transformative');
+            }
+            else if ($('.heroes-assemble').is(':selected')) {
+                $('#cluster').val('Heroes Assemble');
+                $('#intelligence').val('Transformative');
+            }
+            else if ($('.diversity-inclusion').is(':selected')) {
+                $('#cluster').val('Diversity & Inclusion');
+                $('#intelligence').val('Moral');
+            }
+            else if ($('.improv').is(':selected')) {
+                $('#cluster').val('Improv');
+                $('#intelligence').val('Generative');
+            }
+            else if ($('.leading-hybrid-teams').is(':selected')) {
+                $('#cluster').val('Leading Hybrid Teams');
+                $('#intelligence').val('Technological');
+            }
+            else if ($('.leading-virtual-teams').is(':selected')) {
+                $('#cluster').val('Leading Virtual Teams');
+                $('#intelligence').val('Technological');
+            }
+            else if ($('.leading-emotional-intelligence').is(':selected')) {
+                $('#cluster').val('Leading with Emotional Intelligence');
+                $('#intelligence').val('Social & Emotional');
+            }
+            else if ($('.lip-sync-battle').is(':selected')) {
+                $('#cluster').val('Lip Sync Battle');
+                $('#intelligence').val('Generative');
+            }
+            else if ($('.habit-formation').is(':selected')) {
+                $('#cluster').val('Habit Formation');
+                $('#intelligence').val('Social & Emotional');
+            }
+            else if ($('.emotional-intelligence').is(':selected')) {
+                $('#cluster').val('Emotional Intelligence');
+                $('#intelligence').val('Social & Emotional');
+            }
+            else if ($('.influencing').is(':selected')) {
+                $('#cluster').val('Influencing');
+                $('#intelligence').val('Social & Emotional');
+            }
+            else if ($('.productivity').is(':selected')) {
+                $('#cluster').val('Productivity');
+                $('#intelligence').val('Social & Emotional');
+            }
+            else if ($('.psychological-safety').is(':selected')) {
+                $('#cluster').val('Psychological Safety');
+                $('#intelligence').val('Contextual');
+            }
+            else if ($('.the-heist').is(':selected')) {
+                $('#cluster').val('The Heist');
+                $('#intelligence').val('Generative');
+            }
+            else if ($('.the-lab').is(':selected')) {
+                $('#cluster').val('The Lab');
+                $('#intelligence').val('Generative');
+            }
+            else if ($('.work-from-home').is(':selected')) {
+                $('#cluster').val('Work From Home');
+                $('#intelligence').val('Technological');
+            }
+            else{
+                $('#cluster').val('');
+                $('#intelligence').val('');
+            }
+        });
     }
+
+    // $( "#Mgtstrat-U-Titles" ).change(function() {
+    //     // var str = "";
+    //     $( "#Mgtstrat-U-Titles option:selected" ).each(function() {
+    //         // str += $( this ).text() + " ";
+    //         // $( this ).text() + " ";
+    //         if ($( this ).text() == 'A Case for Mindfulness: A Strategic Approach to Stress') {
+    //             $('#cluster').val('Mindfullness');
+    //             $('#intelligence').val('Social & Emotional');
+    //         }
+    //         else {
+    //             $('#cluster').val('');
+    //             $('#intelligence').val('');
+    //         }
+    //     });
+    //     $( "div" ).text( str );
+    // })
+    // .trigger( "change" );
 </script>
