@@ -126,7 +126,7 @@
 
                 <li class="sidebar-item {{ 'form/consultant-fees' == request()->path() ? 'active' : '' }}">
                     <a href="{{ url('form/consultant-fees') }}" class='sidebar-link'>
-                        <i class="bi bi-building"></i>
+                        <i class="fa-solid fa-user-tie"></i>
                         <span>Consultant Fees</span>
                     </a>
                 </li>

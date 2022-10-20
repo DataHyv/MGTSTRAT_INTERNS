@@ -227,6 +227,7 @@
         </div>
 
     <!------------ DATE COVERED BY ENGAGEMENT ------------>
+    @if ($data->program_dates != null)
         <div class="row justify-content-center mt-3" id="dcbe">
             <h5 class="text-center mt-5 fst-italic">Date Covered by Engagement</h5>
             @foreach ($DateOfEngagements as $key => $dates)
@@ -313,6 +314,10 @@
                 <hr class="mt-3">
             @endforeach
         </div>
+    @else
+
+    @endif
+
 </div>
 <!------------ END OF FORM BODY ------------>
 <script>
