@@ -24,13 +24,15 @@
             </div>
         </div>
 
+        @include('form.components.consultant_fees.create')
+
         {{-- message --}}
         {!! Toastr::message() !!}
         <section class="section">
             <div class="card">
                 <br>
                 <div class="card-header col-12 d-flex justify-content-left">
-                    <button type="" class="btn btn-primary me-1 mb-1" data-toggle="modal" data-target="#exampleModal">
+                    <button type="" class="btn btn-primary me-1 mb-1" data-toggle="modal" data-target="#ConsultantFeesModal">
                         <i class="bi bi-plus-square-dotted"> New Consultant Fees</i>
                     </button>
                 </div>
@@ -39,14 +41,32 @@
                     <table class="table table-striped" id="table1">
                         <thead>
                             <tr>
-                                <th class="text-center">ID</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Date Added</th>
-                                <th class="text-center">Modify</th>
+                                <th class="text-center text-uppercase">ID</th>
+                                <th class="text-uppercase">First Name</th>
+                                <th class="text-uppercase">Last Name</th>
+                                <th class="text-uppercase">Date Added</th>
+                                <th class="text-center text-uppercase">Modify</th>
                             </tr>
                         </thead>
                         <tbody>
+                            {{-- @foreach ($data as $key => $client) --}}
+                                <tr>
+                                    <td class="font-weight-bold text-center">1</td>
+                                    <td>Juan</td>
+                                    <td>Dela Cruz</td>
+                                    <td>Oct 20, 2022</td>
+                                    <td class="text-center">
+                                        <a href="#" >
+                                            <span class="badge bg-success"><i class="bi bi-pencil-square" data-target="#exampleModal"></i></span>
+                                        </a>
+
+                                        <a href="#"
+                                            onclick="return confirm('Are you sure to want to delete it?')"><span
+                                                class="badge bg-danger"><i class="bi bi-trash"></i></span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {{-- @endforeach --}}
                         </tbody>
                     </table>
                 </div>
@@ -68,8 +88,6 @@
     </div>
 
     {{-- F2F ENGAGEMENT SCRIPT --}}
-    <script type="text/javascript" src="/js/f2fform.js"></script>
-    <script type="text/javascript" src="/js/MultiStep.js"></script>
     <script type="text/javascript" src="/js/currencyFormat.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>

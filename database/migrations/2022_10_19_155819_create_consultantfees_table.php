@@ -15,6 +15,17 @@ class CreateConsultantfeesTable extends Migration
     {
         Schema::create('consultantfees', function (Blueprint $table) {
             $table->id();
+            $table->string('first_name', 30);
+            $table->string('last_name', 50);
+            $table->string('lead_faci')->nullable();
+            $table->string('co_lead')->nullable();
+            $table->string('co_lead_f2f')->nullable();
+            $table->string('co_faci')->nullable();
+            $table->string('lead_consultant')->nullable();
+            $table->string('consulting')->nullable();
+            $table->string('designer')->nullable();
+            $table->string('moderator')->nullable();
+            $table->string('producer')->nullable();
             $table->timestamps();
         });
     }
