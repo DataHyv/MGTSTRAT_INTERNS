@@ -5,7 +5,56 @@
 <!------------ END CARD HEADER ------------>
 
 <!------------ FORM BODY ------------>
+
     <div class="form-body container">
+        <div class="form-group row justify-content-center mb-5">
+            {{-- <div class="col-md-3">
+                <select class="js-example-basic-multiple" name="states[]" multiple="multiple">
+                    <option value="AL">Alabama</option>
+                    <option value="WY">Wyoming</option>
+                </select>
+            </div> --}}
+
+            <div class="col-md-3">
+                <label class="mb-1" for="formGroupClientInput">Client Name</label>
+                <select class="select2-hidden-accessible @error('client_id') is-invalid @enderror"
+                    id="client_id"
+                    name="client_id"
+                    style="width: 100%;"
+                    tabindex="-1"
+                    aria-hidden="true">
+                    <option value="Select">-- Select --</option>
+                    @foreach ($companyList as $key=>$client)
+                        <option value="{{ $client->id }}"
+                            data-first_eng={{ $client->first_eng }}>
+                            {{ $client->company_name }}
+                        </option>
+                    @endforeach
+                </select>
+                @error('client_id')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+
+            <div class="col-md-3">
+                <label for="formGroupBatchInput">Batch Name</label>
+                <input type="text" class="form-control" id="formGroupBatchInput">
+            </div>
+            <div class="col-md-3">
+                <label for="formGroupSessionInput">Session</label>
+                <input type="text" class="form-control" id="formGroupSessionInput">
+            </div>
+            <div class="col-lg-1 col-md-1">
+                <div class="px-0">
+                        <label class="fw-bold invisible overflow-hidden mb-4">Add</label>
+                        <a href="javascript:void(0)" class="text-success font-18 px-0" title="Add"
+                        id="addBatch"><i class="fa fa-plus"></i></a>
+                </div>
+            </div>
+        </div>
+
         <!------------ STATUS ------------>
             <div class="form-group row mb-4">
                 <div class="col-md-2">
@@ -69,7 +118,9 @@
                             <select class="input js-mytooltip form-select customized-type @error('') is-invalid @enderror"
                                 name="customized_type" id="" value="{{ old('customized_type') }}" data-mytooltip-content="<i>
                                     Please Choose
-                                    </i>" data-mytooltip-theme="dark" data-mytooltip-action="focus"
+                                    </i>"
+                                data-mytooltip-theme="dark"
+                                data-mytooltip-action="focus"
                                 data-mytooltip-direction="right">
                                 <option value="Hybrid" {{ old('') == 'Hybrid' ? 'selected="selected"' : '' }}>Hybrid
                                 </option>
@@ -121,14 +172,14 @@
 
         <!------------ CLIENT NAME ------------>
             {{-- @if(isset($companyList)) --}}
-            <div class="form-group row">
+            {{-- <div class="form-group row">
                 <div class="col-md-2">
                     <label class="fw-bold required">Client: </label>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group has-icon-left">
                         <div class="position-relative">
-                            <select class="select select2s-hidden-accessible @error('client_id') is-invalid @enderror"
+                            <select class="input form-select select2s-hidden-accessible @error('client_id') is-invalid @enderror"
                             id="client_id"
                             name="client_id"
                             style="width: 100%;"
@@ -153,7 +204,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             {{-- @endif --}}
         <!------------ ENGAGEMENT TITLE AND NUMBER OF PAX ------------>
             <div class="form-group row">
@@ -312,10 +363,8 @@
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
     $(document).ready(function() {
-        $('.select2s-hidden-accessible').select2({
-            // closeOnSelect: false
-            placeholder: 'Enter Client',
-            tags: true,
+        $('.select2-hidden-accessible').select2({
+            theme: "bootstrap",
         });
     });
 
