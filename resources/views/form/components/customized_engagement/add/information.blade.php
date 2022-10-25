@@ -5,58 +5,55 @@
 <!------------ END CARD HEADER ------------>
 
 <!------------ FORM BODY ------------>
-
     <div class="form-body container">
-        <div class="form-group row justify-content-center mb-5">
-            {{-- <div class="col-md-3">
-                <select class="js-example-basic-multiple" name="states[]" multiple="multiple">
-                    <option value="AL">Alabama</option>
-                    <option value="WY">Wyoming</option>
-                </select>
-            </div> --}}
+        <!------------ BATCHES ------------>
+            <div class="batch" id="batch">
+                <div class="form-group row justify-content-center batches" id="batches">
+                    <div class="col-md-3">
+                        <label for="formGroupClientInput">Client Name</label>
+                        <select class="input form-select form-control @error('client_id') is-invalid @enderror"
+                            id="client_id"
+                            name="client_id"
+                            style="width: 100%;"
+                            tabindex="-1"
+                            aria-hidden="true">
+                            <option value="Select">-- Select --</option>
+                            @foreach ($companyList as $key=>$client)
+                                <option value="{{ $client->id }}"
+                                    data-first_eng={{ $client->first_eng }}>
+                                    {{ $client->company_name }}
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('client_id')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
 
-            <div class="col-md-3">
-                <label class="mb-1" for="formGroupClientInput">Client Name</label>
-                <select class="select2-hidden-accessible @error('client_id') is-invalid @enderror"
-                    id="client_id"
-                    name="client_id"
-                    style="width: 100%;"
-                    tabindex="-1"
-                    aria-hidden="true">
-                    <option value="Select">-- Select --</option>
-                    @foreach ($companyList as $key=>$client)
-                        <option value="{{ $client->id }}"
-                            data-first_eng={{ $client->first_eng }}>
-                            {{ $client->company_name }}
-                        </option>
-                    @endforeach
-                </select>
-                @error('client_id')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
+                    <div class="col-md-3">
+                        <label for="formGroupBatchInput">Batch Name</label>
+                        <input type="text" class="form-control" id="formGroupBatchInput">
+                    </div>
 
-            <div class="col-md-3">
-                <label for="formGroupBatchInput">Batch Name</label>
-                <input type="text" class="form-control" id="formGroupBatchInput">
-            </div>
-            <div class="col-md-3">
-                <label for="formGroupSessionInput">Session</label>
-                <input type="text" class="form-control" id="formGroupSessionInput">
-            </div>
-            <div class="col-lg-1 col-md-1">
-                <div class="px-0">
-                        <label class="fw-bold invisible overflow-hidden mb-4">Add</label>
-                        <a href="javascript:void(0)" class="text-success font-18 px-0" title="Add"
-                        id="addBatch"><i class="fa fa-plus"></i></a>
+                    <div class="col-md-3">
+                        <label for="formGroupSessionInput">Session</label>
+                        <input type="text" class="form-control" id="formGroupSessionInput">
+                    </div>
+
+                    <div class="col-lg-1 col-md-1">
+                        <div class="px-0">
+                                <label class="fw-bold invisible overflow-hidden mb-4">Add</label>
+                                <a href="javascript:void(0)" class="text-success font-18 px-0" title="Add"
+                                id="addBatch"><i class="fa fa-plus"></i></a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
 
         <!------------ STATUS ------------>
-            <div class="form-group row mb-4">
+            <div class="form-group row mb-4 mt-5">
                 <div class="col-md-2">
                     <label class="fw-bold required">Status: </label>
                 </div>
@@ -172,14 +169,14 @@
 
         <!------------ CLIENT NAME ------------>
             {{-- @if(isset($companyList)) --}}
-            {{-- <div class="form-group row">
+            <div class="form-group row">
                 <div class="col-md-2">
                     <label class="fw-bold required">Client: </label>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group has-icon-left">
                         <div class="position-relative">
-                            <select class="input form-select select2s-hidden-accessible @error('client_id') is-invalid @enderror"
+                            <select class="input form-select select2-hidden-accessible @error('client_id') is-invalid @enderror"
                             id="client_id"
                             name="client_id"
                             style="width: 100%;"
@@ -204,7 +201,7 @@
                         </div>
                     </div>
                 </div>
-            </div> --}}
+            </div>
             {{-- @endif --}}
         <!------------ ENGAGEMENT TITLE AND NUMBER OF PAX ------------>
             <div class="form-group row">
@@ -360,15 +357,98 @@
             </div>
     </div>
 <!------------ END OF FORM BODY ------------>
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
+    //DYNAMIC BATCH
     $(document).ready(function() {
+        //DROPDOWN WITH SEARCH INPUT FUNCTION
         $('.select2-hidden-accessible').select2({
-            theme: "bootstrap",
+            theme: 'bootstrap',
+            width: 'resolve',
+        });
+
+        //BATCH NUMBER AND SESSION
+        var batch = 1;
+        $("#addBatch").on("click", function() {
+            // Adding a row inside the tbody.
+            $("#batch").append(`
+            <div class="form-group row justify-content-center batches" id="batches${batch}">
+                <div class="col-md-3">
+                    <label class="mb-1" for="formGroupClientInput">Client Name</label>
+                    <select class="input form-select form-control @error('client_id') is-invalid @enderror"
+                        id="client_id"
+                        name="client_id"
+                        style="width: 100%;"
+                        tabindex="-1"
+                        aria-hidden="true">
+                        <option value="Select">-- Select --</option>
+                        @foreach ($companyList as $key=>$client)
+                            <option value="{{ $client->id }}"
+                                data-first_eng={{ $client->first_eng }}>
+                                {{ $client->company_name }}
+                            </option>
+                        @endforeach
+                    </select>
+                    @error('client_id')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+
+                <div class="col-md-3">
+                    <label for="formGroupBatchInput">Batch Name</label>
+                    <input type="text" class="form-control" id="formGroupBatchInput">
+                </div>
+
+                <div class="col-md-3">
+                    <label for="formGroupSessionInput">Session</label>
+                    <input type="text" class="form-control" id="formGroupSessionInput">
+                </div>
+
+                <div class="col-lg-1 col-md-1">
+                    <div class="px-0">
+                        <label class="fw-bold invisible overflow-hidden mb-4">Add</label>
+                        <a href="javascript:void(0)" class="text-danger font-18 remove px-0" title="Remove">
+                            <i class="fa fa-trash-o"></i>
+                        </a>
+                    </div>
+                </div
+            </div>
+            `);
+            $('.select2-hidden-accessibles').select2({
+                theme: 'bootstrap',
+                width: 'resolve'
+            });
+        });
+        //DELETE ROW FUNCTION
+        $("#batch").on("click", ".remove", function () {
+            // Getting all the rows next to the row
+            // containing the clicked button
+            var child = $(this).closest('.batches').nextAll();
+
+            // Iterating across all the rows
+            // obtained to change the index
+            child.each(function () {
+                // Getting <tr> id.
+                var id = $(this).attr("id");
+
+                // Gets the row number from <tr> id.
+                var dig = parseInt(id.substring(8));
+
+                // Modifying row id.
+                $(this).attr("id", `batches${dig - 1}`);
+            });
+
+            // Removing the current row.
+            $(this).closest('.batches').remove();
+
+            // Decreasing total number of rows by 1.
+            batch--;
         });
     });
 
-    $('document').ready(function() {
+    //DYNAMIC PROGRAM DATES
+    $(document).ready(function() {
         //DATE OF ENGAGEMENT
         var dates = 1;
         $("#addDates").on("click", function() {

@@ -106,9 +106,12 @@
                                         </td>
                                         <td class="fw-bold text-center">{{ \Carbon\Carbon::parse($item->created_at)->toFormattedDateString()}}</td>
                                         <td class="text-center fw-bold text-center">
-                                            <a href="">
+                                            <a href=".bd-example-modal-lg" data-toggle="modal" data-target=".bd-example-modal-lg">
                                                 <span class="badge bg-info"><i class="bi bi-person-plus-fill"></i></span>
                                             </a>
+                                            {{-- <button type="button" data-toggle="modal" data-target=".bd-example-modal-lg">
+                                                <span class="badge bg-info"><i class="bi bi-person-plus-fill"></i></span>
+                                            </button> --}}
                                             <a href="{{ url('form/customizedEngagement/detail/' . $item->cstmzd_eng_form_id) }}">
                                                 <span class="badge bg-success"><i class="bi bi-pencil-square"></i></span>
                                             </a>
@@ -155,6 +158,70 @@
                                     </div>
                                     <!-- /Delete Customized Engagement Modal -->
                                 @endforeach
+
+                                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                              <h5 class="modal-title">Add Batches</h5>
+                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                              </button>
+                                            </div>
+                                            <div class="modal-body">
+
+                                                <div class="batch" id="batch">
+                                                    <div class="form-group row justify-content-center batches" id="batches">
+                                                        <div class="col-md-3">
+                                                            <label class="mb-2" for="formGroupClientInput">Client Name</label>
+                                                            <input class="input form-control @error('client_id') is-invalid @enderror" id="" name="">
+                                                            @error('client_id')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <label class="mb-2" for="formGroupBatchInput">Batch Name</label>
+                                                            <input type="text" class="form-control" id="formGroupBatchInput">
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <label class="mb-2" for="formGroupSessionInput">Session</label>
+                                                            <input type="text" class="form-control" id="formGroupSessionInput">
+                                                        </div>
+                                                        <div class="col-md-2 mt-4 pt-3">
+                                                            <div class="form-group">
+                                                                <input class="form-check-input" type="checkbox" id="gridCheck">
+                                                                <label class="form-check-label" for="gridCheck">
+                                                                  Same Data
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-1 col-md-1">
+                                                            <div class="px-0">
+                                                                <label class="fw-bold invisible overflow-hidden mb-3">Add</label>
+                                                                <a href="javascript:void(0)" class="text-success font-18 px-0" title="Add"
+                                                                id="addBatch"><i class="fa fa-plus"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {{-- <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" id="gridCheck">
+                                                        <label class="form-check-label" for="gridCheck">
+                                                          Check me out
+                                                        </label>
+                                                    </div> --}}
+                                                </div>
+
+                                            </div>
+                                            <div class="modal-footer">
+                                              <button type="button" class="btn btn-primary">Save changes</button>
+                                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </tbody>
                         </table>
                     </div>
@@ -181,6 +248,84 @@
         var _this = $(this).parents('tr');
         $('.e_id').val(_this.find('.ids').text());
         $('.budget_number').val(_this.find('.budget_number').text());
+    });
+
+    $(document).ready(function() {
+        // $('.select2-hidden-accessible').select2({
+        //     theme: 'bootstrap',
+        //     width: 'resolve',
+        // });
+
+        var batch = 1;
+        $("#addBatch").on("click", function() {
+            // Adding a row inside the tbody.
+            $("#batch").append(`
+            <div class="form-group row justify-content-center batches" id="batches${batch}">
+                <div class="col-md-3">
+                    <label class="mb-2" for="formGroupClientInput">Client Name</label>
+                    <input class="input form-control @error('client_id') is-invalid @enderror" id="" name="">
+                    @error('client_id')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+
+                <div class="col-md-3">
+                    <label class="mb-2" for="formGroupBatchInput">Batch Name</label>
+                    <input type="text" class="form-control" id="formGroupBatchInput">
+                </div>
+
+                <div class="col-md-3">
+                    <label class="mb-2" for="formGroupSessionInput">Session</label>
+                    <input type="text" class="form-control" id="formGroupSessionInput">
+                </div>
+
+                <div class="col-md-2 mt-4 pt-3">
+                    <div class="form-group">
+                        <input class="form-check-input" type="checkbox" id="gridCheck">
+                        <label class="form-check-label" for="gridCheck">
+                            Same Data
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-lg-1 col-md-1">
+                    <div class="px-0">
+                        <label class="fw-bold invisible overflow-hidden mb-4">Add</label>
+                        <a href="javascript:void(0)" class="text-danger font-18 remove px-0" title="Remove">
+                            <i class="fa fa-trash-o"></i>
+                        </a>
+                    </div>
+                </div
+            </div>
+            `);
+        });
+
+        $("#batches").on("click", ".remove", function () {
+            // Getting all the rows next to the row
+            // containing the clicked button
+            var child = $(this).closest('.d-flex').nextAll();
+
+            // Iterating across all the rows
+            // obtained to change the index
+            child.each(function () {
+                // Getting <tr> id.
+                var id = $(this).attr("id");
+
+                // Gets the row number from <tr> id.
+                var dig = parseInt(id.substring(7));
+
+                // Modifying row id.
+                $(this).attr("id", `batch${dig - 1}`);
+            });
+
+            // Removing the current row.
+            $(this).closest('.d-none').remove();
+
+            // Decreasing total number of rows by 1.
+            dates--;
+        });
     });
 </script>
 
