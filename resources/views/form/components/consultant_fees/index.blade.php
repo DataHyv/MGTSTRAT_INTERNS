@@ -27,7 +27,10 @@
         @include('form.components.consultant_fees.create')
 
         {{-- message --}}
-        {!! Toastr::message() !!}
+        {{-- {!! Alert::message() !!} --}}
+        {{-- @if(session('status'))
+            <div class="alert alert-success">{{ session('status') }}</div>
+        @endif --}}
         <section class="section">
             <div class="card">
                 <br>
@@ -41,7 +44,7 @@
                     <table class="table table-striped" id="table1">
                         <thead>
                             <tr>
-                                <th class="text-center text-uppercase">ID</th>
+                                <th class="text-center text-uppercase">#</th>
                                 <th class="text-uppercase">First Name</th>
                                 <th class="text-uppercase">Last Name</th>
                                 <th class="text-uppercase">Date Added</th>
@@ -49,14 +52,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @foreach ($data as $key => $client) --}}
+                            @foreach ($consultantFee as $key => $data)
                                 <tr>
-                                    <td class="font-weight-bold text-center">1</td>
-                                    <td>Juan</td>
-                                    <td>Dela Cruz</td>
-                                    <td>Oct 20, 2022</td>
+                                    <td class="font-weight-bold text-center">{{++$key}}</td>
+                                    <td>{{$data->first_name}}</td>
+                                    <td>{{$data->last_name}}</td>
+                                    <td>{{ \Carbon\Carbon::parse($data->created_at)->toFormattedDateString()}}</td>
                                     <td class="text-center">
-                                        <a href="#" >
+                                        <a href="{{ url('form/consultant-fees/'.$data->id.'/edit') }}" >
                                             <span class="badge bg-success"><i class="bi bi-pencil-square" data-target="#exampleModal"></i></span>
                                         </a>
 
@@ -66,7 +69,7 @@
                                         </a>
                                     </td>
                                 </tr>
-                            {{-- @endforeach --}}
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

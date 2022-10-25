@@ -15,7 +15,7 @@
                 {{-- <div class="card"> --}}
                     {{-- <div class="card-content"> --}}
                         <div class="modal-body">
-                            <form method="POST" action="{{ route('client/add/save') }}" class="form form-horizontal"
+                            <form method="POST" action="{{ url('form/consultant-fees') }}" class="form form-horizontal"
                                 enctype="multipart/form-data" autocomplete="off">
                                 @csrf
 
@@ -73,7 +73,7 @@
                                 <div class="form-group row justify-content-center">
                                     <label for="inputConsulting" class="col-md-3 col-form-label">Consulting</label>
                                     <div class="col-md-8">
-                                    <input type="text" class="form-control" id="" placeholder="" data-type="currency" name="onsulting">
+                                    <input type="text" class="form-control" id="" placeholder="" data-type="currency" name="consulting">
                                     </div>
                                 </div>
 
@@ -99,7 +99,7 @@
                                 </div>
 
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary">Save</button>
+                                    <button type="submit" class="btn btn-primary">Save</button>
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 </div>
 
