@@ -44,7 +44,7 @@
             <div class="col-md-3">
                 <div class="form-group has-icon-left">
                     <div class="position-relative">
-                        <input type="text" class="form-control @error('batch_number') is-invalid @enderror" value="{{ $data->batch_number }}" name="batch_number" id="BatchNumber" readonly>
+                        <input type="text" class="form-control @error('batch_number') is-invalid @enderror" value="{{ $data->batch_number }}" name="batch_number" id="BatchNumber">
                         <div class="form-control-icon">
                             <i class="fa-solid fa-file-lines"></i>
                         </div>

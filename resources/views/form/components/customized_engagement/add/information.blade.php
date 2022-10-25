@@ -11,9 +11,9 @@
                 <div class="form-group row justify-content-center batches" id="batches">
                     <div class="col-md-3">
                         <label for="formGroupClientInput">Client Name</label>
-                        <select class="input form-select form-control @error('client_id') is-invalid @enderror"
+                        <select class="input form-select form-control @error('') is-invalid @enderror"
                             id="client_id"
-                            name="client_id"
+                            name=""
                             style="width: 100%;"
                             tabindex="-1"
                             aria-hidden="true">
@@ -25,7 +25,7 @@
                                 </option>
                             @endforeach
                         </select>
-                        @error('client_id')
+                        @error('')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -81,14 +81,14 @@
                 </div>
             </div>
 
-            <div class="form-group row d-none">
+            <div class="form-group row">
                 <div class="col-md-2">
                     <label class="fw-bold required">Batch Number: </label>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group has-icon-left">
                         <div class="position-relative">
-                            <input type="text" class="form-control @error('batch_number') is-invalid @enderror" value="" name="batch_number" id="BatchNumber" readonly>
+                            <input type="text" class="form-control @error('batch_number') is-invalid @enderror" value="" name="batch_number" id="BatchNumber">
                             <div class="form-control-icon">
                                 <i class="fa-solid fa-file-lines"></i>
                             </div>
