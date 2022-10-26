@@ -17,15 +17,15 @@ class CreateConsultantfeesTable extends Migration
             $table->id();
             $table->string('first_name', 30);
             $table->string('last_name', 50);
-            $table->string('lead_faci')->nullable();
-            $table->string('co_lead')->nullable();
-            $table->string('co_lead_f2f')->nullable();
-            $table->string('co_faci')->nullable();
-            $table->string('lead_consultant')->nullable();
-            $table->string('consulting')->nullable();
-            $table->string('designer')->nullable();
-            $table->string('moderator')->nullable();
-            $table->string('producer')->nullable();
+            $table->float('lead_faci')->nullable();
+            $table->float('co_lead')->nullable();
+            $table->float('co_lead_f2f')->nullable();
+            $table->float('co_faci')->nullable();
+            $table->float('lead_consultant')->nullable();
+            $table->float('consulting')->nullable();
+            $table->float('designer')->nullable();
+            $table->float('moderator')->nullable();
+            $table->float('producer')->nullable();
             $table->timestamps();
         });
     }
