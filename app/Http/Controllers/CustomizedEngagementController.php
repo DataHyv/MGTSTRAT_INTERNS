@@ -211,7 +211,7 @@ class CustomizedEngagementController extends Controller
                 'id'                    => $request->id,
                 'status'                => $request->status,
                 'customized_type'       => $request->customized_type,
-                'batch_number'          => $request->batch_number,
+                'batch_name'            => $request->batch_name,
                 'ga_percent'            => $request->ga_percent,
                 'client_id'             => $request->client_id,
                 'engagement_title'      => $request->engagement_title,
