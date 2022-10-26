@@ -7,7 +7,7 @@
 <!------------ FORM BODY ------------>
     <div class="form-body container">
         <!------------ BATCHES ------------>
-            <div class="batch" id="batch">
+            {{-- <div class="batch" id="batch">
                 <div class="form-group row justify-content-center batches" id="batches">
                     <div class="col-md-3">
                         <label for="formGroupClientInput">Client Name</label>
@@ -50,7 +50,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
         <!------------ STATUS ------------>
             <div class="form-group row mb-4 mt-5">
@@ -83,17 +83,17 @@
 
             <div class="form-group row">
                 <div class="col-md-2">
-                    <label class="fw-bold required">Batch Number: </label>
+                    <label class="fw-bold required">Batch Name: </label>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group has-icon-left">
                         <div class="position-relative">
-                            <input type="text" class="form-control @error('batch_number') is-invalid @enderror" value="" name="batch_number" id="BatchNumber">
+                            <input type="text" class="form-control @error('batch_name') is-invalid @enderror" value="" name="batch_name" id="Batchname">
                             <div class="form-control-icon">
                                 <i class="fa-solid fa-file-lines"></i>
                             </div>
                             <div class="invalid-feedback">
-                            @error('batch_number')
+                            @error('batch_name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

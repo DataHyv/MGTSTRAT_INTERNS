@@ -59,7 +59,7 @@
                                     <tr>
                                         <td hidden class="ids">{{ $item->id }}</td>
                                         <td hidden class="budget_number">{{ $item->cstmzd_eng_form_id }}</td>
-                                        <td class="id text-center text-uppercase fw-bold">{{ $item->batch_number }}</td>
+                                        <td class="id text-center text-uppercase fw-bold">{{ $item->batch_name }}</td>
                                         <td class="text-center">
                                             <span id="status" class="badge">{{ $item->status }}</span>
                                             {{-- Automatic change the status color --}}
