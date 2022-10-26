@@ -46,9 +46,17 @@
                         <thead>
                             <tr>
                                 <th class="text-center text-uppercase">#</th>
-                                <th class="text-uppercase">First Name</th>
-                                <th class="text-uppercase">Last Name</th>
-                                <th class="text-uppercase">Date Added</th>
+                                <th class="text-center">Name</th>
+                                <th class="text-center">Lead Facilitator</th>
+                                <th class="text-center">Co-lead</th>
+                                <th class="text-center">Co-lead f2f</th>
+                                <th class="text-center">Co-facilitator</th>
+                                <th class="text-center">Lead Consultant</th>
+                                <th class="text-center">Consulting</th>
+                                <th class="text-center">Designer</th>
+                                <th class="text-center">Moderator</th>
+                                <th class="text-center">Producer</th>
+                                <th class="text-center">Date Added</th>
                                 <th class="text-center text-uppercase">Modify</th>
                             </tr>
                         </thead>
@@ -56,9 +64,39 @@
                             @foreach ($consultantFee as $key => $data)
                                 <tr>
                                     <td class="font-weight-bold text-center">{{++$key}}</td>
-                                    <td>{{$data->first_name}}</td>
-                                    <td>{{$data->last_name}}</td>
-                                    <td>{{ \Carbon\Carbon::parse($data->created_at)->toFormattedDateString()}}</td>
+                                    <td class="text-center">
+                                        {{$data->first_name}} {{$data->last_name}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{number_format($data->lead_faci, 2)}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{number_format($data->co_lead, 2)}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{number_format($data->co_lead_f2f, 2)}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{number_format($data->co_faci, 2)}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{number_format($data->lead_consultant, 2)}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{number_format($data->consulting, 2)}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{number_format($data->designer, 2)}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{number_format($data->moderator, 2)}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{number_format($data->producer, 2)}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{ \Carbon\Carbon::parse($data->created_at)->toFormattedDateString()}}
+                                    </td>
                                     <td class="text-center">
                                         {{-- <a href="{{ url('form/consultant-fees/'.$data->id.'/edit') }}" > --}}
                                         <a href="#editModal"  data-toggle="modal" data-target="#editModal" >
