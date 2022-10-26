@@ -174,7 +174,7 @@
                                                     <div class="form-group row justify-content-center batches" id="batches">
                                                         <div class="col-md-3">
                                                             <label class="mb-2" for="formGroupClientInput">Client Name</label>
-                                                            <input class="input form-control @error('client_id') is-invalid @enderror" id="" name="">
+                                                            <input class="input form-control @error('client_id') is-invalid @enderror" id="" name="" value="MGT_STRAT" readonly>
                                                             @error('client_id')
                                                                 <span class="invalid-feedback" role="alert">
                                                                     <strong>{{ $message }}</strong>
@@ -263,7 +263,7 @@
             <div class="form-group row justify-content-center batches" id="batches${batch}">
                 <div class="col-md-3">
                     <label class="mb-2" for="formGroupClientInput">Client Name</label>
-                    <input class="input form-control @error('client_id') is-invalid @enderror" id="" name="">
+                    <input class="input form-control @error('client_id') is-invalid @enderror" id="" name="" value="MGT_STRAT" readonly>
                     @error('client_id')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
