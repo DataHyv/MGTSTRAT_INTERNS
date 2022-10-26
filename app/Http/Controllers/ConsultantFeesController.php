@@ -17,8 +17,8 @@ class ConsultantFeesController extends Controller
      */
     public function index()
     {
-        // $consultantFee = DB::table('consultantfees')->get();
-        $consultantFee = ConsultantFee::all();
+        $consultantFee = DB::table('consultantfees')->latest()->get();
+        // $consultantFee = ConsultantFee::all();
         return view('form.components.consultant_fees.index',compact('consultantFee'));
     }
 

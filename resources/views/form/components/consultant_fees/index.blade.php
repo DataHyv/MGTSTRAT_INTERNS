@@ -25,6 +25,7 @@
         </div>
 
         @include('form.components.consultant_fees.create')
+        @include('form.components.consultant_fees.edit')
 
         {{-- message --}}
         {{-- {!! Alert::message() !!} --}}
@@ -59,8 +60,9 @@
                                     <td>{{$data->last_name}}</td>
                                     <td>{{ \Carbon\Carbon::parse($data->created_at)->toFormattedDateString()}}</td>
                                     <td class="text-center">
-                                        <a href="{{ url('form/consultant-fees/'.$data->id.'/edit') }}" >
-                                            <span class="badge bg-success"><i class="bi bi-pencil-square" data-target="#exampleModal"></i></span>
+                                        {{-- <a href="{{ url('form/consultant-fees/'.$data->id.'/edit') }}" > --}}
+                                        <a href="#editModal"  data-toggle="modal" data-target="#editModal" >
+                                            <span class="badge bg-success"><i class="bi bi-pencil-square"></i></span>
                                         </a>
 
                                         <a href="#"

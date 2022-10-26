@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 @extends('layouts.master')
 @section('menu')
-    @extends('sidebar.clients_side_bar')
+    @extends('sidebar.dashboard')
 @endsection
 @section('content')
     <div id="main">
@@ -29,7 +29,7 @@
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
-                            <form method="POST" action="{{ route('update') }}" class="form form-horizontal"  
+                            <form method="POST" action="{{ route('update') }}" class="form form-horizontal"
                                 enctype="multipart/form-data">
                                 @csrf
                                 <input type="hidden" name="id" value="{{ $dataClnt[0]->id }}">
