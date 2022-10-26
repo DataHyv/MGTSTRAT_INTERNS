@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{{ URL::asset('css/custom.css') }}">
 @extends('layouts.master')
 @section('menu')
-    @extends('sidebar.form_staff')
+    @extends('sidebar.dashboard')
 @endsection
 @section('content')
     <div id="main">

@@ -1,7 +1,7 @@
 @section('title', 'Update Record')
 @extends('layouts.master')
 @section('menu')
-    @extends('sidebar.viewrecord')
+    @extends('sidebar.dashboard')
 @endsection
 @section('content')
     <div id="main">

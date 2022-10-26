@@ -322,7 +322,7 @@ document.getElementById("ec_Programexpenses").defaultValue = 2 + "%";
 //Customized Engagement form of Engagement Fees
 $(document).on(
     "change keyup click",
-    ".f2f-customized-type, .f2f-ga-only-dropdown, .removed, #remove, #f2f-ef-table, #f2f-ec-table",
+    ".f2f-customized-type, .ga-only-dropdown, .removed, #remove, #f2f-ef-table, #f2f-ec-table",
     function () {
         //customized type
         $(".f2f-customized-type").each(function () {
@@ -432,7 +432,7 @@ $(document).on(
         ecDocumentor = 0;
 
         //customized type
-        var gaPercentage = $(".customized-type");
+        var gaPercentage = $(".f2f-customized-type");
 
         /*******************************************************CONSULTING*********************************************************************/
         //Lead consultant
@@ -459,8 +459,8 @@ $(document).on(
 
             if (
                 gaPercentage.val() == "G.A Hybrid" ||
-                gaPercentage.val() == "G.A Virtual"
-            ) {
+                gaPercentage.val() == "G.A Virtual")
+                {
                 sumLc +=
                     sumLc *
                     (document.getElementById("ga-only-dropdown").value / 100);

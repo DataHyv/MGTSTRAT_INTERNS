@@ -18,7 +18,7 @@ class CeTbl extends Migration
             $table->foreignId('client_id')->nullable()->constrained()->onDelete('cascade');
             $table->string('cstmzd_eng_form_id', 15);
             $table->string('status', 15)->nullable();
-            $table->string('batch_number', 100)->nullable();
+            $table->string('batch_name', 100)->nullable();
             $table->string('customized_type', 50)->nullable();
             $table->string('ga_percent', 4)->nullable();
             $table->string('engagement_title', 100)->nullable();

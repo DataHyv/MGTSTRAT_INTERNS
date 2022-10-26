@@ -17,8 +17,8 @@
                         {{-- <td class="add-row border border-white" scope="col"></td> --}}
                     </tr>
                 </thead>
-        
-           
+
+
 <!------------------------------------------------CONSULTING------------------------------------------------------------------>
                     <tr class="th-blue-grey-lighten">
                         <th class="px-4 title  ">1. CONSULTING/ DESIGN</th>
@@ -27,7 +27,7 @@
                         <th></th>
                         <th class="total-td"></th>
                         <th class="total-td"></th>
-                        
+
                     </tr>
 <!------------------------------------------------CUSTOMIZATION FEE----------------------------------------------------------->
                     <tbody id="tableLeadconsultant">
@@ -36,14 +36,14 @@
                         <td>
                             <fieldset>
                                 <select class="form-select hf-c13 input js-mytooltip @error('') is-invalid @enderror"
-                                    name="ef_customizationFeePfv" 
+                                    name="ef_customizationFeePfv"
                                     id="ef_LeadconsultantHf"
-                                    data-mytooltip-content="<i>P15,000 - with minimal design customization, 
-                                        or platform customization outside of Zoom/Goggle Meets/MS Teams. 
+                                    data-mytooltip-content="<i>P15,000 - with minimal design customization,
+                                        or platform customization outside of Zoom/Goggle Meets/MS Teams.
                                         Up to 2 hours of works</i>"
                                     data-mytooltip-theme="dark"
-                                    data-mytooltip-action="focus" 
-                                    data-mytooltip-direction="right" 
+                                    data-mytooltip-action="focus"
+                                    data-mytooltip-direction="right"
                                     style="background-color:#ffcccc; color:red;">
                                     <option value="0" {{ old('') == '0' ? 'selected="selected"' : '' }} selected>
                                         &#8369;0
@@ -61,33 +61,33 @@
                         </td>
                         <td data-title="# OF SESSIONS">
                             <input type="number" class="input  input-table form-control  @error('') is-invalid @enderror"
-                                value="{{ old('') }}" 
-                                name="ef_customizationFeeNos" 
-                                id="ef_customizationFeeNos" 
-                                title="" 
+                                value="{{ old('') }}"
+                                name="ef_customizationFeeNos"
+                                id="ef_customizationFeeNos"
+                                title=""
                                 max="100"
                                 data-mytooltip-content="<i></i>"
                                 data-mytooltip-theme="dark"
-                                data-mytooltip-action="focus" 
+                                data-mytooltip-action="focus"
                                 data-mytooltip-direction="bottom">
                         </td>
                         <td data-title="# NIGHT SHIFT, WEEKENDS HOLIDAYS">
                             <input type="number" class="input  input-table form-control  @error('') is-invalid @enderror"
-                                value="{{ old('') }}" 
-                                name="ef_customizationFeeNsw" 
-                                id="eef_customizationFeeNsw" 
-                                title="" 
+                                value="{{ old('') }}"
+                                name="ef_customizationFeeNsw"
+                                id="eef_customizationFeeNsw"
+                                title=""
                                 max="100"
                                 data-mytooltip-content="<i></i>"
                                 data-mytooltip-theme="dark"
-                                data-mytooltip-action="focus" 
+                                data-mytooltip-action="focus"
                                 data-mytooltip-direction="bottom">
                         </td>
                         <td class="total-td">
                                 <h4 class="text-center lead" id="ef_customizationFeeTotal">-</h4>
                         </td>
                         <td class="total-td">
-                            <input type="text" class="form-control input-table @error('') is-invalid @enderror" 
+                            <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}"name="" id="">
                         </td>
                         <td style="background-color: #FFFFFF;" class="border border-white"><a href="javascript:void(0)"
@@ -106,7 +106,7 @@
                         </td>
                         <td class="total-td">
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" 
+                                value="{{ old('') }}"
                                 name="" id="">
                         </td>
                         <td class="border border-white"></td>
@@ -127,7 +127,7 @@
                         <td>
                             <fieldset>
                                 <select class="form-select hf-c13 input js-mytooltip @error('') is-invalid @enderror"
-                                    name="ef_package1FeePfv" 
+                                    name="ef_package1FeePfv"
                                     id="f_package1FeePf"
                                     data-mytooltip-content="<i>P35,000 - 1.5-2 hour session<br>
                                         P45,000 - 2.5-3 hour session
@@ -136,8 +136,8 @@
                                         P31,500 - 1.5-2 hour session<br>
                                         P40,500 - 2.5-3 hour session</i>"
                                     data-mytooltip-theme="dark"
-                                    data-mytooltip-action="focus" 
-                                    data-mytooltip-direction="right" 
+                                    data-mytooltip-action="focus"
+                                    data-mytooltip-direction="right"
                                     style="background-color:#ffcccc; color:red;">
                                     <option value="31500" {{ old('') == '31500' ? 'selected="selected"' : '' }}>
                                         &#8369;31,500
@@ -161,33 +161,33 @@
                         </td>
                         <td data-title="# OF SESSIONS">
                             <input type="number" class="input js-mytooltip input-table form-control  @error('') is-invalid @enderror"
-                                value="1" 
-                                name="ef_package1FeeNos" 
-                                id="ef_package1FeeNos" 
-                                title="" 
+                                value="1"
+                                name="ef_package1FeeNos"
+                                id="ef_package1FeeNos"
+                                title=""
                                 max="100"
                                 data-mytooltip-content="<i>Minimum is 1 session</i>"
                                 data-mytooltip-theme="dark"
-                                data-mytooltip-action="focus" 
+                                data-mytooltip-action="focus"
                                 data-mytooltip-direction="bottom">
                         </td>
                         <td data-title="NIGHT SHIFT, WEEKENDS HOLIDAYS *">
                             <input type="number" class="input  input-table form-control  @error('') is-invalid @enderror"
-                                value="{{ old('') }}" 
-                                name="ef_package1FeeNsw" 
-                                id="ef_package1FeeNsw" 
-                                title="" 
+                                value="{{ old('') }}"
+                                name="ef_package1FeeNsw"
+                                id="ef_package1FeeNsw"
+                                title=""
                                 max="100"
                                 data-mytooltip-content="<i></i>"
                                 data-mytooltip-theme="dark"
-                                data-mytooltip-action="focus" 
+                                data-mytooltip-action="focus"
                                 data-mytooltip-direction="bottom">
                         </td>
                         <td class="total-td">
                                 <h4 class="text-center lead" id="ef_package1FeeTotal">-</h4>
                         </td>
                         <td class="total-td">
-                            <input type="text" class="form-control input-table @error('') is-invalid @enderror" 
+                            <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}"name="" id="">
                         </td>
                         <td style="background-color: #FFFFFF;" class="border border-white"><a href="javascript:void(0)"
@@ -202,17 +202,17 @@
                         <td>
                             <fieldset>
                                 <select class="form-select hf-c13 input js-mytooltip @error('') is-invalid @enderror"
-                                    name="ef_package2FeePfv" 
+                                    name="ef_package2FeePfv"
                                     id="ef_package2FeePfv"
                                     data-mytooltip-content="<i>P45,000 - 1.5-2 hour session<br>
                                         P55,000 - 2.5-3 hour session<br>
-                                        
+
                                         For Key Accounts with minimum guaranteed 50 sessions w/in 6 months<br>
                                         P40,500 - 1.5-2 hour session<br>
                                         P49,500 - 2.5-3 hour session</i>"
                                     data-mytooltip-theme="dark"
-                                    data-mytooltip-action="focus" 
-                                    data-mytooltip-direction="right" 
+                                    data-mytooltip-action="focus"
+                                    data-mytooltip-direction="right"
                                     style="background-color:#ffcccc; color:red;">
                                     <option value="40500" {{ old('') == '40500' ? 'selected="selected"' : '' }} >
                                         &#8369;40,500
@@ -236,33 +236,33 @@
                         </td>
                         <td data-title="# OF SESSIONS">
                             <input type="number" class="input js-mytooltip input-table form-control  @error('') is-invalid @enderror"
-                                value="{{ old('') }}" 
-                                name="ef_package2FeeNos" 
-                                id="ef_package2FeeNos" 
-                                title="" 
+                                value="{{ old('') }}"
+                                name="ef_package2FeeNos"
+                                id="ef_package2FeeNos"
+                                title=""
                                 max="100"
                                 data-mytooltip-content="<i>Minimum is 1 session</i>"
                                 data-mytooltip-theme="dark"
-                                data-mytooltip-action="focus" 
+                                data-mytooltip-action="focus"
                                 data-mytooltip-direction="bottom">
                         </td>
                         <td data-title="NIGHT SHIFT, WEEKENDS HOLIDAYS *">
                             <input type="number" class="input  input-table form-control  @error('') is-invalid @enderror"
-                                value="{{ old('') }}" 
-                                name="ef_package2FeeNsw" 
-                                id="eef_package2FeeNsw" 
-                                title="" 
+                                value="{{ old('') }}"
+                                name="ef_package2FeeNsw"
+                                id="eef_package2FeeNsw"
+                                title=""
                                 max="100"
                                 data-mytooltip-content="<i></i>"
                                 data-mytooltip-theme="dark"
-                                data-mytooltip-action="focus" 
+                                data-mytooltip-action="focus"
                                 data-mytooltip-direction="bottom">
                         </td>
                         <td class="total-td">
                                 <h4 class="text-center lead" id="ef_package2FeeTotal">-</h4>
                         </td>
                         <td class="total-td">
-                            <input type="text" class="form-control input-table @error('') is-invalid @enderror" 
+                            <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}"name="" id="">
                         </td>
                         <td style="background-color: #FFFFFF;" class="border border-white"><a href="javascript:void(0)"
@@ -277,14 +277,14 @@
                         <td>
                             <fieldset>
                                 <select class="form-select hf-c13 input js-mytooltip @error('') is-invalid @enderror"
-                                    name="ef_producerFeePfv" 
+                                    name="ef_producerFeePfv"
                                     id="ef_producerFeePfv"
                                     data-mytooltip-content="<i>0 - client will provide the producer<br>
                                         P5,000 - 1.5-2 hour session<br>
                                         P7,500 - 2.5-3 hour session</i>"
                                     data-mytooltip-theme="dark"
-                                    data-mytooltip-action="focus" 
-                                    data-mytooltip-direction="right" 
+                                    data-mytooltip-action="focus"
+                                    data-mytooltip-direction="right"
                                     style="background-color:#ffcccc; color:red;">
                                     <option value="5000" {{ old('') == '5000' ? 'selected="selected"' : '' }} selected>
                                         &#8369;5,000
@@ -302,33 +302,33 @@
                         </td>
                         <td data-title="# OF SESSIONS">
                             <input type="number" class="input js-mytooltip input-table form-control  @error('') is-invalid @enderror"
-                                value="1" 
-                                name="ef_producerFeeNoc" 
-                                id="ef_producerFeeNoc" 
-                                title="" 
+                                value="1"
+                                name="ef_producerFeeNoc"
+                                id="ef_producerFeeNoc"
+                                title=""
                                 max="100"
                                 data-mytooltip-content="<i>Minimum is 1 session</i>"
                                 data-mytooltip-theme="dark"
-                                data-mytooltip-action="focus" 
+                                data-mytooltip-action="focus"
                                 data-mytooltip-direction="bottom">
                         </td>
                         <td data-title="NIGHT SHIFT, WEEKENDS LIDAYS *">
                             <input type="number" class="input  input-table form-control  @error('') is-invalid @enderror"
-                                value="{{ old('') }}" 
-                                name="ef_producerFeeNsw" 
-                                id="ef_producerFeeNsw" 
-                                title="" 
+                                value="{{ old('') }}"
+                                name="ef_producerFeeNsw"
+                                id="ef_producerFeeNsw"
+                                title=""
                                 max="100"
                                 data-mytooltip-content="<i></i>"
                                 data-mytooltip-theme="dark"
-                                data-mytooltip-action="focus" 
+                                data-mytooltip-action="focus"
                                 data-mytooltip-direction="bottom">
                         </td>
                         <td class="total-td">
                                 <h4 class="text-center lead" id="ef_producerFeeTotal">-</h4>
                         </td>
                         <td class="total-td">
-                            <input type="text" class="form-control input-table @error('') is-invalid @enderror" 
+                            <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}"name="" id="">
                         </td>
                         <td style="background-color: #FFFFFF;" class="border border-white"><a href="javascript:void(0)"
@@ -347,7 +347,7 @@
                         </td>
                         <td class="overall-total-end">
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" 
+                                value="{{ old('') }}"
                                 name="" id="">
                         </td>
                     </tr>
@@ -355,7 +355,7 @@
                     <tr class="table-active">
                         <td class="fw-bold text-dark text-uppercase fst-italic overall-total-start">discount given (if any)</td>
                         <td class="overall-total-middle table-warning">
-                            <input type="text" class="hf-c32 form-control input-table text-center @error('') is-invalid @enderror" 
+                            <input type="text" class="hf-c32 form-control input-table text-center @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="" id="mg_inpt_dsct" readonly>
                         </td>
                         <td class="overall-total-middle"></td>
@@ -373,14 +373,14 @@
                         <td class="overall-total-middle"></td>
                         <td class="overall-total-middle"></td>
                         <td class="overall-total-end table-warning">
-                            <input type="text" class="tf-f34 form-control text-center text-danger fw-bolder input-table @error('') is-invalid @enderror" 
+                            <input type="text" class="tf-f34 form-control text-center text-danger fw-bolder input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="" id="mg_input_totalPackages" style="font-size: 20px;">
                         </td>
                         <td class="overall-total-end">
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="" id="">
                         </td>
-                        
+
                     </tr>
             </table>
             <center><p>  * NIGHT SHIFT/WEEKENDS/HOLIDAYS - no double charging for the same day <br>I.e. Saturday night travel is only charged one 20% surcharge</p></center>

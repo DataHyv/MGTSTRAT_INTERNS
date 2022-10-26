@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="{{ URL::asset('css/custom.css') }}">
 @extends('layouts.master')
 @section('menu')
-    @extends('sidebar.viewrecord')
+    @extends('sidebar.dashboard')
 @endsection
 @section('content')
     <div class="customized-engagement" id="main">

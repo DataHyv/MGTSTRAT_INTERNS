@@ -63,7 +63,7 @@
         <div class="col-md-6">
             <div class="form-group has-icon-left">
                 <div class="position-relative">
-                    <select class="input js-mytooltip form-select customized-type @error('') is-invalid @enderror"
+                    <select class="input js-mytooltip form-select f2f-customized-type @error('') is-invalid @enderror"
                         name="customized_type" id="" value="{{ old('customized_type') }}"
                         data-mytooltip-content="<i>
                                     Please Choose
@@ -94,7 +94,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-2" id="dropdown-ga" style="visibility: hidden;">
+        <div class="col-md-2" id="f2f-dropdown-ga" style="visibility: hidden;">
             <select class="input js-mytooltip ga-only-dropdown form-select @error('') is-invalid @enderror"
                 name="ga_percent" id="ga-only-dropdown" value="{{ old('') }}"
                 data-mytooltip-content="<i>

@@ -1073,9 +1073,9 @@ function myFunction() {
     } else {
         DatesCoveredByEngagement.hide();
         DateRows.attr("disabled","disabled");
-        $(".date").val("");
-        $(".start-time").val("");
-        $(".end-time").val("");
+        // $(".date").val(" ");
+        // $(".start-time").val(" ");
+        // $(".end-time").val(" ");
     }
 };
 

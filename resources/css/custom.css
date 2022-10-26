@@ -74,6 +74,7 @@ display:block;
         border-bottom: none;
     }
 
+    .total-td:nth-child(5),
     .total-td:nth-child(6),
     .total-td:nth-child(7),
     .total-td:nth-child(8)
@@ -99,6 +100,7 @@ display:block;
         border-left:none;
     }
 
+    .overall-total-end:nth-child(5),
     .overall-total-end:nth-child(6),
     .overall-total-end:nth-child(7),
     .overall-total-end:nth-child(8)
