@@ -37,7 +37,7 @@
             </div>
         </div>
 
-        <div class="form-group row">
+        {{-- <div class="form-group row">
             <div class="col-md-2">
                 <label class="fw-bold required">Batch Name: </label>
             </div>
@@ -58,7 +58,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
     <!------------ CUSTOMIZED TYPE ------------>
         <div class="form-group row">
