@@ -124,7 +124,7 @@ class CustomizedEngagementController extends Controller
             $ce_form = new Customized_engagement_form();
             $ce_form->status                = $request->status;
             // $ce_form->batch_number          = 'Batch ' . DB::table('customized_engagement_forms')->where('client_id', $request->client_id)->count()+1;
-            $ce_form->batch_name          = $request->batch_name;
+            // $ce_form->batch_name          = $request->batch_name;
             $ce_form->customized_type       = $request->customized_type;
             $ce_form->ga_percent            = $request->ga_percent;
             $ce_form->client_id             = (int)$request->client_id;
@@ -211,7 +211,7 @@ class CustomizedEngagementController extends Controller
                 'id'                    => $request->id,
                 'status'                => $request->status,
                 'customized_type'       => $request->customized_type,
-                'batch_name'            => $request->batch_name,
+                // 'batch_name'            => $request->batch_name,
                 'ga_percent'            => $request->ga_percent,
                 'client_id'             => $request->client_id,
                 'engagement_title'      => $request->engagement_title,

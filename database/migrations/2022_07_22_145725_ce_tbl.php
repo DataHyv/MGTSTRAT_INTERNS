@@ -28,7 +28,7 @@ class CeTbl extends Migration
             $table->string('program_end_time')->nullable();
             $table->string('cluster')->nullable();
             $table->string('core_area')->nullable();
-            $table->string('Engagement_fees_total', 12);
+            $table->string('Engagement_fees_total', 30);
             $table->timestamps();
         });
     }
