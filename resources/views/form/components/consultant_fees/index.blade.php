@@ -46,7 +46,7 @@
                         <thead>
                             <tr>
                                 <th class="text-center text-uppercase">#</th>
-                                <th class="text-center">Name</th>
+                                <th class="text-center">Full Name</th>
                                 <th class="text-center">Lead Facilitator</th>
                                 <th class="text-center">Co-lead</th>
                                 <th class="text-center">Co-lead f2f</th>

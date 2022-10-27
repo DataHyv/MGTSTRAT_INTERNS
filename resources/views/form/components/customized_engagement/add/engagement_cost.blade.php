@@ -74,7 +74,7 @@
                                             0%
                                         </option>
                                         <option value="4%" {{ old('') == '4' ? 'selected="selected"' : '' }}
-                                            title="with minimal design customization, or platform customization outside of Zoom/Google Meets/MS Teams. Up to 2 hours of work">
+                                            title="with minimal design customization, or platform customization outside of Zoom/Google Meets/MS Teams. Up to 2 hours of work" selected>
                                             4%
                                         </option>
                                         <option value="5%" {{ old('') == '5' ? 'selected="selected"' : '' }}
@@ -149,7 +149,7 @@
                                             0%
                                         </option>
                                         <option value="2%" {{ old('') == '2' ? 'selected="selected"' : '' }}
-                                            title="">
+                                            title="" selected>
                                             2%
                                         </option>
                                         <option value="3%" {{ old('') == '3' ? 'selected="selected"' : '' }}

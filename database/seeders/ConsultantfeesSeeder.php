@@ -176,6 +176,38 @@ class ConsultantfeesSeeder extends Seeder
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ],
 
+            [
+                'first_name' => 'Audrey',
+                'last_name' => 'Arayata',
+                'lead_faci' => '2100.00',
+                'co_lead' => '1600.00',
+                'co_lead_f2f' => '1680.00',
+                'co_faci' => '1260.00',
+                'lead_consultant' => '1785.00',
+                'consulting' => '1575.00',
+                'designer' => '1575.00',
+                'moderator' => '1100.00',
+                'producer' => '550.00',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            ],
+
+            [
+                'first_name' => 'Ayen',
+                'last_name' => 'dela Torre',
+                'lead_faci' => '1800.00',
+                'co_lead' => '1450.00',
+                'co_lead_f2f' => '1440.00',
+                'co_faci' => '1080.00',
+                'lead_consultant' => '1530.00',
+                'consulting' => '1350.00',
+                'designer' => '1350.00',
+                'moderator' => '1100.00',
+                'producer' => '550.00',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            ],
+
 
             ]);
     }
