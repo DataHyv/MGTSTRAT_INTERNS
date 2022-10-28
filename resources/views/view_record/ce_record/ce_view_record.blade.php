@@ -38,7 +38,7 @@
                         <table class="table table-striped" id="table1">
                             <thead>
                                 <tr class="text-dark">
-                                    <th class="text-center">BATCH NUMBER</th>
+                                    <th class="text-center">ID</th>
                                     <th class="text-center">STATUS</th>
                                     <th class="text-center">COMPANY NAME</th>
                                     <th class="text-center">ENGAGEMENT TYPE</th>
@@ -59,7 +59,7 @@
                                     <tr>
                                         <td hidden class="ids">{{ $item->id }}</td>
                                         <td hidden class="budget_number">{{ $item->cstmzd_eng_form_id }}</td>
-                                        <td class="id text-center text-uppercase fw-bold">{{ $item->batch_name }}</td>
+                                        <td class="id text-center text-uppercase fw-bold">{{ $item->cstmzd_eng_form_id }}</td>
                                         <td class="text-center">
                                             <span id="status" class="badge">{{ $item->status }}</span>
                                             {{-- Automatic change the status color --}}
@@ -157,71 +157,62 @@
                                         </div>
                                     </div>
                                     <!-- /Delete Customized Engagement Modal -->
-                                @endforeach
-
-                                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                              <h5 class="modal-title">Add Batches</h5>
-                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                              </button>
-                                            </div>
-                                            <div class="modal-body">
-
-                                                <div class="batch" id="batch">
-                                                    <div class="form-group row justify-content-center batches" id="batches">
-                                                        <div class="col-md-3">
-                                                            <label class="mb-2" for="formGroupClientInput">Client Name</label>
-                                                            <input class="input form-control @error('client_id') is-invalid @enderror" id="" name="" value="MGT_STRAT" readonly>
-                                                            @error('client_id')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                            <label class="mb-2" for="formGroupBatchInput">Batch Name</label>
-                                                            <input type="text" class="form-control" id="formGroupBatchInput">
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                            <label class="mb-2" for="formGroupSessionInput">Session</label>
-                                                            <input type="text" class="form-control" id="formGroupSessionInput">
-                                                        </div>
-                                                        <div class="col-md-2 mt-4 pt-3">
-                                                            <div class="form-group">
-                                                                <input class="form-check-input" type="checkbox" id="gridCheck">
-                                                                <label class="form-check-label" for="gridCheck">
-                                                                  Same Data
-                                                                </label>
+                                    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <h5 class="modal-title">Add Batches</h5>
+                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                  </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="batch" id="batch">
+                                                        <div class="form-group row justify-content-center batches" id="batches">
+                                                            <div class="col-md-3">
+                                                                <label class="mb-2" for="formGroupClientInput">Client Name</label>
+                                                                <input class="input form-control @error('client_id') is-invalid @enderror" id="" name="" value="{{ $item->client->company_name }}" readonly>
+                                                                @error('client_id')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
                                                             </div>
-                                                        </div>
-                                                        <div class="col-lg-1 col-md-1">
-                                                            <div class="px-0">
-                                                                <label class="fw-bold invisible overflow-hidden mb-3">Add</label>
-                                                                <a href="javascript:void(0)" class="text-success font-18 px-0" title="Add"
-                                                                id="addBatch"><i class="fa fa-plus"></i></a>
+                                                            <div class="col-md-3">
+                                                                <label class="mb-2" for="formGroupBatchInput">Batch Name</label>
+                                                                <input type="text" class="form-control" id="formGroupBatchInput">
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <label class="mb-2" for="formGroupSessionInput">Session</label>
+                                                                <input type="text" class="form-control" id="formGroupSessionInput">
+                                                            </div>
+                                                            <div class="col-md-2 mt-4 pt-3">
+                                                                <div class="form-group">
+                                                                    <input class="form-check-input" type="checkbox" id="gridCheck">
+                                                                    <label class="form-check-label" for="gridCheck">
+                                                                      Same Data
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-1 col-md-1">
+                                                                <div class="px-0">
+                                                                    <label class="fw-bold invisible overflow-hidden mb-3">Add</label>
+                                                                    <a href="javascript:void(0)" class="text-success font-18 px-0" title="Add"
+                                                                    id="addBatch"><i class="fa fa-plus"></i></a>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    {{-- <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" id="gridCheck">
-                                                        <label class="form-check-label" for="gridCheck">
-                                                          Check me out
-                                                        </label>
-                                                    </div> --}}
-                                                </div>
 
-                                            </div>
-                                            <div class="modal-footer">
-                                              <button type="button" class="btn btn-primary">Save changes</button>
-                                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <button type="button" class="btn btn-primary">Save changes</button>
+                                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
