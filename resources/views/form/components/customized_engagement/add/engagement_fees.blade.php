@@ -69,7 +69,7 @@
                                 Lead Consultant
                             </td>
                             <td data-title="# OF CONSULTANTS">
-                                <input type="number"
+                                <input type="text"
                                     class="input js-mytooltip input-table form-control  @error('') is-invalid @enderror"
                                     value="{{ old('') }}" name="fee_consultant_num[]" id="ef_LeadconsultantNoc1"
                                     title="" max="100"
@@ -597,4 +597,12 @@
 <!---------- END OF FORM BODY ---------->
 
 <!---------- JS SCRIPT ---------->
+<script>
+$('input').on('change, keyup', function() {
+    var currentInput = $(this).val();
+    var fixedInput = currentInput.replace(/[A-Za-z!@#$%^&*() ]/g, '');
+    $(this).val(fixedInput);
+    console.log(fixedInput);
+});
+</script>
 @include('form.components.customized_engagement.add.script.ce_engagement_fees')

@@ -1040,13 +1040,13 @@ $(document).on(
                 }
 
                 // join number by .
-                input_val = "₱" + left_side + "." + right_side;
+                input_val = left_side + "." + right_side;
             } else {
                 // no decimal entered
                 // add commas to number
                 // remove all non-digits
                 input_val = formatNumber(input_val);
-                input_val = "₱" + input_val;
+                input_val = input_val;
             }
 
             // send updated string to input
