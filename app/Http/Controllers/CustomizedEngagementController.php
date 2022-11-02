@@ -167,7 +167,7 @@ class CustomizedEngagementController extends Controller
             try
                 {foreach ($request->cost_type as $key => $cost_types){
                     $engagement_cost['type']                = $cost_types;
-                    $engagement_cost['client_id']  = $client_id;
+                    $engagement_cost['client_id']           = $client_id;
                     $engagement_cost['cstmzd_eng_form_id']  = $cstmzd_eng_form_id;
                     $engagement_cost['consultant_num']      = $request->cost_consultant_num[$key] ?? '0';
                     $engagement_cost['hour_fee']            = $request->cost_hour_fee[$key];
@@ -213,7 +213,8 @@ class CustomizedEngagementController extends Controller
                 'customized_type'       => $request->customized_type,
                 // 'batch_name'            => $request->batch_name,
                 'ga_percent'            => $request->ga_percent,
-                'client_id'             => $request->client_id,
+                // 'client_id'             => $request->client_id,
+                'client_id'             => (int)$request->client_id,
                 'engagement_title'      => $request->engagement_title,
                 'pax_number'            => $request->pax_number,
                 'program_dates'         => $request->program_dates,
@@ -233,10 +234,14 @@ class CustomizedEngagementController extends Controller
                 DB::table('engagement_costs')->where('id', $request->cost_id[$key])->delete();
             }
 
+            // $client_id = DB::table('customized_engagement_forms')->orderBy('client_id','DESC')->select('client_id')->first();
+            // $client_id = $client_id->client_id;
+
             /** insert new record */
             foreach($request->fee_type as $key => $fee_type)
             {
                 // $engagement_fee['type']                 = $fee_types;
+                $engagement_fee['client_id']            = $request->client_id;
                 $engagement_fee['cstmzd_eng_form_id']   = $request->cstmzd_eng_form_id;
                 $engagement_fee['type']                 = $request->fee_type[$key];
                 $engagement_fee['consultant_num']       = $request->fee_consultant_num[$key] ?? '0';
@@ -251,6 +256,7 @@ class CustomizedEngagementController extends Controller
 
             foreach($request->cost_type as $key => $cost_type)
             {
+                $engagement_cost['client_id']            = $request->client_id;
                 $engagement_cost['cstmzd_eng_form_id']  = $request->cstmzd_eng_form_id;
                 $engagement_cost['type']                = $request->cost_type[$key];
                 $engagement_cost['consultant_num']      = $request->cost_consultant_num[$key] ?? '0';

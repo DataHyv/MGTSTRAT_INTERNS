@@ -266,24 +266,24 @@
                                 Lead Consultant
                             </td>
                             <td class="">
-                                <input type="number"
-                                    class="text-center form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_consultant_num[]" id="ec_LeadconsultantNoc1" max="100">
+                                <input type="text"
+                                    class="text-center form-control input-table commanumber @error('') is-invalid @enderror"
+                                    value="{{ old('') }}" name="cost_consultant_num[]" id="ec_LeadconsultantNoc1" data-type="currency">
                             </td>
                             <td class="">
                                 <input type="text"
-                                    class="text-center fw-bold text-dark form-control input-table @error('') is-invalid @enderror"
+                                    class="text-center fw-bold text-dark form-control input-table commanumber @error('') is-invalid @enderror"
                                     value="{{ old('') }}" name="cost_hour_fee[]" id="ec_LeadconsultantHf" data-type="currency">
                             </td>
                             <td class="">
-                                <input type="number"
-                                    class="text-center form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_hour_num[]" id="ec_LeadconsultantNoh1" >
+                                <input type="text"
+                                    class="text-center form-control input-table commanumber @error('') is-invalid @enderror"
+                                    value="{{ old('') }}" name="cost_hour_num[]" id="ec_LeadconsultantNoh1" data-type="currency" >
                             </td>
                             <td class="">
-                                <input type="number"
-                                    class="text-center form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_nswh[]" id="ec_LeadconsultantNwh1" >
+                                <input type="text"
+                                    class="text-center form-control input-table commanumber @error('') is-invalid @enderror"
+                                    value="{{ old('') }}" name="cost_nswh[]" id="ec_LeadconsultantNwh1" data-type="currency" >
                             </td>
                             <td class="total-td table-light">
                                 <h4 class="text-center lead" id="ec_LeadconsultantTotal">-</h4>
@@ -312,24 +312,24 @@
 
                             </td>
                             <td>
-                                <input type="number"
-                                    class="text-center form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_consultant_num[]" id="ec_AnalystNoc1" max="100">
+                                <input type="text"
+                                    class="text-center form-control input-table commanumber @error('') is-invalid @enderror"
+                                    value="{{ old('') }}" name="cost_consultant_num[]" id="ec_AnalystNoc1" data-type="currency">
                             </td>
                             <td>
                                 <input type="text"
-                                    class="text-center fw-bold text-dark form-control input-table @error('') is-invalid @enderror"
+                                    class="text-center fw-bold text-dark form-control input-table commanumber @error('') is-invalid @enderror"
                                     value="{{ old('') }}" name="cost_hour_fee[]" id="ec_AnalystHf1" data-type="currency">
                             </td>
                             <td>
-                                <input type="number"
-                                    class="text-center form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_hour_num[]" id="ec_AnalystNoh1">
+                                <input type="text"
+                                    class="text-center form-control input-table commanumber @error('') is-invalid @enderror"
+                                    value="{{ old('') }}" name="cost_hour_num[]" id="ec_AnalystNoh1" data-type="currency">
                             </td>
                             <td>
-                                <input type="number"
-                                    class="text-center form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_nswh[]" id="ec_AnalystNwh1">
+                                <input type="text"
+                                    class="text-center form-control input-table commanumber @error('') is-invalid @enderror"
+                                    value="{{ old('') }}" name="cost_nswh[]" id="ec_AnalystNwh1" data-type="currency">
                             </td>
                             <td class="total-td table-light">
                                 <h4 class="text-center lead" id="ec_AnalystTotal">-</h4>
@@ -385,24 +385,24 @@
                                 <input type="text" class="d-none" value="Designer" name="cost_type[]" readonly>
                             </td>
                             <td class="">
-                                <input type="number"
-                                    class="text-center form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_consultant_num[]" id="ec_DesignerNoc1" max="100">
+                                <input type="text"
+                                    class="text-center form-control input-table commanumber @error('') is-invalid @enderror"
+                                    value="{{ old('') }}" name="cost_consultant_num[]" id="ec_DesignerNoc1" data-type="currency">
                             </td>
                             <td>
                                 <input type="text"
-                                    class="text-center fw-bold text-dark text-center form-control input-table @error('') is-invalid @enderror"
+                                    class="text-center fw-bold text-dark text-center form-control input-table commanumber @error('') is-invalid @enderror"
                                     value="{{ old('') }}" name="cost_hour_fee[]" id="ec_DesignerHf" data-type="currency">
                             </td>
                             <td class="">
-                                <input type="number"
-                                    class="text-center form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_hour_num[]" id="ec_DesignerNoh1">
+                                <input type="text"
+                                    class="text-center form-control input-table commanumber @error('') is-invalid @enderror"
+                                    value="{{ old('') }}" name="cost_hour_num[]" id="ec_DesignerNoh1" data-type="currency">
                             </td>
                             <td class="">
-                                <input type="number"
-                                    class="text-center form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_nswh[]" id="ec_DesignerNwh1">
+                                <input type="text"
+                                    class="text-center form-control input-table commanumber @error('') is-invalid @enderror"
+                                    value="{{ old('') }}" name="cost_nswh[]" id="ec_DesignerNwh1" data-type="currency">
                             </td>
                             <td class="total-td table-light">
                                 <h4 class="text-center lead" id="ec_DesignerTotal">-</h4>
@@ -430,9 +430,9 @@
                                 <input type="text" class="d-none" value="Creators Fees" name="cost_type[]" readonly>
                             </td>
                             <td>
-                                <input type="number"
-                                    class="text-center form-control input-table @error('') is-invalid @enderror"
-                                    value="1" name="cost_consultant_num[]" id="ec_CreatorsNoc1" max="100" hidden>
+                                <input type="text"
+                                    class="text-center form-control input-table commanumber @error('') is-invalid @enderror"
+                                    value="1" name="cost_consultant_num[]" id="ec_CreatorsNoc1" hidden>
                             </td>
                             <td>
                                 <fieldset>
@@ -461,9 +461,9 @@
                                 </fieldset>
                             </td>
                             <td>
-                                <input type="number"
-                                    class="text-center form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_hour_num[]" id="ec_CreatorsNoh1">
+                                <input type="text"
+                                    class="text-center form-control input-table commanumber @error('') is-invalid @enderror"
+                                    value="{{ old('') }}" name="cost_hour_num[]" id="ec_CreatorsNoh1" data-type="currency">
                             </td>
                             <td class=""><input type="text" class="d-none" name="cost_nswh[]" readonly></td>
                             <td class="total-td table-light">
@@ -521,24 +521,24 @@
                                 <input type="text" class="d-none" value="Lead Facilitator" name="cost_type[]" readonly>
                             </td>
                             <td>
-                                <input type="number"
-                                    class="text-center form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_consultant_num[]" id="ec_LeadfacilitatorNoc1" max="100">
+                                <input type="text"
+                                    class="text-center form-control input-table commanumber @error('') is-invalid @enderror"
+                                    value="{{ old('') }}" name="cost_consultant_num[]" id="ec_LeadfacilitatorNoc1" data-type="currency">
                             </td>
                             <td>
                                 <input type="text"
-                                    class="text-center fw-bold text-center text-dark form-control input-table @error('') is-invalid @enderror"
+                                    class="text-center fw-bold text-center text-dark form-control input-table commanumber @error('') is-invalid @enderror"
                                     value="{{ old('') }}" name="cost_hour_fee[]" id="ec_LeadfacilitatorHf" data-type="currency">
                             </td>
                             <td>
-                                <input type="number"
-                                    class="text-center form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_hour_num[]" id="ec_LeadfacilitatorNoh1">
+                                <input type="text"
+                                    class="text-center form-control input-table commanumber @error('') is-invalid @enderror"
+                                    value="{{ old('') }}" name="cost_hour_num[]" id="ec_LeadfacilitatorNoh1" data-type="currency">
                             </td>
                             <td>
-                                <input type="number"
-                                    class="text-center form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_nswh[]" id="ec_LeadfacilitatorNwh1">
+                                <input type="text"
+                                    class="text-center form-control input-table commanumber @error('') is-invalid @enderror"
+                                    value="{{ old('') }}" name="cost_nswh[]" id="ec_LeadfacilitatorNwh1" data-type="currency">
                             </td>
                             <td class="total-td table-light">
                                 <h4 class="text-center lead" id="ec_LeadfacilitatorTotal">-</h4>
@@ -566,24 +566,24 @@
                                 <input type="text" class="d-none" value="Co-Lead" name="cost_type[]" readonly>
                             </td>
                             <td>
-                                <input type="number"
-                                    class="text-center form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_consultant_num[]" id="ec_CoLeadfacilitatorNoc1" max="100">
+                                <input type="text"
+                                    class="text-center form-control input-table commanumber @error('') is-invalid @enderror"
+                                    value="{{ old('') }}" name="cost_consultant_num[]" id="ec_CoLeadfacilitatorNoc1" data-type="currency">
                             </td>
                             <td>
                                 <input type="text"
-                                    class="text-center fw-bold text-center text-dark form-control input-table @error('') is-invalid @enderror"
+                                    class="text-center fw-bold text-center text-dark form-control input-table commanumber @error('') is-invalid @enderror"
                                     value="{{ old('') }}" name="cost_hour_fee[]" id="ec_CoLeadfacilitatorHf1" data-type="currency">
                             </td>
                             <td>
-                                <input type="number"
-                                    class="text-center form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_hour_num[]" id="ec_CoLeadfacilitatorNoh1">
+                                <input type="text"
+                                    class="text-center form-control input-table commanumber @error('') is-invalid @enderror"
+                                    value="{{ old('') }}" name="cost_hour_num[]" id="ec_CoLeadfacilitatorNoh1" data-type="currency">
                             </td>
                             <td>
-                                <input type="number"
-                                    class="text-center form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_nswh[]" id="ec_CoLeadfacilitatorNwh1">
+                                <input type="text"
+                                    class="text-center form-control input-table commanumber @error('') is-invalid @enderror"
+                                    value="{{ old('') }}" name="cost_nswh[]" id="ec_CoLeadfacilitatorNwh1" data-type="currency">
                             </td>
                             <td class="total-td table-light">
                                 <h4 class="text-center lead" id="ec_CoLeadfacilitatorTotal">-</h4>
@@ -611,24 +611,24 @@
                                 <input type="text" class="d-none" value="AL Coach" name="cost_type[]" readonly>
                             </td>
                             <td>
-                                <input type="number"
-                                    class="text-center form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_consultant_num[]" id="ec_AlCoachNoc1" max="100">
+                                <input type="text"
+                                    class="text-center form-control input-table commanumber @error('') is-invalid @enderror"
+                                    value="{{ old('') }}" name="cost_consultant_num[]" id="ec_AlCoachNoc1" data-type="currency">
                             </td>
                             <td>
                                 <input type="text"
-                                    class="text-center fw-bold text-center text-dark form-control input-table @error('') is-invalid @enderror"
+                                    class="text-center fw-bold text-center text-dark form-control input-table commanumber @error('') is-invalid @enderror"
                                     value="{{ old('') }}" name="cost_hour_fee[]" id="ec_AlCoachHf1" data-type="currency">
                             </td>
                             <td>
-                                <input type="number"
-                                    class="text-center form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_hour_num[]" id="ec_AlCoachNoh1">
+                                <input type="text"
+                                    class="text-center form-control input-table commanumber @error('') is-invalid @enderror"
+                                    value="{{ old('') }}" name="cost_hour_num[]" id="ec_AlCoachNoh1" data-type="currency">
                             </td>
                             <td>
-                                <input type="number"
-                                    class="text-center form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_nswh[]" id="ec_AlCoachNwh1">
+                                <input type="text"
+                                    class="text-center form-control input-table commanumber @error('') is-invalid @enderror"
+                                    value="{{ old('') }}" name="cost_nswh[]" id="ec_AlCoachNwh1" data-type="currency">
                             </td>
                             <td class="total-td table-light">
                                 <h4 class="text-center lead" id="ec_AlCoachTotal">-</h4>
@@ -656,24 +656,24 @@
                                 <input type="text" class="d-none" value="Co-Facilitator / Resource Speaker" name="cost_type[]" readonly>
                             </td>
                             <td>
-                                <input type="number"
-                                    class="text-center text-dark form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_consultant_num[]" id="ec_CofacilitatorNoc1" max="100">
+                                <input type="text"
+                                    class="text-center text-dark form-control input-table commanumber @error('') is-invalid @enderror"
+                                    value="{{ old('') }}" name="cost_consultant_num[]" id="ec_CofacilitatorNoc1" data-type="currency">
                             </td>
                             <td>
                                 <input type="text"
-                                    class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
+                                    class="text-center text-dark fw-bold form-control input-table commanumber @error('') is-invalid @enderror"
                                     value="{{ old('') }}" name="cost_hour_fee[]" id="ec_CofacilitatorHf" data-type="currency">
                             </td>
                             <td>
-                                <input type="number"
-                                    class="text-center text-dark form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_hour_num[]" id="ec_CofacilitatorNoh1">
+                                <input type="text"
+                                    class="text-center text-dark form-control input-table commanumber @error('') is-invalid @enderror"
+                                    value="{{ old('') }}" name="cost_hour_num[]" id="ec_CofacilitatorNoh1" data-type="currency">
                             </td>
                             <td>
-                                <input type="number"
-                                    class="text-center text-dark form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_nswh[]" id="ec_CofacilitatorNwh1">
+                                <input type="text"
+                                    class="text-center text-dark form-control input-table commanumber @error('') is-invalid @enderror"
+                                    value="{{ old('') }}" name="cost_nswh[]" id="ec_CofacilitatorNwh1" data-type="currency">
                             </td>
                             <td class="total-td table-light">
                                 <h4 class="text-center lead" id="ec_CofacilitatorTotal">-</h4>
@@ -701,9 +701,9 @@
                                 <input type="text" class="d-none" value="Moderator" name="cost_type[]" readonly>
                             </td>
                             <td>
-                                <input type="number"
-                                    class="text-dark text-center form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_consultant_num[]" id="ec_ModeratorNoc1" max="100">
+                                <input type="text"
+                                    class="text-dark text-center form-control input-table commanumber @error('') is-invalid @enderror"
+                                    value="{{ old('') }}" name="cost_consultant_num[]" id="ec_ModeratorNoc1" data-type="currency">
                             </td>
                             <td>
                                 <fieldset>
@@ -717,15 +717,15 @@
                                                 P1,350 - Senior Consultant</i>"
                                         data-mytooltip-theme="dark" data-mytooltip-action="focus"
                                         data-mytooltip-direction="right">
-                                        <option value="₱800" {{ old('') == '800' ? 'selected="selected"' : '' }}
+                                        <option value="800" {{ old('') == '800' ? 'selected="selected"' : '' }}
                                             title="">
                                             &#8369;800
                                         </option>
-                                        <option value="₱1100" {{ old('') == '1100' ? 'selected="selected"' : '' }}
+                                        <option value="1100" {{ old('') == '1100' ? 'selected="selected"' : '' }}
                                             title="">
                                             &#8369;1,100
                                         </option>
-                                        <option value="₱1350" {{ old('') == '1350' ? 'selected="selected"' : '' }}
+                                        <option value="1350" {{ old('') == '1350' ? 'selected="selected"' : '' }}
                                             title="">
                                             &#8369;1,350
                                         </option>
@@ -738,14 +738,14 @@
                                 </fieldset>
                             </td>
                             <td>
-                                <input type="number"
-                                    class="text-dark text-center form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_hour_num[]" id="ec_ModeratorNoh1">
+                                <input type="text"
+                                    class="text-dark text-center form-control input-table commanumber @error('') is-invalid @enderror"
+                                    value="{{ old('') }}" name="cost_hour_num[]" id="ec_ModeratorNoh1" data-type="currency">
                             </td>
                             <td>
-                                <input type="number"
-                                    class="text-dark text-center form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_nswh[]" id="ec_ModeratorNwh1">
+                                <input type="text"
+                                    class="text-dark text-center form-control input-table commanumber @error('') is-invalid @enderror"
+                                    value="{{ old('') }}" name="cost_nswh[]" id="ec_ModeratorNwh1" data-type="currency">
                             </td>
                             <td class="total-td table-light">
                                 <h4 class="text-center lead" id="ec_ModeratorTotal">-</h4>
@@ -773,24 +773,24 @@
                                 <input type="text" class="d-none" value="Producer" name="cost_type[]" readonly>
                             </td>
                             <td>
-                                <input type="number"
-                                    class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_consultant_num[]" id="ec_ProducerNoc1">
+                                <input type="text"
+                                    class="text-center text-dark fw-bold form-control input-table commanumber @error('') is-invalid @enderror"
+                                    value="{{ old('') }}" name="cost_consultant_num[]" id="ec_ProducerNoc1" data-type="currency">
                             </td>
                             <td>
                                 <input type="text"
-                                    class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
+                                    class="text-center text-dark fw-bold form-control input-table commanumber @error('') is-invalid @enderror"
                                     value="{{ old('') }}" name="cost_hour_fee[]" id="ec_ProducerHf" data-type="currency">
                             </td>
                             <td>
-                                <input type="number"
-                                    class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_hour_num[]" id="ec_ProducerNoh1">
+                                <input type="text"
+                                    class="text-center text-dark fw-bold form-control input-table commanumber @error('') is-invalid @enderror"
+                                    value="{{ old('') }}" name="cost_hour_num[]" id="ec_ProducerNoh1" data-type="currency">
                             </td>
                             <td>
-                                <input type="number"
-                                    class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_nswh[]" id="ec_ProducerNwh1">
+                                <input type="text"
+                                    class="text-center text-dark fw-bold form-control input-table commanumber @error('') is-invalid @enderror"
+                                    value="{{ old('') }}" name="cost_nswh[]" id="ec_ProducerNwh1" data-type="currency">
                             </td>
                             <td class="total-td table-light">
                                 <h4 class="text-center lead" id="ec_ProducerTotal">-</h4>
@@ -847,24 +847,24 @@
                                 <input type="text" class="d-none" value="Documentor" name="cost_type[]" readonly>
                             </td>
                             <td>
-                                <input type="number"
-                                    class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_consultant_num[]" id="ec_DocumentorNoc1" max="100">
+                                <input type="text"
+                                    class="text-center text-dark fw-bold form-control input-table commanumber @error('') is-invalid @enderror"
+                                    value="{{ old('') }}" name="cost_consultant_num[]" id="ec_DocumentorNoc1" data-type="currency">
                             </td>
                             <td>
                                 <input type="text"
-                                    class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
+                                    class="text-center text-dark fw-bold form-control input-table commanumber @error('') is-invalid @enderror"
                                     value="{{ old('') }}" name="cost_hour_fee[]" id="ec_DocumentorHf" data-type="currency">
                             </td>
                             <td>
-                                <input type="number"
-                                    class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_hour_num[]" id="ec_DocumentorNoh1">
+                                <input type="text"
+                                    class="text-center text-dark fw-bold form-control input-table commanumber @error('') is-invalid @enderror"
+                                    value="{{ old('') }}" name="cost_hour_num[]" id="ec_DocumentorNoh1" data-type="currency">
                             </td>
                             <td>
-                                <input type="number"
-                                    class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_nswh[]" id="ec_DocumentorNwh1">
+                                <input type="text"
+                                    class="text-center text-dark fw-bold form-control input-table commanumber @error('') is-invalid @enderror"
+                                    value="{{ old('') }}" name="cost_nswh[]" id="ec_DocumentorNwh1" data-type="currency">
                             </td>
                             <td class="total-td table-light" style="background-color: rgba(146, 146, 146, 0.727">
                                 <h4 class="text-center" id="ec_DocumentorTotal">-</h4>
@@ -906,9 +906,9 @@
                             <input type="text" class="d-none" value="Off-Program fee" name="cost_type[]" readonly>
                         </td>
                         <td>
-                            <input type="number"
-                                class="input js-mytooltip text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_consultant_num[]" id="ec_ProgramNoc" max="100"
+                            <input type="text"
+                                class="input js-mytooltip text-center text-dark fw-bold form-control input-table commanumber @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_consultant_num[]" id="ec_ProgramNoc" data-type="currency"
                                 data-mytooltip-content="<i>
                                         - For single or series of programs<br>
                                         - One time only<br>
@@ -919,7 +919,7 @@
                         </td>
                         <td>
                             <input type="text"
-                                class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
+                                class="text-center text-dark fw-bold form-control input-table commanumber @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_hour_fee[]" id="ec_ProgramHf" data-type="currency">
                         </td>
                         <td><input type="text" class="d-none" name="cost_hour_num[]" readonly></td>

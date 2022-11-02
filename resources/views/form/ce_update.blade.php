@@ -87,7 +87,7 @@
 
                                 <!------------ BUDGET FORM ------------>
                                     <form class="form form-horizontal multisteps-form__form" action="{{ route('update') }}"
-                                        method="POST" autocomplete="off">
+                                        method="POST" autocomplete="off" onsubmit="submitForm(event)">
                                         @csrf
                                         @method('PUT')
 
@@ -173,26 +173,13 @@
             }
         });
     });
-
-    // $('document').ready(function() {
-    //     var tabs = 1;
-    //     $("#AddTabs").on("click", function() {
-    //         // Adding a row inside the tbody.
-    //         $("#ceTabs").append(`
-    //             <li class="nav-item">
-    //                 <a class="nav-link"
-    //                 href="#batches${++tabs}"
-    //                 id="batch${tabs}"
-    //                 data-bs-toggle="tab"
-    //                 role="tab"
-    //                 aria-controls="batches${tabs}"
-    //                 aria-selected="false">
-    //                     Batch ${tabs}
-    //                 </a>
-    //             </li>
-    //         `);
-    //     });
-    // });
+    function submitForm(e) {
+        // e.preventDefault();
+        $('.commanumber').each((index, input) => { //1st way
+            const $input = $(input);
+            $input.val($input.val().replace(/,/g, ''));
+        });
+    };
     </script>
 
     <script type="text/javascript" src="/js/ceform.js"></script>

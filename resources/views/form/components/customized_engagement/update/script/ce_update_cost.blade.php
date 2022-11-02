@@ -31,17 +31,17 @@
                                 <textarea class="form-control input-table @error('') is-invalid @enderror"
                                     name="cost_notes[]" id="" rows="2" cols="55"></textarea>
                             </td>
-                            <td><a href="javascript:void(0)" class="text-danger font-18 remove" title="Remove"><i class="fa fa-trash-o"></i></a></td>
+                            <td class="border border-white add-row"><a href="javascript:void(0)" class="text-danger font-18 remove" title="Remove"><i class="fa fa-trash-o"></i></a></td>
                     </tr>`);
-    
+
                 //Setting the default value of
                 //sales into 0% when adding row
                 const salesId = document.querySelectorAll("#sales");
                 for (let i = 0; i < salesId.length; i++) {
                     salesId[i].value = "0%";
                 }
-    
-                //if you add row the 
+
+                //if you add row the
                 //if statement will execute
                 if (salesNum > 1) {
                     document.getElementById("dropdownSales").style.display = "none"; //the dropdown will display none
@@ -67,13 +67,13 @@
                 $(".input-sales").prop( "disabled", true );
                 $(".input-sales").val("0%")
             }
-    
-            // Remove row   
+
+            // Remove row
             $("#tableSales").on("click", ".remove", function() {
                 // Getting all the rows next to the row
                 // containing the clicked button
                 var child = $(this).closest("tr").nextAll();
-    
+
                 // Removing the current row.
                 $(this).closest("tr").remove();
 
@@ -86,10 +86,10 @@
                     document.getElementById("dropdownSales").style.display = "";
                     document.getElementById("inputSales").value = ""; //to remove the last inputed value
                 }
-    
+
             });
         });
-    
+
         /********* REFERRAL *********/
         var refferalNum = {{$ecReferral}};
         $(document).ready(function() {
@@ -120,17 +120,17 @@
                                 <textarea class="form-control input-table @error('') is-invalid @enderror"
                                     name="cost_notes[]" id="" rows="2" cols="55"></textarea>
                             </td>
-                            <td><a href="javascript:void(0)" class="text-danger font-18 remove" title="Remove"><i class="fa fa-trash-o"></i></a></td>
+                            <td class="border border-white add-row"><a href="javascript:void(0)" class="text-danger font-18 remove" title="Remove"><i class="fa fa-trash-o"></i></a></td>
                     </tr>`);
-    
+
                 //Setting the default value of
                 //sales into 0% when adding row
                 const referralId = document.querySelectorAll("#referral");
                 for (let i = 0; i < referralId.length; i++) {
                     referralId[i].value = "0%";
                 }
-    
-                //if you add row the 
+
+                //if you add row the
                 //if statement will execute
                 if (refferalNum > 1) {
                     document.getElementById("referral").disabled = true; //the dropdown will be disabled
@@ -151,16 +151,16 @@
                 $(".input-referral").css("display","block");
                 $(".input-referral").prop( "disabled", false );
             }
-    
-            // Remove row   
+
+            // Remove row
             $("#tableReferral").on("click", ".remove", function() {
                 // Getting all the rows next to the row
                 // containing the clicked button
                 var child = $(this).closest("tr").nextAll();
-    
+
                 // Removing the current row.
                 $(this).closest("tr").remove();
-    
+
                 // Decreasing total number of rows by 1.
                 refferalNum--;
                 if (refferalNum == 1) {
@@ -170,10 +170,10 @@
                     document.getElementById("dropdownReferral").style.display = "";
                     document.getElementById("inputReferral").value = ""; //to remove the last inputed value
                 }
-    
+
             });
         });
-    
+
     /*****************************************************************ENGAGEMENT MANAGER*****************************************************************************/
         /********* ENGAGEMENT MANAGER *********/
         var managerNum = {{$ecEngagementManager}};
@@ -205,17 +205,17 @@
                                 <textarea class="form-control input-table @error('') is-invalid @enderror"
                                     name="cost_notes[]" id="" rows="2" cols="55"></textarea>
                             </td>
-                        <td><a href="javascript:void(0)" class="text-danger font-18 remove" title="Remove"><i class="fa fa-trash-o"></i></a></td>
+                        <td class="border border-white add-row"><a href="javascript:void(0)" class="text-danger font-18 remove" title="Remove"><i class="fa fa-trash-o"></i></a></td>
                     </tr>`);
-    
+
                 //Setting the default value of
                 //sales into 0% when adding row
                 const managerId = document.querySelectorAll("#engagementManager");
                 for (let i = 0; i < managerId.length; i++) {
                     managerId[i].value = "0%";
                 }
-    
-                //if you add row the 
+
+                //if you add row the
                 //if statement will execute
                 if (managerNum > 1) {
                     document.getElementById("engagementManager").disabled = true; //the dropdown will be disabled
@@ -236,16 +236,16 @@
                 $(".input-manager").css("display","block");
                 $(".input-manager").prop( "disabled", false );
             }
-    
-            // Remove row   
+
+            // Remove row
             $("#tableEngagementmanager").on("click", ".remove", function() {
                 // Getting all the rows next to the row
                 // containing the clicked button
                 var child = $(this).closest("tr").nextAll();
-    
+
                 // Removing the current row.
                 $(this).closest("tr").remove();
-    
+
                 // Decreasing total number of rows by 1.
                 managerNum--;
                 if (managerNum == 1) {
@@ -255,10 +255,10 @@
                     document.getElementById("dropdownManager").style.display = "";
                     document.getElementById("inputManager").value = ""; //to remove the last inputed value
                 }
-    
+
             });
         });
-    
+
     /*****************************************************************CONSULTING*****************************************************************************/
         /********* LEAD CONSULTANT *********/
         var leadConsultant = {{$ecLeadConsultant}};
@@ -272,24 +272,24 @@
                             Lead Consultant
                             </td>
                         <td class="noc">
-                            <input type="number"
-                                class="text-center form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_consultant_num[]" id="ec_LeadconsultantNoc${leadConsultant}" max="100">
+                            <input type="text"
+                                class="commanumber text-center form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_consultant_num[]" id="ec_LeadconsultantNoc${leadConsultant}" data-type="currency">
                         </td>
                         <td class="">
                             <input type="text"
-                                class="text-center fw-bold text-dark form-control input-table @error('') is-invalid @enderror"
+                                class="commanumber text-center fw-bold text-dark form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_hour_fee[]" id="ec_LeadconsultantHf" data-type="currency">
                                 </td>
                         <td class="noh">
-                            <input type="number"
-                                class="text-center form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_hour_num[]" id="ec_LeadconsultantNoh${leadConsultant}">
+                            <input type="text"
+                                class="commanumber text-center form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_hour_num[]" id="ec_LeadconsultantNoh${leadConsultant}" data-type="currency">
                         </td>
                         <td class="nwh">
-                            <input type="number"
-                                class="text-center form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_nswh[]" id="ec_LeadconsultantNwh${leadConsultant}">
+                            <input type="text"
+                                class="commanumber text-center form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_nswh[]" id="ec_LeadconsultantNwh${leadConsultant}" data-type="currency">
                         </td>
                         <td class="total-td table-light">
                             <h4 class="text-center lead" id="ec_LeadconsultantTotal">-</h4>
@@ -309,45 +309,45 @@
                         </td>
                     </tr>
                 `);
-            }); 
-     
+            });
+
             $("#ec_tableLeadConsultant").on("click", ".remove", function () {
-                
+
                 // Getting all the rows next to the row
                 // containing the clicked button
                 var child = $(this).closest("tr").nextAll();
-                
+
                 // Iterating across all the rows
                 // obtained to change the index
                 child.each(function () {
                     // Getting <tr> id.
                     var id = $(this).attr("id");
-    
+
                     // Getting the <input> inside the .noc, .noh, .nwh class.
                     var noc = $(this).children(".noc").children("input");
                     var noh = $(this).children(".noh").children("input");
                     var nwh = $(this).children(".nwh").children("input");
-    
+
                     // Gets the row number from <tr> id.
                     var dig = parseInt(id.substring(17));
-    
+
                     // Modifying row id.
                     $(this).attr("id", `ec_LeadConsultant${dig - 1}`);
-    
+
                     // Modifying row index.
                     noc.attr("id", `ec_LeadconsultantNoc${dig - 1}`);
                     noh.attr("id", `ec_LeadconsultantNoh${dig - 1}`);
                     nwh.attr("id", `ec_LeadconsultantNwh${dig - 1}`);
                 });
-    
+
                 // Removing the current row.
                 $(this).closest("tr").remove();
                 // Decreasing total number of rows by 1.
                 leadConsultant--;
-            });    
-    
+            });
+
         });
-    
+
         /********* ANALYST *********/
         var ecAnalyst = {{$ecAnalyst}};
         $(document).ready(function () {
@@ -360,24 +360,24 @@
                             Analyst
                         </td>
                         <td class="noc">
-                            <input type="number"
-                                class="text-center form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_consultant_num[]" id="ec_AnalystNoc${ecAnalyst}" max="100">
+                            <input type="text"
+                                class="commanumber text-center form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_consultant_num[]" id="ec_AnalystNoc${ecAnalyst}" data-type="currency">
                         </td>
                         <td>
                             <input type="text"
-                                class="text-center fw-bold text-dark form-control input-table @error('') is-invalid @enderror"
+                                class="commanumber text-center fw-bold text-dark form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_hour_fee[]" id="ec_AnalystHf${ecAnalyst}" data-type="currency">
                         </td>
                         <td class="noh">
-                            <input type="number"
-                                class="text-center form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_hour_num[]" id="ec_AnalystNoh${ecAnalyst}">
+                            <input type="text"
+                                class="commanumber text-center form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_hour_num[]" id="ec_AnalystNoh${ecAnalyst}" data-type="currency">
                         </td>
                         <td class="nwh">
-                            <input type="number"
-                                class="text-center form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_nswh[]" id="ec_AnalystNwh${ecAnalyst}">
+                            <input type="text"
+                                class="commanumber text-center form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_nswh[]" id="ec_AnalystNwh${ecAnalyst}" data-type="currency">
                         </td>
                         <td class="total-td table-light">
                             <h4 class="text-center lead" id="ec_AnalystTotal">-</h4>
@@ -397,48 +397,48 @@
                         </td>
                     </tr>
                 `);
-            }); 
-     
+            });
+
             $("#ec_tableAnalyst").on("click", ".remove", function () {
-                
+
                 // Getting all the rows next to the row
                 // containing the clicked button
                 var child = $(this).closest("tr").nextAll();
-                
+
                 // Iterating across all the rows
                 // obtained to change the index
                 child.each(function () {
                     // Getting <tr> id.
                     var id = $(this).attr("id");
-    
+
                     // Getting the <input> inside the .noc, .noh, .nwh class.
                     var noc = $(this).children(".noc").children("input");
                     var noh = $(this).children(".noh").children("input");
                     var nwh = $(this).children(".nwh").children("input");
-    
+
                     // Gets the row number from <tr> id.
                     var dig = parseInt(id.substring(10));
-    
+
                     // Modifying row id.
                     $(this).attr("id", `ec_Analyst${dig - 1}`);
-    
+
                     // Modifying row index.
                     noc.attr("id", `ec_AnalystNoc${dig - 1}`);
                     noh.attr("id", `ec_AnalystNoh${dig - 1}`);
                     nwh.attr("id", `ec_AnalystNwh${dig - 1}`);
                 });
-    
+
                 // Removing the current row.
                 $(this).closest("tr").remove();
                 // Decreasing total number of rows by 1.
                 ecAnalyst--;
-            }); 
+            });
         });
-    
+
     /*****************************************************************DESIGNER*****************************************************************************/
         /********* DESIGNER *********/
         var ecDesigner = {{$ecDesigner}};
-        $(document).ready(function (){ 
+        $(document).ready(function (){
             $("#EcAddBtn3").on("click", function() {
                 // Adding a row inside the tbody.
                 $("#ec_TableDesigner").append(`
@@ -447,24 +447,24 @@
                             <input type="text" class="d-none" value="Designer" name="cost_type[]" readonly>
                         </td>
                         <td class="noc">
-                            <input type="number"
-                                class="text-center form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_consultant_num[]" id="ec_DesignerNoc${ecDesigner}" max="100">
+                            <input type="text"
+                                class="commanumber text-center form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_consultant_num[]" id="ec_DesignerNoc${ecDesigner}" data-type="currency">
                         </td>
                         <td>
                             <input type="text"
-                                class="text-center fw-bold text-dark text-center form-control input-table @error('') is-invalid @enderror"
+                                class="commanumber text-center fw-bold text-dark text-center form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_hour_fee[]" id="ec_DesignerHf" data-type="currency">
                         </td>
                         <td class="noh">
-                            <input type="number"
-                                class="text-center form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_hour_num[]" id="ec_DesignerNoh${ecDesigner}">
+                            <input type="text"
+                                class="commanumber text-center form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_hour_num[]" id="ec_DesignerNoh${ecDesigner}" data-type="currency">
                         </td>
                         <td class="nwh">
-                            <input type="number"
-                                class="text-center form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_nswh[]" id="ec_DesignerNwh${ecDesigner}">
+                            <input type="text"
+                                class="commanumber text-center form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_nswh[]" id="ec_DesignerNwh${ecDesigner}" data-type="currency">
                         </td>
                         <td class="total-td table-light">
                             <h4 class="text-center lead" id="ec_DesignerTotal">-</h4>
@@ -484,58 +484,58 @@
                         </td>
                     </tr>
                 `);
-            }); 
-    
+            });
+
             $("#ec_TableDesigner").on("click", ".remove", function () {
-                
+
                 // Getting all the rows next to the row
                 // containing the clicked button
                 var child = $(this).closest("tr").nextAll();
-                
+
                 // Iterating across all the rows
                 // obtained to change the index
                 child.each(function () {
                     // Getting <tr> id.
                     var id = $(this).attr("id");
-    
+
                     // Getting the <input> inside the .noc, .noh, .nwh class.
                     var noc = $(this).children(".noc").children("input");
                     var noh = $(this).children(".noh").children("input");
                     var nwh = $(this).children(".nwh").children("input");
-    
+
                     // Gets the row number from <tr> id.
                     var dig = parseInt(id.substring(14));
-    
+
                     // Modifying row id.
                     $(this).attr("id", `ec_DesignerRow${dig - 1}`);
-    
+
                     // Modifying row index.
                     noc.attr("id", `ec_DesignerNoc${dig - 1}`);
                     noh.attr("id", `ec_DesignerNoh${dig - 1}`);
                     nwh.attr("id", `ec_DesignerNwh${dig - 1}`);
                 });
-    
+
                 // Removing the current row.
                 $(this).closest("tr").remove();
                 // Decreasing total number of rows by 1.
                 ecDesigner--;
-            }); 
+            });
         });
-    
+
         /********* CREATORS FEES *********/
         var ecCreators = {{$ecCreators}};
-        $(document).ready(function (){ 
+        $(document).ready(function (){
             $("#addBtnCreators").on("click", function() {
                 // Adding a row inside the tbody.
                 $("#ec_TableCreators").append(`
                     <tr class="table-warning" id="ec_CreatorsRow${++ecCreators}">
                         <td class="title table-light">Creators Fees
-                            <input type="text" class="d-none" value="Creators Fees" name="cost_type[]" readonly>    
+                            <input type="text" class="d-none" value="Creators Fees" name="cost_type[]" readonly>
                         </td>
                         <td class="noc">
-                            <input type="number"
-                                class="text-center form-control input-table @error('') is-invalid @enderror"
-                                value="" name="cost_consultant_num[]" id="ec_CreatorsNoc${ecCreators}" max="100" hidden>
+                            <input type="text"
+                                class="commanumber text-center form-control input-table @error('') is-invalid @enderror"
+                                value="" name="cost_consultant_num[]" id="ec_CreatorsNoc${ecCreators}" hidden>
                         </td>
                         <td>
                             <fieldset>
@@ -564,9 +564,9 @@
                             </fieldset>
                         </td>
                         <td class="noh">
-                            <input type="number"
-                                class="text-center form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_hour_num[]" id="ec_CreatorsNoh${ecCreators}">
+                            <input type="text"
+                                class="commanumber text-center form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_hour_num[]" id="ec_CreatorsNoh${ecCreators}" data-type="currency">
                         </td>
                         <td class="nwh"><input type="text" class="d-none" name="cost_nswh[]" readonly></td>
                         <td class="total-td table-light">
@@ -587,47 +587,47 @@
                         </td>
                     </tr>
                 `);
-            }); 
-    
+            });
+
             $("#ec_TableCreators").on("click", ".remove", function () {
-                
+
                 // Getting all the rows next to the row
                 // containing the clicked button
                 var child = $(this).closest("tr").nextAll();
-                
+
                 // Iterating across all the rows
                 // obtained to change the index
                 child.each(function () {
                     // Getting <tr> id.
                     var id = $(this).attr("id");
-    
+
                     // Getting the <input> inside the .noc, .noh, .nwh class.
                     var noc = $(this).children(".noc").children("input");
                     var noh = $(this).children(".noh").children("input");
                     var nwh = $(this).children(".nwh").children("input");
-    
+
                     // Gets the row number from <tr> id.
                     var dig = parseInt(id.substring(14));
-    
+
                     // Modifying row id.
                     $(this).attr("id", `ec_CreatorsRow${dig - 1}`);
-    
+
                     // Modifying row index.
                     noc.attr("id", `ec_CreatorsNoc${dig - 1}`);
                     noh.attr("id", `ec_CreatorsNoh${dig - 1}`);
                     nwh.attr("id", `ec_CreatorsNwh${dig - 1}`);
                 });
-    
+
                 // Removing the current row.
                 $(this).closest("tr").remove();
                 // Decreasing total number of rows by 1.
                 ecCreators--;
-            }); 
+            });
         });
-    
+
     /*****************************************************************PROGRAM*****************************************************************************/
         /********* LEAD FACILITATOR *********/
-        $(document).ready(function (){ 
+        $(document).ready(function (){
             var ecLeadfaci = {{$ecLeadfaci}};
             $("#EcAddBtn4").on("click", function() {
                 // Adding a row inside the tbody.
@@ -638,24 +638,24 @@
                             Lead Facilitator
                         </td>
                         <td class="noc">
-                            <input type="number"
-                                class="text-center form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_consultant_num[]" id="ec_LeadfacilitatorNoc${ecLeadfaci}" max="100">
+                            <input type="text"
+                                class="commanumber text-center form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_consultant_num[]" id="ec_LeadfacilitatorNoc${ecLeadfaci}" data-type="currency">
                         </td>
                         <td>
                             <input type="text"
-                                class="text-center fw-bold text-center text-dark form-control input-table @error('') is-invalid @enderror"
+                                class="commanumber text-center fw-bold text-center text-dark form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_hour_fee[]" id="ec_LeadfacilitatorHf" data-type="currency">
                         </td>
                         <td class="noh">
-                            <input type="number"
-                                class="text-center form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_hour_num[]" id="ec_LeadfacilitatorNoh${ecLeadfaci}">
+                            <input type="text"
+                                class="commanumber text-center form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_hour_num[]" id="ec_LeadfacilitatorNoh${ecLeadfaci}" data-type="currency">
                         </td>
                         <td class="nwh">
-                            <input type="number"
-                                class="text-center form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_nswh[]" id="ec_LeadfacilitatorNwh${ecLeadfaci}">
+                            <input type="text"
+                                class="commanumber text-center form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_nswh[]" id="ec_LeadfacilitatorNwh${ecLeadfaci}" data-type="currency">
                         </td>
                         <td class="total-td table-light">
                             <h4 class="text-center lead" id="ec_LeadfacilitatorTotal">-</h4>
@@ -675,46 +675,46 @@
                         </td>
                     </tr>
                 `);
-            }); 
-    
+            });
+
             $("#ec_TableLeadfaci").on("click", ".remove", function () {
-                
+
                 // Getting all the rows next to the row
                 // containing the clicked button
                 var child = $(this).closest("tr").nextAll();
-                
+
                 // Iterating across all the rows
                 // obtained to change the index
                 child.each(function () {
                     // Getting <tr> id.
                     var id = $(this).attr("id");
-    
+
                     // Getting the <input> inside the .noc, .noh, .nwh class.
                     var noc = $(this).children(".noc").children("input");
                     var noh = $(this).children(".noh").children("input");
                     var nwh = $(this).children(".nwh").children("input");
-    
+
                     // Gets the row number from <tr> id.
                     var dig = parseInt(id.substring(14));
-    
+
                     // Modifying row id.
                     $(this).attr("id", `ec_LeadfaciRow${dig - 1}`);
-    
+
                     // Modifying row index.
                     noc.attr("id", `ec_LeadfacilitatorNoc${dig - 1}`);
                     noh.attr("id", `ec_LeadfacilitatorNoh${dig - 1}`);
                     nwh.attr("id", `ec_LeadfacilitatorNwh${dig - 1}`);
                 });
-    
+
                 // Removing the current row.
                 $(this).closest("tr").remove();
                 // Decreasing total number of rows by 1.
                 ecLeadfaci--;
-            }); 
+            });
         });
-    
+
         /********* CO-LEAD FACILITATOR *********/
-        $(document).ready(function (){ 
+        $(document).ready(function (){
             var ecCoLead = {{$ecColeadfaci}};
             $("#addBtnCoLead").on("click", function() {
                 // Adding a row inside the tbody.
@@ -725,24 +725,24 @@
                             <input type="text" class="d-none" value="Co-Lead" name="cost_type[]" readonly>
                         </td>
                         <td class="noc">
-                            <input type="number"
-                                class="text-center form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_consultant_num[]" id="ec_CoLeadfacilitatorNoc${ecCoLead}" max="100">
+                            <input type="text"
+                                class="commanumber text-center form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_consultant_num[]" id="ec_CoLeadfacilitatorNoc${ecCoLead}" data-type="currency">
                         </td>
                         <td class="hf">
                             <input type="text"
-                                class="text-center fw-bold text-center text-dark form-control input-table @error('') is-invalid @enderror"
+                                class="commanumber text-center fw-bold text-center text-dark form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_hour_fee[]" id="ec_CoLeadfacilitatorHf${ecCoLead}" data-type="currency">
                         </td>
                         <td class="noh">
-                            <input type="number"
-                                class="text-center form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_hour_num[]" id="ec_CoLeadfacilitatorNoh${ecCoLead}">
+                            <input type="text"
+                                class="commanumber text-center form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_hour_num[]" id="ec_CoLeadfacilitatorNoh${ecCoLead}" data-type="currency">
                         </td>
                         <td class="nwh">
-                            <input type="number"
-                                class="text-center form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_nswh[]" id="ec_CoLeadfacilitatorNwh${ecCoLead}">
+                            <input type="text"
+                                class="commanumber text-center form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_nswh[]" id="ec_CoLeadfacilitatorNwh${ecCoLead}" data-type="currency">
                         </td>
                         <td class="total-td table-light">
                             <h4 class="text-center lead" id="ec_CoLeadfacilitatorTotal">-</h4>
@@ -762,46 +762,46 @@
                         </td>
                     </tr>
                 `);
-            }); 
-    
+            });
+
             $("#ec_TableCoLeadfaci").on("click", ".remove", function () {
-                
+
                 // Getting all the rows next to the row
                 // containing the clicked button
                 var child = $(this).closest("tr").nextAll();
-                
+
                 // Iterating across all the rows
                 // obtained to change the index
                 child.each(function () {
                     // Getting <tr> id.
                     var id = $(this).attr("id");
-    
+
                     // Getting the <input> inside the .noc, .noh, .nwh class.
                     var noc = $(this).children(".noc").children("input");
                     var hf = $(this).children(".hf").children("input");
                     var noh = $(this).children(".noh").children("input");
                     var nwh = $(this).children(".nwh").children("input");
-    
+
                     // Gets the row number from <tr> id.
                     var dig = parseInt(id.substring(12));
-    
+
                     // Modifying row id.
                     $(this).attr("id", `ec_CoLeadRow${dig - 1}`);
-    
+
                     // Modifying row index.
                     noc.attr("id", `ec_CoLeadfacilitatorNoc${dig - 1}`);
                     hf.attr("id", `ec_CoLeadfacilitatorHf${dig - 1}`);
                     noh.attr("id", `ec_CoLeadfacilitatorNoh${dig - 1}`);
                     nwh.attr("id", `ec_CoLeadfacilitatorNwh${dig - 1}`);
                 });
-    
+
                 // Removing the current row.
                 $(this).closest("tr").remove();
                 // Decreasing total number of rows by 1.
                 ecCoLead--;
-            }); 
+            });
         });
-    
+
         /********* AL COACH *********/
         $(document).ready(function (){
             var ecAlCoach = {{$ecAlCoach}};
@@ -814,24 +814,24 @@
                             <input type="text" class="d-none" value="AL Coach" name="cost_type[]" readonly>
                         </td>
                         <td class="noc">
-                            <input type="number"
-                                class="text-center text-dark form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_consultant_num[]" id="ec_AlCoachNoc${ecAlCoach}" max="100">
+                            <input type="text"
+                                class="commanumber text-center text-dark form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_consultant_num[]" id="ec_AlCoachNoc${ecAlCoach}" data-type="currency">
                         </td>
                         <td>
                             <input type="text"
-                                class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
+                                class="commanumber text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_hour_fee[]" id="ec_AlCoachHf${ecAlCoach}" data-type="currency">
                         </td>
                         <td class="noh">
-                            <input type="number"
-                                class="text-center text-dark form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_hour_num[]" id="ec_AlCoachNoh${ecAlCoach}">
+                            <input type="text"
+                                class="commanumber text-center text-dark form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_hour_num[]" id="ec_AlCoachNoh${ecAlCoach}" data-type="currency">
                         </td>
                         <td class="nwh">
-                            <input type="number"
-                                class="text-center text-dark form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_nswh[]" id="ec_AlCoachNwh${ecAlCoach}">
+                            <input type="text"
+                                class="commanumber text-center text-dark form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_nswh[]" id="ec_AlCoachNwh${ecAlCoach}" data-type="currency">
                         </td>
                         <td class="total-td table-light">
                             <h4 class="text-center lead" id="ec_AlCoachTotal">-</h4>
@@ -851,44 +851,44 @@
                         </td>
                     </tr>
                 `);
-            }); 
-    
+            });
+
             $("#ec_TableAlCoach").on("click", ".remove", function () {
-                
+
                 // Getting all the rows next to the row
                 // containing the clicked button
                 var child = $(this).closest("tr").nextAll();
-                
+
                 // Iterating across all the rows
                 // obtained to change the index
                 child.each(function () {
                     // Getting <tr> id.
                     var id = $(this).attr("id");
-    
+
                     // Getting the <input> inside the .noc, .noh, .nwh class.
                     var noc = $(this).children(".noc").children("input");
                     var noh = $(this).children(".noh").children("input");
                     var nwh = $(this).children(".nwh").children("input");
-    
+
                     // Gets the row number from <tr> id.
                     var dig = parseInt(id.substring(12));
-    
+
                     // Modifying row id.
                     $(this).attr("id", `ec_AlCoachRow${dig - 1}`);
-    
+
                     // Modifying row index.
                     noc.attr("id", `ec_AlCoachNoc${dig - 1}`);
                     noh.attr("id", `ec_AlCoachNoh${dig - 1}`);
                     nwh.attr("id", `ec_AlCoachNwh${dig - 1}`);
                 });
-    
+
                 // Removing the current row.
                 $(this).closest("tr").remove();
                 // Decreasing total number of rows by 1.
                 ecAlCoach--;
-            });  
+            });
         });
-    
+
         /********* CO-FACILITATOR / RESOURCE SPEAKER *********/
         $(document).ready(function (){
             var ecCofaci = {{$ecCofaci}};
@@ -901,24 +901,24 @@
                             <input type="text" class="d-none" value="Co-Facilitator / Resource Speaker" name="cost_type[]" readonly>
                         </td>
                         <td class="noc">
-                            <input type="number"
-                                class="text-center text-dark form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_consultant_num[]" id="ec_CofacilitatorNoc${ecCofaci}" max="100">
+                            <input type="text"
+                                class="commanumber text-center text-dark form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_consultant_num[]" id="ec_CofacilitatorNoc${ecCofaci}" data-type="currency">
                         </td>
                         <td>
                             <input type="text"
-                                class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
+                                class="commanumber text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_hour_fee[]" id="ec_CofacilitatorHf" data-type="currency">
                         </td>
                         <td class="noh">
-                            <input type="number"
-                                class="text-center text-dark form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_hour_num[]" id="ec_CofacilitatorNoh${ecCofaci}" >
+                            <input type="text"
+                                class="commanumber text-center text-dark form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_hour_num[]" id="ec_CofacilitatorNoh${ecCofaci}" data-type="currency">
                         </td>
                         <td class="nwh">
-                            <input type="number"
-                                class="text-center text-dark form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_nswh[]" id="ec_CofacilitatorNwh${ecCofaci}">
+                            <input type="text"
+                                class="commanumber text-center text-dark form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_nswh[]" id="ec_CofacilitatorNwh${ecCofaci}" data-type="currency">
                         </td>
                         <td class="total-td table-light">
                             <h4 class="text-center lead" id="ec_CofacilitatorTotal">-</h4>
@@ -938,44 +938,44 @@
                         </td>
                     </tr>
                 `);
-            }); 
-    
+            });
+
             $("#ec_TableCofaci").on("click", ".remove", function () {
-                
+
                 // Getting all the rows next to the row
                 // containing the clicked button
                 var child = $(this).closest("tr").nextAll();
-                
+
                 // Iterating across all the rows
                 // obtained to change the index
                 child.each(function () {
                     // Getting <tr> id.
                     var id = $(this).attr("id");
-    
+
                     // Getting the <input> inside the .noc, .noh, .nwh class.
                     var noc = $(this).children(".noc").children("input");
                     var noh = $(this).children(".noh").children("input");
                     var nwh = $(this).children(".nwh").children("input");
-    
+
                     // Gets the row number from <tr> id.
                     var dig = parseInt(id.substring(12));
-    
+
                     // Modifying row id.
                     $(this).attr("id", `ec_CofaciRow${dig - 1}`);
-    
+
                     // Modifying row index.
                     noc.attr("id", `ec_CofacilitatorNoc${dig - 1}`);
                     noh.attr("id", `ec_CofacilitatorNoh${dig - 1}`);
                     nwh.attr("id", `ec_CofacilitatorNwh${dig - 1}`);
                 });
-    
+
                 // Removing the current row.
                 $(this).closest("tr").remove();
                 // Decreasing total number of rows by 1.
                 ecCofaci--;
-            });  
+            });
         });
-    
+
         /********* MODERATOR *********/
         $(document).ready(function (){
             var ecModerator = {{$ecModerator}};
@@ -988,9 +988,9 @@
                             <input type="text" class="d-none" value="Moderator" name="cost_type[]" readonly>
                         </td>
                         <td class="noc">
-                            <input type="number"
-                                class="text-dark text-center form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_consultant_num[]" id="ec_ModeratorNoc${ecModerator}" max="100">
+                            <input type="text"
+                                class="commanumber text-dark text-center form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_consultant_num[]" id="ec_ModeratorNoc${ecModerator}" data-type="currency">
                         </td>
                         <td>
                             <fieldset>
@@ -1004,15 +1004,15 @@
                                             P1,350 - Senior Consultant</i>"
                                     data-mytooltip-theme="dark" data-mytooltip-action="focus"
                                     data-mytooltip-direction="right">
-                                    <option value="₱800" {{ old('') == '800' ? 'selected="selected"' : '' }}
+                                    <option value="800" {{ old('') == '800' ? 'selected="selected"' : '' }}
                                         title="">
                                         &#8369;800
                                     </option>
-                                    <option value="₱1100" {{ old('') == '1100' ? 'selected="selected"' : '' }}
+                                    <option value="1100" {{ old('') == '1100' ? 'selected="selected"' : '' }}
                                         title="">
                                         &#8369;1,100
                                     </option>
-                                    <option value="₱1350" {{ old('') == '1350' ? 'selected="selected"' : '' }}
+                                    <option value="1350" {{ old('') == '1350' ? 'selected="selected"' : '' }}
                                         title="">
                                         &#8369;1,350
                                     </option>
@@ -1025,14 +1025,14 @@
                             </fieldset>
                         </td>
                         <td class="noh">
-                            <input type="number"
-                                class="text-dark text-center form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_hour_num[]" id="ec_ModeratorNoh${ecModerator}">
+                            <input type="text"
+                                class="commanumber text-dark text-center form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_hour_num[]" id="ec_ModeratorNoh${ecModerator}" data-type="currency">
                         </td>
                         <td class="nwh">
-                            <input type="number"
-                                class="text-dark text-center form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_nswh[]" id="ec_ModeratorNwh${ecModerator}">
+                            <input type="text"
+                                class="commanumber text-dark text-center form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_nswh[]" id="ec_ModeratorNwh${ecModerator}" data-type="currency">
                         </td>
                         <td class="total-td table-light">
                             <h4 class="text-center lead" id="ec_ModeratorTotal">-</h4>
@@ -1052,44 +1052,44 @@
                         </td>
                     </tr>
                 `);
-            }); 
-    
+            });
+
             $("#ec_TableModerator").on("click", ".remove", function () {
-                
+
                 // Getting all the rows next to the row
                 // containing the clicked button
                 var child = $(this).closest("tr").nextAll();
-                
+
                 // Iterating across all the rows
                 // obtained to change the index
                 child.each(function () {
                     // Getting <tr> id.
                     var id = $(this).attr("id");
-    
+
                     // Getting the <input> inside the .noc, .noh, .nwh class.
                     var noc = $(this).children(".noc").children("input");
                     var noh = $(this).children(".noh").children("input");
                     var nwh = $(this).children(".nwh").children("input");
-    
+
                     // Gets the row number from <tr> id.
                     var dig = parseInt(id.substring(15));
-    
+
                     // Modifying row id.
                     $(this).attr("id", `ec_ModeratorRow${dig - 1}`);
-    
+
                     // Modifying row index.
                     noc.attr("id", `ec_ModeratorNoc${dig - 1}`);
                     noh.attr("id", `ec_ModeratorNoh${dig - 1}`);
                     nwh.attr("id", `ec_ModeratorNwh${dig - 1}`);
                 });
-    
+
                 // Removing the current row.
                 $(this).closest("tr").remove();
                 // Decreasing total number of rows by 1.
                 ecModerator--;
-            });  
+            });
         });
-    
+
         /********* PRODUCER *********/
         $(document).ready(function (){
             var ecProducer = {{$ecProducer}};
@@ -1102,24 +1102,24 @@
                             <input type="text" class="d-none" value="Producer" name="cost_type[]" readonly>
                         </td>
                         <td class="noc">
-                            <input type="number"
-                                class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_consultant_num[]" id="ec_ProducerNoc${ecProducer}">
+                            <input type="text"
+                                class="commanumber text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_consultant_num[]" id="ec_ProducerNoc${ecProducer}" data-type="currency">
                         </td>
                         <td>
                             <input type="text"
-                                class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
+                                class="commanumber text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_hour_fee[]" id="ec_ProducerHf" data-type="currency">
                         </td>
                         <td class="noh">
-                            <input type="number"
-                                class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_hour_num[]" id="ec_ProducerNoh${ecProducer}">
+                            <input type="text"
+                                class="commanumber text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_hour_num[]" id="ec_ProducerNoh${ecProducer}" data-type="currency">
                         </td>
                         <td class="nwh">
-                            <input type="number"
-                                class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_nswh[]" id="ec_ProducerNwh${ecProducer}">
+                            <input type="text"
+                                class="commanumber text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_nswh[]" id="ec_ProducerNwh${ecProducer}" data-type="currency">
                         </td>
                         <td class="total-td table-light">
                             <h4 class="text-center lead" id="ec_ProducerTotal">-</h4>
@@ -1139,44 +1139,44 @@
                         </td>
                     </tr>
                 `);
-            }); 
-    
+            });
+
             $("#ec_TableProducer").on("click", ".remove", function () {
-                
+
                 // Getting all the rows next to the row
                 // containing the clicked button
                 var child = $(this).closest("tr").nextAll();
-                
+
                 // Iterating across all the rows
                 // obtained to change the index
                 child.each(function () {
                     // Getting <tr> id.
                     var id = $(this).attr("id");
-    
+
                     // Getting the <input> inside the .noc, .noh, .nwh class.
                     var noc = $(this).children(".noc").children("input");
                     var noh = $(this).children(".noh").children("input");
                     var nwh = $(this).children(".nwh").children("input");
-    
+
                     // Gets the row number from <tr> id.
                     var dig = parseInt(id.substring(14));
-    
+
                     // Modifying row id.
                     $(this).attr("id", `ec_ProducerRow${dig - 1}`);
-    
+
                     // Modifying row index.
                     noc.attr("id", `ec_ProducerNoc${dig - 1}`);
                     noh.attr("id", `ec_ProducerNoh${dig - 1}`);
                     nwh.attr("id", `ec_ProducerNwh${dig - 1}`);
                 });
-    
+
                 // Removing the current row.
                 $(this).closest("tr").remove();
                 // Decreasing total number of rows by 1.
                 ecProducer--;
-            });  
+            });
         });
-    
+
     /******************************************************************DOCUMENTOR*****************************************************************************/
         /********* DOCUMENTOR *********/
         $(document).ready(function (){
@@ -1190,24 +1190,24 @@
                                 <input type="text" class="d-none" value="Documentor" name="cost_type[]" readonly>
                             </td>
                             <td>
-                                <input type="number"
-                                    class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_consultant_num[]" id="ec_DocumentorNoc${ecDocumentor}" max="100">
+                                <input type="text"
+                                    class="commanumber text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
+                                    value="{{ old('') }}" name="cost_consultant_num[]" id="ec_DocumentorNoc${ecDocumentor}" data-type="currency">
                             </td>
                             <td>
                                 <input type="text"
-                                    class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_hour_fee[]" id="ec_DocumentorHf">
+                                    class="commanumber text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
+                                    value="{{ old('') }}" name="cost_hour_fee[]" id="ec_DocumentorHf" data-type="currency">
                             </td>
                             <td>
-                                <input type="number"
-                                    class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_hour_num[]" id="ec_DocumentorNoh${ecDocumentor}">
+                                <input type="text"
+                                    class="commanumber text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
+                                    value="{{ old('') }}" name="cost_hour_num[]" id="ec_DocumentorNoh${ecDocumentor}" data-type="currency">
                             </td>
                             <td>
-                                <input type="number"
-                                    class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_nswh[]" id="ec_DocumentorNwh${ecDocumentor}">
+                                <input type="text"
+                                    class="commanumber text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
+                                    value="{{ old('') }}" name="cost_nswh[]" id="ec_DocumentorNwh${ecDocumentor}" data-type="currency">
                             </td>
                             <td class="total-td table-light" style="background-color: rgba(146, 146, 146, 0.727">
                                 <h4 class="text-center" id="ec_DocumentorTotal">-</h4>
@@ -1227,44 +1227,43 @@
                             </td>
                         </tr>
                     `);
-                }); 
-    
+                });
+
                 $("#ec_TableDocumentor").on("click", ".remove", function () {
-                    
+
                     // Getting all the rows next to the row
                     // containing the clicked button
                     var child = $(this).closest("tr").nextAll();
-                    
+
                     // Iterating across all the rows
                     // obtained to change the index
                     child.each(function () {
                         // Getting <tr> id.
                         var id = $(this).attr("id");
-    
+
                         // Getting the <input> inside the .noc, .noh, .nwh class.
                         var noc = $(this).children(".noc").children("input");
                         var noh = $(this).children(".noh").children("input");
                         var nwh = $(this).children(".nwh").children("input");
-    
+
                         // Gets the row number from <tr> id.
                         var dig = parseInt(id.substring(16));
-    
+
                         // Modifying row id.
                         $(this).attr("id", `ec_DocumentorRow${dig - 1}`);
-    
+
                         // Modifying row index.
                         noc.attr("id", `ec_DocumentorNoc${dig - 1}`);
                         noh.attr("id", `ec_DocumentorNoh${dig - 1}`);
                         nwh.attr("id", `ec_DocumentorNwh${dig - 1}`);
                     });
-    
+
                     // Removing the current row.
                     $(this).closest("tr").remove();
                     // Decreasing total number of rows by 1.
                     ecDocumentor--;
-                });  
+                });
             });
     /********* END *********/
     </script>
-    
-    
+

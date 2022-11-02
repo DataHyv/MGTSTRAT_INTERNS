@@ -25,7 +25,7 @@
                             <th class="title-middle" scope="col" style="font-size: 0.9rem;">NUMBER OF CONSULTANTS</th>
                             <th class="title-middle px-4" width=15% scope="col">HOURLY FEES</th>
                             <th class="title-middle" scope="col" style="font-size: 0.9rem;">NUMBER OF HOURS</th>
-                            <th class="title-middle" scope="col" style="font-size: 0.9rem;" width=10%>    
+                            <th class="title-middle" scope="col" style="font-size: 0.9rem;" width=10%>
                                 <label for="Night Shift, Weekends and Holidays">NSWH</label>
                                 @foreach ($dataJoin1 as $key=>$fee_type)
                                 @if ($fee_type->type === 'Night Shift, Weekends and Holidays')
@@ -87,11 +87,12 @@
                             <input type="text" class="d-none" value="{{ $fee_type->type }}" name="fee_type[]">
                                 {{$fee_type->type}}
                         </td>
+
                         <td class="noc" data-title="# OF CONSULTANTS">
-                            <input type="number"
-                                class="input js-mytooltip input-table form-control  @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="commanumber input js-mytooltip input-table form-control @error('') is-invalid @enderror"
                                 value="{{ $fee_type->consultant_num }}" name="fee_consultant_num[]" id="ef_LeadconsultantNoc{{$efLeadConsultant}}"
-                                oninput="document.getElementById('ec_LeadconsultantNoc{{$efLeadConsultant}}').value = document.getElementById('ef_LeadconsultantNoc{{$efLeadConsultant}}').value;" title="" max="100"
+                                oninput="document.getElementById('ec_LeadconsultantNoc{{$efLeadConsultant}}').value = document.getElementById('ef_LeadconsultantNoc{{$efLeadConsultant}}').value;" title="" data-type="currency"
                                 data-mytooltip-content="<i>Includes in depth needs analysis (i.e. surveys, interviews, FGDs),
                                 special research (i.e. to study client materials or client -required materials, industry
                                 or function specific content), creation of client-specific learning aids/tools
@@ -108,10 +109,10 @@
                                     &#8369;9,000 - Senior Consultants </i>"
                                     data-mytooltip-theme="dark" data-mytooltip-action="focus"
                                     data-mytooltip-direction="right" style="background-color:#ffcccc; color:red;">
-                                    <option value="₱7000" {{ $fee_type->hour_fee == '₱7000' ? 'selected="selected"' : '' }}>
+                                    <option value="7000" {{ $fee_type->hour_fee == '7000' ? 'selected="selected"' : '' }}>
                                         &#8369;7,000
                                     </option>
-                                    <option value="₱9000" {{ $fee_type->hour_fee == '₱9000' ? 'selected="selected"' : '' }}>
+                                    <option value="9000" {{ $fee_type->hour_fee == '9000' ? 'selected="selected"' : '' }}>
                                         &#8369;9,000
                                     </option>
                                 </select>
@@ -124,11 +125,11 @@
                         </td>
 
                         <td class="noh">
-                            <input type="number" class="form-control input-table input js-mytooltip @error('') is-invalid @enderror" value="{{ $fee_type->hour_num }}" name="fee_hour_num[]" id="ef_LeadconsultantNoh{{$efLeadConsultant}}" oninput="document.getElementById('ec_LeadconsultantNoh{{$efLeadConsultant}}').value = document.getElementById('ef_LeadconsultantNoh{{$efLeadConsultant}}').value;" data-mytooltip-content="<i>Number of Hours</i>" data-mytooltip-theme="dark" data-mytooltip-action="focus" data-mytooltip-direction="bottom">
+                            <input type="text" class="commanumber form-control input-table input js-mytooltip @error('') is-invalid @enderror" value="{{ $fee_type->hour_num }}" name="fee_hour_num[]" id="ef_LeadconsultantNoh{{$efLeadConsultant}}" data-type="currency" oninput="document.getElementById('ec_LeadconsultantNoh{{$efLeadConsultant}}').value = document.getElementById('ef_LeadconsultantNoh{{$efLeadConsultant}}').value;" data-mytooltip-content="<i>Number of Hours</i>" data-mytooltip-theme="dark" data-mytooltip-action="focus" data-mytooltip-direction="bottom">
                         </td>
 
                         <td class="nwh">
-                            <input type="number" class="form-control input-table @error('') is-invalid @enderror" value="{{ $fee_type->nswh }}" name="fee_nswh[]" id="ef_LeadconsultantNwh{{$efLeadConsultant}}" oninput="document.getElementById('ec_LeadconsultantNwh{{$efLeadConsultant}}').value = document.getElementById('ef_LeadconsultantNwh{{$efLeadConsultant}}').value;">
+                            <input type="text" class="commanumber form-control input-table @error('') is-invalid @enderror" value="{{ $fee_type->nswh }}" name="fee_nswh[]" id="ef_LeadconsultantNwh{{$efLeadConsultant}}" data-type="currency" oninput="document.getElementById('ec_LeadconsultantNwh{{$efLeadConsultant}}').value = document.getElementById('ef_LeadconsultantNwh{{$efLeadConsultant}}').value;">
                             <input type="text" class="nswh-percent-value" value="{{ $fee_type->nswh_percent }}" name="nswh_percent[]" hidden>
                         </td>
 
@@ -168,23 +169,23 @@
                             {{ $fee_type->type }}
                         </td>
                         <td class="noc">
-                            <input type="number" class="input js-mytooltip form-control input-table @error('') is-invalid @enderror" value="{{ $fee_type->consultant_num }}" name="fee_consultant_num[]" id="ef_AnalystNoc{{$efAnalyst}}" max="100" oninput="document.getElementById('ec_AnalystNoc{{$efAnalyst}}').value = document.getElementById('ef_AnalystNoc{{$efAnalyst}}').value;" data-mytooltip-content="<i>Includes in depth needs analysis (i.e. surveys, interviews, FGDs), special research (i.e. to study client materials or client -required materials, industry or function specific content), creation of client-specific learning aids/tools (i.e. assessments, c</i>" data-mytooltip-theme="dark" data-mytooltip-action="focus" data-mytooltip-direction="bottom">
+                            <input type="text" class="commanumber input js-mytooltip form-control input-table @error('') is-invalid @enderror" value="{{ $fee_type->consultant_num }}" name="fee_consultant_num[]" id="ef_AnalystNoc{{$efAnalyst}}" data-type="currency" oninput="document.getElementById('ec_AnalystNoc{{$efAnalyst}}').value = document.getElementById('ef_AnalystNoc{{$efAnalyst}}').value;" data-mytooltip-content="<i>Includes in depth needs analysis (i.e. surveys, interviews, FGDs), special research (i.e. to study client materials or client -required materials, industry or function specific content), creation of client-specific learning aids/tools (i.e. assessments, c</i>" data-mytooltip-theme="dark" data-mytooltip-action="focus" data-mytooltip-direction="bottom">
                         </td>
                         <td>
-                            <input type="text" class="form-control input-table @error('') is-invalid @enderror"
+                            <input type="text" class="commanumber form-control input-table @error('') is-invalid @enderror"
                                 value="{{ $fee_type->hour_fee }}" name="fee_hour_fee[]" id="ef_AnalystHf" data-type="currency">
                         </td>
                         <td class="noh">
-                            <input type="number"
-                                class="input js-mytooltip form-control input-table @error('') is-invalid @enderror"
-                                value="{{ $fee_type->hour_num }}" name="fee_hour_num[]" id="ef_AnalystNoh{{$efAnalyst}}"
+                            <input type="text"
+                                class="commanumber input js-mytooltip form-control input-table @error('') is-invalid @enderror"
+                                value="{{ $fee_type->hour_num }}" name="fee_hour_num[]" id="ef_AnalystNoh{{$efAnalyst}}" data-type="currency"
                                 oninput="document.getElementById('ec_AnalystNoh{{$efAnalyst}}').value = document.getElementById('ef_AnalystNoh{{$efAnalyst}}').value;"
                                 data-mytooltip-content="<i>Number of Hours</i>" data-mytooltip-theme="dark"
                                 data-mytooltip-action="focus" data-mytooltip-direction="bottom">
                         </td>
                         <td class="nwh">
-                            <input type="number" class="form-control input-table @error('') is-invalid @enderror"
-                                value="{{ $fee_type->nswh }}" name="fee_nswh[]" id="ef_AnalystNwh{{$efAnalyst}}"
+                            <input type="text" class="commanumber form-control input-table @error('') is-invalid @enderror"
+                                value="{{ $fee_type->nswh }}" name="fee_nswh[]" id="ef_AnalystNwh{{$efAnalyst}}" data-type="currency"
                                 oninput="document.getElementById('ec_AnalystNwh{{$efAnalyst}}').value = document.getElementById('ef_AnalystNwh{{$efAnalyst}}').value;">
                             <input type="text" class="nswh-percent-value" value="{{ $fee_type->nswh_percent }}" name="nswh_percent[]" hidden>
                         </td>
@@ -249,9 +250,9 @@
                             {{ $fee_type->type }}
                         </td>
                         <td class="noc">
-                            <input type="number"
-                                class="input js-mytooltip form-control input-table @error('') is-invalid @enderror"
-                                value="{{ $fee_type->consultant_num }}" name="fee_consultant_num[]" id="ef_DesignerNoc{{$efDesigner}}" max="100"
+                            <input type="text"
+                                class="commanumber input js-mytooltip form-control input-table @error('') is-invalid @enderror"
+                                value="{{ $fee_type->consultant_num }}" name="fee_consultant_num[]" id="ef_DesignerNoc{{$efDesigner}}" data-type="currency"
                                 oninput="document.getElementById('ec_DesignerNoc{{$efDesigner}}').value = document.getElementById('ef_DesignerNoc{{$efDesigner}}').value;"
                                 data-mytooltip-content="<i>Includes in depth needs analysis (i.e. surveys, interviews, FGDs),
                                     special research (i.e. to study client materials or client -required materials, industry
@@ -268,10 +269,10 @@
                                         &#8369;8,000 - Senior Consultants</i>"
                                     data-mytooltip-theme="dark" data-mytooltip-action="focus"
                                     data-mytooltip-direction="right" style="background-color:#ffcccc; color:red;">
-                                    <option value="₱6000" {{ $fee_type->hour_fee == '₱6000' ? 'selected="selected"' : '' }}>
+                                    <option value="6000" {{ $fee_type->hour_fee == '6000' ? 'selected="selected"' : '' }}>
                                         &#8369;6,000
                                     </option>
-                                    <option value="₱8000" {{ $fee_type->hour_fee == '₱8000' ? 'selected="selected"' : '' }}>
+                                    <option value="8000" {{ $fee_type->hour_fee == '8000' ? 'selected="selected"' : '' }}>
                                         &#8369;8,000
                                     </option>
                                 </select>
@@ -283,16 +284,16 @@
                             </fieldset>
                         </td>
                         <td class="noh">
-                            <input type="number"
-                                class="input js-mytooltip form-control input-table @error('') is-invalid @enderror"
-                                value="{{ $fee_type->hour_num }}" name="fee_hour_num[]" id="ef_DesignerNoh{{$efDesigner}}"
+                            <input type="text"
+                                class="commanumber input js-mytooltip form-control input-table @error('') is-invalid @enderror"
+                                value="{{ $fee_type->hour_num }}" name="fee_hour_num[]" id="ef_DesignerNoh{{$efDesigner}}" data-type="currency"
                                 oninput="document.getElementById('ec_DesignerNoh{{$efDesigner}}').value = document.getElementById('ef_DesignerNoh{{$efDesigner}}').value;"
                                 data-mytooltip-content="<i>Number of Hours</i>" data-mytooltip-theme="dark"
                                 data-mytooltip-action="focus" data-mytooltip-direction="bottom">
                         </td>
                         <td class="nwh">
-                            <input type="number" class="form-control input-table @error('') is-invalid @enderror"
-                                value="{{ $fee_type->nswh }}" name="fee_nswh[]" id="ef_DesignerNwh{{$efDesigner}}"
+                            <input type="text" class="commanumber form-control input-table @error('') is-invalid @enderror"
+                                value="{{ $fee_type->nswh }}" name="fee_nswh[]" id="ef_DesignerNwh{{$efDesigner}}" data-type="currency"
                                 oninput="document.getElementById('ec_DesignerNwh{{$efDesigner}}').value = document.getElementById('ef_DesignerNwh{{$efDesigner}}').value;">
                             <input type="text" class="nswh-percent-value" value="{{ $fee_type->nswh_percent }}" name="nswh_percent[]" hidden>
                         </td>
@@ -342,16 +343,16 @@
                             <input type="hidden" name="ce_id[]" value="{{$fee_type->id }}">
                             <input type="text" class="d-none" value="{{ $fee_type->type }}" name="fee_type[]" >
                             {{ $fee_type->type }}</td>
-                        <td>
-                            <input type="number" class="form-control input-table @error('') is-invalid @enderror"
-                                value="{{ $fee_type->consultant_num }}" name="fee_consultant_num[]" id="ef_LeadfacilitatorNoc{{$efLeadfaci}}"
-                                oninput="document.getElementById('ec_LeadfacilitatorNoc{{$efLeadfaci}}').value = document.getElementById('ef_LeadfacilitatorNoc{{$efLeadfaci}}').value;" 
+                        <td class="noc">
+                            <input type="text" class="commanumber form-control input-table @error('') is-invalid @enderror"
+                                value="{{ $fee_type->consultant_num }}" name="fee_consultant_num[]" id="ef_LeadfacilitatorNoc{{$efLeadfaci}}" data-type="currency"
+                                oninput="document.getElementById('ec_LeadfacilitatorNoc{{$efLeadfaci}}').value = document.getElementById('ef_LeadfacilitatorNoc{{$efLeadfaci}}').value;"
                                 max="100">
                         </td>
-                        <td class="noc">
+                        <td>
                             <div class="form-group has-icon-right mb-0" id="inputLeadfaci1" style="display:none">
                                 <div class="position-relative">
-                                    <input type="text" class="form-control input-table @error('') is-invalid @enderror" value="{{ old('') }}"
+                                    <input type="text" class="commanumber form-control input-table @error('') is-invalid @enderror" value="{{ old('') }}"
                                         value="{{ $fee_type->hour_fee }}" name="fee_hour_fee[]" id="ef_InputLeadFaciHf{{$efLeadfaci}}" data-type="currency" disabled>
                                     <div class="form-control-icon">
                                         <a href="javascript:void(0)" class="deleteIcon" id="deleteIcon1">
@@ -370,13 +371,13 @@
                                         &#8369;12,000 - all else</i>"
                                     data-mytooltip-theme="dark" data-mytooltip-action="focus"
                                     data-mytooltip-direction="right" style="background-color:#ffcccc; color:red;">
-                                    <option value="₱10,000" {{ $fee_type->hour_fee == '₱10,000' ? 'selected="selected"' : '' }}>
+                                    <option value="10,000" {{ $fee_type->hour_fee == '10,000' ? 'selected="selected"' : '' }}>
                                         &#8369;10,000
                                     </option>
-                                    <option value="₱11,000" {{ $fee_type->hour_fee == '₱11,000' ? 'selected="selected"' : '' }}>
+                                    <option value="11,000" {{ $fee_type->hour_fee == '11,000' ? 'selected="selected"' : '' }}>
                                         &#8369;11,000
                                     </option>
-                                    <option value="₱12,000" {{ $fee_type->hour_fee == '₱12,000' ? 'selected="selected"' : '' }}
+                                    <option value="12,000" {{ $fee_type->hour_fee == '12,000' ? 'selected="selected"' : '' }}
                                         selected>
                                         &#8369;12,000
                                     </option>
@@ -394,16 +395,16 @@
                             </fieldset>
                         </td>
                         <td class="noh">
-                            <input type="number"
-                                class="input js-mytooltip form-control input-table @error('') is-invalid @enderror"
-                                value="{{ $fee_type->hour_num }}" name="fee_hour_num[]" id="ef_LeadfacilitatorNoh{{$efLeadfaci}}"
+                            <input type="text"
+                                class="commanumber input js-mytooltip form-control input-table @error('') is-invalid @enderror"
+                                value="{{ $fee_type->hour_num }}" name="fee_hour_num[]" id="ef_LeadfacilitatorNoh{{$efLeadfaci}}" data-type="currency"
                                 oninput="document.getElementById('ec_LeadfacilitatorNoh{{$efLeadfaci}}').value = document.getElementById('ef_LeadfacilitatorNoh{{$efLeadfaci}}').value;"
                                 data-mytooltip-content="<i>Number of Hours</i>" data-mytooltip-theme="dark"
                                 data-mytooltip-action="focus" data-mytooltip-direction="bottom">
                         </td>
                         <td class="nwh">
-                            <input type="number" class="form-control input-table @error('') is-invalid @enderror"
-                                value="{{ $fee_type->nswh }}" name="fee_nswh[]" id="ef_LeadfacilitatorNwh{{$efLeadfaci}}"
+                            <input type="text" class="commanumber form-control input-table @error('') is-invalid @enderror"
+                                value="{{ $fee_type->nswh }}" name="fee_nswh[]" id="ef_LeadfacilitatorNwh{{$efLeadfaci}}" data-type="currency"
                                 oninput="document.getElementById('ec_LeadfacilitatorNwh{{$efLeadfaci}}').value = document.getElementById('ef_LeadfacilitatorNwh{{$efLeadfaci}}').value;">
                             <input type="text" class="nswh-percent-value" value="{{ $fee_type->nswh_percent }}" name="nswh_percent[]" hidden>
                         </td>
@@ -442,26 +443,26 @@
                             {{ $fee_type->type }}
                         </td>
                         <td class="noc">
-                            <input type="number" class="form-control input-table @error('') is-invalid @enderror"
-                                value="{{ $fee_type->consultant_num }}" name="fee_consultant_num[]" id="ef_CofaciNoc{{$efCofaci}}"
+                            <input type="text" class="commanumber form-control input-table @error('') is-invalid @enderror"
+                                value="{{ $fee_type->consultant_num }}" name="fee_consultant_num[]" id="ef_CofaciNoc{{$efCofaci}}" data-type="currency"
                                 oninput="document.getElementById('ec_CofaciNoc{{$efCofaci}}').value = document.getElementById('ef_CofaciNoc{{$efCofaci}}').value;"
                                 max="100">
                         </td>
                         <td>
-                            <input type="text" class="form-control input-table @error('') is-invalid @enderror"
+                            <input type="text" class="commanumber form-control input-table @error('') is-invalid @enderror"
                                 value="{{ $fee_type->hour_fee }}" name="fee_hour_fee[]" id="ef_CofaciHf" data-type="currency">
                         </td>
                         <td class="noh">
-                            <input type="number"
-                                class="input js-mytooltip form-control input-table @error('') is-invalid @enderror"
-                                value="{{ $fee_type->hour_num }}" name="fee_hour_num[]" id="ef_CofaciNoh{{$efCofaci}}"
+                            <input type="text"
+                                class="commanumber input js-mytooltip form-control input-table @error('') is-invalid @enderror"
+                                value="{{ $fee_type->hour_num }}" name="fee_hour_num[]" id="ef_CofaciNoh{{$efCofaci}}" data-type="currency"
                                 oninput="document.getElementById('ec_CofaciNoh{{$efCofaci}}').value = document.getElementById('ef_CofaciNoh{{$efCofaci}}').value;"
                                 data-mytooltip-content="<i>Number of Hours</i>" data-mytooltip-theme="dark"
                                 data-mytooltip-action="focus" data-mytooltip-direction="bottom">
                         </td>
                         <td class="nwh">
-                            <input type="number" class="form-control input-table @error('') is-invalid @enderror"
-                                value="{{ $fee_type->nswh }}" name="fee_nswh[]" id="ef_CofaciNwh{{$efCofaci}}"
+                            <input type="text" class="commanumber form-control input-table @error('') is-invalid @enderror"
+                                value="{{ $fee_type->nswh }}" name="fee_nswh[]" id="ef_CofaciNwh{{$efCofaci}}" data-type="currency"
                                 oninput="document.getElementById('ec_CofaciNwh{{$efCofaci}}').value = document.getElementById('ef_CofaciNwh{{$efCofaci}}').value;">
                             <input type="text" class="nswh-percent-value" value="{{ $fee_type->nswh_percent }}" name="nswh_percent[]" hidden>
                         </td>
@@ -500,27 +501,27 @@
                             {{ $fee_type->type }}
                         </td>
                         <td class="noc">
-                            <input type="number" class="form-control input-table @error('') is-invalid @enderror"
-                                value="{{ $fee_type->consultant_num }}" name="fee_consultant_num[]" id="ef_ModeratorNoc{{$efModerator}}"
+                            <input type="text" class="commanumber form-control input-table @error('') is-invalid @enderror"
+                                value="{{ $fee_type->consultant_num }}" name="fee_consultant_num[]" id="ef_ModeratorNoc{{$efModerator}}" data-type="currency"
                                 oninput="document.getElementById('ec_ModeratorNoc{{$efModerator}}').value = document.getElementById('ef_ModeratorNoc{{$efModerator}}').value;"
                                 max="100">
                         </td>
                         <td>
-                            <input type="text" class="form-control input-table @error('') is-invalid @enderror"
+                            <input type="text" class="commanumber form-control input-table @error('') is-invalid @enderror"
                                 value="{{ $fee_type->hour_fee }}" name="fee_hour_fee[]" id="ef_ModeratorHf"
                                 data-type="currency">
                         </td>
                         <td class="noh">
-                            <input type="number"
-                                class="input js-mytooltip form-control input-table @error('') is-invalid @enderror"
-                                value="{{ $fee_type->hour_num }}" name="fee_hour_num[]" id="ef_ModeratorNoh{{$efModerator}}"
+                            <input type="text"
+                                class="commanumber input js-mytooltip form-control input-table @error('') is-invalid @enderror"
+                                value="{{ $fee_type->hour_num }}" name="fee_hour_num[]" id="ef_ModeratorNoh{{$efModerator}}" data-type="currency"
                                 oninput="document.getElementById('ec_ModeratorNoh{{$efModerator}}').value = document.getElementById('ef_ModeratorNoh{{$efModerator}}').value;"
                                 data-mytooltip-content="<i>Number of Hours</i>" data-mytooltip-theme="dark"
                                 data-mytooltip-action="focus" data-mytooltip-direction="bottom">
                         </td>
                         <td class="nwh">
-                            <input type="number" class="form-control input-table @error('') is-invalid @enderror"
-                                value="{{ $fee_type->nswh }}" name="fee_nswh[]" id="ef_ModeratorNwh{{$efModerator}}"
+                            <input type="text" class="commanumber form-control input-table @error('') is-invalid @enderror"
+                                value="{{ $fee_type->nswh }}" name="fee_nswh[]" id="ef_ModeratorNwh{{$efModerator}}" data-type="currency"
                                 oninput="document.getElementById('ec_ModeratorNwh{{$efModerator}}').value = document.getElementById('ef_ModeratorNwh{{$efModerator}}').value;">
                             <input type="text" class="nswh-percent-value" value="{{ $fee_type->nswh_percent }}" name="nswh_percent[]" hidden>
                         </td>
@@ -558,26 +559,26 @@
                             {{ $fee_type->type }}
                         </td>
                         <td class="noc">
-                            <input type="number" class="form-control input-table @error('') is-invalid @enderror"
-                                value="{{ $fee_type->consultant_num }}" name="fee_consultant_num[]" id="ef_ProducerNoc{{$efProducer}}"
+                            <input type="text" class="commanumber form-control input-table @error('') is-invalid @enderror"
+                                value="{{ $fee_type->consultant_num }}" name="fee_consultant_num[]" id="ef_ProducerNoc{{$efProducer}}" data-type="currency"
                                 oninput="document.getElementById('ec_ProducerNoc{{$efProducer}}').value = document.getElementById('ef_ProducerNoc{{$efProducer}}').value;"
                                 max="100">
                         </td>
                         <td>
-                            <input type="text" class="form-control input-table @error('') is-invalid @enderror"
+                            <input type="text" class="commanumber form-control input-table @error('') is-invalid @enderror"
                                 value="{{ $fee_type->hour_fee }}" name="fee_hour_fee[]" id="ef_ProducerHf" data-type="currency">
                         </td>
                         <td class="noh">
-                            <input type="number"
-                                class="input js-mytooltip form-control input-table @error('') is-invalid @enderror"
-                                value="{{ $fee_type->hour_num }}" name="fee_hour_num[]" id="ef_ProducerNoh{{$efProducer}}"
+                            <input type="text"
+                                class="commanumber input js-mytooltip form-control input-table @error('') is-invalid @enderror"
+                                value="{{ $fee_type->hour_num }}" name="fee_hour_num[]" id="ef_ProducerNoh{{$efProducer}}" data-type="currency"
                                 oninput="document.getElementById('ec_ProducerNoh{{$efProducer}}').value = document.getElementById('ef_ProducerNoh{{$efProducer}}').value;"
                                 data-mytooltip-content="<i>Number of Hours</i>" data-mytooltip-theme="dark"
                                 data-mytooltip-action="focus" data-mytooltip-direction="bottom">
                         </td>
                         <td class="nwh">
-                            <input type="number" class="form-control input-table @error('') is-invalid @enderror"
-                                value="{{ $fee_type->nswh }}" name="fee_nswh[]" id="ef_ProducerNwh{{$efProducer}}"
+                            <input type="text" class="commanumber form-control input-table @error('') is-invalid @enderror"
+                                value="{{ $fee_type->nswh }}" name="fee_nswh[]" id="ef_ProducerNwh{{$efProducer}}" data-type="currency"
                                 oninput="document.getElementById('ec_ProducerNwh{{$efProducer}}').value = document.getElementById('ef_ProducerNwh{{$efProducer}}').value;">
                             <input type="text" class="nswh-percent-value" value="{{ $fee_type->nswh_percent }}" name="nswh_percent[]" hidden>
                         </td>
@@ -642,27 +643,27 @@
                             {{ $fee_type->type }}
                         </td>
                         <td class="noc">
-                            <input type="number" class="form-control input-table @error('') is-invalid @enderror"
-                                value="{{ $fee_type->consultant_num }}" name="fee_consultant_num[]" id="ef_DocumentorNoc{{$efDocumentor}}"
-                                oninput="document.getElementById('ec_DocumentorNoc{{$efDocumentor}}').value = document.getElementById('ef_DocumentorNoc{{$efDocumentor}}').value;" 
+                            <input type="text" class="commanumber form-control input-table @error('') is-invalid @enderror"
+                                value="{{ $fee_type->consultant_num }}" name="fee_consultant_num[]" id="ef_DocumentorNoc{{$efDocumentor}}" data-type="currency"
+                                oninput="document.getElementById('ec_DocumentorNoc{{$efDocumentor}}').value = document.getElementById('ef_DocumentorNoc{{$efDocumentor}}').value;"
                                 max="100">
                         </td>
                         <td>
-                            <input type="text" class="form-control input-table @error('') is-invalid @enderror"
+                            <input type="text" class="commanumber form-control input-table @error('') is-invalid @enderror"
                                 value="{{ $fee_type->hour_fee }}" name="fee_hour_fee[]" id="ef_DocumentorHf"
                                 data-type="currency">
                         </td>
                         <td class="noh">
-                            <input type="number"
-                                class="input js-mytooltip form-control input-table @error('') is-invalid @enderror"
-                                value="{{ $fee_type->hour_num }}" name="fee_hour_num[]" id="ef_DocumentorNoh{{$efDocumentor}}"
-                                oninput="document.getElementById('ec_DocumentorNoh{{$efDocumentor}}').value = document.getElementById('ef_DocumentorNoh{{$efDocumentor}}').value;" 
+                            <input type="text"
+                                class="commanumber input js-mytooltip form-control input-table @error('') is-invalid @enderror"
+                                value="{{ $fee_type->hour_num }}" name="fee_hour_num[]" id="ef_DocumentorNoh{{$efDocumentor}}" data-type="currency"
+                                oninput="document.getElementById('ec_DocumentorNoh{{$efDocumentor}}').value = document.getElementById('ef_DocumentorNoh{{$efDocumentor}}').value;"
                                 data-mytooltip-content="<i>Number of Hours</i>" data-mytooltip-theme="dark"
                                 data-mytooltip-action="focus" data-mytooltip-direction="bottom">
                         </td>
                         <td class="nwh">
-                            <input type="number" class="form-control input-table @error('') is-invalid @enderror"
-                                value="{{ $fee_type->nswh }}" name="fee_nswh[]" id="ef_DocumentorNwh{{$efDocumentor}}"
+                            <input type="text" class="commanumber form-control input-table @error('') is-invalid @enderror"
+                                value="{{ $fee_type->nswh }}" name="fee_nswh[]" id="ef_DocumentorNwh{{$efDocumentor}}" data-type="currency"
                                 oninput="document.getElementById('ec_DocumentorNwh{{$efDocumentor}}').value = document.getElementById('ef_DocumentorNwh{{$efDocumentor}}').value;" >
                             <input type="text" class="nswh-percent-value" value="{{ $fee_type->nswh_percent }}" name="nswh_percent[]" hidden>
                         </td>

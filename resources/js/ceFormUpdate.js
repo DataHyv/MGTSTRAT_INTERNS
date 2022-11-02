@@ -5,25 +5,25 @@ if(statusLoad == "Confirmed"){
     $('#status').css('color', 'white')
     $('#status option').css('background-color', 'white')
     $('#status option').css('color', 'black')
-} 
+}
 else if(statusLoad == "In-progress"){
     $('#status').css('background-color', '#ffc107')
     $('#status').css('color', 'black')
     $('#status option').css('background-color', 'white')
     $('#status option').css('color', 'black')
-} 
+}
 else if(statusLoad == "Completed"){
     $('#status').css('background-color', '#28a745')
     $('#status').css('color', 'white')
     $('#status option').css('background-color', 'white')
     $('#status option').css('color', 'black')
-} 
+}
 else if(statusLoad == "Lost"){
     $('#status').css('background-color', '#dc3545')
     $('#status').css('color', 'white')
     $('#status option').css('background-color', 'white')
     $('#status option').css('color', 'black')
-} 
+}
 else if(statusLoad == "Trial"){
     $('#status').css('background-color', '#17a2b8')
     $('#status').css('color', 'white')
@@ -31,13 +31,12 @@ else if(statusLoad == "Trial"){
     $('#status option').css('color', 'black')
 }
 
-
 //ASSIGN EVENT LISTENER IN STATUS
 document.getElementById("status").addEventListener("change", status);
 window.addEventListener("load", status);
 
 //EVENT OF STATUS
-function status() { 
+function status() {
     var status = document.getElementById("status").value;
     if(status == "Confirmed"){
         $('#status').css('background-color', '#007bff')
@@ -80,7 +79,7 @@ $(document).ready(function() {
             if ($('#others1').is(':selected')) {
                 $(`#inputLeadfaci1`).css("display", "")
                 $(`#ef_InputLeadFaciHf1`).prop('disabled', false)
-                $(`#ef_InputLeadFaciHf1`).val("₱")
+                $(`#ef_InputLeadFaciHf1`).val("")
                 $(`#ef_LeadfacilitatorHf1`).prop('disabled', true)
                 $(`#ef_LeadfacilitatorHf1`).css("display", "none")
             } else {
@@ -97,7 +96,7 @@ $(document).ready(function() {
             $(`#ef_InputLeadFaciHf1`).prop('disabled', true)
             $(`#ef_LeadfacilitatorHf1`).prop('disabled', false)
             $(`#ef_LeadfacilitatorHf1`).css("display", "")
-            $(`#ef_LeadfacilitatorHf1`).val("₱12,000")
+            $(`#ef_LeadfacilitatorHf1`).val("12,000")
         });
     });
 });

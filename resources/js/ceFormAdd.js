@@ -132,24 +132,20 @@ $(document).ready(function() {
             if ($('#others1').is(':selected')) {
                 $(`#inputLeadfaci1`).css("display", "")
                 $(`#ef_InputLeadFaciHf1`).prop('disabled', false)
-                $(`#ef_InputLeadFaciHf1`).val("₱")
+                $(`#ef_InputLeadFaciHf1`).val("")
                 $(`#ef_LeadfacilitatorHf1`).prop('disabled', true)
                 $(`#ef_LeadfacilitatorHf1`).css("display", "none")
             } else {
                 $(`#inputLeadfaci1`).css("display", "none")
             }
-            // if ($('#capability${dates}').is(':selected')){
-
-            // }
         });
 
         $('#deleteIcon1').click(function() {
-            // $(this).prev('input').val('').trigger('change').focus();
             $(`#inputLeadfaci1`).css("display", "none")
             $(`#ef_InputLeadFaciHf1`).prop('disabled', true)
             $(`#ef_LeadfacilitatorHf1`).prop('disabled', false)
             $(`#ef_LeadfacilitatorHf1`).css("display", "")
-            $(`#ef_LeadfacilitatorHf1`).val("₱12,000")
+            $(`#ef_LeadfacilitatorHf1`).val("12,000")
         });
     });
 });
@@ -179,11 +175,11 @@ $(document).ready(function(){
     $('#rooster').on('keyup',function(){
         // $value = $(this).val();
         if ($(this).val() === 'erico') {
-            $('#ec_LeadconsultantHf').val("₱" + currency.format(
+            $('#ec_LeadconsultantHf').val(currency.format(
                 Math.ceil(1000)));
         }
         else {
-            $('#ec_LeadconsultantHf').val("₱" + currency.format(
+            $('#ec_LeadconsultantHf').val(currency.format(
                 Math.ceil(2550)));
         }
     })
