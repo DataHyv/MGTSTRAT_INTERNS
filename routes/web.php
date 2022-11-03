@@ -102,7 +102,8 @@ Route::post('deleteRecord', [CustomizedEngagementController::class, 'viewDelete'
 Route::post('delete',[CustomizedEngagementController::class, 'deleteRow'])->name('delete');
 });
 // ----------------------------- F2F engagement form ------------------------------//
-Route::get('form/f2f_engagement/new', [App\Http\Controllers\F2fEngagementController::class, 'index'])->middleware('auth')->name('form/f2f_engagement/new');
+Route::get('form/f2f_engagement/index', [App\Http\Controllers\F2fEngagementController::class, 'index'])->middleware('auth')->name('form/f2f_engagement/index');
+Route::get('form/f2f_engagement/new', [App\Http\Controllers\F2fEngagementController::class, 'newRecord'])->middleware('auth')->name('form/f2f_engagement/new');
 Route::post('form/f2f_engagement/save', [App\Http\Controllers\F2fEngagementController::class, 'store'])->name('form/f2f_engagement/save');
 
 // ----------------------------- MGTSTRAT U WORKSHOPS ------------------------------//

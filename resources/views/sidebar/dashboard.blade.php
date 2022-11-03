@@ -150,17 +150,17 @@
                     </ul>
                 </li>
 
-                <li class="sidebar-item has-sub {{ Request::routeIs('form/customizedEngagement/detail') ? 'active' : '' }}">
+                <li class="sidebar-item has-sub {{ Request::routeIs('form/customizedEngagement/detail', 'form/f2f_engagement/index') ? 'active' : '' }}">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-grid-1x2-fill"></i>
                         <span>View Record</span>
                     </a>
-                    <ul class="submenu {{ Request::routeIs('form/customizedEngagement/detail') ? 'active' : '' }}">
+                    <ul class="submenu {{ Request::routeIs('form/customizedEngagement/detail', 'form/f2f_engagement/index') ? 'active' : '' }}">
                         <li class="submenu-item {{ Request::routeIs('form/customizedEngagement/detail') ? 'active' : '' }}">
                             <a href="{{ route('form/customizedEngagement/detail') }}">Customized Engagement</a>
                         </li>
-                        <li class="submenu-item">
-                            <a href="#">F2F Engagement</a>
+                        <li class="submenu-item {{ Request::routeIs('form/f2f_engagement/index') ? 'active' : '' }}">
+                            <a href="{{ route('form/f2f_engagement/index') }}">F2F Engagement</a>
                         </li>
                         <li class="submenu-item">
                             <a href="#">MgtStrat-U Workshops</a>
