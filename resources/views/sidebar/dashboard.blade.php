@@ -159,10 +159,17 @@
                         <li class="submenu-item {{ Request::routeIs('form/customizedEngagement/detail') ? 'active' : '' }}">
                             <a href="{{ route('form/customizedEngagement/detail') }}">Customized Engagement</a>
                         </li>
+                        <li class="submenu-item">
+                            <a href="#">F2F Engagement</a>
+                        </li>
+                        <li class="submenu-item">
+                            <a href="#">MgtStrat-U Workshops</a>
+                        </li>
                     </ul>
                 </li>
 
             </ul>
+
             {{-- <li class="sidebar-item">
                     <a href="{{ route('logout') }}" class='sidebar-link'>
                         <i class="bi bi-box-arrow-right"></i>
