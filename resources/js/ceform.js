@@ -1104,10 +1104,10 @@ $('input[type="number"]').attr("min", "0");
 //*************************************** CURRENCY FORMATTER ********************************************************//
 $(document).ready(function() {
     //currency format
-    let currency = Intl.NumberFormat("en-US");
-    $(".commanumber").each(function () {
-        $(this).val(currency.format($(this).val()));
-    });
+    // let currency = Intl.NumberFormat("en-US");
+    // $(".commanumber").each(function () {
+    //     $(this).val(currency.format($(this).val()));
+    // });
 
     //percentage string of program expense
     $("#ec_Programexpense").on("blur", function () {

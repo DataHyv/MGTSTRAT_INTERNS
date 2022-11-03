@@ -71,11 +71,23 @@ $(document).on("load change click", ".customized-engagement, .nswh-percent", fun
     $(".nswh-percent-value").val($("#nswh").val())
 });
 
-//LEAD FACILITATOR DROPDOWN SCRIPT
 $(document).ready(function() {
+    //currency format
+    let currency = Intl.NumberFormat("en-US");
+
+    //All commanumber class names value
+    //will be formatted into currency format
+    $(".commanumber").each(function () {
+        $(this).val(currency.format($(this).val()));
+    });
+
+    //Lead facilitator
     $("#tableLeadfaci").each(function () {
+        //Hourly Fees dropdown
         $(`#ef_LeadfacilitatorHf1`).click(function () {
             var others = $(`#ef_LeadfacilitatorHf1`);
+            //if "others" is selected the dropdown
+            //menu will transform into input field
             if ($('#others1').is(':selected')) {
                 $(`#inputLeadfaci1`).css("display", "")
                 $(`#ef_InputLeadFaciHf1`).prop('disabled', false)
@@ -85,9 +97,6 @@ $(document).ready(function() {
             } else {
                 $(`#inputLeadfaci1`).css("display", "none")
             }
-            // if ($('#capability${dates}').is(':selected')){
-
-            // }
         });
 
         $('#deleteIcon1').click(function() {
