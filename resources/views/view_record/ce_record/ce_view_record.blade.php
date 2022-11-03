@@ -30,10 +30,12 @@
             {!! Toastr::message() !!}
 
             <section class="section">
-                <div class="card">
-                    {{-- <div class="card-header">
-                        Customized Engagement Record
-                    </div> --}}
+                <div class="card mb-5 mt-5">
+                    <div class="card-header col-12 d-flex justify-content-left mt-3 mb-3 mx-3">
+                        <a class="btn btn-primary mt-2 mb-2" href="{{ route('form/customizedEngagement/new') }}">
+                            <span><i class="fa-solid fa-file-circle-plus"></i> &nbsp; New Customized Engagement</span>
+                        </a>
+                    </div>
                     <div class="card-body">
                         <table class="table table-striped" id="table1">
                             <thead>
@@ -42,19 +44,15 @@
                                     <th class="text-center">STATUS</th>
                                     <th class="text-center">COMPANY NAME</th>
                                     <th class="text-center">ENGAGEMENT TYPE</th>
-                                    <th class="text-center">WEBINAR TITLE</th>
+                                    <th class="text-center">ENGAGEMENT TITLE</th>
                                     <th class="text-center">NUMBER OF PAX</th>
                                     <th class="text-center">SCHEDULED DATES</th>
                                     <th class="text-center">SCHEDULED TIME</th>
                                     <th class="text-center">DATE ADDED</th>
                                     <th class="text-center">Modify</th>
-                                    {{-- <th class="none">Age</th>
-                                    <th class="none">Start date</th>
-                                    <th class="none">Salary</th> --}}
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- {{ $companyList->company_name }} --}}
                                 @foreach ($data as $key => $item)
                                     <tr>
                                         <td hidden class="ids">{{ $item->id }}</td>
@@ -83,7 +81,6 @@
                                                 });
                                             </script>
                                         </td>
-                                        {{-- <td class="name text-center fw-bold">{{ $item->clients_id }}</td> --}}
                                         <td class="name text-center fw-bold">{{ $item->client->company_name }}</td>
                                         <td class="name text-center fw-bold">{{ $item->customized_type }}</td>
                                         <td class="email text-center fw-bold">{{ $item->engagement_title }}</td>
@@ -115,19 +112,51 @@
                                             <a href="{{ url('form/customizedEngagement/detail/' . $item->cstmzd_eng_form_id) }}">
                                                 <span class="badge bg-success"><i class="bi bi-pencil-square"></i></span>
                                             </a>
-                                            {{-- <a href="{{ url('delete/' . $item->id) }}"
-                                                onclick="return confirm('Are you sure to want to delete it?')"><span
+                                            <a href="{{ url('delete/' . $item->id) }}"
+                                                onclick="return confirm('Are you sure to want to delete {{$item->client->company_name}}?')"><span
                                                     class="badge bg-danger"><i class="bi bi-trash"></i></span>
-                                            </a> --}}
-                                            <a href="#" class="delete"  data-toggle="modal" data-target="#delete_estimate">
+                                            </a>
+                                            {{-- <a href="#" class="delete"  data-toggle="modal" data-target="#delete_estimate">
                                                 <span class="badge bg-danger">
                                                     <i class="bi bi-trash"></i>
                                                 </span>
-                                            </a>
+                                            </a> --}}
+
+                                            <!-- Delete Customized Engagement Modal -->
+                                            <div class="modal custom-modal fade" id="delete_estimate" role="dialog">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h3 class="mb-2 text-center">Delete Customized Engagement</h3>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="form-header">
+                                                                <h5 class="text-center mx-5">Are you sure want to delete
+                                                                    <b>{{$item->client->company_name}}</b>?</h5>
+                                                            </div>
+                                                            <form action="{{ route('deleteRecord') }}" method="POST">
+                                                                @csrf
+                                                                <input type="hidden" name="id" class="e_id" value="">
+                                                                <input type="hidden" name="cstmzd_eng_form_id" class="budget_number" value="">
+                                                                <div class="modal-footer">
+                                                                    <div class="">
+                                                                        <button type="submit" class="btn btn-primary continue-btn submit-btn">Delete</button>
+                                                                    </div>
+                                                                    <div class="">
+                                                                        <a href="javascript:void(0);" data-dismiss="modal" class="btn btn-secondary cancel-btn">Cancel</a>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- /Delete Customized Engagement Modal -->
+
                                         </td>
                                     </tr>
                                     <!-- Delete Customized Engagement Modal -->
-                                    <div class="modal custom-modal fade" id="delete_estimate" role="dialog">
+                                    {{-- <div class="modal custom-modal fade" id="delete_estimate" role="dialog">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -135,8 +164,8 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     <div class="form-header">
-                                                        <h5 class="text-center mx-5">Are you sure want to delete <br>
-                                                            <b>{{$item->batch_number}}</b> of <b>{{$item->client->company_name}}</b>?</h5>
+                                                        <h5 class="text-center mx-5">Are you sure want to delete
+                                                            <b>{{$item->client->company_name}}</b>?</h5>
                                                     </div>
                                                     <form action="{{ route('deleteRecord') }}" method="POST">
                                                         @csrf
@@ -146,7 +175,6 @@
                                                             <div class="">
                                                                 <button type="submit" class="btn btn-primary continue-btn submit-btn">Delete</button>
                                                             </div>
-                                                            {{-- <div class=""></div> --}}
                                                             <div class="">
                                                                 <a href="javascript:void(0);" data-dismiss="modal" class="btn btn-secondary cancel-btn">Cancel</a>
                                                             </div>
@@ -155,7 +183,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <!-- /Delete Customized Engagement Modal -->
                                     <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-lg">
