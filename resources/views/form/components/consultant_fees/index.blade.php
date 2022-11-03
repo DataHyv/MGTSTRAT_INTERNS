@@ -15,7 +15,7 @@
                 </div>
                 <div class="col-12 col-md-6 order-md-2 order-first">
                     <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
-                        <ol class="breadcrumb">
+                        <ol class="breadcrumb bg-transparent">
                             <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Consultant Fees</li>
                         </ol>
@@ -23,6 +23,22 @@
                 </div>
             </div>
         </div>
+
+        {{-- <div class="page-title">
+            <div class="row">
+                <div class="col-12 col-md-6 order-md-1 order-last">
+                    <h3>Customized Engagement</h3>
+                </div>
+                <div class="col-12 col-md-6 order-md-2 order-first">
+                    <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Customized Engagement</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div> --}}
 
         @include('form.components.consultant_fees.create')
         @include('form.components.consultant_fees.edit')
@@ -33,16 +49,16 @@
             <div class="alert alert-success">{{ session('status') }}</div>
         @endif --}}
         <section class="section">
-            <div class="card">
-                <br>
-                <div class="card-header col-12 d-flex justify-content-left">
-                    <button type="" class="btn btn-primary me-1 mb-1" data-toggle="modal" data-target="#ConsultantFeesModal">
-                        <i class="bi bi-plus-square-dotted"> New Consultant Fees</i>
+            <div class="card mb-5 mt-5">
+                <div class="card-header col-12 d-flex justify-content-left mt-3 mb-3 mx-3">
+                    <button type="button" class="btn btn-primary me-1 mb-1" data-toggle="modal" data-target="#ConsultantFeesModal">
+                        <span><i class="fa-solid fa-user-plus mr-2"></i> New Consultant Fees</span>
                     </button>
                 </div>
 
                 <div class="card-body">
                     <table class="table table-striped" id="table1">
+
                         <thead>
                             <tr>
                                 <th class="text-center text-uppercase">#</th>
@@ -60,6 +76,7 @@
                                 <th class="text-center text-uppercase">Modify</th>
                             </tr>
                         </thead>
+
                         <tbody>
                             @foreach ($consultantFee as $key => $data)
                                 <tr>
@@ -111,6 +128,7 @@
                                 </tr>
                             @endforeach
                         </tbody>
+
                     </table>
                 </div>
             </div>
