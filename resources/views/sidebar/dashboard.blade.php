@@ -165,6 +165,15 @@
                         <li class="submenu-item {{ Request::routeIs('form/mgtstratu_workshops/index','form/mgtstratu_workshops/new') ? 'active' : '' }}">
                             <a href="{{ route('form/mgtstratu_workshops/index') }}">MgtStrat-U Workshops</a>
                         </li>
+                        <li class="submenu-item">
+                            <a href="#">MgtStrat-U Webinars</a>
+                        </li>
+                        <li class="submenu-item">
+                            <a href="#">Coaching</a>
+                        </li>
+                        <li class="submenu-item">
+                            <a href="#">SubContracted Work</a>
+                        </li>
                     </ul>
                 </li>
 
