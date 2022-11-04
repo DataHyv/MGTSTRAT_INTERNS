@@ -1,4 +1,4 @@
-@section('title', 'MGTSTRAT-U WORKSHOPS')
+@section('title', 'NEW RECORD')
 <link rel="shortcut icon" type="image/png" href="{{ URL::to('assets/images/logo/logo.png') }}">
 <link rel="stylesheet" href="{{ URL::asset('css/custom.css') }}">
 @extends('layouts.master')

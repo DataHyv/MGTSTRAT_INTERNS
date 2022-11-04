@@ -1,4 +1,4 @@
-@section('title', 'MgtStrat Webinars')
+@section('title', 'WEBINARS RECORD')
 <link rel="shortcut icon" type="image/png" href="{{ URL::to('assets/images/logo/logo.png') }}">
 <link rel="stylesheet" href="{{ URL::to('css/custom.css') }}">
 @extends('layouts.master')
