@@ -166,7 +166,7 @@
                             <a href="{{ route('form/mgtstratu_workshops/index') }}">MgtStrat-U Workshops</a>
                         </li>
                         <li class="submenu-item">
-                            <a href="#">MgtStrat-U Webinars</a>
+                            <a href="{{ route('form/mgtstrat_webinars/index') }}">MgtStrat-U Webinars</a>
                         </li>
                         <li class="submenu-item">
                             <a href="#">Coaching</a>

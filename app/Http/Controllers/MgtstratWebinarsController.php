@@ -14,7 +14,7 @@ class MgtstratWebinarsController extends Controller
      */
     public function index()
     {
-        return view('form.components.mgtstrat_webinar.index');
+        return view('form.components.mgtstrat_webinars.index');
     }
 
     /**
