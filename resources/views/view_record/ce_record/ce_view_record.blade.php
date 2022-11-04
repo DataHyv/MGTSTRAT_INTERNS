@@ -33,7 +33,7 @@
                 <div class="card mb-5 mt-5">
                     <div class="card-header col-12 d-flex justify-content-left mt-3 mb-3 mx-3">
                         <a class="btn btn-primary mt-2 mb-2" href="{{ route('form/customizedEngagement/new') }}">
-                            <span><i class="fa-solid fa-file-circle-plus"></i> &nbsp; New Customized Engagement</span>
+                            <span><i class="fa-solid fa-file-circle-plus"></i> &nbsp; New Record</span>
                         </a>
                     </div>
                     <div class="card-body">
