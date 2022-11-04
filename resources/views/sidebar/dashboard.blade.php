@@ -150,30 +150,39 @@
                     </ul>
                 </li> --}}
 
-                <li class="sidebar-item has-sub {{ Request::routeIs('form/customizedEngagement/detail', 'form/f2f_engagement/index', 'form/mgtstratu_workshops/index', 'form/customizedEngagement/new', 'form/f2f_engagement/new', 'form/mgtstratu_workshops/new', 'form/customizedEngagement/detail/{cstmzd_eng_form_id}') ? 'active' : '' }}">
+                <li class="sidebar-item has-sub {{ Request::routeIs('form/customizedEngagement/detail', 'form/f2f_engagement/index', 'form/mgtstratu_workshops/index', 'form/mgtstrat_webinars/index', 'form/customizedEngagement/new', 'form/f2f_engagement/new', 'form/mgtstratu_workshops/new', 'form/customizedEngagement/detail/{cstmzd_eng_form_id}') ? 'active' : '' }}">
+                    
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-grid-1x2-fill"></i>
                         <span>View Record</span>
                     </a>
-                    <ul class="submenu {{ Request::routeIs('form/customizedEngagement/detail', 'form/f2f_engagement/index', 'form/mgtstratu_workshops/index', 'form/customizedEngagement/new', 'form/f2f_engagement/new', 'form/mgtstratu_workshops/new' ,'form/customizedEngagement/detail/{cstmzd_eng_form_id}') ? 'active' : '' }}">
+
+                    <ul class="submenu {{ Request::routeIs('form/customizedEngagement/detail', 'form/f2f_engagement/index', 'form/mgtstratu_workshops/index', 'form/mgtstrat_webinars/index', 'form/customizedEngagement/new', 'form/f2f_engagement/new', 'form/mgtstratu_workshops/new' ,'form/customizedEngagement/detail/{cstmzd_eng_form_id}') ? 'active' : '' }}">
+
                         <li class="submenu-item {{ Request::routeIs('form/customizedEngagement/detail/','form/customizedEngagement/new','form/customizedEngagement/detail/{cstmzd_eng_form_id}') ? 'active' : '' }}">
                             <a href="{{ route('form/customizedEngagement/detail') }}">Customized Engagement</a>
                         </li>
+
                         <li class="submenu-item {{ Request::routeIs('form/f2f_engagement/index', 'form/f2f_engagement/new') ? 'active' : '' }}">
                             <a href="{{ route('form/f2f_engagement/index') }}">F2F Engagement</a>
                         </li>
+
                         <li class="submenu-item {{ Request::routeIs('form/mgtstratu_workshops/index','form/mgtstratu_workshops/new') ? 'active' : '' }}">
                             <a href="{{ route('form/mgtstratu_workshops/index') }}">MgtStrat-U Workshops</a>
                         </li>
-                        <li class="submenu-item">
+
+                        <li class="submenu-item {{ Request::routeIs('form/mgtstrat_webinars/index') ? 'active' : '' }}">
                             <a href="{{ route('form/mgtstrat_webinars/index') }}">MgtStrat-U Webinars</a>
                         </li>
+
                         <li class="submenu-item">
                             <a href="#">Coaching</a>
                         </li>
+
                         <li class="submenu-item">
                             <a href="#">SubContracted Work</a>
                         </li>
+
                     </ul>
                 </li>
 
