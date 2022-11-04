@@ -17,7 +17,7 @@
                     <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">CLIENTS</li>
+                            <li class="breadcrumb-item active" aria-current="page">Clients</li>
                         </ol>
                     </nav>
                 </div>

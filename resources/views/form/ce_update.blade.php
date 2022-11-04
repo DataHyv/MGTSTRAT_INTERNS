@@ -25,10 +25,10 @@
                                 <a href="{{ route('home') }}">Dashboard</a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="{{ route('form/customizedEngagement/detail') }}">View</a>
+                                <a href="{{ route('form/customizedEngagement/detail') }}">Customized Engagement</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                <a href="">Customized Engagement</a>
+                                <a href="">Update</a>
                             </li>
                         </ol>
                     </nav>
