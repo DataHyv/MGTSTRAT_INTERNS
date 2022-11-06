@@ -238,7 +238,7 @@
                                 @if ($DateOfEngagements[$key] === $DateOfEngagements[0])
                                 <div class="col-lg-1 col-md-1">
                                     <div class="px-0">
-                                            <label class="fw-bold invisible mb-4">Add</label>
+                                            <label class="fw-bold invisible overflow-hidden mb-4">Add</label>
                                             <a href="javascript:void(0)" class="text-success font-18 px-0" title="Add"
                                             id="addDates"><i class="fa fa-plus"></i></a>
                                     </div>
