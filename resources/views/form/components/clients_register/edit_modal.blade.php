@@ -153,7 +153,7 @@
                                             <button type="submit" class="btn btn-primary mr-2">Update</button>
                                             <br>
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                                                <a href="{{ route('form/clients/new') }}" style="color: white; text-decoration: none;">
+                                                <a href="{{ route('clients') }}" style="color: white; text-decoration: none;">
                                                 Back</a></button>
                                         </div>
                                     </div>

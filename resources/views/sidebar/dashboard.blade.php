@@ -117,15 +117,15 @@
                     </a>
                 </li>
 
-                <li class="sidebar-item {{ Request::routeIs('form/clients/new') ? 'active' : '' }}">
-                    <a href="{{ route('form/clients/new') }}" class='sidebar-link'>
+                <li class="sidebar-item {{ Request::routeIs('clients') ? 'active' : '' }}">
+                    <a href="{{ route('clients') }}" class='sidebar-link'>
                         <i class="bi bi-building"></i>
                         <span>Clients</span>
                     </a>
                 </li>
 
-                <li class="sidebar-item {{ 'form/consultant-fees' == request()->path() ? 'active' : '' }}">
-                    <a href="{{ url('form/consultant-fees') }}" class='sidebar-link'>
+                <li class="sidebar-item {{ 'consultant-fees' == request()->path() ? 'active' : '' }}">
+                    <a href="{{ url('consultant-fees') }}" class='sidebar-link'>
                         <i class="fa-solid fa-user-tie"></i>
                         <span>Consultant Fees</span>
                     </a>
@@ -150,14 +150,14 @@
                     </ul>
                 </li> --}}
 
-                <li class="sidebar-item has-sub {{ Request::routeIs('form/customizedEngagement/detail', 'form/f2f_engagement/index', 'form/mgtstratu_workshops/index', 'form/mgtstrat_webinars/index', 'form/customizedEngagement/new', 'form/f2f_engagement/new', 'form/mgtstratu_workshops/new', 'form/customizedEngagement/detail/{cstmzd_eng_form_id}') ? 'active' : '' }} {{ 'form/coaching' == request()->path() ? 'active' : '' }}">
+                <li class="sidebar-item has-sub {{ request()->is('form/*') ? 'active' : '' }}">
 
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-grid-1x2-fill"></i>
                         <span>View Record</span>
                     </a>
 
-                    <ul class="submenu {{ Request::routeIs('form/customizedEngagement/detail', 'form/f2f_engagement/index', 'form/mgtstratu_workshops/index', 'form/mgtstrat_webinars/index', 'form/customizedEngagement/new', 'form/f2f_engagement/new', 'form/mgtstratu_workshops/new' ,'form/customizedEngagement/detail/{cstmzd_eng_form_id}') ? 'active' : '' }} {{ 'form/coaching' == request()->path() ? 'active' : '' }}">
+                    <ul class="submenu {{ request()->is('form/*') ? 'active' : '' }}">
 
                         <li class="submenu-item {{ Request::routeIs('form/customizedEngagement/detail/','form/customizedEngagement/new','form/customizedEngagement/detail/{cstmzd_eng_form_id}') ? 'active' : '' }}">
                             <a href="{{ route('form/customizedEngagement/detail') }}">Customized Engagement</a>
@@ -171,8 +171,8 @@
                             <a href="{{ route('form/mgtstratu_workshops/index') }}">MgtStrat-U Workshops</a>
                         </li>
 
-                        <li class="submenu-item {{ Request::routeIs('form/mgtstrat_webinars/index') ? 'active' : '' }}">
-                            <a href="{{ route('form/mgtstrat_webinars/index') }}">MgtStrat-U Webinars</a>
+                        <li class="submenu-item {{ 'form/webinars' == request()->path() ? 'active' : '' }}">
+                            <a href="{{ url('form/webinars') }}">MgtStrat-U Webinars</a>
                         </li>
 
                         <li class="submenu-item {{ 'form/coaching' == request()->path() ? 'active' : '' }}">

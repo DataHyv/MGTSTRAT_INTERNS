@@ -91,38 +91,39 @@ Route::get('change/password', [UserManagementController::class, 'changePasswordV
 Route::post('change/password/db', [UserManagementController::class, 'changePasswordDB'])->name('change/password/db');
 
 // ----------------------------- Customized engagement form ------------------------------//
-Route::controller(CustomizedEngagementController::class)->group(function () {
-Route::get('form/customizedEngagement/new', [CustomizedEngagementController::class, 'index'])->middleware('auth')->name('form/customizedEngagement/new');
-Route::get('form/customizedEngagement/detail', [CustomizedEngagementController::class, 'viewRecord'])->middleware('auth')->name('form/customizedEngagement/detail');
-Route::get('form/customizedEngagement/detail/{cstmzd_eng_form_id}', [CustomizedEngagementController::class, 'updateRecord'])->middleware('auth')->name('form/customizedEngagement/detail/{cstmzd_eng_form_id}');
+    Route::controller(CustomizedEngagementController::class)->group(function () {
+    Route::get('form/customizedEngagement/new', [CustomizedEngagementController::class, 'index'])->middleware('auth')->name('form/customizedEngagement/new');
+    Route::get('form/customizedEngagement/detail', [CustomizedEngagementController::class, 'viewRecord'])->middleware('auth')->name('form/customizedEngagement/detail');
+    Route::get('form/customizedEngagement/detail/{cstmzd_eng_form_id}', [CustomizedEngagementController::class, 'updateRecord'])->middleware('auth')->name('form/customizedEngagement/detail/{cstmzd_eng_form_id}');
 
-Route::post('save', [CustomizedEngagementController::class, 'store'])->name('save');
-Route::put('update', [CustomizedEngagementController::class, 'ceUpdateRecord','ceAddDeleteRecord'])->middleware('auth')->name('update');
-Route::post('deleteRecord', [CustomizedEngagementController::class, 'viewDelete'])->middleware('auth')->name('deleteRecord');
-Route::post('delete',[CustomizedEngagementController::class, 'deleteRow'])->name('delete');
-});
+    Route::post('save', [CustomizedEngagementController::class, 'store'])->name('save');
+    Route::put('update', [CustomizedEngagementController::class, 'ceUpdateRecord','ceAddDeleteRecord'])->middleware('auth')->name('update');
+    Route::post('deleteRecord', [CustomizedEngagementController::class, 'viewDelete'])->middleware('auth')->name('deleteRecord');
+    Route::post('delete',[CustomizedEngagementController::class, 'deleteRow'])->name('delete');
+    });
 // ----------------------------- F2F engagement form ------------------------------//
-Route::get('form/f2f_engagement/index', [App\Http\Controllers\F2fEngagementController::class, 'index'])->middleware('auth')->name('form/f2f_engagement/index');
-Route::get('form/f2f_engagement/new', [App\Http\Controllers\F2fEngagementController::class, 'newRecord'])->middleware('auth')->name('form/f2f_engagement/new');
-Route::post('form/f2f_engagement/save', [App\Http\Controllers\F2fEngagementController::class, 'store'])->name('form/f2f_engagement/save');
+    Route::get('form/f2f_engagement/index', [App\Http\Controllers\F2fEngagementController::class, 'index'])->middleware('auth')->name('form/f2f_engagement/index');
+    Route::get('form/f2f_engagement/new', [App\Http\Controllers\F2fEngagementController::class, 'newRecord'])->middleware('auth')->name('form/f2f_engagement/new');
+    Route::post('form/f2f_engagement/save', [App\Http\Controllers\F2fEngagementController::class, 'store'])->name('form/f2f_engagement/save');
 
 // ----------------------------- MGTSTRAT U WORKSHOPS ------------------------------//
-Route::get('form/mgtstratu_workshops/index', [App\Http\Controllers\MgtstratUController::class, 'index'])->middleware('auth')->name('form/mgtstratu_workshops/index');
-Route::get('form/mgtstratu_workshops/new', [App\Http\Controllers\MgtstratUController::class, 'newRecord'])->middleware('auth')->name('form/mgtstratu_workshops/new');
-Route::post('form/mgtstratu_workshops/save', [App\Http\Controllers\MgtstratUController::class, 'store'])->name('form/mgtstratu_workshops/save');
+    Route::get('form/mgtstratu_workshops/index', [App\Http\Controllers\MgtstratUController::class, 'index'])->middleware('auth')->name('form/mgtstratu_workshops/index');
+    Route::get('form/mgtstratu_workshops/new', [App\Http\Controllers\MgtstratUController::class, 'newRecord'])->middleware('auth')->name('form/mgtstratu_workshops/new');
+    Route::post('form/mgtstratu_workshops/save', [App\Http\Controllers\MgtstratUController::class, 'store'])->name('form/mgtstratu_workshops/save');
 
 // ----------------------------- MGTSTRAT WEBINARS WORKSHOPS ------------------------------//
-Route::get('form/mgtstrat_webinars/index', [App\Http\Controllers\MgtstratWebinarsController::class, 'index'])->middleware('auth')->name('form/mgtstrat_webinars/index');
+    // Route::get('form/mgtstrat_webinars/index', [App\Http\Controllers\MgtstratWebinarsController::class, 'index'])->middleware('auth')->name('form/mgtstrat_webinars/index');
+    Route::resource('form/webinars', 'App\Http\Controllers\MgtstratWebinarsController');
 
 // ----------------------------- COACHING -----------------------//
-Route::resource('form/coaching', 'App\Http\Controllers\CoachingController');
+    Route::resource('form/coaching', 'App\Http\Controllers\CoachingController');
 
 // ----------------------------- Client Management -----------------------//
-Route::get('form/clients/new', [App\Http\Controllers\ClientsController::class, 'index'])->middleware('auth')->name('form/clients/new');
-Route::post('client/add/save', [App\Http\Controllers\ClientsController::class, 'addNewClientSave'])->name('client/add/save');
-Route::get('deleteClients/{id}', [App\Http\Controllers\ClientsController::class, 'deleteClient'])->middleware('auth');
-Route::get('form/view/detail/{id}', [App\Http\Controllers\ClientsController::class, 'viewDetailClient'])->middleware('auth');
-Route::post('update', [App\Http\Controllers\ClientsController::class, 'updateClient'])->name('update');
+    Route::get('clients', [App\Http\Controllers\ClientsController::class, 'index'])->middleware('auth')->name('clients');
+    Route::post('client/add/save', [App\Http\Controllers\ClientsController::class, 'addNewClientSave'])->name('client/add/save');
+    Route::get('deleteClients/{id}', [App\Http\Controllers\ClientsController::class, 'deleteClient'])->middleware('auth');
+    Route::get('clients/view/detail/{id}', [App\Http\Controllers\ClientsController::class, 'viewDetailClient'])->middleware('auth');
+    Route::post('update', [App\Http\Controllers\ClientsController::class, 'updateClient'])->name('update');
 
 // ----------------------------- Client Management -----------------------//
-Route::resource('form/consultant-fees', 'App\Http\Controllers\ConsultantFeesController');
+Route::resource('consultant-fees', 'App\Http\Controllers\ConsultantFeesController');

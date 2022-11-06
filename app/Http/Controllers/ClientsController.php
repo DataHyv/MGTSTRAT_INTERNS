@@ -74,12 +74,12 @@ class ClientsController extends Controller
             $clnt->save();
 
             Toastr::success('Client successfully Added','success');
-            return redirect()->route('form/clients/new');
+            return redirect()->route('clients');
             // change this to route web.php
         }catch(\Exception $e){
 
             Alert::error('Data added fail'.$e->getMessage(),'Error');
-            return redirect()->route('form/clients/new');
+            return redirect()->route('clients');
         }
     }
 
@@ -136,11 +136,11 @@ class ClientsController extends Controller
 
         Client::where('id',$request->id)->update($update);
         Alert::success('Data updated successfully :)','Success');
-        return redirect()->route('form/clients/new');
+        return redirect()->route('clients');
     }catch(\Exception $e){
 
         Alert::error('Data updated fail :)','Error');
-        return redirect()->route('form/clients/new');
+        return redirect()->route('clients');
     }
     }
 
@@ -151,6 +151,6 @@ class ClientsController extends Controller
         // $deleteClients = Client::find($id);
         // $deleteClients->delete();
         Alert::success('Data deleted successfully :)','Success');
-        return redirect()->route('form/clients/new');
+        return redirect()->route('clients');
     }
 }
