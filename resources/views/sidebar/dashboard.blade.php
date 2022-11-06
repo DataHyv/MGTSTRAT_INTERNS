@@ -159,23 +159,23 @@
 
                     <ul class="submenu {{ request()->is('form/*') ? 'active' : '' }}">
 
-                        <li class="submenu-item {{ Request::routeIs('form/customizedEngagement/detail/','form/customizedEngagement/new','form/customizedEngagement/detail/{cstmzd_eng_form_id}') ? 'active' : '' }}">
+                        <li class="submenu-item {{ request()->is('form/customizedEngagement/*') ? 'active' : '' }}">
                             <a href="{{ route('form/customizedEngagement/detail') }}">Customized Engagement</a>
                         </li>
 
-                        <li class="submenu-item {{ Request::routeIs('form/f2f_engagement/index', 'form/f2f_engagement/new') ? 'active' : '' }}">
+                        <li class="submenu-item {{ request()->is('form/f2f_engagement/*') ? 'active' : '' }}">
                             <a href="{{ route('form/f2f_engagement/index') }}">F2F Engagement</a>
                         </li>
 
-                        <li class="submenu-item {{ Request::routeIs('form/mgtstratu_workshops/index','form/mgtstratu_workshops/new') ? 'active' : '' }}">
+                        <li class="submenu-item {{ request()->is('form/mgtstratu_workshops/*') ? 'active' : '' }}">
                             <a href="{{ route('form/mgtstratu_workshops/index') }}">MgtStrat-U Workshops</a>
                         </li>
 
-                        <li class="submenu-item {{ 'form/webinars' == request()->path() ? 'active' : '' }}">
+                        <li class="submenu-item {{ request()->is('form/webinars') ? 'active' : '' }}">
                             <a href="{{ url('form/webinars') }}">MgtStrat-U Webinars</a>
                         </li>
 
-                        <li class="submenu-item {{ 'form/coaching' == request()->path() ? 'active' : '' }}">
+                        <li class="submenu-item {{ request()->is('form/coaching') ? 'active' : '' }}">
                             <a href="{{ url('form/coaching') }}">Coaching</a>
                         </li>
 
