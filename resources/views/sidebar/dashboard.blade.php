@@ -91,40 +91,40 @@
 
                 @if (Auth::user()->role_name == 'Admin')
                     <li class="sidebar-title">Page &amp; Controller</li>
-                    <li class="sidebar-item  has-sub {{ Request::routeIs('userManagement', 'activity/log', 'activity/login/logout') ? 'active' : '' }}">
+                    <li class="sidebar-item  has-sub {{ request()->is('maintenance/*', 'activity/log', 'activity/login/logout') ? 'active' : '' }}">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-hexagon-fill"></i>
                             <span>Maintenance</span>
                         </a>
-                        <ul class="submenu {{ Request::routeIs('userManagement', 'activity/log', 'activity/login/logout') ? 'active' : '' }}">
-                            <li class="submenu-item {{ Request::routeIs('userManagement') ? 'active' : '' }}">
-                                <a href="{{ route('userManagement') }}">User Control</a>
+                        <ul class="submenu {{ request()->is('maintenance/*', 'activity/log', 'activity/login/logout') ? 'active' : '' }}">
+                            <li class="submenu-item {{ request()->is('maintenance/user-management', 'maintenance/user-management/*') ? 'active' : '' }}">
+                                <a href="{{ route('maintenance/user-management') }}">User Control</a>
                             </li>
-                            <li class="submenu-item {{ Request::routeIs('activity/log') ? 'active' : '' }}">
+                            <li class="submenu-item {{ request()->is('activity/log') ? 'active' : '' }}">
                                 <a href="{{ route('activity/log') }}">User Activity Log</a>
                             </li>
-                            <li class="submenu-item {{ Request::routeIs('activity/login/logout') ? 'active' : '' }}">
+                            <li class="submenu-item {{ request()->is('activity/login/logout') ? 'active' : '' }}">
                                 <a href="{{ route('activity/login/logout') }}">Activity Log</a>
                             </li>
                         </ul>
                     </li>
                 @endif
 
-                <li class="sidebar-item {{ Request::routeIs('change/password') ? 'active' : '' }}">
+                <li class="sidebar-item {{ request()->is('change/password') ? 'active' : '' }}">
                     <a href="{{ route('change/password') }}" class='sidebar-link'>
                         <i class="bi bi-shield-lock"></i>
                         <span>Change Password</span>
                     </a>
                 </li>
 
-                <li class="sidebar-item {{ Request::routeIs('clients') ? 'active' : '' }}">
+                <li class="sidebar-item {{ request()->is('clients') ? 'active' : '' }}">
                     <a href="{{ route('clients') }}" class='sidebar-link'>
                         <i class="bi bi-building"></i>
                         <span>Clients</span>
                     </a>
                 </li>
 
-                <li class="sidebar-item {{ 'consultant-fees' == request()->path() ? 'active' : '' }}">
+                <li class="sidebar-item {{ request()->is('consultant-fees') ? 'active' : '' }}">
                     <a href="{{ url('consultant-fees') }}" class='sidebar-link'>
                         <i class="fa-solid fa-user-tie"></i>
                         <span>Consultant Fees</span>
@@ -132,6 +132,7 @@
                 </li>
 
                 <li class="sidebar-title">Forms &amp; Tables</li>
+
                 {{-- <li class="sidebar-item has-sub {{ Request::routeIs('form/customizedEngagement/new', 'form/f2f_engagement/new', 'form/mgtstratu_workshops/new') ? 'active' : '' }}">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-file-earmark-medical-fill"></i>
