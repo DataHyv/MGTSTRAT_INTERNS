@@ -15,37 +15,38 @@
         <div class="sidebar-menu">
             <ul class="menu">
                 <li class="sidebar-title">Menu</li>
-                <li class="sidebar-item {{ Request::routeIs('home') ? 'active' : '' }}">
+                <li class="sidebar-item {{ request()->is('home') ? 'active' : '' }}">
                     <a href="{{ route('home') }}" class='sidebar-link'>
                         <i class="bi bi-house-fill"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
 
-                <li class="sidebar-item has-sub {{ Request::routeIs('people-and-culture', 'sales-report', 'cash-position-report' , 'consultant-revenue-report') ? 'active' : '' }}">
+                {{-- <li class="sidebar-item has-sub {{ Request::routeIs('people-and-culture', 'sales-report', 'cash-position-report' , 'consultant-revenue-report') ? 'active' : '' }}"> --}}
+                <li class="sidebar-item has-sub {{ request()->is('dashboard-report/*') ? 'active' : '' }}">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-file-earmark-medical-fill"></i>
                         <span>Dashboard Report</span>
                     </a>
 
-                    <ul class="submenu {{ Request::routeIs('people-and-culture', 'sales-report', 'cash-position-report' , 'consultant-revenue-report') ? 'active' : '' }}">
-                        <li class="submenu-item {{ Request::routeIs('sales-report') ? 'active' : '' }}">
-                            <a href="{{ route('sales-report') }}">
+                    <ul class="submenu {{ request()->is('dashboard-report/*') ? 'active' : '' }}">
+                        <li class="submenu-item {{ request()->is('dashboard-report/sales-report') ? 'active' : '' }}">
+                            <a href="{{ route('dashboard-report/sales-report') }}">
                                 <span>Sales</span>
                             </a>
                         </li>
-                        <li class="submenu-item {{ Request::routeIs('people-and-culture') ? 'active' : '' }}">
-                            <a href="{{ route('people-and-culture') }}">
+                        <li class="submenu-item {{ request()->is('dashboard-report/people-and-culture') ? 'active' : '' }}">
+                            <a href="{{ route('dashboard-report/people-and-culture') }}">
                                 <span>People & Culture</span>
                             </a>
                         </li>
-                        <li class="submenu-item {{ Request::routeIs('cash-position-report') ? 'active' : '' }}">
-                            <a href="{{ route('cash-position-report') }}">
+                        <li class="submenu-item {{ request()->is('dashboard-report/cash-position-report') ? 'active' : '' }}">
+                            <a href="{{ route('dashboard-report/cash-position-report') }}">
                                 <span>Cash Position</span>
                             </a>
                         </li>
-                        <li class="submenu-item {{ Request::routeIs('consultant-revenue-report') ? 'active' : '' }}">
-                            <a href="{{ route('consultant-revenue-report') }}">
+                        <li class="submenu-item {{ request()->is('dashboard-report/consultant-revenue-report') ? 'active' : '' }}">
+                            <a href="{{ route('dashboard-report/consultant-revenue-report') }}">
                                 <span>Consultant Revenue</span>
                             </a>
                         </li>
@@ -91,20 +92,20 @@
 
                 @if (Auth::user()->role_name == 'Admin')
                     <li class="sidebar-title">Page &amp; Controller</li>
-                    <li class="sidebar-item  has-sub {{ request()->is('maintenance/*', 'activity/log', 'activity/login/logout') ? 'active' : '' }}">
+                    <li class="sidebar-item  has-sub {{ request()->is('maintenance/*') ? 'active' : '' }}">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-hexagon-fill"></i>
                             <span>Maintenance</span>
                         </a>
-                        <ul class="submenu {{ request()->is('maintenance/*', 'activity/log', 'activity/login/logout') ? 'active' : '' }}">
+                        <ul class="submenu {{ request()->is('maintenance/*') ? 'active' : '' }}">
                             <li class="submenu-item {{ request()->is('maintenance/user-management', 'maintenance/user-management/*') ? 'active' : '' }}">
                                 <a href="{{ route('maintenance/user-management') }}">User Control</a>
                             </li>
-                            <li class="submenu-item {{ request()->is('activity/log') ? 'active' : '' }}">
-                                <a href="{{ route('activity/log') }}">User Activity Log</a>
-                            </li>
-                            <li class="submenu-item {{ request()->is('activity/login/logout') ? 'active' : '' }}">
-                                <a href="{{ route('activity/login/logout') }}">Activity Log</a>
+                            {{-- <li class="submenu-item {{ request()->is('maintenance/user-activity-log') ? 'active' : '' }}">
+                                <a href="{{ route('maintenance/user-activity') }}">User Activity Log</a>
+                            </li> --}}
+                            <li class="submenu-item {{ request()->is('maintenance/all-user-activity') ? 'active' : '' }}">
+                                <a href="{{ route('maintenance/all-user-activity') }}">Activity Log</a>
                             </li>
                         </ul>
                     </li>

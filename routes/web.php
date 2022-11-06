@@ -46,11 +46,11 @@ Auth::routes();
 
 // ----------------------------- home dashboard ------------------------------//
     Route::get('/home', [HomeController::class, 'index'])->name('home');
-    Route::get('/sales-report', [HomeController::class, 'SalesReport'])->name('sales-report');
-    Route::get('/people-and-culture', [HomeController::class, 'SalesReport'])->name('people-and-culture');
-    Route::get('/cash-position-report', [HomeController::class, 'SalesReport'])->name('cash-position-report');
-    Route::get('/consultant-revenue-report', [HomeController::class, 'SalesReport'])->name('consultant-revenue-report');
-    Route::get('/peer-dope-report', [HomeController::class, 'SalesReport'])->name('peer-dope-report');
+    Route::get('/dashboard-report/sales-report', [HomeController::class, 'SalesReport'])->name('dashboard-report/sales-report');
+    Route::get('/dashboard-report/people-and-culture', [HomeController::class, 'SalesReport'])->name('dashboard-report/people-and-culture');
+    Route::get('/dashboard-report/cash-position-report', [HomeController::class, 'SalesReport'])->name('dashboard-report/cash-position-report');
+    Route::get('/dashboard-report/consultant-revenue-report', [HomeController::class, 'SalesReport'])->name('dashboard-report/consultant-revenue-report');
+    Route::get('/dashboard-report/peer-dope-report', [HomeController::class, 'SalesReport'])->name('dashboard-report/peer-dope-report');
 
 // -----------------------------login----------------------------------------//
     Route::get('/login', [LoginController::class, 'login'])->name('login');
@@ -84,8 +84,8 @@ Auth::routes();
     Route::get('maintenance/user-management/detail/{id}', [UserManagementController::class, 'viewDetail'])->middleware('auth');
     Route::post('update', [UserManagementController::class, 'update'])->name('update');
     Route::get('delete_user/{id}', [UserManagementController::class, 'delete'])->middleware('auth');
-    Route::get('activity/log', [UserManagementController::class, 'activityLog'])->middleware('auth')->name('activity/log');
-    Route::get('activity/login/logout', [UserManagementController::class, 'activityLogInLogOut'])->middleware('auth')->name('activity/login/logout');
+    // Route::get('maintenance/user-activity-log', [UserManagementController::class, 'activityLog'])->middleware('auth')->name('maintenance/user-activity-log');
+    Route::get('maintenance/all-user-activity', [UserManagementController::class, 'activityLogInLogOut'])->middleware('auth')->name('maintenance/all-user-activity');
 
     Route::get('change/password', [UserManagementController::class, 'changePasswordView'])->middleware('auth')->name('change/password');
     Route::post('change/password/db', [UserManagementController::class, 'changePasswordDB'])->name('change/password/db');
