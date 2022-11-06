@@ -114,6 +114,9 @@ Route::post('form/mgtstratu_workshops/save', [App\Http\Controllers\MgtstratUCont
 // ----------------------------- MGTSTRAT WEBINARS WORKSHOPS ------------------------------//
 Route::get('form/mgtstrat_webinars/index', [App\Http\Controllers\MgtstratWebinarsController::class, 'index'])->middleware('auth')->name('form/mgtstrat_webinars/index');
 
+// ----------------------------- COACHING -----------------------//
+Route::resource('form/coaching', 'App\Http\Controllers\CoachingController');
+
 // ----------------------------- Client Management -----------------------//
 Route::get('form/clients/new', [App\Http\Controllers\ClientsController::class, 'index'])->middleware('auth')->name('form/clients/new');
 Route::post('client/add/save', [App\Http\Controllers\ClientsController::class, 'addNewClientSave'])->name('client/add/save');
