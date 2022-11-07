@@ -118,7 +118,7 @@
                     </a>
                 </li>
 
-                <li class="sidebar-item {{ request()->is('clients') ? 'active' : '' }}">
+                <li class="sidebar-item {{ request()->is('clients/*') ? 'active' : '' }}">
                     <a href="{{ route('clients') }}" class='sidebar-link'>
                         <i class="bi bi-building"></i>
                         <span>Clients</span>
