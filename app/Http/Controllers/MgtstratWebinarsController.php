@@ -24,7 +24,8 @@ class MgtstratWebinarsController extends Controller
      */
     public function create()
     {
-        //
+        return view('form.components.mgtstrat_webinars.create');
+        // return View::make('form.components.mgtstrat_webinars.create');
     }
 
     /**
