@@ -186,7 +186,6 @@ class CustomizedEngagementController extends Controller
 
             DB::commit();
             Alert::success('Data added successfully','Success');
-            // return redirect()->back();
             return redirect()->route('form/customizedEngagement/detail');
         } catch(\Exception $e){
             DB::rollback();
@@ -271,10 +270,11 @@ class CustomizedEngagementController extends Controller
 
             DB::commit();
             Toastr::success('Updated successfully','Success');
-            return redirect()->back();
+            // return redirect()->back();
+            return redirect()->route('form/customizedEngagement/detail');
         } catch(\Exception $e) {
             DB::rollback();
-            // Toastr::error('Update Estimates fail','Error');
+            // Toastr::error('Updated fail','Error');
             Toastr::error($e->getMessage());
             return redirect()->back();
         }

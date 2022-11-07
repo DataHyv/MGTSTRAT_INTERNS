@@ -235,23 +235,28 @@
                     <div class="flex-column">
                         <div>
                             <div class="row justify-content-center" id="dateRows">
+
                                 @if ($DateOfEngagements[$key] === $DateOfEngagements[0])
                                 <div class="col-lg-1 col-md-1">
                                     <div class="px-0">
                                             <label class="fw-bold invisible overflow-hidden mb-4">Add</label>
                                             <a href="javascript:void(0)" class="text-success font-18 px-0" title="Add"
-                                            id="addDates"><i class="fa fa-plus"></i></a>
+                                            id="addDates">
+                                                <i class="fa fa-plus"></i>
+                                            </a>
                                     </div>
                                 </div>
                                 @else
-                                <div class="col-lg-1 col-md-1 invisible">
+                                <div class="col-lg-1 col-md-1">
                                     <div class="px-0">
-                                            <label class="fw-bold invisible mb-4">Add</label>
-                                            <a href="javascript:void(0)" class="text-success font-18 px-0" title="Add"
-                                            id="addDates"><i class="fa fa-plus"></i></a>
+                                            <label class="fw-bold invisible overflow-hidden mb-4">Add</label>
+                                            <a href="javascript:void(0)" class="text-danger font-18 remove px-0" title="Remove">
+                                                <i class="fa fa-trash-o"></i>
+                                            </a>
                                     </div>
                                 </div>
                                 @endif
+
                                 <div class="col-lg-2 col-md-2">
                                     <div class="form-group has-icon-left">
                                         <label class="fw-bold required">Date</label>
@@ -333,7 +338,7 @@
                             <div class="row justify-content-center">
                                 <div class="col-lg-1 col-md-1">
                                     <div class="px-0">
-                                        <label class="fw-bold invisible mb-4">Add</label>
+                                        <label class="fw-bold invisible overflow-hidden mb-4">Add</label>
                                         <a href="javascript:void(0)" class="text-danger font-18 remove px-0" title="Remove">
                                             <i class="fa fa-trash-o"></i>
                                         </a>
