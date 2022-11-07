@@ -173,7 +173,7 @@
                             <a href="{{ route('form/mgtstratu_workshops/index') }}">MgtStrat-U Workshops</a>
                         </li>
 
-                        <li class="submenu-item {{ request()->is('form/webinars') ? 'active' : '' }}">
+                        <li class="submenu-item {{ request()->is('form/webinars*') ? 'active' : '' }}">
                             <a href="{{ url('form/webinars') }}">MgtStrat-U Webinars</a>
                         </li>
 
