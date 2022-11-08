@@ -74,7 +74,7 @@
 
                                     <!------------ ENGAGEMENT FEES ------------>
                                         <div class="multisteps-form__panel" data-animation="slideHorz">
-                                            {{-- @include('form.components.customized_engagement.add.engagement_fees') --}}
+                                            @include('form.components.mgtstrat_webinars.engagement_fees')
                                             {{-- next and prev button --}}
                                             <div class="button-row d-flex justify-content-center mt-3">
                                                 <button class="btn btn-secondary mx-2 js-btn-prev" type="button" title="Prev">Prev</button>
@@ -127,15 +127,14 @@
     {{-- CUSTOMIZED ENGAGEMENT SCRIPT --}}
     <script>
         function submitForm(e) {
-        // e.preventDefault();
         $('.commanumber').each((index, input) => { //1st way
             const $input = $(input);
             $input.val($input.val().replace(/,/g, ''));
         });
         }
     </script>
-    <script type="text/javascript" src="/js/ceform.js"></script>
-    <script type="text/javascript" src="/js/ceFormAdd.js"></script>
+    {{-- <script type="text/javascript" src="/js/ceform.js"></script>
+    <script type="text/javascript" src="/js/ceFormAdd.js"></script> --}}
     <script type="text/javascript" src="/js/MultiStep.js"></script>
     <script type="text/javascript" src="/js/currencyFormat.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>

@@ -1,13 +1,13 @@
 // Jquery Dependency
 
-// $("input[data-type='currency1']").on({
-//     keyup: function() {
-//       formatCurrency($(this));
-//     },
-//     blur: function() {
-//       formatCurrency($(this), "blur");
-//     }
-// });
+$("input[data-type='currency']").on({
+    keyup: function() {
+      formatCurrency($(this));
+    },
+    blur: function() {
+      formatCurrency($(this), "blur");
+    }
+});
 
 $("input[data-type='currencyTotal']").on({
     keyup: function() {
@@ -65,17 +65,17 @@ function formatCurrency(input, blur) {
     }
 
     // Limit decimal to only 2 digits
-    right_side = right_side.substring(0, 0);
+    right_side = right_side.substring(2, 0);
 
     // // join number by .
-    input_val = "₱" + left_side + "." + right_side;
+    input_val = left_side + "." + right_side;
 
   } else {
     // no decimal entered
     // add commas to number
     // remove all non-digits
     input_val = formatNumber(input_val);
-    input_val = "₱" + input_val;
+    input_val = input_val;
   }
 
   // send updated string to input
