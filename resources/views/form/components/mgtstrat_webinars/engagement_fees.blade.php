@@ -7,16 +7,16 @@
         <div class="table-responsive-md" id="no-more-tables">
             <table class="table table-bordered" id="engagement-fees">
                 <!-------------- HEADINGS -------------->
-                <thead class="table">
-                    <tr class="text-center th-blue-grey">
-                        <th class="title-th" scope="col" width=20%></th>
-                        <th class="title-middle" scope="col" style="font-size: 0.9rem;">PACKAGE FEES, EXCL VAT</th>
-                        <th class="title-middle px-4" scope="col">NUMBER OF SESSIONS</th>
-                        <th class="title-middle" scope="col" style="font-size: 0.9rem;">NIGHT SHIFT, <br>WEEKENDS <br>HOLIDAYS *</th>
-                        <th class="title-middle" scope="col" style="font-size: 0.9rem;">TOTAL FEE</th>
-                        <th class="title-middle" scope="col" width=20% style="font-size: 0.9rem;" width=10%>NOTES</th>
-                    </tr>
-                </thead>
+                    <thead class="table">
+                        <tr class="text-center th-blue-grey">
+                            <th class="title-th" scope="col" width=20%></th>
+                            <th class="title-middle" scope="col" style="font-size: 0.9rem;">PACKAGE FEES, EXCL VAT</th>
+                            <th class="title-middle px-4" scope="col">NUMBER OF SESSIONS</th>
+                            <th class="title-middle" scope="col" style="font-size: 0.9rem;">NIGHT SHIFT, <br>WEEKENDS <br>HOLIDAYS *</th>
+                            <th class="title-middle" scope="col" style="font-size: 0.9rem;">TOTAL FEE</th>
+                            <th class="title-middle" scope="col" width=20% style="font-size: 0.9rem;" width=10%>NOTES</th>
+                        </tr>
+                    </thead>
 
                 <!-------------- CONSULTING -------------->
                     <tr class="th-blue-grey-lighten">
@@ -58,7 +58,7 @@
                         </td>
 
                         <td data-title="# OF SESSIONS">
-                            <input type="text" class="input input-table form-control number-session  @error('') is-invalid @enderror"
+                            <input type="text" class="input input-table form-control @error('') is-invalid @enderror"
                                 value="{{ old('') }}"
                                 name=""
                                 id=""
@@ -70,7 +70,7 @@
                         </td>
 
                         <td data-title="# NIGHT SHIFT, WEEKENDS HOLIDAYS">
-                            <input type="text" class="input input-table form-control nswh  @error('') is-invalid @enderror"
+                            <input type="text" class="input input-table form-control @error('') is-invalid @enderror"
                                 value="{{ old('') }}"
                                 name=""
                                 id=""
@@ -81,7 +81,7 @@
                                 data-mytooltip-direction="bottom">
                         </td>
                         <td class="total-td">
-                                <h4 class="text-center lead" id="total">-</h4>
+                                <h4 class="text-center lead total" id="total">-</h4>
                         </td>
                         <td class="total-td">
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
@@ -121,8 +121,8 @@
                     </tr>
 
                 <!-------------- Package, 51-100 pax (P58.5K, P65K) -------------->
-                    <tbody class="sum" id="tableLeadconsultant">
-                    <tr class="th-blue-grey-lighten-2" id="package1">
+                    <tbody id="tableLeadconsultant">
+                    <tr class="th-blue-grey-lighten-2 sum" id="package1">
                         <td class="title">Package, 51-100 pax (P58.5K, P65K)</td>
 
                         <td>
@@ -193,8 +193,8 @@
                     </tbody>
 
                 <!-------------- Package, 101-200 pax (P67.5K, P75K) -------------->
-                    <tbody class="sum" id="tableLeadconsultant">
-                    <tr class="th-blue-grey-lighten-2" id="package2">
+                    <tbody id="tableLeadconsultant">
+                    <tr class="th-blue-grey-lighten-2 sum" id="package2">
                         <td class="title">Package, 101-200 pax (P67.5K, P75K)</td>
 
                         <td>
@@ -265,8 +265,8 @@
                     </tbody>
 
                 <!-------------- Package, 201 pax and up (P76.5K, P85K) -------------->
-                    <tbody class="sum" id="tableLeadconsultant">
-                    <tr class="th-blue-grey-lighten-2" id="ef_producer">
+                    <tbody id="tableLeadconsultant">
+                    <tr class="th-blue-grey-lighten-2 sum" id="ef_producer">
                         <td class="title">Package, 201 pax and up (P76.5K, P85K)</td>
                         <td>
                             <fieldset>
@@ -330,8 +330,8 @@
                     </tr>
                     </tbody>
                 <!-------------- PRODUCER -------------->
-                    <tbody class="sum" id="producer">
-                    <tr class="th-blue-grey-lighten-2" id="ef_producer">
+                    <tbody id="producer">
+                    <tr class="th-blue-grey-lighten-2 sum" id="ef_producer">
                         <td class="title">Producer</td>
                         <td>
                             <fieldset>
@@ -470,52 +470,6 @@
         </div>
     </section>
 </div>
-
-<script>
-    $(document).on(
-        "load change keyup click",
-        "#main",
-        function () {
-
-        let currency = Intl.NumberFormat("en-US");
-
-        sum = 0;
-        subtotal = 0;
-
-        $("#consulting > tr").each(function () {
-            efConsultingSum = +$(this).find(`.package-fees`).val();
-            sum += efConsultingSum;
-
-            //lead consultant engagement fees sum
-            $(this).find("#total").html(currency.format(Math.ceil(efConsultingSum)));
-            subtotal += parseInt($(this).find("#total").text().replace(/,/g, ""));
-
-            //Assign the value of lead consultant to the sum of engagement fees
-            $('#subtotal').html(currency.format(Math.ceil(subtotal)));
-
-            //clear the assignment operator to 0
-            subtotal = 0
-        });
-
-        $(".sum > tr").each(function () {
-
-            efPackageSum = ($(this).find(`.package-fees`).val() * $(this).find(`.number-session`).val()) + ($(this).find(`.package-fees`).val() * ($(this).find(`.nswh`).val() * 0.2));
-            sum += efPackageSum;
-
-            // lead consultant engagement fees sum
-            $(this).find(".total").text(currency.format(Math.ceil(efPackageSum)));
-            subtotal += parseInt($(this).find(".total").text().replace(/,/g, ""));
-
-            //Assign the value of lead consultant to the sum of engagement fees
-            $('.subtotal').html(currency.format(Math.ceil(subtotal)));
-
-            //clear the assignment operator to 0
-            subtotal = 0
-        });
-
-        $('.standard-fees').html(currency.format(Math.ceil(sum)));
-    });
-</script>
 
 <script>
 $('input[type="number"]').on('input', function () {
