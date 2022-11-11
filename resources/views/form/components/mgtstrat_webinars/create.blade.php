@@ -84,7 +84,7 @@
 
                                     <!------------ ENGAGEMENT COST ------------>
                                         <div class="multisteps-form__panel" data-animation="slideHorz">
-                                            {{-- @include('form.components.customized_engagement.add.engagement_cost') --}}
+                                            @include('form.components.mgtstrat_webinars.engagement_cost')
                                             {{-- next and prev button --}}
                                             <div class="col-12 d-flex justify-content-center mt-3">
                                                 <button class="btn btn-secondary mx-2 js-btn-prev" type="button" title="Prev">Prev</button>
