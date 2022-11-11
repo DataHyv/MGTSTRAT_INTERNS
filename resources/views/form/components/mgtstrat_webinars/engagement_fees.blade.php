@@ -1,20 +1,20 @@
-<hr>
 <div class="card-header">
     <h4 class="card-title">Engagement Fees</h4>
 </div>
+
 <div class="form-body container">
     <section>
         <div class="table-responsive-md" id="no-more-tables">
-            <table class="table table-bordered table-hover" id="engagement-fees">
+            <table class="table table-bordered" id="engagement-fees">
                 <!-------------- HEADINGS -------------->
                 <thead class="table">
                     <tr class="text-center th-blue-grey">
                         <th class="title-th" scope="col" width=20%></th>
                         <th class="title-middle" scope="col" style="font-size: 0.9rem;">PACKAGE FEES, EXCL VAT</th>
-                        <th class="title-middle px-4" width=15% scope="col">NUMBER OF SESSIONS</th>
+                        <th class="title-middle px-4" scope="col">NUMBER OF SESSIONS</th>
                         <th class="title-middle" scope="col" style="font-size: 0.9rem;">NIGHT SHIFT, <br>WEEKENDS <br>HOLIDAYS *</th>
                         <th class="title-middle" scope="col" style="font-size: 0.9rem;">TOTAL FEE</th>
-                        <th class="title-middle" scope="col" style="font-size: 0.9rem;" width=10%>NOTES</th>
+                        <th class="title-middle" scope="col" width=20% style="font-size: 0.9rem;" width=10%>NOTES</th>
                     </tr>
                 </thead>
 
@@ -26,7 +26,6 @@
                         <th></th>
                         <th class="total-td"></th>
                         <th class="total-td"></th>
-
                     </tr>
 
                 <!-------------- CUSTOMIZATION FEE -------------->
@@ -35,15 +34,13 @@
                         <td class="title">Customization Fee</td>
                         <td>
                             <fieldset>
-                                <select class="form-select input js-mytooltip package-fees @error('') is-invalid @enderror"
+                                <select class="input js-mytooltip package-fees form-select @error('') is-invalid @enderror"
                                     name="ef_customizationFeePfv"
                                     id="ef_LeadconsultantHf"
-                                    data-mytooltip-content="<i>P15,000 - with minimal design customization,
-                                        or platform customization outside of Zoom/Goggle Meets/MS Teams.
-                                        Up to 2 hours of works</i>"
+                                    data-mytooltip-content="<i>Customization - P15,000 - with minimal design customization, or platform customization outside of Zoom/Goggle Meets/MS Teams. Up to 2 hours of work</i>"
                                     data-mytooltip-theme="dark"
                                     data-mytooltip-action="focus"
-                                    data-mytooltip-direction="right"
+                                    data-mytooltip-direction="bottom"
                                     style="background-color:#ffcccc; color:red;">
                                     <option value="0" {{ old('') == '0' ? 'selected="selected"' : '' }} selected>
                                         &#8369;0
@@ -124,21 +121,19 @@
                     </tr>
 
                 <!-------------- Package, 51-100 pax (P58.5K, P65K) -------------->
-                    <tbody id="tableLeadconsultant">
+                    <tbody class="sum" id="tableLeadconsultant">
                     <tr class="th-blue-grey-lighten-2" id="package1">
                         <td class="title">Package, 51-100 pax (P58.5K, P65K)</td>
 
                         <td>
                             <fieldset>
-                                <select class="form-select hf-c13 input js-mytooltip @error('') is-invalid @enderror"
-                                    name="ef_package1FeePfv"
-                                    id="f_package1FeePf"
-                                    data-mytooltip-content="<i>P35,000 - 1.5-2 hour session<br>
-                                        P45,000 - 2.5-3 hour session
-                                        <br>
+                                <select class="form-select hf-c13 input js-mytooltip package-fees @error('') is-invalid @enderror"
+                                    name=""
+                                    id=""
+                                    data-mytooltip-content="<i>Package, 51-100 pax - P65,000
+                                        <br><br>
                                         For Key Accounts with minimum guaranteed 50 sessions w/in 6 months
-                                        P31,500 - 1.5-2 hour session<br>
-                                        P40,500 - 2.5-3 hour session</i>"
+                                        P58,500 </i>"
                                     data-mytooltip-theme="dark"
                                     data-mytooltip-action="focus"
                                     data-mytooltip-direction="right"
@@ -146,8 +141,8 @@
                                     <option value="58500" {{ old('') == '58500' ? 'selected="selected"' : '' }}>
                                         &#8369;58,500
                                     </option>
-                                    <option value="65500" {{ old('') == '65500' ? 'selected="selected"' : '' }} selected>
-                                        &#8369;65,500
+                                    <option value="65000" {{ old('') == '65000' ? 'selected="selected"' : '' }} selected>
+                                        &#8369;65,000
                                     </option>
                                 </select>
                                 @error('')
@@ -159,7 +154,7 @@
                         </td>
 
                         <td data-title="# OF SESSIONS">
-                            <input type="text" class="input js-mytooltip input-table form-control @error('') is-invalid @enderror"
+                            <input type="text" class="number-session input js-mytooltip input-table form-control @error('') is-invalid @enderror"
                                 value=""
                                 name=""
                                 id=""
@@ -171,7 +166,7 @@
                         </td>
 
                         <td data-title="NIGHT SHIFT, WEEKENDS HOLIDAYS *">
-                            <input type="text" class="input  input-table form-control  @error('') is-invalid @enderror"
+                            <input type="text" class="nswh input input-table form-control  @error('') is-invalid @enderror"
                                 value="{{ old('') }}"
                                 name="ef_package1FeeNsw"
                                 id="ef_package1FeeNsw"
@@ -183,7 +178,7 @@
                         </td>
 
                         <td class="total-td">
-                                <h4 class="text-center lead" id="ef_package1FeeTotal">-</h4>
+                                <h4 class="total text-center lead" id="">-</h4>
                         </td>
 
                         <td class="total-td">
@@ -198,21 +193,19 @@
                     </tbody>
 
                 <!-------------- Package, 101-200 pax (P67.5K, P75K) -------------->
-                    <tbody id="tableLeadconsultant">
+                    <tbody class="sum" id="tableLeadconsultant">
                     <tr class="th-blue-grey-lighten-2" id="package2">
                         <td class="title">Package, 101-200 pax (P67.5K, P75K)</td>
 
                         <td>
                             <fieldset>
-                                <select class="form-select hf-c13 input js-mytooltip @error('') is-invalid @enderror"
+                                <select class="form-select package-fees input js-mytooltip @error('') is-invalid @enderror"
                                     name="ef_package2FeePfv"
                                     id="ef_package2FeePfv"
-                                    data-mytooltip-content="<i>P45,000 - 1.5-2 hour session<br>
-                                        P55,000 - 2.5-3 hour session<br>
-
-                                        For Key Accounts with minimum guaranteed 50 sessions w/in 6 months<br>
-                                        P40,500 - 1.5-2 hour session<br>
-                                        P49,500 - 2.5-3 hour session</i>"
+                                    data-mytooltip-content="<i>Package, 101-200 pax - P75,000
+                                        <br><br>
+                                        For Key Accounts with minimum guaranteed 50 sessions w/in 6 months
+                                        P67,500</i>"
                                     data-mytooltip-theme="dark"
                                     data-mytooltip-action="focus"
                                     data-mytooltip-direction="right"
@@ -220,8 +213,8 @@
                                     <option value="67500" {{ old('') == '67500' ? 'selected="selected"' : '' }} >
                                         &#8369;67,500
                                     </option>
-                                    <option value="45000" {{ old('') == '45000' ? 'selected="selected"' : '' }} selected>
-                                        &#8369;75,500
+                                    <option value="75000" {{ old('') == '75000' ? 'selected="selected"' : '' }} selected>
+                                        &#8369;75,000
                                     </option>
                                 </select>
                                 @error('')
@@ -233,7 +226,7 @@
                         </td>
 
                         <td data-title="# OF SESSIONS">
-                            <input type="text" class="input js-mytooltip input-table form-control  @error('') is-invalid @enderror"
+                            <input type="text" class="number-session input js-mytooltip input-table form-control  @error('') is-invalid @enderror"
                                 value="{{ old('') }}"
                                 name="ef_package2FeeNos"
                                 id="ef_package2FeeNos"
@@ -245,7 +238,7 @@
                         </td>
 
                         <td data-title="NIGHT SHIFT, WEEKENDS HOLIDAYS *">
-                            <input type="text" class="input  input-table form-control  @error('') is-invalid @enderror"
+                            <input type="text" class="nswh input input-table form-control  @error('') is-invalid @enderror"
                                 value="{{ old('') }}"
                                 name="ef_package2FeeNsw"
                                 id="eef_package2FeeNsw"
@@ -257,7 +250,7 @@
                         </td>
 
                         <td class="total-td">
-                                <h4 class="text-center lead" id="ef_package2FeeTotal">-</h4>
+                                <h4 class="text-center lead total" id="">-</h4>
                         </td>
 
                         <td class="total-td">
@@ -272,17 +265,18 @@
                     </tbody>
 
                 <!-------------- Package, 201 pax and up (P76.5K, P85K) -------------->
-                    <tbody id="tableLeadconsultant">
+                    <tbody class="sum" id="tableLeadconsultant">
                     <tr class="th-blue-grey-lighten-2" id="ef_producer">
                         <td class="title">Package, 201 pax and up (P76.5K, P85K)</td>
                         <td>
                             <fieldset>
-                                <select class="form-select hf-c13 input js-mytooltip @error('') is-invalid @enderror"
+                                <select class="package-fees form-select input js-mytooltip @error('') is-invalid @enderror"
                                     name="ef_producerFeePfv"
                                     id="ef_producerFeePfv"
-                                    data-mytooltip-content="<i>0 - client will provide the producer<br>
-                                        P5,000 - 1.5-2 hour session<br>
-                                        P7,500 - 2.5-3 hour session</i>"
+                                    data-mytooltip-content="<i>Package, 201 pax and up - P85,000
+                                        <br><br>
+                                        For Key Accounts with minimum guaranteed 50 sessions w/in 6 months
+                                        P76,500</i>"
                                     data-mytooltip-theme="dark"
                                     data-mytooltip-action="focus"
                                     data-mytooltip-direction="right"
@@ -302,7 +296,7 @@
                             </fieldset>
                         </td>
                         <td data-title="# OF SESSIONS">
-                            <input type="text" class="input js-mytooltip input-table form-control  @error('') is-invalid @enderror"
+                            <input type="text" class="number-session input js-mytooltip input-table form-control  @error('') is-invalid @enderror"
                                 value=""
                                 name=""
                                 id=""
@@ -313,7 +307,7 @@
                                 data-mytooltip-direction="bottom">
                         </td>
                         <td data-title="NIGHT SHIFT, WEEKENDS LIDAYS *">
-                            <input type="text" class="input input-table form-control  @error('') is-invalid @enderror"
+                            <input type="text" class="nswh input input-table form-control  @error('') is-invalid @enderror"
                                 value="{{ old('') }}"
                                 name=""
                                 id=""
@@ -324,7 +318,7 @@
                                 data-mytooltip-direction="bottom">
                         </td>
                         <td class="total-td">
-                                <h4 class="text-center lead" id="ef_producerFeeTotal">-</h4>
+                                <h4 class="text-center lead total" id="">-</h4>
                         </td>
                         <td class="total-td">
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
@@ -336,22 +330,21 @@
                     </tr>
                     </tbody>
                 <!-------------- PRODUCER -------------->
-                    <tbody id="producer">
+                    <tbody class="sum" id="producer">
                     <tr class="th-blue-grey-lighten-2" id="ef_producer">
                         <td class="title">Producer</td>
                         <td>
                             <fieldset>
-                                <select class="form-select hf-c13 input js-mytooltip @error('') is-invalid @enderror"
-                                    name="ef_producerFeePfv"
-                                    id="ef_producerFeePfv"
-                                    data-mytooltip-content="<i>0 - client will provide the producer<br>
-                                        P5,000 - 1.5-2 hour session<br>
-                                        P7,500 - 2.5-3 hour session</i>"
+                                <select class="package-fees form-select input js-mytooltip @error('') is-invalid @enderror"
+                                    name=""
+                                    id=""
+                                    data-mytooltip-content="<i>Package Fee - 0 - client will provide the producer
+                                        P5,000</i>"
                                     data-mytooltip-theme="dark"
                                     data-mytooltip-action="focus"
                                     data-mytooltip-direction="right"
                                     style="background-color:#ffcccc; color:red;">
-                                    <option selected>
+                                    <option value="0" selected>
                                         <b>-</b>
                                     </option>
                                     <option value="0" {{ old('') == '0' ? 'selected="selected"' : '' }} >
@@ -369,7 +362,7 @@
                             </fieldset>
                         </td>
                         <td data-title="# OF SESSIONS">
-                            <input type="text" class="input js-mytooltip input-table form-control  @error('') is-invalid @enderror"
+                            <input type="text" class="number-session input js-mytooltip input-table form-control  @error('') is-invalid @enderror"
                                 value=""
                                 name=""
                                 id=""
@@ -380,7 +373,7 @@
                                 data-mytooltip-direction="bottom">
                         </td>
                         <td data-title="NIGHT SHIFT, WEEKENDS LIDAYS *">
-                            <input type="text" class="input input-table form-control  @error('') is-invalid @enderror"
+                            <input type="text" class="nswh input input-table form-control  @error('') is-invalid @enderror"
                                 value="{{ old('') }}"
                                 name=""
                                 id=""
@@ -391,7 +384,7 @@
                                 data-mytooltip-direction="bottom">
                         </td>
                         <td class="total-td">
-                                <h4 class="text-center lead" id="ef_producerFeeTotal">-</h4>
+                                <h4 class="text-center lead total" id="ef_producerFeeTotal">-</h4>
                         </td>
                         <td class="total-td">
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
@@ -403,6 +396,23 @@
                     </tr>
                     </tbody>
 
+                <!-------------- SUBTOTAL -------------->
+                    <tr class="">
+                        <td class="title fw-bold text-dark fst-italic">Subtotal</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="total-td" style="background-color: rgba(146, 146, 146, 0.727)">
+                            <h4 class="text-center subtotal" id="">-</h4>
+                        </td>
+                        <td class="total-td">
+                            <input type="text" class="form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}"
+                                name="" id="">
+                        </td>
+                        <td class="border border-white"></td>
+                    </tr>
+
                 <!-------------- TOTAL STANDARD FEES -------------->
                     <tr class="table-active overall-total">
                         <td class="text-uppercase text-dark fst-italic fw-bold overall-total-start">TOTAL STANDARD FEES</td>
@@ -410,7 +420,7 @@
                         <td class="overall-total-middle"></td>
                         <td class="overall-total-middle"></td>
                         <td class="overall-total-end" style="background-color: rgba(146, 146, 146, 0.727)">
-                            <h4 class="text-center fw-bold" id="mg_standard_total">-</h4>
+                            <h4 class="text-center fw-bold standard-fees" id="">-</h4>
                         </td>
                         <td class="overall-total-end">
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
@@ -460,35 +470,50 @@
         </div>
     </section>
 </div>
-<script
-  src="https://code.jquery.com/jquery-3.6.1.js"
-  integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
-  crossorigin="anonymous"></script>
 
 <script>
     $(document).on(
         "load change keyup click",
-        "#engagement-fees",
+        "#main",
         function () {
-        let currency = Intl.NumberFormat("en-US");
-        var sum = 0;
-        efConsultingSum = 0;
-        $("#consulting > tr").each(function () {
 
-            sum += +$(this).find(`.package-fees`).val();
+        let currency = Intl.NumberFormat("en-US");
+
+        sum = 0;
+        subtotal = 0;
+
+        $("#consulting > tr").each(function () {
+            efConsultingSum = +$(this).find(`.package-fees`).val();
+            sum += efConsultingSum;
 
             //lead consultant engagement fees sum
-            $(this)
-                .find("#total")
-                .html(currency.format(Math.ceil(+sum)));
+            $(this).find("#total").html(currency.format(Math.ceil(efConsultingSum)));
+            subtotal += parseInt($(this).find("#total").text().replace(/,/g, ""));
 
             //Assign the value of lead consultant to the sum of engagement fees
-            // efConsultingSum += +sum;
-            console.log(+sum);
+            $('#subtotal').html(currency.format(Math.ceil(subtotal)));
+
+            //clear the assignment operator to 0
+            subtotal = 0
         });
 
-        $('#subtotal').html(currency.format(Math.ceil(sum)));
-        // console.log(sum);
+        $(".sum > tr").each(function () {
+
+            efPackageSum = ($(this).find(`.package-fees`).val() * $(this).find(`.number-session`).val()) + ($(this).find(`.package-fees`).val() * ($(this).find(`.nswh`).val() * 0.2));
+            sum += efPackageSum;
+
+            // lead consultant engagement fees sum
+            $(this).find(".total").text(currency.format(Math.ceil(efPackageSum)));
+            subtotal += parseInt($(this).find(".total").text().replace(/,/g, ""));
+
+            //Assign the value of lead consultant to the sum of engagement fees
+            $('.subtotal').html(currency.format(Math.ceil(subtotal)));
+
+            //clear the assignment operator to 0
+            subtotal = 0
+        });
+
+        $('.standard-fees').html(currency.format(Math.ceil(sum)));
     });
 </script>
 
