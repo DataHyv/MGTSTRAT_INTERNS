@@ -5,22 +5,24 @@
 <div class="form-body container">
     <section>
         <div class="table-responsive-md" id="no-more-tables">
-            <table class="table table-bordered" id="engagement-fees">
+            <table class="table table-bordered" id="engagementCost">
                 <!-------------- HEADINGS -------------->
                     <thead class="table">
                         <tr class="text-center th-blue-grey">
                             <th class="title-th" scope="col" width=20%></th>
-                            <th class="title-middle" scope="col" style="font-size: 0.9rem;">PACKAGE FEES, EXCL VAT</th>
-                            <th class="title-middle px-4" scope="col">NUMBER OF SESSIONS</th>
+                            <th class="title-middle" scope="col" style="font-size: 0.9rem;">HOURLY FEES</th>
+                            <th class="title-middle px-4" scope="col">NUMBER OF HOUR</th>
                             <th class="title-middle" scope="col" style="font-size: 0.9rem;">NIGHT SHIFT, <br>WEEKENDS <br>HOLIDAYS *</th>
                             <th class="title-middle" scope="col" style="font-size: 0.9rem;">TOTAL FEE</th>
-                            <th class="title-middle" scope="col" width=20% style="font-size: 0.9rem;" width=10%>NOTES</th>
+                            <th class="title-middle" scope="col" width=20% style="font-size: 0.9rem;" width=10%>ROSTER</th>
+                            {{-- <th class="title-middle" scope="col" width=20% style="font-size: 0.9rem;" width=10%>NOTES</th> --}}
                         </tr>
                     </thead>
+                <!-------------- HEADINGS END -------------->
 
-                <!-------------- CONSULTING -------------->
+                <!-------------- COMMISSION -------------->
                     <tr class="th-blue-grey-lighten">
-                        <th class="px-4 title  ">1. CONSULTING/ DESIGN</th>
+                        <th class="px-4 title  ">COMMISSION</th>
                         <th></th>
                         <th></th>
                         <th></th>
@@ -28,79 +30,197 @@
                         <th class="total-td"></th>
                     </tr>
 
-                <!-------------- CUSTOMIZATION FEE -------------->
-                    <tbody id="consulting">
-                    <tr class="th-blue-grey-lighten-2" id="customizationFee">
-                        <td class="title">Customization Fee</td>
-                        <td>
-                            <fieldset>
-                                <select class="input js-mytooltip package-fees form-select @error('') is-invalid @enderror"
-                                    name="ef_customizationFeePfv"
-                                    id="ef_LeadconsultantHf"
-                                    data-mytooltip-content="<i>Customization - P15,000 - with minimal design customization, or platform customization outside of Zoom/Goggle Meets/MS Teams. Up to 2 hours of work</i>"
-                                    data-mytooltip-theme="dark"
-                                    data-mytooltip-action="focus"
-                                    data-mytooltip-direction="bottom"
-                                    style="background-color:#ffcccc; color:red;">
-                                    <option value="0" {{ old('') == '0' ? 'selected="selected"' : '' }} selected>
-                                        &#8369;0
-                                    </option>
-                                    <option value="15000" {{ old('') == '15000' ? 'selected="selected"' : '' }} >
-                                        &#8369;15,000
-                                    </option>
-                                </select>
-                                @error('')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </fieldset>
-                        </td>
+                    <tbody id="commission">
+                        <tr class="th-blue-grey-lighten-2 sum" id="customizationFee">
+                            <td class="title">Sales (4% / 5% / 6% / 7%)</td>
 
-                        <td data-title="# OF SESSIONS">
-                            <input type="text" class="input input-table form-control @error('') is-invalid @enderror"
-                                value="{{ old('') }}"
-                                name=""
-                                id=""
-                                data-type="currency"
-                                data-mytooltip-content="<i></i>"
-                                data-mytooltip-theme="dark"
-                                data-mytooltip-action="focus"
-                                data-mytooltip-direction="bottom">
-                        </td>
+                            <td>
+                                <fieldset>
+                                    <select class="input js-mytooltip package-fees form-select @error('') is-invalid @enderror"
+                                        name="ef_customizationFeePfv"
+                                        id="ef_LeadconsultantHf"
+                                        data-mytooltip-content="<i>if referred or sold by a reseller <br><br>
 
-                        <td data-title="# NIGHT SHIFT, WEEKENDS HOLIDAYS">
-                            <input type="text" class="input input-table form-control @error('') is-invalid @enderror"
-                                value="{{ old('') }}"
-                                name=""
-                                id=""
-                                data-type="currency"
-                                data-mytooltip-content="<i></i>"
-                                data-mytooltip-theme="dark"
-                                data-mytooltip-action="focus"
-                                data-mytooltip-direction="bottom">
-                        </td>
-                        <td class="total-td">
-                                <h4 class="text-center lead total" id="total">-</h4>
-                        </td>
-                        <td class="total-td">
-                            <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}"name="" id="">
-                        </td>
-                        <td style="background-color: #FFFFFF;" class="border border-white"><a href="javascript:void(0)"
-                            class="text-success font-18" title="Add" id="addBtn1"><i class="fa fa-plus"></i></a>
-                        </td>
-                    </tr>
+                                            For large engagements, with EMs:<br>
+                                            4% - discounted<br>
+                                            6% - standard rates<br>
+                                            <br>
+                                            For regular engagements:<br>
+                                            5% - discounted<br>
+                                            7% - standard rates<br>
+                                            <br>
+                                            For Key Accounts, with EMs:</i>"
+                                        data-mytooltip-theme="dark"
+                                        data-mytooltip-action="focus"
+                                        data-mytooltip-direction="bottom"
+                                        style="background-color:#ffcccc; color:red;">
+                                        <option value="0" {{ old('') == '0' ? 'selected="selected"' : '' }} selected>
+                                            0%
+                                        </option>
+                                        <option value="4" {{ old('') == '4' ? 'selected="selected"' : '' }} >
+                                            4%
+                                        </option>
+                                        <option value="5" {{ old('') == '5' ? 'selected="selected"' : '' }} >
+                                            5%
+                                        </option>
+                                        <option value="6" {{ old('') == '6' ? 'selected="selected"' : '' }} >
+                                            6%
+                                        </option>
+                                        <option value="7" {{ old('') == '7' ? 'selected="selected"' : '' }} >
+                                            7%
+                                        </option>
+                                    </select>
+                                    @error('')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </fieldset>
+                            </td>
+
+                            <td data-title="# OF HOURS">
+                                {{-- <input type="text" class="number-session input input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="" id=""> --}}
+                            </td>
+
+                            <td data-title="# NIGHT SHIFT, WEEKENDS HOLIDAYS">
+                                {{-- <input type="text" class="nswh input input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="" id=""> --}}
+                            </td>
+
+                            <td class="total-td">
+                                    <h4 class="text-center lead total" id="total">-</h4>
+                            </td>
+                            <td class="total-td">
+                                <input type="text" class="form-control input-table @error('') is-invalid @enderror"
+                                    value="{{ old('') }}" name="" id="">
+                            </td>
+                            <td style="background-color: #FFFFFF;" class="border border-white"><a href="javascript:void(0)"
+                                class="text-success font-18" title="Add" id="addBtn1"><i class="fa fa-plus"></i></a>
+                            </td>
+                        </tr>
                     </tbody>
 
-                <!-------------- SUBTOTAL -------------->
-                    <tr class="">
+                    <tbody id="commission">
+                        <tr class="th-blue-grey-lighten-2 sum" id="customizationFee">
+                            <td class="title">Referral (2% / 3% / 10%)</td>
+
+                            <td>
+                                <fieldset>
+                                    <select class="input js-mytooltip package-fees form-select @error('') is-invalid @enderror"
+                                        name="ef_customizationFeePfv"
+                                        id="ef_LeadconsultantHf"
+                                        data-mytooltip-content="<i>Referral - 2% - repeat contracts from the same client <br>
+                                            3% - 1st contract with a new client, or with a 2-year dormant client<br>
+                                            10% - if referred/sold by a reseller<br><br>
+                                            When in doubt, check with Joi on who referror is.
+                                        </i>"
+                                        data-mytooltip-theme="dark"
+                                        data-mytooltip-action="focus"
+                                        data-mytooltip-direction="bottom"
+                                        style="background-color:#ffcccc; color:red;">
+                                        <option value="0" {{ old('') == '0' ? 'selected="selected"' : '' }} selected>
+                                            0%
+                                        </option>
+                                        <option value="2" {{ old('') == '2' ? 'selected="selected"' : '' }} >
+                                            2%
+                                        </option>
+                                        <option value="3" {{ old('') == '3' ? 'selected="selected"' : '' }} >
+                                            3%
+                                        </option>
+                                        <option value="10" {{ old('') == '10' ? 'selected="selected"' : '' }} >
+                                            10%
+                                        </option>
+                                    </select>
+                                    @error('')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </fieldset>
+                            </td>
+
+                            <td data-title="# OF HOURS">
+                                {{-- <input type="text" class="number-session input input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="" id=""> --}}
+                            </td>
+
+                            <td data-title="# NIGHT SHIFT, WEEKENDS HOLIDAYS">
+                                {{-- <input type="text" class="nswh input input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="" id=""> --}}
+                            </td>
+
+                            <td class="total-td">
+                                    <h4 class="text-center lead total" id="total">-</h4>
+                            </td>
+                            <td class="total-td">
+                                <input type="text" class="form-control input-table @error('') is-invalid @enderror"
+                                    value="{{ old('') }}"name="" id="">
+                            </td>
+                            <td style="background-color: #FFFFFF;" class="border border-white"><a href="javascript:void(0)"
+                                class="text-success font-18" title="Add" id="addBtn1"><i class="fa fa-plus"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                    <tbody id="commission">
+                        <tr class="th-blue-grey-lighten-2 sum" id="customizationFee">
+                            <td class="title text-uppercase fw-bold">Engagement Manager (4%)</td>
+
+                            <td>
+                                <fieldset>
+                                    <select class="input js-mytooltip package-fees form-select @error('') is-invalid @enderror"
+                                        name=""
+                                        id=""
+                                        data-mytooltip-content="<i>
+                                            Engagement Manager - 4% - all Key Accounts and large engagements <br><br>
+
+                                            Large engagments: large scale consulting, or a series of at least 8 virtual sessions under 1 contract involving a roster of at least 2 people
+                                        </i>"
+                                        data-mytooltip-theme="dark"
+                                        data-mytooltip-action="focus"
+                                        data-mytooltip-direction="bottom"
+                                        style="background-color:#ffcccc; color:red;">
+                                        <option value="0" {{ old('') == '0' ? 'selected="selected"' : '' }} selected>
+                                            0%
+                                        </option>
+                                        <option value="4" {{ old('') == '4' ? 'selected="selected"' : '' }} >
+                                            4%
+                                        </option>
+                                    </select>
+                                    @error('')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </fieldset>
+                            </td>
+
+                            <td data-title="# OF HOURS">
+                                {{-- <input type="text" class="number-session input input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="" id=""> --}}
+                            </td>
+
+                            <td data-title="# NIGHT SHIFT, WEEKENDS HOLIDAYS">
+                                {{-- <input type="text" class="nswh input input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="" id=""> --}}
+                            </td>
+
+                            <td class="total-td">
+                                    <h4 class="text-center lead total" id="total">-</h4>
+                            </td>
+                            <td class="total-td">
+                                <input type="text" class="form-control input-table @error('') is-invalid @enderror"
+                                    value="{{ old('') }}"name="" id="">
+                            </td>
+                            <td style="background-color: #FFFFFF;" class="border border-white"><a href="javascript:void(0)"
+                                class="text-success font-18" title="Add" id="addBtn1"><i class="fa fa-plus"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                    {{-- SUBTOTAL --}}
+                    <tr class="commission">
                         <td class="title fw-bold text-dark fst-italic">Subtotal</td>
                         <td></td>
                         <td></td>
                         <td></td>
                         <td class="total-td" style="background-color: rgba(146, 146, 146, 0.727)">
-                            <h4 class="text-center" id="subtotal">-</h4>
+                            <h4 class="text-center subtotal">-</h4>
                         </td>
                         <td class="total-td">
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
@@ -109,301 +229,263 @@
                         </td>
                         <td class="border border-white"></td>
                     </tr>
+                <!-------------- COMMISSION END -------------->
+
+
+                <!-------------- CONSULTING/DESIGN -------------->
+                    <tr class="th-blue-grey-lighten">
+                        <th class="px-4 title text-uppercase fw-bold">1. consulting/design</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th class="total-td"></th>
+                        <th class="total-td"></th>
+                    </tr>
+
+                    <tbody class="consulting" id="">
+                        <tr class="th-blue-grey-lighten-2 sum" id="">
+                            <td class="title">Customization Fee</td>
+
+                            <td>
+                                <input type="text" class="package-fees input input-table form-control @error('') is-invalid @enderror"
+                                value="{{ old('') }}"
+                                name=""
+                                id=""
+                                data-type="currency"
+                                data-mytooltip-content="<i></i>"
+                                data-mytooltip-theme="dark"
+                                data-mytooltip-action="focus"
+                                data-mytooltip-direction="bottom">
+                            </td>
+
+                            <td data-title="# OF HOURS">
+                                <fieldset>
+                                    <select class="input js-mytooltip number-session form-select @error('') is-invalid @enderror"
+                                        name="ef_customizationFeePfv"
+                                        id="ef_LeadconsultantHf"
+                                        data-mytooltip-content="<i># of Hours - 0 - no customization <br><br> 2 - automatic when we charge customization fee</i>"
+                                        data-mytooltip-theme="dark"
+                                        data-mytooltip-action="focus"
+                                        data-mytooltip-direction="bottom"
+                                        style="background-color:#ffcccc; color:red;">
+                                        <option value="0" {{ old('') == '0' ? 'selected="selected"' : '' }} selected>
+                                            -
+                                        </option>
+                                        <option value="2" {{ old('') == '2' ? 'selected="selected"' : '' }} >
+                                            2
+                                        </option>
+                                    </select>
+                                    @error('')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </fieldset>
+                            </td>
+
+                            <td data-title="# NIGHT SHIFT, WEEKENDS HOLIDAYS">
+                                {{-- <input type="text" class="nswh input js-mytooltip input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="" id=""> --}}
+                            </td>
+
+                            <td class="total-td">
+                                    <h4 class="text-center lead total" id="total">-</h4>
+                            </td>
+                            <td class="total-td">
+                                <input type="text" class="form-control input-table @error('') is-invalid @enderror"
+                                    value="{{ old('') }}"name="" id="">
+                            </td>
+                            <td style="background-color: #FFFFFF;" class="border border-white"><a href="javascript:void(0)"
+                                class="text-success font-18" title="Add" id="addBtn1"><i class="fa fa-plus"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                    <tbody class="consulting" id="">
+                        <tr class="th-blue-grey-lighten-2 sum" id="">
+                            <td class="title">Creators Fees (&#8369;0, &#8369;500, &#8369;1K)</td>
+
+                            <td>
+                                <fieldset>
+                                    <select class="package-fees input js-mytooltip form-select @error('') is-invalid @enderror"
+                                        name="ef_customizationFeePfv"
+                                        id="ef_LeadconsultantHf"
+                                        data-mytooltip-content="<i># of Hours - 0 - no customization <br><br> 2 - automatic when we charge customization fee</i>"
+                                        data-mytooltip-theme="dark"
+                                        data-mytooltip-action="focus"
+                                        data-mytooltip-direction="bottom"
+                                        style="background-color:#ffcccc; color:red;">
+                                        <option value="0" {{ old('') == '0' ? 'selected="selected"' : '' }} selected>
+                                            &#8369;0
+                                        </option>
+                                        <option value="500" {{ old('') == '500' ? 'selected="selected"' : '' }} >
+                                            &#8369;500
+                                        </option>
+                                        <option value="1000" {{ old('') == '1000' ? 'selected="selected"' : '' }} >
+                                            &#8369;1,000
+                                        </option>
+                                    </select>
+                                    @error('')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </fieldset>
+                            </td>
+
+                            <td data-title="# OF HOURS">
+                                <input type="text" class="number-session input input-table form-control @error('') is-invalid @enderror"
+                                value="{{ old('') }}"
+                                name=""
+                                id=""
+                                data-type="currency"
+                                data-mytooltip-content="<i></i>"
+                                data-mytooltip-theme="dark"
+                                data-mytooltip-action="focus"
+                                data-mytooltip-direction="bottom">
+                            </td>
+
+                            <td data-title="# NIGHT SHIFT, WEEKENDS HOLIDAYS">
+                                <input type="text" class="nswh input js-mytooltip input-table form-control invisible @error('') is-invalid @enderror" value="{{ old('') }}" name="" id="" disabled>
+                            </td>
+
+                            <td class="total-td">
+                                    <h4 class="text-center lead total" id="total">-</h4>
+                            </td>
+
+                            <td class="total-td">
+                                <input type="text" class="form-control input-table @error('') is-invalid @enderror"
+                                    value="{{ old('') }}"name="" id="">
+                            </td>
+
+                            <td style="background-color: #FFFFFF;" class="border border-white"><a href="javascript:void(0)"
+                                class="text-success font-18" title="Add" id="addBtn1"><i class="fa fa-plus"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                    {{-- SUBTOTAL --}}
+                    <tr class="consulting">
+                        <td class="title fw-bold text-dark fst-italic">Subtotal</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="total-td" style="background-color: rgba(146, 146, 146, 0.727)">
+                            <h4 class="text-center subtotal">-</h4>
+                        </td>
+                        <td class="total-td">
+                            <input type="text" class="form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}"
+                                name="" id="">
+                        </td>
+                        <td class="border border-white"></td>
+                    </tr>
+                <!-------------- CONSULTING/DESIGN END -------------->
 
                 <!-------------- PROGRAM -------------->
                     <tr class="th-blue-grey-lighten">
-                        <th class="title px-4 text-dark">2. PROGRAM</th>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td class="total-td"></td>
-                        <td class="total-td"></td>
+                        <th class="px-4 title text-uppercase fw-bold">2. PROGRAM</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th class="total-td"></th>
+                        <th class="total-td"></th>
                     </tr>
 
-                <!-------------- Package, 51-100 pax (P58.5K, P65K) -------------->
-                    <tbody id="tableLeadconsultant">
-                    <tr class="th-blue-grey-lighten-2 sum" id="package1">
-                        <td class="title">Package, 51-100 pax (P58.5K, P65K)</td>
+                    <tbody class="program" id="">
+                        <tr class="th-blue-grey-lighten-2 sum" id="">
+                            <td class="title">Lead Facilitator</td>
 
-                        <td>
-                            <fieldset>
-                                <select class="form-select hf-c13 input js-mytooltip package-fees @error('') is-invalid @enderror"
-                                    name=""
-                                    id=""
-                                    data-mytooltip-content="<i>Package, 51-100 pax - P65,000
-                                        <br><br>
-                                        For Key Accounts with minimum guaranteed 50 sessions w/in 6 months
-                                        P58,500 </i>"
-                                    data-mytooltip-theme="dark"
-                                    data-mytooltip-action="focus"
-                                    data-mytooltip-direction="right"
-                                    style="background-color:#ffcccc; color:red;">
-                                    <option value="58500" {{ old('') == '58500' ? 'selected="selected"' : '' }}>
-                                        &#8369;58,500
-                                    </option>
-                                    <option value="65000" {{ old('') == '65000' ? 'selected="selected"' : '' }} selected>
-                                        &#8369;65,000
-                                    </option>
-                                </select>
-                                @error('')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </fieldset>
-                        </td>
+                            <td>
+                                <input type="text" class="package-fees input input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="" id="" data-type="currency">
+                            </td>
 
-                        <td data-title="# OF SESSIONS">
-                            <input type="text" class="number-session input js-mytooltip input-table form-control @error('') is-invalid @enderror"
-                                value=""
-                                name=""
-                                id=""
-                                data-type="currency"
-                                data-mytooltip-content="<i>Minimum is 1 session</i>"
-                                data-mytooltip-theme="dark"
-                                data-mytooltip-action="focus"
-                                data-mytooltip-direction="bottom">
-                        </td>
+                            <td data-title="# OF HOURS">
+                                <input type="text" class="number-session input input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="" id="" data-type="currency">
+                            </td>
 
-                        <td data-title="NIGHT SHIFT, WEEKENDS HOLIDAYS *">
-                            <input type="text" class="nswh input input-table form-control  @error('') is-invalid @enderror"
-                                value="{{ old('') }}"
-                                name="ef_package1FeeNsw"
-                                id="ef_package1FeeNsw"
-                                data-type="currency"
-                                data-mytooltip-content="<i></i>"
-                                data-mytooltip-theme="dark"
-                                data-mytooltip-action="focus"
-                                data-mytooltip-direction="bottom">
-                        </td>
+                            <td data-title="# NIGHT SHIFT, WEEKENDS HOLIDAYS">
+                                <input type="text" class="nswh input js-mytooltip input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="" id="" data-type="currency">
+                            </td>
 
-                        <td class="total-td">
-                                <h4 class="total text-center lead" id="">-</h4>
-                        </td>
-
-                        <td class="total-td">
-                            <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}"name="" id="">
-                        </td>
-
-                        <td style="background-color: #FFFFFF;" class="border border-white"><a href="javascript:void(0)"
-                            class="text-success font-18" title="Add" id="addBtn1"><i class="fa fa-plus"></i></a>
-                        </td>
-                    </tr>
+                            <td class="total-td">
+                                    <h4 class="text-center lead total" id="total">-</h4>
+                            </td>
+                            <td class="total-td">
+                                <input type="text" class="form-control input-table @error('') is-invalid @enderror"
+                                    value="{{ old('') }}"name="" id="">
+                            </td>
+                            <td style="background-color: #FFFFFF;" class="border border-white"><a href="javascript:void(0)"
+                                class="text-success font-18" title="Add" id="addBtn1"><i class="fa fa-plus"></i></a>
+                            </td>
+                        </tr>
                     </tbody>
 
-                <!-------------- Package, 101-200 pax (P67.5K, P75K) -------------->
-                    <tbody id="tableLeadconsultant">
-                    <tr class="th-blue-grey-lighten-2 sum" id="package2">
-                        <td class="title">Package, 101-200 pax (P67.5K, P75K)</td>
+                    <tbody class="program" id="">
+                        <tr class="th-blue-grey-lighten-2 sum" id="">
+                            <td class="title">Moderator</td>
 
-                        <td>
-                            <fieldset>
-                                <select class="form-select package-fees input js-mytooltip @error('') is-invalid @enderror"
-                                    name="ef_package2FeePfv"
-                                    id="ef_package2FeePfv"
-                                    data-mytooltip-content="<i>Package, 101-200 pax - P75,000
-                                        <br><br>
-                                        For Key Accounts with minimum guaranteed 50 sessions w/in 6 months
-                                        P67,500</i>"
-                                    data-mytooltip-theme="dark"
-                                    data-mytooltip-action="focus"
-                                    data-mytooltip-direction="right"
-                                    style="background-color:#ffcccc; color:red;">
-                                    <option value="67500" {{ old('') == '67500' ? 'selected="selected"' : '' }} >
-                                        &#8369;67,500
-                                    </option>
-                                    <option value="75000" {{ old('') == '75000' ? 'selected="selected"' : '' }} selected>
-                                        &#8369;75,000
-                                    </option>
-                                </select>
-                                @error('')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </fieldset>
-                        </td>
+                            <td>
+                                <input type="text" class="package-fees input input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="" id="" data-type="currency">
+                            </td>
 
-                        <td data-title="# OF SESSIONS">
-                            <input type="text" class="number-session input js-mytooltip input-table form-control  @error('') is-invalid @enderror"
-                                value="{{ old('') }}"
-                                name="ef_package2FeeNos"
-                                id="ef_package2FeeNos"
-                                data-type="currency"
-                                data-mytooltip-content="<i>Minimum is 1 session</i>"
-                                data-mytooltip-theme="dark"
-                                data-mytooltip-action="focus"
-                                data-mytooltip-direction="bottom">
-                        </td>
+                            <td data-title="# OF HOURS">
+                                <input type="text" class="number-session input input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="" id="" data-type="currency">
+                            </td>
 
-                        <td data-title="NIGHT SHIFT, WEEKENDS HOLIDAYS *">
-                            <input type="text" class="nswh input input-table form-control  @error('') is-invalid @enderror"
-                                value="{{ old('') }}"
-                                name="ef_package2FeeNsw"
-                                id="eef_package2FeeNsw"
-                                data-type="currency"
-                                data-mytooltip-content="<i></i>"
-                                data-mytooltip-theme="dark"
-                                data-mytooltip-action="focus"
-                                data-mytooltip-direction="bottom">
-                        </td>
+                            <td data-title="# NIGHT SHIFT, WEEKENDS HOLIDAYS">
+                                <input type="text" class="nswh input js-mytooltip input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="" id="" data-type="currency">
+                            </td>
 
-                        <td class="total-td">
-                                <h4 class="text-center lead total" id="">-</h4>
-                        </td>
-
-                        <td class="total-td">
-                            <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}"name="" id="">
-                        </td>
-
-                        <td style="background-color: #FFFFFF;" class="border border-white"><a href="javascript:void(0)"
-                            class="text-success font-18" title="Add" id="addBtn1"><i class="fa fa-plus"></i></a>
-                        </td>
-                    </tr>
+                            <td class="total-td">
+                                    <h4 class="text-center lead total" id="total">-</h4>
+                            </td>
+                            <td class="total-td">
+                                <input type="text" class="form-control input-table @error('') is-invalid @enderror"
+                                    value="{{ old('') }}"name="" id="">
+                            </td>
+                            <td style="background-color: #FFFFFF;" class="border border-white"><a href="javascript:void(0)"
+                                class="text-success font-18" title="Add" id="addBtn1"><i class="fa fa-plus"></i></a>
+                            </td>
+                        </tr>
                     </tbody>
 
-                <!-------------- Package, 201 pax and up (P76.5K, P85K) -------------->
-                    <tbody id="tableLeadconsultant">
-                    <tr class="th-blue-grey-lighten-2 sum" id="ef_producer">
-                        <td class="title">Package, 201 pax and up (P76.5K, P85K)</td>
-                        <td>
-                            <fieldset>
-                                <select class="package-fees form-select input js-mytooltip @error('') is-invalid @enderror"
-                                    name="ef_producerFeePfv"
-                                    id="ef_producerFeePfv"
-                                    data-mytooltip-content="<i>Package, 201 pax and up - P85,000
-                                        <br><br>
-                                        For Key Accounts with minimum guaranteed 50 sessions w/in 6 months
-                                        P76,500</i>"
-                                    data-mytooltip-theme="dark"
-                                    data-mytooltip-action="focus"
-                                    data-mytooltip-direction="right"
-                                    style="background-color:#ffcccc; color:red;">
-                                    <option value="76500" {{ old('') == '76500' ? 'selected="selected"' : '' }} >
-                                        &#8369;76,500
-                                    </option>
-                                    <option value="85000" {{ old('') == '85000' ? 'selected="selected"' : '' }} selected>
-                                        &#8369;85,000
-                                    </option>
-                                </select>
-                                @error('')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </fieldset>
-                        </td>
-                        <td data-title="# OF SESSIONS">
-                            <input type="text" class="number-session input js-mytooltip input-table form-control  @error('') is-invalid @enderror"
-                                value=""
-                                name=""
-                                id=""
-                                data-type="currency"
-                                data-mytooltip-content="<i>Minimum is 1 session</i>"
-                                data-mytooltip-theme="dark"
-                                data-mytooltip-action="focus"
-                                data-mytooltip-direction="bottom">
-                        </td>
-                        <td data-title="NIGHT SHIFT, WEEKENDS LIDAYS *">
-                            <input type="text" class="nswh input input-table form-control  @error('') is-invalid @enderror"
-                                value="{{ old('') }}"
-                                name=""
-                                id=""
-                                data-type="currency"
-                                data-mytooltip-content="<i></i>"
-                                data-mytooltip-theme="dark"
-                                data-mytooltip-action="focus"
-                                data-mytooltip-direction="bottom">
-                        </td>
-                        <td class="total-td">
-                                <h4 class="text-center lead total" id="">-</h4>
-                        </td>
-                        <td class="total-td">
-                            <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}"name="" id="">
-                        </td>
-                        <td style="background-color: #FFFFFF;" class="border border-white"><a href="javascript:void(0)"
-                            class="text-success font-18" title="Add" id="addBtn1"><i class="fa fa-plus"></i></a>
-                        </td>
-                    </tr>
-                    </tbody>
-                <!-------------- PRODUCER -------------->
-                    <tbody id="producer">
-                    <tr class="th-blue-grey-lighten-2 sum" id="ef_producer">
-                        <td class="title">Producer</td>
-                        <td>
-                            <fieldset>
-                                <select class="package-fees form-select input js-mytooltip @error('') is-invalid @enderror"
-                                    name=""
-                                    id=""
-                                    data-mytooltip-content="<i>Package Fee - 0 - client will provide the producer
-                                        P5,000</i>"
-                                    data-mytooltip-theme="dark"
-                                    data-mytooltip-action="focus"
-                                    data-mytooltip-direction="right"
-                                    style="background-color:#ffcccc; color:red;">
-                                    <option value="0" selected>
-                                        <b>-</b>
-                                    </option>
-                                    <option value="0" {{ old('') == '0' ? 'selected="selected"' : '' }} >
-                                        &#8369;0
-                                    </option>
-                                    <option value="5000" {{ old('') == '5000' ? 'selected="selected"' : '' }}>
-                                        &#8369;5,000
-                                    </option>
-                                </select>
-                                @error('')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </fieldset>
-                        </td>
-                        <td data-title="# OF SESSIONS">
-                            <input type="text" class="number-session input js-mytooltip input-table form-control  @error('') is-invalid @enderror"
-                                value=""
-                                name=""
-                                id=""
-                                data-type="currency"
-                                data-mytooltip-content="<i>Minimum is 1 session</i>"
-                                data-mytooltip-theme="dark"
-                                data-mytooltip-action="focus"
-                                data-mytooltip-direction="bottom">
-                        </td>
-                        <td data-title="NIGHT SHIFT, WEEKENDS LIDAYS *">
-                            <input type="text" class="nswh input input-table form-control  @error('') is-invalid @enderror"
-                                value="{{ old('') }}"
-                                name=""
-                                id=""
-                                data-type="currency"
-                                data-mytooltip-content="<i></i>"
-                                data-mytooltip-theme="dark"
-                                data-mytooltip-action="focus"
-                                data-mytooltip-direction="bottom">
-                        </td>
-                        <td class="total-td">
-                                <h4 class="text-center lead total" id="ef_producerFeeTotal">-</h4>
-                        </td>
-                        <td class="total-td">
-                            <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}"name="" id="">
-                        </td>
-                        <td style="background-color: #FFFFFF;" class="border border-white"><a href="javascript:void(0)"
-                            class="text-success font-18" title="Add" id="addBtn1"><i class="fa fa-plus"></i></a>
-                        </td>
-                    </tr>
+                    <tbody class="program" id="">
+                        <tr class="th-blue-grey-lighten-2 sum" id="">
+                            <td class="title">Producer</td>
+
+                            <td>
+                                <input type="text" class="package-fees input input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="" id="" data-type="currency">
+                            </td>
+
+                            <td data-title="# OF HOURS">
+                                <input type="text" class="number-session input input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="" id="" data-type="currency">
+                            </td>
+
+                            <td data-title="# NIGHT SHIFT, WEEKENDS HOLIDAYS">
+                                <input type="text" class="nswh input js-mytooltip input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="" id="" data-type="currency">
+                            </td>
+
+                            <td class="total-td">
+                                    <h4 class="text-center lead total" id="total">-</h4>
+                            </td>
+                            <td class="total-td">
+                                <input type="text" class="form-control input-table @error('') is-invalid @enderror"
+                                    value="{{ old('') }}"name="" id="">
+                            </td>
+                            <td style="background-color: #FFFFFF;" class="border border-white"><a href="javascript:void(0)"
+                                class="text-success font-18" title="Add" id="addBtn1"><i class="fa fa-plus"></i></a>
+                            </td>
+                        </tr>
                     </tbody>
 
-                <!-------------- SUBTOTAL -------------->
-                    <tr class="">
+                    {{-- SUBTOTAL --}}
+                    <tr class="program">
                         <td class="title fw-bold text-dark fst-italic">Subtotal</td>
                         <td></td>
                         <td></td>
                         <td></td>
                         <td class="total-td" style="background-color: rgba(146, 146, 146, 0.727)">
-                            <h4 class="text-center subtotal" id="">-</h4>
+                            <h4 class="text-center subtotal">-</h4>
                         </td>
                         <td class="total-td">
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
@@ -412,40 +494,86 @@
                         </td>
                         <td class="border border-white"></td>
                     </tr>
+                <!-------------- PROGRAM END -------------->
 
-                <!-------------- TOTAL STANDARD FEES -------------->
-                    <tr class="table-active overall-total">
-                        <td class="text-uppercase text-dark fst-italic fw-bold overall-total-start">TOTAL STANDARD FEES</td>
-                        <td class="overall-total-middle"></td>
-                        <td class="overall-total-middle"></td>
-                        <td class="overall-total-middle"></td>
-                        <td class="overall-total-end" style="background-color: rgba(146, 146, 146, 0.727)">
-                            <h4 class="text-center fw-bold standard-fees" id="">-</h4>
-                        </td>
-                        <td class="overall-total-end">
-                            <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}"
-                                name="" id="">
-                        </td>
+                <!-------------- OFF PROGRAM -------------->
+                    <tr class="th-blue-grey-lighten">
+                        <th class="px-4 title text-uppercase fw-bold">3. OFF PROGRAM</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th class="total-td"></th>
+                        <th class="total-td"></th>
                     </tr>
 
-                <!-------------- DISCOUNT IF ANY GIVEN -------------->
-                    <tr class="table-active">
-                        <td class="fw-bold text-dark text-uppercase fst-italic overall-total-start">discount given (if any)</td>
-                        <td class="overall-total-middle table-warning">
-                            <input type="text" class="hf-c32 form-control input-table text-center @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="" id="mg_inpt_dsct" readonly>
-                        </td>
-                        <td class="overall-total-middle"></td>
-                        <td class="overall-total-middle"></td>
-                        <td class="overall-total-end"></td>
-                        <td class="overall-total-end">
-                            <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}"  name="" id="mg_total_dsct">
-                        </td>
+                    <tbody class="off-program" id="">
+                        <tr class="th-blue-grey-lighten-2 sum" id="">
+                            <td class="title">Off Program Fee</td>
+
+                            <td>
+                                <input type="text" class="package-fees input input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="" id="" data-type="currency">
+                            </td>
+
+                            <td data-title="# OF HOURS">
+                                <input type="text" class="number-session input input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="" id="" data-type="currency">
+                            </td>
+
+                            <td data-title="# NIGHT SHIFT, WEEKENDS HOLIDAYS">
+                            </td>
+
+                            <td class="total-td">
+                                    <h4 class="text-center lead total" id="total">-</h4>
+                            </td>
+                            <td class="total-td">
+                                <input type="text" class="form-control input-table @error('') is-invalid @enderror"
+                                    value="{{ old('') }}"name="" id="">
+                            </td>
+                            <td style="background-color: #FFFFFF;" class="border border-white"><a href="javascript:void(0)"
+                                class="text-success font-18" title="Add" id="addBtn1"><i class="fa fa-plus"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                <!-------------- END OFF PROGRAM -------------->
+
+                <!-------------- MISCELLANEOUS -------------->
+                    <tr class="th-blue-grey-lighten">
+                        <th class="px-4 title text-uppercase fw-bold">Miscellaneous</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th class="total-td"></th>
+                        <th class="total-td"></th>
                     </tr>
 
-                <!-------------- TOTAL PACKAGE -------------->
+                    <tbody class="miscellaneous" id="">
+                        <tr class="th-blue-grey-lighten-2 sum" id="">
+                            <td class="title">Program Expenses</td>
+
+                            <td>
+                                <input type="text" class="package-fees text-center input input-table form-control @error('') is-invalid @enderror" value="2%" name="" id="" readonly>
+                            </td>
+
+                            <td data-title="# OF HOURS">
+                            </td>
+
+                            <td data-title="# NIGHT SHIFT, WEEKENDS HOLIDAYS">
+                            </td>
+
+                            <td class="total-td">
+                                    <h4 class="text-center lead total" id="total">-</h4>
+                            </td>
+                            <td class="total-td">
+                                <input type="text" class="form-control input-table @error('') is-invalid @enderror"
+                                    value="{{ old('') }}"name="" id="">
+                            </td>
+                            <td style="background-color: #FFFFFF;" class="border border-white"><a href="javascript:void(0)"
+                                class="text-success font-18" title="Add" id="addBtn1"><i class="fa fa-plus"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                <!-------------- END OFF PROGRAM -------------->
+
+                <!-------------- TOTAL -------------->
                     <tr class="table-active">
                         <td class="fw-bold text-uppercase text-dark fst-italic overall-total-start">total package</td>
                         <td class="overall-total-middle"></td>
@@ -460,6 +588,7 @@
                                 value="{{ old('') }}" name="" id="">
                         </td>
                     </tr>
+                <!-------------- END TOTAL -------------->
 
                 </table>
 
