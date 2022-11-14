@@ -24,7 +24,7 @@ class CoachingController extends Controller
      */
     public function create()
     {
-        //
+        return view('form.components.coaching.create');
     }
 
     /**

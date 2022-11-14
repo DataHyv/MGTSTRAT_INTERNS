@@ -31,7 +31,7 @@
             <section class="section">
                 <div class="card mb-5 mt-5">
                     <div class="card-header col-12 d-flex justify-content-left mt-3 mb-3 mx-3">
-                        <a class="btn btn-primary mt-2 mb-2" href="{{ route('form/f2f_engagement/new') }}">
+                        <a class="btn btn-primary mt-2 mb-2" href="{{ URL::to('form/coaching/create') }}">
                             <span><i class="fa-solid fa-file-circle-plus"></i> &nbsp; New Record</span>
                         </a>
                     </div>
