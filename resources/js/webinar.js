@@ -6,7 +6,7 @@ $(document).on("load change keyup click", "#main", function () {
 
     /********************************************************
      ******************* ENGAGEMENT FEE *********************
-     *********************************************************/
+    *********************************************************/
     $("#engagement-fees > #consulting > tr").each(function () {
         efConsultingSum = +$(this).find(`.package-fees`).val();
         sum += efConsultingSum;
@@ -46,7 +46,7 @@ $(document).on("load change keyup click", "#main", function () {
 
     /********************************************************
      ******************* ENGAGEMENT COST *********************
-     *********************************************************/
+    *********************************************************/
     // COMMISSION
     $("#engagementCost > #commission > .sum").each(function () {
         // COMMISSION SUM
@@ -102,3 +102,19 @@ $(document).on("load change keyup click", "#main", function () {
         $(".consulting .subtotal").html(currency.format(Math.ceil(subtotal)));
     });
 });
+
+//datepicker
+$(document).on("click change focus", "#dcbe", function() {
+    $(".datepicker").each(function () {
+        $(this).datepicker();
+        $(this).on("change", function () {
+            $(this).datepicker("option", "dateFormat", "M d, yy");
+        });
+    });
+});
+
+$('input[type="number"]').on("input", function () {
+    this.value =
+        !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null;
+});
+$('input[type="number"]').attr("min", "0");
