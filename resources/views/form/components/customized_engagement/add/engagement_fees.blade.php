@@ -8,7 +8,8 @@
         <section>
             <div class="table-responsive" id="no-more-tables" data-animation="slideHorz">
                 <table class="table table-bordered" id="ec_tableEngagementFees">
-                <!----------------------------------------------------------------TABLE HEADING TITLE---------------------------------------------------------------------->
+                    
+                <!------------------- TABLE HEADING ------------------------->
                     <thead class="table-dark">
                         <b>
                             <tr class="text-center">
@@ -39,16 +40,15 @@
                                         </option>
                                     </select>
                                 </th>
-                                {{-- <th class="title-middle" scope="col" style="font-size: 0.9rem;" width=10%>NIGHT SHIFT,
-                                    WEEKENDS HOLIDAYS *</th> --}}
                                 <th class="title-th" scope="col" width=15%>TOTAL FEE</th>
                                 <th class="title-th" scope="col" width=15%>NOTES</th>
                                 <td class="add-row border border-white"> </td>
                             </tr>
                         </b>
                     </thead>
+                <!------------------- END ----------------------->
 
-                <!----------------------------------------------------------------CONSULTING---------------------------------------------------------------------->
+                <!------------------- CONSULTING ------------------------->
                     <tr class="">
                         <th class="px-4 title table-light">
                             <b>1. CONSULTING</b>
@@ -177,8 +177,9 @@
                         <td class="total-td table-light"></td>
                         <td class="border border-white add-row"></td>
                     </tr>
+                <!------------------- END ----------------------->
 
-                <!----------------------------------------------------------------DESIGN---------------------------------------------------------------------->
+                <!-------------------DESIGN------------------------->
                     <tr class="">
                         <th class="title px-4 text-dark table-light">
                             <b>2. DESIGN</b>
@@ -249,8 +250,9 @@
                             </td>
                         </tr>
                     </tbody>
+                <!------------------- END ----------------------->
 
-                <!----------------------------------------------------------------PROGRAM---------------------------------------------------------------------->
+                <!-------------------PROGRAM------------------------->
                     <tr class="">
                         <th class="title px-4 text-dark table-light">
                             <b>3. PROGRAM</b>
@@ -476,8 +478,9 @@
                         <td class="table-light total-td"></td>
                         <td class="border border-white add-row"></td>
                     </tr>
+                <!------------------- END ----------------------->
 
-                <!----------------------------------------------------------------OTHER ROLES---------------------------------------------------------------------->
+                <!-------------------OTHER ROLES------------------------->
                     <tr class="">
                         <th class="title px-4 text-dark table-light">
                             <b>4. OTHER ROLES</b>
@@ -530,8 +533,9 @@
                             </td>
                         </tr>
                     </tbody>
+                <!------------------- END ----------------------->
 
-                <!----------------------------------------------------------------TOTAL PACKAGE---------------------------------------------------------------------->
+                <!-------------------TOTAL PACKAGE------------------------->
                     <tr class="table-active overall-total">
                         <td class="table-light text-uppercase text-dark fst-italic fw-bold overall-total-start">
                             <b>TOTAL STANDARD FEES</b>
@@ -589,6 +593,8 @@
                         <td class="overall-total-end"></td>
                     </tr>
                     </tbody>
+                <!------------------- END ----------------------->
+
                 </table>
             </div>
         </section>
