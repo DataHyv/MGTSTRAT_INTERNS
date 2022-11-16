@@ -37,6 +37,9 @@
             </div>
         </div>
 
+    <!------------ END ------------>
+
+    <!------------ BATCH NAME ------------>
         {{-- <div class="form-group row">
             <div class="col-md-2">
                 <label class="fw-bold required">Batch Name: </label>
@@ -59,6 +62,7 @@
                 </div>
             </div>
         </div> --}}
+    <!------------ END ------------>
 
     <!------------ CUSTOMIZED TYPE ------------>
         <div class="form-group row">
@@ -122,6 +126,7 @@
                 </select>
             </div>
         </div>
+    <!------------ END ------------>
 
     <!------------ CLIENT NAME ------------>
         <div class="form-group row">
@@ -158,6 +163,7 @@
                 </div>
             </div>
         </div>
+    <!------------ END ------------>
 
     <!------------ ENGAGEMENT TITLE AND NUMBER OF PAX ------------>
         <div class="form-group row">
@@ -211,6 +217,7 @@
                 </div>
             </div>
         </div>
+    <!------------ END ------------>
 
     <!------------ TO BE ANNOUNCE ------------>
         <div class="row">
@@ -225,106 +232,108 @@
                 </div>
             </div>
         </div>
+    <!------------ END ------------>
 
     <!------------ DATE COVERED BY ENGAGEMENT ------------>
-    @if ($data->program_dates != null)
-        <div class="row justify-content-center mt-3" id="dcbe">
-            <h5 class="text-center mt-5 fst-italic">Date Covered by Engagement</h5>
-            @foreach ($DateOfEngagements as $key => $dates)
-                <div class="d-flex justify-content-center mt-4" id="dateRows{{$dateRow++}}">
-                    <div class="flex-column">
-                        <div>
-                            <div class="row justify-content-center" id="dateRows">
+        @if ($data->program_dates != null)
+            <div class="row justify-content-center mt-3" id="dcbe">
+                <h5 class="text-center mt-5 fst-italic">Date Covered by Engagement</h5>
+                @foreach ($DateOfEngagements as $key => $dates)
+                    <div class="d-flex justify-content-center mt-4" id="dateRows{{$dateRow++}}">
+                        <div class="flex-column">
+                            <div>
+                                <div class="row justify-content-center" id="dateRows">
 
-                                @if ($DateOfEngagements[$key] === $DateOfEngagements[0])
-                                <div class="col-lg-1 col-md-1">
-                                    <div class="px-0">
-                                            <label class="fw-bold invisible overflow-hidden mb-4">Add</label>
-                                            <a href="javascript:void(0)" class="text-success font-18 px-0" title="Add"
-                                            id="addDates">
-                                                <i class="fa fa-plus"></i>
-                                            </a>
-                                    </div>
-                                </div>
-                                @else
-                                <div class="col-lg-1 col-md-1">
-                                    <div class="px-0">
-                                            <label class="fw-bold invisible overflow-hidden mb-4">Add</label>
-                                            <a href="javascript:void(0)" class="text-danger font-18 remove px-0" title="Remove">
-                                                <i class="fa fa-trash-o"></i>
-                                            </a>
-                                    </div>
-                                </div>
-                                @endif
-
-                                <div class="col-lg-2 col-md-2">
-                                    <div class="form-group has-icon-left">
-                                        <label class="fw-bold required">Date</label>
-                                        <div class="position-relative">
-                                            <input type="text" class="form-control datepicker @error('doe') is-invalid @enderror"
-                                                value="{{$DateOfEngagements[$key]}}" placeholder="Enter Date" name="program_dates[]" id="datepicker{{$dateRow}}"
-                                                size="30">
-                                            <div class="form-control-icon">
-                                                <i class="bi bi-calendar"></i>
-                                            </div>
-                                            @error('doe')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                    @if ($DateOfEngagements[$key] === $DateOfEngagements[0])
+                                    <div class="col-lg-1 col-md-1">
+                                        <div class="px-0">
+                                                <label class="fw-bold invisible overflow-hidden mb-4">Add</label>
+                                                <a href="javascript:void(0)" class="text-success font-18 px-0" title="Add"
+                                                id="addDates">
+                                                    <i class="fa fa-plus"></i>
+                                                </a>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="col-lg-2 col-md-2">
-                                    <div class="form-group has-icon-left">
-                                        <label class="fw-bold required">Start Time</label>
-                                        <div class="position-relative">
-                                            <input type="text" class="form-control timepicker @error('dot') is-invalid @enderror"
-                                                value="{{ $StartTime[$key] }}" placeholder="Enter Time" id="program_start_time" name="program_start_time[]">
-                                            <div class="form-control-icon">
-                                                <i class="bi bi-clock"></i>
-                                            </div>
-                                            @error('dot')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                    @else
+                                    <div class="col-lg-1 col-md-1">
+                                        <div class="px-0">
+                                                <label class="fw-bold invisible overflow-hidden mb-4">Add</label>
+                                                <a href="javascript:void(0)" class="text-danger font-18 remove px-0" title="Remove">
+                                                    <i class="fa fa-trash-o"></i>
+                                                </a>
                                         </div>
                                     </div>
-                                </div>
+                                    @endif
 
-                                <div class="col-lg-2 col-md-2">
-                                    <div class="form-group has-icon-left">
-                                        <label class="fw-bold required">End Time</label>
-                                        <div class="position-relative">
-                                            <input type="text" class="form-control timepicker @error('dot') is-invalid @enderror"
-                                                value="{{ $EndTime[$key] }}" placeholder="Enter Time" id="program_end_time" name="program_end_time[]">
-                                            <div class="form-control-icon">
-                                                <i class="fa-solid fa-hourglass-end"></i>
+                                    <div class="col-lg-2 col-md-2">
+                                        <div class="form-group has-icon-left">
+                                            <label class="fw-bold required">Date</label>
+                                            <div class="position-relative">
+                                                <input type="text" class="form-control datepicker @error('doe') is-invalid @enderror"
+                                                    value="{{$DateOfEngagements[$key]}}" placeholder="Enter Date" name="program_dates[]" id="datepicker{{$dateRow}}"
+                                                    size="30">
+                                                <div class="form-control-icon">
+                                                    <i class="bi bi-calendar"></i>
+                                                </div>
+                                                @error('doe')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
                                             </div>
-                                            @error('dot')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
                                         </div>
                                     </div>
+
+                                    <div class="col-lg-2 col-md-2">
+                                        <div class="form-group has-icon-left">
+                                            <label class="fw-bold required">Start Time</label>
+                                            <div class="position-relative">
+                                                <input type="text" class="form-control timepicker @error('dot') is-invalid @enderror"
+                                                    value="{{ $StartTime[$key] }}" placeholder="Enter Time" id="program_start_time" name="program_start_time[]">
+                                                <div class="form-control-icon">
+                                                    <i class="bi bi-clock"></i>
+                                                </div>
+                                                @error('dot')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2 col-md-2">
+                                        <div class="form-group has-icon-left">
+                                            <label class="fw-bold required">End Time</label>
+                                            <div class="position-relative">
+                                                <input type="text" class="form-control timepicker @error('dot') is-invalid @enderror"
+                                                    value="{{ $EndTime[$key] }}" placeholder="Enter Time" id="program_end_time" name="program_end_time[]">
+                                                <div class="form-control-icon">
+                                                    <i class="fa-solid fa-hourglass-end"></i>
+                                                </div>
+                                                @error('dot')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @include('form.components.customized_engagement.update.ce_update_cluster')
                                 </div>
-                                @include('form.components.customized_engagement.update.ce_update_cluster')
                             </div>
                         </div>
                     </div>
-                </div>
-                <hr class="mt-3">
-            @endforeach
-        </div>
-    @else
+                @endforeach
+            </div>
+         @else
 
-    @endif
+        @endif
+    <!------------ END ------------>
 
 </div>
 <!------------ END OF FORM BODY ------------>
+
 <script>
     $('document').ready(function() {
         /*************************************DATE OF ENGAGEMENT**************************************/
