@@ -9,6 +9,7 @@
         <section>
             <div class="table-responsive" id="no-more-tables">
                 <table class="table table-bordered" id="ec_tableEngagementCost" style="width: 100%">
+                <!------------------- TABLE HEAD ----------------------->
                     <thead class="table-dark">
                         <tr class="text-center">
                             <th class="title-th" scope="col" width=10%></th>
@@ -23,8 +24,9 @@
                             <td class="border border-white add-row"> </td>
                         </tr>
                     </thead>
+                <!------------------- END TABLE HEAD ----------------------->
 
-                <!----------------------------------------------------------------COMMISION---------------------------------------------------------------------->
+                <!------------------- COMMISION ----------------------->
                     <tr class="table-light">
                         <th class="px-4 title text-dark font-weight-bold"><b>COMMISSION</b></th>
                         <th></th>
@@ -243,8 +245,9 @@
                             </td>
                         </tr>
                     </tbody>
+                <!------------------- END COMMISION ----------------------->
 
-                <!----------------------------------------------------------------CONSULTING---------------------------------------------------------------------->
+                <!------------------- CONSULTING ------------------------->
                     <tr class="table-light">
                         <th class="px-4 title text-dark">
                             <b>1. CONSULTING</b>
@@ -363,8 +366,9 @@
                         <td class="total-td"></td>
                         <td class="border border-white add-row invisible"> </td>
                     </tr>
+                <!------------------- END CONSULTING ----------------------->
 
-                <!----------------------------------------------------------------DESIGN---------------------------------------------------------------------->
+                <!------------------- DESIGN ------------------------->
                     <tr class="table-light">
                         <th class="title px-4 text-dark">
                             <b>2. DESIGN</b>
@@ -497,8 +501,9 @@
                         <td class="total-td"></td>
                         <td class="border border-white add-row invisible"> </td>
                     </tr>
+                <!------------------- END DESIGN ----------------------->
 
-                <!----------------------------------------------------------------PROGRAM---------------------------------------------------------------------->
+                <!------------------- PROGRAM ------------------------->
                     <tr class="table-light">
                         <th class="title px-4 text-dark">
                             <b>3. PROGRAM</b>
@@ -824,8 +829,9 @@
                         <td class="total-td"></td>
                         <td class="border border-white add-row invisible"> </td>
                     </tr>
+                <!------------------- END PROGRAM ----------------------->
 
-                <!----------------------------------------------------------------OTHER ROLES---------------------------------------------------------------------->
+                <!-------------------OTHER ROLES------------------------->
                     <tr class="table-light">
                         <th class="title px-4 text-dark">
                             <b>4. OTHER ROLES</b>
@@ -884,8 +890,9 @@
                             </td>
                         </tr>
                     </tbody>
+                <!------------------- END OTHER ROLES ----------------------->
 
-                <!----------------------------------------------------------------OFF-PROGRAM---------------------------------------------------------------------->
+                <!-------------------OFF-PROGRAM------------------------->
                     <tr class="table-light">
                         <th class="title px-4 text-dark">
                             <b>5. OFF-PROGRAM</b>
@@ -937,8 +944,9 @@
                         </td>
                         <td class="border border-white add-row invisible"> </td>
                     </tr>
+                <!------------------- END OFF-PROGRAM ----------------------->
 
-                <!----------------------------------------------------------------MISCELLANEOUS---------------------------------------------------------------------->
+                <!-------------------MISCELLANEOUS------------------------->
                     <tr class="table-light">
                         <th class="title px-4 text-dark">
                             <b>MISCELLANEOUS</b>
@@ -981,8 +989,9 @@
                         </td>
                         <td class="border border-white add-row invisible"> </td>
                     </tr>
+                <!------------------- END MISCELLANEOUS ----------------------->
 
-                <!----------------------------------------------------------------TOTAL---------------------------------------------------------------------->
+                <!-------------------TOTAL------------------------->
                     <tr class="table-active">
                         <td class="fw-bold text-uppercase text-dark fst-italic overall-total-start">
                             <b>TOTAL</b>
@@ -998,6 +1007,8 @@
                         <td class="overall-total-end"></td>
                         <td class="border border-white add-row invisible"></td>
                     </tr>
+                <!------------------- END TOTAL ----------------------->
+
                 </table>
             </div>
         </section>
