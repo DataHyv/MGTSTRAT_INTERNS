@@ -5,7 +5,7 @@
             <div class="position-relative">
                 <fieldset class="form-group">
                     <select class="input js-mytooltip form-select cluster-dropdown @error('') is-invalid @enderror" name="cluster[]" id="cluster-dropdown[${dates}]"
-                    onchange=" 
+                    onchange="
                         if($('.capability${dates}').is(':selected')){
                             document.getElementById('cluster-dropdown[${dates}]').style.display = '';
                             document.getElementById('cluster-dropdown[${dates}]').disabled = false;
@@ -13,7 +13,7 @@
                             document.getElementById('input-notListed[${dates}]').disabled = true;
                             document.getElementById('div-notListed[${dates}]').style.display = 'none';
                             document.getElementById('core-valueInput[${dates}]').value = 'Capability';
-                        } 
+                        }
                         if($('.culture${dates}').is(':selected')) {
                             document.getElementById('cluster-dropdown[${dates}]').style.display = '';
                             document.getElementById('cluster-dropdown[${dates}]').disabled = false;
@@ -21,7 +21,7 @@
                             document.getElementById('input-notListed[${dates}]').disabled = true;
                             document.getElementById('div-notListed[${dates}]').style.display = 'none';
                             document.getElementById('core-valueInput[${dates}]').value = 'Culture';
-                        } 
+                        }
                         if($('.leadership${dates}').is(':selected')) {
                             document.getElementById('cluster-dropdown[${dates}]').style.display = '';
                             document.getElementById('cluster-dropdown[${dates}]').disabled = false;
@@ -29,7 +29,7 @@
                             document.getElementById('input-notListed[${dates}]').disabled = true;
                             document.getElementById('div-notListed[${dates}]').style.display = 'none';
                             document.getElementById('core-valueInput[${dates}]').value = 'Leadership';
-                        } 
+                        }
                         if($('.social').is(':selected')) {
                             document.getElementById('cluster-dropdown[${dates}]').style.display = '';
                             document.getElementById('cluster-dropdown[${dates}]').disabled = false;
@@ -37,7 +37,7 @@
                             document.getElementById('input-notListed[${dates}]').disabled = true;
                             document.getElementById('div-notListed[${dates}]').style.display = 'none';
                             document.getElementById('core-valueInput[${dates}]').value = 'Social';
-                        } 
+                        }
                         if($('.strategy').is(':selected')) {
                             document.getElementById('cluster-dropdown[${dates}]').style.display = '';
                             document.getElementById('cluster-dropdown[${dates}]').disabled = false;
@@ -45,7 +45,7 @@
                             document.getElementById('input-notListed[${dates}]').disabled = true;
                             document.getElementById('div-notListed[${dates}]').style.display = 'none';
                             document.getElementById('core-valueInput[${dates}]').value = 'Strategy';
-                        } 
+                        }
                         if($('.teams').is(':selected')) {
                             document.getElementById('cluster-dropdown[${dates}]').style.display = '';
                             document.getElementById('cluster-dropdown[${dates}]').disabled = false;
@@ -67,7 +67,7 @@
                         If not on the list, choose suggested cluster title at Core Area.
                         </i>"
                     data-mytooltip-theme="dark"
-                    data-mytooltip-action="focus" 
+                    data-mytooltip-action="focus"
                     data-mytooltip-direction="top">
                         <option value="" id="notListed" class="notListed">-- Not listed --</option>
                         <option id="capability" class="capability${dates}" value="Above The Line"
@@ -451,4 +451,3 @@
         </div>
     </div>
 {{-- </div> --}}
-<hr class="mt-3">
