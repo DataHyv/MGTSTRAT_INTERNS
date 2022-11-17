@@ -293,7 +293,32 @@
                             </td>
                             <td class="total-td table-light">
                                 <input class="form-control input-table @error('') is-invalid @enderror"
-                                    name="cost_rooster[]" id="rooster">
+                                    name="cost_rooster[]" id="rooster1"
+                                    {{-- onkeyup="
+                                        var query = $(this).val();
+                                        if(query != '')
+                                        {
+                                            var _token = $('input[name=&quot;_token&quot;]').val();
+                                            $.ajax({
+                                            url:&quot;{{ route('form/customizedEngagement/new1') }}&quot;,
+                                            method:&quot;GET&quot;,
+                                            data:{query:query, _token:_token},
+                                            success:function(data){
+                                            $('#consultant-fees-name').fadeIn();
+                                            $('#consultant-fees-name').html(data);
+                                            }
+                                            });
+                                        }" --}}
+                                        >
+                                <div id="consultant-fees-name"
+                                {{-- onclick="
+                                    console.log($(this).text());
+                                    $('#rooster1').val($(this).text());
+                                    console.log($(this).text());
+                                    $('#consultant-fees-name').fadeOut();
+                                    " --}}
+                                    >
+                                </div>
                             </td>
                             <td class="total-td table-light">
                                 <textarea class="form-control input-table @error('') is-invalid @enderror"
@@ -1014,6 +1039,40 @@
         </section>
     </div>
 <!------------ END OF FORM BODY ------------>
+
+{{-- <script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $(document).ready(function(){
+
+     $('#rooster1').keyup(function(){
+            var query = $(this).val();
+            if(query != '')
+            {
+             var _token = $('input[name="_token"]').val();
+             $.ajax({
+              url:"{{ route('form/customizedEngagement/new1') }}",
+              method:"GET",
+              data:{query:query, _token:_token},
+              success:function(data){
+               $('#consultant-fees-name').fadeIn();
+                $('#consultant-fees-name').html(data);
+              }
+             });
+            }
+        });
+
+        $(document).on('click', 'li', function(){
+            $('#rooster1').val($(this).text());
+            $('#consultant-fees-name').fadeOut();
+            console.log($(this).text());
+        });
+    });
+</script> --}}
 
 <!------------ CE ENGAGEMENT COST SCRIPT ------------>
 @include('form.components.customized_engagement.add.script.ce_engagement_cost');

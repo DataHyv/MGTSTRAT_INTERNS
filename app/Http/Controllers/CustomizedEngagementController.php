@@ -287,5 +287,40 @@ class CustomizedEngagementController extends Controller
         Engagement_fee::where('id', $id)->delete();
         Engagement_cost::where('id', $id)->delete();
     }
+
+    // function ConsultantFees(Request $request)
+    // {
+    //     if($request->get('query'))
+    //     {
+    //      $query = $request->get('query');
+    //      $data = DB::table('consultantfees')
+    //        ->where('first_name', 'LIKE', "%{$query}%")
+    //        ->get();
+    //      $output = '<ul class="dropdown-menu" style="display:block; position:relative">';
+    //      foreach($data as $row)
+    //      {
+    //       $output .= '
+    //       <li><a href="#">'.$row->first_name.'</a></li>
+    //       ';
+    //      }
+    //      $output .= '</ul>';
+    //      echo $output;
+    //     }
+    // }
+
+    // function consultantHour (Request $request){
+    //     if($request->get('query'))
+    //     {
+    //      $query = $request->get('query');
+    //      $data = DB::table('consultantfees')
+    //        ->select('consultantfees')
+    //        ->where('first_name', 'LIKE', "%{$query}%")
+    //        ->get();
+
+    //     return $data;
+    //     }
+    // }
+
+
 }
 

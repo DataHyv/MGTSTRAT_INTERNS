@@ -278,7 +278,7 @@
                     </td>
                     <td class="total-td table-light">
                         <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                            value="{{ old('') }}" name="cost_rooster[]" id="">
+                            value="{{ old('') }}" name="cost_rooster" id="rooster${leadConsultant}">
                     </td>
                     <td class="total-td table-light">
                                 <textarea class="form-control input-table @error('') is-invalid @enderror"
