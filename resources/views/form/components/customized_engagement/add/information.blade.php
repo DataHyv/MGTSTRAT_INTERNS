@@ -51,6 +51,7 @@
                     </div>
                 </div>
             </div> --}}
+        <!------------ END ------------>
 
         <!------------ STATUS ------------>
             <div class="form-group row mb-4 mt-5">
@@ -80,8 +81,10 @@
                     </select>
                 </div>
             </div>
+        <!------------ END ------------>
 
-            <div class="form-group row">
+        <!------------ BATCH NAME ------------>
+            {{-- <div class="form-group row">
                 <div class="col-md-2">
                     <label class="fw-bold required">Batch Name: </label>
                 </div>
@@ -102,7 +105,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
+        <!------------ END ------------>
 
         <!------------ CUSTOMIZED TYPE ------------>
             <div class="form-group row">
@@ -166,6 +170,7 @@
                     </select>
                 </div>
             </div>
+        <!------------ END ------------>
 
         <!------------ CLIENT NAME ------------>
             {{-- @if(isset($companyList)) --}}
@@ -203,6 +208,8 @@
                 </div>
             </div>
             {{-- @endif --}}
+        <!------------ END ------------>
+
         <!------------ ENGAGEMENT TITLE AND NUMBER OF PAX ------------>
             <div class="form-group row">
                 <div class="col-md-2">
@@ -255,6 +262,7 @@
                     </div>
                 </div>
             </div>
+        <!------------ END ------------>
 
         <!------------ TO BE ANNOUNCE ------------>
             <div class="row">
@@ -269,6 +277,7 @@
                     </div>
                 </div>
             </div>
+        <!------------ END ------------>
 
         <!------------ DATE COVERED BY ENGAGEMENT ------------>
             <div class="row justify-content-center mt-3" id="dcbe">
@@ -342,19 +351,14 @@
                                 </div>
 
                                 @include('form.components.reference.cluster')
-
                             </fieldset>
                         </div>
-
-                        {{-- <div>
-                            @include('form.components.reference.cluster')
-                        </div> --}}
-
                     </div>
 
                 </div>
-            <hr class="mt-3">
             </div>
+        <!------------------- END ----------------------->
+
     </div>
 <!------------ END OF FORM BODY ------------>
 <script>

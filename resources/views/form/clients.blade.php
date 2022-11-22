@@ -17,7 +17,7 @@
                     <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">CLIENTS</li>
+                            <li class="breadcrumb-item active" aria-current="page">Clients</li>
                         </ol>
                     </nav>
                 </div>
@@ -71,7 +71,7 @@
                                     </td>
                                     <td class="status">{{$client->latest_eng}}</td>
                                     <td class="text-center">
-                                        <a href="{{ url('form/view/detail/' . $client->id) }}" >
+                                        <a href="{{ url('clients/view/detail/' . $client->id) }}" >
                                             <span class="badge bg-success"><i class="bi bi-pencil-square" data-target="#exampleModal"></i></span>
                                         </a>
 

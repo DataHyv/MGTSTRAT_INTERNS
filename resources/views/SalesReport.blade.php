@@ -65,7 +65,7 @@
         <div class="page-content">
             <section class="row">
                 <div class="col-12 col-lg-12">
-                    @if ('sales-report' == request()->path())
+                    @if ('dashboard-report/sales-report' == request()->path())
                     {{-- POWERBI REPORT 1 --}}
                     <div class="pbi-iframe">
                         {{-- <iframe title="MgtStrat Sales Report Dashboard" name="embededReport1" id="embededReport1" class="responsive-iframe" src="https://app.powerbi.com/reportEmbed?reportId=91c53520-da62-4365-9271-9e43e3fe0375&autoAuth=true&ctid=dd8dd9b8-4c2e-4eba-8bfa-f71866c09e1f&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXNvdXRoLWVhc3QtYXNpYS1iLXByaW1hcnktcmVkaXJlY3QuYW5hbHlzaXMud2luZG93cy5uZXQvIn0%3D" frameborder="0" allowFullScreen="true"></iframe> --}}
@@ -75,7 +75,7 @@
                     <br>
                     @endif
 
-                    @if ('people-and-culture' == request()->path())
+                    @if ('dashboard-report/people-and-culture' == request()->path())
                     {{-- POWERBI REPORT 2 --}}
                     <div class="pbi-iframe">
                         <iframe title="MgtStrat Sales Report Dashboard" id="embededReport2" class="responsive-iframe" src="https://app.powerbi.com/reportEmbed?reportId=bd4078f0-709b-42a6-aecb-a0e2cab04a76&autoAuth=true&ctid=dd8dd9b8-4c2e-4eba-8bfa-f71866c09e1f" frameborder="0" allowFullScreen="true"></iframe>
@@ -84,7 +84,7 @@
                     </div>
                     @endif
 
-                    @if ('cash-position-report' == request()->path())
+                    @if ('dashboard-report/cash-position-report' == request()->path())
                     {{-- POWERBI REPORT 3 --}}
                     <div class="pbi-iframe">
                         <iframe title="MgtStrat Sales Report Dashboard" id="embededReport3" class="responsive-iframe" src="https://app.powerbi.com/reportEmbed?reportId=62cab871-abe5-4f53-b6ff-b1ac48d59871&autoAuth=true&ctid=dd8dd9b8-4c2e-4eba-8bfa-f71866c09e1f" frameborder="0" allowFullScreen="true"></iframe>
@@ -94,7 +94,7 @@
                     </div>
                     @endif
 
-                    @if ('consultant-revenue-report' == request()->path())
+                    @if ('dashboard-report/consultant-revenue-report' == request()->path())
                     {{-- POWERBI REPORT 4 --}}
                     <div class="pbi-iframe">
                         <iframe title="MgtStrat Sales Report Dashboard" id="embededReport4" class="responsive-iframe" src="https://app.powerbi.com/reportEmbed?reportId=d507cf40-4da4-4edc-80fc-fb942de12ca2&autoAuth=true&ctid=dd8dd9b8-4c2e-4eba-8bfa-f71866c09e1f" frameborder="0" allowFullScreen="true"></iframe>
@@ -104,7 +104,7 @@
                     </div>
                     @endif
 
-                    @if ('peer-dope-report' == request()->path())
+                    @if ('dashboard-report/peer-dope-report' == request()->path())
                     {{-- POWERBI REPORT 5 --}}
                     <div class="pbi-iframe">
                         <iframe title="MgtStrat Sales Report Dashboard" id="embededReport5" class="responsive-iframe" src="https://app.powerbi.com/reportEmbed?reportId=fccd1bb6-1bfe-47f4-b31c-5200a18145db&autoAuth=true&ctid=dd8dd9b8-4c2e-4eba-8bfa-f71866c09e1f" frameborder="0" allowFullScreen="true"></iframe>

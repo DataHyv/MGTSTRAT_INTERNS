@@ -11,6 +11,11 @@ class F2fEngagementController extends Controller
 {
     public function index()
     {
+        return view('form.components.f2f_engagement.index');
+    }
+
+    public function newRecord()
+    {
         $companyList = DB::table('clients')->get();
         return view('form.f2f_engagement', compact('companyList'));
     }

@@ -1,4 +1,4 @@
-@section('title', 'Customized Engagement Form')
+@section('title', 'UPDATE RECORD')
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
 <link rel="shortcut icon" type="image/png" href="{{ URL::to('assets/images/logo/logo.png') }}">
 {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -25,10 +25,10 @@
                                 <a href="{{ route('home') }}">Dashboard</a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="{{ route('form/customizedEngagement/detail') }}">View</a>
+                                <a href="{{ route('form/customizedEngagement/detail') }}">Customized Engagement</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                <a href="">Customized Engagement</a>
+                                <a href="">Update</a>
                             </li>
                         </ol>
                     </nav>
@@ -87,7 +87,7 @@
 
                                 <!------------ BUDGET FORM ------------>
                                     <form class="form form-horizontal multisteps-form__form" action="{{ route('update') }}"
-                                        method="POST" autocomplete="off">
+                                        method="POST" autocomplete="off" onsubmit="submitForm(event)">
                                         @csrf
                                         @method('PUT')
 
@@ -173,26 +173,13 @@
             }
         });
     });
-
-    // $('document').ready(function() {
-    //     var tabs = 1;
-    //     $("#AddTabs").on("click", function() {
-    //         // Adding a row inside the tbody.
-    //         $("#ceTabs").append(`
-    //             <li class="nav-item">
-    //                 <a class="nav-link"
-    //                 href="#batches${++tabs}"
-    //                 id="batch${tabs}"
-    //                 data-bs-toggle="tab"
-    //                 role="tab"
-    //                 aria-controls="batches${tabs}"
-    //                 aria-selected="false">
-    //                     Batch ${tabs}
-    //                 </a>
-    //             </li>
-    //         `);
-    //     });
-    // });
+    function submitForm(e) {
+        // e.preventDefault();
+        $('.commanumber').each((index, input) => { //1st way
+            const $input = $(input);
+            $input.val($input.val().replace(/,/g, ''));
+        });
+    };
     </script>
 
     <script type="text/javascript" src="/js/ceform.js"></script>

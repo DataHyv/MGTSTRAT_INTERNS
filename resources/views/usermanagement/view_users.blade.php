@@ -166,7 +166,7 @@
 
                                         <div class="col-12 d-flex justify-content-end">
                                             <button type="submit" class="btn btn-primary me-1 mb-1">Update</button>
-                                            <a href="{{ route('userManagement') }}"
+                                            <a href="{{ route('maintenance/user-management') }}"
                                                 class="btn btn-light-secondary me-1 mb-1">Back</a>
                                         </div>
                                     </div>

@@ -1,4 +1,4 @@
-@section('title', 'MGTSTRAT-U WORKSHOPS')
+@section('title', 'NEW RECORD')
 <link rel="shortcut icon" type="image/png" href="{{ URL::to('assets/images/logo/logo.png') }}">
 <link rel="stylesheet" href="{{ URL::asset('css/custom.css') }}">
 @extends('layouts.master')
@@ -17,7 +17,7 @@
                     <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">MGTSTRAT-U WORKSHOPS</li>
+                            <li class="breadcrumb-item active" aria-current="page">MgtStrat-U Workshops</li>
                         </ol>
                     </nav>
                 </div>

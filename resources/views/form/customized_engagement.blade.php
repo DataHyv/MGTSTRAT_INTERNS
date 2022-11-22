@@ -1,4 +1,4 @@
-@section('title', 'Customized Engagement Form')
+@section('title', 'NEW RECORD')
 {{-- <link rel="shortcut icon" type="image/png" href="{{ URL::to('assets/images/logo/logo.png') }}"> --}}
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
 <link rel="stylesheet" href="{{ URL::asset('css/custom.css') }}">
@@ -60,7 +60,7 @@
 
                             <!------------ BUDGET FORM ------------>
                                 <form class="form form-horizontal multisteps-form__form" action="{{ route('save') }}"
-                                    method="POST" autocomplete="off">
+                                    method="POST" autocomplete="off" onsubmit="submitForm(event)">
                                     @csrf
 
                                     <!------------ INFORMATION ------------>
@@ -125,11 +125,20 @@
     </div>
 
     {{-- CUSTOMIZED ENGAGEMENT SCRIPT --}}
+    <script>
+        function submitForm(e) {
+        // e.preventDefault();
+        $('.commanumber').each((index, input) => { //1st way
+            const $input = $(input);
+            $input.val($input.val().replace(/,/g, ''));
+        });
+        }
+    </script>
     <script type="text/javascript" src="/js/ceform.js"></script>
     <script type="text/javascript" src="/js/ceFormAdd.js"></script>
     <script type="text/javascript" src="/js/MultiStep.js"></script>
     <script type="text/javascript" src="/js/currencyFormat.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.full.min.js" integrity="sha512-RtZU3AyMVArmHLiW0suEZ9McadTdegwbgtiQl5Qqo9kunkVg1ofwueXD8/8wv3Af8jkME3DDe3yLfR8HSJfT2g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 @endsection

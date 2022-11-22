@@ -161,8 +161,8 @@ class UserManagementController extends Controller
 
         DB::table('user_activity_logs')->insert($activityLog);
         User::where('id',$request->id)->update($update);
-        Toastr::success('User updated successfully :)','Success');
-        return redirect()->route('userManagement');
+        Toastr::success('User updated successfully','Success');
+        return redirect()->route('maintenance/user-management');
     }
     // delete
     public function delete($id)
@@ -197,7 +197,7 @@ class UserManagementController extends Controller
         // unlink('images/'.$delete->avatar);
         $delete->delete();
         Toastr::success('User deleted successfully :)','Success');
-        return redirect()->route('userManagement');
+        return redirect()->route('maintenance/user-management');
     }
 
     // view change password

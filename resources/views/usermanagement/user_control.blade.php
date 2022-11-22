@@ -91,7 +91,7 @@
                                             <a href="{{ route('user/add/new') }}">
                                                 <span class="badge bg-info"><i class="bi bi-person-plus-fill"></i></span>
                                             </a>
-                                            <a href="{{ url('view/detail/' . $item->id) }}">
+                                            <a href="{{ url('maintenance/user-management/detail/' . $item->id) }}">
                                                 <span class="badge bg-success"><i class="bi bi-pencil-square"></i></span>
                                             </a>
                                             <a href="{{ url('delete_user/' . $item->id) }}"
