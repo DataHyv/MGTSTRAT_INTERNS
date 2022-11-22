@@ -134,9 +134,8 @@ $(document).on(
                     .find(`#ec_LeadconsultantNoc${leadConsultant}`)
                     .val().replace(/,/g, "") *
                     +$(this)
-                        .find("#ec_LeadconsultantHf")
-                        .val().replace(/,/g, "")
-                        .replace(/\₱|,/g, "") *
+                        .find(`#ec_LeadconsultantHf${leadConsultant}`)
+                        .val().replace(/,/g, "") *
                     $(this)
                         .find(`#ec_LeadconsultantNoh${leadConsultant}`)
                         .val().replace(/,/g, "") +
@@ -147,9 +146,8 @@ $(document).on(
                             .find(`#ec_LeadconsultantNoc${leadConsultant}`)
                             .val().replace(/,/g, "") *
                             +$(this)
-                                .find("#ec_LeadconsultantHf")
-                                .val()
-                                .replace(/\₱|,/g, "") *
+                                .find(`#ec_LeadconsultantHf${leadConsultant}`)
+                                .val().replace(/,/g, "") *
                             $(this)
                                 .find(`#ec_LeadconsultantNoh${leadConsultant}`)
                                 .val().replace(/,/g, "") *
@@ -307,11 +305,11 @@ $(document).on(
             //designer engagement cost auto sum
             sumecDesigner =
                 $(this).find(`#ec_DesignerNoc${ecDesigner}`).val().replace(/,/g, "") *
-                    +$(this).find("#ec_DesignerHf").val().replace(/\₱|,/g, "").replace(/,/g, "") *
+                    +$(this).find(`#ec_DesignerHf${ecDesigner}`).val().replace(/,/g, "") *
                     $(this).find(`#ec_DesignerNoh${ecDesigner}`).val().replace(/,/g, "") +
                 $(this).find(`#ec_DesignerNwh${ecDesigner}`).val().replace(/,/g, "") *
                     ($(this).find(`#ec_DesignerNoc${ecDesigner}`).val().replace(/,/g, "") *
-                        +$(this).find("#ec_DesignerHf").val().replace(/\₱|,/g, "") *
+                        +$(this).find(`#ec_DesignerHf${ecDesigner}`).val().replace(/,/g, "") *
                         $(this).find(`#ec_DesignerNoh${ecDesigner}`).val().replace(/,/g, "") *
                         0.2);
 
@@ -408,11 +406,11 @@ $(document).on(
             //program engagement cost auto sum
             sumecLeadfacilitator =
                 $(this).find(`#ec_LeadfacilitatorNoc${ecLeadfaci}`).val().replace(/,/g, "") *
-                    $(this).find("#ec_LeadfacilitatorHf").val().replace(/\₱|,/g, "") *
+                    $(this).find(`#ec_LeadfacilitatorHf${ecLeadfaci}`).val().replace(/\₱|,/g, "") *
                     $(this).find(`#ec_LeadfacilitatorNoh${ecLeadfaci}`).val().replace(/,/g, "") +
                 $(this).find(`#ec_LeadfacilitatorNwh${ecLeadfaci}`).val().replace(/,/g, "") *
                     ($(this).find(`#ec_LeadfacilitatorNoc${ecLeadfaci}`).val().replace(/,/g, "") *
-                        $(this).find("#ec_LeadfacilitatorHf").val().replace(/\₱|,/g, "") *
+                        $(this).find(`#ec_LeadfacilitatorHf${ecLeadfaci}`).val().replace(/\₱|,/g, "") *
                         $(this).find(`#ec_LeadfacilitatorNoh${ecLeadfaci}`).val().replace(/,/g, "") *
                         $("#nswh").val());
 
@@ -444,11 +442,11 @@ $(document).on(
             //program engagement cost auto sum
             sumecCoLeadfacilitator =
                 $(this).find(`#ec_CoLeadfacilitatorNoc${ecCoLead}`).val().replace(/,/g, "") *
-                    $(this).find(`#ec_CoLeadfacilitatorHf${ecCoLead}`).val().replace(/\₱|,/g, "") *
+                    $(this).find(`#ec_CoLeadfacilitatorHf${ecCoLead}`).val().replace(/,/g, "") *
                     $(this).find(`#ec_CoLeadfacilitatorNoh${ecCoLead}`).val().replace(/,/g, "") +
                 $(this).find(`#ec_CoLeadfacilitatorNwh${ecCoLead}`).val().replace(/,/g, "") *
                     ($(this).find(`#ec_CoLeadfacilitatorNoc${ecCoLead}`).val().replace(/,/g, "") *
-                        $(this).find(`#ec_CoLeadfacilitatorHf${ecCoLead}`).val().replace(/\₱|,/g, "") *
+                        $(this).find(`#ec_CoLeadfacilitatorHf${ecCoLead}`).val().replace(/,/g, "") *
                         $(this).find(`#ec_CoLeadfacilitatorNoh${ecCoLead}`).val().replace(/,/g, "") *
                         $("#nswh").val());
 
@@ -558,11 +556,11 @@ $(document).on(
             //program engagement cost auto sum
             sumecCofacilitator =
                 $(this).find(`#ec_CofacilitatorNoc${ecCofaci}`).val().replace(/,/g, "") *
-                    $(this).find("#ec_CofacilitatorHf").val().replace(/\₱|,/g, "") *
+                    $(this).find(`#ec_CofacilitatorHf${ecCofaci}`).val().replace(/,/g, "") *
                     $(this).find(`#ec_CofacilitatorNoh${ecCofaci}`).val().replace(/,/g, "") +
                 $(this).find(`#ec_CofacilitatorNwh${ecCofaci}`).val().replace(/,/g, "") *
                     ($(this).find(`#ec_CofacilitatorNoc${ecCofaci}`).val().replace(/,/g, "") *
-                        $(this).find("#ec_CofacilitatorHf").val().replace(/\₱|,/g, "") *
+                        $(this).find(`#ec_CofacilitatorHf${ecCofaci}`).val().replace(/,/g, "") *
                         $(this).find(`#ec_CofacilitatorNoh${ecCofaci}`).val().replace(/,/g, "") *
                         $("#nswh").val());
 
@@ -640,13 +638,22 @@ $(document).on(
             //Moderator engagement cost auto sum
             sumecModerator =
                 $(this).find(`#ec_ModeratorNoc${ecModerator}`).val().replace(/,/g, "") *
-                    $(this).find("#ec_ModeratorHf").val().replace(/\₱|,/g, "") *
+                    $(this).find(`#ec_ModeratorHf${ecModerator}`).val().replace(/,/g, "") *
                     $(this).find(`#ec_ModeratorNoh${ecModerator}`).val().replace(/,/g, "") +
                 $(this).find(`#ec_ModeratorNwh${ecModerator}`).val().replace(/,/g, "") *
                     ($(this).find(`#ec_ModeratorNoc${ecModerator}`).val().replace(/,/g, "") *
-                        $(this).find("#ec_ModeratorHf").val().replace(/\₱|,/g, "") *
+                        $(this).find(`#ec_ModeratorHf${ecModerator}`).val().replace(/,/g, "") *
                         $(this).find(`#ec_ModeratorNoh${ecModerator}`).val().replace(/,/g, "") *
                         $("#nswh").val());
+                //         ||
+                // $(this).find(`#ec_ModeratorNoc${ecModerator}`).val().replace(/,/g, "") *
+                //     $(this).find(`#ec_ModeratorInputHf6${ecModerator}`).val().replace(/,/g, "") *
+                //     $(this).find(`#ec_ModeratorNoh${ecModerator}`).val().replace(/,/g, "") +
+                // $(this).find(`#ec_ModeratorNwh${ecModerator}`).val().replace(/,/g, "") *
+                //     ($(this).find(`#ec_ModeratorNoc${ecModerator}`).val().replace(/,/g, "") *
+                //         $(this).find(`#ec_ModeratorInputHf6${ecModerator}`).val().replace(/,/g, "") *
+                //         $(this).find(`#ec_ModeratorNoh${ecModerator}`).val().replace(/,/g, "") *
+                //         $("#nswh").val());
 
             //if the customized type value is G.A
             if (
@@ -720,11 +727,11 @@ $(document).on(
             //Producer engagement cost auto sum
             sumecProducer =
                 $(this).find(`#ec_ProducerNoc${ecProducer}`).val().replace(/,/g, "") *
-                    $(this).find("#ec_ProducerHf").val().replace(/\₱|,/g, "") *
+                    $(this).find(`#ec_ProducerHf${ecProducer}`).val().replace(/,/g, "") *
                     $(this).find(`#ec_ProducerNoh${ecProducer}`).val().replace(/,/g, "") +
                 $(this).find(`#ec_ProducerNwh${ecProducer}`).val().replace(/,/g, "") *
                     ($(this).find(`#ec_ProducerNoc${ecProducer}`).val().replace(/,/g, "") *
-                        $(this).find("#ec_ProducerHf").val().replace(/\₱|,/g, "") *
+                        $(this).find(`#ec_ProducerHf${ecProducer}`).val().replace(/,/g, "") *
                         $(this).find(`#ec_ProducerNoh${ecProducer}`).val().replace(/,/g, "") *
                         $("#nswh").val());
 

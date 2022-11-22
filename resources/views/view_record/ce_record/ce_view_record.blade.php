@@ -57,6 +57,8 @@
                                     <tr>
                                         <td hidden class="ids">{{ $item->id }}</td>
                                         <td hidden class="budget_number">{{ $item->cstmzd_eng_form_id }}</td>
+                                        {{-- <input type="hidden" name="id" data-id="{{ $item->id }}">
+                                        <input type="hidden" name="cstmzd_eng_form_id" cstmzd-id="{{ $item->cstmzd_eng_form_id }}"> --}}
                                         <td class="id text-center text-uppercase fw-bold">{{ $item->cstmzd_eng_form_id }}</td>
                                         <td class="text-center">
                                             <span id="status" class="badge">{{ $item->status }}</span>
@@ -112,18 +114,18 @@
                                             <a href="{{ url('form/customizedEngagement/detail/' . $item->cstmzd_eng_form_id) }}">
                                                 <span class="badge bg-success"><i class="bi bi-pencil-square"></i></span>
                                             </a>
-                                            <a href="{{ url('delete/' . $item->id) }}"
+                                            {{-- <a href="{{ url('delete/' . $item->id) }}"
                                                 onclick="return confirm('Are you sure to want to delete {{$item->client->company_name}}?')"><span
                                                     class="badge bg-danger"><i class="bi bi-trash"></i></span>
-                                            </a>
-                                            {{-- <a href="#" class="delete"  data-toggle="modal" data-target="#delete_estimate">
+                                            </a> --}}
+                                            <a href="#" class="delete"  data-toggle="modal" data-target="#delete_estimate{{ $item->id }}">
                                                 <span class="badge bg-danger">
                                                     <i class="bi bi-trash"></i>
                                                 </span>
-                                            </a> --}}
+                                            </a>
 
                                             <!-- Delete Customized Engagement Modal -->
-                                            <div class="modal custom-modal fade" id="delete_estimate" role="dialog">
+                                            <div class="modal custom-modal fade" id="delete_estimate{{ $item->id }}" role="dialog">
                                                 <div class="modal-dialog modal-dialog-centered">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
@@ -151,40 +153,11 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!-- /Delete Customized Engagement Modal -->
-
+                                            <!-- END -->
                                         </td>
+                                        
                                     </tr>
-                                    <!-- Delete Customized Engagement Modal -->
-                                    {{-- <div class="modal custom-modal fade" id="delete_estimate" role="dialog">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h3 class="mb-2 text-center">Delete Customized Engagement</h3>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="form-header">
-                                                        <h5 class="text-center mx-5">Are you sure want to delete
-                                                            <b>{{$item->client->company_name}}</b>?</h5>
-                                                    </div>
-                                                    <form action="{{ route('deleteRecord') }}" method="POST">
-                                                        @csrf
-                                                        <input type="hidden" name="id" class="e_id" value="">
-                                                        <input type="hidden" name="cstmzd_eng_form_id" class="budget_number" value="">
-                                                        <div class="modal-footer">
-                                                            <div class="">
-                                                                <button type="submit" class="btn btn-primary continue-btn submit-btn">Delete</button>
-                                                            </div>
-                                                            <div class="">
-                                                                <a href="javascript:void(0);" data-dismiss="modal" class="btn btn-secondary cancel-btn">Cancel</a>
-                                                            </div>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> --}}
-                                    <!-- /Delete Customized Engagement Modal -->
+                                    <!-- BATCHES -->
                                     <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-lg">
                                             <div class="modal-content">

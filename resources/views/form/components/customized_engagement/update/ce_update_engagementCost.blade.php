@@ -26,6 +26,8 @@
     <section>
         <div class="table-responsive" id="no-more-tables">
             <table class="table table-bordered" id="ec_tableEngagementCost">
+
+            <!------------------- TABLE HEAD ----------------------->
                 <thead class="table-dark">
                     <tr class="text-center">
                         {{-- <th class="title-th" scope="col" width=20%></th>
@@ -49,7 +51,9 @@
                         <td class="border border-white add-row"> </td>
                     </tr>
                 </thead>
-            <!----------------------------------------------------------------COMMISION---------------------------------------------------------------------->
+            <!------------------- END ----------------------->
+
+            <!------------------- COMMISSION ----------------------->
                 <tr class="table-light">
                     <th class="px-4 title text-dark font-weight-bold"><b>COMMISSION</b></th>
                     <th></th>
@@ -304,8 +308,9 @@
                         @endif
                     @endforeach
                 </tbody>
+            <!------------------- END ----------------------->
 
-            <!----------------------------------------------------------------CONSULTING---------------------------------------------------------------------->
+            <!------------------- CONSULTING ----------------------->
                 <tr class="table-light">
                     <th class="px-4 title text-dark">
                         <b>1. CONSULTING</b>
@@ -335,7 +340,7 @@
                                         value="{{ $cost_types->consultant_num }}" name="cost_consultant_num[]" id="ec_LeadconsultantNoc{{$ecLeadConsultant}}" data-type="currency">
                                 </td>
                                 <td>
-                                    <input type="text" class="commanumber text-center fw-bold text-dark form-control input-table @error('') is-invalid @enderror" value="{{ $cost_types->hour_fee }}" name="cost_hour_fee[]" id="ec_LeadconsultantHf" data-type="currency">
+                                    <input type="text" class="commanumber text-center fw-bold text-dark form-control input-table @error('') is-invalid @enderror" value="{{ $cost_types->hour_fee }}" name="cost_hour_fee[]" id="ec_LeadconsultantHf{{$ecLeadConsultant}}" data-type="currency">
                                 </td>
                                 <td class="noh">
                                     <input type="text"
@@ -351,8 +356,8 @@
                                     <h5 class="text-center lead" id="ec_LeadconsultantTotal">-</h5>
                                 </td>
                                 <td class="total-td table-light">
-                                    <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                        value="{{ $cost_types->rooster }}" name="cost_rooster[]" id="">
+                                    <input type="text" class="text-uppercase form-control input-table @error('') is-invalid @enderror"
+                                        value="{{ $cost_types->rooster }}" name="cost_rooster[]" id="roster{{$ecLeadConsultant}}">
                                 </td>
                                 <td class="total-td table-light">
                                     <textarea class="form-control input-table @error('') is-invalid @enderror"
@@ -413,8 +418,8 @@
                                         value="{{ $cost_types->rooster }}" name="cost_rooster[]" id="">
                                 </td>
                                 <td class="total-td table-light">
-                                    <textarea class="form-control input-table @error('') is-invalid @enderror"
-                                    name="cost_notes[]" id="" rows="2" cols="55">{{$cost_types->notes}}</textarea>
+                                    <input class="form-control input-table @error('') is-invalid @enderror"
+                                    name="cost_notes[]" id="">{{$cost_types->notes}}</input>
                                 </td>
                                 @if ($ecAnalyst === 1)
                                 <td style="background-color: #FFFFFF;" class="border border-white">
@@ -447,8 +452,9 @@
                     <td class="total-td"></td>
                     <td class="border border-white add-row invisible"> </td>
                 </tr>
+            <!------------------- END ----------------------->
 
-            <!----------------------------------------------------------------DESIGN---------------------------------------------------------------------->
+            <!------------------- DESIGN ----------------------->
                 <tr class="table-light">
                     <th class="title px-4 text-dark">
                         <b>2. DESIGN</b>
@@ -479,7 +485,7 @@
                                 <td>
                                     <input type="text"
                                         class="commanumber text-center fw-bold text-dark text-center form-control input-table @error('') is-invalid @enderror"
-                                        value="{{ $cost_types->hour_fee }}" name="cost_hour_fee[]" id="ec_DesignerHf" data-type="currency">
+                                        value="{{ $cost_types->hour_fee }}" name="cost_hour_fee[]" id="ec_DesignerHf{{$ecDesigner}}" data-type="currency">
                                 </td>
                                 <td class="noh">
                                     <input type="text"
@@ -495,8 +501,8 @@
                                     <h5 class="text-center lead" id="ec_DesignerTotal">-</h5>
                                 </td>
                                 <td class="total-td table-light">
-                                    <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                        value="{{ $cost_types->rooster }}" name="cost_rooster[]" id="">
+                                    <input type="text" class="text-uppercase form-control input-table @error('') is-invalid @enderror"
+                                        value="{{ $cost_types->rooster }}" name="cost_rooster[]" id="roster2{{$ecDesigner}}">
                                 </td>
                                 <td class="total-td table-light">
                                     <textarea class="form-control input-table @error('') is-invalid @enderror"
@@ -610,8 +616,9 @@
                     <td class="total-td"></td>
                     <td class="border border-white add-row invisible"> </td>
                 </tr>
+            <!------------------- END ----------------------->
 
-            <!----------------------------------------------------------------PROGRAM---------------------------------------------------------------------->
+            <!------------------- PROGRAM ----------------------->
                 <tr class="table-light">
                     <th class="title px-4 text-dark">
                         <b>3. PROGRAM</b>
@@ -644,7 +651,7 @@
                                 <td>
                                     <input type="text"
                                         class="commanumber text-center fw-bold text-center text-dark form-control input-table @error('') is-invalid @enderror"
-                                        value="{{$cost_types->hour_fee}}" name="cost_hour_fee[]" id="ec_LeadfacilitatorHf" data-type="currency">
+                                        value="{{$cost_types->hour_fee}}" name="cost_hour_fee[]" id="ec_LeadfacilitatorHf{{$ecLeadfaci}}" data-type="currency">
                                 </td>
                                 <td class="noh">
                                     <input type="text"
@@ -660,8 +667,8 @@
                                     <h5 class="text-center lead" id="ec_LeadfacilitatorTotal">-</h5>
                                 </td>
                                 <td class="total-td table-light">
-                                    <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                        value="{{$cost_types->rooster}}" name="cost_rooster[]" id="">
+                                    <input type="text" class="text-uppercase form-control input-table @error('') is-invalid @enderror"
+                                        value="{{$cost_types->rooster}}" name="cost_rooster[]" id="roster3{{$ecLeadfaci}}">
                                 </td>
                                 <td class="total-td table-light">
                                     {{-- <input type="text" class="form-control input-table @error('') is-invalid @enderror"
@@ -720,8 +727,8 @@
                                     <h5 class="text-center lead" id="ec_CoLeadfacilitatorTotal">-</h5>
                                 </td>
                                 <td class="total-td table-light">
-                                    <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                        value="{{$cost_types->rooster}}" name="cost_rooster[]" id="">
+                                    <input type="text" class="text-uppercase form-control input-table @error('') is-invalid @enderror"
+                                        value="{{$cost_types->rooster}}" name="cost_rooster[]" id="roster4{{$ecColeadfaci}}">
                                 </td>
                                 <td class="total-td table-light">
                                     {{-- <input type="text" class="form-control input-table @error('') is-invalid @enderror"
@@ -824,7 +831,7 @@
                                 <td>
                                     <input type="text"
                                         class="commanumber text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
-                                        value="{{$cost_types->hour_fee}}" name="cost_hour_fee[]" id="ec_CofacilitatorHf" data-type="currency">
+                                        value="{{$cost_types->hour_fee}}" name="cost_hour_fee[]" id="ec_CofacilitatorHf{{$ecCofaci}}" data-type="currency">
                                 </td>
                                 <td class="noh">
                                     <input type="text"
@@ -840,8 +847,8 @@
                                     <h5 class="text-center lead" id="ec_CofacilitatorTotal">-</h5>
                                 </td>
                                 <td class="total-td table-light">
-                                    <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                        value="{{$cost_types->rooster}}" name="cost_rooster[]" id="">
+                                    <input type="text" class="text-uppercase form-control input-table @error('') is-invalid @enderror"
+                                        value="{{$cost_types->rooster}}" name="cost_rooster[]" id="roster5{{$ecCofaci}}">
                                 </td>
                                 <td class="total-td table-light">
                                     {{-- <input type="text" class="form-control input-table @error('') is-invalid @enderror"
@@ -883,7 +890,10 @@
                                 </td>
                                 <td>
                                     <fieldset>
-                                        <select
+                                        <input type="text"
+                                        class="text-center text-dark fw-bold form-control input-table commanumber @error('') is-invalid @enderror"
+                                        value="{{ old('') }}" name="cost_hour_fee[]" id="ec_ModeratorHf{{$ecModerator}}" data-type="currency">
+                                        {{-- <select
                                             class="input js-mytooltip text-center form-select @error('') is-invalid @enderror select"
                                             name="cost_hour_fee[]" id="ec_ModeratorHf" style="background-color:#ffcccc; color:red;"
                                             data-mytooltip-content="<i>
@@ -905,7 +915,7 @@
                                                 title="">
                                                 &#8369;1,350
                                             </option>
-                                        </select>
+                                        </select> --}}
                                         @error('ef_customFee')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -927,8 +937,8 @@
                                     <h5 class="text-center lead" id="ec_ModeratorTotal">-</h5>
                                 </td>
                                 <td class="total-td table-light">
-                                    <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                        value="{{$cost_types->rooster}}" name="cost_rooster[]" id="">
+                                    <input type="text" class="text-uppercase form-control input-table @error('') is-invalid @enderror"
+                                        value="{{$cost_types->rooster}}" name="cost_rooster[]" id="roster6{{$ecModerator}}">
                                 </td>
                                 <td class="total-td table-light">
                                     <textarea class="form-control input-table @error('') is-invalid @enderror"
@@ -969,7 +979,7 @@
                                 <td>
                                     <input type="text"
                                         class="commanumber text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
-                                        value="{{$cost_types->hour_fee}}" name="cost_hour_fee[]" id="ec_ProducerHf" data-type="currency">
+                                        value="{{$cost_types->hour_fee}}" name="cost_hour_fee[]" id="ec_ProducerHf{{$ecProducer}}" data-type="currency">
                                 </td>
                                 <td class="noh">
                                     <input type="text"
@@ -985,8 +995,8 @@
                                     <h5 class="text-center lead" id="ec_ProducerTotal">-</h5>
                                 </td>
                                 <td class="total-td table-light">
-                                    <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                        value="{{$cost_types->rooster}}" name="cost_rooster[]" id="">
+                                    <input type="text" class="text-uppercase form-control input-table @error('') is-invalid @enderror"
+                                        value="{{$cost_types->rooster}}" name="cost_rooster[]" id="roster7{{$ecProducer}}">
                                 </td>
                                 <td class="total-td table-light">
                                     <textarea class="form-control input-table @error('') is-invalid @enderror"
@@ -1023,8 +1033,9 @@
                     <td class="total-td"></td>
                     <td class="border border-white add-row invisible"> </td>
                 </tr>
+            <!------------------- END ----------------------->
 
-            <!----------------------------------------------------------------OTHER ROLES---------------------------------------------------------------------->
+            <!------------------- OTHER ROLES ----------------------->
                 <tr class="table-light">
                     <th class="title px-4 text-dark">
                         <b>4. OTHER ROLES</b>
@@ -1098,8 +1109,9 @@
                         @endif
                     @endforeach
                 </tbody>
+            <!------------------- END ----------------------->
 
-            <!----------------------------------------------------------------OFF-PROGRAM---------------------------------------------------------------------->
+            <!------------------- OFF-PROGRAM ----------------------->
                 <tr class="table-light">
                     <th class="title px-4 text-dark">
                         <b>5. OFF-PROGRAM</b>
@@ -1158,8 +1170,9 @@
                         </tr>
                     @endif
                 @endforeach
+            <!------------------- END ----------------------->
 
-            <!----------------------------------------------------------------MISCELLANEOUS---------------------------------------------------------------------->
+            <!------------------- MISCELANEOUS ----------------------->
                 <tr class="table-light">
                     <th class="title px-4 text-dark">
                         <b>MISCELLANEOUS</b>
@@ -1209,8 +1222,9 @@
                         </tr>
                     @endif
                 @endforeach
+            <!------------------- END ----------------------->
 
-            <!----------------------------------------------------------------TOTAL---------------------------------------------------------------------->
+            <!------------------- TOTAL ----------------------->
                 <tr class="table-active">
                     <td class="fw-bold text-uppercase text-dark fst-italic overall-total-start">
                         <b>TOTAL</b>
@@ -1226,6 +1240,7 @@
                     <td class="overall-total-end"></td>
                     <td class="border border-white add-row invisible"></td>
                 </tr>
+            <!------------------- END ----------------------->
             </table>
         </div>
     </section>

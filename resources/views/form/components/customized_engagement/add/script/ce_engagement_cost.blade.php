@@ -261,7 +261,7 @@
                     <td class="">
                         <input type="text"
                             class="text-center fw-bold text-dark form-control input-table @error('') is-invalid @enderror"
-                            value="{{ old('') }}" name="cost_hour_fee[]" id="ec_LeadconsultantHf" data-type="currency">
+                            value="{{ old('') }}" name="cost_hour_fee[]" id="ec_LeadconsultantHf${leadConsultant}" data-type="currency">
                             </td>
                     <td class="noh">
                         <input type="text"
@@ -277,8 +277,9 @@
                         <h4 class="text-center lead" id="ec_LeadconsultantTotal">-</h4>
                     </td>
                     <td class="total-td table-light">
-                        <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                            value="{{ old('') }}" name="cost_rooster" id="rooster${leadConsultant}">
+                        <input type="text" class="text-uppercase form-control input-table @error('') is-invalid @enderror"
+                            value="{{ old('') }}" name="cost_rooster" id="roster${leadConsultant}" onkeyup="
+                    ">
                     </td>
                     <td class="total-td table-light">
                                 <textarea class="form-control input-table @error('') is-invalid @enderror"
@@ -369,8 +370,8 @@
                             value="{{ old('') }}" name="cost_rooster[]" id="">
                     </td>
                     <td class="total-td table-light">
-                            <textarea class="form-control input-table @error('') is-invalid @enderror"
-                                name="cost_notes[]" id="" rows="2" cols="55"></textarea>
+                            <input class="form-control input-table @error('') is-invalid @enderror"
+                                name="cost_notes[]" id=""></input>
                     </td>
                     <td class="border border-white" style="background-color: #FFFFFF;">
                         <a href="javascript:void(0)" class="text-danger font-18 remove" id="ecAnalystRemove${ecAnalyst}" title="Remove" >
@@ -436,7 +437,7 @@
                     <td>
                         <input type="text"
                             class="commanumber text-center fw-bold text-dark text-center form-control input-table @error('') is-invalid @enderror"
-                            value="{{ old('') }}" name="cost_hour_fee[]" id="ec_DesignerHf" data-type="currency">
+                            value="{{ old('') }}" name="cost_hour_fee[]" id="ec_DesignerHf${ecDesigner}" data-type="currency">
                     </td>
                     <td class="noh">
                         <input type="text"
@@ -452,8 +453,8 @@
                         <h4 class="text-center lead" id="ec_DesignerTotal">-</h4>
                     </td>
                     <td class="total-td table-light">
-                        <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                            value="{{ old('') }}" name="cost_rooster[]" id="">
+                        <input type="text" class="text-uppercase form-control input-table @error('') is-invalid @enderror"
+                            value="{{ old('') }}" name="cost_rooster[]" id="roster2${ecDesigner}">
                     </td>
                     <td class="total-td table-light">
                         <textarea class="form-control input-table @error('') is-invalid @enderror"
@@ -627,7 +628,7 @@
                     <td>
                         <input type="text"
                             class="commanumber text-center fw-bold text-center text-dark form-control input-table @error('') is-invalid @enderror"
-                            value="{{ old('') }}" name="cost_hour_fee[]" id="ec_LeadfacilitatorHf" data-type="currency">
+                            value="{{ old('') }}" name="cost_hour_fee[]" id="ec_LeadfacilitatorHf${ecLeadfaci}" data-type="currency">
                     </td>
                     <td class="noh">
                         <input type="text"
@@ -643,8 +644,8 @@
                         <h4 class="text-center lead" id="ec_LeadfacilitatorTotal">-</h4>
                     </td>
                     <td class="total-td table-light">
-                        <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                            value="{{ old('') }}" name="cost_rooster[]" id="">
+                        <input type="text" class="text-uppercase form-control input-table @error('') is-invalid @enderror"
+                            value="{{ old('') }}" name="cost_rooster[]" id="roster3${ecLeadfaci}">
                     </td>
                     <td class="total-td table-light">
                         <textarea class="form-control input-table @error('') is-invalid @enderror"
@@ -730,8 +731,8 @@
                         <h4 class="text-center lead" id="ec_CoLeadfacilitatorTotal">-</h4>
                     </td>
                     <td class="total-td table-light">
-                        <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                            value="{{ old('') }}" name="cost_rooster[]" id="">
+                        <input type="text" class="text-uppercase form-control input-table @error('') is-invalid @enderror"
+                            value="{{ old('') }}" name="cost_rooster[]" id="roster4${ecCoLead}">
                     </td>
                     <td class="total-td table-light">
                         <textarea class="form-control input-table @error('') is-invalid @enderror"
@@ -890,7 +891,7 @@
                     <td>
                         <input type="text"
                             class="commanumber text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
-                            value="{{ old('') }}" name="cost_hour_fee[]" id="ec_CofacilitatorHf" data-type="currency">
+                            value="{{ old('') }}" name="cost_hour_fee[]" id="ec_CofacilitatorHf${ecCofaci}" data-type="currency">
                     </td>
                     <td class="noh">
                         <input type="text"
@@ -906,8 +907,8 @@
                         <h4 class="text-center lead" id="ec_CofacilitatorTotal">-</h4>
                     </td>
                     <td class="total-td table-light">
-                        <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                            value="{{ old('') }}" name="cost_rooster[]" id="">
+                        <input type="text" class="text-uppercase form-control input-table @error('') is-invalid @enderror"
+                            value="{{ old('') }}" name="cost_rooster[]" id="roster5${ecCofaci}">
                     </td>
                     <td class="total-td table-light">
                         <textarea class="form-control input-table @error('') is-invalid @enderror"
@@ -976,29 +977,9 @@
                     </td>
                     <td>
                         <fieldset>
-                            <select
-                                class="input js-mytooltip text-center form-select @error('') is-invalid @enderror select"
-                                name="cost_hour_fee[]" id="ec_ModeratorHf" style="background-color:#ffcccc; color:red;"
-                                data-mytooltip-content="<i>
-                                        <b>Moderator</b><br/>
-                                        P800  - Associates<br/>
-                                        P1,100 - Consultants<br/>
-                                        P1,350 - Senior Consultant</i>"
-                                data-mytooltip-theme="dark" data-mytooltip-action="focus"
-                                data-mytooltip-direction="right">
-                                <option value="800" {{ old('') == '800' ? 'selected="selected"' : '' }}
-                                    title="">
-                                    &#8369;800
-                                </option>
-                                <option value="1100" {{ old('') == '1100' ? 'selected="selected"' : '' }}
-                                    title="">
-                                    &#8369;1,100
-                                </option>
-                                <option value="1350" {{ old('') == '1350' ? 'selected="selected"' : '' }}
-                                    title="">
-                                    &#8369;1,350
-                                </option>
-                            </select>
+                            <input type="text"
+                                    class="text-center text-dark fw-bold form-control input-table commanumber @error('') is-invalid @enderror"
+                                    value="{{ old('') }}" name="cost_hour_fee[]" id="ec_ModeratorHf${ecModerator}" data-type="currency">
                             @error('ef_customFee')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -1020,8 +1001,8 @@
                         <h4 class="text-center lead" id="ec_ModeratorTotal">-</h4>
                     </td>
                     <td class="total-td table-light">
-                        <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                            value="{{ old('') }}" name="cost_rooster[]" id="">
+                        <input type="text" class="text-uppercase form-control input-table @error('') is-invalid @enderror"
+                            value="{{ old('') }}" name="cost_rooster[]" id="roster6${ecModerator}">
                     </td>
                     <td class="total-td table-light">
                         <textarea class="form-control input-table @error('') is-invalid @enderror"
@@ -1091,7 +1072,7 @@
                     <td>
                         <input type="text"
                             class="commanumber text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
-                            value="{{ old('') }}" name="cost_hour_fee[]" id="ec_ProducerHf" data-type="currency">
+                            value="{{ old('') }}" name="cost_hour_fee[]" id="ec_ProducerHf${ecProducer}" data-type="currency">
                     </td>
                     <td class="noh">
                         <input type="text"
@@ -1107,8 +1088,8 @@
                         <h4 class="text-center lead" id="ec_ProducerTotal">-</h4>
                     </td>
                     <td class="total-td table-light">
-                        <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                            value="{{ old('') }}" name="cost_rooster[]" id="">
+                        <input type="text" class="text-uppercase form-control input-table @error('') is-invalid @enderror"
+                            value="{{ old('') }}" name="cost_rooster[]" id="roster7${ecProducer}">
                     </td>
                     <td class="total-td table-light">
                         <textarea class="form-control input-table @error('') is-invalid @enderror"
