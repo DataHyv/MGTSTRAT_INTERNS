@@ -264,6 +264,56 @@
             </div>
         <!------------ END ------------>
 
+        <!------------ NUMBER OF BATCHES AND SESSION ------------>
+        <div class="form-group row">
+            <div class="col-md-2">
+                <label class="fw-bold required">Number of Batches </label>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group has-icon-left">
+                    <div class="position-relative">
+                        <input type="number" class="form-control @error('') is-invalid @enderror"
+                            value="{{ old('') }}" name="" id="" placeholder="Enter # of Batches" min="0"
+                            oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null">
+                        <div class="form-control-icon">
+                            <i class="fa-regular fa-calendar-days"></i>
+                        </div>
+                        @error('')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-2">
+                <label class="fw-bold required">Number of Session </label>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group has-icon-left">
+                    <div class="position-relative">
+                        <input type="number" class="form-control @error('') is-invalid @enderror"
+                            value="{{ old('') }}" name="" id="" placeholder="Enter # of Session" min="0"
+                            oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null">
+                        <div class="form-control-icon">
+                            <i class="fa-solid fa-clock-rotate-left"></i>
+                        </div>
+                        @error('')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!------------ END ------------>
+
         <!------------ TO BE ANNOUNCE ------------>
             <div class="row">
                 <div class="col-md-2">
