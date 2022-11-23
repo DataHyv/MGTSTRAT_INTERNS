@@ -248,7 +248,7 @@
                     <div class="form-group has-icon-left">
                         <div class="position-relative">
                             <input type="number" class="form-control @error('pax_number') is-invalid @enderror"
-                                value="{{ old('pax_number') }}" name="pax_number" id="pax_number" min="0"
+                                value="{{ old('pax_number') }}" name="pax_number" id="pax_number" placeholder="Enter # of Pax" min="0"
                                 oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null">
                             <div class="form-control-icon">
                                 <i class="fa-solid fa-users"></i>
@@ -265,53 +265,53 @@
         <!------------ END ------------>
 
         <!------------ NUMBER OF BATCHES AND SESSION ------------>
-        <div class="form-group row">
-            <div class="col-md-2">
-                <label class="fw-bold required">Number of Batches </label>
-            </div>
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <label class="fw-bold required">Number of Batches </label>
+                </div>
 
-            <div class="col-md-3">
-                <div class="form-group has-icon-left">
-                    <div class="position-relative">
-                        <input type="number" class="form-control @error('') is-invalid @enderror"
-                            value="{{ old('') }}" name="" id="" placeholder="Enter # of Batches" min="0"
-                            oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null">
-                        <div class="form-control-icon">
-                            <i class="fa-regular fa-calendar-days"></i>
+                <div class="col-md-3">
+                    <div class="form-group has-icon-left">
+                        <div class="position-relative">
+                            <input type="number" class="form-control @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="" id="" placeholder="Enter # of Batches" min="0"
+                                oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null">
+                            <div class="form-control-icon">
+                                <i class="fa-regular fa-calendar-days"></i>
+                            </div>
+                            @error('')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
-                        @error('')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="form-group row">
-            <div class="col-md-2">
-                <label class="fw-bold required">Number of Session </label>
-            </div>
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <label class="fw-bold required">Number of Session </label>
+                </div>
 
-            <div class="col-md-3">
-                <div class="form-group has-icon-left">
-                    <div class="position-relative">
-                        <input type="number" class="form-control @error('') is-invalid @enderror"
-                            value="{{ old('') }}" name="" id="" placeholder="Enter # of Session" min="0"
-                            oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null">
-                        <div class="form-control-icon">
-                            <i class="fa-solid fa-clock-rotate-left"></i>
+                <div class="col-md-3">
+                    <div class="form-group has-icon-left">
+                        <div class="position-relative">
+                            <input type="number" class="form-control @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="" id="NumberSession" placeholder="Enter # of Session" min="0"
+                                oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null">
+                            <div class="form-control-icon">
+                                <i class="fa-solid fa-clock-rotate-left"></i>
+                            </div>
+                            @error('')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
-                        @error('')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
                     </div>
                 </div>
             </div>
-        </div>
         <!------------ END ------------>
 
         <!------------ TO BE ANNOUNCE ------------>
@@ -638,6 +638,15 @@
             dynamic: false,
             dropdown: true,
             scrollbar: true
+        });
+    });
+</script>
+
+<script>
+    $(document).ready( function(){
+        $('#NumberSession').on('keyup blur', function() {
+            $(`#ef_LeadconsultantNoh1`).val($(this).val());
+            $(`#ef_AnalystNoh1`).val($(this).val());
         });
     });
 </script>
