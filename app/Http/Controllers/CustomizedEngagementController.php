@@ -18,7 +18,7 @@ class CustomizedEngagementController extends Controller
     {
         $companyList = Client::orderBy('company_name')->get();
         $data = DB::table('customized_engagement_forms')->where('client_id', $request->client)->count();
-        return view('form.customized_engagement', compact('companyList', 'data'));
+        return view('form.components.customized_engagement.add.customized_engagement', compact('companyList', 'data'));
     }
 
     // view record
@@ -33,7 +33,7 @@ class CustomizedEngagementController extends Controller
             ->join('engagement_costs', 'customized_engagement_forms.cstmzd_eng_form_id', '=', 'engagement_costs.cstmzd_eng_form_id')
             ->select('customized_engagement_forms.*', 'engagement_costs.*')
             ->get();
-        return view('view_record.ce_record.ce_view_record',compact('data', 'dataJoin1', 'dataJoin2'));
+        return view('form.components.customized_engagement.ce_view_record',compact('data', 'dataJoin1', 'dataJoin2'));
     }
 
     // view delete
@@ -99,7 +99,7 @@ class CustomizedEngagementController extends Controller
         $Cluster = Customized_engagement_form::findOrFail($data->id);
         $CoreArea = Customized_engagement_form::findOrFail($data->id);
 
-        return view('form.ce_update',
+        return view('form.components.customized_engagement.update.ce_update',
         [
             'DateOfEngagements'=>$DateOfEngagements->program_dates,
             'StartTime'=>$StartTime->program_start_time,
