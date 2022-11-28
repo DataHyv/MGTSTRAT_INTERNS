@@ -274,7 +274,7 @@
                     <div class="form-group has-icon-left">
                         <div class="position-relative">
                             <input type="number" class="form-control @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="" id="BatchNumber" placeholder="Enter # of Batches" min="0"
+                                value="{{ old('') }}" name="batch_number" id="BatchNumber" placeholder="Enter # of Batches" min="0"
                                 oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null">
                             <div class="form-control-icon">
                                 <i class="fa-regular fa-calendar-days"></i>
@@ -297,7 +297,7 @@
                     <div class="form-group has-icon-left">
                         <div class="position-relative">
                             <input type="number" class="form-control @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="" id="SessionNumber" placeholder="Enter # of Session" min="0"
+                                value="{{ old('') }}" name="session_number" id="SessionNumber" placeholder="Enter # of Session" min="0"
                                 oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null">
                             <div class="form-control-icon">
                                 <i class="fa-solid fa-clock-rotate-left"></i>

@@ -130,6 +130,8 @@ class CustomizedEngagementController extends Controller
             $ce_form->client_id             = (int)$request->client_id;
             $ce_form->engagement_title      = $request->engagement_title;
             $ce_form->pax_number            = $request->pax_number;
+            $ce_form->batch_number          = $request->batch_number;
+            $ce_form->session_number          = $request->session_number;
             $ce_form->program_dates         = $request->program_dates;
             $ce_form->program_start_time    = $request->program_start_time;
             $ce_form->program_end_time      = $request->program_end_time;
@@ -144,19 +146,20 @@ class CustomizedEngagementController extends Controller
             $client_id = $client_id->client_id;
 
             try
-                {
-                    foreach($request->fee_type as $key => $fee_types){
-                        $engagement_fee['type']                 = $fee_types;
-                        $engagement_fee['cstmzd_eng_form_id']   = $cstmzd_eng_form_id;
-                        $engagement_fee['client_id']            = $client_id;
-                        $engagement_fee['consultant_num']       = $request->fee_consultant_num[$key] ?? '0';
-                        $engagement_fee['hour_fee']             = $request->fee_hour_fee[$key];
-                        $engagement_fee['hour_num']             = $request->fee_hour_num[$key] ?? '0';
-                        $engagement_fee['nswh']                 = $request->fee_nswh[$key] ?? '0';
-                        $engagement_fee['nswh_percent']         = $request->nswh_percent[$key];
-                        $engagement_fee['notes']                = $request->fee_notes[$key];
+                {   for ($i = 1; $i <= 2; $i++) {
+                        foreach($request->fee_type as $key => $fee_types){
+                            $engagement_fee['type']                 = $fee_types;
+                            $engagement_fee['cstmzd_eng_form_id']   = $cstmzd_eng_form_id.'-'.$i;
+                            $engagement_fee['client_id']            = $client_id;
+                            $engagement_fee['consultant_num']       = $request->fee_consultant_num[$key] ?? '0';
+                            $engagement_fee['hour_fee']             = $request->fee_hour_fee[$key];
+                            $engagement_fee['hour_num']             = $request->fee_hour_num[$key] ?? '0';
+                            $engagement_fee['nswh']                 = $request->fee_nswh[$key] ?? '0';
+                            $engagement_fee['nswh_percent']         = $request->nswh_percent[$key];
+                            $engagement_fee['notes']                = $request->fee_notes[$key];
 
-                        Engagement_fee::create($engagement_fee);
+                            Engagement_fee::create($engagement_fee);
+                        }
                     }
                 }
             catch(\Exception $e){
