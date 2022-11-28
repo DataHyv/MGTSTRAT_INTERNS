@@ -131,7 +131,7 @@ class CustomizedEngagementController extends Controller
             $ce_form->engagement_title      = $request->engagement_title;
             $ce_form->pax_number            = $request->pax_number;
             $ce_form->batch_number          = $request->batch_number;
-            $ce_form->session_number          = $request->session_number;
+            $ce_form->session_number        = $request->session_number;
             $ce_form->program_dates         = $request->program_dates;
             $ce_form->program_start_time    = $request->program_start_time;
             $ce_form->program_end_time      = $request->program_end_time;
@@ -144,12 +144,19 @@ class CustomizedEngagementController extends Controller
             $cstmzd_eng_form_id = $cstmzd_eng_form_id->cstmzd_eng_form_id;
             $client_id = DB::table('customized_engagement_forms')->orderBy('client_id','DESC')->select('client_id')->first();
             $client_id = $client_id->client_id;
+            $batch_number = DB::table('customized_engagement_forms')->orderBy('batch_number','DESC')->select('batch_number')->first();
+            $batch_number = $batch_number->batch_number;
 
             try
-                {   for ($i = 1; $i <= 2; $i++) {
+                {   for ($i = 0; $i <= $batch_number; $i++) {
                         foreach($request->fee_type as $key => $fee_types){
                             $engagement_fee['type']                 = $fee_types;
-                            $engagement_fee['cstmzd_eng_form_id']   = $cstmzd_eng_form_id.'-'.$i;
+                            if ($i === 0) {
+                                $engagement_fee['cstmzd_eng_form_id']   = $cstmzd_eng_form_id;
+                            }
+                            else {
+                                $engagement_fee['cstmzd_eng_form_id']   = $cstmzd_eng_form_id.'-'.$i;
+                            }
                             $engagement_fee['client_id']            = $client_id;
                             $engagement_fee['consultant_num']       = $request->fee_consultant_num[$key] ?? '0';
                             $engagement_fee['hour_fee']             = $request->fee_hour_fee[$key];
