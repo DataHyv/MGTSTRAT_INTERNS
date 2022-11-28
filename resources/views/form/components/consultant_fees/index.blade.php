@@ -85,31 +85,31 @@
                                         {{$data->first_name}} {{$data->last_name}}
                                     </td>
                                     <td class="text-center">
-                                        {{number_format($data->lead_faci, 2)}}
+                                        {{$data->lead_faci}}
                                     </td>
                                     <td class="text-center">
-                                        {{number_format($data->co_lead, 2)}}
+                                        {{$data->co_lead}}
                                     </td>
                                     <td class="text-center">
-                                        {{number_format($data->co_lead_f2f, 2)}}
+                                        {{$data->co_lead_f2f}}
                                     </td>
                                     <td class="text-center">
-                                        {{number_format($data->co_faci, 2)}}
+                                        {{$data->co_faci}}
                                     </td>
                                     <td class="text-center">
-                                        {{number_format($data->lead_consultant, 2)}}
+                                        {{$data->lead_consultant}}
                                     </td>
                                     <td class="text-center">
-                                        {{number_format($data->consulting, 2)}}
+                                        {{$data->consulting}}
                                     </td>
                                     <td class="text-center">
-                                        {{number_format($data->designer, 2)}}
+                                        {{$data->designer}}
                                     </td>
                                     <td class="text-center">
-                                        {{number_format($data->moderator, 2)}}
+                                        {{$data->moderator}}
                                     </td>
                                     <td class="text-center">
-                                        {{number_format($data->producer, 2)}}
+                                        {{$data->producer}}
                                     </td>
                                     <td class="text-center">
                                         {{ \Carbon\Carbon::parse($data->created_at)->toFormattedDateString()}}
