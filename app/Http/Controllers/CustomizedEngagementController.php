@@ -298,39 +298,14 @@ class CustomizedEngagementController extends Controller
         Engagement_cost::where('id', $id)->delete();
     }
 
-    // function ConsultantFees(Request $request)
-    // {
-    //     if($request->get('query'))
-    //     {
-    //      $query = $request->get('query');
-    //      $data = DB::table('consultantfees')
-    //        ->where('first_name', 'LIKE', "%{$query}%")
-    //        ->get();
-    //      $output = '<ul class="dropdown-menu" style="display:block; position:relative">';
-    //      foreach($data as $row)
-    //      {
-    //       $output .= '
-    //       <li><a href="#">'.$row->first_name.'</a></li>
-    //       ';
-    //      }
-    //      $output .= '</ul>';
-    //      echo $output;
-    //     }
-    // }
 
-    // function consultantHour (Request $request){
-    //     if($request->get('query'))
-    //     {
-    //      $query = $request->get('query');
-    //      $data = DB::table('consultantfees')
-    //        ->select('consultantfees')
-    //        ->where('first_name', 'LIKE', "%{$query}%")
-    //        ->get();
+    /********************************  SUB FEE ********************************/
 
-    //     return $data;
-    //     }
-    // }
-
-
+    /* Sub fee form */
+    public function formSubFee(){
+        // $companyList = Client::orderBy('company_name')->get();
+        // $data = DB::table('customized_engagement_forms')->where('client_id', $request->client)->count();
+        // return view('form.components.customized_engagement.add.customized_engagement', compact('companyList', 'data'));
+        return view('form.components.customized_engagement.sub_fee.customized_engagement');
+    }
 }
-
