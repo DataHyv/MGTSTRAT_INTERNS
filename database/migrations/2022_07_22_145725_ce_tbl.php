@@ -23,6 +23,8 @@ class CeTbl extends Migration
             $table->string('ga_percent', 4)->nullable();
             $table->string('engagement_title', 100)->nullable();
             $table->integer('pax_number')->nullable();
+            $table->integer('batch_number')->nullable();
+            $table->integer('session_number')->nullable();
             $table->json('program_dates')->nullable();
             $table->string('program_start_time')->nullable();
             $table->string('program_end_time')->nullable();

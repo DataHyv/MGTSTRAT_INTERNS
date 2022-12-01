@@ -13,21 +13,22 @@ class CreateConsultantfeesTable extends Migration
      */
     public function up()
     {
-        Schema::create('consultantfees', function (Blueprint $table) {
-            $table->id();
-            $table->string('first_name', 30);
-            $table->string('last_name', 50);
-            $table->float('lead_faci')->nullable();
-            $table->float('co_lead')->nullable();
-            $table->float('co_lead_f2f')->nullable();
-            $table->float('co_faci')->nullable();
-            $table->float('lead_consultant')->nullable();
-            $table->float('consulting')->nullable();
-            $table->float('designer')->nullable();
-            $table->float('moderator')->nullable();
-            $table->float('producer')->nullable();
-            $table->timestamps();
-        });
+        // Schema::create('consultantfees', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->string('first_name', 30);
+        //     $table->string('last_name', 50);
+        //     $table->float('lead_faci')->nullable();
+        //     $table->float('co_lead')->nullable();
+        //     $table->float('co_lead_f2f')->nullable();
+        //     $table->float('co_faci')->nullable();
+        //     $table->float('lead_consultant')->nullable();
+        //     $table->float('consulting')->nullable();
+        //     $table->float('designer')->nullable();
+        //     $table->float('moderator')->nullable();
+        //     $table->float('producer')->nullable();
+        //     $table->timestamps();
+        // });
+        \DB::unprepared( file_get_contents( "database/consultantfees.sql" ) );
     }
 
     /**

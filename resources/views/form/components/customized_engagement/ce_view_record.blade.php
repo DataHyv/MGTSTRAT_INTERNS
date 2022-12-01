@@ -35,6 +35,9 @@
                         <a class="btn btn-primary mt-2 mb-2" href="{{ route('form/customizedEngagement/new') }}">
                             <span><i class="fa-solid fa-file-circle-plus"></i> &nbsp; New Record</span>
                         </a>
+                        <a class="btn btn-primary mt-2 mb-2 mx-5" href="{{ route('form/customizedEngagement/sub-fee') }}">
+                            <span><i class="fa-solid fa-file-circle-plus"></i> &nbsp; TEST SUB FEE</span>
+                        </a>
                     </div>
                     <div class="card-body">
                         <table class="table table-striped" id="table1">
@@ -155,7 +158,7 @@
                                             </div>
                                             <!-- END -->
                                         </td>
-                                        
+
                                     </tr>
                                     <!-- BATCHES -->
                                     <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">

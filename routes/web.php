@@ -100,6 +100,9 @@ Auth::routes();
     Route::put('update', [CustomizedEngagementController::class, 'ceUpdateRecord','ceAddDeleteRecord'])->middleware('auth')->name('update');
     Route::post('deleteRecord', [CustomizedEngagementController::class, 'viewDelete'])->middleware('auth')->name('deleteRecord');
     Route::post('delete',[CustomizedEngagementController::class, 'deleteRow'])->name('delete');
+
+    //-------SUB FEE-------//
+    Route::get('form/customizedEngagement/sub-fee', [CustomizedEngagementController::class, 'formSubFee'])->middleware('auth')->name('form/customizedEngagement/sub-fee');
     });
 // ----------------------------- F2F engagement form ------------------------------//
     Route::get('form/f2f_engagement/index', [App\Http\Controllers\F2fEngagementController::class, 'index'])->middleware('auth')->name('form/f2f_engagement/index');

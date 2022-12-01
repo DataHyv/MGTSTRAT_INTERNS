@@ -218,6 +218,24 @@ document.addEventListener("keypress", function (e) {
 //     })
 // });
 
+//SESSION AND BATCH NUMBER FUNCTION
+$(document).on( "load keyup", "#main", function () {
+    var session_count = $('#SessionNumber').val();
+    var batch_count = $('#BatchNumber').val();
+    var total_count = $('#SessionNumber').val() * $('#BatchNumber').val();
+
+        $(`#ef_LeadconsultantNoh1`).attr('value', total_count);
+        $(`#ef_AnalystNoh1`).attr('value', total_count);
+        $(`#ef_DesignerNoh1`).attr('value', total_count);
+        $(`#ef_AnalystNoh1`).attr('value', total_count);
+        $(`#ef_LeadfacilitatorNoh1`).attr('value', total_count);
+        $(`#ef_CofaciNoh1`).attr('value', total_count);
+        $(`#ef_ModeratorNoh1`).attr('value', total_count);
+        $(`#ef_ProducerNoh1`).attr('value', total_count);
+        $(`#ef_DocumentorNoh1`).attr('value', total_count);
+});
+
+//ROSTER RATE AUTO INPUT
 $(document).on(
     "load change keyup click",
     "#main, #ec_tableEngagementCost",
