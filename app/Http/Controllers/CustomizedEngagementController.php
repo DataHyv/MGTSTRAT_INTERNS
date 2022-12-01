@@ -9,6 +9,7 @@ use App\Models\Client;
 use App\Models\Customized_engagement_form;
 use App\Models\Engagement_fee;
 use App\Models\Engagement_cost;
+use App\Models\Sub_fee;
 use DB;
 
 class CustomizedEngagementController extends Controller
@@ -18,7 +19,7 @@ class CustomizedEngagementController extends Controller
     {
         $companyList = Client::orderBy('company_name')->get();
         $data = DB::table('customized_engagement_forms')->where('client_id', $request->client)->count();
-        return view('form.customized_engagement', compact('companyList', 'data'));
+        return view('form.components.customized_engagement.add.customized_engagement', compact('companyList', 'data'));
     }
 
     // view record
@@ -33,7 +34,7 @@ class CustomizedEngagementController extends Controller
             ->join('engagement_costs', 'customized_engagement_forms.cstmzd_eng_form_id', '=', 'engagement_costs.cstmzd_eng_form_id')
             ->select('customized_engagement_forms.*', 'engagement_costs.*')
             ->get();
-        return view('view_record.ce_record.ce_view_record',compact('data', 'dataJoin1', 'dataJoin2'));
+        return view('form.components.customized_engagement.ce_view_record',compact('data', 'dataJoin1', 'dataJoin2'));
     }
 
     // view delete
@@ -99,7 +100,7 @@ class CustomizedEngagementController extends Controller
         $Cluster = Customized_engagement_form::findOrFail($data->id);
         $CoreArea = Customized_engagement_form::findOrFail($data->id);
 
-        return view('form.ce_update',
+        return view('form.components.customized_engagement.update.ce_update',
         [
             'DateOfEngagements'=>$DateOfEngagements->program_dates,
             'StartTime'=>$StartTime->program_start_time,
@@ -130,6 +131,8 @@ class CustomizedEngagementController extends Controller
             $ce_form->client_id             = (int)$request->client_id;
             $ce_form->engagement_title      = $request->engagement_title;
             $ce_form->pax_number            = $request->pax_number;
+            $ce_form->batch_number          = $request->batch_number;
+            $ce_form->session_number        = $request->session_number;
             $ce_form->program_dates         = $request->program_dates;
             $ce_form->program_start_time    = $request->program_start_time;
             $ce_form->program_end_time      = $request->program_end_time;
@@ -142,6 +145,10 @@ class CustomizedEngagementController extends Controller
             $cstmzd_eng_form_id = $cstmzd_eng_form_id->cstmzd_eng_form_id;
             $client_id = DB::table('customized_engagement_forms')->orderBy('client_id','DESC')->select('client_id')->first();
             $client_id = $client_id->client_id;
+            // $clientId_sub_fee = DB::table('sub_fee')->orderBy('client_id','DESC')->select('client_id')->first();
+            // $client_id = $client_id->client_id;
+            $batch_number = DB::table('customized_engagement_forms')->orderBy('batch_number','DESC')->select('batch_number')->first();
+            $batch_number = $batch_number->batch_number;
 
             try
                 {
@@ -157,6 +164,24 @@ class CustomizedEngagementController extends Controller
                         $engagement_fee['notes']                = $request->fee_notes[$key];
 
                         Engagement_fee::create($engagement_fee);
+                    }
+
+                    for ($batch_count = 1; $batch_count <= $batch_number; $batch_count++) {
+                        foreach($request->fee_type as $key => $fee_types){
+                            $sub_fee['type']                 = $fee_types;
+                            $sub_fee['cstmzd_eng_form_id']   = $cstmzd_eng_form_id;
+                            $sub_fee['client_id']            = $client_id;
+                            $sub_fee['batch_number']         = $batch_count;
+                            $sub_fee['session_number']       = $request->session_number;
+                            $sub_fee['consultant_num']       = $request->fee_consultant_num[$key] ?? '0';
+                            $sub_fee['hour_fee']             = $request->fee_hour_fee[$key];
+                            $sub_fee['hour_num']             = $request->fee_hour_num[$key] ?? '0';
+                            $sub_fee['nswh']                 = $request->fee_nswh[$key] ?? '0';
+                            $sub_fee['nswh_percent']         = $request->nswh_percent[$key];
+                            $sub_fee['notes']                = $request->fee_notes[$key];
+
+                            Sub_fee::create($sub_fee);
+                        }
                     }
                 }
             catch(\Exception $e){
@@ -288,39 +313,14 @@ class CustomizedEngagementController extends Controller
         Engagement_cost::where('id', $id)->delete();
     }
 
-    // function ConsultantFees(Request $request)
-    // {
-    //     if($request->get('query'))
-    //     {
-    //      $query = $request->get('query');
-    //      $data = DB::table('consultantfees')
-    //        ->where('first_name', 'LIKE', "%{$query}%")
-    //        ->get();
-    //      $output = '<ul class="dropdown-menu" style="display:block; position:relative">';
-    //      foreach($data as $row)
-    //      {
-    //       $output .= '
-    //       <li><a href="#">'.$row->first_name.'</a></li>
-    //       ';
-    //      }
-    //      $output .= '</ul>';
-    //      echo $output;
-    //     }
-    // }
 
-    // function consultantHour (Request $request){
-    //     if($request->get('query'))
-    //     {
-    //      $query = $request->get('query');
-    //      $data = DB::table('consultantfees')
-    //        ->select('consultantfees')
-    //        ->where('first_name', 'LIKE', "%{$query}%")
-    //        ->get();
+    /********************************  SUB FEE ********************************/
 
-    //     return $data;
-    //     }
-    // }
-
-
+    /* Sub fee form */
+    public function formSubFee(){
+        // $companyList = Client::orderBy('company_name')->get();
+        // $data = DB::table('customized_engagement_forms')->where('client_id', $request->client)->count();
+        // return view('form.components.customized_engagement.add.customized_engagement', compact('companyList', 'data'));
+        return view('form.components.customized_engagement.sub_fee.customized_engagement');
+    }
 }
-
