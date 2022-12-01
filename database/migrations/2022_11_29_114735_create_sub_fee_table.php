@@ -13,7 +13,7 @@ class CreateSubFeeTable extends Migration
      */
     public function up()
     {
-        Schema::create('sub_fee', function (Blueprint $table) {
+        Schema::create('sub_fees', function (Blueprint $table) {
             $table->id();
             $table->foreignId('client_id')->nullable()->constrained()->onDelete('cascade');
             $table->string('cstmzd_eng_form_id', 15);
