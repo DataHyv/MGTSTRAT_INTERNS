@@ -1,6 +1,7 @@
 <!------------ CARD HEADER ------------>
     <div class="card-header">
         <h4 class="card-title">Engagement Fees</h4>
+        <h4 class="card-title">{{ $data->customized_engagement_form->client->company_name }} {{ $data->id }}</h4>
     </div>
 
 <!------------ FORM BODY ------------>
@@ -8,7 +9,6 @@
         <section>
             <div class="table-responsive" id="no-more-tables" data-animation="slideHorz">
                 <table class="table table-bordered" id="ec_tableEngagementFees">
-                    
                 <!------------------- TABLE HEADING ------------------------->
                     <thead class="table-dark">
                         <b>
@@ -19,26 +19,30 @@
                                 <th class="title-middle" scope="col" style="font-size: 0.9rem;">NUMBER OF HOURS</th>
                                 <th class="title-middle" scope="col" style="font-size: 0.9rem;" width=10%>
                                     <label for="Night Shift, Weekends and Holidays">NSWH</label>
-                                    <input type="hidden" value="Night Shift, Weekends and Holidays" name="fee_type[]">
-                                    <input type="hidden" value="" name="fee_consultant_num[]">
-                                    <input type="hidden" value="" name="fee_hour_fee[]">
-                                    <input type="hidden" value="" name="fee_hour_num[]">
-                                    <input type="hidden" value="" name="fee_nswh[]">
-                                    <input type="hidden" value="" name="fee_notes[]">
-                                    <select class="input js-mytooltip form-select form-select-sm engagement-fee nswh-percent @error('') is-invalid @enderror select" name="nswh_percent[]" id="nswh">
-                                        <option value="0.1" {{ old('') == '0.1' ? 'selected="selected"' : '' }}>
-                                            &#8369;10%
-                                        </option>
-                                        <option value="0.15" {{ old('') == '0.15' ? 'selected="selected"' : '' }}>
-                                            &#8369;15%
-                                        </option>
-                                        <option value="0.2" {{ old('') == '0.2' ? 'selected="selected"' : '' }} selected>
-                                            &#8369;20%
-                                        </option>
-                                        <option value="0.25" {{ old('') == '0.25' ? 'selected="selected"' : '' }}>
-                                            &#8369;25%
-                                        </option>
-                                    </select>
+                                    @foreach ($data2 as $key=>$fee_type)
+                                        @if ($fee_type->type === 'Night Shift, Weekends and Holidays')
+                                            <input type="hidden" value="Night Shift, Weekends and Holidays" name="fee_type[]">
+                                            <input type="hidden" value="" name="fee_consultant_num[]">
+                                            <input type="hidden" value="" name="fee_hour_fee[]">
+                                            <input type="hidden" value="" name="fee_hour_num[]">
+                                            <input type="hidden" value="" name="fee_nswh[]">
+                                            <input type="hidden" value="" name="fee_notes[]">
+                                            <select class="input js-mytooltip form-select form-select-sm engagement-fee nswh-percent @error('') is-invalid @enderror select" name="nswh_percent[]" id="nswh">
+                                                <option value="0.1" {{ $fee_type->nswh_percent == '0.1' ? 'selected="selected"' : '' }}>
+                                                    &#8369;10%
+                                                </option>
+                                                <option value="0.15" {{ $fee_type->nswh_percent == '0.15' ? 'selected="selected"' : '' }}>
+                                                    &#8369;15%
+                                                </option>
+                                                <option value="0.2" {{ $fee_type->nswh_percent == '0.2' ? 'selected="selected"' : '' }} selected>
+                                                    &#8369;20%
+                                                </option>
+                                                <option value="0.25" {{ $fee_type->nswh_percent == '0.25' ? 'selected="selected"' : '' }}>
+                                                    &#8369;25%
+                                                </option>
+                                            </select>
+                                        @endif
+                                    @endforeach
                                 </th>
                                 <th class="title-th" scope="col" width=15%>TOTAL FEE</th>
                                 <th class="title-th" scope="col" width=15%>NOTES</th>
@@ -63,15 +67,17 @@
                     </tr>
 
                     <tbody id="tableLeadconsultant">
+                        @foreach ($data2 as $key=>$fee_type)
+                        @if ($fee_type->type === 'Lead Consultant')
                         <tr class="table-warning">
                             <td class="title table-light">
-                                <input type="text" class="d-none" value="Lead Consultant" name="fee_type[]" readonly>
-                                Lead Consultant
+                                <input type="text" class="d-none" value="{{ $fee_type->type }}" name="fee_type[]" readonly>
+                                {{ $fee_type->type }}
                             </td>
                             <td data-title="# OF CONSULTANTS">
                                 <input type="text"
                                     class="input js-mytooltip input-table form-control commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="fee_consultant_num[]" id="ef_LeadconsultantNoc1"
+                                    value="{{ $fee_type->consultant_num }}" name="fee_consultant_num[]" id="ef_LeadconsultantNoc1"
                                     title="" max="100" data-type="currency"
                                     data-mytooltip-content="<i>Includes in depth needs analysis (i.e. surveys, interviews, FGDs),
                                     special research (i.e. to study client materials or client -required materials, industry
@@ -83,10 +89,10 @@
                             <td>
                                 <fieldset>
                                     <select class="form-select input js-mytooltip @error('') is-invalid @enderror" name="fee_hour_fee[]" id="ef_LeadconsultantHf" data-mytooltip-content="<i> &#8369;7,000 - Consultants<br> &#8369;9,000 - Senior Consultants </i>" data-mytooltip-theme="dark" data-mytooltip-action="focus" data-mytooltip-direction="right" style="background-color:#ffcccc; color:red;">
-                                        <option value="₱7000" {{ old('') == '₱7000' ? 'selected="selected"' : '' }}>
+                                        <option value="7000" {{ $fee_type->hour_fee == '7000' ? 'selected="selected"' : '' }}>
                                             &#8369;7,000
                                         </option>
-                                        <option value="₱9000" {{ old('') == '₱9000' ? 'selected="selected"' : '' }}>
+                                        <option value="9000" {{ $fee_type->hour_fee == '9000' ? 'selected="selected"' : '' }}>
                                             &#8369;9,000
                                         </option>
                                     </select>
@@ -98,17 +104,17 @@
                                 </fieldset>
                             </td>
                             <td>
-                                <input type="text" class="form-control input-table input js-mytooltip commanumber @error('') is-invalid @enderror" value="{{ old('') }}" name="fee_hour_num[]" id="ef_LeadconsultantNoh1" data-type="currency" data-mytooltip-content="<i>Number of Hours</i>" data-mytooltip-theme="dark" data-mytooltip-action="focus" data-mytooltip-direction="bottom">
+                                <input type="text" class="form-control input-table input js-mytooltip commanumber @error('') is-invalid @enderror" value="{{ $fee_type->hour_num }}" name="fee_hour_num[]" id="ef_LeadconsultantNoh1" data-type="currency" data-mytooltip-content="<i>Number of Hours</i>" data-mytooltip-theme="dark" data-mytooltip-action="focus" data-mytooltip-direction="bottom">
                             </td>
                             <td>
-                                <input type="text" class="form-control input-table commanumber @error('') is-invalid @enderror" value="{{ old('') }}" name="fee_nswh[]" id="ef_LeadconsultantNwh1" data-type="currency">
+                                <input type="text" class="form-control input-table commanumber @error('') is-invalid @enderror" value="{{ $fee_type->nswh }}" name="fee_nswh[]" id="ef_LeadconsultantNwh1" data-type="currency">
                                 <input type="text" class="nswh-percent-value" name="nswh_percent[]" hidden>
                             </td>
                             <td class="total-td table-light">
                                 <h4 class="text-center lead" id="leadTotal">-</h4>
                             </td>
                             <td class="total-td table-light">
-                                <textarea class="form-control input-table @error('') is-invalid @enderror" name="fee_notes[]" id="" rows="2" cols="55"></textarea>
+                                <textarea class="form-control input-table @error('') is-invalid @enderror" name="fee_notes[]" id="" rows="2" cols="55">{{ $fee_type->notes }}</textarea>
                             </td>
                             <td style="background-color: #FFFFFF;" class="border border-white">
                                 <a href="javascript:void(0)" class="text-success font-18" title="Add" id="addBtn" onclick="$('#CeAddBtn').trigger('click')">
@@ -116,53 +122,59 @@
                                 </a>
                             </td>
                         </tr>
+                        @endif
+                        @endforeach
                     </tbody>
 
                     <tbody id="tableAnalyst">
-                        <tr class="table-warning">
-                            <td class="title table-light">
-                                <input type="text" class="d-none" value="Analyst" name="fee_type[]" readonly>
-                                Analyst
-                            </td>
-                            <td>
-                                <input type="text"
-                                    class="input js-mytooltip form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="fee_consultant_num[]" id="ef_AnalystNoc1" max="100" data-type="currency"
-                                    data-mytooltip-content="<i>Includes in depth needs analysis (i.e. surveys, interviews, FGDs),
-                                    special research (i.e. to study client materials or client -required materials, industry
-                                    or function specific content), creation of client-specific learning aids/tools
-                                    (i.e. assessments, c</i>"
-                                    data-mytooltip-theme="dark" data-mytooltip-action="focus"
-                                    data-mytooltip-direction="bottom">
-                            </td>
-                            <td>
-                                <input type="text" class="form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="fee_hour_fee[]" id="ef_AnalystHf" data-type="currency">
-                            </td>
-                            <td>
-                                <input type="text"
-                                    class="input js-mytooltip form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="fee_hour_num[]" id="ef_AnalystNoh1" data-type="currency"
-                                    data-mytooltip-content="<i>Number of Hours</i>" data-mytooltip-theme="dark"
-                                    data-mytooltip-action="focus" data-mytooltip-direction="bottom">
-                            </td>
-                            <td>
-                                <input type="text" class="form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="fee_nswh[]" id="ef_AnalystNwh1" data-type="currency">
-                                <input type="text" class="nswh-percent-value" value="{{ old('') }}" name="nswh_percent[]" hidden>
-                            </td>
-                            <td class="total-td table-light">
-                                <h4 class="text-center lead" id="analyst-total">-</h4>
-                            </td>
-                            <td class="total-td table-light">
-                                <textarea class="form-control input-table @error('') is-invalid @enderror"
-                                    name="fee_notes[]" id="" rows="2" cols="55"></textarea>
-                            </td>
-                            <td style="background-color: #FFFFFF;" class="border border-white"><a
-                                    href="javascript:void(0)" class="text-success font-18" title="Add"
-                                    id="addBtn2" onclick="$('#CeAddBtn2').trigger('click')"><i class="fa fa-plus"></i></a>
-                            </td>
-                        </tr>
+                        @foreach ($data2 as $key=>$fee_type)
+                            @if ($fee_type->type === 'Analyst')
+                                <tr class="table-warning">
+                                    <td class="title table-light">
+                                        <input type="text" class="d-none" value="{{ $fee_type->type }}" name="fee_type[]" readonly>
+                                        {{ $fee_type->type }}
+                                    </td>
+                                    <td>
+                                        <input type="text"
+                                            class="input js-mytooltip form-control input-table commanumber @error('') is-invalid @enderror"
+                                            value="{{ $fee_type->consultant_num }}" name="fee_consultant_num[]" id="ef_AnalystNoc1" max="100" data-type="currency"
+                                            data-mytooltip-content="<i>Includes in depth needs analysis (i.e. surveys, interviews, FGDs),
+                                            special research (i.e. to study client materials or client -required materials, industry
+                                            or function specific content), creation of client-specific learning aids/tools
+                                            (i.e. assessments, c</i>"
+                                            data-mytooltip-theme="dark" data-mytooltip-action="focus"
+                                            data-mytooltip-direction="bottom">
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control input-table commanumber @error('') is-invalid @enderror"
+                                            value="{{ $fee_type->hour_fee }}" name="fee_hour_fee[]" id="ef_AnalystHf" data-type="currency">
+                                    </td>
+                                    <td>
+                                        <input type="text"
+                                            class="input js-mytooltip form-control input-table commanumber @error('') is-invalid @enderror"
+                                            value="{{ $fee_type->hour_num }}" name="fee_hour_num[]" id="ef_AnalystNoh1" data-type="currency"
+                                            data-mytooltip-content="<i>Number of Hours</i>" data-mytooltip-theme="dark"
+                                            data-mytooltip-action="focus" data-mytooltip-direction="bottom">
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control input-table commanumber @error('') is-invalid @enderror"
+                                            value="{{ $fee_type->nswh }}" name="fee_nswh[]" id="ef_AnalystNwh1" data-type="currency">
+                                        <input type="text" class="nswh-percent-value" value="{{ old('') }}" name="nswh_percent[]" hidden>
+                                    </td>
+                                    <td class="total-td table-light">
+                                        <h4 class="text-center lead" id="analyst-total">-</h4>
+                                    </td>
+                                    <td class="total-td table-light">
+                                        <textarea class="form-control input-table @error('') is-invalid @enderror"
+                                            name="fee_notes[]" id="" rows="2" cols="55">{{ $fee_type->notes }}</textarea>
+                                    </td>
+                                    <td style="background-color: #FFFFFF;" class="border border-white"><a
+                                            href="javascript:void(0)" class="text-success font-18" title="Add"
+                                            id="addBtn2" onclick="$('#CeAddBtn2').trigger('click')"><i class="fa fa-plus"></i></a>
+                                    </td>
+                                </tr>
+                            @endif
+                        @endforeach
                     </tbody>
 
                     <tr class="">
@@ -193,62 +205,66 @@
                     </tr>
 
                     <tbody id="tableDesigner">
-                        <tr class="table-warning">
-                            <td class="title table-light">
-                                <input type="text" class="d-none" value="Designer" name="fee_type[]" readonly>
-                                Designer
-                            </td>
-                            <td>
-                                <input type="text"
-                                    class="input js-mytooltip form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="fee_consultant_num[]" id="ef_DesignerNoc1" data-type="currency"
-                                    data-mytooltip-content="<i>Includes in depth needs analysis (i.e. surveys, interviews, FGDs),
-                                        special research (i.e. to study client materials or client -required materials, industry
-                                        or function specific content), creation of client-specific learning aids/tools
-                                        (i.e. assessments, c</i>"
-                                    data-mytooltip-theme="dark" data-mytooltip-action="focus"
-                                    data-mytooltip-direction="bottom">
-                            </td>
-                            <td>
-                                <fieldset>
-                                    <select class="input js-mytooltip form-select @error('') is-invalid @enderror select"
-                                        name="fee_hour_fee[]" id="ef_DesignerHf"
-                                        data-mytooltip-content="<i>Consulting - &#8369;6,000 - Consultants<br>
-                                            &#8369;8,000 - Senior Consultants</i>"
-                                        data-mytooltip-theme="dark" data-mytooltip-action="focus"
-                                        data-mytooltip-direction="right" style="background-color:#ffcccc; color:red;">
-                                        <option value="₱6000" {{ old('') == '₱6000' ? 'selected="selected"' : '' }}>
-                                            &#8369;6,000
-                                        </option>
-                                        <option value="₱8000" {{ old('') == '₱8000' ? 'selected="selected"' : '' }}>
-                                            &#8369;8,000
-                                        </option>
-                                    </select>
-                                    @error('')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </fieldset>
-                            </td>
-                            <td>
-                                <input type="text" class="input js-mytooltip form-control input-table commanumber @error('') is-invalid @enderror" value="{{ old('') }}" name="fee_hour_num[]" id="ef_DesignerNoh1" data-type="currency" data-mytooltip-content="<i>Number of Hours</i>" data-mytooltip-theme="dark" data-mytooltip-action="focus" data-mytooltip-direction="bottom">
-                            </td>
-                            <td>
-                                <input type="text" class="form-control input-table commanumber @error('') is-invalid @enderror" value="{{ old('') }}" name="fee_nswh[]" id="ef_DesignerNwh1" data-type="currency">
-                                <input type="text" class="nswh-percent-value" name="nswh_percent[]" hidden>
-                            </td>
-                            <td class="table-light total-td" style="background-color: rgba(146, 146, 146, 0.727)">
-                                <h4 class="text-center" id="subtotal-design">-</h4>
-                            </td>
-                            <td class="table-light total-td">
-                                <textarea class="form-control input-table @error('') is-invalid @enderror" name="fee_notes[]" id="" rows="2" cols="55"></textarea>
-                            </td>
-                            <td style="background-color: #FFFFFF;" class="border border-white"><a
-                                    href="javascript:void(0)" class="text-success font-18" title="Add"
-                                    id="addBtn3" onclick="$('#CeAddBtn3').trigger('click')"><i class="fa fa-plus"></i></a>
-                            </td>
-                        </tr>
+                        @foreach ($data2 as $key=>$fee_type)
+                            @if ($fee_type->type === 'Designer')
+                                <tr class="table-warning">
+                                    <td class="title table-light">
+                                        <input type="text" class="d-none" value="{{ $fee_type->type }}" name="fee_type[]" readonly>
+                                        {{ $fee_type->type }}
+                                    </td>
+                                    <td>
+                                        <input type="text"
+                                            class="input js-mytooltip form-control input-table commanumber @error('') is-invalid @enderror"
+                                            value="{{ $fee_type->consultant_num }}" name="fee_consultant_num[]" id="ef_DesignerNoc1" data-type="currency"
+                                            data-mytooltip-content="<i>Includes in depth needs analysis (i.e. surveys, interviews, FGDs),
+                                                special research (i.e. to study client materials or client -required materials, industry
+                                                or function specific content), creation of client-specific learning aids/tools
+                                                (i.e. assessments, c</i>"
+                                            data-mytooltip-theme="dark" data-mytooltip-action="focus"
+                                            data-mytooltip-direction="bottom">
+                                    </td>
+                                    <td>
+                                        <fieldset>
+                                            <select class="input js-mytooltip form-select @error('') is-invalid @enderror select"
+                                                name="fee_hour_fee[]" id="ef_DesignerHf"
+                                                data-mytooltip-content="<i>Consulting - &#8369;6,000 - Consultants<br>
+                                                    &#8369;8,000 - Senior Consultants</i>"
+                                                data-mytooltip-theme="dark" data-mytooltip-action="focus"
+                                                data-mytooltip-direction="right" style="background-color:#ffcccc; color:red;">
+                                                <option value="6000" {{ $fee_type->hour_fee == '6000' ? 'selected="selected"' : '' }}>
+                                                    &#8369;6,000
+                                                </option>
+                                                <option value="8000" {{ $fee_type->hour_fee == '8000' ? 'selected="selected"' : '' }}>
+                                                    &#8369;8,000
+                                                </option>
+                                            </select>
+                                            @error('')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </fieldset>
+                                    </td>
+                                    <td>
+                                        <input type="text" class="input js-mytooltip form-control input-table commanumber @error('') is-invalid @enderror" value="{{ $fee_type->hour_num }}" name="fee_hour_num[]" id="ef_DesignerNoh1" data-type="currency" data-mytooltip-content="<i>Number of Hours</i>" data-mytooltip-theme="dark" data-mytooltip-action="focus" data-mytooltip-direction="bottom">
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control input-table commanumber @error('') is-invalid @enderror" value="{{ $fee_type->nswh }}" name="fee_nswh[]" id="ef_DesignerNwh1" data-type="currency">
+                                        <input type="text" class="nswh-percent-value" name="nswh_percent[]" hidden>
+                                    </td>
+                                    <td class="table-light total-td" style="background-color: rgba(146, 146, 146, 0.727)">
+                                        <h4 class="text-center" id="subtotal-design">-</h4>
+                                    </td>
+                                    <td class="table-light total-td">
+                                        <textarea class="form-control input-table @error('') is-invalid @enderror" name="fee_notes[]" id="" rows="2" cols="55">{{ $fee_type->notes }}</textarea>
+                                    </td>
+                                    <td style="background-color: #FFFFFF;" class="border border-white"><a
+                                            href="javascript:void(0)" class="text-success font-18" title="Add"
+                                            id="addBtn3" onclick="$('#CeAddBtn3').trigger('click')"><i class="fa fa-plus"></i></a>
+                                    </td>
+                                </tr>
+                            @endif
+                        @endforeach
                     </tbody>
                 <!------------------- END ----------------------->
 
@@ -266,204 +282,220 @@
                     </tr>
 
                     <tbody id="tableLeadfaci">
-                        <tr class="table-warning">
-                            <td class="title table-light">
-                                <input type="text" class="d-none" value="Lead Facilitator" name="fee_type[]" readonly>
-                                Lead Facilitator</td>
-                            <td>
-                                <input type="text" class="form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="fee_consultant_num[]" id="ef_LeadfacilitatorNoc1" data-type="currency">
-                            </td>
-                            <td>
-                                <div class="form-group has-icon-right mb-0" id="inputLeadfaci1" style="display:none">
-                                    <div class="position-relative">
-                                        <input type="text" class="form-control input-table commanumber @error('') is-invalid @enderror" value="{{ old('') }}"
-                                            name="fee_hour_fee[]" id="ef_InputLeadFaciHf1" data-type="currency" disabled>
-                                        <div class="form-control-icon">
-                                            <a href="javascript:void(0)" class="deleteIcon" id="deleteIcon1">
-                                                <i class="fa-solid fa-square-xmark text-danger"></i>
-                                            </a>
+                        @foreach ($data2 as $key=>$fee_type)
+                            @if ($fee_type->type === 'Lead Facilitator')
+                                <tr class="table-warning">
+                                    <td class="title table-light">
+                                        <input type="text" class="d-none" value="{{ $fee_type->type }}" name="fee_type[]" readonly>
+                                        {{ $fee_type->type }}
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control input-table commanumber @error('') is-invalid @enderror"
+                                            value="{{ $fee_type->consultant_num }}" name="fee_consultant_num[]" id="ef_LeadfacilitatorNoc1" data-type="currency">
+                                    </td>
+                                    <td>
+                                        <div class="form-group has-icon-right mb-0" id="inputLeadfaci1" style="display:none">
+                                            <div class="position-relative">
+                                                <input type="text" class="form-control input-table commanumber @error('') is-invalid @enderror" value="{{ $fee_type->hour_fee }}"
+                                                    name="fee_hour_fee[]" id="ef_InputLeadFaciHf1" data-type="currency" disabled>
+                                                <div class="form-control-icon">
+                                                    <a href="javascript:void(0)" class="deleteIcon" id="deleteIcon1">
+                                                        <i class="fa-solid fa-square-xmark text-danger"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
 
-                                <fieldset>
-                                    <select
-                                        class="input js-mytooltip form-select engagement-fee @error('') is-invalid @enderror select"
-                                        name="fee_hour_fee[]" id="ef_LeadfacilitatorHf1"
-                                        data-mytooltip-content="<i>&#8369;10,000 - For Key Accounts w/ 2021 contract <br>
-                                            &#8369;11,000 - For Key Accounts with minimum guaranteed 50 sessions w/in 6 months <br>
-                                            &#8369;12,000 - all else</i>"
-                                        data-mytooltip-theme="dark" data-mytooltip-action="focus"
-                                        data-mytooltip-direction="right" style="background-color:#ffcccc; color:red;">
-                                        <option value="₱10,000" {{ old('') == '₱10,000' ? 'selected="selected"' : '' }}>
-                                            &#8369;10,000
-                                        </option>
-                                        <option value="₱11,000" {{ old('') == '₱11,000' ? 'selected="selected"' : '' }}>
-                                            &#8369;11,000
-                                        </option>
-                                        <option value="₱12,000" {{ old('') == '₱12,000' ? 'selected="selected"' : '' }}
-                                            selected>
-                                            &#8369;12,000
-                                        </option>
-                                        <option value="others" {{ old('') == 'others' ? 'selected="selected"' : '' }}
-                                        id="others1" onclick="document.getElementById('ef_InputLeadFaciHf1').focus()">
-                                            Others
-                                        </option>
-                                    </select>
+                                        <fieldset>
+                                            <select
+                                                class="input js-mytooltip form-select engagement-fee @error('') is-invalid @enderror select"
+                                                name="fee_hour_fee[]" id="ef_LeadfacilitatorHf1"
+                                                data-mytooltip-content="<i>&#8369;10,000 - For Key Accounts w/ 2021 contract <br>
+                                                    &#8369;11,000 - For Key Accounts with minimum guaranteed 50 sessions w/in 6 months <br>
+                                                    &#8369;12,000 - all else</i>"
+                                                data-mytooltip-theme="dark" data-mytooltip-action="focus"
+                                                data-mytooltip-direction="right" style="background-color:#ffcccc; color:red;">
+                                                <option value="10000" {{ $fee_type->hour_fee == '10000' ? 'selected="selected"' : '' }}>
+                                                    &#8369;10,000
+                                                </option>
+                                                <option value="11000" {{ $fee_type->hour_fee == '11000' ? 'selected="selected"' : '' }}>
+                                                    &#8369;11,000
+                                                </option>
+                                                <option value="12000" {{ $fee_type->hour_fee == '12000' ? 'selected="selected"' : '' }} selected>
+                                                    &#8369;12,000
+                                                </option>
+                                                <option value="others" {{ $fee_type->hour_fee == 'others' ? 'selected="selected"' : '' }}
+                                                id="others1" onclick="document.getElementById('ef_InputLeadFaciHf1').focus()">
+                                                    Others
+                                                </option>
+                                            </select>
 
-                                    @error('ef_customFee')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </fieldset>
-                            </td>
-                            <td>
-                                <input type="text"
-                                    class="input js-mytooltip form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="fee_hour_num[]" id="ef_LeadfacilitatorNoh1" data-type="currency"
-                                    data-mytooltip-content="<i>Number of Hours</i>" data-mytooltip-theme="dark"
-                                    data-mytooltip-action="focus" data-mytooltip-direction="bottom">
-                            </td>
-                            <td>
-                                <input type="text" class="form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="fee_nswh[]" id="ef_LeadfacilitatorNwh1" data-type="currency">
-                                <input type="text" class="nswh-percent-value" name="nswh_percent[]" hidden>
-                            </td>
-                            <td class="table-light total-td">
-                                <h4 class="text-center lead" id="subtotal-lead">-</h4>
-                            </td>
-                            <td class="table-light total-td">
-                                <textarea class="form-control input-table @error('') is-invalid @enderror"
-                                    name="fee_notes[]" id="" rows="2" cols="55"></textarea>
-                            </td>
-                            <td style="background-color: #FFFFFF;" class="border border-white"><a
-                                    href="javascript:void(0)" class="text-success font-18" title="Add"
-                                    id="addBtn4" onclick="$('#CeAddBtn4').trigger('click')"><i class="fa fa-plus"></i></a>
-                            </td>
-                        </tr>
+                                            @error('ef_customFee')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </fieldset>
+                                    </td>
+                                    <td>
+                                        <input type="text"
+                                            class="input js-mytooltip form-control input-table commanumber @error('') is-invalid @enderror"
+                                            value="{{ $fee_type->hour_num }}" name="fee_hour_num[]" id="ef_LeadfacilitatorNoh1" data-type="currency"
+                                            data-mytooltip-content="<i>Number of Hours</i>" data-mytooltip-theme="dark"
+                                            data-mytooltip-action="focus" data-mytooltip-direction="bottom">
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control input-table commanumber @error('') is-invalid @enderror"
+                                            value="{{ $fee_type->nswh }}" name="fee_nswh[]" id="ef_LeadfacilitatorNwh1" data-type="currency">
+                                        <input type="text" class="nswh-percent-value" name="nswh_percent[]" hidden>
+                                    </td>
+                                    <td class="table-light total-td">
+                                        <h4 class="text-center lead" id="subtotal-lead">-</h4>
+                                    </td>
+                                    <td class="table-light total-td">
+                                        <textarea class="form-control input-table @error('') is-invalid @enderror"
+                                            name="fee_notes[]" id="" rows="2" cols="55">{{  $fee_type->notes }}</textarea>
+                                    </td>
+                                    <td style="background-color: #FFFFFF;" class="border border-white"><a
+                                            href="javascript:void(0)" class="text-success font-18" title="Add"
+                                            id="addBtn4" onclick="$('#CeAddBtn4').trigger('click')"><i class="fa fa-plus"></i></a>
+                                    </td>
+                                </tr>
+                            @endif
+                        @endforeach
                     </tbody>
 
                     <tbody id="tableCofaci">
-                        <tr class="table-warning">
-                            <td class="title table-light">
-                                <input type="text" class="d-none" value="Co-facilitator / Resource Speaker" name="fee_type[]" readonly>
-                                Co-facilitator / Resource Speaker
-                            </td>
-                            <td>
-                                <input type="text" class="form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="fee_consultant_num[]" id="ef_CofaciNoc1" data-type="currency">
-                            </td>
-                            <td>
-                                <input type="text" class="form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="fee_hour_fee[]" id="ef_CofaciHf" data-type="currency">
-                            </td>
-                            <td>
-                                <input type="text"
-                                    class="input js-mytooltip form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="fee_hour_num[]" id="ef_CofaciNoh1" data-type="currency"
-                                    data-mytooltip-content="<i>Number of Hours</i>" data-mytooltip-theme="dark"
-                                    data-mytooltip-action="focus" data-mytooltip-direction="bottom">
-                            </td>
-                            <td>
-                                <input type="text" class="form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="fee_nswh[]" id="ef_CofaciNwh1" data-type="currency">
-                                <input type="text" class="nswh-percent-value" name="nswh_percent[]" hidden>
-                            </td>
-                            <td class="table-light total-td">
-                                <h4 class="text-center lead" id="subtotal-coFacilitator">-</h4>
-                            </td>
-                            <td class="table-light total-td">
-                                <textarea class="form-control input-table @error('') is-invalid @enderror"
-                                    name="fee_notes[]" id="" rows="2" cols="55"></textarea>
-                            </td>
-                            <td style="background-color: #FFFFFF;" class="border border-white"><a
-                                    href="javascript:void(0)" class="text-success font-18" title="Add"
-                                    id="addBtn5" onclick="$('#CeAddBtn5').trigger('click')"><i class="fa fa-plus"></i></a>
-                            </td>
-                        </tr>
+                        @foreach ($data2 as $key=>$fee_type)
+                            @if ($fee_type->type === 'Co-facilitator / Resource Speaker')
+                                <tr class="table-warning">
+                                    <td class="title table-light">
+                                        <input type="text" class="d-none" value="{{ $fee_type->type }}" name="fee_type[]" readonly>
+                                        {{ $fee_type->type }}
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control input-table commanumber @error('') is-invalid @enderror"
+                                            value="{{ $fee_type->consultant_num }}" name="fee_consultant_num[]" id="ef_CofaciNoc1" data-type="currency">
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control input-table commanumber @error('') is-invalid @enderror"
+                                            value="{{ $fee_type->hour_fee }}" name="fee_hour_fee[]" id="ef_CofaciHf" data-type="currency">
+                                    </td>
+                                    <td>
+                                        <input type="text"
+                                            class="input js-mytooltip form-control input-table commanumber @error('') is-invalid @enderror"
+                                            value="{{ $fee_type->hour_num }}" name="fee_hour_num[]" id="ef_CofaciNoh1" data-type="currency"
+                                            data-mytooltip-content="<i>Number of Hours</i>" data-mytooltip-theme="dark"
+                                            data-mytooltip-action="focus" data-mytooltip-direction="bottom">
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control input-table commanumber @error('') is-invalid @enderror"
+                                            value="{{ $fee_type->nswh }}" name="fee_nswh[]" id="ef_CofaciNwh1" data-type="currency">
+                                        <input type="text" class="nswh-percent-value" name="nswh_percent[]" hidden>
+                                    </td>
+                                    <td class="table-light total-td">
+                                        <h4 class="text-center lead" id="subtotal-coFacilitator">-</h4>
+                                    </td>
+                                    <td class="table-light total-td">
+                                        <textarea class="form-control input-table @error('') is-invalid @enderror"
+                                            name="fee_notes[]" id="" rows="2" cols="55">{{ $fee_type->notes }}</textarea>
+                                    </td>
+                                    <td style="background-color: #FFFFFF;" class="border border-white"><a
+                                            href="javascript:void(0)" class="text-success font-18" title="Add"
+                                            id="addBtn5" onclick="$('#CeAddBtn5').trigger('click')"><i class="fa fa-plus"></i></a>
+                                    </td>
+                                </tr>
+                            @endif
+                        @endforeach
                     </tbody>
 
                     <tbody id="tableModerator">
                         <tr class="table-warning">
-                            <td class="title table-light">
-                                <input type="text" class="d-none" value="Moderator" name="fee_type[]" readonly>
-                                Moderator
-                            </td>
-                            <td>
-                                <input type="text" class="form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="fee_consultant_num[]" id="ef_ModeratorNoc1" data-type="currency">
-                            </td>
-                            <td>
-                                <input type="text" class="form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="fee_hour_fee[]" id="ef_ModeratorHf"
-                                    data-type="currency">
-                            </td>
-                            <td>
-                                <input type="text"
-                                    class="input js-mytooltip form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="fee_hour_num[]" id="ef_ModeratorNoh1" data-type="currency"
-                                    data-mytooltip-content="<i>Number of Hours</i>" data-mytooltip-theme="dark"
-                                    data-mytooltip-action="focus" data-mytooltip-direction="bottom">
-                            </td>
-                            <td>
-                                <input type="text" class="form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="fee_nswh[]" id="ef_ModeratorNwh1" data-type="currency">
-                                <input type="text" class="nswh-percent-value" name="nswh_percent[]" hidden>
-                            </td>
-                            <td class="table-light total-td">
-                                <h4 class="text-center lead" id="subtotal-moderator">-</h4>
-                            </td>
-                            <td class="table-light total-td">
-                                <textarea class="form-control input-table @error('') is-invalid @enderror"
-                                    name="fee_notes[]" id="" rows="2" cols="55"></textarea>
-                            </td>
-                            <td style="background-color: #FFFFFF;" class="border border-white"><a
-                                    href="javascript:void(0)" class="text-success font-18" title="Add"
-                                    id="addBtn6" onclick="$('#CeAddBtn6').trigger('click')"><i class="fa fa-plus"></i></a>
-                            </td>
-                        </tr>
+                            @foreach ($data2 as $key=>$fee_type)
+                                @if ($fee_type->type === 'Moderator')
+                                    <td class="title table-light">
+                                        <input type="text" class="d-none" value="{{ $fee_type->type }}" name="fee_type[]" readonly>
+                                        {{ $fee_type->type }}
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control input-table commanumber @error('') is-invalid @enderror"
+                                            value="{{ $fee_type->consultant_num }}" name="fee_consultant_num[]" id="ef_ModeratorNoc1" data-type="currency">
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control input-table commanumber @error('') is-invalid @enderror"
+                                            value="{{ $fee_type->hour_fee }}" name="fee_hour_fee[]" id="ef_ModeratorHf"
+                                            data-type="currency">
+                                    </td>
+                                    <td>
+                                        <input type="text"
+                                            class="input js-mytooltip form-control input-table commanumber @error('') is-invalid @enderror"
+                                            value="{{ $fee_type->hour_num }}" name="fee_hour_num[]" id="ef_ModeratorNoh1" data-type="currency"
+                                            data-mytooltip-content="<i>Number of Hours</i>" data-mytooltip-theme="dark"
+                                            data-mytooltip-action="focus" data-mytooltip-direction="bottom">
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control input-table commanumber @error('') is-invalid @enderror"
+                                            value="{{ $fee_type->nswh }}" name="fee_nswh[]" id="ef_ModeratorNwh1" data-type="currency">
+                                        <input type="text" class="nswh-percent-value" name="nswh_percent[]" hidden>
+                                    </td>
+                                    <td class="table-light total-td">
+                                        <h4 class="text-center lead" id="subtotal-moderator">-</h4>
+                                    </td>
+                                    <td class="table-light total-td">
+                                        <textarea class="form-control input-table @error('') is-invalid @enderror"
+                                            name="fee_notes[]" id="" rows="2" cols="55">{{ $fee_type->notes }}</textarea>
+                                    </td>
+                                    <td style="background-color: #FFFFFF;" class="border border-white"><a
+                                            href="javascript:void(0)" class="text-success font-18" title="Add"
+                                            id="addBtn6" onclick="$('#CeAddBtn6').trigger('click')"><i class="fa fa-plus"></i></a>
+                                    </td>
+                                </tr>
+                            @endif
+                        @endforeach
                     </tbody>
 
                     <tbody id="tableProducer">
-                        <tr class="table-warning">
-                            <td class="title table-light">
-                                <input type="text" class="d-none" value="Producer" name="fee_type[]" readonly>
-                                Producer
-                            </td>
-                            <td>
-                                <input type="text" class="form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="fee_consultant_num[]" id="ef_ProducerNoc1" data-type="currency">
-                            </td>
-                            <td>
-                                <input type="text" class="form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="fee_hour_fee[]" id="ef_ProducerHf" data-type="currency">
-                            </td>
-                            <td>
-                                <input type="text"
-                                    class="input js-mytooltip form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="fee_hour_num[]" id="ef_ProducerNoh1" data-type="currency"
-                                    data-mytooltip-content="<i>Number of Hours</i>" data-mytooltip-theme="dark"
-                                    data-mytooltip-action="focus" data-mytooltip-direction="bottom">
-                            </td>
-                            <td>
-                                <input type="text" class="form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="fee_nswh[]" id="ef_ProducerNwh1" data-type="currency">
-                                <input type="text" class="nswh-percent-value" name="nswh_percent[]" hidden>
-                            </td>
-                            <td class="table-light total-td">
-                                <h4 class="text-center lead" id="subtotal-producer">-</h4>
-                            </td>
-                            <td class="table-light total-td">
-                                <textarea class="form-control input-table @error('') is-invalid @enderror"
-                                    name="fee_notes[]" id="" rows="2" cols="55"></textarea>
-                            </td>
-                            <td style="background-color: #FFFFFF;" class="border border-white"><a
-                                    href="javascript:void(0)" class="text-success font-18" title="Add"
-                                    id="addBtn7" onclick="$('#CeAddBtn7').trigger('click')"><i class="fa fa-plus"></i></a>
-                            </td>
-                        </tr>
+                        @foreach ($data2 as $key=>$fee_type)
+                            @if ($fee_type->type === 'Producer')
+                                <tr class="table-warning">
+                                    <td class="title table-light">
+                                        <input type="text" class="d-none" value="{{ $fee_type->type }}" name="fee_type[]" readonly>
+                                        {{ $fee_type->type }}
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control input-table commanumber @error('') is-invalid @enderror"
+                                            value="{{ $fee_type->consultant_num }}" name="fee_consultant_num[]" id="ef_ProducerNoc1" data-type="currency">
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control input-table commanumber @error('') is-invalid @enderror"
+                                            value="{{ $fee_type->hour_fee }}" name="fee_hour_fee[]" id="ef_ProducerHf" data-type="currency">
+                                    </td>
+                                    <td>
+                                        <input type="text"
+                                            class="input js-mytooltip form-control input-table commanumber @error('') is-invalid @enderror"
+                                            value="{{ $fee_type->hour_num }}" name="fee_hour_num[]" id="ef_ProducerNoh1" data-type="currency"
+                                            data-mytooltip-content="<i>Number of Hours</i>" data-mytooltip-theme="dark"
+                                            data-mytooltip-action="focus" data-mytooltip-direction="bottom">
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control input-table commanumber @error('') is-invalid @enderror"
+                                            value="{{ $fee_type->nswh }}" name="fee_nswh[]" id="ef_ProducerNwh1" data-type="currency">
+                                        <input type="text" class="nswh-percent-value" name="nswh_percent[]" hidden>
+                                    </td>
+                                    <td class="table-light total-td">
+                                        <h4 class="text-center lead" id="subtotal-producer">-</h4>
+                                    </td>
+                                    <td class="table-light total-td">
+                                        <textarea class="form-control input-table @error('') is-invalid @enderror"
+                                            name="fee_notes[]" id="" rows="2" cols="55">{{ $fee_type->notes }}</textarea>
+                                    </td>
+                                    <td style="background-color: #FFFFFF;" class="border border-white"><a
+                                            href="javascript:void(0)" class="text-success font-18" title="Add"
+                                            id="addBtn7" onclick="$('#CeAddBtn7').trigger('click')"><i class="fa fa-plus"></i></a>
+                                    </td>
+                                </tr>
+                            @endif
+                        @endforeach
                     </tbody>
 
                     <tr class="">
@@ -494,44 +526,48 @@
                     </tr>
 
                     <tbody id="tableDocumentor">
-                        <tr class="table-warning">
-                            <td class="table-light title">
-                                <input type="text" class="d-none" value="Documentor" name="fee_type[]" readonly>
-                                Documentor
-                            </td>
-                            <td>
-                                <input type="text" class="form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="fee_consultant_num[]" id="ef_DocumentorNoc1" data-type="currency">
-                            </td>
-                            <td>
-                                <input type="text" class="form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="fee_hour_fee[]" id="ef_DocumentorHf"
-                                    data-type="currency">
-                            </td>
-                            <td>
-                                <input type="text"
-                                    class="input js-mytooltip form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="fee_hour_num[]" id="ef_DocumentorNoh1" data-type="currency"
-                                    data-mytooltip-content="<i>Number of Hours</i>" data-mytooltip-theme="dark"
-                                    data-mytooltip-action="focus" data-mytooltip-direction="bottom">
-                            </td>
-                            <td>
-                                <input type="text" class="form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="fee_nswh[]" id="ef_DocumentorNwh1" data-type="currency">
-                                <input type="text" class="nswh-percent-value" name="nswh_percent[]" hidden>
-                            </td>
-                            <td class="table-light total-td" style="background-color: rgba(146, 146, 146, 0.727">
-                                <h4 class="text-center" id="subtotal-documentor">-</h4>
-                            </td>
-                            <td class="table-light total-td">
-                                <textarea class="form-control input-table @error('') is-invalid @enderror"
-                                    name="fee_notes[]" id="" rows="2" cols="55"></textarea>
-                            </td>
-                            <td style="background-color: #FFFFFF;" class="border border-white"><a
-                                    href="javascript:void(0)" class="text-success font-18" title="Add"
-                                    id="addBtn8" onclick="$('#CeAddBtn8').trigger('click')"><i class="fa fa-plus"></i></a>
-                            </td>
-                        </tr>
+                        @foreach ($data2 as $key=>$fee_type)
+                            @if ($fee_type->type === 'Documentor')
+                                <tr class="table-warning">
+                                    <td class="table-light title">
+                                        <input type="text" class="d-none" value="{{ $fee_type->type }}" name="fee_type[]" readonly>
+                                        {{ $fee_type->type }}
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control input-table commanumber @error('') is-invalid @enderror"
+                                            value="{{ $fee_type->consultant_num }}" name="fee_consultant_num[]" id="ef_DocumentorNoc1" data-type="currency">
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control input-table commanumber @error('') is-invalid @enderror"
+                                            value="{{ $fee_type->hour_fee }}" name="fee_hour_fee[]" id="ef_DocumentorHf"
+                                            data-type="currency">
+                                    </td>
+                                    <td>
+                                        <input type="text"
+                                            class="input js-mytooltip form-control input-table commanumber @error('') is-invalid @enderror"
+                                            value="{{ $fee_type->hour_num }}" name="fee_hour_num[]" id="ef_DocumentorNoh1" data-type="currency"
+                                            data-mytooltip-content="<i>Number of Hours</i>" data-mytooltip-theme="dark"
+                                            data-mytooltip-action="focus" data-mytooltip-direction="bottom">
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control input-table commanumber @error('') is-invalid @enderror"
+                                            value="{{ $fee_type->nswh }}" name="fee_nswh[]" id="ef_DocumentorNwh1" data-type="currency">
+                                        <input type="text" class="nswh-percent-value" name="nswh_percent[]" hidden>
+                                    </td>
+                                    <td class="table-light total-td" style="background-color: rgba(146, 146, 146, 0.727">
+                                        <h4 class="text-center" id="subtotal-documentor">-</h4>
+                                    </td>
+                                    <td class="table-light total-td">
+                                        <textarea class="form-control input-table @error('') is-invalid @enderror"
+                                            name="fee_notes[]" id="" rows="2" cols="55">{{ $fee_type->notes }}</textarea>
+                                    </td>
+                                    <td style="background-color: #FFFFFF;" class="border border-white"><a
+                                            href="javascript:void(0)" class="text-success font-18" title="Add"
+                                            id="addBtn8" onclick="$('#CeAddBtn8').trigger('click')"><i class="fa fa-plus"></i></a>
+                                    </td>
+                                </tr>
+                            @endif
+                        @endforeach
                     </tbody>
                 <!------------------- END ----------------------->
 
@@ -550,32 +586,36 @@
                         <td class="overall-total-end"></td>
                     </tr>
 
-                    <tr class="table-active">
-                        <td class="table-light fw-bold text-dark text-uppercase fst-italic overall-total-start">
-                            <input type="text" class="d-none" value="Discounts" name="fee_type[]" readonly>
-                            <b>Discount given (if any)</b>
-                        </td>
-                        <td class="overall-total-middle">
-                            <input type="text" class="d-none" value=" " name="fee_consultant_num[]" readonly>
-                        </td>
-                        <td class="overall-total-middle table-warning">
-                            <input type="text"
-                                class="hf-c32 form-control input-table text-center @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="fee_hour_fee[]" id="input-discount" readonly>
-                        </td>
-                        <td class="overall-total-middle">
-                            <input type="text" class="d-none" value=" " name="fee_hour_num[]" readonly>
-                        </td>
-                        <td class="overall-total-middle">
-                            <input type="text" class="d-none" value=" " name="fee_nswh[]" readonly>
-                        <input type="text" class="" value=" " name="nswh_percent[]" hidden>
-                        </td>
-                        <td class="overall-total-end"></td>
-                        <td class="overall-total-end">
-                            <textarea class="form-control input-table @error('') is-invalid @enderror"
-                                name="fee_notes[]" id="" rows="2" cols="55"></textarea>
-                        </td>
-                    </tr>
+                    @foreach ($data2 as $key=>$fee_type )
+                        @if ($fee_type->type === 'Discounts')
+                            <tr class="table-active">
+                                <td class="table-light fw-bold text-dark text-uppercase fst-italic overall-total-start">
+                                    <input type="text" class="d-none" value="{{ $fee_type->type }}" name="fee_type[]" readonly>
+                                    <b>Discount given (if any)</b>
+                                </td>
+                                <td class="overall-total-middle">
+                                    <input type="text" class="d-none" value=" " name="fee_consultant_num[]" readonly>
+                                </td>
+                                <td class="overall-total-middle table-warning">
+                                    <input type="text"
+                                        class="hf-c32 form-control input-table text-center @error('') is-invalid @enderror"
+                                        value="{{ $fee_type->hour_fee }}" name="fee_hour_fee[]" id="input-discount" readonly>
+                                </td>
+                                <td class="overall-total-middle">
+                                    <input type="text" class="d-none" value=" " name="fee_hour_num[]" readonly>
+                                </td>
+                                <td class="overall-total-middle">
+                                    <input type="text" class="d-none" value=" " name="fee_nswh[]" readonly>
+                                <input type="text" class="" value=" " name="nswh_percent[]" hidden>
+                                </td>
+                                <td class="overall-total-end"></td>
+                                <td class="overall-total-end">
+                                    <textarea class="form-control input-table @error('') is-invalid @enderror"
+                                        name="fee_notes[]" id="" rows="2" cols="55"></textarea>
+                                </td>
+                            </tr>
+                        @endif
+                    @endforeach
 
                     <tr class="table-active">
                         <td class="table-light fw-bold text-uppercase text-dark fst-italic overall-total-start">

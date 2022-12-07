@@ -1,6 +1,7 @@
 @section('title', 'CUSTOMIZED RECORD')
 <link rel="shortcut icon" type="image/png" href="{{ URL::to('assets/images/logo/logo.png') }}">
 <link rel="stylesheet" href="{{ URL::to('css/custom.css') }}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 @extends('layouts.master')
 @section('menu')
     @extends('sidebar.dashboard')
@@ -30,7 +31,7 @@
             {!! Toastr::message() !!}
 
             <section class="section">
-                <div class="card mb-5 mt-5">
+                <div class="card mb-5 mt-5 h-75">
                     <div class="card-header col-12 d-flex justify-content-left mt-3 mb-3 mx-3">
                         <a class="btn btn-primary mt-2 mb-2" href="{{ route('form/customizedEngagement/new') }}">
                             <span><i class="fa-solid fa-file-circle-plus"></i> &nbsp; New Record</span>
@@ -39,10 +40,14 @@
                             <span><i class="fa-solid fa-file-circle-plus"></i> &nbsp; TEST SUB FEE</span>
                         </a>
                     </div>
+
                     <div class="card-body">
                         <table class="table table-striped" id="table1">
                             <thead>
                                 <tr class="text-dark">
+                                    <th hidden></th>
+                                    <th hidden></th>
+                                    <th></th>
                                     <th class="text-center">ID</th>
                                     <th class="text-center">STATUS</th>
                                     <th class="text-center">COMPANY NAME</th>
@@ -55,15 +60,21 @@
                                     <th class="text-center">Modify</th>
                                 </tr>
                             </thead>
+
                             <tbody>
+
                                 @foreach ($data as $key => $item)
+
                                     <tr>
                                         <td hidden class="ids">{{ $item->id }}</td>
                                         <td hidden class="budget_number">{{ $item->cstmzd_eng_form_id }}</td>
-                                        {{-- <input type="hidden" name="id" data-id="{{ $item->id }}">
-                                        <input type="hidden" name="cstmzd_eng_form_id" cstmzd-id="{{ $item->cstmzd_eng_form_id }}"> --}}
-                                        <td class="id text-center text-uppercase fw-bold">{{ $item->cstmzd_eng_form_id }}</td>
                                         <td class="text-center">
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal{{ $item->id }}">
+                                                <i class="fa-solid fa-plus"></i>
+                                            </button>
+                                        </td>
+                                        <td class="id text-center text-uppercase fw-bold">{{ $item->cstmzd_eng_form_id }}</td>
+                                        <td class="text-center fw-bold">
                                             <span id="status" class="badge">{{ $item->status }}</span>
                                             {{-- Automatic change the status color --}}
                                             <script>
@@ -86,19 +97,18 @@
                                                 });
                                             </script>
                                         </td>
-                                        <td class="name text-center fw-bold">{{ $item->client->company_name }}</td>
-                                        <td class="name text-center fw-bold">{{ $item->customized_type }}</td>
-                                        <td class="email text-center fw-bold">{{ $item->engagement_title }}</td>
-                                        <td class="fw-bold text-center">{{ $item->pax_number }}</td>
-                                        {{-- <td class="fw-bold text-center">{{ Str::limit(str_replace (array('[', '"', ']'), ' ' , $item->program_dates),'14') }}</td>
-                                        <td class="fw-bold text-center">{{ Str::limit(str_replace (array('[', '"', ']'), ' ' , $item->program_start_time),'10') }}</td> --}}
-                                        <td class="fw-bold text-center">
+                                        <td class="text-center fw-bold">{{ $item->client->company_name }}</td>
+                                        <td class="text-center fw-bold">{{ $item->customized_type }}</td>
+                                        <td class="text-center fw-bold">{{ $item->engagement_title }}</td>
+                                        <td class="text-center fw-bold">{{ $item->pax_number }}</td>
+                                        <td class="text-center fw-bold">
                                             @if($item->program_dates)
                                                 @foreach($item->program_dates as $dates)
                                                     {{$dates.', '}}
                                                 @endforeach
                                             @endif
                                         </td>
+
                                         <td class="fw-bold text-center">
                                             @if($item->program_start_time)
                                                 @foreach($item->program_start_time as $time)
@@ -106,21 +116,18 @@
                                                 @endforeach
                                             @endif
                                         </td>
-                                        <td class="fw-bold text-center">{{ \Carbon\Carbon::parse($item->created_at)->toFormattedDateString()}}</td>
-                                        <td class="text-center fw-bold text-center">
+
+                                        <td class="text-center fw-bold">{{ \Carbon\Carbon::parse($item->created_at)->toFormattedDateString()}}</td>
+
+                                        <td class="text-center fw-bold">
                                             <a href=".bd-example-modal-lg" data-toggle="modal" data-target=".bd-example-modal-lg">
                                                 <span class="badge bg-info"><i class="bi bi-person-plus-fill"></i></span>
                                             </a>
-                                            {{-- <button type="button" data-toggle="modal" data-target=".bd-example-modal-lg">
-                                                <span class="badge bg-info"><i class="bi bi-person-plus-fill"></i></span>
-                                            </button> --}}
+
                                             <a href="{{ url('form/customizedEngagement/detail/' . $item->cstmzd_eng_form_id) }}">
                                                 <span class="badge bg-success"><i class="bi bi-pencil-square"></i></span>
                                             </a>
-                                            {{-- <a href="{{ url('delete/' . $item->id) }}"
-                                                onclick="return confirm('Are you sure to want to delete {{$item->client->company_name}}?')"><span
-                                                    class="badge bg-danger"><i class="bi bi-trash"></i></span>
-                                            </a> --}}
+
                                             <a href="#" class="delete"  data-toggle="modal" data-target="#delete_estimate{{ $item->id }}">
                                                 <span class="badge bg-danger">
                                                     <i class="bi bi-trash"></i>
@@ -159,84 +166,102 @@
                                             <!-- END -->
                                         </td>
 
-                                    </tr>
-                                    <!-- BATCHES -->
-                                    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-lg">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                  <h5 class="modal-title">Add Batches</h5>
-                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                  </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="batch" id="batch">
-                                                        <div class="form-group row justify-content-center batches" id="batches">
-                                                            <div class="col-md-3">
-                                                                <label class="mb-2" for="formGroupClientInput">Client Name</label>
-                                                                <input class="input form-control @error('client_id') is-invalid @enderror" id="" name="" value="{{ $item->client->company_name }}" readonly>
-                                                                @error('client_id')
-                                                                    <span class="invalid-feedback" role="alert">
-                                                                        <strong>{{ $message }}</strong>
-                                                                    </span>
-                                                                @enderror
-                                                            </div>
-                                                            <div class="col-md-3">
-                                                                <label class="mb-2" for="formGroupBatchInput">Batch Name</label>
-                                                                <input type="text" class="form-control" id="formGroupBatchInput">
-                                                            </div>
-                                                            <div class="col-md-3">
-                                                                <label class="mb-2" for="formGroupSessionInput">Session</label>
-                                                                <input type="text" class="form-control" id="formGroupSessionInput">
-                                                            </div>
-                                                            <div class="col-md-2 mt-4 pt-3">
-                                                                <div class="form-group">
-                                                                    <input class="form-check-input" type="checkbox" id="gridCheck">
-                                                                    <label class="form-check-label" for="gridCheck">
-                                                                      Same Data
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-1 col-md-1">
-                                                                <div class="px-0">
-                                                                    <label class="fw-bold invisible overflow-hidden mb-3">Add</label>
-                                                                    <a href="javascript:void(0)" class="text-success font-18 px-0" title="Add"
-                                                                    id="addBatch"><i class="fa fa-plus"></i></a>
-                                                                </div>
-                                                            </div>
+                                        <td>
+                                            <div class="modal fade" id="exampleModal{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-lg">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title">Add Batches</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
                                                         </div>
-                                                    </div>
 
-                                                </div>
-                                                <div class="modal-footer">
-                                                  <button type="button" class="btn btn-primary">Save changes</button>
-                                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                        <div class="modal-body">
+                                                            @foreach ($data2 as $key => $item2)
+                                                                @if($item->id === $item2->customized_engagement_forms_id)
+                                                                    <div class="batch" id="batch">
+                                                                        <div class="form-group row justify-content-center batches" id="batches">
+                                                                            <div class="col-md-3">
+                                                                                <label class="mb-2" for="formGroupClientInput">Client Name</label>
+                                                                                <input class="input form-control @error('client_id') is-invalid @enderror" id="" name="" value="{{ $item2->customized_engagement_form->client->company_name }} {{ $item2->id }}" readonly>
+                                                                                @error('client_id')
+                                                                                    <span class="invalid-feedback" role="alert">
+                                                                                        <strong>{{ $message }}</strong>
+                                                                                    </span>
+                                                                                @enderror
+                                                                            </div>
+                                                                            <div class="col-md-3">
+                                                                                <label class="mb-2" for="formGroupBatchInput">Batch Name</label>
+                                                                                <input type="text" class="form-control" id="formGroupBatchInput" value="{{ $item2->batch_number }}">
+                                                                            </div>
+                                                                            <div class="col-md-3">
+                                                                                <label class="mb-2" for="formGroupSessionInput">Session</label>
+                                                                                <input type="text" class="form-control" id="formGroupSessionInput">
+                                                                            </div>
+                                                                            <div class="col-md-2 mt-4 pt-3">
+                                                                                <div class="form-group">
+                                                                                    <input class="form-check-input" type="checkbox" id="gridCheck">
+                                                                                    <label class="form-check-label" for="gridCheck">
+                                                                                    Same Data
+                                                                                    </label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-1 col-md-1">
+                                                                                <div class="px-0">
+                                                                                    <label class="fw-bold invisible overflow-hidden mb-3">Add</label>
+                                                                                    {{-- <a href="javascript:void(0)" class="text-success font-18 px-0" title="Add" id="addBatch">
+                                                                                        <i class="fa fa-plus"></i>
+                                                                                    </a> --}}
+                                                                                    <a href="{{ url('form/customizedEngagement/sub-fee/' . $item2->id) }}" class="text-success font-18 px-0" title="Add" id="edit">
+                                                                                        <i class="fa-regular fa-pen-to-square"></i>
+                                                                                    </a>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                @endif
+                                                            @endforeach
+                                                        </div>
+
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                        </div>
+
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
+                                        </td>
+
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>
                     </div>
+
                 </div>
             </section>
         </div>
-        <!------------ FOOTER ------------>
-        <footer>
-            <div class="footer clearfix mb-0 text-muted">
-                <div class="float-end">
-                    <p><script>document.write(new Date().getFullYear());</script> Copyright &copy MGT-STRAT</p>
-                </div>
-            </div>
-        </footer>
-    <!------------ END OF FOOTER ------------>
     </div>
 @endsection
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script>
+    $.ajax({
+        type: "method",
+        url: "url",
+        data: "data",
+        dataType: "dataType",
+        success: function (response) {
+
+        }
+    });
+</script>
 <script>
     $(document).on('click','.delete',function()
     {

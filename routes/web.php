@@ -103,6 +103,7 @@ Auth::routes();
 
     //-------SUB FEE-------//
     Route::get('form/customizedEngagement/sub-fee', [CustomizedEngagementController::class, 'formSubFee'])->middleware('auth')->name('form/customizedEngagement/sub-fee');
+    Route::get('form/customizedEngagement/sub-fee/{id}', [CustomizedEngagementController::class, 'editSubForm'])->middleware('auth')->name('form/customizedEngagement/sub-fee/{id}');
     });
 // ----------------------------- F2F engagement form ------------------------------//
     Route::get('form/f2f_engagement/index', [App\Http\Controllers\F2fEngagementController::class, 'index'])->middleware('auth')->name('form/f2f_engagement/index');

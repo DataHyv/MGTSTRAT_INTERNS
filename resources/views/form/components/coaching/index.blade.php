@@ -219,15 +219,6 @@
                 </div>
             </section>
         </div>
-        <!------------ FOOTER ------------>
-        <footer>
-            <div class="footer clearfix mb-0 text-muted">
-                <div class="float-end">
-                    <p><script>document.write(new Date().getFullYear());</script> Copyright &copy MGT-STRAT</p>
-                </div>
-            </div>
-        </footer>
-    <!------------ END OF FOOTER ------------>
     </div>
 @endsection
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>

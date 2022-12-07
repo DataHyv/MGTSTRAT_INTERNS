@@ -11,7 +11,7 @@ class Sub_fee extends Model
     public $timestamps = false;
     protected $fillable = [
         'client_id',
-        'cstmzd_eng_form_id',
+        'sub_informations_id',
         'batch_number',
         'session_number',
         'type',
@@ -26,5 +26,10 @@ class Sub_fee extends Model
     public function client()
     {
         return $this->belongsTo(Client::class);
+    }
+
+    public function sub_informations()
+    {
+        return $this->belongsTo(Sub_information::class);
     }
 }

@@ -10,6 +10,7 @@ use App\Models\Customized_engagement_form;
 use App\Models\Engagement_fee;
 use App\Models\Engagement_cost;
 use App\Models\Sub_fee;
+use App\Models\Sub_information;
 use DB;
 
 class CustomizedEngagementController extends Controller
@@ -26,6 +27,8 @@ class CustomizedEngagementController extends Controller
     public function viewRecord()
     {
         $data = Customized_engagement_form::with('client')->latest()->get();
+        $data2 = Sub_information::with('Customized_engagement_form')->latest()->get();
+        // $data2 = DB::table('sub_informations')->where('customized_engagement_form_id', $request->customized_engagement_forms)->count();
         $dataJoin1  = DB::table('customized_engagement_forms')
             ->join('engagement_fees', 'customized_engagement_forms.cstmzd_eng_form_id', '=', 'engagement_fees.cstmzd_eng_form_id')
             ->select('customized_engagement_forms.*', 'engagement_fees.*')
@@ -34,7 +37,7 @@ class CustomizedEngagementController extends Controller
             ->join('engagement_costs', 'customized_engagement_forms.cstmzd_eng_form_id', '=', 'engagement_costs.cstmzd_eng_form_id')
             ->select('customized_engagement_forms.*', 'engagement_costs.*')
             ->get();
-        return view('form.components.customized_engagement.ce_view_record',compact('data', 'dataJoin1', 'dataJoin2'));
+        return view('form.components.customized_engagement.ce_view_record',compact('data', 'dataJoin1', 'dataJoin2', 'data2'));
     }
 
     // view delete
@@ -145,8 +148,8 @@ class CustomizedEngagementController extends Controller
             $cstmzd_eng_form_id = $cstmzd_eng_form_id->cstmzd_eng_form_id;
             $client_id = DB::table('customized_engagement_forms')->orderBy('client_id','DESC')->select('client_id')->first();
             $client_id = $client_id->client_id;
-            // $clientId_sub_fee = DB::table('sub_fee')->orderBy('client_id','DESC')->select('client_id')->first();
-            // $client_id = $client_id->client_id;
+            $ce_id = DB::table('customized_engagement_forms')->orderBy('id','DESC')->select('id')->first();
+            $ce_id = $ce_id->id;
             $batch_number = DB::table('customized_engagement_forms')->orderBy('batch_number','DESC')->select('batch_number')->first();
             $batch_number = $batch_number->batch_number;
 
@@ -167,9 +170,19 @@ class CustomizedEngagementController extends Controller
                     }
 
                     for ($batch_count = 1; $batch_count <= $batch_number; $batch_count++) {
+
+                        $sub_information = new Sub_information();
+                        $sub_information['customized_engagement_forms_id']       = $ce_id;
+                        $sub_information['batch_number']                                = $batch_count;
+                        $sub_information['session_number']                              = $request->session_number;
+                        $sub_information->save();
+                        $sub_informations_id = DB::table('sub_informations')->orderBy('id','DESC')->select('id')->first();
+                        $sub_informations_id = $sub_informations_id->id;
+                        // Sub_fee::create($sub_fee);
+
                         foreach($request->fee_type as $key => $fee_types){
                             $sub_fee['type']                 = $fee_types;
-                            $sub_fee['cstmzd_eng_form_id']   = $cstmzd_eng_form_id;
+                            $sub_fee['sub_informations_id']   = $sub_informations_id;
                             $sub_fee['client_id']            = $client_id;
                             $sub_fee['batch_number']         = $batch_count;
                             $sub_fee['session_number']       = $request->session_number;
@@ -322,5 +335,33 @@ class CustomizedEngagementController extends Controller
         // $data = DB::table('customized_engagement_forms')->where('client_id', $request->client)->count();
         // return view('form.components.customized_engagement.add.customized_engagement', compact('companyList', 'data'));
         return view('form.components.customized_engagement.sub_fee.customized_engagement');
+    }
+
+    public function editSubForm($id)
+    {
+        $data = Sub_information::find($id);
+        $data2 = DB::table('sub_informations')
+        ->join('sub_fees', 'sub_informations.id', '=', 'sub_fees.sub_informations_id')
+        ->select('sub_informations.*', 'sub_fees.*')
+        ->where('sub_fees.sub_informations_id',$id)
+        ->get();
+        // $data2 = Sub_fee::orderBy('sub_informations_id')->get();
+        // $data2 = Sub_fee::find($id);;
+        return view('form.components.customized_engagement.sub_fee.customized_engagement',compact('data','data2'));
+        // return view('form.components.customized_engagement.ce_view_record',compact('data', 'dataJoin1', 'dataJoin2', 'data2'));
+        // if($data)
+        // {
+        //     return response()->json([
+        //         'status'=>200,
+        //         'student'=> $data,
+        //     ]);
+        // }
+        // else
+        // {
+        //     return response()->json([
+        //         'status'=>404,
+        //         'message'=>'No Student Found.'
+        //     ]);
+        // }
     }
 }

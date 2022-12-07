@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{ URL::to('assets/vendors/bootstrap-icons/bootstrap-icons.css') }}">
     <link rel="stylesheet" href="{{ URL::to('assets/css/app.css') }}">
     <link rel="stylesheet" href="{{ URL::to('assets/vendors/simple-datatables/style.css') }}">
-    {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">s --}}
+    {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css"> --}}
 
     {{-- message toastr --}}
     <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
@@ -49,13 +49,13 @@
 
     </div>
 
-    {{-- <footer>
+    <footer>
         <div class="footer clearfix mb-0 text-muted fixed-bottom p-3 bg-light">
             <div class="text-center text-dark">
                 <p><script>document.write(new Date().getFullYear());</script> Copyright &copy; MGT-STRAT</p>
             </div>
         </div>
-    </footer> --}}
+    </footer>
 
     <script src="{{ URL::to('assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
     <script src="{{ URL::to('assets/js/bootstrap.bundle.min.js') }}"></script>
@@ -63,14 +63,11 @@
     <script src="{{ URL::to('assets/js/main.js') }}"></script>
     <script src="{{ URL::to('assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
     <script src="{{ URL::to('assets/vendors/simple-datatables/simple-datatables.js') }}"></script>
-    {{-- <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script> --}}
+    {{-- <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script> --}}
     <script>
         // Simple Datatable
         let table1 = document.querySelector('#table1');
-        let dataTable = new simpleDatatables.DataTable(table1);
-        // $(document).ready( function () {
-        //     $('#table1').DataTable();
-        // } );
+        let dataTable = new simpleDatatables.DataTable('#table1');
     </script>
 
     {{-- sweet alert popup message --}}
