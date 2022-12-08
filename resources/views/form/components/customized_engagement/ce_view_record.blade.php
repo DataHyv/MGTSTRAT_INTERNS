@@ -42,9 +42,9 @@
                     </div>
 
                     <div class="card-body">
-                        <table class="table table-striped" id="table1">
+                        <table class="table table-light" id="table1">
                             <thead>
-                                <tr class="text-dark">
+                                <tr class="table-secondary">
                                     <th hidden></th>
                                     <th hidden></th>
                                     <th></th>
@@ -171,61 +171,56 @@
                                                 <div class="modal-dialog modal-lg">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title">Add Batches</h5>
+                                                            <h5 class="modal-title text-uppercase fw-bold">Batches</h5>
                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
                                                         </div>
 
                                                         <div class="modal-body">
-                                                            @foreach ($data2 as $key => $item2)
-                                                                @if($item->id === $item2->customized_engagement_forms_id)
-                                                                    <div class="batch" id="batch">
-                                                                        <div class="form-group row justify-content-center batches" id="batches">
-                                                                            {{-- <div class="col-md-3">
-                                                                                <label class="mb-2" for="formGroupClientInput">Client Name</label>
-                                                                                <input class="input form-control @error('client_id') is-invalid @enderror" id="" name="" value="{{ $item2->customized_engagement_form->client->company_name }}" readonly>
-                                                                                @error('client_id')
-                                                                                    <span class="invalid-feedback" role="alert">
-                                                                                        <strong>{{ $message }}</strong>
-                                                                                    </span>
-                                                                                @enderror
-                                                                            </div> --}}
-                                                                            <div class="col-md-3">
-                                                                                <label class="mb-2" for="formGroupBatchInput">Batch Name</label>
-                                                                                <input type="text" class="form-control" id="formGroupBatchInput" value="">
-                                                                            </div>
-                                                                            <div class="col-md-3">
-                                                                                <label class="mb-2" for="formGroupSessionInput">Total Amount</label>
-                                                                                <input type="text" class="form-control" id="formGroupSessionInput">
-                                                                            </div>
-                                                                            {{-- <div class="col-md-2 mt-4 pt-3">
-                                                                                <div class="form-group">
-                                                                                    <input class="form-check-input" type="checkbox" id="gridCheck">
-                                                                                    <label class="form-check-label" for="gridCheck">
-                                                                                    Same Data
-                                                                                    </label>
-                                                                                </div>
-                                                                            </div> --}}
-                                                                            <div class="col-lg-1 col-md-1">
-                                                                                <div class="px-0">
-                                                                                    <label class="fw-bold invisible overflow-hidden mb-3">Add</label>
-                                                                                    {{-- <a href="javascript:void(0)" class="text-success font-18 px-0" title="Add" id="addBatch">
-                                                                                        <i class="fa fa-plus"></i>
-                                                                                    </a> --}}
+                                                            <table class="table" id="table2">
+                                                                <thead>
+                                                                    <tr class="table-secondary">
+                                                                        <th hidden></th>
+                                                                        <th hidden></th>
+                                                                        <th class="text-center">ID</th>
+                                                                        <th class="text-center">Batch Name</th>
+                                                                        <th class="text-center">Sessions</th>
+                                                                        <th class="text-center">Amount</th>
+                                                                        <th class="text-center">Modify</th>
+                                                                    </tr>
+                                                                </thead>
+
+                                                                <tbody class="text-center">
+                                                                    @foreach ($data2 as $key => $item2)
+                                                                        @if($item->id === $item2->customized_engagement_forms_id)
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <label class="fw-bold " for="formGroupBatchInput">{{ $item2->id }}</label>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <label class="fw-bold" for="">Batch {{ $item2->batch_number }}</label>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <label class="fw-bold" for="">{{ $item2->session_number }}</label>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <label class="fw-bold" for="">15,000</label>
+                                                                                </td>
+                                                                                <td>
                                                                                     <a href="{{ url('form/customizedEngagement/sub-fee/' . $item2->id) }}" class="text-success font-18 px-0" title="Add" id="edit">
                                                                                         <i class="fa-regular fa-pen-to-square"></i>
                                                                                     </a>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                @endif
-                                                            @endforeach
+                                                                                </td>
+                                                                            </tr>
+                                                                        @endif
+                                                                    @endforeach
+                                                                </tbody>
+                                                            </table>
                                                         </div>
 
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                                            {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                         </div>
 
@@ -245,23 +240,12 @@
         </div>
     </div>
 @endsection
+
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script>
-    $.ajax({
-        type: "method",
-        url: "url",
-        data: "data",
-        dataType: "dataType",
-        success: function (response) {
-
-        }
-    });
-</script>
 <script>
     $(document).on('click','.delete',function()
     {
@@ -348,4 +332,3 @@
         });
     });
 </script>
-
