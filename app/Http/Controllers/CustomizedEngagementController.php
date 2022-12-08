@@ -183,9 +183,6 @@ class CustomizedEngagementController extends Controller
                         foreach($request->fee_type as $key => $fee_types){
                             $sub_fee['type']                 = $fee_types;
                             $sub_fee['sub_informations_id']   = $sub_informations_id;
-                            $sub_fee['client_id']            = $client_id;
-                            $sub_fee['batch_number']         = $batch_count;
-                            $sub_fee['session_number']       = $request->session_number;
                             $sub_fee['consultant_num']       = $request->fee_consultant_num[$key] ?? '0';
                             $sub_fee['hour_fee']             = $request->fee_hour_fee[$key];
                             $sub_fee['hour_num']             = $request->fee_hour_num[$key] ?? '0';
