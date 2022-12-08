@@ -182,31 +182,31 @@
                                                                 @if($item->id === $item2->customized_engagement_forms_id)
                                                                     <div class="batch" id="batch">
                                                                         <div class="form-group row justify-content-center batches" id="batches">
-                                                                            <div class="col-md-3">
+                                                                            {{-- <div class="col-md-3">
                                                                                 <label class="mb-2" for="formGroupClientInput">Client Name</label>
-                                                                                <input class="input form-control @error('client_id') is-invalid @enderror" id="" name="" value="{{ $item2->customized_engagement_form->client->company_name }} {{ $item2->id }}" readonly>
+                                                                                <input class="input form-control @error('client_id') is-invalid @enderror" id="" name="" value="{{ $item2->customized_engagement_form->client->company_name }}" readonly>
                                                                                 @error('client_id')
                                                                                     <span class="invalid-feedback" role="alert">
                                                                                         <strong>{{ $message }}</strong>
                                                                                     </span>
                                                                                 @enderror
-                                                                            </div>
+                                                                            </div> --}}
                                                                             <div class="col-md-3">
                                                                                 <label class="mb-2" for="formGroupBatchInput">Batch Name</label>
-                                                                                <input type="text" class="form-control" id="formGroupBatchInput" value="{{ $item2->batch_number }}">
+                                                                                <input type="text" class="form-control" id="formGroupBatchInput" value="">
                                                                             </div>
                                                                             <div class="col-md-3">
-                                                                                <label class="mb-2" for="formGroupSessionInput">Session</label>
+                                                                                <label class="mb-2" for="formGroupSessionInput">Total Amount</label>
                                                                                 <input type="text" class="form-control" id="formGroupSessionInput">
                                                                             </div>
-                                                                            <div class="col-md-2 mt-4 pt-3">
+                                                                            {{-- <div class="col-md-2 mt-4 pt-3">
                                                                                 <div class="form-group">
                                                                                     <input class="form-check-input" type="checkbox" id="gridCheck">
                                                                                     <label class="form-check-label" for="gridCheck">
                                                                                     Same Data
                                                                                     </label>
                                                                                 </div>
-                                                                            </div>
+                                                                            </div> --}}
                                                                             <div class="col-lg-1 col-md-1">
                                                                                 <div class="px-0">
                                                                                     <label class="fw-bold invisible overflow-hidden mb-3">Add</label>

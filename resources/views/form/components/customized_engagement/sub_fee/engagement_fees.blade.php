@@ -1,12 +1,90 @@
 <!------------ CARD HEADER ------------>
     <div class="card-header">
         <h4 class="card-title">Engagement Fees</h4>
-        <h4 class="card-title">{{ $data->customized_engagement_form->client->company_name }} {{ $data->id }}</h4>
     </div>
 
 <!------------ FORM BODY ------------>
     <div class="form-body container">
         <section>
+            <!------------ DATE COVERED BY ENGAGEMENT ------------>
+                <div class="row justify-content-center mb-5" id="dcbe">
+                    <h5 class="text-center mt-5 fst-italic">Sessions</h5>
+                    <div class="d-flex justify-content-center mt-4" id="dateRows1">
+
+                        <div class="flex-column">
+                            <div>
+                                <fieldset class="row justify-content-center" id="dateRows">
+                                    <div class="col-lg-1 col-md-1">
+                                        <div class="px-0">
+                                                <label class="fw-bold invisible overflow-hidden mb-4">Add</label>
+                                                <a href="javascript:void(0)" class="text-success font-18 px-0" title="Add"
+                                                id="addDates"><i class="fa fa-plus"></i></a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2 col-md-2">
+                                        <div class="form-group has-icon-left">
+                                            <label class="fw-bold required">Date</label>
+                                            <div class="position-relative">
+                                                <input type="text" class="form-control date datepicker @error('doe') is-invalid @enderror"
+                                                    value="{{ old('doe') }}" placeholder="Enter Date" name="program_dates[]" id="datepicker"
+                                                    size="30">
+                                                <div class="form-control-icon">
+                                                    <i class="bi bi-calendar"></i>
+                                                </div>
+                                                @error('doe')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2 col-md-2">
+                                        <div class="form-group has-icon-left">
+                                            <label class="fw-bold required">Start Time</label>
+                                            <div class="position-relative">
+                                                <input type="text" class="form-control start-time timepicker @error('dot') is-invalid @enderror"
+                                                    value="{{ old('dot') }}" placeholder="Enter Time" id="program_start_time" name="program_start_time[]">
+                                                <div class="form-control-icon">
+                                                    <i class="bi bi-clock"></i>
+                                                </div>
+                                                @error('dot')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2 col-md-2">
+                                        <div class="form-group has-icon-left">
+                                            <label class="fw-bold required">End Time</label>
+                                            <div class="position-relative">
+                                                <input type="text" class="form-control end-time timepicker @error('dot') is-invalid @enderror"
+                                                    value="{{ old('dot') }}" placeholder="Enter Time" id="program_end_time" name="program_end_time[]">
+                                                <div class="form-control-icon">
+                                                    <i class="fa-solid fa-hourglass-end"></i>
+                                                </div>
+                                                @error('dot')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    @include('form.components.reference.cluster')
+                                </fieldset>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            <!------------------- END ----------------------->
             <div class="table-responsive" id="no-more-tables" data-animation="slideHorz">
                 <table class="table table-bordered" id="ec_tableEngagementFees">
                 <!------------------- TABLE HEADING ------------------------->
@@ -643,3 +721,153 @@
 
 <!---------- JS SCRIPT ---------->
 @include('form.components.customized_engagement.add.script.ce_engagement_fees');
+<script>
+    //DYNAMIC BATCH
+    $(document).ready(function() {
+        //DROPDOWN WITH SEARCH INPUT FUNCTION
+        $('.select2-hidden-accessible').select2({
+            theme: 'bootstrap',
+            width: 'resolve',
+        });
+    });
+
+    //DYNAMIC PROGRAM DATES
+    $(document).ready(function() {
+        //DATE OF ENGAGEMENT
+        var dates = 1;
+        $("#addDates").on("click", function() {
+            // Adding a row inside the tbody.
+            $("#dcbe").append(`
+            <fieldset class="d-flex justify-content-center mt-4" id="dateRows${++dates}">
+                <div class="flex-column">
+                    <div>
+                        <div class="row justify-content-center">
+                            <div class="col-lg-1 col-md-1">
+                                <div class="px-0">
+                                    <label class="fw-bold invisible overflow-hidden mb-4">Add</label>
+                                    <a href="javascript:void(0)" class="text-danger font-18 remove px-0" title="Remove">
+                                        <i class="fa fa-trash-o"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2">
+                                <div class="form-group has-icon-left">
+                                    <label class="fw-bold required">Date</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control date datepicker @error('doe') is-invalid @enderror"
+                                            value="{{ old('doe') }}" placeholder="Enter Date" name="program_dates[]" id="datepicker${dates}"
+                                            size="30">
+                                        <div class="form-control-icon">
+                                            <i class="bi bi-calendar"></i>
+                                        </div>
+                                        @error('doe')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2">
+                                <div class="form-group has-icon-left">
+                                    <label class="fw-bold required">Start Time</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control start-time timepicker @error('dot') is-invalid @enderror"
+                                            value="{{ old('dot') }}" placeholder="Enter Time" id="program_start_time" name="program_start_time[]">
+                                        <div class="form-control-icon">
+                                            <i class="bi bi-clock"></i>
+                                        </div>
+                                        @error('dot')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2">
+                                <div class="form-group has-icon-left">
+                                    <label class="fw-bold required">End Time</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control end-time timepicker @error('dot') is-invalid @enderror"
+                                            value="{{ old('dot') }}" placeholder="Enter Time" id="program_end_time" name="program_end_time[]">
+                                        <div class="form-control-icon">
+                                            <i class="fa-solid fa-hourglass-end"></i>
+                                        </div>
+                                        @error('dot')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            @include('form.components.reference.append_cluster')
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </fieldset>`);
+            $('.timepicker').timepicker({
+                timeFormat: 'h:mm p',
+                interval: 30,
+                minTime: '06',
+                maxTime: '10:00pm',
+                // defaultTime: '06',
+                startTime: '06:00',
+                dynamic: false,
+                dropdown: true,
+                scrollbar: true
+            });
+        });
+
+        $("#dcbe").on("click", ".remove", function () {
+            // Getting all the rows next to the row
+            // containing the clicked button
+            var child = $(this).closest('.d-flex').nextAll();
+
+            // Iterating across all the rows
+            // obtained to change the index
+            child.each(function () {
+                // Getting <tr> id.
+                var id = $(this).attr("id");
+
+                // Getting the <input> inside the .noc, .noh, .nwh class.
+                // var noc = $(this).children(".noc").children("input");
+                // var noh = $(this).children(".noh").children("input");
+                // var nwh = $(this).children(".nwh").children("input");
+
+                // Gets the row number from <tr> id.
+                var dig = parseInt(id.substring(8));
+
+                // Modifying row id.
+                $(this).attr("id", `dateRows${dig - 1}`);
+
+                // Modifying row index.
+                // noc.attr("id", `ec_LeadfacilitatorNoc${dig - 1}`);
+                // noh.attr("id", `ec_LeadfacilitatorNoh${dig - 1}`);
+                // nwh.attr("id", `ec_LeadfacilitatorNwh${dig - 1}`);
+            });
+
+            // Removing the current row.
+            $(this).closest('.d-flex').remove();
+
+            // Decreasing total number of rows by 1.
+            dates--;
+        });
+
+        $('.timepicker').timepicker({
+            timeFormat: 'h:mm p',
+            interval: 30,
+            minTime: '06',
+            maxTime: '10:00pm',
+            // defaultTime: '06',
+            startTime: '06:00',
+            dynamic: false,
+            dropdown: true,
+            scrollbar: true
+        });
+    });
+</script>
