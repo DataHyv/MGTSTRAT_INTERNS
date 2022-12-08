@@ -32,7 +32,11 @@ class CustomizedEngagementController extends Controller
         $dataJoin1  = DB::table('customized_engagement_forms')
             ->join('engagement_fees', 'customized_engagement_forms.cstmzd_eng_form_id', '=', 'engagement_fees.cstmzd_eng_form_id')
             ->select('customized_engagement_forms.*', 'engagement_fees.*')
+            //add order by
+
             ->get();
+            
+
         $dataJoin2  = DB::table('customized_engagement_forms')
             ->join('engagement_costs', 'customized_engagement_forms.cstmzd_eng_form_id', '=', 'engagement_costs.cstmzd_eng_form_id')
             ->select('customized_engagement_forms.*', 'engagement_costs.*')
@@ -169,29 +173,37 @@ class CustomizedEngagementController extends Controller
                         Engagement_fee::create($engagement_fee);
                     }
 
+                    //insert loop for batch count
                     for ($batch_count = 1; $batch_count <= $batch_number; $batch_count++) {
+                        //insert loop for session count
+                        for ($session_count = 1; $session_count <= $request->session_number; $session_count++){
+                            $sub_information = new Sub_information();
+                            $sub_information['customized_engagement_forms_id']       = $ce_id;
+                            $sub_information['batch_number']                                = $batch_count;
+                            $sub_information['session_number']                              = $session_count;
+                            $sub_information->save();
+                            $sub_informations_id = DB::table('sub_informations')->orderBy('id','ASC')->select('id')->first();
+                            $sub_informations_id = $sub_informations_id->id;
+                            // Sub_fee::create($sub_fee);
+    
+                            foreach($request->fee_type as $key => $fee_types){
+                                $sub_fee['type']                 = $fee_types;
+                                $sub_fee['sub_informations_id']   = $sub_informations_id;
+                                $sub_fee['consultant_num']       = $request->fee_consultant_num[$key] ?? '0';
+                                $sub_fee['hour_fee']             = $request->fee_hour_fee[$key];
+                                $sub_fee['hour_num']             = ($request->fee_hour_num[$key] ?? '0')/($request->session_number*$request->batch_number);
+                                $sub_fee['nswh']                 = $request->fee_nswh[$key] ?? '0';
+                                $sub_fee['nswh_percent']         = $request->nswh_percent[$key];
+                                $sub_fee['notes']                = $request->fee_notes[$key];
+    
+                                Sub_fee::create($sub_fee);
+                            }
 
-                        $sub_information = new Sub_information();
-                        $sub_information['customized_engagement_forms_id']       = $ce_id;
-                        $sub_information['batch_number']                                = $batch_count;
-                        $sub_information['session_number']                              = $request->session_number;
-                        $sub_information->save();
-                        $sub_informations_id = DB::table('sub_informations')->orderBy('id','DESC')->select('id')->first();
-                        $sub_informations_id = $sub_informations_id->id;
-                        // Sub_fee::create($sub_fee);
-
-                        foreach($request->fee_type as $key => $fee_types){
-                            $sub_fee['type']                 = $fee_types;
-                            $sub_fee['sub_informations_id']   = $sub_informations_id;
-                            $sub_fee['consultant_num']       = $request->fee_consultant_num[$key] ?? '0';
-                            $sub_fee['hour_fee']             = $request->fee_hour_fee[$key];
-                            $sub_fee['hour_num']             = $request->fee_hour_num[$key] ?? '0';
-                            $sub_fee['nswh']                 = $request->fee_nswh[$key] ?? '0';
-                            $sub_fee['nswh_percent']         = $request->nswh_percent[$key];
-                            $sub_fee['notes']                = $request->fee_notes[$key];
-
-                            Sub_fee::create($sub_fee);
+                            //END OF LOOP for session count
                         }
+
+                        
+                        //END OF LOOP for batch count
                     }
                 }
             catch(\Exception $e){

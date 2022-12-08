@@ -210,7 +210,21 @@
                                                                                     <label class="fw-bold" for="">{{ $item2->session_number }}</label>
                                                                                 </td>
                                                                                 <td>
-                                                                                    <label class="fw-bold" for="">15,000</label>
+                                                                                    <label class="fw-bold" for="">
+                                                                                        {{ 
+                                                                                            number_format(
+                                                                                                floatval(
+                                                                                                    //remove comma
+                                                                                                    str_replace(',', '', $item2->customized_engagement_form->Engagement_fees_total)
+                                                                                                ) / 
+                                                                                                (
+                                                                                                    $item2->customized_engagement_form->batch_number *
+                                                                                                    $item2->customized_engagement_form->session_number
+                                                                                                )
+                                                                                                , 2, '.', ','                                                                                          
+                                                                                            )
+                                                                                         }}
+                                                                                    </label>
                                                                                 </td>
                                                                                 <td>
                                                                                     <a href="{{ url('form/customizedEngagement/sub-fee/' . $item2->id) }}" class="text-success font-18 px-0" title="Add" id="edit">
