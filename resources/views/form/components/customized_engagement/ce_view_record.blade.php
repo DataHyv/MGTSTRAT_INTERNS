@@ -62,10 +62,7 @@
                             </thead>
 
                             <tbody>
-
                                 @foreach ($data as $key => $item)
-                                    {{-- <tr class="clickable-row" data-toggle="modal" data-target="#exampleModal{{ $item->id }}" data-href="#exampleModal{{ $item->id }}"> --}}
-                                    {{-- <tr role="button" data-toggle="modal" data-target="#exampleModal{{ $item->id }}"> --}}
                                     <tr>
                                         <td hidden class="ids">{{ $item->id }}</td>
                                         <td hidden class="budget_number">{{ $item->cstmzd_eng_form_id }}</td>
@@ -75,7 +72,7 @@
                                             </button>
                                         </td> --}}
                                         <td class="id text-center text-uppercase fw-bold" role="button" data-toggle="modal" data-target="#exampleModal{{ $item->id }}">{{ $item->cstmzd_eng_form_id }}</td>
-                                        <td class="text-center fw-bold" role="button" data-toggle="modal" data-target="#exampleModal{{ $item->id }}">
+                                        <td class="text-center fw-bold py-3" role="button" data-toggle="modal" data-target="#exampleModal{{ $item->id }}">
                                             <span id="status" class="badge">{{ $item->status }}</span>
                                             {{-- Automatic change the status color --}}
                                             <script>
