@@ -65,7 +65,8 @@
 
                                 @foreach ($data as $key => $item)
                                     {{-- <tr class="clickable-row" data-toggle="modal" data-target="#exampleModal{{ $item->id }}" data-href="#exampleModal{{ $item->id }}"> --}}
-                                    <tr role="button" data-toggle="modal" data-target="#exampleModal{{ $item->id }}">
+                                    {{-- <tr role="button" data-toggle="modal" data-target="#exampleModal{{ $item->id }}"> --}}
+                                    <tr>
                                         <td hidden class="ids">{{ $item->id }}</td>
                                         <td hidden class="budget_number">{{ $item->cstmzd_eng_form_id }}</td>
                                         {{-- <td class="text-center">
@@ -73,8 +74,8 @@
                                                 <i class="fa-regular fa-folder-open"></i>
                                             </button>
                                         </td> --}}
-                                        <td class="id text-center text-uppercase fw-bold">{{ $item->cstmzd_eng_form_id }}</td>
-                                        <td class="text-center fw-bold">
+                                        <td class="id text-center text-uppercase fw-bold" role="button" data-toggle="modal" data-target="#exampleModal{{ $item->id }}">{{ $item->cstmzd_eng_form_id }}</td>
+                                        <td class="text-center fw-bold" role="button" data-toggle="modal" data-target="#exampleModal{{ $item->id }}">
                                             <span id="status" class="badge">{{ $item->status }}</span>
                                             {{-- Automatic change the status color --}}
                                             <script>
@@ -97,29 +98,36 @@
                                                 });
                                             </script>
                                         </td>
-                                        <td class="text-center fw-bold">{{ $item->client->company_name }}</td>
-                                        <td class="text-center fw-bold">{{ $item->customized_type }}</td>
-                                        <td class="text-center fw-bold">{{ $item->engagement_title }}</td>
-                                        <td class="text-center fw-bold">{{ $item->pax_number }}</td>
-                                        <td class="text-center fw-bold">
+                                        <td class="text-center fw-bold" role="button" data-toggle="modal" data-target="#exampleModal{{ $item->id }}">
+                                            {{ $item->client->company_name }}
+                                        </td>
+                                        <td class="text-center fw-bold" role="button" data-toggle="modal" data-target="#exampleModal{{ $item->id }}">
+                                            {{ $item->customized_type }}
+                                        </td>
+                                        <td class="text-center fw-bold" role="button" data-toggle="modal" data-target="#exampleModal{{ $item->id }}">
+                                            {{ $item->engagement_title }}
+                                        </td>
+                                        <td class="text-center fw-bold" role="button" data-toggle="modal" data-target="#exampleModal{{ $item->id }}">
+                                            {{ $item->pax_number }}
+                                        </td>
+                                        <td class="text-center fw-bold" role="button" data-toggle="modal" data-target="#exampleModal{{ $item->id }}">
                                             @if($item->program_dates)
                                                 @foreach($item->program_dates as $dates)
                                                     {{$dates.', '}}
                                                 @endforeach
                                             @endif
                                         </td>
-
-                                        <td class="fw-bold text-center">
+                                        <td class="fw-bold text-center" role="button" data-toggle="modal" data-target="#exampleModal{{ $item->id }}">
                                             @if($item->program_start_time)
                                                 @foreach($item->program_start_time as $time)
                                                     {{$time}}
                                                 @endforeach
                                             @endif
                                         </td>
-
-                                        <td class="text-center fw-bold">{{ \Carbon\Carbon::parse($item->created_at)->toFormattedDateString()}}</td>
-
-                                        <td class="text-center fw-bold">
+                                        <td class="text-center fw-bold" role="button" data-toggle="modal" data-target="#exampleModal{{ $item->id }}">
+                                            {{ \Carbon\Carbon::parse($item->created_at)->toFormattedDateString()}}
+                                        </td>
+                                        <td class="text-center fw-bold"> {{-- buttons --}}
                                             <a href=".bd-example-modal-lg" data-toggle="modal" data-target=".bd-example-modal-lg">
                                                 <span class="badge bg-info"><i class="bi bi-person-plus-fill"></i></span>
                                             </a>
@@ -164,9 +172,9 @@
                                                 </div>
                                             </div>
                                             <!-- END -->
-                                        </td>
+                                        </td> {{-- end --}}
 
-                                        <td>
+                                        <td> {{-- modal --}}
                                             <div class="modal fade" id="exampleModal{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog modal-lg">
                                                     <div class="modal-content">
@@ -232,7 +240,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </td>
+                                        </td>{{-- end --}}
 
                                     </tr>
                                 @endforeach
