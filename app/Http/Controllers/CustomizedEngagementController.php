@@ -11,6 +11,7 @@ use App\Models\Engagement_fee;
 use App\Models\Engagement_cost;
 use App\Models\Sub_fee;
 use App\Models\Sub_information;
+use App\Models\Sub_cost;
 use DB;
 
 class CustomizedEngagementController extends Controller
@@ -35,7 +36,7 @@ class CustomizedEngagementController extends Controller
             //add order by
 
             ->get();
-            
+
 
         $dataJoin2  = DB::table('customized_engagement_forms')
             ->join('engagement_costs', 'customized_engagement_forms.cstmzd_eng_form_id', '=', 'engagement_costs.cstmzd_eng_form_id')
@@ -185,7 +186,7 @@ class CustomizedEngagementController extends Controller
                             $sub_informations_id = DB::table('sub_informations')->orderBy('id','ASC')->select('id')->first();
                             $sub_informations_id = $sub_informations_id->id;
                             // Sub_fee::create($sub_fee);
-    
+
                             foreach($request->fee_type as $key => $fee_types){
                                 $sub_fee['type']                 = $fee_types;
                                 $sub_fee['sub_informations_id']   = $sub_informations_id;
@@ -195,14 +196,27 @@ class CustomizedEngagementController extends Controller
                                 $sub_fee['nswh']                 = $request->fee_nswh[$key] ?? '0';
                                 $sub_fee['nswh_percent']         = $request->nswh_percent[$key];
                                 $sub_fee['notes']                = $request->fee_notes[$key];
-    
+
                                 Sub_fee::create($sub_fee);
+                            }
+
+                            foreach($request->fee_type as $key => $fee_types){
+                                $sub_cost['type']                 = $fee_types;
+                                $sub_cost['sub_informations_id']  = $sub_informations_id;
+                                $sub_cost['consultant_num']       = 0;
+                                $sub_cost['hour_fee']             = 0;
+                                $sub_cost['hour_num']             = 0;
+                                $sub_cost['nswh']                 = 0;
+                                $sub_cost['rooster']              = '';
+                                $sub_cost['notes']                = '';
+
+                                Sub_cost::create($sub_cost);
                             }
 
                             //END OF LOOP for session count
                         }
 
-                        
+
                         //END OF LOOP for batch count
                     }
                 }
