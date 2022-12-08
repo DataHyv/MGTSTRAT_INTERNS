@@ -36,9 +36,9 @@
                         <a class="btn btn-primary mt-2 mb-2" href="{{ route('form/customizedEngagement/new') }}">
                             <span><i class="fa-solid fa-file-circle-plus"></i> &nbsp; New Record</span>
                         </a>
-                        <a class="btn btn-primary mt-2 mb-2 mx-5" href="{{ route('form/customizedEngagement/sub-fee') }}">
+                        {{-- <a class="btn btn-primary mt-2 mb-2 mx-5" href="{{ route('form/customizedEngagement/sub-fee') }}">
                             <span><i class="fa-solid fa-file-circle-plus"></i> &nbsp; TEST SUB FEE</span>
-                        </a>
+                        </a> --}}
                     </div>
 
                     <div class="card-body">
@@ -47,7 +47,7 @@
                                 <tr class="table-secondary">
                                     <th hidden></th>
                                     <th hidden></th>
-                                    <th></th>
+                                    {{-- <th></th> --}}
                                     <th class="text-center">ID</th>
                                     <th class="text-center">STATUS</th>
                                     <th class="text-center">COMPANY NAME</th>
@@ -57,22 +57,22 @@
                                     <th class="text-center">SCHEDULED DATES</th>
                                     <th class="text-center">SCHEDULED TIME</th>
                                     <th class="text-center">DATE ADDED</th>
-                                    <th class="text-center">Modify</th>
+                                    <th class="text-center" colspan="2">Modify</th>
                                 </tr>
                             </thead>
 
                             <tbody>
 
                                 @foreach ($data as $key => $item)
-
-                                    <tr>
+                                    {{-- <tr class="clickable-row" data-toggle="modal" data-target="#exampleModal{{ $item->id }}" data-href="#exampleModal{{ $item->id }}"> --}}
+                                    <tr role="button" data-toggle="modal" data-target="#exampleModal{{ $item->id }}">
                                         <td hidden class="ids">{{ $item->id }}</td>
                                         <td hidden class="budget_number">{{ $item->cstmzd_eng_form_id }}</td>
-                                        <td class="text-center">
-                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal{{ $item->id }}">
-                                                <i class="fa-solid fa-plus"></i>
+                                        {{-- <td class="text-center">
+                                            <button type="button" class="btn btn-light mx-3" data-toggle="modal" data-target="#exampleModal{{ $item->id }}">
+                                                <i class="fa-regular fa-folder-open"></i>
                                             </button>
-                                        </td>
+                                        </td> --}}
                                         <td class="id text-center text-uppercase fw-bold">{{ $item->cstmzd_eng_form_id }}</td>
                                         <td class="text-center fw-bold">
                                             <span id="status" class="badge">{{ $item->status }}</span>
@@ -215,6 +215,11 @@
                                                                             </tr>
                                                                         @endif
                                                                     @endforeach
+                                                                    <tr>
+                                                                        <td colspan="5">
+                                                                            <button type="button" class="btn btn-primary"><i class="fa-solid fa-square-plus"></i> Add Batch</button>
+                                                                        </td>
+                                                                    </tr>
                                                                 </tbody>
                                                             </table>
                                                         </div>
