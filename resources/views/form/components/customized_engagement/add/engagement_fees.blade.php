@@ -8,7 +8,7 @@
         <section>
             <div class="table-responsive" id="no-more-tables" data-animation="slideHorz">
                 <table class="table table-bordered" id="ec_tableEngagementFees">
-                    
+
                 <!------------------- TABLE HEADING ------------------------->
                     <thead class="table-dark">
                         <b>
@@ -27,16 +27,16 @@
                                     <input type="hidden" value="" name="fee_notes[]">
                                     <select class="input js-mytooltip form-select form-select-sm engagement-fee nswh-percent @error('') is-invalid @enderror select" name="nswh_percent[]" id="nswh">
                                         <option value="0.1" {{ old('') == '0.1' ? 'selected="selected"' : '' }}>
-                                            &#8369;10%
+                                            10%
                                         </option>
                                         <option value="0.15" {{ old('') == '0.15' ? 'selected="selected"' : '' }}>
-                                            &#8369;15%
+                                            15%
                                         </option>
                                         <option value="0.2" {{ old('') == '0.2' ? 'selected="selected"' : '' }} selected>
-                                            &#8369;20%
+                                            20%
                                         </option>
                                         <option value="0.25" {{ old('') == '0.25' ? 'selected="selected"' : '' }}>
-                                            &#8369;25%
+                                            25%
                                         </option>
                                     </select>
                                 </th>
@@ -82,12 +82,12 @@
                             </td>
                             <td>
                                 <fieldset>
-                                    <select class="form-select input js-mytooltip @error('') is-invalid @enderror" name="fee_hour_fee[]" id="ef_LeadconsultantHf" data-mytooltip-content="<i> &#8369;7,000 - Consultants<br> &#8369;9,000 - Senior Consultants </i>" data-mytooltip-theme="dark" data-mytooltip-action="focus" data-mytooltip-direction="right" style="background-color:#ffcccc; color:red;">
-                                        <option value="₱7000" {{ old('') == '₱7000' ? 'selected="selected"' : '' }}>
-                                            &#8369;7,000
+                                    <select class="form-select input js-mytooltip @error('') is-invalid @enderror" name="fee_hour_fee[]" id="ef_LeadconsultantHf" data-mytooltip-content="<i> 7,000 - Consultants<br> 9,000 - Senior Consultants </i>" data-mytooltip-theme="dark" data-mytooltip-action="focus" data-mytooltip-direction="right" style="background-color:#ffcccc; color:red;">
+                                        <option value="7000" {{ old('') == '7000' ? 'selected="selected"' : '' }}>
+                                            7,000
                                         </option>
-                                        <option value="₱9000" {{ old('') == '₱9000' ? 'selected="selected"' : '' }}>
-                                            &#8369;9,000
+                                        <option value="9000" {{ old('') == '9000' ? 'selected="selected"' : '' }}>
+                                            9,000
                                         </option>
                                     </select>
                                     @error('')
@@ -213,15 +213,15 @@
                                 <fieldset>
                                     <select class="input js-mytooltip form-select @error('') is-invalid @enderror select"
                                         name="fee_hour_fee[]" id="ef_DesignerHf"
-                                        data-mytooltip-content="<i>Consulting - &#8369;6,000 - Consultants<br>
-                                            &#8369;8,000 - Senior Consultants</i>"
+                                        data-mytooltip-content="<i>Consulting - 6,000 - Consultants<br>
+                                            8,000 - Senior Consultants</i>"
                                         data-mytooltip-theme="dark" data-mytooltip-action="focus"
                                         data-mytooltip-direction="right" style="background-color:#ffcccc; color:red;">
-                                        <option value="₱6000" {{ old('') == '₱6000' ? 'selected="selected"' : '' }}>
-                                            &#8369;6,000
+                                        <option value="6000" {{ old('') == '6000' ? 'selected="selected"' : '' }}>
+                                            6,000
                                         </option>
-                                        <option value="₱8000" {{ old('') == '₱8000' ? 'selected="selected"' : '' }}>
-                                            &#8369;8,000
+                                        <option value="8000" {{ old('') == '8000' ? 'selected="selected"' : '' }}>
+                                            8,000
                                         </option>
                                     </select>
                                     @error('')
@@ -291,20 +291,20 @@
                                     <select
                                         class="input js-mytooltip form-select engagement-fee @error('') is-invalid @enderror select"
                                         name="fee_hour_fee[]" id="ef_LeadfacilitatorHf1"
-                                        data-mytooltip-content="<i>&#8369;10,000 - For Key Accounts w/ 2021 contract <br>
-                                            &#8369;11,000 - For Key Accounts with minimum guaranteed 50 sessions w/in 6 months <br>
-                                            &#8369;12,000 - all else</i>"
+                                        data-mytooltip-content="<i>10,000 - For Key Accounts w/ 2021 contract <br>
+                                            11,000 - For Key Accounts with minimum guaranteed 50 sessions w/in 6 months <br>
+                                            12,000 - all else</i>"
                                         data-mytooltip-theme="dark" data-mytooltip-action="focus"
                                         data-mytooltip-direction="right" style="background-color:#ffcccc; color:red;">
-                                        <option value="₱10,000" {{ old('') == '₱10,000' ? 'selected="selected"' : '' }}>
-                                            &#8369;10,000
+                                        <option value="10,000" {{ old('') == '10,000' ? 'selected="selected"' : '' }}>
+                                            10,000
                                         </option>
-                                        <option value="₱11,000" {{ old('') == '₱11,000' ? 'selected="selected"' : '' }}>
-                                            &#8369;11,000
+                                        <option value="11,000" {{ old('') == '11,000' ? 'selected="selected"' : '' }}>
+                                            11,000
                                         </option>
-                                        <option value="₱12,000" {{ old('') == '₱12,000' ? 'selected="selected"' : '' }}
+                                        <option value="12,000" {{ old('') == '12,000' ? 'selected="selected"' : '' }}
                                             selected>
-                                            &#8369;12,000
+                                            12,000
                                         </option>
                                         <option value="others" {{ old('') == 'others' ? 'selected="selected"' : '' }}
                                         id="others1" onclick="document.getElementById('ef_InputLeadFaciHf1').focus()">
