@@ -13,7 +13,7 @@ class CreateSubCost extends Migration
      */
     public function up()
     {
-        Schema::create('sub_cost', function (Blueprint $table) {
+        Schema::create('sub_costs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('sub_informations_id')->nullable()->constrained()->onDelete('cascade');
             $table->string('type', 50)->nullable($value = true);
