@@ -183,7 +183,7 @@ class CustomizedEngagementController extends Controller
                             $sub_information['batch_number']                                = $batch_count;
                             $sub_information['session_number']                              = $session_count;
                             $sub_information->save();
-                            $sub_informations_id = DB::table('sub_informations')->orderBy('id','ASC')->select('id')->first();
+                            $sub_informations_id = DB::table('sub_informations')->orderBy('id','DESC')->select('id')->first();
                             $sub_informations_id = $sub_informations_id->id;
                             // Sub_fee::create($sub_fee);
 
