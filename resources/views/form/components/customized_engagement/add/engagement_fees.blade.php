@@ -602,4 +602,4 @@
 <!---------- END OF FORM BODY ---------->
 
 <!---------- JS SCRIPT ---------->
-@include('form.components.customized_engagement.add.script.ce_engagement_fees');
+@include('form.components.customized_engagement.add.script.ce_engagement_fees')
