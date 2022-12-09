@@ -288,7 +288,7 @@
                 </div>
             </div>
 
-            <div class="form-group row">
+            <div class="form-group row mb-5">
                 <div class="col-md-2">
                     <label class="fw-bold required">Number of Session </label>
                 </div>
@@ -314,7 +314,7 @@
         <!------------ END ------------>
 
         <!------------ TO BE ANNOUNCE ------------>
-            <div class="row">
+            {{-- <div class="row mb-5">
                 <div class="col-md-2">
                     <label class="fw-bold required">Date </label>
                 </div>
@@ -325,11 +325,11 @@
                         <label class="form-check-label" for="dcbeCheck">To Be Announced</label>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         <!------------ END ------------>
 
         <!------------ DATE COVERED BY ENGAGEMENT ------------>
-            <div class="row justify-content-center mt-3" id="dcbe">
+            {{-- <div class="row justify-content-center mt-3" id="dcbe">
                 <h5 class="text-center mt-5 fst-italic">Date Covered by Engagement</h5>
                 <div class="d-flex justify-content-center mt-4" id="dateRows1">
 
@@ -405,7 +405,7 @@
                     </div>
 
                 </div>
-            </div>
+            </div> --}}
         <!------------------- END ----------------------->
 
     </div>
