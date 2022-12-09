@@ -186,8 +186,6 @@
                                                             <table class="table" id="table2">
                                                                 <thead>
                                                                     <tr class="table-secondary">
-                                                                        <th hidden></th>
-                                                                        <th hidden></th>
                                                                         <th class="text-center">ID</th>
                                                                         <th class="text-center">Batch Name</th>
                                                                         <th class="text-center">Sessions</th>
@@ -211,17 +209,17 @@
                                                                                 </td>
                                                                                 <td>
                                                                                     <label class="fw-bold" for="">
-                                                                                        {{ 
+                                                                                        {{
                                                                                             number_format(
                                                                                                 floatval(
                                                                                                     //remove comma
                                                                                                     str_replace(',', '', $item2->customized_engagement_form->Engagement_fees_total)
-                                                                                                ) / 
+                                                                                                ) /
                                                                                                 (
                                                                                                     $item2->customized_engagement_form->batch_number *
                                                                                                     $item2->customized_engagement_form->session_number
                                                                                                 )
-                                                                                                , 2, '.', ','                                                                                          
+                                                                                                , 2, '.', ','
                                                                                             )
                                                                                          }}
                                                                                     </label>
@@ -234,11 +232,11 @@
                                                                             </tr>
                                                                         @endif
                                                                     @endforeach
-                                                                    <tr>
+                                                                    {{-- <tr>
                                                                         <td colspan="5">
                                                                             <button type="button" class="btn btn-primary"><i class="fa-solid fa-square-plus"></i> Add Batch</button>
                                                                         </td>
-                                                                    </tr>
+                                                                    </tr> --}}
                                                                 </tbody>
                                                             </table>
                                                         </div>
@@ -271,6 +269,7 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script>
+    //deletion of tbl row
     $(document).on('click','.delete',function()
     {
         var _this = $(this).parents('tr');
@@ -356,3 +355,11 @@
         });
     });
 </script>
+
+@section('script')
+    <script>
+        //datatble of batch
+        let table2 = document.querySelector('#table2');
+        let dataTable2 = new simpleDatatables.DataTable('#table2');
+    </script>
+@endsection
