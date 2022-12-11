@@ -1,5 +1,5 @@
 @section('title', 'NEW RECORD')
-{{-- <link rel="shortcut icon" type="image/png" href="{{ URL::to('assets/images/logo/logo.png') }}"> --}}
+<link rel="shortcut icon" type="image/png" href="{{ URL::to('assets/images/logo/logo.png') }}">
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
 <link rel="stylesheet" href="{{ URL::asset('css/custom.css') }}">
 {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> --}}
@@ -32,6 +32,24 @@
         {{-- message --}}
         {!! Toastr::message() !!}
 
+        <!-- PROGRESS BAR -->
+        <div class="multisteps-form">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-8 ml-auto mr-auto mb-4">
+                    <div class="multisteps-form__progress">
+                        <button class="multisteps-form__progress-btn js-active" type="button" title="Engagement Fees">
+                            EngagementFees
+                        </button>
+
+                        <button class="multisteps-form__progress-btn" type="button" title="Engagement Cost">
+                            EngagementCost
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END -->
+
         <!------------ CARD BODY ------------>
             <div class="col-12">
                 {{-- card --}}
@@ -46,7 +64,31 @@
                                     method="POST" autocomplete="off" onsubmit="submitForm(event)">
                                     @csrf
 
+                                    <!------------ ENGAGEMENT FEES ------------>
+                                    <div class="multisteps-form__panel js-active" data-animation="slideHorz">
                                         @include('form.components.customized_engagement.sub_fee.engagement_fees')
+
+                                        {{-- next and prev button --}}
+                                        <div class="button-row d-flex justify-content-center mt-3">
+                                            <button class="btn btn-secondary mx-2 js-btn-prev" type="button" title="Prev">Prev</button>
+                                            <button class="btn btn-primary mx-2 js-btn-next" type="button" title="Next">Next</button>
+                                        </div>
+
+                                    </div>
+                                    <!------------ END ------------>
+
+                                    <!------------ ENGAGEMENT COST ------------>
+                                    <div class="multisteps-form__panel" data-animation="slideHorz">
+                                        @include('form.components.customized_engagement.sub_fee.engagement_cost')
+
+                                        {{-- next and prev button --}}
+                                        <div class="button-row d-flex justify-content-center mt-3">
+                                            <button class="btn btn-secondary mx-2 js-btn-prev" type="button" title="Prev">Prev</button>
+                                            <button class="btn btn-primary mx-2 js-btn-next" type="button" title="Next">Next</button>
+                                        </div>
+
+                                    </div>
+                                    <!------------ END ------------>
 
                                 </form>
                             <!------------ END OF BUDGET FORM ------------>
@@ -82,7 +124,7 @@
         }
     </script>
     <script type="text/javascript" src="/js/ceform.js"></script>
-    <script type="text/javascript" src="/js/ceFormAdd.js"></script>
+    {{-- <script type="text/javascript" src="/js/ceFormAdd.js"></script> --}}
     <script type="text/javascript" src="/js/MultiStep.js"></script>
     <script type="text/javascript" src="/js/currencyFormat.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>

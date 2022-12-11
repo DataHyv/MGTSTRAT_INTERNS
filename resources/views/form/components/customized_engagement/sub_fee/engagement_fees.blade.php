@@ -86,7 +86,7 @@
                 </div>
             <!------------------- END ----------------------->
             <div class="table-responsive" id="no-more-tables" data-animation="slideHorz">
-                <table class="table table-bordered" id="ec_tableEngagementFees">
+                <table class="table table-bordered" id="ec_tableEngagementFees1">
                 <!------------------- TABLE HEADING ------------------------->
                     <thead class="table-dark">
                         <b>
