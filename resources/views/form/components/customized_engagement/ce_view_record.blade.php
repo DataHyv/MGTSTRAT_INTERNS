@@ -1,7 +1,7 @@
 @section('title', 'CUSTOMIZED RECORD')
 <link rel="shortcut icon" type="image/png" href="{{ URL::to('assets/images/logo/logo.png') }}">
 <link rel="stylesheet" href="{{ URL::to('css/custom.css') }}">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+{{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> --}}
 @extends('layouts.master')
 @section('menu')
     @extends('sidebar.dashboard')
@@ -10,6 +10,7 @@
     <div id="main">
         @include('headers.header')
         <div class="page-heading">
+            
             <div class="page-title">
                 <div class="row">
                     <div class="col-12 col-md-6 order-md-1 order-last">
@@ -230,6 +231,16 @@
                                                                                     </a>
                                                                                 </td>
                                                                             </tr>
+
+                                                                        @elseif ($loop->last)
+                                                                            <tr>
+                                                                                <td colspan="5">
+                                                                                    <button type="button" class="btn btn-primary add-batch">
+                                                                                        <i class="fa-solid fa-square-plus"></i> Add Batch
+                                                                                    </button>
+                                                                                </td>
+                                                                            </tr>
+
                                                                         @endif
                                                                     @endforeach
                                                                     <tr>

@@ -357,11 +357,16 @@ class CustomizedEngagementController extends Controller
 
     /* Sub fee form */
     public function formSubFee(){
-        // $companyList = Client::orderBy('company_name')->get();
-        // $data = DB::table('customized_engagement_forms')->where('client_id', $request->client)->count();
-        // return view('form.components.customized_engagement.add.customized_engagement', compact('companyList', 'data'));
         return view('form.components.customized_engagement.sub_fee.customized_engagement');
     }
+
+    // public function addBatch(){
+    //     // $id = $request->id;
+    //     Sub_information::find(4)->replicate()->save();
+    //     $model = Sub_information::find(4);
+    //     $model->id = 7;
+    //     $model->save();
+    // }
 
     public function editSubForm($id)
     {
