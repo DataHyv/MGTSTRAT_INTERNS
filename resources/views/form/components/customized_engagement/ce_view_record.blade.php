@@ -196,7 +196,7 @@
 
                                                                 <tbody class="text-center">
                                                                     @foreach ($data2 as $key => $item2)
-                                                                        @if($item->id === $item2->customized_engagement_forms_id)
+                                                                        @if($item->id == $item2->customized_engagement_forms_id)
                                                                             <tr>
                                                                                 <td>
                                                                                     <label class="fw-bold " for="formGroupBatchInput">{{ $item2->id }}</label>
