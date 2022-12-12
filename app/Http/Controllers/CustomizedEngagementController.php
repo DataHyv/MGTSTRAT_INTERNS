@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Brian2694\Toastr\Facades\Toastr;
-use RealRashid\SweetAlert\Facades\Alert;
+use DB;
 use App\Models\Client;
-use App\Models\Customized_engagement_form;
+use App\Models\Sub_fee;
+use App\Models\Sub_cost;
+use Illuminate\Http\Request;
 use App\Models\Engagement_fee;
 use App\Models\Engagement_cost;
-use App\Models\Sub_fee;
 use App\Models\Sub_information;
-use App\Models\Sub_cost;
-use DB;
+use Illuminate\Support\Facades\Log;
+use Brian2694\Toastr\Facades\Toastr;
+use RealRashid\SweetAlert\Facades\Alert;
+use App\Models\Customized_engagement_form;
 
 class CustomizedEngagementController extends Controller
 {
@@ -175,7 +176,7 @@ class CustomizedEngagementController extends Controller
                     }
 
                     //insert loop for batch count
-                    for ($batch_count = 1; $batch_count <= $batch_number; $batch_count++) {
+                    for ($batch_count = 1; $batch_count <= $request->batch_number; $batch_count++) {
                         //insert loop for session count
                         for ($session_count = 1; $session_count <= $request->session_number; $session_count++){
                             $sub_information = new Sub_information();
@@ -246,6 +247,8 @@ class CustomizedEngagementController extends Controller
             }
 
             DB::commit();
+            // info('This is some useful information.');
+            // Alert::success($request->batch_number,'Success');
             Alert::success('Data added successfully','Success');
             return redirect()->route('form/customizedEngagement/detail');
         } catch(\Exception $e){
