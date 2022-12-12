@@ -9,6 +9,7 @@
     <section>
         <div class="table-responsive" id="no-more-tables">
             <table class="table table-bordered" id="ec_tableEngagementCost" style="width: 100%">
+
             <!------------------- TABLE HEAD ----------------------->
                 <thead class="table-dark">
                     <tr class="text-center">
@@ -275,7 +276,7 @@
                         </td>
                         <td class="">
                             <input type="text"
-                                class="text-center fw-bold text-dark form-control input-table commanumber @error('') is-invalid @enderror"
+                                class="text-center fw-bold text-dark form-control input-table commanumber val @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_hour_fee[]" id="ec_LeadconsultantHf1" data-type="currency">
                         </td>
                         <td class="">
@@ -420,7 +421,7 @@
                         </td>
                         <td>
                             <input type="text"
-                                class="text-center fw-bold text-dark text-center form-control input-table commanumber @error('') is-invalid @enderror"
+                                class="text-center fw-bold text-dark text-center form-control input-table commanumber val @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_hour_fee[]" id="ec_DesignerHf1" data-type="currency">
                         </td>
                         <td class="">
@@ -557,7 +558,7 @@
                         </td>
                         <td>
                             <input type="text"
-                                class="text-center fw-bold text-center text-dark form-control input-table commanumber @error('') is-invalid @enderror"
+                                class="text-center fw-bold text-center text-dark form-control input-table commanumber val @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_hour_fee[]" id="ec_LeadfacilitatorHf1" data-type="currency">
                         </td>
                         <td>
@@ -602,7 +603,7 @@
                         </td>
                         <td>
                             <input type="text"
-                                class="text-center fw-bold text-center text-dark form-control input-table commanumber @error('') is-invalid @enderror"
+                                class="text-center fw-bold text-center text-dark form-control input-table commanumber val @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_hour_fee[]" id="ec_CoLeadfacilitatorHf1" data-type="currency">
                         </td>
                         <td>
@@ -647,7 +648,7 @@
                         </td>
                         <td>
                             <input type="text"
-                                class="text-center fw-bold text-center text-dark form-control input-table commanumber @error('') is-invalid @enderror"
+                                class="text-center fw-bold text-center text-dark form-control input-table commanumber val @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_hour_fee[]" id="ec_AlCoachHf1" data-type="currency">
                         </td>
                         <td>
@@ -692,7 +693,7 @@
                         </td>
                         <td>
                             <input type="text"
-                                class="text-center text-dark fw-bold form-control input-table commanumber @error('') is-invalid @enderror"
+                                class="text-center text-dark fw-bold form-control input-table commanumber val @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_hour_fee[]" id="ec_CofacilitatorHf1" data-type="currency">
                         </td>
                         <td>
@@ -738,7 +739,7 @@
                         <td>
                             <fieldset>
                                 <input type="text"
-                                class="text-center text-dark fw-bold form-control input-table commanumber @error('') is-invalid @enderror"
+                                class="text-center text-dark fw-bold form-control input-table commanumber val @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_hour_fee[]" id="ec_ModeratorHf1" data-type="currency">
 
                                 {{-- <select
@@ -813,7 +814,7 @@
                         </td>
                         <td>
                             <input type="text"
-                                class="text-center text-dark fw-bold form-control input-table commanumber @error('') is-invalid @enderror"
+                                class="text-center text-dark fw-bold form-control input-table commanumber val @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_hour_fee[]" id="ec_ProducerHf1" data-type="currency">
                         </td>
                         <td>

@@ -371,23 +371,11 @@ class CustomizedEngagementController extends Controller
         ->select('sub_informations.*', 'sub_fees.*')
         ->where('sub_fees.sub_informations_id',$id)
         ->get();
-        // $data2 = Sub_fee::orderBy('sub_informations_id')->get();
-        // $data2 = Sub_fee::find($id);;
-        return view('form.components.customized_engagement.sub_fee.customized_engagement',compact('data','data2'));
-        // return view('form.components.customized_engagement.ce_view_record',compact('data', 'dataJoin1', 'dataJoin2', 'data2'));
-        // if($data)
-        // {
-        //     return response()->json([
-        //         'status'=>200,
-        //         'student'=> $data,
-        //     ]);
-        // }
-        // else
-        // {
-        //     return response()->json([
-        //         'status'=>404,
-        //         'message'=>'No Student Found.'
-        //     ]);
-        // }
+        $data3 = DB::table('sub_informations')
+        ->join('sub_costs', 'sub_informations.id', '=', 'sub_costs.sub_informations_id')
+        ->select('sub_informations.*', 'sub_costs.*')
+        ->where('sub_costs.sub_informations_id',$id)
+        ->get();
+        return view('form.components.customized_engagement.sub_fee.customized_engagement',compact('data','data2','data3'));
     }
 }

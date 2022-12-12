@@ -70,7 +70,7 @@
 
                                         {{-- next and prev button --}}
                                         <div class="button-row d-flex justify-content-center mt-3">
-                                            <button class="btn btn-secondary mx-2 js-btn-prev" type="button" title="Prev">Prev</button>
+                                            {{-- <button class="btn btn-secondary mx-2 js-btn-prev" type="button" title="Prev">Prev</button> --}}
                                             <button class="btn btn-primary mx-2 js-btn-next" type="button" title="Next">Next</button>
                                         </div>
 
@@ -84,7 +84,8 @@
                                         {{-- next and prev button --}}
                                         <div class="button-row d-flex justify-content-center mt-3">
                                             <button class="btn btn-secondary mx-2 js-btn-prev" type="button" title="Prev">Prev</button>
-                                            <button class="btn btn-primary mx-2 js-btn-next" type="button" title="Next">Next</button>
+                                            <button class="btn btn-success mx-2 js-btn-next" type="submit" title="Submit">Submit</button>
+                                            {{-- <button class="btn btn-primary mx-2 js-btn-next" type="button" title="Next">Next</button> --}}
                                         </div>
 
                                     </div>
