@@ -54,8 +54,8 @@
                                     <th class="text-center">ENGAGEMENT TYPE</th>
                                     <th class="text-center">ENGAGEMENT TITLE</th>
                                     <th class="text-center">NUMBER OF PAX</th>
-                                    <th class="text-center">SCHEDULED DATES</th>
-                                    <th class="text-center">SCHEDULED TIME</th>
+                                    {{-- <th class="text-center">SCHEDULED DATES</th>
+                                    <th class="text-center">SCHEDULED TIME</th> --}}
                                     <th class="text-center">DATE ADDED</th>
                                     <th class="text-center" colspan="2">Modify</th>
                                 </tr>
@@ -107,7 +107,7 @@
                                         <td class="text-center fw-bold" role="button" data-toggle="modal" data-target="#exampleModal{{ $item->id }}">
                                             {{ $item->pax_number }}
                                         </td>
-                                        <td class="text-center fw-bold" role="button" data-toggle="modal" data-target="#exampleModal{{ $item->id }}">
+                                        {{-- <td class="text-center fw-bold" role="button" data-toggle="modal" data-target="#exampleModal{{ $item->id }}">
                                             @if($item->program_dates)
                                                 @foreach($item->program_dates as $dates)
                                                     {{$dates.', '}}
@@ -120,7 +120,7 @@
                                                     {{$time}}
                                                 @endforeach
                                             @endif
-                                        </td>
+                                        </td> --}}
                                         <td class="text-center fw-bold" role="button" data-toggle="modal" data-target="#exampleModal{{ $item->id }}">
                                             {{ \Carbon\Carbon::parse($item->created_at)->toFormattedDateString()}}
                                         </td>
@@ -183,7 +183,7 @@
                                                         </div>
 
                                                         <div class="modal-body">
-                                                            <table class="table" id="table2">
+                                                            <table class="table display" id="table2">
                                                                 <thead>
                                                                     <tr class="table-secondary">
                                                                         <th class="text-center">ID</th>
@@ -232,11 +232,11 @@
                                                                             </tr>
                                                                         @endif
                                                                     @endforeach
-                                                                    {{-- <tr>
+                                                                    <tr>
                                                                         <td colspan="5">
                                                                             <button type="button" class="btn btn-primary"><i class="fa-solid fa-square-plus"></i> Add Batch</button>
                                                                         </td>
-                                                                    </tr> --}}
+                                                                    </tr>
                                                                 </tbody>
                                                             </table>
                                                         </div>
@@ -359,7 +359,8 @@
 @section('script')
     <script>
         //datatble of batch
-        let table2 = document.querySelector('#table2');
-        let dataTable2 = new simpleDatatables.DataTable('#table2');
+        // let table2 = document.querySelector('#table2');
+        // let dataTable2 = new simpleDatatables.DataTable('#table2');
+        new simpleDatatables.DataTable('#table2');
     </script>
 @endsection
