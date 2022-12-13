@@ -102,7 +102,8 @@ Auth::routes();
     Route::post('delete',[CustomizedEngagementController::class, 'deleteRow'])->name('delete');
 
     //-------SUB FEE-------//
-    Route::get('form/customizedEngagement/sub-fee', [CustomizedEngagementController::class, 'formSubFee'])->middleware('auth')->name('form/customizedEngagement/sub-fee');
+    // Route::get('form/customizedEngagement/sub-fee', [CustomizedEngagementController::class, 'formSubFee'])->middleware('auth')->name('form/customizedEngagement/sub-fee');
+    Route::get('form/customizedEngagement/sub-fee', [CustomizedEngagementController::class, 'addBatch'])->middleware('auth')->name('form/customizedEngagement/sub-fee');
     Route::get('form/customizedEngagement/sub-fee/{id}', [CustomizedEngagementController::class, 'editSubForm'])->middleware('auth')->name('form/customizedEngagement/sub-fee/{id}');
     });
 // ----------------------------- F2F engagement form ------------------------------//

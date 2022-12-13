@@ -10,7 +10,7 @@
     <div id="main">
         @include('headers.header')
         <div class="page-heading">
-            
+
             <div class="page-title">
                 <div class="row">
                     <div class="col-12 col-md-6 order-md-1 order-last">
@@ -198,12 +198,14 @@
                                                                 <tbody class="text-center">
                                                                     @foreach ($data2 as $key => $item2)
                                                                         @if($item->id == $item2->customized_engagement_forms_id)
-                                                                            <tr>
+                                                                            <tr class="appendBatch">
                                                                                 <td>
                                                                                     <label class="fw-bold " for="formGroupBatchInput">{{ $item2->id }}</label>
                                                                                 </td>
                                                                                 <td>
-                                                                                    <label class="fw-bold" for="">Batch {{ $item2->batch_number }}</label>
+                                                                                    <label class="fw-bold" for="">
+                                                                                        Batch {{ $item2->batch_number }}
+                                                                                    </label>
                                                                                 </td>
                                                                                 <td>
                                                                                     <label class="fw-bold" for="">{{ $item2->session_number }}</label>
@@ -232,22 +234,28 @@
                                                                                 </td>
                                                                             </tr>
 
-                                                                        @elseif ($loop->last)
+                                                                        @if ($loop->last)
                                                                             <tr>
+                                                                                <td hidden class="batch-id">{{ $item2->id }}</td>
                                                                                 <td colspan="5">
-                                                                                    <button type="button" class="btn btn-primary add-batch">
+                                                                                    <a href="javascript:void(0)" class="btn btn-primary add-batch" data-id="{{ $item2->id }}>
                                                                                         <i class="fa-solid fa-square-plus"></i> Add Batch
-                                                                                    </button>
+                                                                                    </a>
+                                                                                    <form action="">
+                                                                                        <input type="hidden" value="{{ $item2->id }}">
+                                                                                    </form>
+
                                                                                 </td>
                                                                             </tr>
+                                                                        @endif
 
                                                                         @endif
                                                                     @endforeach
-                                                                    <tr>
+                                                                    {{-- <tr>
                                                                         <td colspan="5">
                                                                             <button type="button" class="btn btn-primary"><i class="fa-solid fa-square-plus"></i> Add Batch</button>
                                                                         </td>
-                                                                    </tr>
+                                                                    </tr> --}}
                                                                 </tbody>
                                                             </table>
                                                         </div>
@@ -279,6 +287,8 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
 <script>
     //deletion of tbl row
     $(document).on('click','.delete',function()

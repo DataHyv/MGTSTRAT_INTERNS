@@ -195,9 +195,9 @@
                                 <textarea class="form-control input-table @error('') is-invalid @enderror" name="fee_notes[]" id="" rows="2" cols="55">{{ $fee_type->notes }}</textarea>
                             </td>
                             <td style="background-color: #FFFFFF;" class="border border-white">
-                                <a href="javascript:void(0)" class="text-success font-18" title="Add" id="addBtn" onclick="$('#CeAddBtn').trigger('click')">
+                                {{-- <a href="javascript:void(0)" class="text-success font-18" title="Add" id="addBtn" onclick="$('#CeAddBtn').trigger('click')">
                                     <i class="fa fa-plus"></i>
-                                </a>
+                                </a> --}}
                             </td>
                         </tr>
                         @endif
@@ -246,9 +246,10 @@
                                         <textarea class="form-control input-table @error('') is-invalid @enderror"
                                             name="fee_notes[]" id="" rows="2" cols="55">{{ $fee_type->notes }}</textarea>
                                     </td>
-                                    <td style="background-color: #FFFFFF;" class="border border-white"><a
-                                            href="javascript:void(0)" class="text-success font-18" title="Add"
-                                            id="addBtn2" onclick="$('#CeAddBtn2').trigger('click')"><i class="fa fa-plus"></i></a>
+                                    <td style="background-color: #FFFFFF;" class="border border-white">
+                                        {{-- <a href="javascript:void(0)" class="text-success font-18" title="Add" id="addBtn2" onclick="$('#CeAddBtn2').trigger('click')">
+                                            <i class="fa fa-plus"></i>
+                                        </a> --}}
                                     </td>
                                 </tr>
                             @endif
@@ -265,7 +266,7 @@
                             <h4 class="text-center" id="subtotal-consulting">-</h4>
                         </td>
                         <td class="total-td table-light"></td>
-                        <td class="border border-white add-row"></td>
+                        <td class="add-row border border-white"></td>
                     </tr>
                 <!------------------- END ----------------------->
 
@@ -336,9 +337,10 @@
                                     <td class="table-light total-td">
                                         <textarea class="form-control input-table @error('') is-invalid @enderror" name="fee_notes[]" id="" rows="2" cols="55">{{ $fee_type->notes }}</textarea>
                                     </td>
-                                    <td style="background-color: #FFFFFF;" class="border border-white"><a
-                                            href="javascript:void(0)" class="text-success font-18" title="Add"
-                                            id="addBtn3" onclick="$('#CeAddBtn3').trigger('click')"><i class="fa fa-plus"></i></a>
+                                    <td style="background-color: #FFFFFF;" class="border border-white">
+                                       {{-- <a href="javascript:void(0)" class="text-success font-18" title="Add" id="addBtn3" onclick="$('#CeAddBtn3').trigger('click')">
+                                            <i class="fa fa-plus"></i>
+                                        </a> --}}
                                     </td>
                                 </tr>
                             @endif
@@ -434,9 +436,10 @@
                                         <textarea class="form-control input-table @error('') is-invalid @enderror"
                                             name="fee_notes[]" id="" rows="2" cols="55">{{  $fee_type->notes }}</textarea>
                                     </td>
-                                    <td style="background-color: #FFFFFF;" class="border border-white"><a
-                                            href="javascript:void(0)" class="text-success font-18" title="Add"
-                                            id="addBtn4" onclick="$('#CeAddBtn4').trigger('click')"><i class="fa fa-plus"></i></a>
+                                    <td style="background-color: #FFFFFF;" class="border border-white">
+                                        {{-- <a href="javascript:void(0)" class="text-success font-18" title="Add" id="addBtn4" onclick="$('#CeAddBtn4').trigger('click')">
+                                            <i class="fa fa-plus"></i>
+                                        </a> --}}
                                     </td>
                                 </tr>
                             @endif
@@ -478,9 +481,10 @@
                                         <textarea class="form-control input-table @error('') is-invalid @enderror"
                                             name="fee_notes[]" id="" rows="2" cols="55">{{ $fee_type->notes }}</textarea>
                                     </td>
-                                    <td style="background-color: #FFFFFF;" class="border border-white"><a
-                                            href="javascript:void(0)" class="text-success font-18" title="Add"
-                                            id="addBtn5" onclick="$('#CeAddBtn5').trigger('click')"><i class="fa fa-plus"></i></a>
+                                    <td style="background-color: #FFFFFF;" class="border border-white">
+                                        {{-- <a href="javascript:void(0)" class="text-success font-18" title="Add" id="addBtn5" onclick="$('#CeAddBtn5').trigger('click')">
+                                            <i class="fa fa-plus"></i>
+                                        </a> --}}
                                     </td>
                                 </tr>
                             @endif
@@ -523,9 +527,10 @@
                                         <textarea class="form-control input-table @error('') is-invalid @enderror"
                                             name="fee_notes[]" id="" rows="2" cols="55">{{ $fee_type->notes }}</textarea>
                                     </td>
-                                    <td style="background-color: #FFFFFF;" class="border border-white"><a
-                                            href="javascript:void(0)" class="text-success font-18" title="Add"
-                                            id="addBtn6" onclick="$('#CeAddBtn6').trigger('click')"><i class="fa fa-plus"></i></a>
+                                    <td style="background-color: #FFFFFF;" class="border border-white">
+                                        {{-- <a href="javascript:void(0)" class="text-success font-18" title="Add" id="addBtn6" onclick="$('#CeAddBtn6').trigger('click')">
+                                            <i class="fa fa-plus"></i>
+                                        </a> --}}
                                     </td>
                                 </tr>
                             @endif
@@ -567,9 +572,10 @@
                                         <textarea class="form-control input-table @error('') is-invalid @enderror"
                                             name="fee_notes[]" id="" rows="2" cols="55">{{ $fee_type->notes }}</textarea>
                                     </td>
-                                    <td style="background-color: #FFFFFF;" class="border border-white"><a
-                                            href="javascript:void(0)" class="text-success font-18" title="Add"
-                                            id="addBtn7" onclick="$('#CeAddBtn7').trigger('click')"><i class="fa fa-plus"></i></a>
+                                    <td style="background-color: #FFFFFF;" class="border border-white">
+                                        {{-- <a href="javascript:void(0)" class="text-success font-18" title="Add" id="addBtn7" onclick="$('#CeAddBtn7').trigger('click')">
+                                            <i class="fa fa-plus"></i>
+                                        </a> --}}
                                     </td>
                                 </tr>
                             @endif
@@ -639,9 +645,10 @@
                                         <textarea class="form-control input-table @error('') is-invalid @enderror"
                                             name="fee_notes[]" id="" rows="2" cols="55">{{ $fee_type->notes }}</textarea>
                                     </td>
-                                    <td style="background-color: #FFFFFF;" class="border border-white"><a
-                                            href="javascript:void(0)" class="text-success font-18" title="Add"
-                                            id="addBtn8" onclick="$('#CeAddBtn8').trigger('click')"><i class="fa fa-plus"></i></a>
+                                    <td style="background-color: #FFFFFF;" class="border border-white">
+                                        {{-- <a href="javascript:void(0)" class="text-success font-18" title="Add" id="addBtn8" onclick="$('#CeAddBtn8').trigger('click')">
+                                            <i class="fa fa-plus"></i>
+                                        </a> --}}
                                     </td>
                                 </tr>
                             @endif

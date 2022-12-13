@@ -29,7 +29,7 @@ class CustomizedEngagementController extends Controller
     public function viewRecord()
     {
         $data = Customized_engagement_form::with('client')->latest()->get();
-        $data2 = Sub_information::with('Customized_engagement_form')->latest()->get();
+        $data2 = Sub_information::with('Customized_engagement_form')->get();
         // $data2 = DB::table('sub_informations')->where('customized_engagement_form_id', $request->customized_engagement_forms)->count();
         $dataJoin1  = DB::table('customized_engagement_forms')
             ->join('engagement_fees', 'customized_engagement_forms.cstmzd_eng_form_id', '=', 'engagement_fees.cstmzd_eng_form_id')
@@ -360,12 +360,15 @@ class CustomizedEngagementController extends Controller
         return view('form.components.customized_engagement.sub_fee.customized_engagement');
     }
 
-    // public function addBatch(){
+    // public function addBatch(Request $request){
     //     // $id = $request->id;
-    //     Sub_information::find(4)->replicate()->save();
-    //     $model = Sub_information::find(4);
-    //     $model->id = 7;
-    //     $model->save();
+    //     // $batchId = Sub_information::where('id', $id)->get();
+
+    //     $model = Sub_information::find(32);
+    //     $model->id++;
+    //     $model->batch_number++;
+    //     $model->session_number = 1;
+    //     $model->replicate()->save();
     // }
 
     public function editSubForm($id)

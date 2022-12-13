@@ -60,9 +60,10 @@
                         <div class="card-body">
 
                             <!------------ BUDGET FORM ------------>
-                                <form class="form form-horizontal multisteps-form__form" action="{{ route('save') }}"
+                                <form class="form form-horizontal multisteps-form__form" action=""
                                     method="POST" autocomplete="off" onsubmit="submitForm(event)">
                                     @csrf
+                                    @method('PUT')
 
                                     <!------------ ENGAGEMENT FEES ------------>
                                     <div class="multisteps-form__panel js-active" data-animation="slideHorz">
