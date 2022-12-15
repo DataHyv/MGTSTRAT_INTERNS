@@ -37,9 +37,9 @@
                         <a class="btn btn-primary mt-2 mb-2" href="{{ route('form/customizedEngagement/new') }}">
                             <span><i class="fa-solid fa-file-circle-plus"></i> &nbsp; New Record</span>
                         </a>
-                        {{-- <a class="btn btn-primary mt-2 mb-2 mx-5" href="{{ route('form/customizedEngagement/sub-fee') }}">
+                        <a class="btn btn-primary mt-2 mb-2 mx-5" id="test" href="#">
                             <span><i class="fa-solid fa-file-circle-plus"></i> &nbsp; TEST SUB FEE</span>
-                        </a> --}}
+                        </a>
                     </div>
 
                     <div class="card-body">
@@ -184,7 +184,7 @@
                                                         </div>
 
                                                         <div class="modal-body">
-                                                            <table class="table display" id="table2">
+                                                            <table class="table display" id="tables{{ $item->id }}">
                                                                 <thead>
                                                                     <tr class="table-secondary">
                                                                         <th class="text-center">ID</th>
@@ -195,12 +195,12 @@
                                                                     </tr>
                                                                 </thead>
 
-                                                                <tbody class="text-center">
+                                                                <tbody class="text-center appendBatch">
                                                                     @foreach ($data2 as $key => $item2)
                                                                         @if($item->id == $item2->customized_engagement_forms_id)
-                                                                            <tr class="appendBatch">
+                                                                            <tr>
                                                                                 <td>
-                                                                                    <label class="fw-bold " for="formGroupBatchInput">{{ $item2->id }}</label>
+                                                                                    <label class="fw-bold " for="formGroupBatchInput">{{ ++$key }}</label>
                                                                                 </td>
                                                                                 <td>
                                                                                     <label class="fw-bold" for="">
@@ -234,11 +234,11 @@
                                                                                 </td>
                                                                             </tr>
 
-                                                                        @if ($loop->last)
+                                                                        {{-- @if ($loop->count == $item2->id)
                                                                             <tr>
                                                                                 <td hidden class="batch-id">{{ $item2->id }}</td>
                                                                                 <td colspan="5">
-                                                                                    <a href="javascript:void(0)" class="btn btn-primary add-batch" data-id="{{ $item2->id }}>
+                                                                                    <a href="javascript:void(0)" class="btn btn-primary add-batch" data-id="{{ $item2->id }}">
                                                                                         <i class="fa-solid fa-square-plus"></i> Add Batch
                                                                                     </a>
                                                                                     <form action="">
@@ -247,16 +247,22 @@
 
                                                                                 </td>
                                                                             </tr>
-                                                                        @endif
+                                                                        @endif --}}
 
                                                                         @endif
                                                                     @endforeach
-                                                                    {{-- <tr>
-                                                                        <td colspan="5">
-                                                                            <button type="button" class="btn btn-primary"><i class="fa-solid fa-square-plus"></i> Add Batch</button>
-                                                                        </td>
-                                                                    </tr> --}}
                                                                 </tbody>
+
+                                                                <tbody class="text-center">
+                                                                    <tr>
+                                                                        <td colspan="5">
+                                                                            <a href="javascript:void(0)" class="btn btn-primary add-batch" data-id="{{ $item2->id }}">
+                                                                                <i class="fa-solid fa-square-plus"></i> Add Batch
+                                                                            </a>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+
                                                             </table>
                                                         </div>
 
@@ -273,6 +279,7 @@
                                     </tr>
                                 @endforeach
                             </tbody>
+
                         </table>
                     </div>
 
@@ -290,6 +297,66 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
 <script>
+    $(document).ready(function (){
+        // $(".add-batch").on("click", function(e){
+        //     // $.get('sub-fee', function(data){
+        //     //     console.log(data)
+        //     // });
+
+        //     $.ajaxSetup ({
+        //         cache: false
+        //     });
+
+        //     $.ajax({
+        //         type: "GET",
+        //         url:  "{{ route('form/customizedEngagement/sub-fee') }}",
+        //         cache: false,
+        //         async: true,
+        //         success: function(data){
+        //             viewRecord();
+        //             toastr.warning('Data added successfully','Success');
+
+        //         }
+        //     });
+
+        //     // $.ajax({
+        //     //     type: "GET",
+        //     //     url: "{{ route('form/customizedEngagement/detail') }}",
+        //     //     // dataType: "json",
+        //     //     cache: false,
+        //     //     async: true,
+        //     //     success: function(data){
+        //     //         //responce
+        //     //         console.log('sucess');
+        //     //         // console.log(data);
+        //     //     }
+        //     // });
+
+        //     // $('.appendBatch').append('<tr><td>my data</td><td>more data</td><td>more data</td><td>more data</td><td>more data</td></tr>');
+        // });
+
+        // $("#test").on("click", function(e){
+
+        //     $.ajax({
+        //         type: "GET",
+        //         url: "{{ route('form/customizedEngagement/detail') }}",
+        //         cache: false,
+        //         async: true,
+        //         success: function(data){
+        //             //responce
+        //             console.log(data)
+        //             // location.reload();
+        //             // let dataTable = new DataTable('#tables1');
+        //             // $('#tables1').datatable.refresh();
+        //             // dataTable.on('datatable.refresh', function(query, matched) {
+        //             //     //
+        //             // });
+        //         }
+        //     });
+        // });
+
+    });
+
     //deletion of tbl row
     $(document).on('click','.delete',function()
     {
@@ -382,6 +449,12 @@
         //datatble of batch
         // let table2 = document.querySelector('#table2');
         // let dataTable2 = new simpleDatatables.DataTable('#table2');
-        new simpleDatatables.DataTable('#table2');
+        // new simpleDatatables.DataTable('#tables2');
+        // new simpleDatatables.DataTable('#tables1');
+        for (let i = 1; i < 10; i++) {
+            // console.log(i);
+            let table1 = document.querySelector(`#tables${i}`);
+            new simpleDatatables.DataTable(`#tables${i}`);
+        }
     </script>
 @endsection

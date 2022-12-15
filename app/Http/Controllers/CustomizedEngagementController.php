@@ -34,11 +34,7 @@ class CustomizedEngagementController extends Controller
         $dataJoin1  = DB::table('customized_engagement_forms')
             ->join('engagement_fees', 'customized_engagement_forms.cstmzd_eng_form_id', '=', 'engagement_fees.cstmzd_eng_form_id')
             ->select('customized_engagement_forms.*', 'engagement_fees.*')
-            //add order by
-
             ->get();
-
-
         $dataJoin2  = DB::table('customized_engagement_forms')
             ->join('engagement_costs', 'customized_engagement_forms.cstmzd_eng_form_id', '=', 'engagement_costs.cstmzd_eng_form_id')
             ->select('customized_engagement_forms.*', 'engagement_costs.*')
@@ -201,8 +197,8 @@ class CustomizedEngagementController extends Controller
                                 Sub_fee::create($sub_fee);
                             }
 
-                            foreach($request->fee_type as $key => $fee_types){
-                                $sub_cost['type']                 = $fee_types;
+                            foreach($request->cost_type as $key => $cost_types){
+                                $sub_cost['type']                 = $cost_types;
                                 $sub_cost['sub_informations_id']  = $sub_informations_id;
                                 $sub_cost['consultant_num']       = 0;
                                 $sub_cost['hour_fee']             = 0;
@@ -360,16 +356,57 @@ class CustomizedEngagementController extends Controller
         return view('form.components.customized_engagement.sub_fee.customized_engagement');
     }
 
-    // public function addBatch(Request $request){
-    //     // $id = $request->id;
-    //     // $batchId = Sub_information::where('id', $id)->get();
+    public function addBatch(){
+        // $id = $request->id;
+        // $batchId = Sub_information::where('id', $id)->get();
 
-    //     $model = Sub_information::find(32);
-    //     $model->id++;
-    //     $model->batch_number++;
-    //     $model->session_number = 1;
-    //     $model->replicate()->save();
-    // }
+        $model = Sub_information::find(5);
+        $model->id++;
+        $model->batch_number++;
+        $model->session_number = 1;
+        $model->replicate()->save();
+    }
+
+    public function saveBatchRecord(Request $request){
+        DB::beginTransaction();
+        try {
+
+            $update = [
+                'id'                    => $request->id,
+            ];
+            Sub_information::where('id',$request->id)->update($update);
+
+            /** delete record */
+            foreach ($request->cost_id as $key => $cost_types) {
+                DB::table('sub_costs')->where('id', $request->cost_id[$key])->delete();
+            }
+
+            foreach($request->cost_type as $key => $cost_type)
+            {
+                // $sub_cost['client_id']            = $request->client_id;
+                $sub_cost['sub_informations_id']  = $request->id;
+                $sub_cost['type']                = $request->cost_type[$key];
+                $sub_cost['consultant_num']      = $request->cost_consultant_num[$key] ?? '0';
+                $sub_cost['hour_fee']            = $request->cost_hour_fee[$key];
+                $sub_cost['hour_num']            = $request->cost_hour_num[$key] ?? '0';
+                $sub_cost['nswh']                = $request->cost_nswh[$key] ?? '0';
+                $sub_cost['rooster']             = $request->cost_rooster[$key];
+                $sub_cost['notes']               = $request->cost_notes[$key];
+
+                Sub_cost::create($sub_cost);
+            }
+
+            DB::commit();
+            Toastr::success('Updated successfully','Success');
+            // return redirect()->back();
+            return redirect()->route('form/customizedEngagement/detail');
+        } catch(\Exception $e) {
+            DB::rollback();
+            // Toastr::error('Updated fail','Error');
+            Toastr::error($e->getMessage());
+            return redirect()->back();
+        }
+    }
 
     public function editSubForm($id)
     {

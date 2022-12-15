@@ -60,10 +60,13 @@
                         <div class="card-body">
 
                             <!------------ BUDGET FORM ------------>
-                                <form class="form form-horizontal multisteps-form__form" action=""
+                                <form class="form form-horizontal multisteps-form__form" action="{{ route('updateBatch') }}"
                                     method="POST" autocomplete="off" onsubmit="submitForm(event)">
                                     @csrf
                                     @method('PUT')
+
+                                    <input class="form-control" type="hidden" id="id" name="id" value="{{$data->id}}">
+                                    {{-- <input class="form-control" type="hidden" id="sub_informations_id" name="sub_informations_id" value="{{$data2->sub_informations_id}}"> --}}
 
                                     <!------------ ENGAGEMENT FEES ------------>
                                     <div class="multisteps-form__panel js-active" data-animation="slideHorz">

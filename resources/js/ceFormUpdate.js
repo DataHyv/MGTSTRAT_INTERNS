@@ -423,7 +423,7 @@ $(document).on(
                 // document.getElementById(`rooster${leadConsultant}`).defaultValue = 'TBA';
         }
 
-        $(`#ec_LeadconsultantHf${leadConsultant}`).val( currency.format(Math.ceil(hourlyFees)) );
+        $(`#ec_LeadconsultantHf${leadConsultant}`).val(currency.format(Math.ceil(hourlyFees)) );
         // document.getElementById(`#ec_LeadconsultantHf${leadConsultant}`).defaultValue = currency.format( Math.ceil(hourlyFees) );
 
     });

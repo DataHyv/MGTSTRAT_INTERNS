@@ -225,11 +225,11 @@ $(document).ready( function () {
         //analyst engagement cost auto sum
         sumecAnalyst =
             $(`#ec_AnalystNoc${ecAnalyst}`).val().replace(/,/g, "") *
-                $(`#ec_AnalystHf${ecAnalyst}`).val().replace(/\₱|,/g, "") *
+                $(`#ec_AnalystHf${ecAnalyst}`).val().replace(/,/g, "") *
                 $(`#ec_AnalystNoh${ecAnalyst}`).val().replace(/,/g, "") +
             $(`#ec_AnalystNwh${ecAnalyst}`).val().replace(/,/g, "") *
                 ($(`#ec_AnalystNoc${ecAnalyst}`).val().replace(/,/g, "") *
-                    $(`#ec_AnalystHf${ecAnalyst}`).val().replace(/\₱|,/g, "") *
+                    $(`#ec_AnalystHf${ecAnalyst}`).val().replace(/,/g, "") *
                     $(`#ec_AnalystNoh${ecAnalyst}`).val().replace(/,/g, "") *
                     0.2);
 
@@ -985,9 +985,9 @@ $(document).ready( function () {
 
     //ENGAGEMENT COST DEFAULT VALUE
     $('table .val').val(0);
-    document.getElementById("ec_AnalystHf1").defaultValue = currency.format( Math.ceil(1700) );
+    // document.getElementById("ec_AnalystHf1").defaultValue = currency.format( Math.ceil(1700) );
     document.getElementById("ec_DocumentorHf").defaultValue = currency.format( Math.ceil(700) );
-    document.getElementById("ec_ProgramHf").defaultValue = currency.format( Math.ceil(1000) );
+    // document.getElementById("ec_ProgramHf").defaultValue = currency.format( Math.ceil(1000) );
     document.getElementById("ec_Programexpense").defaultValue = 2 + "%";
 
     $("#ec_Programexpense").on("blur", function () {
