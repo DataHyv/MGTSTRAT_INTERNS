@@ -34,7 +34,7 @@
                                     <th scope="col">Contract ID</th>
                                     <th scope="col">Company Name</th>
                                     <th scope="col">Engagement Title</th>
-                                    <th scope="col">Cost</th>
+                                    <th scope="col">Contract Price</th>
                                   </tr>
                                 </thead>
 

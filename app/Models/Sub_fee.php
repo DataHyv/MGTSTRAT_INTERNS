@@ -10,10 +10,7 @@ class Sub_fee extends Model
     // use HasFactory;
     public $timestamps = false;
     protected $fillable = [
-        'client_id',
         'sub_informations_id',
-        'batch_number',
-        'session_number',
         'type',
         'consultant_num',
         'hour_fee',

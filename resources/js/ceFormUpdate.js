@@ -420,11 +420,11 @@ $(document).on(
 
             default:
                 hourlyFees = 2550;
-                // document.getElementById(`rooster${leadConsultant}`).defaultValue = 'TBA';
+                document.getElementById(`roster${leadConsultant}`).defaultValue = 'TBA';
         }
 
-        $(`#ec_LeadconsultantHf${leadConsultant}`).val(currency.format(Math.ceil(hourlyFees)) );
-        // document.getElementById(`#ec_LeadconsultantHf${leadConsultant}`).defaultValue = currency.format( Math.ceil(hourlyFees) );
+        $(`#ec_LeadconsultantHf${leadConsultant}`).prop('readonly', true).val(currency.format(Math.ceil(hourlyFees)) );
+        // document.getElementById(`ec_LeadconsultantHf${leadConsultant}`).value = currency.format( Math.ceil(hourlyFees) );
 
     });
 
@@ -718,11 +718,11 @@ $(document).on(
 
             default:
                 hourlyFees = 2250;
-                // document.getElementById(`rooster${leadConsultant}`).defaultValue = 'TBA';
+                document.getElementById(`roster2${designer}`).defaultValue = 'TBA';
         }
 
-        // $(`#ec_DesignerHf${designer}`).val( currency.format(Math.ceil(hourlyFees)) );
-        document.getElementById(`ec_DesignerHf${designer}`).value = currency.format( Math.ceil(hourlyFees) );
+        $(`#ec_DesignerHf${designer}`).prop('readonly', true).val( currency.format(Math.ceil(hourlyFees)) );
+        // document.getElementById(`ec_DesignerHf${designer}`).value = currency.format( Math.ceil(hourlyFees) );
 
     });
 
@@ -881,11 +881,11 @@ $(document).on(
 
             default:
                 hourlyFees = 3000;
-                // document.getElementById(`rooster${leadConsultant}`).defaultValue = 'TBA';
+                document.getElementById(`roster3${leadfaci}`).defaultValue = 'TBA';
         }
 
-        // $(`#ec_DesignerHf${designer}`).val( currency.format(Math.ceil(hourlyFees)) );
-        document.getElementById(`ec_LeadfacilitatorHf${leadfaci}`).value = currency.format( Math.ceil(hourlyFees) );
+        $(`#ec_LeadfacilitatorHf${leadfaci}`).prop('readonly', true).val( currency.format(Math.ceil(hourlyFees)) );
+        // document.getElementById(`ec_LeadfacilitatorHf${leadfaci}`).value = currency.format( Math.ceil(hourlyFees) );
 
     });
 
@@ -1184,11 +1184,11 @@ $(document).on(
                 break;
 
             default:
-                hourlyFees = 0;
-                // document.getElementById(`rooster${leadConsultant}`).defaultValue = 'TBA';
+                hourlyFees = 1900;
+                document.getElementById(`roster4${leadConsultant}`).defaultValue = 'TBA';
         }
 
-        $(`#ec_CoLeadfacilitatorHf${colead}`).val( currency.format(Math.ceil(hourlyFees)) );
+        $(`#ec_CoLeadfacilitatorHf${colead}`).prop('readonly', true).val( currency.format(Math.ceil(hourlyFees)) );
         // document.getElementById(`#ec_LeadconsultantHf${leadConsultant}`).defaultValue = currency.format( Math.ceil(hourlyFees) );
 
     });
@@ -1489,10 +1489,10 @@ $(document).on(
 
             default:
                 hourlyFees = 1800;
-                // document.getElementById(`rooster${leadConsultant}`).defaultValue = 'TBA';
+                document.getElementById(`roster5${cofaci}`).defaultValue = 'TBA';
         }
 
-        $(`#ec_CofacilitatorHf${cofaci}`).val( currency.format(Math.ceil(hourlyFees)) );
+        $(`#ec_CofacilitatorHf${cofaci}`).prop('readonly', true).val( currency.format(Math.ceil(hourlyFees)) );
         // document.getElementById(`#ec_LeadconsultantHf${leadConsultant}`).defaultValue = currency.format( Math.ceil(hourlyFees) );
 
     });
@@ -1792,10 +1792,11 @@ $(document).on(
 
             default:
                 hourlyFees = 800;
-                // document.getElementById(`roster6${moderator}`).defaultValue = 'TBA';
+                document.getElementById(`roster6${moderator}`).defaultValue = 'TBA';
         }
 
-        document.getElementById(`ec_ModeratorHf${moderator}`).value = currency.format( Math.ceil(hourlyFees) );
+        $(`#ec_ModeratorHf${moderator}`).prop('readonly', true).val( currency.format(Math.ceil(hourlyFees)) );
+        // document.getElementById(`ec_ModeratorHf${moderator}`).value = currency.format( Math.ceil(hourlyFees) );
     });
 
     // PRODUCER
@@ -2093,10 +2094,11 @@ $(document).on(
 
             default:
                 hourlyFees = 550;
-                // document.getElementById(`roster7${moderator}`).defaultValue = 'TBA';
+                document.getElementById(`roster7${producer}`).defaultValue = 'TBA';
         }
 
-        document.getElementById(`ec_ProducerHf${producer}`).value = currency.format( Math.ceil(hourlyFees) );
+        $(`#ec_ProducerHf${producer}`).prop('readonly', true).val( currency.format(Math.ceil(hourlyFees)) );
+        // document.getElementById(`ec_ProducerHf${producer}`).value = currency.format( Math.ceil(hourlyFees) );
     });
 
 });

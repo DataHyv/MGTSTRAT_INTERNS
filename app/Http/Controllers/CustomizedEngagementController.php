@@ -83,9 +83,10 @@ class CustomizedEngagementController extends Controller
     }
 
     /* Update Record */
-    public function updateRecord($cstmzd_eng_form_id)
+    public function updateRecord($cstmzd_eng_form_id, $id)
     {
         $data = DB::table('customized_engagement_forms')->where('cstmzd_eng_form_id',$cstmzd_eng_form_id)->first();
+        // $data = Customized_engagement_form::with('client')->latest()->get();
         // $data2 = Customized_engagement_form::with('client')->where('cstmzd_eng_form_id',$cstmzd_eng_form_id)->first();
         $data2 = Client::orderBy('company_name')->get();
         $dataJoin1 = DB::table('customized_engagement_forms')
@@ -98,6 +99,30 @@ class CustomizedEngagementController extends Controller
             ->select('customized_engagement_forms.*', 'engagement_costs.*')
             ->where('engagement_costs.cstmzd_eng_form_id',$cstmzd_eng_form_id)
             ->get();
+
+        // $dataJoin3 = DB::table('customized_engagement_forms')
+        //     ->join('sub_informations', 'customized_engagement_forms.id', '=', 'sub_informations.customized_engagement_forms_id')
+        //     ->select('customized_engagement_forms.*', 'sub_informations.*')
+        //     ->where('sub_informations.customized_engagement_forms_id',$id)
+        //     ->get();
+
+        $dataJoin3 = DB::table('customized_engagement_forms')
+            ->join('sub_informations', 'customized_engagement_forms.id', '=', 'sub_informations.customized_engagement_forms_id')
+            ->join('sub_fees', 'sub_informations.id', '=', 'sub_fees.sub_informations_id')
+            ->select('customized_engagement_forms.*', 'sub_informations.*', 'sub_fees.*')
+            ->where('sub_informations.customized_engagement_forms_id',$id)
+            ->get();
+
+        $data3 = Sub_information::with('sub_informations')->where('sub_informations.customized_engagement_forms_id', $id)->get();
+
+        $dataJoin4 = DB::table('sub_informations')
+            ->join('sub_fees', 'sub_informations.id', '=', 'sub_fees.sub_informations_id')
+            ->select('sub_informations.*', 'sub_fees.*')
+            ->where('sub_fees.sub_informations_id',$id)
+            ->get();
+
+        // $data3 = Sub_fee::with('sub_informations')->get();
+        // $data3 = Sub_fee::with('sub_informations')->where('sub_fees.sub_informations_id', $id)->get();
 
         $DateOfEngagements = Customized_engagement_form::findOrFail($data->id);
         $StartTime = Customized_engagement_form::findOrFail($data->id);
@@ -113,7 +138,7 @@ class CustomizedEngagementController extends Controller
             'Cluster'=>$Cluster->cluster,
             'CoreArea'=>$CoreArea->core_area,
         ],
-            compact('data','dataJoin1','dataJoin2', 'data2'));
+            compact('data','dataJoin1','dataJoin2', 'data2', 'dataJoin3', 'dataJoin4', 'data3'));
         // return view('form.budgetForm_update.ce_update',compact('data','dataJoin1','dataJoin2'));
     }
 
@@ -270,12 +295,12 @@ class CustomizedEngagementController extends Controller
                 'id'                    => $request->id,
                 'status'                => $request->status,
                 'customized_type'       => $request->customized_type,
-                // 'batch_name'            => $request->batch_name,
                 'ga_percent'            => $request->ga_percent,
-                // 'client_id'             => $request->client_id,
                 'client_id'             => (int)$request->client_id,
                 'engagement_title'      => $request->engagement_title,
                 'pax_number'            => $request->pax_number,
+                'batch_number'            => $request->batch_number,
+                'session_number'            => $request->session_number,
                 'program_dates'         => $request->program_dates,
                 'program_start_time'    => $request->program_start_time,
                 'program_end_time'      => $request->program_end_time,
@@ -286,12 +311,12 @@ class CustomizedEngagementController extends Controller
             Customized_engagement_form::where('id',$request->id)->update($update);
 
             /** delete record */
-            foreach ($request->ce_id as $key => $fee_types) {
-                DB::table('engagement_fees')->where('id', $request->ce_id[$key])->delete();
-            }
-            foreach ($request->cost_id as $key => $cost_types) {
-                DB::table('engagement_costs')->where('id', $request->cost_id[$key])->delete();
-            }
+            // foreach ($request->ce_id as $key => $fee_types) {
+            //     DB::table('engagement_fees')->where('id', $request->ce_id[$key])->delete();
+            // }
+            // foreach ($request->cost_id as $key => $cost_types) {
+            //     DB::table('engagement_costs')->where('id', $request->cost_id[$key])->delete();
+            // }
 
             // $client_id = DB::table('customized_engagement_forms')->orderBy('client_id','DESC')->select('client_id')->first();
             // $client_id = $client_id->client_id;
@@ -299,7 +324,6 @@ class CustomizedEngagementController extends Controller
             /** insert new record */
             foreach($request->fee_type as $key => $fee_type)
             {
-                // $engagement_fee['type']                 = $fee_types;
                 $engagement_fee['client_id']            = $request->client_id;
                 $engagement_fee['cstmzd_eng_form_id']   = $request->cstmzd_eng_form_id;
                 $engagement_fee['type']                 = $request->fee_type[$key];
@@ -310,7 +334,34 @@ class CustomizedEngagementController extends Controller
                 $engagement_fee['nswh_percent']         = $request->nswh_percent[$key] ?? '0';
                 $engagement_fee['notes']                = $request->fee_notes[$key];
 
-                Engagement_fee::create($engagement_fee);
+                // Engagement_fee::create($engagement_fee);
+                Engagement_fee::where('id',$request->ce_id[$key])->update($engagement_fee);
+
+                // foreach($request->sub_fees_id as $key => $sub_fee){
+                    $sub_fees['type']                 = $request->fee_type[$key];
+                    $sub_fees['consultant_num']       = $request->fee_consultant_num[$key] ?? '0';
+                    $sub_fees['hour_fee']             = $request->fee_hour_fee[$key];
+                    $sub_fees['hour_num']             = ($request->fee_hour_num[$key] ?? '0')/($request->session_number*$request->batch_number);
+                    $sub_fees['nswh']                 = $request->fee_nswh[$key] ?? '0';
+                    $sub_fees['nswh_percent']         = $request->nswh_percent[$key] ?? '0';
+                    $sub_fees['notes']                = $request->fee_notes[$key];
+
+                    // Engagement_fee::create($engagement_fee);
+                    Sub_fee::where('id',$request->sub_fees_id[$key])->update($sub_fees);
+                // }
+
+                // foreach($request->sub_fees_id as $key => $sub_fee){
+                //     $sub_fees['type']                 = $request->fee_type[$key];
+                //     $sub_fees['consultant_num']       = $request->fee_consultant_num[$key] ?? '0';
+                //     $sub_fees['hour_fee']             = $request->fee_hour_fee[$key];
+                //     $sub_fees['hour_num']             = ($request->fee_hour_num[$key] ?? '0')/($request->session_number*$request->batch_number);
+                //     $sub_fees['nswh']                 = $request->fee_nswh[$key] ?? '0';
+                //     $sub_fees['nswh_percent']         = $request->nswh_percent[$key] ?? '0';
+                //     $sub_fees['notes']                = $request->fee_notes[$key];
+
+                //     // Engagement_fee::create($engagement_fee);
+                //     Sub_fee::where('id',$request->sub_fees_id[$key])->update($sub_fees);
+                // }
             }
 
             foreach($request->cost_type as $key => $cost_type)
@@ -325,8 +376,26 @@ class CustomizedEngagementController extends Controller
                 $engagement_cost['rooster']             = $request->cost_rooster[$key];
                 $engagement_cost['notes']               = $request->cost_notes[$key];
 
-                Engagement_cost::create($engagement_cost);
+                Engagement_cost::where('id',$request->cost_id[$key])->update($engagement_cost);
             }
+
+            // foreach($request->sub_fees_id as $key => $sub_fee){
+            //     $sub_fees['type']                 = $request->fee_type[$key];
+            //     $sub_fees['consultant_num']       = $request->fee_consultant_num[$key] ?? '0';
+            //     $sub_fees['hour_fee']             = $request->fee_hour_fee[$key];
+            //     $sub_fees['hour_num']             = ($request->fee_hour_num[$key] ?? '0')/($request->session_number*$request->batch_number);
+            //     $sub_fees['nswh']                 = $request->fee_nswh[$key] ?? '0';
+            //     $sub_fees['nswh_percent']         = $request->nswh_percent[$key] ?? '0';
+            //     $sub_fees['notes']                = $request->fee_notes[$key];
+
+            //     // Engagement_fee::create($engagement_fee);
+            //     Sub_fee::where('id',$request->sub_fees_id[$key])->update($sub_fees);
+            // }
+
+            // $batch_number = DB::table('customized_engagement_forms')->get();
+            // if($batch_number->batch_number != $request->batch_number && $batch_number->session_number != $request->session_number){
+
+            // }
 
             DB::commit();
             Toastr::success('Updated successfully','Success');
@@ -373,13 +442,18 @@ class CustomizedEngagementController extends Controller
 
             $update = [
                 'id'                    => $request->id,
+                'date'                  => $request->date,
+                'start_time'            => $request->start_time,
+                'end_time'              => $request->end_time,
+                'cluster'               => $request->cluster,
+                'core_area'             => $request->core_area,
             ];
             Sub_information::where('id',$request->id)->update($update);
 
             /** delete record */
-            foreach ($request->cost_id as $key => $cost_types) {
-                DB::table('sub_costs')->where('id', $request->cost_id[$key])->delete();
-            }
+            // foreach ($request->cost_id as $key => $cost_types) {
+            //     DB::table('sub_costs')->where('id', $request->cost_id[$key])->delete();
+            // }
 
             foreach($request->cost_type as $key => $cost_type)
             {
@@ -393,7 +467,8 @@ class CustomizedEngagementController extends Controller
                 $sub_cost['rooster']             = $request->cost_rooster[$key];
                 $sub_cost['notes']               = $request->cost_notes[$key];
 
-                Sub_cost::create($sub_cost);
+                // Sub_cost::create($sub_cost);
+                Sub_cost::where('id', $request->cost_id[$key])->update($sub_cost);
             }
 
             DB::commit();
@@ -421,6 +496,13 @@ class CustomizedEngagementController extends Controller
         ->select('sub_informations.*', 'sub_costs.*')
         ->where('sub_costs.sub_informations_id',$id)
         ->get();
-        return view('form.components.customized_engagement.sub_fee.customized_engagement',compact('data','data2','data3'));
+        $dataJoin1  = DB::table('customized_engagement_forms')
+        ->join('engagement_fees', 'customized_engagement_forms.cstmzd_eng_form_id', '=', 'engagement_fees.cstmzd_eng_form_id')
+        ->join('sub_informations', 'customized_engagement_forms.id', '=', 'sub_informations.customized_engagement_forms_id')
+        ->select('customized_engagement_forms.*', 'engagement_fees.*', 'sub_informations.*')
+        ->where('sub_informations.customized_engagement_forms_id',$id)
+        ->get();
+
+        return view('form.components.customized_engagement.sub_fee.customized_engagement',compact('data','data2','data3','dataJoin1'));
     }
 }

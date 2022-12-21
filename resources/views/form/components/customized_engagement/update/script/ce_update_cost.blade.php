@@ -299,8 +299,8 @@
                                 value="{{ old('') }}" name="cost_rooster[]" id="roster${leadConsultant}">
                         </td>
                         <td class="total-td table-light">
-                            <input class="form-control input-table @error('') is-invalid @enderror"
-                                name="cost_notes[]" id=""></input>
+                            <textarea class="form-control input-table @error('') is-invalid @enderror"
+                                name="cost_notes[]" id="" rows="2" cols="55"></textarea>
                         </td>
                         <td class="border border-white" style="background-color: #FFFFFF;">
                             <a href="javascript:void(0)" class="text-danger font-18 remove" id="ecButton${leadConsultant}" title="Remove">

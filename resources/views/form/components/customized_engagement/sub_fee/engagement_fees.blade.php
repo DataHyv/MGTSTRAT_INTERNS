@@ -14,20 +14,20 @@
                         <div class="flex-column">
                             <div>
                                 <fieldset class="row justify-content-center" id="dateRows">
-                                    <div class="col-lg-1 col-md-1">
+                                    {{-- <div class="col-lg-1 col-md-1">
                                         <div class="px-0">
                                                 <label class="fw-bold invisible overflow-hidden mb-4">Add</label>
                                                 <a href="javascript:void(0)" class="text-success font-18 px-0" title="Add"
                                                 id="addDates"><i class="fa fa-plus"></i></a>
                                         </div>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="col-lg-2 col-md-2">
                                         <div class="form-group has-icon-left">
                                             <label class="fw-bold required">Date</label>
                                             <div class="position-relative">
                                                 <input type="text" class="form-control date datepicker @error('doe') is-invalid @enderror"
-                                                    value="{{ old('doe') }}" placeholder="Enter Date" name="program_dates[]" id="datepicker"
+                                                    value="{{ $data->date }}" placeholder="Enter Date" name="date" id="datepicker"
                                                     size="30">
                                                 <div class="form-control-icon">
                                                     <i class="bi bi-calendar"></i>
@@ -46,7 +46,7 @@
                                             <label class="fw-bold required">Start Time</label>
                                             <div class="position-relative">
                                                 <input type="text" class="form-control start-time timepicker @error('dot') is-invalid @enderror"
-                                                    value="{{ old('dot') }}" placeholder="Enter Time" id="program_start_time" name="program_start_time[]">
+                                                    value="{{ $data->start_time }}" placeholder="Enter Time" id="program_start_time" name="start_time">
                                                 <div class="form-control-icon">
                                                     <i class="bi bi-clock"></i>
                                                 </div>
@@ -64,7 +64,7 @@
                                             <label class="fw-bold required">End Time</label>
                                             <div class="position-relative">
                                                 <input type="text" class="form-control end-time timepicker @error('dot') is-invalid @enderror"
-                                                    value="{{ old('dot') }}" placeholder="Enter Time" id="program_end_time" name="program_end_time[]">
+                                                    value="{{ $data->end_time }}" placeholder="Enter Time" id="program_end_time" name="end_time">
                                                 <div class="form-control-icon">
                                                     <i class="fa-solid fa-hourglass-end"></i>
                                                 </div>
@@ -146,61 +146,61 @@
 
                     <tbody id="tableLeadconsultant">
                         @foreach ($data2 as $key=>$fee_type)
-                        @if ($fee_type->type === 'Lead Consultant')
-                        <tr class="table-warning">
-                            <td class="title table-light">
-                                <input type="text" class="d-none" value="{{ $fee_type->type }}" name="fee_type[]" readonly>
-                                {{ $fee_type->type }}
-                            </td>
-                            <td data-title="# OF CONSULTANTS">
-                                <input type="text"
-                                    class="input js-mytooltip input-table form-control commanumber @error('') is-invalid @enderror"
-                                    value="{{ $fee_type->consultant_num }}" name="fee_consultant_num[]" id="ef_LeadconsultantNoc1"
-                                    title="" max="100" data-type="currency"
-                                    data-mytooltip-content="<i>Includes in depth needs analysis (i.e. surveys, interviews, FGDs),
-                                    special research (i.e. to study client materials or client -required materials, industry
-                                    or function specific content), creation of client-specific learning aids/tools
-                                    (i.e. assessments, c</i>"
-                                    data-mytooltip-theme="dark" data-mytooltip-action="focus"
-                                    data-mytooltip-direction="bottom">
-                            </td>
-                            <td>
-                                <fieldset>
-                                    <select class="form-select input js-mytooltip @error('') is-invalid @enderror" name="fee_hour_fee[]" id="ef_LeadconsultantHf" data-mytooltip-content="<i> &#8369;7,000 - Consultants<br> &#8369;9,000 - Senior Consultants </i>" data-mytooltip-theme="dark" data-mytooltip-action="focus" data-mytooltip-direction="right" style="background-color:#ffcccc; color:red;">
-                                        <option value="7000" {{ $fee_type->hour_fee == '7000' ? 'selected="selected"' : '' }}>
-                                            &#8369;7,000
-                                        </option>
-                                        <option value="9000" {{ $fee_type->hour_fee == '9000' ? 'selected="selected"' : '' }}>
-                                            &#8369;9,000
-                                        </option>
-                                    </select>
-                                    @error('')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </fieldset>
-                            </td>
-                            <td>
-                                <input type="text" class="form-control input-table input js-mytooltip commanumber @error('') is-invalid @enderror" value="{{ $fee_type->hour_num }}" name="fee_hour_num[]" id="ef_LeadconsultantNoh1" data-type="currency" data-mytooltip-content="<i>Number of Hours</i>" data-mytooltip-theme="dark" data-mytooltip-action="focus" data-mytooltip-direction="bottom">
-                            </td>
-                            <td>
-                                <input type="text" class="form-control input-table commanumber @error('') is-invalid @enderror" value="{{ $fee_type->nswh }}" name="fee_nswh[]" id="ef_LeadconsultantNwh1" data-type="currency">
-                                <input type="text" class="nswh-percent-value" name="nswh_percent[]" hidden>
-                            </td>
-                            <td class="total-td table-light">
-                                <h4 class="text-center lead" id="leadTotal">-</h4>
-                            </td>
-                            <td class="total-td table-light">
-                                <textarea class="form-control input-table @error('') is-invalid @enderror" name="fee_notes[]" id="" rows="2" cols="55">{{ $fee_type->notes }}</textarea>
-                            </td>
-                            <td style="background-color: #FFFFFF;" class="border border-white">
-                                {{-- <a href="javascript:void(0)" class="text-success font-18" title="Add" id="addBtn" onclick="$('#CeAddBtn').trigger('click')">
-                                    <i class="fa fa-plus"></i>
-                                </a> --}}
-                            </td>
-                        </tr>
-                        @endif
+                            @if ($fee_type->type === 'Lead Consultant')
+                            <tr class="table-warning">
+                                <td class="title table-light">
+                                    <input type="text" class="d-none" value="{{ $fee_type->type }}" name="fee_type[]" readonly>
+                                    {{ $fee_type->type }}
+                                </td>
+                                <td data-title="# OF CONSULTANTS">
+                                    <input type="text"
+                                        class="input js-mytooltip input-table form-control commanumber @error('') is-invalid @enderror"
+                                        value="{{ $fee_type->consultant_num }}" name="fee_consultant_num[]" id="ef_LeadconsultantNoc1"
+                                        title="" max="100" data-type="currency"
+                                        data-mytooltip-content="<i>Includes in depth needs analysis (i.e. surveys, interviews, FGDs),
+                                        special research (i.e. to study client materials or client -required materials, industry
+                                        or function specific content), creation of client-specific learning aids/tools
+                                        (i.e. assessments, c</i>"
+                                        data-mytooltip-theme="dark" data-mytooltip-action="focus"
+                                        data-mytooltip-direction="bottom">
+                                </td>
+                                <td>
+                                    <fieldset>
+                                        <select class="form-select input js-mytooltip @error('') is-invalid @enderror" name="fee_hour_fee[]" id="ef_LeadconsultantHf" data-mytooltip-content="<i> &#8369;7,000 - Consultants<br> &#8369;9,000 - Senior Consultants </i>" data-mytooltip-theme="dark" data-mytooltip-action="focus" data-mytooltip-direction="right" style="background-color:#ffcccc; color:red;">
+                                            <option value="7000" {{ $fee_type->hour_fee == '7000' ? 'selected="selected"' : '' }}>
+                                                &#8369;7,000
+                                            </option>
+                                            <option value="9000" {{ $fee_type->hour_fee == '9000' ? 'selected="selected"' : '' }}>
+                                                &#8369;9,000
+                                            </option>
+                                        </select>
+                                        @error('')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </fieldset>
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control input-table input js-mytooltip commanumber @error('') is-invalid @enderror" value="{{ $fee_type->hour_num }}" name="fee_hour_num[]" id="ef_LeadconsultantNoh1" data-type="currency" data-mytooltip-content="<i>Number of Hours</i>" data-mytooltip-theme="dark" data-mytooltip-action="focus" data-mytooltip-direction="bottom">
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control input-table commanumber @error('') is-invalid @enderror" value="{{ $fee_type->nswh }}" name="fee_nswh[]" id="ef_LeadconsultantNwh1" data-type="currency">
+                                    <input type="text" class="nswh-percent-value" name="nswh_percent[]" hidden>
+                                </td>
+                                <td class="total-td table-light">
+                                    <h4 class="text-center lead" id="leadTotal">-</h4>
+                                </td>
+                                <td class="total-td table-light">
+                                    <textarea class="form-control input-table @error('') is-invalid @enderror" name="fee_notes[]" id="" rows="2" cols="55">{{ $fee_type->notes }}</textarea>
+                                </td>
+                                <td style="background-color: #FFFFFF;" class="border border-white">
+                                    {{-- <a href="javascript:void(0)" class="text-success font-18" title="Add" id="addBtn" onclick="$('#CeAddBtn').trigger('click')">
+                                        <i class="fa fa-plus"></i>
+                                    </a> --}}
+                                </td>
+                            </tr>
+                            @endif
                         @endforeach
                     </tbody>
 
@@ -401,7 +401,7 @@
                                                 <option value="11000" {{ $fee_type->hour_fee == '11000' ? 'selected="selected"' : '' }}>
                                                     &#8369;11,000
                                                 </option>
-                                                <option value="12000" {{ $fee_type->hour_fee == '12000' ? 'selected="selected"' : '' }} selected>
+                                                <option value="12000" {{ $fee_type->hour_fee == '12000' ? 'selected="selected"' : '' }}>
                                                     &#8369;12,000
                                                 </option>
                                                 <option value="others" {{ $fee_type->hour_fee == 'others' ? 'selected="selected"' : '' }}

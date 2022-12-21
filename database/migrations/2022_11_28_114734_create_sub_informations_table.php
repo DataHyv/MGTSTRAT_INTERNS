@@ -18,6 +18,11 @@ class CreateSubInformationsTable extends Migration
             $table->foreignId('customized_engagement_forms_id')->nullable()->constrained()->onDelete('cascade');
             $table->integer('batch_number')->nullable();
             $table->integer('session_number')->nullable();
+            $table->string('date')->nullable();
+            $table->string('start_time')->nullable();
+            $table->string('end_time')->nullable();
+            $table->string('cluster')->nullable();
+            $table->string('core_area')->nullable();
             $table->timestamps();
         });
     }

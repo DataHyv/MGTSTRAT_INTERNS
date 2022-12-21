@@ -37,9 +37,9 @@
                         <a class="btn btn-primary mt-2 mb-2" href="{{ route('form/customizedEngagement/new') }}">
                             <span><i class="fa-solid fa-file-circle-plus"></i> &nbsp; New Record</span>
                         </a>
-                        <a class="btn btn-primary mt-2 mb-2 mx-5" id="test" href="#">
+                        {{-- <a class="btn btn-primary mt-2 mb-2 mx-5" id="test" href="#">
                             <span><i class="fa-solid fa-file-circle-plus"></i> &nbsp; TEST SUB FEE</span>
-                        </a>
+                        </a> --}}
                     </div>
 
                     <div class="card-body">
@@ -130,7 +130,7 @@
                                                 <span class="badge bg-info"><i class="bi bi-person-plus-fill"></i></span>
                                             </a>
 
-                                            <a href="{{ url('form/customizedEngagement/detail/' . $item->cstmzd_eng_form_id) }}">
+                                            <a href="{{ url('form/customizedEngagement/detail/' . $item->cstmzd_eng_form_id .  $item->id) }}">
                                                 <span class="badge bg-success"><i class="bi bi-pencil-square"></i></span>
                                             </a>
 
@@ -233,27 +233,11 @@
                                                                                     </a>
                                                                                 </td>
                                                                             </tr>
-
-                                                                        {{-- @if ($loop->count == $item2->id)
-                                                                            <tr>
-                                                                                <td hidden class="batch-id">{{ $item2->id }}</td>
-                                                                                <td colspan="5">
-                                                                                    <a href="javascript:void(0)" class="btn btn-primary add-batch" data-id="{{ $item2->id }}">
-                                                                                        <i class="fa-solid fa-square-plus"></i> Add Batch
-                                                                                    </a>
-                                                                                    <form action="">
-                                                                                        <input type="hidden" value="{{ $item2->id }}">
-                                                                                    </form>
-
-                                                                                </td>
-                                                                            </tr>
-                                                                        @endif --}}
-
                                                                         @endif
                                                                     @endforeach
                                                                 </tbody>
 
-                                                                <tbody class="text-center">
+                                                                {{-- <tbody class="text-center">
                                                                     <tr>
                                                                         <td colspan="5">
                                                                             <a href="javascript:void(0)" class="btn btn-primary add-batch" data-id="{{ $item2->id }}">
@@ -261,7 +245,7 @@
                                                                             </a>
                                                                         </td>
                                                                     </tr>
-                                                                </tbody>
+                                                                </tbody> --}}
 
                                                             </table>
                                                         </div>
