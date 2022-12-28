@@ -47,8 +47,8 @@
                             title="User Info">Information</button>
                         <button class="multisteps-form__progress-btn" type="button" title="Engagement Fees">Engagement
                             Fees</button>
-                        <button class="multisteps-form__progress-btn" type="button" title="Engagement Cost">Engagement
-                            Cost</button>
+                        {{-- <button class="multisteps-form__progress-btn" type="button" title="Engagement Cost">Engagement
+                            Cost</button> --}}
                         <button class="multisteps-form__progress-btn" type="button" title="Profit Forecast">Profit Forecast
                         </button>
                     </div>
@@ -117,7 +117,7 @@
                                             </div>
 
                                         <!------------ ENGAGEMENT COST ------------>
-                                            <div class="multisteps-form__panel" data-animation="slideHorz">
+                                            <div class="d-none" data-animation="slideHorz">
                                                 @include('form.components.customized_engagement.update.ce_update_engagementCost')
                                                 {{-- next and prev button --}}
                                                 <div class="col-12 d-flex justify-content-center mt-3">

@@ -28,15 +28,13 @@
                             <th class="title-middle" scope="col" style="font-size: 0.9rem;" width=10%>
                                 <label for="Night Shift, Weekends and Holidays">NSWH</label>
                                 @foreach ($dataJoin1 as $key=>$fee_type)
-                                {{-- @foreach ($dataJoin3 as $key=>$sub_fee) --}}
                                 @if ($fee_type->type === 'Night Shift, Weekends and Holidays')
                                 <input type="hidden" name="ce_id[]" value="{{$fee_type->id }}">
-                                @foreach ($dataJoin3 as $key=>$sub_fee)
+                                {{-- @foreach ($dataJoin3 as $key=>$sub_fee)
                                     @if ($sub_fee->type === 'Night Shift, Weekends and Holidays')
                                         <input type="hidden" name="sub_fees_id[]" value="{{$sub_fee->id }}">
                                     @endif
-                                @endforeach
-                                {{-- <input type="hidden" name="sub_fees_id[]" value="{{$sub_fee->id }}"> --}}
+                                @endforeach --}}
                                 <input type="hidden" value="Night Shift, Weekends and Holidays" name="fee_type[]">
                                 <input type="hidden" value="" name="fee_consultant_num[]">
                                 <input type="hidden" value="" name="fee_hour_fee[]">
@@ -60,7 +58,6 @@
                                     </option>
                                 </select>
                                 @endif
-                                {{-- @endforeach --}}
                                 @endforeach
                             </th>
                             {{-- <th class="title-middle" scope="col" style="font-size: 0.9rem;" width=10%>NIGHT SHIFT,
@@ -110,7 +107,7 @@
                             <input type="hidden" name="ce_id[]" value="{{$fee_type->id }}">
                             {{-- @foreach ($dataJoin3 as $key=>$sub_fee)
                                 @if ($sub_fee->type === 'Lead Consultant')
-                                    <input type="hidden" name="sub_fees_id[]" value="{{$sub_fee->id }}">
+                                    <input type="text" name="sub_fees_id[]" value="{{$sub_fee->id }}">
                                 @endif
                             @endforeach --}}
                             <input type="text" class="d-none" value="{{ $fee_type->type }}" name="fee_type[]">
@@ -171,7 +168,7 @@
                                 name="fee_notes[]" id="" rows="2" cols="55">{{$fee_type->notes}}</textarea>
                         </td>
 
-                        @if ($efLeadConsultant === 1)
+                        {{-- @if ($efLeadConsultant === 1)
                             <td style="background-color: #FFFFFF;" class="border border-white"><a href="javascript:void(0)"
                                     class="text-success font-18" title="Add" id="addBtn" onclick="$('#EcAddBtn').trigger('click');"><i
                                         class="fa fa-plus"></i></a>
@@ -182,7 +179,7 @@
                                     <i class="fa fa-trash-o"></i>
                                 </a>
                             </td>
-                        @endif
+                        @endif --}}
                     </tr>
                     @endif
                     @endforeach
@@ -230,7 +227,7 @@
                             <textarea class="form-control input-table @error('') is-invalid @enderror"
                                 name="fee_notes[]" id="" rows="2" cols="55">{{$fee_type->notes}}</textarea>
                         </td>
-                        @if($efAnalyst === 1)
+                        {{-- @if($efAnalyst === 1)
                             <td style="background-color: #FFFFFF;" class="border border-white">
                                 <a href="javascript:void(0)" class="text-success font-18" title="Add" id="addBtn2" onclick="$('#EcAddBtn2').trigger('click');">
                                     <i class="fa fa-plus"></i>
@@ -242,7 +239,7 @@
                                     <i class="fa fa-trash-o"></i>
                                 </a>
                             </td>
-                        @endif
+                        @endif --}}
                     </tr>
                     @endif
                     @endforeach
@@ -343,7 +340,7 @@
                             <textarea class="form-control input-table @error('') is-invalid @enderror"
                                 name="fee_notes[]" id="" rows="2" cols="55">{{$fee_type->notes}}</textarea>
                         </td>
-                        @if ($efDesigner === 1 )
+                        {{-- @if ($efDesigner === 1 )
                             <td style="background-color: #FFFFFF;" class="border border-white">
                                 <a href="javascript:void(0)" class="text-success font-18" title="Add" id="addBtn3" onclick="$('#EcAddBtn3').trigger('click');">
                                     <i class="fa fa-plus"></i>
@@ -355,7 +352,7 @@
                                     <i class="fa fa-trash-o"></i>
                                 </a>
                             </td>
-                        @endif
+                        @endif --}}
                     </tr>
                     @endif
                     @endforeach
@@ -415,13 +412,13 @@
                                         &#8369;12,000 - all else</i>"
                                     data-mytooltip-theme="dark" data-mytooltip-action="focus"
                                     data-mytooltip-direction="right" style="background-color:#ffcccc; color:red;">
-                                    <option value="10,000" {{ $fee_type->hour_fee == '10,000' ? 'selected="selected"' : '' }}>
+                                    <option value="10000" {{ $fee_type->hour_fee == '10000' ? 'selected="selected"' : '' }}>
                                         &#8369;10,000
                                     </option>
-                                    <option value="11,000" {{ $fee_type->hour_fee == '11,000' ? 'selected="selected"' : '' }}>
+                                    <option value="11000" {{ $fee_type->hour_fee == '11000' ? 'selected="selected"' : '' }}>
                                         &#8369;11,000
                                     </option>
-                                    <option value="12,000" {{ $fee_type->hour_fee == '12,000' ? 'selected="selected"' : '' }}
+                                    <option value="12000" {{ $fee_type->hour_fee == '12000' ? 'selected="selected"' : '' }}
                                         selected>
                                         &#8369;12,000
                                     </option>
@@ -459,7 +456,7 @@
                             <textarea class="form-control input-table @error('') is-invalid @enderror"
                                 name="fee_notes[]" id="" rows="2" cols="55">{{$fee_type->notes}}</textarea>
                         </td>
-                        @if ($efLeadfaci === 1)
+                        {{-- @if ($efLeadfaci === 1)
                             <td style="background-color: #FFFFFF;" class="border border-white">
                                 <a href="javascript:void(0)" class="text-success font-18" title="Add"id="addBtn4" onclick="$('#EcAddBtn4').trigger('click');">
                                     <i class="fa fa-plus"></i>
@@ -471,7 +468,7 @@
                                     <i class="fa fa-trash-o"></i>
                                 </a>
                             </td>
-                        @endif
+                        @endif --}}
                     </tr>
                     @endif
                     @endforeach
@@ -522,7 +519,7 @@
                             <textarea class="form-control input-table @error('') is-invalid @enderror"
                                 name="fee_notes[]" id="" rows="2" cols="55">{{$fee_type->notes}}</textarea>
                         </td>
-                        @if ($efCofaci === 1)
+                        {{-- @if ($efCofaci === 1)
                             <td style="background-color: #FFFFFF;" class="border border-white">
                                 <a href="javascript:void(0)" class="text-success font-18" title="Add" id="addBtn5" onclick="$('#EcAddBtn5').trigger('click');">
                                     <i class="fa fa-plus"></i>
@@ -534,7 +531,7 @@
                                     <i class="fa fa-trash-o"></i>
                                 </a>
                             </td>
-                        @endif
+                        @endif --}}
                     </tr>
                     @endif
                     @endforeach
@@ -546,11 +543,6 @@
                     <tr class="table-warning" id="efModeratorRow{{++$efModerator}}">
                         <td class="title table-light">
                             <input type="hidden" name="ce_id[]" value="{{$fee_type->id }}">
-                            {{-- @foreach ($dataJoin3 as $key=>$sub_fee)
-                                @if ($sub_fee->type === 'Moderator')
-                                    <input type="hidden" name="sub_fees_id[]" value="{{$sub_fee->id }}">
-                                @endif
-                            @endforeach --}}
                             <input type="text" class="d-none" value="{{ $fee_type->type }}" name="fee_type[]" >
                             {{ $fee_type->type }}
                         </td>
@@ -586,7 +578,7 @@
                             <textarea class="form-control input-table @error('') is-invalid @enderror"
                                 name="fee_notes[]" id="" rows="2" cols="55">{{$fee_type->notes}}</textarea>
                         </td>
-                        @if ($efModerator === 1)
+                        {{-- @if ($efModerator === 1)
                             <td style="background-color: #FFFFFF;" class="border border-white">
                                 <a href="javascript:void(0)" class="text-success font-18" title="Add" id="addBtn6" onclick="$('#EcAddBtn6').trigger('click');">
                                     <i class="fa fa-plus"></i></a>
@@ -597,7 +589,7 @@
                                     <i class="fa fa-trash-o"></i>
                                 </a>
                             </td>
-                        @endif
+                        @endif --}}
                     </tr>
                     @endif
                     @endforeach
@@ -609,11 +601,6 @@
                     <tr class="table-warning" id="efProducerRow{{++$efProducer}}">
                         <td class="title table-light">
                             <input type="hidden" name="ce_id[]" value="{{$fee_type->id }}">
-                            {{-- @foreach ($dataJoin3 as $key=>$sub_fee)
-                                @if ($sub_fee->type === 'Moderator')
-                                    <input type="hidden" name="sub_fees_id[]" value="{{$sub_fee->id }}">
-                                @endif
-                            @endforeach --}}
                             <input type="text" class="d-none" value="{{ $fee_type->type }}" name="fee_type[]" >
                             {{ $fee_type->type }}
                         </td>
@@ -648,7 +635,7 @@
                             <textarea class="form-control input-table @error('') is-invalid @enderror"
                                 name="fee_notes[]" id="" rows="2" cols="55">{{$fee_type->notes}}</textarea>
                         </td>
-                        @if($efProducer === 1)
+                        {{-- @if($efProducer === 1)
                             <td style="background-color: #FFFFFF;" class="border border-white">
                                 <a href="javascript:void(0)" class="text-success font-18" title="Add" id="addBtn7" onclick="$('#EcAddBtn7').trigger('click');">
                                     <i class="fa fa-plus"></i>
@@ -660,7 +647,7 @@
                                     <i class="fa fa-trash-o"></i>
                                 </a>
                             </td>
-                        @endif
+                        @endif --}}
                     </tr>
                     @endif
                     @endforeach
@@ -698,11 +685,6 @@
                     <tr class="table-warning" id="rowDocumentor{{++$efDocumentor}}">
                         <td class="table-light title">
                             <input type="hidden" name="ce_id[]" value="{{$fee_type->id }}">
-                            {{-- @foreach ($dataJoin3 as $key=>$sub_fee)
-                                @if ($sub_fee->type === 'Documentor')
-                                    <input type="hidden" name="sub_fees_id[]" value="{{$sub_fee->id }}">
-                                @endif
-                            @endforeach --}}
                             <input type="text" class="d-none" value="{{ $fee_type->type }}" name="fee_type[]" >
                             {{ $fee_type->type }}
                         </td>
@@ -738,7 +720,7 @@
                             <textarea class="form-control input-table @error('') is-invalid @enderror"
                                 name="fee_notes[]" id="" rows="2" cols="55">{{$fee_type->notes}}</textarea>
                         </td>
-                        @if($efDocumentor === 1)
+                        {{-- @if($efDocumentor === 1)
                         <td style="background-color: #FFFFFF;" class="border border-white">
                             <a href="javascript:void(0)" class="text-success font-18" title="Add" id="addBtn8" onclick="$('#EcAddBtn8').trigger('click');">
                                 <i class="fa fa-plus"></i>
@@ -750,7 +732,7 @@
                                     <i class="fa fa-trash-o"></i>
                                 </a>
                             </td>
-                        @endif
+                        @endif --}}
                     </tr>
                     @endif
                     @endforeach
@@ -776,11 +758,6 @@
                         <tr class="table-active">
                             <td class="table-light fw-bold text-dark text-uppercase fst-italic overall-total-start">
                                 <input type="hidden" name="ce_id[]" value="{{$fee_type->id }}">
-                                {{-- @foreach ($dataJoin3 as $key=>$sub_fee)
-                                    @if ($sub_fee->type === 'Discounts')
-                                        <input type="hidden" name="sub_fees_id[]" value="{{$sub_fee->id }}">
-                                    @endif
-                                @endforeach --}}
                                 <input type="text" class="d-none" value="{{$fee_type->type}}" name="fee_type[]" >
                                 <b>Discount given (if any)</b>
                             </td>
@@ -825,9 +802,27 @@
                 </tr>
                 </tbody>
             </table>
+
+            @foreach ($dataJoin3 as $key=>$sub_fee)
+                <input type="hidden" name="sub_information_id[]" value="{{$sub_fee->sub_informations_id }}">
+                <input type="hidden" name="sub_id[]" value="{{$sub_fee->id }}">
+                <input type="hidden" name="sub_type[]" value="{{$sub_fee->type }}">
+                <input type="hidden" class="commanumber" value="{{ $sub_fee->consultant_num }}" name="sub_consultant_num[]" data-type="currency">
+                <input type="hidden" class="" value="{{ $sub_fee->hour_fee }}" name="sub_hour_fee[]" data-type="currency">
+                <input type="hidden" class="commanumber" value="{{ $sub_fee->hour_num }}" name="sub_hour_num[]" data-type="currency" >
+                <input type="hidden" class="commanumber" value="{{ $sub_fee->nswh }}" name="sub_nswh[]" data-type="currency" >
+                <input type="hidden" class="nswh-percent-value" value="{{ $sub_fee->nswh_percent }}" name="sub_nswh_percent[]">
+                <textarea class="form-control input-table @error('') is-invalid @enderror" name="sub_notes[]" id="" rows="2" cols="55" hidden>{{$sub_fee->notes}}</textarea>
+            @endforeach
+
         </div>
     </section>
 </div>
 <!---------- END OF FORM BODY ---------->
+<script>
+$('#name').change(function() {
+    $('#firstname').val($(this).val());
+});
+</script>
 
 @include('form.components.customized_engagement.update.script.ce_update_fees')

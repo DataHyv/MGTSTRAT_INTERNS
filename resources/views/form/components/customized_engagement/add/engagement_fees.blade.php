@@ -110,11 +110,11 @@
                             <td class="total-td table-light">
                                 <textarea class="form-control input-table @error('') is-invalid @enderror" name="fee_notes[]" id="" rows="2" cols="55"></textarea>
                             </td>
-                            <td style="background-color: #FFFFFF;" class="border border-white">
+                            {{-- <td style="background-color: #FFFFFF;" class="border border-white">
                                 <a href="javascript:void(0)" class="text-success font-18" title="Add" id="addBtn" onclick="$('#CeAddBtn').trigger('click')">
                                     <i class="fa fa-plus"></i>
                                 </a>
-                            </td>
+                            </td> --}}
                         </tr>
                     </tbody>
 
@@ -158,10 +158,10 @@
                                 <textarea class="form-control input-table @error('') is-invalid @enderror"
                                     name="fee_notes[]" id="" rows="2" cols="55"></textarea>
                             </td>
-                            <td style="background-color: #FFFFFF;" class="border border-white"><a
+                            {{-- <td style="background-color: #FFFFFF;" class="border border-white"><a
                                     href="javascript:void(0)" class="text-success font-18" title="Add"
                                     id="addBtn2" onclick="$('#CeAddBtn2').trigger('click')"><i class="fa fa-plus"></i></a>
-                            </td>
+                            </td> --}}
                         </tr>
                     </tbody>
 
@@ -244,10 +244,10 @@
                             <td class="table-light total-td">
                                 <textarea class="form-control input-table @error('') is-invalid @enderror" name="fee_notes[]" id="" rows="2" cols="55"></textarea>
                             </td>
-                            <td style="background-color: #FFFFFF;" class="border border-white"><a
+                            {{-- <td style="background-color: #FFFFFF;" class="border border-white"><a
                                     href="javascript:void(0)" class="text-success font-18" title="Add"
                                     id="addBtn3" onclick="$('#CeAddBtn3').trigger('click')"><i class="fa fa-plus"></i></a>
-                            </td>
+                            </td> --}}
                         </tr>
                     </tbody>
                 <!------------------- END ----------------------->
@@ -296,13 +296,13 @@
                                             12,000 - all else</i>"
                                         data-mytooltip-theme="dark" data-mytooltip-action="focus"
                                         data-mytooltip-direction="right" style="background-color:#ffcccc; color:red;">
-                                        <option value="10,000" {{ old('') == '10,000' ? 'selected="selected"' : '' }}>
+                                        <option value="10000" {{ old('') == '10000' ? 'selected="selected"' : '' }}>
                                             10,000
                                         </option>
-                                        <option value="11,000" {{ old('') == '11,000' ? 'selected="selected"' : '' }}>
+                                        <option value="11000" {{ old('') == '11000' ? 'selected="selected"' : '' }}>
                                             11,000
                                         </option>
-                                        <option value="12,000" {{ old('') == '12,000' ? 'selected="selected"' : '' }}
+                                        <option value="12000" {{ old('') == '12000' ? 'selected="selected"' : '' }}
                                             selected>
                                             12,000
                                         </option>
@@ -338,10 +338,10 @@
                                 <textarea class="form-control input-table @error('') is-invalid @enderror"
                                     name="fee_notes[]" id="" rows="2" cols="55"></textarea>
                             </td>
-                            <td style="background-color: #FFFFFF;" class="border border-white"><a
+                            {{-- <td style="background-color: #FFFFFF;" class="border border-white"><a
                                     href="javascript:void(0)" class="text-success font-18" title="Add"
                                     id="addBtn4" onclick="$('#CeAddBtn4').trigger('click')"><i class="fa fa-plus"></i></a>
-                            </td>
+                            </td> --}}
                         </tr>
                     </tbody>
 
@@ -378,10 +378,10 @@
                                 <textarea class="form-control input-table @error('') is-invalid @enderror"
                                     name="fee_notes[]" id="" rows="2" cols="55"></textarea>
                             </td>
-                            <td style="background-color: #FFFFFF;" class="border border-white"><a
+                            {{-- <td style="background-color: #FFFFFF;" class="border border-white"><a
                                     href="javascript:void(0)" class="text-success font-18" title="Add"
                                     id="addBtn5" onclick="$('#CeAddBtn5').trigger('click')"><i class="fa fa-plus"></i></a>
-                            </td>
+                            </td> --}}
                         </tr>
                     </tbody>
 
@@ -419,10 +419,10 @@
                                 <textarea class="form-control input-table @error('') is-invalid @enderror"
                                     name="fee_notes[]" id="" rows="2" cols="55"></textarea>
                             </td>
-                            <td style="background-color: #FFFFFF;" class="border border-white"><a
+                            {{-- <td style="background-color: #FFFFFF;" class="border border-white"><a
                                     href="javascript:void(0)" class="text-success font-18" title="Add"
                                     id="addBtn6" onclick="$('#CeAddBtn6').trigger('click')"><i class="fa fa-plus"></i></a>
-                            </td>
+                            </td> --}}
                         </tr>
                     </tbody>
 
@@ -459,10 +459,10 @@
                                 <textarea class="form-control input-table @error('') is-invalid @enderror"
                                     name="fee_notes[]" id="" rows="2" cols="55"></textarea>
                             </td>
-                            <td style="background-color: #FFFFFF;" class="border border-white"><a
+                            {{-- <td style="background-color: #FFFFFF;" class="border border-white"><a
                                     href="javascript:void(0)" class="text-success font-18" title="Add"
                                     id="addBtn7" onclick="$('#CeAddBtn7').trigger('click')"><i class="fa fa-plus"></i></a>
-                            </td>
+                            </td> --}}
                         </tr>
                     </tbody>
 
@@ -527,10 +527,10 @@
                                 <textarea class="form-control input-table @error('') is-invalid @enderror"
                                     name="fee_notes[]" id="" rows="2" cols="55"></textarea>
                             </td>
-                            <td style="background-color: #FFFFFF;" class="border border-white"><a
+                            {{-- <td style="background-color: #FFFFFF;" class="border border-white"><a
                                     href="javascript:void(0)" class="text-success font-18" title="Add"
                                     id="addBtn8" onclick="$('#CeAddBtn8').trigger('click')"><i class="fa fa-plus"></i></a>
-                            </td>
+                            </td> --}}
                         </tr>
                     </tbody>
                 <!------------------- END ----------------------->

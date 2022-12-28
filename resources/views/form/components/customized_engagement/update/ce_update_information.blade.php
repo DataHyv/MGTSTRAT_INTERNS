@@ -163,12 +163,12 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-2 g-2">
+            {{-- <div class="col-md-2 g-2">
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
                     <label class="form-check-label" for="flexSwitchCheckDefault">Pilot</label>
                 </div>
-            </div>
+            </div> --}}
         </div>
 
         <div class="form-group row">
@@ -197,7 +197,7 @@
     <!------------ END ------------>
 
     <!------------ NUMBER OF BATCHES AND SESSION ------------>
-        <div class="form-group row">
+        <div class="form-group row d-none">
             <div class="col-md-2">
                 <label class="fw-bold required">Number of Batches </label>
             </div>
@@ -220,7 +220,7 @@
             </div>
         </div>
 
-        <div class="form-group row mb-5">
+        <div class="form-group row mb-5 d-none">
             <div class="col-md-2">
                 <label class="fw-bold required">Number of Session </label>
             </div>

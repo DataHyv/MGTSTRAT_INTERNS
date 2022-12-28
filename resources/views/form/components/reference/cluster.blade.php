@@ -356,10 +356,10 @@
                 <fieldset class="form-group">
                     <select class="form-select core-valueInput @error('') is-invalid @enderror" name="core_area" id="core-valueInput1">
                         <option value="Culture" {{ $data->core_area == 'Culture' ? 'selected="selected"' : '' }}>Culture</option>
-                        <option value="Capability {{ $data->core_area == 'Capability' ? 'selected="selected"' : '' }}" selected>Capability</option>
-                        <option value="Leadership {{ $data->core_area == 'Leadership' ? 'selected="selected"' : '' }}">Leadership</option>
-                        <option value="Social {{ $data->core_area == 'Social' ? 'selected="selected"' : '' }}">Social</option>
-                        <option value="Strategy {{ $data->core_area == 'Strategy' ? 'selected="selected"' : '' }}">Strategy</option>
+                        <option value="Capability" {{ $data->core_area == 'Capability' ? 'selected="selected"' : '' }}>Capability</option>
+                        <option value="Leadership" {{ $data->core_area == 'Leadership' ? 'selected="selected"' : '' }}>Leadership</option>
+                        <option value="Social" {{ $data->core_area == 'Social' ? 'selected="selected"' : '' }}>Social</option>
+                        <option value="Strategy" {{ $data->core_area == 'Strategy' ? 'selected="selected"' : '' }}>Strategy</option>
                         <option value="Teams" {{ $data->core_area == 'Teams' ? 'selected="selected"' : '' }}>Teams</option>
                     </select>
                 </fieldset>

@@ -231,12 +231,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-2 g-2">
+                {{-- <div class="col-md-2 g-2">
                     <div class="form-check form-switch">
                         <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
                         <label class="form-check-label" for="flexSwitchCheckDefault">Pilot</label>
                     </div>
-                </div>
+                </div> --}}
             </div>
 
             <div class="form-group row">

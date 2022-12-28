@@ -418,8 +418,8 @@
                                         value="{{ $cost_types->rooster }}" name="cost_rooster[]" id="">
                                 </td>
                                 <td class="total-td table-light">
-                                    <input class="form-control input-table @error('') is-invalid @enderror"
-                                    name="cost_notes[]" id="">{{$cost_types->notes}}</input>
+                                    <textarea class="form-control input-table @error('') is-invalid @enderror"
+                                    name="cost_notes[]" id="" rows="2" cols="55">{{$cost_types->notes}}</textarea>
                                 </td>
                                 @if ($ecAnalyst === 1)
                                 <td style="background-color: #FFFFFF;" class="border border-white">

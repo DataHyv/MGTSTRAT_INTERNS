@@ -112,7 +112,7 @@
                                                 <option value="0.15" {{ $fee_type->nswh_percent == '0.15' ? 'selected="selected"' : '' }}>
                                                     &#8369;15%
                                                 </option>
-                                                <option value="0.2" {{ $fee_type->nswh_percent == '0.2' ? 'selected="selected"' : '' }} selected>
+                                                <option value="0.2" {{ $fee_type->nswh_percent == '0.2' ? 'selected="selected"' : '' }}>
                                                     &#8369;20%
                                                 </option>
                                                 <option value="0.25" {{ $fee_type->nswh_percent == '0.25' ? 'selected="selected"' : '' }}>

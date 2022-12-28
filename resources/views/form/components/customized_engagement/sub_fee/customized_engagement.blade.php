@@ -120,6 +120,18 @@
 
     {{-- CUSTOMIZED ENGAGEMENT SCRIPT --}}
     <script>
+        $(".remove").on("click", function(e){
+            var id = $(this).attr("data-id");
+            $.ajax({
+                url: "{{ route('delete') }}",
+                data: {"id": id,"_token": "{{ csrf_token() }}"},
+                type: 'post',
+                success: function(result){
+                toastr.warning('Data deleted successfully','Success');
+                }
+            });
+        });
+
         function submitForm(e) {
         // e.preventDefault();
         $('.commanumber').each((index, input) => { //1st way
@@ -128,6 +140,7 @@
         });
         }
     </script>
+
     <script type="text/javascript" src="/js/ceform.js"></script>
     <script type="text/javascript" src="/js/roster.js"></script>
     {{-- <script type="text/javascript" src="/js/ceFormAdd.js"></script> --}}

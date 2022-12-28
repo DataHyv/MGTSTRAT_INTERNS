@@ -55,6 +55,7 @@
                                     <th class="text-center">ENGAGEMENT TYPE</th>
                                     <th class="text-center">ENGAGEMENT TITLE</th>
                                     <th class="text-center">NUMBER OF PAX</th>
+                                    <th class="text-center">ENGAGEMENT FEES</th>
                                     {{-- <th class="text-center">SCHEDULED DATES</th>
                                     <th class="text-center">SCHEDULED TIME</th> --}}
                                     <th class="text-center">DATE ADDED</th>
@@ -108,6 +109,9 @@
                                         <td class="text-center fw-bold" role="button" data-toggle="modal" data-target="#exampleModal{{ $item->id }}">
                                             {{ $item->pax_number }}
                                         </td>
+                                        <td class="text-center fw-bold" role="button" data-toggle="modal" data-target="#exampleModal{{ $item->id }}">
+                                            {{ $item->Engagement_fees_total }}
+                                        </td>
                                         {{-- <td class="text-center fw-bold" role="button" data-toggle="modal" data-target="#exampleModal{{ $item->id }}">
                                             @if($item->program_dates)
                                                 @foreach($item->program_dates as $dates)
@@ -125,10 +129,11 @@
                                         <td class="text-center fw-bold" role="button" data-toggle="modal" data-target="#exampleModal{{ $item->id }}">
                                             {{ \Carbon\Carbon::parse($item->created_at)->toFormattedDateString()}}
                                         </td>
-                                        <td class="text-center fw-bold"> {{-- buttons --}}
-                                            <a href=".bd-example-modal-lg" data-toggle="modal" data-target=".bd-example-modal-lg">
+                                        <td class="text-center fw-bold">
+                                            {{-- buttons --}}
+                                            {{-- <a href=".bd-example-modal-lg" data-toggle="modal" data-target=".bd-example-modal-lg">
                                                 <span class="badge bg-info"><i class="bi bi-person-plus-fill"></i></span>
-                                            </a>
+                                            </a> --}}
 
                                             <a href="{{ url('form/customizedEngagement/detail/' . $item->cstmzd_eng_form_id .  $item->id) }}">
                                                 <span class="badge bg-success"><i class="bi bi-pencil-square"></i></span>
@@ -190,7 +195,8 @@
                                                                         <th class="text-center">ID</th>
                                                                         <th class="text-center">Batch Name</th>
                                                                         <th class="text-center">Sessions</th>
-                                                                        <th class="text-center">Amount</th>
+                                                                        <th class="text-center">Program date</th>
+                                                                        <th class="text-center">Contract Price</th>
                                                                         <th class="text-center">Modify</th>
                                                                     </tr>
                                                                 </thead>
@@ -210,6 +216,18 @@
                                                                                 <td>
                                                                                     <label class="fw-bold" for="">{{ $item2->session_number }}</label>
                                                                                 </td>
+                                                                                @if ($item2->date == null)
+                                                                                <td>
+                                                                                    <label class="fw-bold" for="">TBA</label>
+                                                                                </td>
+                                                                                @else
+                                                                                <td>
+                                                                                    <label class="fw-bold" for="">{{ $item2->date }}</label>
+                                                                                </td>
+                                                                                @endif
+                                                                                {{-- <td>
+                                                                                    <label class="fw-bold" for="">{{ $item2->date }}</label>
+                                                                                </td> --}}
                                                                                 <td>
                                                                                     <label class="fw-bold" for="">
                                                                                         {{

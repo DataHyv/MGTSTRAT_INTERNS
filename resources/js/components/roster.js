@@ -301,13 +301,10 @@ $(document).on(
             case 'TBA':
                 hourlyFees = 2550;
                 break;
-            case '':
-                hourlyFees = 0;
-                break;
 
             default:
-                // hourlyFees = 0;
-                document.getElementById(`rooster${leadConsultant}`).defaultValue = 'TBA';
+                hourlyFees = 2550;
+                document.getElementById(`roster${leadConsultant}`).defaultValue = 'TBA';
         }
 
         $(`#ec_LeadconsultantHf${leadConsultant}`).prop('readonly', true).val( currency.format(Math.ceil(hourlyFees)) );
