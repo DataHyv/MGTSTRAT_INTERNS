@@ -713,7 +713,7 @@
                         <td class="overall-total-end table-warning">
                             <input type="text"
                                 class="tf-f34 form-control text-center text-danger fw-bolder input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="engagement_fees_total" id="ef_Totalpackage" data-type="currencyTotal" style="font-size: 22px;">
+                                value="{{ number_format($data->sub_fees_total) }}" name="engagement_fees_total" id="ef_Totalpackage" data-type="currencyTotal" style="font-size: 22px;">
                         </td>
                         <td class="overall-total-end"></td>
                     </tr>

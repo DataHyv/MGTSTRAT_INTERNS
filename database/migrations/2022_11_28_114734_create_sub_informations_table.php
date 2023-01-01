@@ -23,6 +23,7 @@ class CreateSubInformationsTable extends Migration
             $table->string('end_time')->nullable();
             $table->string('cluster')->nullable();
             $table->string('core_area')->nullable();
+            $table->string('sub_fees_total')->nullable();
             $table->timestamps();
         });
     }

@@ -867,7 +867,7 @@ $(document).ready( function () {
     /*******************************************TOTAL STANDARD FEES**********************************************************************/
     $("#total-standard").html(currency.format(Math.ceil(sum)));
     //TOTAL PACKAGE
-    document.getElementById("ef_Totalpackage").defaultValue = $("#total-standard").html();
+    // document.getElementById("ef_Totalpackage").defaultValue = $("#total-standard").html();
 
     /********************************************DISCOUNTS*******************************************************************************/
     $("#ef_Totalpackage").each(function () {

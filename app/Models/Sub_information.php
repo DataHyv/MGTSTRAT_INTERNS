@@ -18,6 +18,7 @@ class Sub_information extends Model
         'end_time',
         'cluster',
         'core_area',
+        'sub_fees_total',
     ];
 
     public function customized_engagement_form()

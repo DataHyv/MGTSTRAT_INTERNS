@@ -244,6 +244,9 @@
                                                                                             )
                                                                                          }}
                                                                                     </label>
+                                                                                    {{-- <label class="fw-bold" for="">
+                                                                                        {{ number_format($item2->sub_fees_total) }}
+                                                                                    </label> --}}
                                                                                 </td>
                                                                                 <td>
                                                                                     <a href="{{ url('form/customizedEngagement/sub-fee/' . $item2->id) }}" class="text-success font-18 px-0" title="Add" id="edit">

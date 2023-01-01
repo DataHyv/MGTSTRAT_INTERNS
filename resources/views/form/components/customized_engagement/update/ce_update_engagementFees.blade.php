@@ -42,7 +42,7 @@
                                 <input type="hidden" value="" name="fee_nswh[]">
                                 <input type="hidden" value="" name="fee_notes[]">
                                 <select
-                                    class="input js-mytooltip form-select form-select-sm engagement-fee nswh-percent @error('') is-invalid @enderror select"
+                                    class="input form-select form-select-sm engagement-fee nswh-percent @error('') is-invalid @enderror select"
                                     name="nswh_percent[]" id="nswh">
                                     <option value="0.1" {{ $fee_type->nswh_percent == '0.1' ? 'selected="selected"' : '' }}>
                                         &#8369;10%
@@ -804,25 +804,29 @@
             </table>
 
             @foreach ($dataJoin3 as $key=>$sub_fee)
-                <input type="hidden" name="sub_information_id[]" value="{{$sub_fee->sub_informations_id }}">
-                <input type="hidden" name="sub_id[]" value="{{$sub_fee->id }}">
-                <input type="hidden" name="sub_type[]" value="{{$sub_fee->type }}">
-                <input type="hidden" class="commanumber" value="{{ $sub_fee->consultant_num }}" name="sub_consultant_num[]" data-type="currency">
-                <input type="hidden" class="" value="{{ $sub_fee->hour_fee }}" name="sub_hour_fee[]" data-type="currency">
-                <input type="hidden" class="commanumber" value="{{ $sub_fee->hour_num }}" name="sub_hour_num[]" data-type="currency" >
-                <input type="hidden" class="commanumber" value="{{ $sub_fee->nswh }}" name="sub_nswh[]" data-type="currency" >
-                <input type="hidden" class="nswh-percent-value" value="{{ $sub_fee->nswh_percent }}" name="sub_nswh_percent[]">
+                <input type="hidden" name="sub_information_id[]" value="{{$sub_fee->sub_informations_id }}" readonly>
+                <input type="hidden" name="sub_id[]" value="{{$sub_fee->id }}" readonly>
+                <input type="hidden" name="sub_type[]" value="{{$sub_fee->type }}" readonly>
+                <input type="hidden" class="commanumber" value="{{ $sub_fee->consultant_num }}" name="sub_consultant_num[]" data-type="currency" readonly>
+                <input type="hidden" class="" value="{{ $sub_fee->hour_fee }}" name="sub_hour_fee[]" data-type="currency" readonly>
+                <input type="hidden" class="commanumber" value="{{ $sub_fee->hour_num }}" name="sub_hour_num[]" data-type="currency" readonly>
+                <input type="hidden" class="commanumber" value="{{ $sub_fee->nswh }}" name="sub_nswh[]" data-type="currency" readonly>
+                <input type="hidden" class="nswh-percent-value" value="{{ $sub_fee->nswh_percent }}" name="sub_nswh_percent[]" readonly>
                 <textarea class="form-control input-table @error('') is-invalid @enderror" name="sub_notes[]" id="" rows="2" cols="55" hidden>{{$sub_fee->notes}}</textarea>
+            @endforeach
+            @foreach ($data3 as $key=>$sub_information)
+                <input type="hidden" name="sub_information[]" value="{{$sub_information->id }}" readonly>
             @endforeach
 
         </div>
     </section>
 </div>
 <!---------- END OF FORM BODY ---------->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script>
-$('#name').change(function() {
-    $('#firstname').val($(this).val());
-});
+    $('#name').change(function() {
+        $('#firstname').val($(this).val());
+    });
 </script>
 
 @include('form.components.customized_engagement.update.script.ce_update_fees')

@@ -768,7 +768,7 @@ $(document).on(
                 document.getElementById(`roster3${leadfaci}`).defaultValue = 'TBA';
         }
 
-        $(`#ec_DesignerHf${leadfaci}`).prop('readonly', true).val( currency.format(Math.ceil(hourlyFees)) );
+        $(`#ec_LeadfacilitatorHf${leadfaci}`).prop('readonly', true).val( currency.format(Math.ceil(hourlyFees)) );
         // document.getElementById(`ec_LeadfacilitatorHf${leadfaci}`).defaultValue = currency.format( Math.ceil(hourlyFees) );
 
     });
@@ -1072,7 +1072,7 @@ $(document).on(
                 document.getElementById(`roster4${colead}`).defaultValue = 'TBA';
         }
 
-        $(`#ec_LeadfacilitatorHf${colead}`).prop('readonly', true).val( currency.format(Math.ceil(hourlyFees)) );
+        $(`#ec_CoLeadfacilitatorHf${colead}`).prop('readonly', true).val( currency.format(Math.ceil(hourlyFees)) );
         // document.getElementById(`#ec_LeadconsultantHf${leadConsultant}`).defaultValue = currency.format( Math.ceil(hourlyFees) );
 
     });
@@ -1675,7 +1675,7 @@ $(document).on(
                 break;
 
             default:
-                hourlyFees = 0;
+                hourlyFees = 800;
                 document.getElementById(`roster6${moderator}`).defaultValue = 'TBA';
         }
 
@@ -1977,7 +1977,7 @@ $(document).on(
                 break;
 
             default:
-                hourlyFees = 0;
+                hourlyFees = 550;
                 document.getElementById(`roster7${producer}`).defaultValue = 'TBA';
         }
 
