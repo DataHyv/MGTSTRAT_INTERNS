@@ -6,6 +6,38 @@
 <!------------ FORM BODY ------------>
     <div class="form-body container">
         <section>
+
+                <!------------ STATUS ------------>
+                    {{-- <div class="form-group row mb-4 mt-5">
+                        <div class="col-lg-2 col-md-2">
+                            <div class="form-group has-icon-left">
+                                <div class="text-center"><label class="fw-bold required">Status</label></div>
+                                <div class="position-relative">
+                                    <select class="input js-mytooltip form-select @error('') is-invalid @enderror"
+                                        name="status" id="status" value="{{ old('') }}" data-mytooltip-content="<i>Please Choose Status</i>"
+                                        data-mytooltip-theme="dark" data-mytooltip-action="focus" data-mytooltip-direction="right">
+                                        <option value="Trial" {{ $data->status == 'Trial' ? 'selected="selected"' : '' }}>
+                                            Trial
+                                        </option>
+                                        <option value="Confirmed" {{ $data->status == 'Confirmed' ? 'selected="selected"' : '' }} selected>
+                                            Confirmed
+                                        </option>
+                                        <option value="In-progress" {{ $data->status == 'In-progress' ? 'selected="selected"' : '' }}>
+                                            In-progress
+                                        </option>
+                                        <option value="Completed" {{ $data->status == 'Completed' ? 'selected="selected"' : '' }}>
+                                            Completed
+                                        </option>
+                                        <option value="Lost" {{ $data->status == 'Lost' ? 'selected="selected"' : '' }}>
+                                            Lost
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div> --}}
+                <!------------ END ------------>
+
             <!------------ DATE COVERED BY ENGAGEMENT ------------>
                 <div class="row justify-content-center mb-5" id="dcbe">
                     <h5 class="text-center mt-5 fst-italic">Sessions</h5>
@@ -21,6 +53,36 @@
                                                 id="addDates"><i class="fa fa-plus"></i></a>
                                         </div>
                                     </div> --}}
+
+                                    <div class="form-group row mb-1 justify-content-center">
+                                        <div class="col-lg-2 col-md-2">
+                                            <div class="form-group has-icon-left">
+                                                <div class="text-center"><label class="fw-bold required">Status</label></div>
+                                                {{-- <label class="fw-bold required">Status</label> --}}
+                                                <div class="position-relative">
+                                                    <select class="input js-mytooltip form-select @error('') is-invalid @enderror"
+                                                        name="status" id="status" value="{{ old('') }}" data-mytooltip-content="<i>Please Choose Status</i>"
+                                                        data-mytooltip-theme="dark" data-mytooltip-action="focus" data-mytooltip-direction="right">
+                                                        <option value="Trial" {{ $data->status == 'Trial' ? 'selected="selected"' : '' }}>
+                                                            Trial
+                                                        </option>
+                                                        <option value="Confirmed" {{ $data->status == 'Confirmed' ? 'selected="selected"' : '' }} selected>
+                                                            Confirmed
+                                                        </option>
+                                                        <option value="In-progress" {{ $data->status == 'In-progress' ? 'selected="selected"' : '' }}>
+                                                            In-progress
+                                                        </option>
+                                                        <option value="Completed" {{ $data->status == 'Completed' ? 'selected="selected"' : '' }}>
+                                                            Completed
+                                                        </option>
+                                                        <option value="Lost" {{ $data->status == 'Lost' ? 'selected="selected"' : '' }}>
+                                                            Lost
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
                                     <div class="col-lg-2 col-md-2">
                                         <div class="form-group has-icon-left">
@@ -156,7 +218,7 @@
                                     <input type="text"
                                         class="input js-mytooltip input-table form-control commanumber @error('') is-invalid @enderror"
                                         value="{{ $fee_type->consultant_num }}" name="fee_consultant_num[]" id="ef_LeadconsultantNoc1"
-                                        title="" max="100" data-type="currency"
+                                        title="" data-type="currency"
                                         data-mytooltip-content="<i>Includes in depth needs analysis (i.e. surveys, interviews, FGDs),
                                         special research (i.e. to study client materials or client -required materials, industry
                                         or function specific content), creation of client-specific learning aids/tools
@@ -215,7 +277,7 @@
                                     <td>
                                         <input type="text"
                                             class="input js-mytooltip form-control input-table commanumber @error('') is-invalid @enderror"
-                                            value="{{ $fee_type->consultant_num }}" name="fee_consultant_num[]" id="ef_AnalystNoc1" max="100" data-type="currency"
+                                            value="{{ $fee_type->consultant_num }}" name="fee_consultant_num[]" id="ef_AnalystNoc1" data-type="currency"
                                             data-mytooltip-content="<i>Includes in depth needs analysis (i.e. surveys, interviews, FGDs),
                                             special research (i.e. to study client materials or client -required materials, industry
                                             or function specific content), creation of client-specific learning aids/tools

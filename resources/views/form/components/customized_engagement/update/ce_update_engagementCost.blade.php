@@ -149,7 +149,7 @@
                                 @if ($ecSales === 1)
                                     <td class="border border-white add-row"><a href="javascript:void(0)" class="text-success font-18" title="Add" id="addBtn9" onclick="$('#salesTotal').html(0)"><i class="fa fa-plus"></i></a></td>
                                 @else
-                                    <td class="border border-white add-row"><a href="javascript:void(0)" class="text-danger font-18 remove" title="Remove"><i class="fa fa-trash-o"></i></a></td>
+                                    <td class="border border-white add-row"><a href="javascript:void(0)" class="text-danger font-18 remove" data-id="{{ $cost_types->id }}" title="Remove"><i class="fa fa-trash-o"></i></a></td>
                                     {{-- <td>
                                         <a class="text-danger font-18 ce_delete" href="#" data-toggle="modal" data-target="#ce_delete" title="Remove">
                                             <i class="fa fa-trash-o"></i>
@@ -232,7 +232,7 @@
                                     <td class="border border-white add-row"><a href="javascript:void(0)" class="text-success font-18" title="Add"
                                         id="addBtn10"><i class="fa fa-plus"></i></a></td>
                                 @else
-                                    <td class="border border-white add-row"><a href="javascript:void(0)" class="text-danger font-18 remove" title="Remove"><i class="fa fa-trash-o"></i></a></td>
+                                    <td class="border border-white add-row"><a href="javascript:void(0)" class="text-danger font-18 remove" data-id="{{ $cost_types->id }}" title="Remove"><i class="fa fa-trash-o"></i></a></td>
                                 @endif
                             </tr>
                         @endif
@@ -302,7 +302,7 @@
                                     <td class="border border-white add-row"><a href="javascript:void(0)" class="text-success font-18" title="Add"
                                             id="addBtn11"><i class="fa fa-plus"></i></a></td>
                                 @else
-                                    <td class="border border-white add-row"><a href="javascript:void(0)" class="text-danger font-18 remove" title="Remove"><i class="fa fa-trash-o"></i></a></td>
+                                    <td class="border border-white add-row"><a href="javascript:void(0)" class="text-danger font-18 remove" data-id="{{ $cost_types->id }}" title="Remove"><i class="fa fa-trash-o"></i></a></td>
                                 @endif
                             </tr>
                         @endif

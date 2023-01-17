@@ -219,21 +219,21 @@ document.addEventListener("keypress", function (e) {
 // });
 
 //SESSION AND BATCH NUMBER FUNCTION
-$(document).on( "load keyup", "#main", function () {
-    var session_count = $('#SessionNumber').val();
-    var batch_count = $('#BatchNumber').val();
-    var total_count = $('#SessionNumber').val() * $('#BatchNumber').val();
+// $(document).on( "load keyup", "#main", function () {
+//     var session_count = $('#SessionNumber').val();
+//     var batch_count = $('#BatchNumber').val();
+//     var total_count = $('#SessionNumber').val() * $('#BatchNumber').val();
 
-        $(`#ef_LeadconsultantNoh1`).attr('value', total_count);
-        $(`#ef_AnalystNoh1`).attr('value', total_count);
-        $(`#ef_DesignerNoh1`).attr('value', total_count);
-        $(`#ef_AnalystNoh1`).attr('value', total_count);
-        $(`#ef_LeadfacilitatorNoh1`).attr('value', total_count);
-        $(`#ef_CofaciNoh1`).attr('value', total_count);
-        $(`#ef_ModeratorNoh1`).attr('value', total_count);
-        $(`#ef_ProducerNoh1`).attr('value', total_count);
-        $(`#ef_DocumentorNoh1`).attr('value', total_count);
-});
+//         $(`#ef_LeadconsultantNoh1`).attr('value', total_count);
+//         $(`#ef_AnalystNoh1`).attr('value', total_count);
+//         $(`#ef_DesignerNoh1`).attr('value', total_count);
+//         $(`#ef_AnalystNoh1`).attr('value', total_count);
+//         $(`#ef_LeadfacilitatorNoh1`).attr('value', total_count);
+//         $(`#ef_CofaciNoh1`).attr('value', total_count);
+//         $(`#ef_ModeratorNoh1`).attr('value', total_count);
+//         $(`#ef_ProducerNoh1`).attr('value', total_count);
+//         $(`#ef_DocumentorNoh1`).attr('value', total_count);
+// });
 
 //ROSTER RATE AUTO INPUT
 $(document).on(
@@ -1904,14 +1904,16 @@ $(document).on(
                 hourlyFees = 1100;
                 break;
             case 'TBA':
-                hourlyFees = 800;
+                hourlyFees = 1100;
+                // document.getElementById(`ec_ModeratorHf${moderator}`).defaultValue = currency.format( Math.ceil(800) );
                 break;
 
             default:
-                hourlyFees = 800;
+                hourlyFees = 1100;
                 document.getElementById(`roster6${leadConsultant}`).defaultValue = 'TBA';
         }
 
+        // $(`#ec_ModeratorHf${moderator}`).val( currency.format(Math.ceil(hourlyFees)) );
         $(`#ec_ModeratorHf${moderator}`).prop('readonly', true).val( currency.format(Math.ceil(hourlyFees)) );
         // document.getElementById(`ec_ModeratorHf${moderator}`).defaultValue = currency.format( Math.ceil(hourlyFees) );
     });

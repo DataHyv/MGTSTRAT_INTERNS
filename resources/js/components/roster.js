@@ -1671,14 +1671,15 @@ $(document).on(
                 hourlyFees = 1100;
                 break;
             case 'TBA':
-                hourlyFees = 800;
+                hourlyFees = 1100;
                 break;
 
             default:
-                hourlyFees = 800;
+                hourlyFees = 1100;
                 document.getElementById(`roster6${moderator}`).defaultValue = 'TBA';
         }
 
+        // $(`#ec_ModeratorHf${moderator}`).prop('readonly', true).val( currency.format(Math.ceil(hourlyFees)) );
         $(`#ec_ModeratorHf${moderator}`).prop('readonly', true).val( currency.format(Math.ceil(hourlyFees)) );
         // document.getElementById(`ec_ModeratorHf${moderator}`).defaultValue = currency.format( Math.ceil(hourlyFees) );
     });

@@ -11,13 +11,21 @@ class Customized_engagement_form extends Model
     // protected $table = 'customized_engagement_forms';
     // protected $fillable = ['client'];
     protected $primaryKey = 'id';
-    protected $casts = [
-        'program_dates' => 'array',
-        'program_start_time' => 'array',
-        'program_end_time' => 'array',
-        'cluster' => 'array',
-        'core_area' => 'array',
+    protected $fillable = [
+        'status',
+        'program_dates',
+        'program_start_time',
+        'program_end_time',
+        'cluster',
+        'core_area',
     ];
+    // protected $casts = [
+    //     'program_dates' => 'array',
+    //     'program_start_time' => 'array',
+    //     'program_end_time' => 'array',
+    //     'cluster' => 'array',
+    //     'core_area' => 'array',
+    // ];
 
     public function client()
     {

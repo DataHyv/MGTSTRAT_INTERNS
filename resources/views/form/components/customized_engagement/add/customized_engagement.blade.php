@@ -1,6 +1,6 @@
 @section('title', 'NEW RECORD')
 {{-- <link rel="shortcut icon" type="image/png" href="{{ URL::to('assets/images/logo/logo.png') }}"> --}}
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
 <link rel="stylesheet" href="{{ URL::asset('css/custom.css') }}">
 {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> --}}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.min.css" integrity="sha512-kq3FES+RuuGoBW3a9R2ELYKRywUEQv0wvPTItv3DSGqjpbNtGWVdvT8qwdKkqvPzT93jp8tSF4+oN4IeTEIlQA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -40,8 +40,8 @@
                             title="User Info">Information</button>
                         <button class="multisteps-form__progress-btn" type="button" title="Engagement Fees">Engagement
                             Fees</button>
-                        {{-- <button class="multisteps-form__progress-btn" type="button" title="Engagement Cost">Engagement
-                            Cost</button> --}}
+                        <button class="multisteps-form__progress-btn" type="button" title="Engagement Cost">Engagement
+                            Cost</button>
                         <button class="multisteps-form__progress-btn" type="button" title="Profit Forecast">Profit Forecast
                         </button>
                     </div>
@@ -83,7 +83,7 @@
                                         </div>
 
                                     <!------------ ENGAGEMENT COST ------------>
-                                        <div class="d-none" data-animation="slideHorz">
+                                        <div class="multisteps-form__panel" data-animation="slideHorz">
                                             @include('form.components.customized_engagement.add.engagement_cost')
                                             {{-- next and prev button --}}
                                             <div class="col-12 d-flex justify-content-center mt-3">
@@ -133,6 +133,11 @@
             $input.val($input.val().replace(/,/g, ''));
         });
         }
+
+        $( document ).ready(function() {
+            document.getElementById("ef_Totalpackage").defaultValue = $("#total-standard").html();
+        });
+        // document.getElementById("ef_Totalpackage").defaultValue = $("#total-standard").html();
     </script>
     <script type="text/javascript" src="/js/ceform.js"></script>
     <script type="text/javascript" src="/js/ceFormAdd.js"></script>

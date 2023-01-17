@@ -1,5 +1,5 @@
 @section('title', 'UPDATE RECORD')
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
 <link rel="shortcut icon" type="image/png" href="{{ URL::to('assets/images/logo/logo.png') }}">
 
 {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -48,8 +48,8 @@
                             title="User Info">Information</button>
                         <button class="multisteps-form__progress-btn" type="button" title="Engagement Fees">Engagement
                             Fees</button>
-                        {{-- <button class="multisteps-form__progress-btn" type="button" title="Engagement Cost">Engagement
-                            Cost</button> --}}
+                        <button class="multisteps-form__progress-btn" type="button" title="Engagement Cost">Engagement
+                            Cost</button>
                         <button class="multisteps-form__progress-btn" type="button" title="Profit Forecast">Profit Forecast
                         </button>
                     </div>
@@ -118,7 +118,7 @@
                                             </div>
 
                                         <!------------ ENGAGEMENT COST ------------>
-                                            <div class="d-none" data-animation="slideHorz">
+                                            <div class="multisteps-form__panel" data-animation="slideHorz">
                                                 @include('form.components.customized_engagement.update.ce_update_engagementCost')
                                                 {{-- next and prev button --}}
                                                 <div class="col-12 d-flex justify-content-center mt-3">
@@ -164,36 +164,46 @@
             </footer>
         <!------------ END OF FOOTER ------------>
     </div>
-
-    {{-- AJAX DELETE ROW SCRIPT --}}
-    <script>
-    $(".remove").on("click", function(e){
-        var id = $(this).attr("data-id");
-        $.ajax({
-            url: "{{ route('delete') }}",
-            data: {"id": id,"_token": "{{ csrf_token() }}"},
-            type: 'post',
-            success: function(result){
-            toastr.warning('Data deleted successfully','Success');
-            }
-        });
-    });
-    function submitForm(e) {
-        // e.preventDefault();
-        $('.commanumber').each((index, input) => { //1st way
-            const $input = $(input);
-            $input.val($input.val().replace(/,/g, ''));
-        });
-    };
-    </script>
-
     <script type="text/javascript" src="/js/ceform.js"></script>
     <script type="text/javascript" src="/js/ceFormUpdate.js"></script>
     <script type="text/javascript" src="/js/MultiStep.js"></script>
     <script type="text/javascript" src="/js/currencyFormat.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+
     {{-- TOOLTIP JS --}}
     <script src="{{ url('js/tooltipJs/jquery.mytooltip.js') }}"></script>
     <script src="{{ url('js/tooltipJs/demo/script.js') }}"></script>
 
+    {{-- AJAX DELETE ROW SCRIPT --}}
+    <script>
+        $(".remove").on("click", function(e){
+            var id = $(this).attr("data-id");
+            $.ajax({
+                url: "{{ route('delete') }}",
+                data: {"id": id,"_token": "{{ csrf_token() }}"},
+                type: 'post',
+                success: function(result){
+                toastr.warning('Data deleted successfully','Success');
+                }
+            });
+        });
+        function submitForm(e) {
+            // e.preventDefault();
+            $('.commanumber').each((index, input) => { //1st way
+                const $input = $(input);
+                $input.val($input.val().replace(/,/g, ''));
+            });
+        };
+        $('.timepicker').timepicker({
+            timeFormat: 'h:mm p',
+            interval: 30,
+            minTime: '06',
+            maxTime: '10:00pm',
+            // defaultTime: '06',
+            startTime: '06:00',
+            dynamic: false,
+            dropdown: true,
+            scrollbar: true
+        });
+    </script>
 @endsection

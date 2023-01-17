@@ -5,6 +5,8 @@
 {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> --}}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.min.css" integrity="sha512-kq3FES+RuuGoBW3a9R2ELYKRywUEQv0wvPTItv3DSGqjpbNtGWVdvT8qwdKkqvPzT93jp8tSF4+oN4IeTEIlQA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 
 @extends('layouts.master')
 @section('menu')
@@ -38,11 +40,11 @@
                 <div class="col-12 col-lg-8 ml-auto mr-auto mb-4">
                     <div class="multisteps-form__progress">
                         <button class="multisteps-form__progress-btn js-active" type="button" title="Engagement Fees">
-                            EngagementFees
+                            Engagement Fees
                         </button>
 
                         <button class="multisteps-form__progress-btn" type="button" title="Engagement Cost">
-                            EngagementCost
+                            Engagement Cost
                         </button>
                     </div>
                 </div>
@@ -65,7 +67,10 @@
                                     @csrf
                                     @method('PUT')
 
+                                    <input class="form-control" type="hidden" id="id" name="mother_id" value="{{$data->customized_engagement_forms_id}}">
                                     <input class="form-control" type="hidden" id="id" name="id" value="{{$data->id}}">
+                                    <input class="form-control" type="hidden" id="id" name="batch_name" value="{{$data->batch_number}}">
+                                    <input class="form-control" type="hidden" id="id" name="session_number" value="{{$data->session_number}}">
                                     {{-- <input class="form-control" type="hidden" id="sub_informations_id" name="sub_informations_id" value="{{$data2->sub_informations_id}}"> --}}
 
                                     <!------------ ENGAGEMENT FEES ------------>
@@ -88,7 +93,7 @@
                                         {{-- next and prev button --}}
                                         <div class="button-row d-flex justify-content-center mt-3">
                                             <button class="btn btn-secondary mx-2 js-btn-prev" type="button" title="Prev">Prev</button>
-                                            <button class="btn btn-success mx-2 js-btn-next" type="submit" title="Submit">Submit</button>
+                                            <button class="btn btn-success mx-2 js-btn-next submit" type="submit" title="Submit" sub-id="{{$data->id}}">Submit</button>
                                             {{-- <button class="btn btn-primary mx-2 js-btn-next" type="button" title="Next">Next</button> --}}
                                         </div>
 
@@ -146,6 +151,78 @@
                 e.preventDefault();
                 return false;
             }
+        });
+
+        //INFORMATION
+        $("document").ready(function () {
+            /*************************************STATUS**************************************/
+            //DEFAULT COLOR
+            var statusLoad = document.getElementById("status").value;
+            if(statusLoad == "Confirmed"){
+                $('#status').css('background-color', '#007bff')
+                $('#status').css('color', 'white')
+                $('#status option').css('background-color', 'white')
+                $('#status option').css('color', 'black')
+            }
+            else if(statusLoad == "In-progress"){
+                $('#status').css('background-color', '#ffc107')
+                $('#status').css('color', 'black')
+                $('#status option').css('background-color', 'white')
+                $('#status option').css('color', 'black')
+            }
+            else if(statusLoad == "Completed"){
+                $('#status').css('background-color', '#28a745')
+                $('#status').css('color', 'white')
+                $('#status option').css('background-color', 'white')
+                $('#status option').css('color', 'black')
+            }
+            else if(statusLoad == "Lost"){
+                $('#status').css('background-color', '#dc3545')
+                $('#status').css('color', 'white')
+                $('#status option').css('background-color', 'white')
+                $('#status option').css('color', 'black')
+            }
+            else if(statusLoad == "Trial"){
+                $('#status').css('background-color', '#17a2b8')
+                $('#status').css('color', 'white')
+                $('#status option').css('background-color', 'white')
+                $('#status option').css('color', 'black')
+            }
+
+            //ASSIGN EVENT LISTENER IN STATUS
+            document.getElementById("status").addEventListener("change", status);
+            window.addEventListener("load", status);
+
+            //EVENT OF STATUS
+            function status() {
+                var status = document.getElementById("status").value;
+                if(status == "Confirmed"){
+                    $('#status').css('background-color', '#007bff')
+                    $('#status').css('color', 'white')
+                    $('#status option').css('background-color', 'white')
+                    $('#status option').css('color', 'black')
+                } else if(status == "In-progress"){
+                    $('#status').css('background-color', '#ffc107')
+                    $('#status').css('color', 'black')
+                    $('#status option').css('background-color', 'white')
+                    $('#status option').css('color', 'black')
+                } else if(status == "Completed"){
+                    $('#status').css('background-color', '#28a745')
+                    $('#status').css('color', 'white')
+                    $('#status option').css('background-color', 'white')
+                    $('#status option').css('color', 'black')
+                } else if(status == "Lost"){
+                    $('#status').css('background-color', '#dc3545')
+                    $('#status').css('color', 'white')
+                    $('#status option').css('background-color', 'white')
+                    $('#status option').css('color', 'black')
+                } else if(status == "Trial"){
+                    $('#status').css('background-color', '#17a2b8')
+                    $('#status').css('color', 'white')
+                    $('#status option').css('background-color', 'white')
+                    $('#status option').css('color', 'black')
+                }
+            };
         });
     </script>
 

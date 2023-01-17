@@ -15,6 +15,78 @@
 <!------------ FORM BODY ------------>
 <div class="form-body container">
     <section>
+        <!------------ DATE COVERED BY ENGAGEMENT ------------>
+            <div class="row justify-content-center mb-5" id="dcbe">
+                <h5 class="text-center fst-italic">Date Covered by Engagement</h5>
+                <div class="d-flex justify-content-center" id="dateRows1">
+
+                    <div class="flex-column mt-3">
+                        <div>
+                            <fieldset class="row justify-content-center" id="dateRows">
+                                {{-- <div class="col-lg-2 col-md-2">
+                                    <div class="form-group has-icon-left">
+                                        <label class="fw-bold required">Date</label>
+                                        <div class="position-relative">
+                                            <input type="text" class="form-control date datepicker @error('doe') is-invalid @enderror"
+                                                value="{{ old('doe') }}" placeholder="Enter Date" name="program_dates[]" id="datepicker"
+                                                size="30">
+                                            <div class="form-control-icon">
+                                                <i class="bi bi-calendar"></i>
+                                            </div>
+                                            @error('doe')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div> --}}
+
+                                <div class="col-lg-2 col-md-2">
+                                    <div class="form-group has-icon-left">
+                                        <label class="fw-bold required">Start Time</label>
+                                        <div class="position-relative">
+                                            <input type="text" class="form-control start-time timepicker @error('dot') is-invalid @enderror"
+                                                value="{{ $data->program_start_time }}" placeholder="Enter Time" id="program_start_time" name="program_start_time">
+                                            <div class="form-control-icon">
+                                                <i class="bi bi-clock"></i>
+                                            </div>
+                                            @error('dot')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-2 col-md-2">
+                                    <div class="form-group has-icon-left">
+                                        <label class="fw-bold required">End Time</label>
+                                        <div class="position-relative">
+                                            <input type="text" class="form-control end-time timepicker @error('dot') is-invalid @enderror"
+                                                value="{{ $data->program_end_time }}" placeholder="Enter Time" id="program_end_time" name="program_end_time">
+                                            <div class="form-control-icon">
+                                                <i class="fa-solid fa-hourglass-end"></i>
+                                            </div>
+                                            @error('dot')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+                                @include('form.components.reference.cluster')
+                            </fieldset>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        <!------------------- END ----------------------->
+
         <div class="table-responsive" id="no-more-tables" data-animation="slideHorz">
             <table class="table table-bordered" id="ec_tableEngagementFees">
             <!-------------------------------------------------------------TABLE HEADING TITLE------------------------------------------------------------------>
@@ -387,8 +459,7 @@
                         <td class="noc">
                             <input type="text" class="commanumber form-control input-table @error('') is-invalid @enderror"
                                 value="{{ $fee_type->consultant_num }}" name="fee_consultant_num[]" id="ef_LeadfacilitatorNoc{{$efLeadfaci}}" data-type="currency"
-                                oninput="document.getElementById('ec_LeadfacilitatorNoc{{$efLeadfaci}}').value = document.getElementById('ef_LeadfacilitatorNoc{{$efLeadfaci}}').value;"
-                                max="100">
+                                oninput="document.getElementById('ec_LeadfacilitatorNoc{{$efLeadfaci}}').value = document.getElementById('ef_LeadfacilitatorNoc{{$efLeadfaci}}').value;">
                         </td>
                         <td>
                             <div class="form-group has-icon-right mb-0" id="inputLeadfaci1" style="display:none">
@@ -418,8 +489,7 @@
                                     <option value="11000" {{ $fee_type->hour_fee == '11000' ? 'selected="selected"' : '' }}>
                                         &#8369;11,000
                                     </option>
-                                    <option value="12000" {{ $fee_type->hour_fee == '12000' ? 'selected="selected"' : '' }}
-                                        selected>
+                                    <option value="12000" {{ $fee_type->hour_fee == '12000' ? 'selected="selected"' : '' }}>
                                         &#8369;12,000
                                     </option>
                                     <option value="others" {{ $fee_type->hour_fee == 'others' ? 'selected="selected"' : '' }}
@@ -490,9 +560,7 @@
                         </td>
                         <td class="noc">
                             <input type="text" class="commanumber form-control input-table @error('') is-invalid @enderror"
-                                value="{{ $fee_type->consultant_num }}" name="fee_consultant_num[]" id="ef_CofaciNoc{{$efCofaci}}" data-type="currency"
-                                oninput="document.getElementById('ec_CofaciNoc{{$efCofaci}}').value = document.getElementById('ef_CofaciNoc{{$efCofaci}}').value;"
-                                max="100">
+                                value="{{ $fee_type->consultant_num }}" name="fee_consultant_num[]" id="ef_CofaciNoc{{$efCofaci}}" data-type="currency">
                         </td>
                         <td>
                             <input type="text" class="commanumber form-control input-table @error('') is-invalid @enderror"
@@ -549,8 +617,7 @@
                         <td class="noc">
                             <input type="text" class="commanumber form-control input-table @error('') is-invalid @enderror"
                                 value="{{ $fee_type->consultant_num }}" name="fee_consultant_num[]" id="ef_ModeratorNoc{{$efModerator}}" data-type="currency"
-                                oninput="document.getElementById('ec_ModeratorNoc{{$efModerator}}').value = document.getElementById('ef_ModeratorNoc{{$efModerator}}').value;"
-                                max="100">
+                                oninput="document.getElementById('ec_ModeratorNoc{{$efModerator}}').value = document.getElementById('ef_ModeratorNoc{{$efModerator}}').value;">
                         </td>
                         <td>
                             <input type="text" class="commanumber form-control input-table @error('') is-invalid @enderror"
@@ -607,8 +674,7 @@
                         <td class="noc">
                             <input type="text" class="commanumber form-control input-table @error('') is-invalid @enderror"
                                 value="{{ $fee_type->consultant_num }}" name="fee_consultant_num[]" id="ef_ProducerNoc{{$efProducer}}" data-type="currency"
-                                oninput="document.getElementById('ec_ProducerNoc{{$efProducer}}').value = document.getElementById('ef_ProducerNoc{{$efProducer}}').value;"
-                                max="100">
+                                oninput="document.getElementById('ec_ProducerNoc{{$efProducer}}').value = document.getElementById('ef_ProducerNoc{{$efProducer}}').value;">
                         </td>
                         <td>
                             <input type="text" class="commanumber form-control input-table @error('') is-invalid @enderror"
@@ -691,8 +757,7 @@
                         <td class="noc">
                             <input type="text" class="commanumber form-control input-table @error('') is-invalid @enderror"
                                 value="{{ $fee_type->consultant_num }}" name="fee_consultant_num[]" id="ef_DocumentorNoc{{$efDocumentor}}" data-type="currency"
-                                oninput="document.getElementById('ec_DocumentorNoc{{$efDocumentor}}').value = document.getElementById('ef_DocumentorNoc{{$efDocumentor}}').value;"
-                                max="100">
+                                oninput="document.getElementById('ec_DocumentorNoc{{$efDocumentor}}').value = document.getElementById('ef_DocumentorNoc{{$efDocumentor}}').value;">
                         </td>
                         <td>
                             <input type="text" class="commanumber form-control input-table @error('') is-invalid @enderror"
@@ -803,6 +868,10 @@
                 </tbody>
             </table>
 
+            @foreach ($data3 as $key=>$sub_information)
+            <input type="hidden" name="sub_information[]" value="{{$sub_information->id }}" readonly>
+            @endforeach
+
             @foreach ($dataJoin3 as $key=>$sub_fee)
                 <input type="hidden" name="sub_information_id[]" value="{{$sub_fee->sub_informations_id }}" readonly>
                 <input type="hidden" name="sub_id[]" value="{{$sub_fee->id }}" readonly>
@@ -814,8 +883,11 @@
                 <input type="hidden" class="nswh-percent-value" value="{{ $sub_fee->nswh_percent }}" name="sub_nswh_percent[]" readonly>
                 <textarea class="form-control input-table @error('') is-invalid @enderror" name="sub_notes[]" id="" rows="2" cols="55" hidden>{{$sub_fee->notes}}</textarea>
             @endforeach
-            @foreach ($data3 as $key=>$sub_information)
-                <input type="hidden" name="sub_information[]" value="{{$sub_information->id }}" readonly>
+
+            @foreach ($dataJoin5 as $key=>$sub_costs)
+            <input type="hidden" name="sub_cost_id[]" value="{{$sub_costs->id }}" readonly>
+            <input type="hidden" name="sub_cost_information_id[]" value="{{$sub_costs->sub_informations_id }}" readonly>
+            <input type="hidden" name="sub_cost_type[]" value="{{$sub_costs->type }}" readonly>
             @endforeach
 
         </div>

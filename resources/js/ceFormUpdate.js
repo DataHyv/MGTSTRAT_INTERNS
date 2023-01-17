@@ -1787,11 +1787,11 @@ $(document).on(
                 hourlyFees = 1100;
                 break;
             case 'TBA':
-                hourlyFees = 800;
+                hourlyFees = 1100;
                 break;
 
             default:
-                hourlyFees = 800;
+                hourlyFees = 1100;
                 document.getElementById(`roster6${moderator}`).defaultValue = 'TBA';
         }
 

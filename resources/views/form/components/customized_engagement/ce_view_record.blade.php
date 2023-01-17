@@ -1,6 +1,7 @@
 @section('title', 'CUSTOMIZED RECORD')
 <link rel="shortcut icon" type="image/png" href="{{ URL::to('assets/images/logo/logo.png') }}">
 <link rel="stylesheet" href="{{ URL::to('css/custom.css') }}">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> --}}
 @extends('layouts.master')
 @section('menu')
@@ -30,6 +31,18 @@
 
             {{-- message --}}
             {!! Toastr::message() !!}
+
+            @if (session('success'))
+            <script>
+                $( document ).ready(function() {
+                    $('#exampleModal{{ session()->get('mother_id') }}').modal('show');
+                    $('.modal-close').click(function(){
+                        $('#exampleModal{{ session()->get('mother_id') }}').modal('hide');
+                    });
+                });
+            </script>
+            @endif
+
 
             <section class="section">
                 <div class="card mb-5 mt-5 h-75">
@@ -154,13 +167,15 @@
                                                         </div>
                                                         <div class="modal-body">
                                                             <div class="form-header">
-                                                                <h5 class="text-center mx-5">Are you sure want to delete
-                                                                    <b>{{$item->client->company_name}}</b>?</h5>
+                                                                <h4 class="text-center mx-5">Are you sure want to delete
+                                                                    <b>{{$item->engagement_title}}</b>?
+                                                                </h4>
                                                             </div>
                                                             <form action="{{ route('deleteRecord') }}" method="POST">
                                                                 @csrf
                                                                 <input type="hidden" name="id" class="e_id" value="">
                                                                 <input type="hidden" name="cstmzd_eng_form_id" class="budget_number" value="">
+                                                                <input type="hidden" name="engagement_title" value="{{ $item->engagement_title }}" readonly>
                                                                 <div class="modal-footer">
                                                                     <div class="">
                                                                         <button type="submit" class="btn btn-primary continue-btn submit-btn">Delete</button>
@@ -249,6 +264,7 @@
                                                                                     </label> --}}
                                                                                 </td>
                                                                                 <td>
+                                                                                    {{-- <a href="{{ url('form/customizedEngagement/sub-fee/' . $item2->id) }}" class="text-success font-18 px-0" title="Add" id="edit" target="_blank"> --}}
                                                                                     <a href="{{ url('form/customizedEngagement/sub-fee/' . $item2->id) }}" class="text-success font-18 px-0" title="Add" id="edit">
                                                                                         <i class="fa-regular fa-pen-to-square"></i>
                                                                                     </a>
@@ -273,7 +289,7 @@
 
                                                         <div class="modal-footer">
                                                             {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
-                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <button type="button" class="btn btn-secondary modal-close" data-dismiss="modal">Close</button>
                                                         </div>
 
                                                     </div>
@@ -359,7 +375,6 @@
         //         }
         //     });
         // });
-
     });
 
     //deletion of tbl row
@@ -447,15 +462,12 @@
             dates--;
         });
     });
+
 </script>
 
 @section('script')
     <script>
         //datatble of batch
-        // let table2 = document.querySelector('#table2');
-        // let dataTable2 = new simpleDatatables.DataTable('#table2');
-        // new simpleDatatables.DataTable('#tables2');
-        // new simpleDatatables.DataTable('#tables1');
         for (let i = 1; i < 10; i++) {
             // console.log(i);
             let table1 = document.querySelector(`#tables${i}`);

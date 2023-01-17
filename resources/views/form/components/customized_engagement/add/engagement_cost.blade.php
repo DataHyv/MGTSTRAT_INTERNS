@@ -739,7 +739,7 @@
                                 <fieldset>
                                     <input type="text"
                                     class="text-center text-dark fw-bold form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_hour_fee[]" id="ec_ModeratorHf1" data-type="currency">
+                                    value="{{ old('') }}" onfocus="this.value=''" name="cost_hour_fee[]" id="ec_ModeratorHf1" data-type="currency">
 
                                     {{-- <select
                                         class="input js-mytooltip text-center form-select @error('') is-invalid @enderror select"

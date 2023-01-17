@@ -11,6 +11,7 @@ class Sub_information extends Model
 
     protected $fillable = [
         'customized_engagement_form_id',
+        'status',
         'batch_number',
         'session_number',
         'date',
