@@ -210,6 +210,7 @@
                                                                         <th class="text-center">ID</th>
                                                                         <th class="text-center">Batch Name</th>
                                                                         <th class="text-center">Sessions</th>
+                                                                        <th class="text-center">Status</th>
                                                                         <th class="text-center">Program date</th>
                                                                         <th class="text-center">Contract Price</th>
                                                                         <th class="text-center">Modify</th>
@@ -230,6 +231,9 @@
                                                                                 </td>
                                                                                 <td>
                                                                                     <label class="fw-bold" for="">{{ $item2->session_number }}</label>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <label class="fw-bold" for="">{{ $item2->status }}</label>
                                                                                 </td>
                                                                                 @if ($item2->date == null)
                                                                                 <td>

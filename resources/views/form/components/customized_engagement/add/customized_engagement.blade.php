@@ -38,11 +38,11 @@
                     <div class="multisteps-form__progress">
                         <button class="multisteps-form__progress-btn js-active" type="button"
                             title="User Info">Information</button>
-                        <button class="multisteps-form__progress-btn" type="button" title="Engagement Fees">Engagement
+                        <button class="multisteps-form__progress-btn engagement_fees" type="button" title="Engagement Fees">Engagement
                             Fees</button>
-                        <button class="multisteps-form__progress-btn" type="button" title="Engagement Cost">Engagement
+                        <button class="multisteps-form__progress-btn engagement_cost" type="button" title="Engagement Cost">Engagement
                             Cost</button>
-                        <button class="multisteps-form__progress-btn" type="button" title="Profit Forecast">Profit Forecast
+                        <button class="multisteps-form__progress-btn profit_forecast" type="button" title="Profit Forecast">Profit Forecast
                         </button>
                     </div>
                 </div>
@@ -135,9 +135,9 @@
         }
 
         $( document ).ready(function() {
-            document.getElementById("ef_Totalpackage").defaultValue = $("#total-standard").html();
+            // document.getElementById("ef_Totalpackage").defaultValue = $("#total-standard").html();
+            document.getElementById("ef_Totalpackage").defaultValue = '0';
         });
-        // document.getElementById("ef_Totalpackage").defaultValue = $("#total-standard").html();
     </script>
     <script type="text/javascript" src="/js/ceform.js"></script>
     <script type="text/javascript" src="/js/ceFormAdd.js"></script>

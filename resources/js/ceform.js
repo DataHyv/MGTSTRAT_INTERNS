@@ -877,7 +877,7 @@ $(document).ready( function () {
             sumDiscount = sum32 - 100;
             $("#input-discount").val("-" + sumDiscount + "%");
         } else if (isNaN(sum32) != 0) {
-            $("#input-discount").val(100 + "%");
+            $("#input-discount").val('0' + "%");
         } else {
             sumDiscount = Math.round(sum32);
             $("#input-discount").val(sumDiscount + "%");
@@ -1002,7 +1002,7 @@ $(document).ready( function () {
 /*************************************** CUSTOMIZED ENGAGEMENT BUDGET FORM COMPUTATION ********************************************************/
 $(document).on(
     "load change keyup click",
-    ".customized-engagement, .customized-type, .ga-only-dropdown, .remove, #ec_tableEngagementFees, #ec_tableEngagementCost, #LessCTO_NOC",
+    ".engagement_fees, .engagement_cost, .frofit_forecast, .customized-engagement, .customized-type, .ga-only-dropdown, .remove, #ec_tableEngagementFees, #ec_tableEngagementCost, #LessCTO_NOC",
     function () {
         //customized type
         $(".customized-type").each(function () {
@@ -1875,7 +1875,7 @@ $(document).on(
                 sumDiscount = sum32 - 100;
                 $("#input-discount").val("-" + sumDiscount + "%");
             } else if (isNaN(sum32) != 0) {
-                $("#input-discount").val(100 + "%");
+                $("#input-discount").val(0 + "%");
             } else {
                 sumDiscount = Math.round(sum32);
                 $("#input-discount").val(sumDiscount + "%");
@@ -1891,7 +1891,8 @@ $(document).on(
                 sumSales =
                 ($("#ef_Totalpackage").val().replace(/\₱|,/g, "") / 100) *
                     $(this).find("#sales").val().replace(/\%/g, "")
-            } else {
+            }
+             else {
                 sumSales =
                 ($("#ef_Totalpackage").val().replace(/\₱|,/g, "") / 100) *
                     $(this).find("#inputSales").val().replace(/\%/g, "")
