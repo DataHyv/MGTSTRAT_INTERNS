@@ -9,9 +9,9 @@ $(document).on(
     leadConsultant = 0;
     $("#ec_tableLeadConsultant > tr").each(function () {
         leadConsultant++;
-        $(`#roster${leadConsultant}`).keypress(function(){
+        // $(`#roster${leadConsultant}`).keypress(function(){
 
-        });
+        // });
 
         let roster = $(`#roster${leadConsultant}`).val();
 

@@ -8,6 +8,10 @@
     @extends('sidebar.dashboard')
 @endsection
 @section('content')
+@php
+    $table = 0;
+@endphp
+
     <div id="main">
         @include('headers.header')
         <div class="page-heading">
@@ -78,7 +82,7 @@
 
                             <tbody>
                                 @foreach ($data as $key => $item)
-                                    <tr>
+                                    <tr id="{{ ++$table }}">
                                         <td hidden class="ids">{{ $item->id }}</td>
                                         <td hidden class="budget_number">{{ $item->cstmzd_eng_form_id }}</td>
                                         {{-- <td class="text-center">
@@ -148,7 +152,7 @@
                                                 <span class="badge bg-info"><i class="bi bi-person-plus-fill"></i></span>
                                             </a> --}}
 
-                                            <a href="{{ url('form/customizedEngagement/detail/' . $item->cstmzd_eng_form_id .  $item->id) }}">
+                                            <a href="{{ url('form/customizedEngagement/detail/'.$item->cstmzd_eng_form_id.'/'.$item->id) }}">
                                                 <span class="badge bg-success"><i class="bi bi-pencil-square"></i></span>
                                             </a>
 
@@ -204,7 +208,7 @@
                                                         </div>
 
                                                         <div class="modal-body">
-                                                            <table class="table display" id="tables{{ $item->id }}">
+                                                            <table class="table display" id="tables{{ $table }}">
                                                                 <thead>
                                                                     <tr class="table-secondary">
                                                                         <th class="text-center">ID</th>
@@ -395,6 +399,7 @@
         //     width: 'resolve',
         // });
 
+
         var batch = 1;
         $("#addBatch").on("click", function() {
             // Adding a row inside the tbody.
@@ -472,7 +477,7 @@
 @section('script')
     <script>
         //datatble of batch
-        for (let i = 1; i < 10; i++) {
+        for (let i = 1; i < 1000; i++) {
             // console.log(i);
             let table1 = document.querySelector(`#tables${i}`);
             new simpleDatatables.DataTable(`#tables${i}`);

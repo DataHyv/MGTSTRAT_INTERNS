@@ -29,14 +29,14 @@ class Customized_engagement_form extends Model
 
     public function client()
     {
-        return $this->belongsTo(Client::class, 'client_id', 'id');
+        return $this->belongsTo(Client::class, 'client_id');
     	// return $this->belongsTo('App\Models\Client', 'clients_id','id');
         // return $this->hasMany('App\Models\Client');
     }
 
     public function customized_engagement_forms()
     {
-        return $this->hasMany(Sub_information::class, 'customized_engagement_forms_id', 'id');
+        return $this->hasMany(Sub_information::class, 'customized_engagement_forms_id');
     	// return $this->hasMany('App\Models\Customized_engagement_form');
         // return $this->belongsTo('App\Models\Customized_engagement_form');
     }

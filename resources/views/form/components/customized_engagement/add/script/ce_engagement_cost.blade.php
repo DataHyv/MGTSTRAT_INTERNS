@@ -1227,6 +1227,99 @@
                 ecDocumentor--;
             });
         });
+
+
+/********* END *********/
+
+    /********* OFF-PROGRAM FEE *********/
+    $(document).ready(function (){
+        var ecOffProgram = 1;
+        $("#CeAddBtn9").on("click", function() {
+            // Adding a row inside the tbody.
+            $("#ec_TblOffProgram").append(`
+                <tr class="table-warning" id="ec_OffProgramRow${++ecOffProgram}">
+                    <td class="title table-light">
+                        Off-Program fee
+                        <input type="text" class="d-none" value="Off-Program fee" name="cost_type[]" readonly>
+                    </td>
+                    <td>
+                        <input type="text"
+                                class="input js-mytooltip text-center text-dark fw-bold form-control input-table commanumber @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_consultant_num[]" id="ec_ProgramNoc${ecOffProgram}" data-type="currency"
+                                data-mytooltip-content="<i>
+                                        - For single or series of programs<br>
+                                        - One time only<br>
+                                        - Per person<br>
+                                        </i>"
+                                data-mytooltip-theme="dark" data-mytooltip-action="focus"
+                                data-mytooltip-direction="bottom">
+                    </td>
+                    <td>
+                        <input type="text"
+                                class="text-center text-dark fw-bold form-control input-table commanumber @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_hour_fee[]" id="ec_ProgramHf" data-type="currency">
+                    </td>
+                    <td>
+                        <input type="text" class="d-none" name="cost_hour_num[]" readonly>
+                    </td>
+                    <td>
+                        <input type="text" class="d-none" name="cost_nswh[]" readonly>
+                    </td>
+                    <td class="total-td table-light" style="background-color: rgba(146, 146, 146, 0.727">
+                            <h4 class="text-center" id="ec_ProgramTotal">-</h4>
+                    </td>
+                    <td class="total-td table-light">
+                        <input type="text" class="form-control input-table @error('') is-invalid @enderror"
+                            value="{{ old('') }}" name="cost_rooster[]" id="">
+                    </td>
+                    <td class="total-td table-light">
+                        <textarea class="form-control input-table @error('') is-invalid @enderror"
+                            name="cost_notes[]" id="" rows="2" cols="55"></textarea>
+                    </td>
+                    <td class="border border-white" style="background-color: #FFFFFF;">
+                        <a href="javascript:void(0)" class="text-danger font-18 remove" id="ecOffProgramRemove${ecOffProgram}" title="Remove" >
+                            <i class="fa fa-trash-o"></i>
+                        </a>
+                    </td>
+                </tr>
+            `);
+        });
+
+        $("#ec_TableDocumentor").on("click", ".remove", function () {
+
+            // Getting all the rows next to the row
+            // containing the clicked button
+            var child = $(this).closest("tr").nextAll();
+
+            // Iterating across all the rows
+            // obtained to change the index
+            child.each(function () {
+                // Getting <tr> id.
+                var id = $(this).attr("id");
+
+                // Getting the <input> inside the .noc, .noh, .nwh class.
+                var noc = $(this).children(".noc").children("input");
+                var noh = $(this).children(".noh").children("input");
+                var nwh = $(this).children(".nwh").children("input");
+
+                // Gets the row number from <tr> id.
+                var dig = parseInt(id.substring(16));
+
+                // Modifying row id.
+                $(this).attr("id", `ec_DocumentorRow${dig - 1}`);
+
+                // Modifying row index.
+                noc.attr("id", `ec_DocumentorNoc${dig - 1}`);
+                noh.attr("id", `ec_DocumentorNoh${dig - 1}`);
+                nwh.attr("id", `ec_DocumentorNwh${dig - 1}`);
+            });
+
+            // Removing the current row.
+            $(this).closest("tr").remove();
+            // Decreasing total number of rows by 1.
+            ecDocumentor--;
+        });
+    });
 /********* END *********/
 </script>
 

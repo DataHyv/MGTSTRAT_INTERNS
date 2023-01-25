@@ -836,10 +836,30 @@ $(document).ready( function () {
 
 
     /*******************************************************Off Program fee******************************************************************/
-    $("#ec_ProgramHf").each(function () {
-        sumecOffprogram +=
-            $("#ec_ProgramNoc").val().replace(/,/g, "") *
-            $("#ec_ProgramHf").val().replace(/\₱|,/g, "");
+    // $("#ec_ProgramHf").each(function () {
+    //     sumecOffprogram +=
+    //         $("#ec_ProgramNoc").val().replace(/,/g, "") *
+    //         $("#ec_ProgramHf").val().replace(/\₱|,/g, "");
+
+    //     if (
+    //         gaPercentage.val() == "G.A Hybrid" ||
+    //         gaPercentage.val() == "G.A Virtual"
+    //     ) {
+    //         sumecOffprogram +=
+    //             sumecOffprogram *
+    //             (document.getElementById("ga-only-dropdown").value / 100);
+    //     }
+    //     sumEngagementCost += +sumecOffprogram;
+    // });
+    // $("#ec_ProgramTotal").html(currency.format(Math.ceil(sumecOffprogram)));
+
+    ecOffProgram = 0;
+    $("#ec_TblOffProgram > tr").each(function () {
+        ecOffProgram++;
+
+        sumecOffprogram =
+            $(this).find(`#ec_ProgramNoc${ecOffProgram}`).val() *
+            $(this).find("#ec_ProgramHf").val().replace(/,/g, "");
 
         if (
             gaPercentage.val() == "G.A Hybrid" ||
@@ -849,9 +869,10 @@ $(document).ready( function () {
                 sumecOffprogram *
                 (document.getElementById("ga-only-dropdown").value / 100);
         }
+
+        $(this).find("#ec_ProgramTotal").html(currency.format(Math.ceil(sumecOffprogram)));
         sumEngagementCost += +sumecOffprogram;
     });
-    $("#ec_ProgramTotal").html(currency.format(Math.ceil(sumecOffprogram)));
 
     /*******************************************************Program Expense******************************************************************/
     $("#ec_Programexpense").each(function () {
@@ -931,7 +952,7 @@ $(document).ready( function () {
         if (document.getElementById("engagementManager").disabled === false) {
             sumEngagementManager =
             ($("#ef_Totalpackage").val().replace(/\₱|,/g, "") / 100) *
-                $(this).find("#engagementManager").val().replace(/\%/g, "")
+                $(this).find("#engagementManager").val().replace(/%/g, "")
         } else {
             sumEngagementManager =
             ($("#ef_Totalpackage").val().replace(/\₱|,/g, "") / 100) *
@@ -1834,10 +1855,30 @@ $(document).on(
 
 
         /*******************************************************Off Program fee******************************************************************/
-        $("#ec_ProgramHf").each(function () {
-            sumecOffprogram +=
-                $("#ec_ProgramNoc").val().replace(/,/g, "") *
-                $("#ec_ProgramHf").val().replace(/\₱|,/g, "");
+        // $("#ec_ProgramHf").each(function () {
+        //     sumecOffprogram +=
+        //         $("#ec_ProgramNoc").val().replace(/,/g, "") *
+        //         $("#ec_ProgramHf").val().replace(/\₱|,/g, "");
+
+        //     if (
+        //         gaPercentage.val() == "G.A Hybrid" ||
+        //         gaPercentage.val() == "G.A Virtual"
+        //     ) {
+        //         sumecOffprogram +=
+        //             sumecOffprogram *
+        //             (document.getElementById("ga-only-dropdown").value / 100);
+        //     }
+        //     sumEngagementCost += +sumecOffprogram;
+        // });
+        // $("#ec_ProgramTotal").html(currency.format(Math.ceil(sumecOffprogram)));
+
+        ecOffProgram = 0;
+        $("#ec_TblOffProgram > tr").each(function () {
+            ecOffProgram++;
+
+            sumecOffprogram =
+                $(this).find(`#ec_ProgramNoc${ecOffProgram}`).val() *
+                $(this).find("#ec_ProgramHf").val().replace(/,/g, "");
 
             if (
                 gaPercentage.val() == "G.A Hybrid" ||
@@ -1847,9 +1888,10 @@ $(document).on(
                     sumecOffprogram *
                     (document.getElementById("ga-only-dropdown").value / 100);
             }
+
+            $(this).find("#ec_ProgramTotal").html(currency.format(Math.ceil(sumecOffprogram)));
             sumEngagementCost += +sumecOffprogram;
         });
-        $("#ec_ProgramTotal").html(currency.format(Math.ceil(sumecOffprogram)));
 
         /*******************************************************Program Expense******************************************************************/
         $("#ec_Programexpense").each(function () {
@@ -1931,7 +1973,7 @@ $(document).on(
             if (document.getElementById("engagementManager").disabled === false) {
                 sumEngagementManager =
                 ($("#ef_Totalpackage").val().replace(/\₱|,/g, "") / 100) *
-                    $(this).find("#engagementManager").val().replace(/\%/g, "")
+                    $(this).find("#engagementManager").val().replace(/%/g, "")
             } else {
                 sumEngagementManager =
                 ($("#ef_Totalpackage").val().replace(/\₱|,/g, "") / 100) *
@@ -1986,7 +2028,7 @@ $(document).on(
 });
 /*************************************** END CUSTOMIZED ENGAGEMENT BUDGET FORM COMPUTATION ****************************************************/
 
-//*************************************** APPEND NUMBER FORMAT ********************************************************//
+/*************************************** APPEND NUMBER FORMAT ********************************************************/
 $(document).on(
     "load change keyup click",
     "#ec_tableEngagementFees, #ec_tableEngagementCost, #tableLeadfaci",
@@ -2108,7 +2150,7 @@ $('input[type="number"]').on("input", function () {
 });
 $('input[type="number"]').attr("min", "0");
 
-//*************************************** CURRENCY FORMATTER ********************************************************//
+/*************************************** CURRENCY FORMATTER ********************************************************/
 $(document).ready(function() {
     //currency format
     // let currency = Intl.NumberFormat("en-US");

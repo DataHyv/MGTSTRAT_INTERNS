@@ -541,7 +541,6 @@ $(document).on(
         }
 
         $(`#ec_LeadconsultantHf${leadConsultant}`).prop('readonly', true).val( currency.format(Math.ceil(hourlyFees)) );
-        // document.getElementById(`ec_LeadconsultantHf${leadConsultant}`).defaultValue = currency.format( Math.ceil(hourlyFees) );
 
     });
 

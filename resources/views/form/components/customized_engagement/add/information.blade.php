@@ -293,6 +293,29 @@
         <!------------ NUMBER OF BATCHES AND SESSION ------------>
             <div class="form-group row">
                 <div class="col-md-2">
+                    <label class="fw-bold required">Start of Batch Number </label>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group has-icon-left">
+                        <div class="position-relative">
+                            <input type="number" class="form-control @error('start_batch_number') is-invalid @enderror"
+                                value="{{ old('start_batch_number') }}" name="start_batch_number" id="BatchNumber" placeholder="Enter # of Batches" min="0"
+                                oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null">
+                            <div class="form-control-icon">
+                                <i class="fa-regular fa-calendar-days"></i>
+                            </div>
+                            @error('start_batch_number')
+                                <span class="invalid-feedback" role="alert">
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-2">
                     <label class="fw-bold required">Number of Batches </label>
                 </div>
 

@@ -94,7 +94,7 @@ Auth::routes();
     Route::controller(CustomizedEngagementController::class)->group(function () {
     Route::get('form/customizedEngagement/new', [CustomizedEngagementController::class, 'index'])->middleware('auth')->name('form/customizedEngagement/new');
     Route::get('form/customizedEngagement/detail', [CustomizedEngagementController::class, 'viewRecord'])->middleware('auth')->name('form/customizedEngagement/detail');
-    Route::get('form/customizedEngagement/detail/{cstmzd_eng_form_id}{id}', [CustomizedEngagementController::class, 'updateRecord'])->middleware('auth')->name('form/customizedEngagement/detail/{cstmzd_eng_form_id}');
+    Route::get('form/customizedEngagement/detail/{cstmzd_eng_form_id}/{id}', [CustomizedEngagementController::class, 'updateRecord'])->middleware('auth')->name('form/customizedEngagement/detail/{cstmzd_eng_form_id}');
 
     Route::post('save', [CustomizedEngagementController::class, 'store'])->name('save');
     Route::put('update', [CustomizedEngagementController::class, 'ceUpdateRecord','ceAddDeleteRecord'])->middleware('auth')->name('update');

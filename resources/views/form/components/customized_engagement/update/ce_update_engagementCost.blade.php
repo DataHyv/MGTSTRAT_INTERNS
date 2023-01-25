@@ -20,6 +20,7 @@
     $ecModerator = 0;
     $ecProducer = 0;
     $ecDocumentor = 0;
+    $ecOffProgram = 0;
 @endphp
 
 <div class="form-body container">
@@ -1128,9 +1129,10 @@
                     <td class="border border-white add-row invisible"> </td>
                 </tr>
 
+                <tbody id="ec_TblOffProgram">
                 @foreach ($dataJoin2 as $key=>$cost_types )
                     @if ($cost_types->type === 'Off-Program fee')
-                        <tr class="table-warning">
+                        <tr class="table-warning" id="ec_TblOffProgram{{ ++$ecOffProgram }}">
                             <td class="title table-light">
                                 Off-Program fee
                                 <input type="hidden" name="cost_id[]" value="{{$cost_types->id }}">
@@ -1139,7 +1141,7 @@
                             <td>
                                 <input type="text"
                                     class="commanumber input js-mytooltip text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
-                                    value="{{$cost_types->consultant_num}}" name="cost_consultant_num[]" id="ec_ProgramNoc" data-type="currency"
+                                    value="{{$cost_types->consultant_num}}" name="cost_consultant_num[]" id="ec_ProgramNoc{{ $ecOffProgram }}" data-type="currency"
                                     data-mytooltip-content="<i>
                                             - For single or series of programs<br>
                                             - One time only<br>
@@ -1168,10 +1170,28 @@
                                 <textarea class="form-control input-table @error('') is-invalid @enderror"
                                     name="cost_notes[]" id="" rows="2" cols="55">{{$cost_types->notes}}</textarea>
                             </td>
-                            <td class="border border-white add-row invisible"> </td>
+                            {{-- <td class="border border-white add-row">
+                                <a href="javascript:void(0)" class="text-success font-18" title="Add" id="CeAddBtn9">
+                                    <i class="fa fa-plus"></i>
+                                </a>
+                            </td> --}}
+                            @if ($ecOffProgram === 1)
+                            <td style="background-color: #FFFFFF;" class="border border-white">
+                                <a href="javascript:void(0)" class="text-success font-18" title="Add" id="CeAddBtn9">
+                                    <i class="fa fa-plus"></i>
+                                </a>
+                            </td>
+                            @else
+                                <td style="background-color: #FFFFFF;" class="border border-white">
+                                    <a href="javascript:void(0)" class="text-danger font-18 remove" title="Remove" data-id="{{ $cost_types->id }}">
+                                        <i class="fa fa-trash-o"></i>
+                                    </a>
+                                </td>
+                            @endif
                         </tr>
                     @endif
                 @endforeach
+                </tbody>
             <!------------------- END ----------------------->
 
             <!------------------- MISCELANEOUS ----------------------->

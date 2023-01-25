@@ -20,10 +20,10 @@ class Sub_fee extends Model
         'notes',
     ];
 
-    public function client()
-    {
-        return $this->belongsTo(Client::class);
-    }
+    // public function client()
+    // {
+    //     return $this->belongsTo(Client::class);
+    // }
 
     public function sub_informations()
     {
