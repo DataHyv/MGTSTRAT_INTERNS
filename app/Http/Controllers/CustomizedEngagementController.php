@@ -85,7 +85,7 @@ class CustomizedEngagementController extends Controller
         }
     }
 
-    /* Update Record */
+    /* Update Records */
     public function updateRecord($cstmzd_eng_form_id, $id)
     {
         // Sub_information::find($id)
