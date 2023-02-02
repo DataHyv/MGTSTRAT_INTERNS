@@ -49,18 +49,15 @@
 
 
             <section class="section">
-                <div class="card mb-5 mt-5 h-75">
-                    <div class="card-header col-12 d-flex justify-content-left mt-3 mb-3 mx-3">
+                <div class="card mb-5 mt-5 mh-75">
+                    <div class="card-header col-12 d-flex justify-content-left mt-3 mb-3">
                         <a class="btn btn-primary mt-2 mb-2" href="{{ route('form/customizedEngagement/new') }}">
                             <span><i class="fa-solid fa-file-circle-plus"></i> &nbsp; New Record</span>
                         </a>
-                        {{-- <a class="btn btn-primary mt-2 mb-2 mx-5" id="test" href="#">
-                            <span><i class="fa-solid fa-file-circle-plus"></i> &nbsp; TEST SUB FEE</span>
-                        </a> --}}
                     </div>
 
-                    <div class="card-body">
-                        <table class="table table-light" id="table1">
+                    <div class="card-body table-responsive">
+                        <table class="table table-light display dt-responsive nowrap" id="table1">
                             <thead>
                                 <tr class="table-secondary">
                                     <th hidden></th>
@@ -76,7 +73,8 @@
                                     {{-- <th class="text-center">SCHEDULED DATES</th>
                                     <th class="text-center">SCHEDULED TIME</th> --}}
                                     <th class="text-center">DATE ADDED</th>
-                                    <th class="text-center" colspan="2">Modify</th>
+                                    <th class="text-center">Modify</th>
+                                    <th class="text-center"></th>
                                 </tr>
                             </thead>
 
@@ -85,12 +83,7 @@
                                     <tr id="{{ ++$table }}">
                                         <td hidden class="ids">{{ $item->id }}</td>
                                         <td hidden class="budget_number">{{ $item->cstmzd_eng_form_id }}</td>
-                                        {{-- <td class="text-center">
-                                            <button type="button" class="btn btn-light mx-3" data-toggle="modal" data-target="#exampleModal{{ $item->id }}">
-                                                <i class="fa-regular fa-folder-open"></i>
-                                            </button>
-                                        </td> --}}
-                                        <td class="id text-center text-uppercase fw-bold" role="button" data-toggle="modal" data-target="#exampleModal{{ $item->id }}">{{ $item->cstmzd_eng_form_id }}</td>
+                                        <td class="id text-center text-uppercase fw-bold">{{ $item->cstmzd_eng_form_id }}</td>
                                         <td class="text-center fw-bold py-3" role="button" data-toggle="modal" data-target="#exampleModal{{ $item->id }}">
                                             <span id="status" class="badge">{{ $item->status }}</span>
                                             {{-- Automatic change the status color --}}
@@ -129,29 +122,11 @@
                                         <td class="text-center fw-bold" role="button" data-toggle="modal" data-target="#exampleModal{{ $item->id }}">
                                             {{ $item->Engagement_fees_total }}
                                         </td>
-                                        {{-- <td class="text-center fw-bold" role="button" data-toggle="modal" data-target="#exampleModal{{ $item->id }}">
-                                            @if($item->program_dates)
-                                                @foreach($item->program_dates as $dates)
-                                                    {{$dates.', '}}
-                                                @endforeach
-                                            @endif
-                                        </td>
-                                        <td class="fw-bold text-center" role="button" data-toggle="modal" data-target="#exampleModal{{ $item->id }}">
-                                            @if($item->program_start_time)
-                                                @foreach($item->program_start_time as $time)
-                                                    {{$time}}
-                                                @endforeach
-                                            @endif
-                                        </td> --}}
                                         <td class="text-center fw-bold" role="button" data-toggle="modal" data-target="#exampleModal{{ $item->id }}">
                                             {{ \Carbon\Carbon::parse($item->created_at)->toFormattedDateString()}}
                                         </td>
                                         <td class="text-center fw-bold">
                                             {{-- buttons --}}
-                                            {{-- <a href=".bd-example-modal-lg" data-toggle="modal" data-target=".bd-example-modal-lg">
-                                                <span class="badge bg-info"><i class="bi bi-person-plus-fill"></i></span>
-                                            </a> --}}
-
                                             <a href="{{ url('form/customizedEngagement/detail/'.$item->cstmzd_eng_form_id.'/'.$item->id) }}">
                                                 <span class="badge bg-success"><i class="bi bi-pencil-square"></i></span>
                                             </a>
@@ -218,6 +193,7 @@
                                                                         <th class="text-center">Program date</th>
                                                                         <th class="text-center">Contract Price</th>
                                                                         <th class="text-center">Modify</th>
+                                                                        <th></th>
                                                                     </tr>
                                                                 </thead>
 
@@ -248,9 +224,6 @@
                                                                                     <label class="fw-bold" for="">{{ $item2->date }}</label>
                                                                                 </td>
                                                                                 @endif
-                                                                                {{-- <td>
-                                                                                    <label class="fw-bold" for="">{{ $item2->date }}</label>
-                                                                                </td> --}}
                                                                                 <td>
                                                                                     <label class="fw-bold" for="">
                                                                                         {{
@@ -267,36 +240,21 @@
                                                                                             )
                                                                                          }}
                                                                                     </label>
-                                                                                    {{-- <label class="fw-bold" for="">
-                                                                                        {{ number_format($item2->sub_fees_total) }}
-                                                                                    </label> --}}
                                                                                 </td>
                                                                                 <td>
-                                                                                    {{-- <a href="{{ url('form/customizedEngagement/sub-fee/' . $item2->id) }}" class="text-success font-18 px-0" title="Add" id="edit" target="_blank"> --}}
                                                                                     <a href="{{ url('form/customizedEngagement/sub-fee/' . $item2->id) }}" class="text-success font-18 px-0" title="Add" id="edit">
                                                                                         <i class="fa-regular fa-pen-to-square"></i>
                                                                                     </a>
                                                                                 </td>
+                                                                                <td></td>
                                                                             </tr>
                                                                         @endif
                                                                     @endforeach
                                                                 </tbody>
-
-                                                                {{-- <tbody class="text-center">
-                                                                    <tr>
-                                                                        <td colspan="5">
-                                                                            <a href="javascript:void(0)" class="btn btn-primary add-batch" data-id="{{ $item2->id }}">
-                                                                                <i class="fa-solid fa-square-plus"></i> Add Batch
-                                                                            </a>
-                                                                        </td>
-                                                                    </tr>
-                                                                </tbody> --}}
-
                                                             </table>
                                                         </div>
 
                                                         <div class="modal-footer">
-                                                            {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
                                                             <button type="button" class="btn btn-secondary modal-close" data-dismiss="modal">Close</button>
                                                         </div>
 
@@ -326,65 +284,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
 <script>
-    $(document).ready(function (){
-        // $(".add-batch").on("click", function(e){
-        //     // $.get('sub-fee', function(data){
-        //     //     console.log(data)
-        //     // });
-
-        //     $.ajaxSetup ({
-        //         cache: false
-        //     });
-
-        //     $.ajax({
-        //         type: "GET",
-        //         url:  "{{ route('form/customizedEngagement/sub-fee') }}",
-        //         cache: false,
-        //         async: true,
-        //         success: function(data){
-        //             viewRecord();
-        //             toastr.warning('Data added successfully','Success');
-
-        //         }
-        //     });
-
-        //     // $.ajax({
-        //     //     type: "GET",
-        //     //     url: "{{ route('form/customizedEngagement/detail') }}",
-        //     //     // dataType: "json",
-        //     //     cache: false,
-        //     //     async: true,
-        //     //     success: function(data){
-        //     //         //responce
-        //     //         console.log('sucess');
-        //     //         // console.log(data);
-        //     //     }
-        //     // });
-
-        //     // $('.appendBatch').append('<tr><td>my data</td><td>more data</td><td>more data</td><td>more data</td><td>more data</td></tr>');
-        // });
-
-        // $("#test").on("click", function(e){
-
-        //     $.ajax({
-        //         type: "GET",
-        //         url: "{{ route('form/customizedEngagement/detail') }}",
-        //         cache: false,
-        //         async: true,
-        //         success: function(data){
-        //             //responce
-        //             console.log(data)
-        //             // location.reload();
-        //             // let dataTable = new DataTable('#tables1');
-        //             // $('#tables1').datatable.refresh();
-        //             // dataTable.on('datatable.refresh', function(query, matched) {
-        //             //     //
-        //             // });
-        //         }
-        //     });
-        // });
-    });
-
     //deletion of tbl row
     $(document).on('click','.delete',function()
     {
@@ -392,86 +291,6 @@
         $('.e_id').val(_this.find('.ids').text());
         $('.budget_number').val(_this.find('.budget_number').text());
     });
-
-    $(document).ready(function() {
-        // $('.select2-hidden-accessible').select2({
-        //     theme: 'bootstrap',
-        //     width: 'resolve',
-        // });
-
-
-        var batch = 1;
-        $("#addBatch").on("click", function() {
-            // Adding a row inside the tbody.
-            $("#batch").append(`
-            <div class="form-group row justify-content-center batches" id="batches${batch}">
-                <div class="col-md-3">
-                    <label class="mb-2" for="formGroupClientInput">Client Name</label>
-                    <input class="input form-control @error('client_id') is-invalid @enderror" id="" name="" value="MGT_STRAT" readonly>
-                    @error('client_id')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-
-                <div class="col-md-3">
-                    <label class="mb-2" for="formGroupBatchInput">Batch Name</label>
-                    <input type="text" class="form-control" id="formGroupBatchInput">
-                </div>
-
-                <div class="col-md-3">
-                    <label class="mb-2" for="formGroupSessionInput">Session</label>
-                    <input type="text" class="form-control" id="formGroupSessionInput">
-                </div>
-
-                <div class="col-md-2 mt-4 pt-3">
-                    <div class="form-group">
-                        <input class="form-check-input" type="checkbox" id="gridCheck">
-                        <label class="form-check-label" for="gridCheck">
-                            Same Data
-                        </label>
-                    </div>
-                </div>
-
-                <div class="col-lg-1 col-md-1">
-                    <div class="px-0">
-                        <label class="fw-bold invisible overflow-hidden mb-4">Add</label>
-                        <a href="javascript:void(0)" class="text-danger font-18 remove px-0" title="Remove">
-                            <i class="fa fa-trash-o"></i>
-                        </a>
-                    </div>
-                </div
-            </div>
-            `);
-        });
-
-        $("#batches").on("click", ".remove", function () {
-            // Getting all the rows next to the row
-            // containing the clicked button
-            var child = $(this).closest('.d-flex').nextAll();
-
-            // Iterating across all the rows
-            // obtained to change the index
-            child.each(function () {
-                // Getting <tr> id.
-                var id = $(this).attr("id");
-
-                // Gets the row number from <tr> id.
-                var dig = parseInt(id.substring(7));
-
-                // Modifying row id.
-                $(this).attr("id", `batch${dig - 1}`);
-            });
-
-            // Removing the current row.
-            $(this).closest('.d-none').remove();
-
-            // Decreasing total number of rows by 1.
-            dates--;
-        });
-    });
-
 </script>
 
 @section('script')
@@ -479,8 +298,20 @@
         //datatble of batch
         for (let i = 1; i < 1000; i++) {
             // console.log(i);
-            let table1 = document.querySelector(`#tables${i}`);
-            new simpleDatatables.DataTable(`#tables${i}`);
+            // let table1 = document.querySelector(`#tables${i}`);
+            // new simpleDatatables.DataTable(`#tables${i}`);
+            $(`#tables${i}`).dataTable( {
+                responsive: true,
+                stateSave: true,
+                "bScrollCollapse": true,
+                "autoWidth": false,
+                stateSaveCallback: function(settings,data) {
+                    localStorage.setItem( 'DataTables_' + settings.sInstance, JSON.stringify(data) )
+                    },
+                stateLoadCallback: function(settings) {
+                    return JSON.parse( localStorage.getItem( 'DataTables_' + settings.sInstance ) )
+                    },
+            } );
         }
     </script>
 @endsection

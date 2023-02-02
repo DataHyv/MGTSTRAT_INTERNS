@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{ URL::to('assets/vendors/bootstrap-icons/bootstrap-icons.css') }}">
     <link rel="stylesheet" href="{{ URL::to('assets/css/app.css') }}">
     <link rel="stylesheet" href="{{ URL::to('assets/vendors/simple-datatables/style.css') }}">
-    {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css"> --}}
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
 
     {{-- message toastr --}}
     <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
@@ -39,6 +39,17 @@
         {{-- TOOLTIP JS --}}
         <script src="{{ url('js/tooltipJs/jquery.mytooltip.js') }}"></script>
         <script src="{{ url('js/tooltipJs/demo/script.js') }}"></script>
+
+        {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.13.1/datatables.min.css"/>
+        <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.13.1/datatables.min.js"></script> --}}
+
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.dataTables.min.css">
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+
+        {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script> --}}
+
 </head>
 
 <body id="body">
@@ -49,13 +60,13 @@
 
     </div>
 
-    <footer>
+    {{-- <footer>
         <div class="footer clearfix mb-0 text-muted fixed-bottom p-3 bg-light">
             <div class="text-center text-dark">
                 <p><script>document.write(new Date().getFullYear());</script> Copyright &copy; MGT-STRAT</p>
             </div>
         </div>
-    </footer>
+    </footer> --}}
 
     <script src="{{ URL::to('assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
     <script src="{{ URL::to('assets/js/bootstrap.bundle.min.js') }}"></script>
@@ -63,13 +74,28 @@
     <script src="{{ URL::to('assets/js/main.js') }}"></script>
     <script src="{{ URL::to('assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
     <script src="{{ URL::to('assets/vendors/simple-datatables/simple-datatables.js') }}"></script>
-    {{-- <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script> --}}
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
+
     <script>
         // Simple Datatable
-        let table1 = document.querySelector('#table1');
-        let dataTable = new simpleDatatables.DataTable('#table1');
-        // let table2 = document.querySelector('#table2');
-        // let dataTable2 = new simpleDatatables.DataTable('#table2');
+        // let table1 = document.querySelector('#table1');
+        // let dataTable = new simpleDatatables.DataTable('#table1');
+
+        $(document).ready( function () {
+            $('#table1').dataTable( {
+                responsive: true,
+                stateSave: true,
+                "bScrollCollapse": true,
+                "autoWidth": false,
+                stateSaveCallback: function(settings,data) {
+                    localStorage.setItem( 'DataTables_' + settings.sInstance, JSON.stringify(data) )
+                    },
+                stateLoadCallback: function(settings) {
+                    return JSON.parse( localStorage.getItem( 'DataTables_' + settings.sInstance ) )
+                    },
+            } );
+        } );
     </script>
 
     {{-- sweet alert popup message --}}

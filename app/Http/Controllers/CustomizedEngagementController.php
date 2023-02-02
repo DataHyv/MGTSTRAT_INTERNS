@@ -30,7 +30,8 @@ class CustomizedEngagementController extends Controller
     public function viewRecord()
     {
         $data = Customized_engagement_form::with('client')->latest()->get();
-        $data2 = Sub_information::with('Customized_engagement_form')->latest('updated_at')->get();
+        $data2 = Sub_information::with('Customized_engagement_form')->get();
+        // $data2 = Sub_information::with('Customized_engagement_form')->latest('updated_at')->get();
         // $data2 = DB::table('sub_informations')->where('customized_engagement_form_id', $request->customized_engagement_forms)->count();
         $dataJoin1  = DB::table('customized_engagement_forms')
             ->join('engagement_fees', 'customized_engagement_forms.cstmzd_eng_form_id', '=', 'engagement_fees.cstmzd_eng_form_id')
@@ -505,18 +506,16 @@ class CustomizedEngagementController extends Controller
                 }
                 else if ($request->sub_type[$key] === 'Lead Consultant') {
                     $sub_fees['type']                 = $request->fee_type[1];
-                    $sub_fees['consultant_num']       = ($request->fee_consultant_num[1] ?? '0');
-                    // $sub_fees['consultant_num']       = $request->fee_consultant_num[1] ?? '0';
+                    $sub_fees['consultant_num']       = ($request->fee_consultant_num[1] ?? '0') / ($request->batch_number);
                     $sub_fees['hour_fee']             = $request->fee_hour_fee[1];
-                    $sub_fees['hour_num']             = ($request->fee_hour_num[1] ?? '0')/($request->session_number*$request->batch_number);
-                    // $sub_fees['hour_num']             = $request->fee_hour_num[1] ?? '0';
+                    $sub_fees['hour_num']             = ($request->fee_hour_num[1] ?? '0') / ($request->session_number*$request->batch_number);
                     $sub_fees['nswh']                 = $request->fee_nswh[1] ?? '0';
                     $sub_fees['nswh_percent']         = $request->nswh_percent[1] ?? '0';
                     $sub_fees['notes']                = $request->fee_notes[1];
                 }
                 else if($request->sub_type[$key] === 'Analyst') {
                     $sub_fees['type']                 = $request->fee_type[2];
-                    $sub_fees['consultant_num']       = ($request->fee_consultant_num[2] ?? '0');
+                    $sub_fees['consultant_num']       = ($request->fee_consultant_num[2] ?? '0') / ($request->batch_number);
                     // $sub_fees['consultant_num']       = $request->fee_consultant_num[2] ?? '0';
                     $sub_fees['hour_fee']             = $request->fee_hour_fee[2];
                     $sub_fees['hour_num']             = ($request->fee_hour_num[2] ?? '0')/($request->session_number*$request->batch_number);
@@ -527,7 +526,7 @@ class CustomizedEngagementController extends Controller
                 }
                 else if($request->sub_type[$key] === 'Designer') {
                     $sub_fees['type']                 = $request->fee_type[3];
-                    $sub_fees['consultant_num']       = ($request->fee_consultant_num[3] ?? '0');
+                    $sub_fees['consultant_num']       = ($request->fee_consultant_num[3] ?? '0') / ($request->batch_number);
                     // $sub_fees['consultant_num']       = $request->fee_consultant_num[3] ?? '0';
                     $sub_fees['hour_fee']             = $request->fee_hour_fee[3];
                     $sub_fees['hour_num']             = ($request->fee_hour_num[3] ?? '0')/($request->session_number*$request->batch_number);
@@ -538,7 +537,7 @@ class CustomizedEngagementController extends Controller
                 }
                 else if($request->sub_type[$key] === 'Lead Facilitator') {
                     $sub_fees['type']                 = $request->fee_type[4];
-                    $sub_fees['consultant_num']       = ($request->fee_consultant_num[4] ?? '0');
+                    $sub_fees['consultant_num']       = ($request->fee_consultant_num[4] ?? '0') / ($request->batch_number);
                     // $sub_fees['consultant_num']       = $request->fee_consultant_num[4] ?? '0';
                     $sub_fees['hour_fee']             = $request->fee_hour_fee[4];
                     $sub_fees['hour_num']             = ($request->fee_hour_num[4] ?? '0')/($request->session_number*$request->batch_number);
@@ -549,7 +548,7 @@ class CustomizedEngagementController extends Controller
                 }
                 else if($request->sub_type[$key] === 'Co-facilitator / Resource Speaker') {
                     $sub_fees['type']                 = $request->fee_type[5];
-                    $sub_fees['consultant_num']       = ($request->fee_consultant_num[5] ?? '0');
+                    $sub_fees['consultant_num']       = ($request->fee_consultant_num[5] ?? '0') / ($request->batch_number);
                     // $sub_fees['consultant_num']       = $request->fee_consultant_num[5] ?? '0';
                     $sub_fees['hour_fee']             = $request->fee_hour_fee[5];
                     $sub_fees['hour_num']             = ($request->fee_hour_num[5] ?? '0')/($request->session_number*$request->batch_number);
@@ -560,7 +559,7 @@ class CustomizedEngagementController extends Controller
                 }
                 else if($request->sub_type[$key] === 'Moderator') {
                     $sub_fees['type']                 = $request->fee_type[6];
-                    $sub_fees['consultant_num']       = ($request->fee_consultant_num[6] ?? '0');
+                    $sub_fees['consultant_num']       = ($request->fee_consultant_num[6] ?? '0') / ($request->batch_number);
                     // $sub_fees['consultant_num']       = $request->fee_consultant_num[6] ?? '0';
                     $sub_fees['hour_fee']             = $request->fee_hour_fee[6];
                     $sub_fees['hour_num']             = ($request->fee_hour_num[6] ?? '0')/($request->session_number*$request->batch_number);
@@ -571,7 +570,7 @@ class CustomizedEngagementController extends Controller
                 }
                 else if($request->sub_type[$key] === 'Producer') {
                     $sub_fees['type']                 = $request->fee_type[7];
-                    $sub_fees['consultant_num']       = ($request->fee_consultant_num[7] ?? '0');
+                    $sub_fees['consultant_num']       = ($request->fee_consultant_num[7] ?? '0') / ($request->batch_number);
                     // $sub_fees['consultant_num']       = $request->fee_consultant_num[7] ?? '0';
                     $sub_fees['hour_fee']             = $request->fee_hour_fee[7];
                     $sub_fees['hour_num']             = ($request->fee_hour_num[7] ?? '0')/($request->session_number*$request->batch_number);
@@ -582,7 +581,7 @@ class CustomizedEngagementController extends Controller
                 }
                 else if($request->sub_type[$key] === 'Documentor') {
                     $sub_fees['type']                 = $request->fee_type[8];
-                    $sub_fees['consultant_num']       = ($request->fee_consultant_num[8] ?? '0');
+                    $sub_fees['consultant_num']       = ($request->fee_consultant_num[8] ?? '0') / ($request->batch_number);
                     // $sub_fees['consultant_num']       = $request->fee_consultant_num[8] ?? '0';
                     $sub_fees['hour_fee']             = $request->fee_hour_fee[8];
                     $sub_fees['hour_num']             = ($request->fee_hour_num[8] ?? '0')/($request->session_number*$request->batch_number);
@@ -604,17 +603,6 @@ class CustomizedEngagementController extends Controller
                 Sub_fee::create($sub_fees);
             }
 
-            // foreach($request->cost_type as $key => $sub_cost){
-            //     // $sub_cost['sub_informations_id']  = $request->sub_cost_information_id[$key];
-            //     $sub_cost['type']                 = $request->cost_type[$key];
-            //     $sub_cost['consultant_num']       = 0;
-            //     $sub_cost['hour_fee']             = $request->cost_hour_fee[$key];
-            //     $sub_cost['hour_num']             = 0;
-            //     $sub_cost['nswh']                 = 0;
-            //     $sub_cost['rooster']              = $request->cost_rooster[$key];
-            //     $sub_cost['notes']                = '';
-            //     Sub_cost::create($sub_cost);
-            // }
 
             $engagement_title = $request->engagement_title;
 

@@ -41,9 +41,9 @@ document.getElementById("ec_AnalystHf1").defaultValue = currency.format(
 document.getElementById("ec_DocumentorHf").defaultValue = currency.format(
     Math.ceil(700)
 );
-document.getElementById("ec_ProgramHf").defaultValue = currency.format(
-    Math.ceil(1000)
-);
+// document.getElementById("ec_ProgramHf").defaultValue = currency.format(
+//     Math.ceil(1000)
+// );
 document.getElementById("ec_Programexpense").defaultValue = 2 + "%";
 
 $("#ec_Programexpense").on("blur", function () {

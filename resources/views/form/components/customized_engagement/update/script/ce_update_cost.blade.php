@@ -9,7 +9,7 @@
                 $("#tableSales").append(
                     `<tr class="table-warning" id="salesRow${++salesNum}">
                             <td class="title table-light">
-                                <input type="hidden" name="cost_id[]" value="{{$cost_types->id }}">
+
                                 <input type="text" class="d-none" value="Sales" name="cost_type[]" readonly>
                                 Sales (4% / 5% / 6% / 7%)
                             </td>
@@ -114,7 +114,7 @@
                             <td class="title table-light">
                                 Referral (2% / 3%)
                                 <input type="text" class="d-none" value="Referral" name="cost_type[]" readonly>
-                                <input type="hidden" name="cost_id[]" value="{{$cost_types->id }}">
+
                             </td>
                             <td><input type="text" class="d-none" value="" name="cost_consultant_num[]" readonly></td>
                             <td>
@@ -200,7 +200,7 @@
                     `<tr class="table-warning" id="engagementmanagerRow${++managerNum}">
                         <td class="title fw-bold text-dark table-light">
                             ENGAGEMENT MANAGER
-                            <input type="hidden" name="cost_id[]" value="{{$cost_types->id }}">
+
                             <input type="text" class="d-none" value="Engagement Manager" name="cost_type[]" readonly>
                         </td>
                         <td><input type="text" class="d-none" value="" name="cost_consultant_num[]" readonly></td>
@@ -286,7 +286,7 @@
                 $("#ec_tableLeadConsultant").append(`
                     <tr class="table-warning" id="ec_LeadConsultant${++leadConsultant}">
                         <td class="title table-light">
-                            <input type="hidden" name="cost_id[]" value="{{$cost_types->id }}">
+
                             <input type="text" class="d-none" value="Lead Consultant" name="cost_type[]" readonly>
                             Lead Consultant
                             </td>
@@ -375,7 +375,7 @@
                 $("#ec_tableAnalyst").append(`
                     <tr class="table-warning" id="ec_Analyst${++ecAnalyst}">
                         <td class="title table-light">
-                            <input type="hidden" name="cost_id[]" value="{{$cost_types->id }}">
+
                             <input type="text" class="d-none" value="Analyst" name="cost_type[]" readonly>
                             Analyst
                         </td>
@@ -464,7 +464,7 @@
                 $("#ec_TableDesigner").append(`
                     <tr class="table-warning" id="ec_DesignerRow${++ecDesigner}">
                         <td class="title table-light">Designer
-                            <input type="hidden" name="cost_id[]" value="{{$cost_types->id }}">
+
                             <input type="text" class="d-none" value="Designer" name="cost_type[]" readonly>
                         </td>
                         <td class="noc">
@@ -551,7 +551,7 @@
                 $("#ec_TableCreators").append(`
                     <tr class="table-warning" id="ec_CreatorsRow${++ecCreators}">
                         <td class="title table-light">Creators Fees
-                            <input type="hidden" name="cost_id[]" value="{{$cost_types->id }}">
+
                             <input type="text" class="d-none" value="Creators Fees" name="cost_type[]" readonly>
                         </td>
                         <td class="noc">
@@ -656,7 +656,7 @@
                 $("#ec_TableLeadfaci").append(`
                     <tr class="table-warning" id="ec_LeadfaciRow${++ecLeadfaci}">
                         <td class="title table-light">
-                            <input type="hidden" name="cost_id[]" value="{{$cost_types->id }}">
+
                             <input type="text" class="d-none" value="Lead Facilitator" name="cost_type[]" readonly>
                             Lead Facilitator
                         </td>
@@ -745,7 +745,7 @@
                     <tr class="table-warning" id="ec_CoLeadRow${++ecCoLead}">
                         <td class="title table-light">
                             Co-Lead
-                            <input type="hidden" name="cost_id[]" value="{{$cost_types->id }}">
+
                             <input type="text" class="d-none" value="Co-Lead" name="cost_type[]" readonly>
                         </td>
                         <td class="noc">
@@ -835,7 +835,7 @@
                     <tr class="table-warning" id="ec_AlCoachRow${++ecAlCoach}">
                         <td class="title table-light">
                             AL Coach
-                            <input type="hidden" name="cost_id[]" value="{{$cost_types->id }}">
+
                             <input type="text" class="d-none" value="AL Coach" name="cost_type[]" readonly>
                         </td>
                         <td class="noc">
@@ -923,7 +923,7 @@
                     <tr class="table-warning" id="ec_CofaciRow${++ecCofaci}">
                         <td class="title table-light">
                             Co-Facilitator / Resource Speaker
-                            <input type="hidden" name="cost_id[]" value="{{$cost_types->id }}">
+
                             <input type="text" class="d-none" value="Co-Facilitator / Resource Speaker" name="cost_type[]" readonly>
                         </td>
                         <td class="noc">
@@ -1011,7 +1011,7 @@
                     <tr class="table-warning" id="ec_ModeratorRow${++ecModerator}">
                         <td class="title table-light">
                             Moderator
-                            <input type="hidden" name="cost_id[]" value="{{$cost_types->id }}">
+
                             <input type="text" class="d-none" value="Moderator" name="cost_type[]" readonly>
                         </td>
                         <td class="noc">
@@ -1106,7 +1106,7 @@
                     <tr class="table-warning" id="ec_ProducerRow${++ecProducer}">
                         <td class="title table-light">
                             Producer
-                            <input type="hidden" name="cost_id[]" value="{{$cost_types->id }}">
+
                             <input type="text" class="d-none" value="Producer" name="cost_type[]" readonly>
                         </td>
                         <td class="noc">
@@ -1195,7 +1195,7 @@
                         <tr class="table-warning" id="ec_DocumentorRow${++ecDocumentor}">
                             <td class="title table-light">
                                 Documentor
-                                <input type="hidden" name="cost_id[]" value="{{$cost_types->id }}">
+
                                 <input type="text" class="d-none" value="Documentor" name="cost_type[]" readonly>
                             </td>
                             <td>
@@ -1285,7 +1285,7 @@
                     <tr class="table-warning" id="ec_OffProgramRow${++ecOffProgram}">
                         <td class="title table-light">
                             Off-Program fee
-                            <input type="hidden" name="cost_id[]" value="{{$cost_types->id }}">
+
                             <input type="text" class="d-none" value="Off-Program fee" name="cost_type[]" readonly>
                         </td>
                         <td>

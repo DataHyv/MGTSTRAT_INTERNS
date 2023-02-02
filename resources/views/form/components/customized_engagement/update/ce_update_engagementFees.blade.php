@@ -884,11 +884,11 @@
                 <textarea class="form-control input-table @error('') is-invalid @enderror" name="sub_notes[]" id="" rows="2" cols="55" hidden>{{$sub_fee->notes}}</textarea>
             @endforeach
 
-            @foreach ($dataJoin5 as $key=>$sub_costs)
+            {{-- @foreach ($dataJoin5 as $key=>$sub_costs)
             <input type="hidden" name="sub_cost_id[]" value="{{$sub_costs->id }}" readonly>
             <input type="hidden" name="sub_cost_information_id[]" value="{{$sub_costs->sub_informations_id }}" readonly>
             <input type="hidden" name="sub_cost_type[]" value="{{$sub_costs->type }}" readonly>
-            @endforeach
+            @endforeach --}}
 
         </div>
     </section>

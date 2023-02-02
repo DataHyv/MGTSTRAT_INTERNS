@@ -31,15 +31,6 @@
             <!------------------- TABLE HEAD ----------------------->
                 <thead class="table-dark">
                     <tr class="text-center">
-                        {{-- <th class="title-th" scope="col" width=20%></th>
-                        <th class="title-middle" scope="col" style="font-size: 0.9rem;">NUMBER OF CONSULTANTS</th>
-                        <th class="title-middle px-4" width=15% scope="col">HOURLY FEES</th>
-                        <th class="title-middle" scope="col" style="font-size: 0.9rem;">NUMBER OF HOURS</th>
-                        <th class="title-middle" scope="col" style="font-size: 0.9rem;" width=10%>NIGHT SHIFT,
-                            WEEKENDS HOLIDAYS *</th>
-                        <th class="title-th" scope="col" width=15%>TOTAL FEE</th>
-                        <th class="title-th" scope="col" width=15%>ROSTER</th>
-                        <th class="title-th" scope="col" width=15%>NOTES</th> --}}
                         <th class="title-th" scope="col" width=10%></th>
                         <th class="title-middle px-1" scope="col" style="font-size: 0.8rem;" width=5%>NUMBER OF CONSULTANTS</th>
                         <th class="title-middle px-5" scope="col" style="font-size: 0.9rem;" width=10%>HOURLY FEES</th>
@@ -69,17 +60,20 @@
 
                 <tbody id="tableSales">
                     @foreach ($dataJoin2 as $key=>$cost_types )
-                        @if ($cost_types->type === 'Sales')
+                        @if ($cost_types->type == 'Sales')
                             <tr class="table-warning" id="salesRow{{++$ecSales}}">
-                                {{-- <td hidden class="ids">{{ $cost_types->id }}</td> --}}
                                 <td class="title table-light">
-                                    <input type="hidden" name="cost_id[]" value="{{$cost_types->id }}">
+                                    <input type="hidden" name="cost_id[]" value="{{$cost_types->id}}">
                                     <input type="text" class="d-none" value="{{$cost_types->type}}" name="cost_type[]" readonly>
                                     Sales (4% / 5% / 6% / 7%)
                                 </td>
                                 <td><input type="text" class="d-none" value="{{$cost_types->consultant_num}}" name="cost_consultant_num[]" readonly></td>
                                 <td>
-                                    {{-- @if ($ecSales === 1) --}}
+                                    <input type="text" class="form-control input-sales input-table @error('') is-invalid @enderror"
+                                    value="{{$cost_types->hour_fee}}" name="cost_hour_fee[]" id="inputSales"
+                                    onblur="this.value = this.value.replace('%', '') + '%';"
+                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                    maxlength="2" disabled>
                                     <fieldset class="dropdown-sales" id="dropdownSales">
                                         <select class="input js-mytooltip form-select @error('') is-invalid @enderror"
                                             name="cost_hour_fee[]" id="sales" style="background-color:#ffcccc; color:red;"
@@ -97,7 +91,7 @@
                                                     4% - discounted<br>
                                                     5% - packaged rate</i>"
                                             data-mytooltip-theme="dark" data-mytooltip-action="focus"
-                                            data-mytooltip-direction="right" disabled>
+                                            data-mytooltip-direction="right">
                                             <option value="0%" {{ $cost_types->hour_fee == '0%' ? 'selected="selected"' : '' }}
                                                 title="with minimal design customization, or platform customization outside of Zoom/Google Meets/MS Teams. Up to 2 hours of work">
                                                 0%
@@ -125,11 +119,6 @@
                                             </span>
                                         @enderror
                                     </fieldset>
-                                    <input type="text" class="form-control input-sales input-table @error('') is-invalid @enderror"
-                                        value="{{$cost_types->hour_fee}}" name="cost_hour_fee[]" id="inputSales"
-                                        onblur="this.value = this.value.replace('%', '') + '%';"
-                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-                                        maxlength="2" disabled>
 
                                 </td>
                                 <td><input type="text" class="d-none" value="{{$cost_types->hour_num}}" name="cost_hour_num[]" readonly></td>
@@ -142,22 +131,18 @@
                                         value="{{$cost_types->rooster}}" name="cost_rooster[]" id="">
                                 </td>
                                 <td class="total-td table-light">
-                                    {{-- <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                        value="{{$cost_types->notes}}" name="cost_notes[]" id=""> --}}
                                     <textarea class="form-control input-table @error('') is-invalid @enderror"
                                     name="cost_notes[]" id="" rows="2" cols="55">{{$cost_types->notes}}</textarea>
                                 </td>
                                 @if ($ecSales === 1)
                                     <td class="border border-white add-row"><a href="javascript:void(0)" class="text-success font-18" title="Add" id="addBtn9" onclick="$('#salesTotal').html(0)"><i class="fa fa-plus"></i></a></td>
                                 @else
-                                    <td class="border border-white add-row"><a href="javascript:void(0)" class="text-danger font-18 remove" data-id="{{ $cost_types->id }}" title="Remove"><i class="fa fa-trash-o"></i></a></td>
-                                    {{-- <td>
-                                        <a class="text-danger font-18 ce_delete" href="#" data-toggle="modal" data-target="#ce_delete" title="Remove">
+                                    <td class="border border-white add-row">
+                                        <a href="javascript:void(0)" class="text-danger font-18 remove" data-id="{{ $cost_types->id }}" title="Remove">
                                             <i class="fa fa-trash-o"></i>
                                         </a>
-                                    </td>  --}}
+                                    </td>
                                 @endif
-                                <td hidden class="ids">{{ $cost_types->id }}</td>
                             </tr>
                         @endif
                     @endforeach
@@ -165,11 +150,11 @@
 
                 <tbody id="tableReferral">
                     @foreach ($dataJoin2 as $key=>$cost_types )
-                        @if ($cost_types->type === 'Referral')
+                        @if ($cost_types->type == 'Referral')
                             <tr class="table-warning" id="referralRow{{++$ecReferral}}">
                                 <td class="title table-light">
                                     Referral (2% / 3%)
-                                    <input type="hidden" name="cost_id[]" value="{{$cost_types->id }}">
+                                    <input type="hidden" name="cost_id[]" value="{{$cost_types->id}}">
                                     <input type="text" class="d-none" value="{{$cost_types->type}}" name="cost_type[]" readonly>
                                 </td>
                                 <td>
@@ -190,7 +175,6 @@
                                                     3% - 1st contract with a new client, or with a 2-year dormant client<br>
                                                     <br>
                                                     When in doubt, check with Joi on who referror is.
-
                                                     </i>"
                                             data-mytooltip-theme="dark" data-mytooltip-action="focus"
                                             data-mytooltip-direction="right" style="background-color:#ffcccc; color:red;">
@@ -224,14 +208,11 @@
                                         value="{{$cost_types->rooster}}" name="cost_rooster[]" id="">
                                 </td>
                                 <td class="total-td table-light">
-                                    {{-- <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                        value="{{$cost_types->notes}}" name="cost_notes[]" id=""> --}}
                                     <textarea class="form-control input-table @error('') is-invalid @enderror"
                                     name="cost_notes[]" id="" rows="2" cols="55">{{$cost_types->notes}}</textarea>
                                 </td>
                                 @if ($ecReferral === 1)
-                                    <td class="border border-white add-row"><a href="javascript:void(0)" class="text-success font-18" title="Add"
-                                        id="addBtn10"><i class="fa fa-plus"></i></a></td>
+                                    <td class="border border-white add-row"><a href="javascript:void(0)" class="text-success font-18" title="Add" id="addBtn10"><i class="fa fa-plus"></i></a></td>
                                 @else
                                     <td class="border border-white add-row"><a href="javascript:void(0)" class="text-danger font-18 remove" data-id="{{ $cost_types->id }}" title="Remove"><i class="fa fa-trash-o"></i></a></td>
                                 @endif
@@ -242,11 +223,11 @@
 
                 <tbody id="tableEngagementmanager">
                     @foreach ($dataJoin2 as $key=>$cost_types )
-                        @if ($cost_types->type === 'Engagement Manager')
+                        @if ($cost_types->type == 'Engagement Manager')
                             <tr class="table-warning" id="engagementmanagerRow{{++$ecEngagementManager}}">
                                 <td class="title fw-bold text-dark table-light">
                                     ENGAGEMENT MANAGER
-                                    <input type="hidden" name="cost_id[]" value="{{$cost_types->id }}">
+                                    <input type="hidden" name="cost_id[]" value="{{$cost_types->id}}">
                                     <input type="text" class="d-none" value="{{$cost_types->type}}" name="cost_type[]" readonly>
                                 </td>
                                 <td><input type="text" class="d-none" value="{{$cost_types->consultant_num}}" name="cost_consultant_num[]" readonly></td>
@@ -294,8 +275,6 @@
                                         value="{{$cost_types->rooster}}" name="cost_rooster[]" id="">
                                 </td>
                                 <td class="total-td table-light">
-                                    {{-- <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                        value="{{$cost_types->notes}}" name="cost_notes[]" id=""> --}}
                                     <textarea class="form-control input-table @error('') is-invalid @enderror"
                                     name="cost_notes[]" id="" rows="2" cols="55">{{$cost_types->notes}}</textarea>
                                 </td>
@@ -331,7 +310,7 @@
                         @if ($cost_types->type === 'Lead Consultant')
                             <tr class="table-warning" id="ec_LeadConsultant{{++$ecLeadConsultant}}">
                                 <td class="title table-light">
-                                    <input type="hidden" name="cost_id[]" value="{{$cost_types->id }}">
+                                    <input type="hidden" name="cost_id[]" value="{{$cost_types->id}}">
                                     <input type="text" class="d-none" value="{{$cost_types->type}}" name="cost_type[]">
                                     Lead Consultant
                                 </td>
@@ -387,8 +366,8 @@
                         @if ($cost_types->type === 'Analyst')
                             <tr class="table-warning" id="ec_Analyst{{++$ecAnalyst}}">
                                 <td class="title table-light">
-                                    <input type="hidden" name="cost_id[]" value="{{$cost_types->id }}">
-                                    <input type="hidden" value="{{$cost_types->type}}" name="cost_type[]">
+                                    <input type="hidden" name="cost_id[]" value="{{$cost_types->id}}">
+                                    <input type="hidden" class="d-none" value="{{$cost_types->type}}" name="cost_type[]">
                                     Analyst
                                 </td>
                                 <td class="noc">
@@ -419,8 +398,6 @@
                                         value="{{ $cost_types->rooster }}" name="cost_rooster[]" id="">
                                 </td>
                                 <td class="total-td table-light">
-                                    {{-- <input class="form-control input-table @error('') is-invalid @enderror"
-                                    name="cost_notes[]" id="">{{$cost_types->notes}}</input> --}}
                                     <textarea class="form-control input-table @error('') is-invalid @enderror"
                                     name="cost_notes[]" id="" rows="2" cols="55">{{$cost_types->notes}}</textarea>
                                 </td>
@@ -477,7 +454,7 @@
                         @if ($cost_types->type === 'Designer')
                             <tr class="table-warning" id="ec_DesignerRow{{++$ecDesigner}}">
                                 <td class="title table-light">Designer
-                                    <input type="hidden" name="cost_id[]" value="{{$cost_types->id }}">
+                                    <input type="hidden" name="cost_id[]" value="{{$cost_types->id}}">
                                     <input type="text" class="d-none" value="{{$cost_types->type}}" name="cost_type[]" readonly>
                                 </td>
                                 <td class="noc">
@@ -535,13 +512,13 @@
                             <tr class="table-warning" id="ec_CreatorsRow{{++$ecCreators}}">
                                 <td class="title table-light">
                                     Creators Fees
-                                    <input type="hidden" name="cost_id[]" value="{{$cost_types->id }}">
+                                    <input type="hidden" name="cost_id[]" value="{{$cost_types->id}}">
                                     <input type="text" class="d-none" value="{{$cost_types->type}}" name="cost_type[]" readonly>
                                 </td>
                                 <td class="noc">
                                     <input type="text"
                                         class="commanumber text-center form-control input-table @error('') is-invalid @enderror"
-                                        value="" name="cost_consultant_num[]" id="ec_CreatorsNoc{{$ecCreators}}" readonly hidden>
+                                        value="{{ $cost_types->consultant_num }}" name="cost_consultant_num[]" id="ec_CreatorsNoc{{$ecCreators}}" readonly hidden>
                                 </td>
                                 <td>
                                     <fieldset>
@@ -583,8 +560,6 @@
                                         value="{{$cost_types->rooster}}" name="cost_rooster[]" id="">
                                 </td>
                                 <td class="total-td table-light">
-                                    {{-- <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                        value="{{ $cost_types->notes }}" name="cost_notes[]" id=""> --}}
                                     <textarea class="form-control input-table @error('') is-invalid @enderror"
                                     name="cost_notes[]" id="" rows="2" cols="55">{{$cost_types->notes}}</textarea>
                                 </td>
@@ -643,8 +618,8 @@
                             <tr class="table-warning" id="ec_LeadfaciRow{{++$ecLeadfaci}}">
                                 <td class="title table-light">
                                     Lead Facilitator
+                                    <input type="hidden" name="cost_id[]" value="{{$cost_types->id}}">
                                     <input type="text" class="d-none" value="{{$cost_types->type}}" name="cost_type[]" readonly>
-                                    <input type="hidden" name="cost_id[]" value="{{$cost_types->id }}">
                                 </td>
                                 <td class="noc">
                                     <input type="text"
@@ -674,8 +649,6 @@
                                         value="{{$cost_types->rooster}}" name="cost_rooster[]" id="roster3{{$ecLeadfaci}}">
                                 </td>
                                 <td class="total-td table-light">
-                                    {{-- <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                        value="{{$cost_types->notes}}" name="cost_notes[]" id=""> --}}
                                     <textarea class="form-control input-table @error('') is-invalid @enderror"
                                     name="cost_notes[]" id="" rows="2" cols="55">{{$cost_types->notes}}</textarea>
                                 </td>
@@ -703,7 +676,7 @@
                             <tr class="table-warning" id="ec_CoLeadRow{{++$ecColeadfaci}}">
                                 <td class="title table-light">
                                     Co-Lead
-                                    <input type="hidden" name="cost_id[]" value="{{$cost_types->id }}">
+                                    <input type="hidden" name="cost_id[]" value="{{$cost_types->id}}">
                                     <input type="text" class="d-none" value="{{$cost_types->type}}" name="cost_type[]" readonly>
                                 </td>
                                 <td class="noc">
@@ -734,8 +707,6 @@
                                         value="{{$cost_types->rooster}}" name="cost_rooster[]" id="roster4{{$ecColeadfaci}}">
                                 </td>
                                 <td class="total-td table-light">
-                                    {{-- <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                        value="{{$cost_types->notes}}" name="cost_notes[]" id=""> --}}
                                     <textarea class="form-control input-table @error('') is-invalid @enderror"
                                         name="cost_notes[]" id="" rows="2" cols="55">{{$cost_types->notes}}</textarea>
                                 </td>
@@ -759,12 +730,12 @@
 
                 <tbody id="ec_TableAlCoach">
                     @foreach ($dataJoin2 as $key=>$cost_types )
-                        @if ($cost_types->type === 'AL Coach')
+                        @if ($cost_types->type == 'AL Coach')
                             <tr class="table-warning" id="ec_AlCoachRow{{++$ecAlCoach}}">
                                 <td class="title table-light">
                                     AL Coach
-                                    <input type="hidden" name="cost_id[]" value="{{$cost_types->id }}">
-                                    <input type="text" class="d-none" value="{{$cost_types->type}}" name="cost_type[]" readonly>
+                                    <input type="hidden" name="cost_id[]" value="{{$cost_types->id}}">
+                                    <input type="text" class="d-none" name="cost_type[]" value="{{$cost_types->type}}" readonly>
                                 </td>
                                 <td class="noc">
                                     <input type="text"
@@ -772,9 +743,7 @@
                                         value="{{$cost_types->consultant_num}}" name="cost_consultant_num[]" id="ec_AlCoachNoc{{$ecAlCoach}}" data-type="currency">
                                 </td>
                                 <td>
-                                    <input type="text"
-                                        class="commanumber text-center fw-bold text-center text-dark form-control input-table @error('') is-invalid @enderror"
-                                        value="{{$cost_types->hour_fee}}" name="cost_hour_fee[]" id="ec_AlCoachHf{{$ecAlCoach}}" data-type="currency">
+                                    <input type="text" class="commanumber text-center fw-bold text-center text-dark form-control input-table @error('') is-invalid @enderror" value="{{ $cost_types->hour_fee }}" name="cost_hour_fee[]" id="ec_AlCoachHf{{$ecAlCoach}}" data-type="currency">
                                 </td>
                                 <td class="noh">
                                     <input type="text"
@@ -794,8 +763,6 @@
                                         value="{{$cost_types->rooster}}" name="cost_rooster[]" id="">
                                 </td>
                                 <td class="total-td table-light">
-                                    {{-- <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                        value="{{$cost_types->notes}}" name="cost_notes[]" id=""> --}}
                                     <textarea class="form-control input-table @error('') is-invalid @enderror"
                                         name="cost_notes[]" id="" rows="2" cols="55">{{$cost_types->notes}}</textarea>
                                 </td>
@@ -823,7 +790,7 @@
                             <tr class="table-warning" id="ec_CofaciRow{{++$ecCofaci}}">
                                 <td class="title table-light">
                                     Co-Facilitator / Resource Speaker
-                                    <input type="hidden" name="cost_id[]" value="{{$cost_types->id }}">
+                                    <input type="hidden" name="cost_id[]" value="{{$cost_types->id}}">
                                     <input type="text" class="d-none" value="{{$cost_types->type}}" name="cost_type[]">
                                 </td>
                                 <td class="noc">
@@ -854,8 +821,6 @@
                                         value="{{$cost_types->rooster}}" name="cost_rooster[]" id="roster5{{$ecCofaci}}">
                                 </td>
                                 <td class="total-td table-light">
-                                    {{-- <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                        value="{{$cost_types->notes}}" name="cost_notes[]" id=""> --}}
                                     <textarea class="form-control input-table @error('') is-invalid @enderror"
                                         name="cost_notes[]" id="" rows="2" cols="55">{{$cost_types->notes}}</textarea>
                                 </td>
@@ -883,7 +848,7 @@
                             <tr class="table-warning" id="ec_ModeratorRow{{++$ecModerator}}">
                                 <td class="title table-light">
                                     Moderator
-                                    <input type="hidden" name="cost_id[]" value="{{$cost_types->id }}">
+                                    <input type="hidden" name="cost_id[]" value="{{$cost_types->id}}">
                                     <input type="text" class="d-none" value="{{$cost_types->type}}" name="cost_type[]" readonly>
                                 </td>
                                 <td class="noc">
@@ -895,30 +860,7 @@
                                     <fieldset>
                                         <input type="text"
                                         class="text-center text-dark fw-bold form-control input-table commanumber @error('') is-invalid @enderror"
-                                        value="{{ old('') }}" name="cost_hour_fee[]" id="ec_ModeratorHf{{$ecModerator}}" data-type="currency">
-                                        {{-- <select
-                                            class="input js-mytooltip text-center form-select @error('') is-invalid @enderror select"
-                                            name="cost_hour_fee[]" id="ec_ModeratorHf" style="background-color:#ffcccc; color:red;"
-                                            data-mytooltip-content="<i>
-                                                    <b>Moderator</b><br/>
-                                                    P800  - Associates<br/>
-                                                    P1,100 - Consultants<br/>
-                                                    P1,350 - Senior Consultant</i>"
-                                            data-mytooltip-theme="dark" data-mytooltip-action="focus"
-                                            data-mytooltip-direction="right">
-                                            <option value="800" {{ $cost_types->hour_fee == '800' ? 'selected="selected"' : '' }}
-                                                title="">
-                                                &#8369;800
-                                            </option>
-                                            <option value="1100" {{ $cost_types->hour_fee == '1100' ? 'selected="selected"' : '' }}
-                                                title="">
-                                                &#8369;1,100
-                                            </option>
-                                            <option value="1350" {{ $cost_types->hour_fee == '1350' ? 'selected="selected"' : '' }}
-                                                title="">
-                                                &#8369;1,350
-                                            </option>
-                                        </select> --}}
+                                        value="{{ $cost_types->hour_fee }}" name="cost_hour_fee[]" id="ec_ModeratorHf{{$ecModerator}}" data-type="currency">
                                         @error('ef_customFee')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -971,7 +913,7 @@
                             <tr class="table-warning" id="ec_ProducerRow{{++$ecProducer}}">
                                 <td class="title table-light">
                                     Producer
-                                    <input type="hidden" name="cost_id[]" value="{{$cost_types->id }}">
+                                    <input type="hidden" name="cost_id[]" value="{{$cost_types->id}}">
                                     <input type="text" class="d-none" value="{{$cost_types->type}}" name="cost_type[]" readonly>
                                 </td>
                                 <td class="noc">
@@ -1059,7 +1001,7 @@
                             <tr class="table-warning" id="ec_DocumentorRow{{++$ecDocumentor}}">
                                 <td class="title table-light">
                                     Documentor
-                                    <input type="hidden" name="cost_id[]" value="{{$cost_types->id }}">
+                                    <input type="hidden" name="cost_id[]" value="{{$cost_types->id}}">
                                     <input type="text" class="d-none" value="{{$cost_types->type}}" name="cost_type[]" readonly>
                                 </td>
                                 <td class="noc">
@@ -1090,8 +1032,6 @@
                                         value="{{$cost_types->rooster}}" name="cost_rooster[]" id="">
                                 </td>
                                 <td class="total-td table-light">
-                                    {{-- <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                        value="{{$cost_types->notes}}" name="cost_notes[]" id=""> --}}
                                     <textarea class="form-control input-table @error('') is-invalid @enderror"
                                         name="cost_notes[]" id="" rows="2" cols="55">{{$cost_types->notes}}</textarea>
                                 </td>
@@ -1135,7 +1075,7 @@
                         <tr class="table-warning" id="ec_TblOffProgram{{ ++$ecOffProgram }}">
                             <td class="title table-light">
                                 Off-Program fee
-                                <input type="hidden" name="cost_id[]" value="{{$cost_types->id }}">
+                                <input type="hidden" name="cost_id[]" value="{{$cost_types->id}}">
                                 <input type="text" class="d-none" value="{{$cost_types->type}}" name="cost_type[]" readonly>
                             </td>
                             <td>
@@ -1165,16 +1105,9 @@
                                     value="{{$cost_types->rooster}}" name="cost_rooster[]" id="">
                             </td>
                             <td class="total-td table-light">
-                                {{-- <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                    value="{{$cost_types->notes}}" name="cost_notes[]" id=""> --}}
                                 <textarea class="form-control input-table @error('') is-invalid @enderror"
                                     name="cost_notes[]" id="" rows="2" cols="55">{{$cost_types->notes}}</textarea>
                             </td>
-                            {{-- <td class="border border-white add-row">
-                                <a href="javascript:void(0)" class="text-success font-18" title="Add" id="CeAddBtn9">
-                                    <i class="fa fa-plus"></i>
-                                </a>
-                            </td> --}}
                             @if ($ecOffProgram === 1)
                             <td style="background-color: #FFFFFF;" class="border border-white">
                                 <a href="javascript:void(0)" class="text-success font-18" title="Add" id="CeAddBtn9">
@@ -1214,10 +1147,10 @@
                         <tr class="table-warning">
                             <td class="title table-light">
                                 Program Expenses
-                                <input type="hidden" name="cost_id[]" value="{{$cost_types->id }}">
+                                <input type="hidden" name="cost_id[]" value="{{$cost_types->id}}">
                                 <input type="text" class="d-none" value="{{$cost_types->type}}" name="cost_type[]" readonly>
                             </td>
-                            <td><input type="text" class="d-none" name="cost_consultant_num[]" readonly></td>
+                            <td><input type="text" class="d-none" name="cost_consultant_num[]" value="{{ $cost_types->consultant_num }}" readonly></td>
                             <td>
                                 <input type="text"
                                     class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
@@ -1235,8 +1168,6 @@
                                     value="{{$cost_types->rooster}}" name="cost_rooster[]" id="">
                             </td>
                             <td class="total-td table-light">
-                                {{-- <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                    value="{{$cost_types->notes}}" name="cost_notes[]" id=""> --}}
                                 <textarea class="form-control input-table @error('') is-invalid @enderror"
                                     name="cost_notes[]" id="" rows="2" cols="55">{{$cost_types->notes}}</textarea>
                             </td>

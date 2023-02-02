@@ -94,9 +94,9 @@
 
                                         <input class="form-control" type="hidden" id="id" name="id" value="{{$data->id}}">
                                         <input class="form-control" type="hidden" id="cstmzd_eng_form_id" name="cstmzd_eng_form_id" value="{{$data->cstmzd_eng_form_id}}">
-                                        @foreach ($dataJoin3 as $key=>$sub_fee_type)
+                                        {{-- @foreach ($dataJoin3 as $key=>$sub_fee_type)
                                         <input type="hidden" name="sub_fees_id[]" value="{{$sub_fee_type->id }}">
-                                        @endforeach
+                                        @endforeach --}}
 
                                         <!------------ INFORMATION ------------>
                                             <div class="multisteps-form__panel js-active" data-animation="slideHorz">

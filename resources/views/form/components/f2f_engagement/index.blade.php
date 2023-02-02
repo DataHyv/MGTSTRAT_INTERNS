@@ -31,15 +31,16 @@
 
             <section class="section">
                 <div class="card mb-5 mt-5">
-                    <div class="card-header col-12 d-flex justify-content-left mt-3 mb-3 mx-3">
+                    <div class="card-header col-12 d-flex justify-content-left mt-3 mb-3">
                         <a class="btn btn-primary mt-2 mb-2" href="{{ route('form/f2f_engagement/new') }}">
                             <span><i class="fa-solid fa-file-circle-plus"></i> &nbsp; New Record</span>
                         </a>
                     </div>
-                    <div class="card-body">
-                        <table class="table table-striped" id="table1">
+                    <div class="card-body table-responsive">
+                        <table class="table table-light display dt-responsive nowrap" id="table1">
                             <thead>
                                 <tr class="text-dark">
+                                    <th class="text-center" hidden></th>
                                     <th class="text-center">ID</th>
                                     <th class="text-center">STATUS</th>
                                     <th class="text-center">COMPANY NAME</th>
@@ -52,6 +53,7 @@
                                     <th class="text-center">Modify</th>
                                 </tr>
                             </thead>
+
                             <tbody>
                                 {{-- @foreach ($data as $key => $item) --}}
                                     <tr>
@@ -104,10 +106,6 @@
                                         {{-- <td class="fw-bold text-center">{{ \Carbon\Carbon::parse($item->created_at)->toFormattedDateString()}}</td> --}}
                                         <td class="fw-bold text-center">Nov 3, 2022</td>
                                         <td class="text-center fw-bold text-center">
-                                            <a href=".bd-example-modal-lg" data-toggle="modal" data-target=".bd-example-modal-lg">
-                                                <span class="badge bg-info"><i class="bi bi-person-plus-fill"></i></span>
-                                            </a>
-
                                             <a href="#">
                                                 <span class="badge bg-success"><i class="bi bi-pencil-square"></i></span>
                                             </a>
@@ -116,12 +114,6 @@
                                                 onclick="return confirm('Are you sure to want to delete Testing?')"><span
                                                     class="badge bg-danger"><i class="bi bi-trash"></i></span>
                                             </a>
-
-                                            {{-- <a href="#" class="delete"  data-toggle="modal" data-target="#delete_estimate">
-                                                <span class="badge bg-danger">
-                                                    <i class="bi bi-trash"></i>
-                                                </span>
-                                            </a> --}}
 
                                             <!-- Delete Customized Engagement Modal -->
                                             <div class="modal custom-modal fade" id="delete_estimate" role="dialog">
@@ -153,7 +145,6 @@
                                                 </div>
                                             </div>
                                             <!-- /Delete Customized Engagement Modal -->
-
                                         </td>
                                     </tr>
 
