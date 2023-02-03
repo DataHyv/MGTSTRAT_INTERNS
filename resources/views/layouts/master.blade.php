@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{ URL::to('assets/vendors/bootstrap-icons/bootstrap-icons.css') }}">
     <link rel="stylesheet" href="{{ URL::to('assets/css/app.css') }}">
     <link rel="stylesheet" href="{{ URL::to('assets/vendors/simple-datatables/style.css') }}">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+
 
     {{-- message toastr --}}
     <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
@@ -45,10 +45,6 @@
 
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
         <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.dataTables.min.css">
-        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
-
-        {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
-        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script> --}}
 
 </head>
 
@@ -83,6 +79,7 @@
         // let dataTable = new simpleDatatables.DataTable('#table1');
 
         $(document).ready( function () {
+            // $('#table1 thead th').css('background-color', '#000000')
             $('#table1').dataTable( {
                 responsive: true,
                 stateSave: true,

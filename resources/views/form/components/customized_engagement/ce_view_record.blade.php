@@ -2,7 +2,7 @@
 <link rel="shortcut icon" type="image/png" href="{{ URL::to('assets/images/logo/logo.png') }}">
 <link rel="stylesheet" href="{{ URL::to('css/custom.css') }}">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
-{{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> --}}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 @extends('layouts.master')
 @section('menu')
     @extends('sidebar.dashboard')
@@ -24,7 +24,7 @@
                     </div>
                     <div class="col-12 col-md-6 order-md-2 order-first">
                         <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
-                            <ol class="breadcrumb">
+                            <ol class="breadcrumb bg-transparent">
                                 <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Customized Engagement</li>
                             </ol>
