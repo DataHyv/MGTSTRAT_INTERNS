@@ -1,6 +1,7 @@
 @section('title', 'MGTSTRAT-U RECORD')
 <link rel="shortcut icon" type="image/png" href="{{ URL::to('assets/images/logo/logo.png') }}">
 <link rel="stylesheet" href="{{ URL::to('css/custom.css') }}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 @extends('layouts.master')
 @section('menu')
     @extends('sidebar.dashboard')
@@ -47,9 +48,9 @@
                                     <th class="text-center">ENGAGEMENT TITLE</th>
                                     <th class="text-center">NUMBER OF PAX</th>
                                     <th class="text-center">SCHEDULED DATES</th>
-                                    <th class="text-center">SCHEDULED TIME</th>
                                     <th class="text-center">DATE ADDED</th>
                                     <th class="text-center">Modify</th>
+                                    <th hidden></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -92,14 +93,6 @@
                                                 @endforeach
                                             @endif --}}
                                             Nov 4, 2022
-                                        </td>
-                                        <td class="fw-bold text-center">
-                                            {{-- @if($item->program_start_time)
-                                                @foreach($item->program_start_time as $time)
-                                                    {{$time}}
-                                                @endforeach
-                                            @endif --}}
-                                            7:00 AM
                                         </td>
                                         {{-- <td class="fw-bold text-center">{{ \Carbon\Carbon::parse($item->created_at)->toFormattedDateString()}}</td> --}}
                                         <td class="fw-bold text-center">Nov 4, 2022</td>
