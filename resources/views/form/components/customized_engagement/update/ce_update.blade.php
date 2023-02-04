@@ -62,24 +62,6 @@
                 {{-- card --}}
                 <div class="card">
 
-                    {{-- testing tabs --}}
-                    {{-- <div class="d-flex flex-row">
-                        <ul class="nav nav-tabs" id="ceTabs" role="tablist">
-
-                            <li class="nav-item js-btn-next">
-                            <a class="nav-link active" id="batch1" data-bs-toggle="tab" href="#batches1" role="tab"  aria-controls="batches1" aria-selected="true">Batch 1</a>
-                            </li>
-
-                        </ul>
-                        <ul class="nav nav-tabs">
-                            <li class="nav-item">
-                                <a href="javascript:void(0)" class="text-success nav-link font-18 px-3" title="Add" tabindex="-1"
-                                id="AddTabs"><i class="fa fa-plus mt-1"></i></a>
-                            </li>
-                        </ul>
-                    </div> --}}
-                    {{-- end testing tabs --}}
-
                     {{-- card content --}}
                     {{-- <div class="tab-content"> --}}
                         {{-- <div class="card-content tab-pane fade show active" id="batches1" role="tabpanel" aria-labelledby="batch1"> --}}

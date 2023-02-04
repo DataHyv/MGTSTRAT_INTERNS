@@ -470,10 +470,10 @@ class CustomizedEngagementController extends Controller
                 $engagement_cost['client_id']           = $request->client_id;
                 $engagement_cost['cstmzd_eng_form_id']  = $request->cstmzd_eng_form_id;
                 $engagement_cost['type']                = $request->cost_type[$key];
-                $engagement_cost['consultant_num']      = $request->cost_consultant_num[$key] ?? '0';
+                $engagement_cost['consultant_num']      = $request->cost_consultant_num[$key] ?? 0;
                 $engagement_cost['hour_fee']            = $request->cost_hour_fee[$key];
-                $engagement_cost['hour_num']            = $request->cost_hour_num[$key] ?? '0';
-                $engagement_cost['nswh']                = $request->cost_nswh[$key] ?? '0';
+                $engagement_cost['hour_num']            = $request->cost_hour_num[$key] ?? 0;
+                $engagement_cost['nswh']                = $request->cost_nswh[$key] ?? 0;
                 $engagement_cost['rooster']             = $request->cost_rooster[$key];
                 $engagement_cost['notes']               = $request->cost_notes[$key];
 

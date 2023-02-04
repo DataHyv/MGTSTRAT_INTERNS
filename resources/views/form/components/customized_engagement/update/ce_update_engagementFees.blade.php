@@ -102,11 +102,6 @@
                                 @foreach ($dataJoin1 as $key=>$fee_type)
                                 @if ($fee_type->type === 'Night Shift, Weekends and Holidays')
                                 <input type="hidden" name="ce_id[]" value="{{$fee_type->id }}">
-                                {{-- @foreach ($dataJoin3 as $key=>$sub_fee)
-                                    @if ($sub_fee->type === 'Night Shift, Weekends and Holidays')
-                                        <input type="hidden" name="sub_fees_id[]" value="{{$sub_fee->id }}">
-                                    @endif
-                                @endforeach --}}
                                 <input type="hidden" value="Night Shift, Weekends and Holidays" name="fee_type[]">
                                 <input type="hidden" value="" name="fee_consultant_num[]">
                                 <input type="hidden" value="" name="fee_hour_fee[]">
@@ -147,21 +142,6 @@
                         <b>1. CONSULTING</b>
                     </th>
                     <th>
-                        {{-- @foreach ($dataJoin3 as $key=>$sub_fee)
-                        <input type="hidden" name="sub_fees_id[]" value="{{$sub_fee->id }}">
-                        <b>{{$sub_fee->id }}</b>
-                        @endforeach --}}
-                        {{-- <br> --}}
-                        {{-- @foreach ($dataJoin4 as $key=>$sub_information)
-                         <b>{{ $sub_information->id }}</b>
-                         <input type="hidden" name="sub_information_id[]" value="{{$sub_information->id }}">
-                        @endforeach --}}
-                        {{-- <br> --}}
-                        {{-- @foreach ($data3 as $key=>$sub_fee)
-                        <input type="hidden" name="sub_fees_id[]" value="{{$sub_fee->id }}">
-                        <b>{{ $sub_fee->id }}</b>
-                        @endforeach --}}
-
                     </th>
                     <th></th>
                     <th></th>
@@ -177,11 +157,6 @@
                     <tr class="table-warning" id="leadConsultant{{++$efLeadConsultant}}">
                         <td class="title table-light">
                             <input type="hidden" name="ce_id[]" value="{{$fee_type->id }}">
-                            {{-- @foreach ($dataJoin3 as $key=>$sub_fee)
-                                @if ($sub_fee->type === 'Lead Consultant')
-                                    <input type="text" name="sub_fees_id[]" value="{{$sub_fee->id }}">
-                                @endif
-                            @endforeach --}}
                             <input type="text" class="d-none" value="{{ $fee_type->type }}" name="fee_type[]">
                                 {{$fee_type->type}}
                         </td>
@@ -263,11 +238,6 @@
                     <tr class="table-warning" id="Analyst{{++$efAnalyst}}">
                         <td class="title table-light">
                             <input type="hidden" name="ce_id[]" value="{{$fee_type->id }}">
-                            {{-- @foreach ($dataJoin3 as $key=>$sub_fee)
-                                @if ($sub_fee->type === 'Analyst')
-                                    <input type="hidden" name="sub_fees_id[]" value="{{$sub_fee->id }}">
-                                @endif
-                            @endforeach --}}
                             <input type="text" class="d-none" value="{{ $fee_type->type }}" name="fee_type[]" >
                             {{ $fee_type->type }}
                         </td>
@@ -349,11 +319,6 @@
                     <tr class="table-warning" id="efDesigner{{++$efDesigner}}">
                         <td class="title table-light">
                             <input type="hidden" name="ce_id[]" value="{{$fee_type->id }}">
-                            {{-- @foreach ($dataJoin3 as $key=>$sub_fee)
-                                @if ($sub_fee->type === 'Designer')
-                                    <input type="hidden" name="sub_fees_id[]" value="{{$sub_fee->id }}">
-                                @endif
-                            @endforeach --}}
                             <input type="text" class="d-none" value="{{ $fee_type->type }}" name="fee_type[]" >
                             {{ $fee_type->type }}
                         </td>
@@ -449,11 +414,6 @@
                     <tr class="table-warning" id="rowLeadFaci{{++$efLeadfaci}}">
                         <td class="title table-light">
                             <input type="hidden" name="ce_id[]" value="{{$fee_type->id }}">
-                            {{-- @foreach ($dataJoin3 as $key=>$sub_fee)
-                                @if ($sub_fee->type === 'Lead Facilitator')
-                                    <input type="hidden" name="sub_fees_id[]" value="{{$sub_fee->id }}">
-                                @endif
-                            @endforeach --}}
                             <input type="text" class="d-none" value="{{ $fee_type->type }}" name="fee_type[]" >
                             {{ $fee_type->type }}</td>
                         <td class="noc">
@@ -550,11 +510,6 @@
                     <tr class="table-warning" id="efCofaci{{++$efCofaci}}">
                         <td class="title table-light">
                             <input type="hidden" name="ce_id[]" value="{{$fee_type->id }}">
-                            {{-- @foreach ($dataJoin3 as $key=>$sub_fee)
-                                @if ($sub_fee->type === 'Co-facilitator / Resource Speaker')
-                                    <input type="hidden" name="sub_fees_id[]" value="{{$sub_fee->id }}">
-                                @endif
-                            @endforeach --}}
                             <input type="text" class="d-none" value="{{ $fee_type->type }}" name="fee_type[]" >
                             {{ $fee_type->type }}
                         </td>
@@ -867,29 +822,6 @@
                 </tr>
                 </tbody>
             </table>
-
-            @foreach ($data3 as $key=>$sub_information)
-            <input type="hidden" name="sub_information[]" value="{{$sub_information->id }}" readonly>
-            @endforeach
-
-            @foreach ($dataJoin3 as $key=>$sub_fee)
-                <input type="hidden" name="sub_information_id[]" value="{{$sub_fee->sub_informations_id }}" readonly>
-                <input type="hidden" name="sub_id[]" value="{{$sub_fee->id }}" readonly>
-                <input type="hidden" name="sub_type[]" value="{{$sub_fee->type }}" readonly>
-                <input type="hidden" class="commanumber" value="{{ $sub_fee->consultant_num }}" name="sub_consultant_num[]" data-type="currency" readonly>
-                <input type="hidden" class="" value="{{ $sub_fee->hour_fee }}" name="sub_hour_fee[]" data-type="currency" readonly>
-                <input type="hidden" class="commanumber" value="{{ $sub_fee->hour_num }}" name="sub_hour_num[]" data-type="currency" readonly>
-                <input type="hidden" class="commanumber" value="{{ $sub_fee->nswh }}" name="sub_nswh[]" data-type="currency" readonly>
-                <input type="hidden" class="nswh-percent-value" value="{{ $sub_fee->nswh_percent }}" name="sub_nswh_percent[]" readonly>
-                <textarea class="form-control input-table @error('') is-invalid @enderror" name="sub_notes[]" id="" rows="2" cols="55" hidden>{{$sub_fee->notes}}</textarea>
-            @endforeach
-
-            {{-- @foreach ($dataJoin5 as $key=>$sub_costs)
-            <input type="hidden" name="sub_cost_id[]" value="{{$sub_costs->id }}" readonly>
-            <input type="hidden" name="sub_cost_information_id[]" value="{{$sub_costs->sub_informations_id }}" readonly>
-            <input type="hidden" name="sub_cost_type[]" value="{{$sub_costs->type }}" readonly>
-            @endforeach --}}
-
         </div>
     </section>
 </div>

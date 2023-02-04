@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="{{ URL::to('assets/vendors/perfect-scrollbar/perfect-scrollbar.css') }}">
     <link rel="stylesheet" href="{{ URL::to('assets/vendors/bootstrap-icons/bootstrap-icons.css') }}">
     <link rel="stylesheet" href="{{ URL::to('assets/css/app.css') }}">
-    <link rel="stylesheet" href="{{ URL::to('assets/vendors/simple-datatables/style.css') }}">
+    {{-- <link rel="stylesheet" href="{{ URL::to('assets/vendors/simple-datatables/style.css') }}"> --}}
 
 
     {{-- message toastr --}}
@@ -40,11 +40,13 @@
         <script src="{{ url('js/tooltipJs/jquery.mytooltip.js') }}"></script>
         <script src="{{ url('js/tooltipJs/demo/script.js') }}"></script>
 
-        {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.13.1/datatables.min.css"/>
-        <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.13.1/datatables.min.js"></script> --}}
+        {{-- <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.dataTables.min.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css"> --}}
 
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
-        <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.dataTables.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.css">
+
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.js"></script>
+
 
 </head>
 
@@ -69,9 +71,11 @@
     <script src="{{ URL::to('assets/js/pages/dashboard.js') }}"></script>
     <script src="{{ URL::to('assets/js/main.js') }}"></script>
     <script src="{{ URL::to('assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
-    <script src="{{ URL::to('assets/vendors/simple-datatables/simple-datatables.js') }}"></script>
-    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
+    {{-- <script src="{{ URL::to('assets/vendors/simple-datatables/simple-datatables.js') }}"></script> --}}
+    {{-- <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script> --}}
+
+
 
     <script>
         // Simple Datatable

@@ -91,7 +91,7 @@
                                                     4% - discounted<br>
                                                     5% - packaged rate</i>"
                                             data-mytooltip-theme="dark" data-mytooltip-action="focus"
-                                            data-mytooltip-direction="right">
+                                            data-mytooltip-direction="right" disabled>
                                             <option value="0%" {{ $cost_types->hour_fee == '0%' ? 'selected="selected"' : '' }}
                                                 title="with minimal design customization, or platform customization outside of Zoom/Google Meets/MS Teams. Up to 2 hours of work">
                                                 0%
@@ -818,7 +818,7 @@
                                 </td>
                                 <td class="total-td table-light">
                                     <input type="text" class="text-uppercase form-control input-table @error('') is-invalid @enderror"
-                                        value="{{$cost_types->rooster}}" name="cost_rooster[]" id="roster5{{$ecCofaci}}">
+                                        name="cost_rooster[]" value="{{$cost_types->rooster}}" id="roster5{{$ecCofaci}}">
                                 </td>
                                 <td class="total-td table-light">
                                     <textarea class="form-control input-table @error('') is-invalid @enderror"
@@ -1194,6 +1194,22 @@
                     <td class="border border-white add-row invisible"></td>
                 </tr>
             <!------------------- END ----------------------->
+
+            @foreach ($data3 as $key=>$sub_information)
+            <input type="hidden" name="sub_information[]" value="{{$sub_information->id }}" readonly>
+            @endforeach
+
+            @foreach ($dataJoin3 as $key=>$sub_fee)
+                <input type="hidden" name="sub_information_id[]" value="{{$sub_fee->sub_informations_id }}" readonly>
+                <input type="hidden" name="sub_id[]" value="{{$sub_fee->id }}" readonly>
+                <input type="hidden" name="sub_type[]" value="{{$sub_fee->type }}" readonly>
+                <input type="hidden" class="commanumber" value="{{ $sub_fee->consultant_num }}" name="sub_consultant_num[]" data-type="currency" readonly>
+                <input type="hidden" class="" value="{{ $sub_fee->hour_fee }}" name="sub_hour_fee[]" data-type="currency" readonly>
+                <input type="hidden" class="commanumber" value="{{ $sub_fee->hour_num }}" name="sub_hour_num[]" data-type="currency" readonly>
+                <input type="hidden" class="commanumber" value="{{ $sub_fee->nswh }}" name="sub_nswh[]" data-type="currency" readonly>
+                <input type="hidden" class="nswh-percent-value" value="{{ $sub_fee->nswh_percent }}" name="sub_nswh_percent[]" readonly>
+                <textarea class="form-control input-table @error('') is-invalid @enderror" name="sub_notes[]" id="" rows="2" cols="55" hidden>{{$sub_fee->notes}}</textarea>
+            @endforeach
             </table>
         </div>
     </section>

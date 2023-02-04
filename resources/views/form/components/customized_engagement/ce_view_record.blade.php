@@ -57,9 +57,10 @@
                     </div>
 
                     <div class="card-body table-responsive">
-                        <table class="table table-light display dt-responsive nowrap" id="table1">
-                            <thead>
-                                <tr class="table-secondary">
+                        {{-- <table class="table table-light display dt-responsive nowrap" id="table1"> --}}
+                        <table class="table table-light display dt-responsive compact" id="table1">
+                            <thead style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">
+                                <tr>
                                     <th hidden></th>
                                     <th hidden></th>
                                     {{-- <th></th> --}}
@@ -78,7 +79,7 @@
                                 </tr>
                             </thead>
 
-                            <tbody>
+                            <tbody style="font-family:Arial, Helvetica, sans-serif">
                                 @foreach ($data as $key => $item)
                                     <tr id="{{ ++$table }}">
                                         <td hidden class="ids">{{ $item->id }}</td>
@@ -171,7 +172,7 @@
                                             <!-- END -->
                                         </td> {{-- end --}}
 
-                                        <td> {{-- modal --}}
+                                        <td>
                                             <div class="modal fade" id="exampleModal{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog modal-lg">
                                                     <div class="modal-content">
@@ -193,7 +194,7 @@
                                                                         <th class="text-center">Program date</th>
                                                                         <th class="text-center">Contract Price</th>
                                                                         <th class="text-center">Modify</th>
-                                                                        <th></th>
+                                                                        <th hidden></th>
                                                                     </tr>
                                                                 </thead>
 
@@ -246,7 +247,7 @@
                                                                                         <i class="fa-regular fa-pen-to-square"></i>
                                                                                     </a>
                                                                                 </td>
-                                                                                <td></td>
+                                                                                <td hidden></td>
                                                                             </tr>
                                                                         @endif
                                                                     @endforeach
