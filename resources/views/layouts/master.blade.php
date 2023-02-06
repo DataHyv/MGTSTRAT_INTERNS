@@ -39,13 +39,11 @@
         {{-- TOOLTIP JS --}}
         <script src="{{ url('js/tooltipJs/jquery.mytooltip.js') }}"></script>
         <script src="{{ url('js/tooltipJs/demo/script.js') }}"></script>
-
+        {{-- DATATABLES --}}
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.css">
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.js"></script>
         {{-- <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.dataTables.min.css">
         <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css"> --}}
-
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.css">
-
-        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.js"></script>
 
 
 </head>
@@ -72,6 +70,7 @@
     <script src="{{ URL::to('assets/js/main.js') }}"></script>
     <script src="{{ URL::to('assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
     {{-- <script src="{{ URL::to('assets/vendors/simple-datatables/simple-datatables.js') }}"></script> --}}
+    {{-- DATATABLES --}}
     {{-- <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script> --}}
 
@@ -89,6 +88,8 @@
                 stateSave: true,
                 "bScrollCollapse": true,
                 "autoWidth": false,
+                // "orderFixed": [ 2, 'desc' ],
+                "ordering": false,
                 stateSaveCallback: function(settings,data) {
                     localStorage.setItem( 'DataTables_' + settings.sInstance, JSON.stringify(data) )
                     },

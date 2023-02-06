@@ -3,7 +3,7 @@
         <div class="form-group has-icon-left">
             <label class="fw-bold required">Cluster</label>
             <div class="position-relative">
-                @if(Route::is('form/customizedEngagement/new') )
+                @if(Route::is('form/customizedEngagement/new') || Route::is('form/f2f_engagement/new'))
                 <fieldset class="form-group">
                     <select class="input js-mytooltip form-select cluster-dropdown @error('cluster') is-invalid @enderror" name="cluster" id="cluster-dropdown1"
                         data-mytooltip-content="<i>
@@ -896,13 +896,11 @@
         <div class="form-group has-icon-right">
             <label class="fw-bold required">Cluster</label>
             <div class="position-relative">
-                @if(Route::is('form/customizedEngagement/new') )
+                @if(Route::is('form/customizedEngagement/new') || Route::is('form/f2f_engagement/new'))
                     <input type="text" class="form-control input-notListed @error('input_cluster') is-invalid @enderror" value="{{ old('input_cluster') }}" name="cluster" id="input-notListed1" disabled>
                 @else
                     <input type="text" class="form-control input-notListed @error('input_cluster') is-invalid @enderror" value="{{ $data->cluster }}" name="cluster" id="input-notListed1" disabled>
                 @endif
-                {{-- <input type="text" class="form-control input-notListed @error('') is-invalid @enderror" value="{{ $data->cluster }}"
-                    name="cluster[]" id="input-notListed1" disabled> --}}
                 <div class="form-control-icon">
                     <a href="javascript:void(0)" class="remove-not-listed" name="cluster" id="remove-not-listed1">
                         <i class="fa-solid fa-square-xmark text-danger" title="remove"></i>
@@ -924,7 +922,7 @@
         <div class="form-group has-icon-left">
             <label class="fw-bold required">Core Area</label>
             <div class="position-relative">
-                @if(Route::is('form/customizedEngagement/new') )
+                @if(Route::is('form/customizedEngagement/new') || Route::is('form/f2f_engagement/new'))
                     <fieldset class="form-group">
                         <select class="form-select core-valueInput @error('core_area') is-invalid @enderror" name="core_area" id="core-valueInput1">
                             <option value="Culture" {{ old('core_area') == 'Culture' ? 'selected="selected"' : '' }}>Culture</option>
