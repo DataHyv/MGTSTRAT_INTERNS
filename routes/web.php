@@ -26,9 +26,11 @@ use App\Http\Controllers\ConsultantFeesController;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
+// Route::get('/', function () {
+//     return view('auth.login');
+// });
+Route::get('/', [LoginController::class, 'login'])->name('/');
+Route::post('/', [LoginController::class, '/']);
 
 Route::group(['middleware'=>'auth'],function()
 {
@@ -36,10 +38,10 @@ Route::group(['middleware'=>'auth'],function()
     {
         return view('home');
     });
-    Route::get('home',function()
-    {
-        return view('home');
-    });
+    // Route::get('home',function()
+    // {
+    //     return view('home');
+    // });
 });
 
 Auth::routes();

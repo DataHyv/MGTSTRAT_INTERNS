@@ -15,6 +15,7 @@ use Brian2694\Toastr\Facades\Toastr;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Customized_engagement_form;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
+use Auth;
 
 class CustomizedEngagementController extends Controller
 {
@@ -23,6 +24,9 @@ class CustomizedEngagementController extends Controller
     {
         $companyList = Client::orderBy('company_name')->get();
         $data = DB::table('customized_engagement_forms')->where('client_id', $request->client)->count();
+        if (Auth::guest()){
+            return redirect()->route('/');
+        }
         return view('form.components.customized_engagement.add.customized_engagement', compact('companyList', 'data'));
     }
 

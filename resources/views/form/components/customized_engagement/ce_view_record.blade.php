@@ -183,9 +183,9 @@
                                                             </button>
                                                         </div>
 
-                                                        <div class="modal-body">
-                                                            <table class="table display" id="tables{{ $table }}">
-                                                                <thead>
+                                                        <div class="modal-body table-responsive">
+                                                            <table class="table table-light display dt-responsive nowrap" id="tables{{ $table }}">
+                                                                <thead style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">
                                                                     <tr class="table-secondary">
                                                                         <th class="text-center">ID</th>
                                                                         <th class="text-center">Batch Name</th>
@@ -198,7 +198,7 @@
                                                                     </tr>
                                                                 </thead>
 
-                                                                <tbody class="text-center appendBatch">
+                                                                <tbody class="text-center appendBatch" style="font-family:Arial, Helvetica, sans-serif">
                                                                     @foreach ($data2 as $key => $item2)
                                                                         @if($item->id == $item2->customized_engagement_forms_id)
                                                                             <tr>
