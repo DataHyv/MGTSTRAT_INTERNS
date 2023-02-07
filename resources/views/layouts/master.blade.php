@@ -42,6 +42,8 @@
         {{-- DATATABLES --}}
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.css">
         <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
+        <script src="https://cdn.datatables.net/plug-ins/1.13.2/sorting/datetime-moment.js"></script>
         {{-- <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.dataTables.min.css">
         <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css"> --}}
 
@@ -75,21 +77,29 @@
     <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script> --}}
 
 
-
     <script>
         // Simple Datatable
         // let table1 = document.querySelector('#table1');
         // let dataTable = new simpleDatatables.DataTable('#table1');
 
         $(document).ready( function () {
-            // $('#table1 thead th').css('background-color', '#000000')
+            $.fn.dataTable.moment( 'HH:mm MMM D, YY' );
+            $.fn.dataTable.moment( 'dddd, MMMM Do, YYYY' );
             $('#table1').dataTable( {
                 responsive: true,
                 stateSave: true,
                 "bScrollCollapse": true,
                 "autoWidth": false,
-                // "orderFixed": [ 2, 'desc' ],
-                "ordering": false,
+                "order": [ 9, 'desc' ],
+                "columnDefs": [
+                    { "type": "date", "targets": 9 }
+                ],
+                // 'columnDefs': [
+                //     {
+                //         'searchable'    : false,
+                //         'targets'       : [11]
+                //     },
+                // ],
                 stateSaveCallback: function(settings,data) {
                     localStorage.setItem( 'DataTables_' + settings.sInstance, JSON.stringify(data) )
                     },

@@ -58,9 +58,9 @@
 
                     <div class="card-body table-responsive">
                         {{-- <table class="table table-light display dt-responsive nowrap" id="table1"> --}}
-                        <table class="table table-light display dt-responsive compact" id="table1">
+                        <table class="table table-light display dt-responsive" id="cetable1">
                             <thead style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">
-                                <tr>
+                                <tr class="table-active">
                                     <th hidden></th>
                                     <th hidden></th>
                                     {{-- <th></th> --}}
@@ -88,7 +88,7 @@
                                         <td class="text-center fw-bold py-3" role="button" data-toggle="modal" data-target="#exampleModal{{ $item->id }}">
                                             <span id="status" class="badge">{{ $item->status }}</span>
                                             {{-- Automatic change the status color --}}
-                                            <script>
+                                            {{-- <script>
                                                 $( ".badge" ).each(function() {
                                                     if($(this).html() === 'Trial'){
                                                         $(this).addClass( "bg-info" );
@@ -106,7 +106,7 @@
                                                         $(this).addClass( "bg-danger" );
                                                     }
                                                 });
-                                            </script>
+                                            </script> --}}
                                         </td>
                                         <td class="text-center fw-bold" role="button" data-toggle="modal" data-target="#exampleModal{{ $item->id }}">
                                             {{ $item->client->company_name }}
@@ -296,6 +296,54 @@
 
 @section('script')
     <script>
+        // Automatic change the status color
+        $( ".badge" ).each(function() {
+            if($(this).html() === 'Trial'){
+                $(this).addClass( "bg-info" );
+            }
+            else if($(this).html() === 'Confirmed'){
+                $(this).addClass( "bg-primary" );
+            }
+            else if($(this).html() === 'In-progress'){
+                $(this).addClass( "bg-warning" );
+            }
+            else if($(this).html() === 'Completed'){
+                $(this).addClass( "bg-success" );
+            }
+            else if($(this).html() === 'Lost'){
+                $(this).addClass( "bg-danger" );
+            }
+        });
+
+        $(document).ready( function () {
+            $.fn.dataTable.moment( 'HH:mm MMM D, YY' );
+            $.fn.dataTable.moment( 'dddd, MMMM Do, YYYY' );
+            $('#cetable1').dataTable( {
+                responsive: true,
+                stateSave: true,
+                "bScrollCollapse": true,
+                "autoWidth": false,
+                "order": [ 9, 'desc' ],
+                "columnDefs": [
+                    {
+                        'type': 'date',
+                        'targets': 9,
+
+                    },
+                    {
+                        'searchable'    : false,
+                        'targets'       : 11
+                    },
+                ],
+                stateSaveCallback: function(settings,data) {
+                    localStorage.setItem( 'DataTables_' + settings.sInstance, JSON.stringify(data) )
+                    },
+                stateLoadCallback: function(settings) {
+                    return JSON.parse( localStorage.getItem( 'DataTables_' + settings.sInstance ) )
+                    },
+            } );
+        } );
+
         //datatble of batch
         for (let i = 1; i < 1000; i++) {
             // console.log(i);
