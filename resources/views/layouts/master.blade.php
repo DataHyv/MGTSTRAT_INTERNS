@@ -90,10 +90,10 @@
                 stateSave: true,
                 "bScrollCollapse": true,
                 "autoWidth": false,
-                "order": [ 9, 'desc' ],
-                "columnDefs": [
-                    { "type": "date", "targets": 9 }
-                ],
+                // "order": [ 9, 'desc' ],
+                // "columnDefs": [
+                //     { "type": "date", "targets": 9 }
+                // ],
                 // 'columnDefs': [
                 //     {
                 //         'searchable'    : false,

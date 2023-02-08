@@ -48,8 +48,8 @@
                                     <th class="text-center">ENGAGEMENT TYPE</th>
                                     <th class="text-center">ENGAGEMENT TITLE</th>
                                     <th class="text-center">NUMBER OF PAX</th>
-                                    <th class="text-center">SCHEDULED DATES</th>
-                                    <th class="text-center">SCHEDULED TIME</th>
+                                    {{-- <th class="text-center">SCHEDULED DATES</th>
+                                    <th class="text-center">SCHEDULED TIME</th> --}}
                                     <th class="text-center">DATE ADDED</th>
                                     <th class="text-center">Modify</th>
                                 </tr>
@@ -88,22 +88,12 @@
                                         <td class="name text-center fw-bold">Virtual</td>
                                         <td class="email text-center fw-bold">Test</td>
                                         <td class="fw-bold text-center">100</td>
-                                        <td class="fw-bold text-center">
-                                            {{-- @if($item->program_dates)
-                                                @foreach($item->program_dates as $dates)
-                                                    {{$dates.', '}}
-                                                @endforeach
-                                            @endif --}}
+                                        {{-- <td class="fw-bold text-center">
                                             Nov 3, 2022
                                         </td>
                                         <td class="fw-bold text-center">
-                                            {{-- @if($item->program_start_time)
-                                                @foreach($item->program_start_time as $time)
-                                                    {{$time}}
-                                                @endforeach
-                                            @endif --}}
                                             7:00 AM
-                                        </td>
+                                        </td> --}}
                                         {{-- <td class="fw-bold text-center">{{ \Carbon\Carbon::parse($item->created_at)->toFormattedDateString()}}</td> --}}
                                         <td class="fw-bold text-center">Nov 3, 2022</td>
                                         <td class="text-center fw-bold text-center">

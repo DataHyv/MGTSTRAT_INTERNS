@@ -58,7 +58,7 @@
 
                     <div class="card-body table-responsive">
                         {{-- <table class="table table-light display dt-responsive nowrap" id="table1"> --}}
-                        <table class="table table-light display dt-responsive" id="cetable1">
+                        <table class="table table-light display dt-responsive compact" id="cetable1">
                             <thead style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">
                                 <tr class="table-active">
                                     <th hidden></th>
