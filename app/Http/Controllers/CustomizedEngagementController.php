@@ -405,7 +405,7 @@ class CustomizedEngagementController extends Controller
                         $op_cost['cstmzd_eng_form_id']  = $cstmzd_eng_form_id;
                         $op_cost['consultant_num']       = $request->op_consultant_num[$key] ?? '0';
                         $op_cost['hour_fee']             = $request->op_hour_fee[$key] ?? '0';
-                        $op_cost['hour_num']             = ($request->op_hour_num[$key] ?? '0')/($request->session_number*$request->batch_number);
+                        $op_cost['hour_num']             = $request->op_hour_num[$key] ?? '0';
                         $op_cost['nswh']                 = $request->op_nswh[$key] ?? '0';
                         $op_cost['rooster']              = $request->op_rooster[$key] ?? '';
                         $op_cost['notes']                = $request->op_notes[$key] ?? '';
@@ -476,6 +476,9 @@ class CustomizedEngagementController extends Controller
             foreach ($request->ce_id as $key => $fee_types) {
                 DB::table('engagement_fees')->where('id', $request->ce_id[$key])->delete();
             }
+            foreach ($request->op_id as $key => $op_types) {
+                DB::table('engagement_costs')->where('id', $request->op_id[$key])->delete();
+            }
             foreach ($request->cost_id as $key => $cost_types) {
                 DB::table('engagement_costs')->where('id', $request->cost_id[$key])->delete();
             }
@@ -503,6 +506,20 @@ class CustomizedEngagementController extends Controller
                 $engagement_fee['notes']                = $request->fee_notes[$key];
 
                 Engagement_fee::create($engagement_fee);
+            }
+
+            foreach($request->op_type as $key => $op_types){
+                $op_cost['client_id']           = $request->client_id;
+                $op_cost['cstmzd_eng_form_id']  = $request->cstmzd_eng_form_id;
+                $op_cost['type']                = $request->op_type[$key];
+                $op_cost['consultant_num']      = $request->op_consultant_num[$key] ?? 0;
+                $op_cost['hour_fee']            = $request->op_hour_fee[$key];
+                $op_cost['hour_num']            = $request->op_hour_num[$key] ?? 0;
+                $op_cost['nswh']                = $request->op_nswh[$key] ?? 0;
+                $op_cost['rooster']             = $request->op_rooster[$key];
+                $op_cost['notes']               = $request->op_notes[$key];
+
+                Engagement_cost::create($op_cost);
             }
 
             foreach($request->cost_type as $key => $cost_type)
