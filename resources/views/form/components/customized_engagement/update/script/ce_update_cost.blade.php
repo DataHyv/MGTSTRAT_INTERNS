@@ -1303,7 +1303,7 @@
                         <td>
                             <input type="text"
                                     class="text-center text-dark fw-bold form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="op_hour_fee[]" id="ec_ProgramHf" data-type="currency">
+                                    value="1,000" name="op_hour_fee[]" id="ec_ProgramHf" data-type="currency">
                         </td>
                         <td class="noh">
                             <input type="text" class="d-none" id="ec_ProgramNoh${ecOffProgram}" name="op_hour_num[]" readonly>
