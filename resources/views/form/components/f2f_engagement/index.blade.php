@@ -16,9 +16,17 @@
                         <h3>F2F Engagement Record</h3>
                         {{-- <p class="text-subtitle text-muted">Budget information list</p> --}}
                     </div>
-                    <div class="col-12 col-md-6 order-md-2 order-first">
+                    {{-- <div class="col-12 col-md-6 order-md-2 order-first">
                         <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                             <ol class="breadcrumb"></ol>
+                                <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">F2F Engagement</li>
+                            </ol>
+                        </nav>
+                    </div> --}}
+                    <div class="col-12 col-md-6 order-md-2 order-first">
+                        <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                            <ol class="breadcrumb bg-transparent">
                                 <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">F2F Engagement</li>
                             </ol>
