@@ -940,12 +940,12 @@
                         <tr class="table-warning" id="ec_OffProgramRow">
                             <td class="title table-light">
                                 Off-Program fee
-                                <input type="text" class="d-none" value="Off-Program fee" name="cost_type[]" readonly>
+                                <input type="text" class="d-none" value="Off-Program fee" name="op_type[]" readonly>
                             </td>
                             <td>
                                 <input type="text"
                                     class="input js-mytooltip text-center text-dark fw-bold form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_consultant_num[]" id="ec_ProgramNoc1" data-type="currency"
+                                    value="{{ old('') }}" name="op_consultant_num[]" id="ec_ProgramNoc1" data-type="currency"
                                     data-mytooltip-content="<i>
                                             - For single or series of programs<br>
                                             - One time only<br>
@@ -957,20 +957,20 @@
                             <td>
                                 <input type="text"
                                     class="text-center text-dark fw-bold form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_hour_fee[]" id="ec_ProgramHf" data-type="currency">
+                                    value="{{ old('') }}" name="op_hour_fee[]" id="ec_ProgramHf" data-type="currency">
                             </td>
-                            <td><input type="text" class="d-none" name="cost_hour_num[]" readonly></td>
-                            <td><input type="text" class="d-none" name="cost_nswh[]" readonly></td>
+                            <td><input type="text" class="d-none" name="op_hour_num[]" readonly></td>
+                            <td><input type="text" class="d-none" name="op_nswh[]" readonly></td>
                             <td class="total-td table-light" style="background-color: rgba(146, 146, 146, 0.727">
                                 <h4 class="text-center" id="ec_ProgramTotal">-</h4>
                             </td>
                             <td class="total-td table-light">
                                 <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_rooster[]" id="">
+                                    value="{{ old('') }}" name="op_rooster[]" id="">
                             </td>
                             <td class="total-td table-light">
                                 <textarea class="form-control input-table @error('') is-invalid @enderror"
-                                    name="cost_notes[]" id="" rows="2" cols="55"></textarea>
+                                    name="op_notes[]" id="" rows="2" cols="55"></textarea>
                             </td>
                             <td class="border border-white add-row">
                                 <a href="javascript:void(0)" class="text-success font-18" title="Add" id="CeAddBtn9">

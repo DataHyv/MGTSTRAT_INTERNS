@@ -349,6 +349,31 @@ class CustomizedEngagementController extends Controller
                                 Sub_fee::create($sub_fees);
                             }
 
+                            if($session_count == 1){
+                                $op_cost['type']                 = $request->op_type[0];
+                                $op_cost['sub_informations_id']  = $sub_informations_id;
+                                $op_cost['consultant_num']       = ($request->op_consultant_num[0] ?? '0') / ($request->batch_number);
+                                $op_cost['hour_fee']             = $request->op_hour_fee[0] ?? '0';
+                                $op_cost['hour_num']             = $request->op_hour_num[0] ?? '0';
+                                $op_cost['nswh']                 = $request->op_nswh[0] ?? '0';
+                                $op_cost['rooster']              = $request->op_rooster[0] ?? '';
+                                $op_cost['notes']                = $request->op_notes[0] ?? '';
+
+                                Sub_cost::create($op_cost);
+                            }
+                            else{
+                                $op_cost['type']                 = $request->op_type[0];
+                                $op_cost['sub_informations_id']  = $sub_informations_id;
+                                $op_cost['consultant_num']       = 0;
+                                $op_cost['hour_fee']             = 0;
+                                $op_cost['hour_num']             = $request->op_hour_num[0] ?? '0';
+                                $op_cost['nswh']                 = $request->op_nswh[0] ?? '0';
+                                $op_cost['rooster']              = $request->op_rooster[0] ?? '';
+                                $op_cost['notes']                = $request->op_notes[0] ?? '';
+
+                                Sub_cost::create($op_cost);
+                            }
+
                             foreach($request->cost_type as $key => $cost_types){
                                 $sub_cost['type']                 = $cost_types;
                                 $sub_cost['sub_informations_id']  = $sub_informations_id;
@@ -358,11 +383,8 @@ class CustomizedEngagementController extends Controller
                                 $sub_cost['nswh']                 = $request->cost_nswh[$key] ?? '0';
                                 $sub_cost['rooster']              = $request->cost_rooster[$key] ?? '';
                                 $sub_cost['notes']                = $request->cost_notes[$key] ?? '';
-                                // ($request->fee_hour_num[1] ?? '0')/($request->session_number*$request->batch_number);
-
                                 Sub_cost::create($sub_cost);
                             }
-
                             //END OF LOOP for session count
                         }
 
@@ -376,24 +398,38 @@ class CustomizedEngagementController extends Controller
             }
 
             try
-                {foreach ($request->cost_type as $key => $cost_types){
-                    $engagement_cost['type']                = $cost_types;
-                    $engagement_cost['client_id']           = $client_id;
-                    $engagement_cost['cstmzd_eng_form_id']  = $cstmzd_eng_form_id;
-                    $engagement_cost['consultant_num']      = $request->cost_consultant_num[$key] ?? '0';
-                    $engagement_cost['hour_fee']            = $request->cost_hour_fee[$key];
-                    $engagement_cost['hour_num']            = $request->cost_hour_num[$key] ?? '0';
-                    $engagement_cost['nswh']                = $request->cost_nswh[$key] ?? '0';
-                    $engagement_cost['rooster']             = $request->cost_rooster[$key];
-                    $engagement_cost['notes']               = $request->cost_notes[$key];
+                {
+                    foreach($request->op_type as $key => $op_types){
+                        $op_cost['type']                 = $op_types;
+                        $op_cost['client_id']           = $client_id;
+                        $op_cost['cstmzd_eng_form_id']  = $cstmzd_eng_form_id;
+                        $op_cost['consultant_num']       = $request->op_consultant_num[$key] ?? '0';
+                        $op_cost['hour_fee']             = $request->op_hour_fee[$key] ?? '0';
+                        $op_cost['hour_num']             = ($request->op_hour_num[$key] ?? '0')/($request->session_number*$request->batch_number);
+                        $op_cost['nswh']                 = $request->op_nswh[$key] ?? '0';
+                        $op_cost['rooster']              = $request->op_rooster[$key] ?? '';
+                        $op_cost['notes']                = $request->op_notes[$key] ?? '';
 
-                    Engagement_cost::create($engagement_cost);
+                        Engagement_cost::create($op_cost);
+                    }
+                    foreach ($request->cost_type as $key => $cost_types){
+                        $engagement_cost['type']                = $cost_types;
+                        $engagement_cost['client_id']           = $client_id;
+                        $engagement_cost['cstmzd_eng_form_id']  = $cstmzd_eng_form_id;
+                        $engagement_cost['consultant_num']      = $request->cost_consultant_num[$key] ?? '0';
+                        $engagement_cost['hour_fee']            = $request->cost_hour_fee[$key];
+                        $engagement_cost['hour_num']            = $request->cost_hour_num[$key] ?? '0';
+                        $engagement_cost['nswh']                = $request->cost_nswh[$key] ?? '0';
+                        $engagement_cost['rooster']             = $request->cost_rooster[$key];
+                        $engagement_cost['notes']               = $request->cost_notes[$key];
+
+                        Engagement_cost::create($engagement_cost);
+                    }
                 }
-            }
-            catch(\Exception $e){
-                DB::rollback();
-                Toastr::error('cost'.$e->getMessage(), 'Error');
-            }
+                catch(\Exception $e){
+                    DB::rollback();
+                    Toastr::error('cost'.$e->getMessage(), 'Error');
+                }
 
             DB::commit();
             // info('This is some useful information.');
