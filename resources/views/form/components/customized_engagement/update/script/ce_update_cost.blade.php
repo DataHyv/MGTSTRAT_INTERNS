@@ -9,6 +9,7 @@
                 $("#tableSales").append(
                     `<tr class="table-warning" id="salesRow${++salesNum}">
                             <td class="title table-light">
+
                                 <input type="text" class="d-none" value="Sales" name="cost_type[]" readonly>
                                 Sales (4% / 5% / 6% / 7%)
                             </td>
@@ -50,6 +51,18 @@
                     document.getElementById("inputSales").style.display = ""; //the input field will remove the style of "display = none;"
                     document.getElementById("inputSales").disabled = false; //remove the disabled attribute in input field
                     // document.getElementById("inputSales").value = "";   //to remove the last inputed value
+                } else {
+                    // $("#inputSales").each(function () {
+                    //     $(this).css("display","none");
+                    //     $(this).prop( "disabled", true );
+                    //     $(this).val("0%")
+                    // });
+
+                    $(".dropdown-sales").css("display","");
+                    $("#sales").prop( "disabled", false );
+                    $(".input-sales").css("display","none");
+                    $(".input-sales").prop( "disabled", true );
+                    $(".input-sales").val("0%")
                 }
             });
 
@@ -85,6 +98,7 @@
                     document.getElementById("sales").value = "0%";
                     document.getElementById("dropdownSales").style.display = "";
                     document.getElementById("inputSales").value = ""; //to remove the last inputed value
+                    $(".input-sales").prop( "disabled", true );
                 }
 
             });
@@ -100,6 +114,7 @@
                             <td class="title table-light">
                                 Referral (2% / 3%)
                                 <input type="text" class="d-none" value="Referral" name="cost_type[]" readonly>
+
                             </td>
                             <td><input type="text" class="d-none" value="" name="cost_consultant_num[]" readonly></td>
                             <td>
@@ -169,6 +184,7 @@
                     document.getElementById("referral").value = "0%";
                     document.getElementById("dropdownReferral").style.display = "";
                     document.getElementById("inputReferral").value = ""; //to remove the last inputed value
+                    $(".input-referral").prop( "disabled", true );
                 }
 
             });
@@ -184,6 +200,7 @@
                     `<tr class="table-warning" id="engagementmanagerRow${++managerNum}">
                         <td class="title fw-bold text-dark table-light">
                             ENGAGEMENT MANAGER
+
                             <input type="text" class="d-none" value="Engagement Manager" name="cost_type[]" readonly>
                         </td>
                         <td><input type="text" class="d-none" value="" name="cost_consultant_num[]" readonly></td>
@@ -216,7 +233,7 @@
                 }
 
                 //if you add row the
-                //if statement will execute
+                //statement will execute
                 if (managerNum > 1) {
                     document.getElementById("engagementManager").disabled = true; //the dropdown will be disabled
                     document.getElementById("dropdownManager").style.display =
@@ -229,9 +246,9 @@
                 }
             });
 
-                //browser load check if the engagement manager is greater than 1
+            //browser load check if the engagement manager is greater than 1
             if (managerNum > 1) {
-                $("#engagementManager").prop( "disabled", true );
+                $("#engagementManager").prop("disabled", true );
                 $(".dropdown-manager").css("display","none");
                 $(".input-manager").css("display","block");
                 $(".input-manager").prop( "disabled", false );
@@ -254,6 +271,7 @@
                     document.getElementById("engagementManager").value = "0%";
                     document.getElementById("dropdownManager").style.display = "";
                     document.getElementById("inputManager").value = ""; //to remove the last inputed value
+                    $(".input-manager").prop( "disabled", true );
                 }
 
             });
@@ -268,6 +286,7 @@
                 $("#ec_tableLeadConsultant").append(`
                     <tr class="table-warning" id="ec_LeadConsultant${++leadConsultant}">
                         <td class="title table-light">
+
                             <input type="text" class="d-none" value="Lead Consultant" name="cost_type[]" readonly>
                             Lead Consultant
                             </td>
@@ -299,8 +318,8 @@
                                 value="{{ old('') }}" name="cost_rooster[]" id="roster${leadConsultant}">
                         </td>
                         <td class="total-td table-light">
-                            <input class="form-control input-table @error('') is-invalid @enderror"
-                                name="cost_notes[]" id=""></input>
+                            <textarea class="form-control input-table @error('') is-invalid @enderror"
+                                name="cost_notes[]" id="" rows="2" cols="55"></textarea>
                         </td>
                         <td class="border border-white" style="background-color: #FFFFFF;">
                             <a href="javascript:void(0)" class="text-danger font-18 remove" id="ecButton${leadConsultant}" title="Remove">
@@ -356,6 +375,7 @@
                 $("#ec_tableAnalyst").append(`
                     <tr class="table-warning" id="ec_Analyst${++ecAnalyst}">
                         <td class="title table-light">
+
                             <input type="text" class="d-none" value="Analyst" name="cost_type[]" readonly>
                             Analyst
                         </td>
@@ -444,6 +464,7 @@
                 $("#ec_TableDesigner").append(`
                     <tr class="table-warning" id="ec_DesignerRow${++ecDesigner}">
                         <td class="title table-light">Designer
+
                             <input type="text" class="d-none" value="Designer" name="cost_type[]" readonly>
                         </td>
                         <td class="noc">
@@ -530,6 +551,7 @@
                 $("#ec_TableCreators").append(`
                     <tr class="table-warning" id="ec_CreatorsRow${++ecCreators}">
                         <td class="title table-light">Creators Fees
+
                             <input type="text" class="d-none" value="Creators Fees" name="cost_type[]" readonly>
                         </td>
                         <td class="noc">
@@ -634,6 +656,7 @@
                 $("#ec_TableLeadfaci").append(`
                     <tr class="table-warning" id="ec_LeadfaciRow${++ecLeadfaci}">
                         <td class="title table-light">
+
                             <input type="text" class="d-none" value="Lead Facilitator" name="cost_type[]" readonly>
                             Lead Facilitator
                         </td>
@@ -722,6 +745,7 @@
                     <tr class="table-warning" id="ec_CoLeadRow${++ecCoLead}">
                         <td class="title table-light">
                             Co-Lead
+
                             <input type="text" class="d-none" value="Co-Lead" name="cost_type[]" readonly>
                         </td>
                         <td class="noc">
@@ -811,6 +835,7 @@
                     <tr class="table-warning" id="ec_AlCoachRow${++ecAlCoach}">
                         <td class="title table-light">
                             AL Coach
+
                             <input type="text" class="d-none" value="AL Coach" name="cost_type[]" readonly>
                         </td>
                         <td class="noc">
@@ -898,6 +923,7 @@
                     <tr class="table-warning" id="ec_CofaciRow${++ecCofaci}">
                         <td class="title table-light">
                             Co-Facilitator / Resource Speaker
+
                             <input type="text" class="d-none" value="Co-Facilitator / Resource Speaker" name="cost_type[]" readonly>
                         </td>
                         <td class="noc">
@@ -985,6 +1011,7 @@
                     <tr class="table-warning" id="ec_ModeratorRow${++ecModerator}">
                         <td class="title table-light">
                             Moderator
+
                             <input type="text" class="d-none" value="Moderator" name="cost_type[]" readonly>
                         </td>
                         <td class="noc">
@@ -1079,6 +1106,7 @@
                     <tr class="table-warning" id="ec_ProducerRow${++ecProducer}">
                         <td class="title table-light">
                             Producer
+
                             <input type="text" class="d-none" value="Producer" name="cost_type[]" readonly>
                         </td>
                         <td class="noc">
@@ -1167,6 +1195,7 @@
                         <tr class="table-warning" id="ec_DocumentorRow${++ecDocumentor}">
                             <td class="title table-light">
                                 Documentor
+
                                 <input type="text" class="d-none" value="Documentor" name="cost_type[]" readonly>
                             </td>
                             <td>
@@ -1244,6 +1273,100 @@
                     ecDocumentor--;
                 });
             });
-    /********* END *********/
+
+        /********* END *********/
+
+        /********* OFF-PROGRAM FEE *********/
+        $(document).ready(function (){
+            var ecOffProgram = {{$ecOffProgram}};
+            $("#CeAddBtn9").on("click", function() {
+                // Adding a row inside the tbody.
+                $("#ec_TblOffProgram").append(`
+                    <tr class="table-warning" id="ec_OffProgramRow${++ecOffProgram}">
+                        <td class="title table-light">
+                            Off-Program fee
+
+                            <input type="text" class="d-none" value="Off-Program fee" name="op_type[]" readonly>
+                        </td>
+                        <td class="noc">
+                            <input type="text"
+                                    class="input js-mytooltip text-center text-dark fw-bold form-control input-table commanumber @error('') is-invalid @enderror"
+                                    value="{{ old('') }}" name="op_consultant_num[]" id="ec_ProgramNoc${ecOffProgram}" data-type="currency"
+                                    data-mytooltip-content="<i>
+                                            - For single or series of programs<br>
+                                            - One time only<br>
+                                            - Per person<br>
+                                            </i>"
+                                    data-mytooltip-theme="dark" data-mytooltip-action="focus"
+                                    data-mytooltip-direction="bottom">
+                        </td>
+                        <td>
+                            <input type="text"
+                                    class="text-center text-dark fw-bold form-control input-table commanumber @error('') is-invalid @enderror"
+                                    value="1,000" name="op_hour_fee[]" id="ec_ProgramHf" data-type="currency">
+                        </td>
+                        <td class="noh">
+                            <input type="text" class="d-none" id="ec_ProgramNoh${ecOffProgram}" name="op_hour_num[]" readonly>
+                        </td>
+                        <td class="nwh">
+                            <input type="text" class="d-none" id="ec_ProgramNwh${ecOffProgram}" name="op_nswh[]" readonly>
+                        </td>
+                        <td class="total-td table-light" style="background-color: rgba(146, 146, 146, 0.727">
+                                <h5 class="text-center" id="ec_ProgramTotal">-</h5>
+                        </td>
+                        <td class="total-td table-light">
+                            <input type="text" class="form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="op_rooster[]" id="">
+                        </td>
+                        <td class="total-td table-light">
+                            <textarea class="form-control input-table @error('') is-invalid @enderror"
+                                name="op_notes[]" id="" rows="2" cols="55"></textarea>
+                        </td>
+                        <td class="border border-white" style="background-color: #FFFFFF;">
+                            <a href="javascript:void(0)" class="text-danger font-18 remove" id="ecOffProgramRemove${ecOffProgram}" title="Remove" >
+                                <i class="fa fa-trash-o"></i>
+                            </a>
+                        </td>
+                    </tr>
+                `);
+            });
+
+            $("#ec_TblOffProgram").on("click", ".remove", function () {
+
+                // Getting all the rows next to the row
+                // containing the clicked button
+                var child = $(this).closest("tr").nextAll();
+
+                // Iterating across all the rows
+                // obtained to change the index
+                child.each(function () {
+                    // Getting <tr> id.
+                    var id = $(this).attr("id");
+
+                    // Getting the <input> inside the .noc, .noh, .nwh class.
+                    var noc = $(this).children(".noc").children("input");
+                    var noh = $(this).children(".noh").children("input");
+                    var nwh = $(this).children(".nwh").children("input");
+
+                    // Gets the row number from <tr> id.
+                    var dig = parseInt(id.substring(16));
+
+                    // Modifying row id.
+                    $(this).attr("id", `ec_OffProgramRow${dig - 1}`);
+
+                    // Modifying row index.
+                    noc.attr("id", `ec_ProgramNoc${dig - 1}`);
+                    // noh.attr("id", `ec_ProgramNoh${dig - 1}`);
+                    // nwh.attr("id", `ec_ProgramNwh${dig - 1}`);
+                });
+
+                // Removing the current row.
+                $(this).closest("tr").remove();
+                // Decreasing total number of rows by 1.
+                ecOffProgram--;
+            });
+        });
+        /********* END *********/
+
     </script>
 

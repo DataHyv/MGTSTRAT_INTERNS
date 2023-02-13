@@ -34,7 +34,7 @@
                                     <th scope="col">Contract ID</th>
                                     <th scope="col">Company Name</th>
                                     <th scope="col">Engagement Title</th>
-                                    <th scope="col">Cost</th>
+                                    <th scope="col">Contract Price</th>
                                   </tr>
                                 </thead>
 
@@ -155,7 +155,7 @@
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> --}}
 <script>
     $(document).ready(function() {
         $('#engagement_titles').on('change', function() {

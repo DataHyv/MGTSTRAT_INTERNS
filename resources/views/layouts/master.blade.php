@@ -14,8 +14,8 @@
     <link rel="stylesheet" href="{{ URL::to('assets/vendors/perfect-scrollbar/perfect-scrollbar.css') }}">
     <link rel="stylesheet" href="{{ URL::to('assets/vendors/bootstrap-icons/bootstrap-icons.css') }}">
     <link rel="stylesheet" href="{{ URL::to('assets/css/app.css') }}">
-    <link rel="stylesheet" href="{{ URL::to('assets/vendors/simple-datatables/style.css') }}">
-    {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">s --}}
+    {{-- <link rel="stylesheet" href="{{ URL::to('assets/vendors/simple-datatables/style.css') }}"> --}}
+
 
     {{-- message toastr --}}
     <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
@@ -39,6 +39,15 @@
         {{-- TOOLTIP JS --}}
         <script src="{{ url('js/tooltipJs/jquery.mytooltip.js') }}"></script>
         <script src="{{ url('js/tooltipJs/demo/script.js') }}"></script>
+        {{-- DATATABLES --}}
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.css">
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
+        <script src="https://cdn.datatables.net/plug-ins/1.13.2/sorting/datetime-moment.js"></script>
+        {{-- <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.dataTables.min.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css"> --}}
+
+
 </head>
 
 <body id="body">
@@ -62,15 +71,43 @@
     <script src="{{ URL::to('assets/js/pages/dashboard.js') }}"></script>
     <script src="{{ URL::to('assets/js/main.js') }}"></script>
     <script src="{{ URL::to('assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
-    <script src="{{ URL::to('assets/vendors/simple-datatables/simple-datatables.js') }}"></script>
-    {{-- <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script> --}}
+    {{-- <script src="{{ URL::to('assets/vendors/simple-datatables/simple-datatables.js') }}"></script> --}}
+    {{-- DATATABLES --}}
+    {{-- <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script> --}}
+
+
     <script>
         // Simple Datatable
-        let table1 = document.querySelector('#table1');
-        let dataTable = new simpleDatatables.DataTable(table1);
-        // $(document).ready( function () {
-        //     $('#table1').DataTable();
-        // } );
+        // let table1 = document.querySelector('#table1');
+        // let dataTable = new simpleDatatables.DataTable('#table1');
+
+        $(document).ready( function () {
+            $.fn.dataTable.moment( 'HH:mm MMM D, YY' );
+            $.fn.dataTable.moment( 'dddd, MMMM Do, YYYY' );
+            $('#table1').dataTable( {
+                responsive: true,
+                stateSave: true,
+                "bScrollCollapse": true,
+                "autoWidth": false,
+                // "order": [ 9, 'desc' ],
+                // "columnDefs": [
+                //     { "type": "date", "targets": 9 }
+                // ],
+                // 'columnDefs': [
+                //     {
+                //         'searchable'    : false,
+                //         'targets'       : [11]
+                //     },
+                // ],
+                stateSaveCallback: function(settings,data) {
+                    localStorage.setItem( 'DataTables_' + settings.sInstance, JSON.stringify(data) )
+                    },
+                stateLoadCallback: function(settings) {
+                    return JSON.parse( localStorage.getItem( 'DataTables_' + settings.sInstance ) )
+                    },
+            } );
+        } );
     </script>
 
     {{-- sweet alert popup message --}}

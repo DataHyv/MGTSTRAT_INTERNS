@@ -26,9 +26,11 @@ use App\Http\Controllers\ConsultantFeesController;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
+// Route::get('/', function () {
+//     return view('auth.login');
+// });
+Route::get('/', [LoginController::class, 'login'])->name('/');
+Route::post('/', [LoginController::class, '/']);
 
 Route::group(['middleware'=>'auth'],function()
 {
@@ -36,10 +38,10 @@ Route::group(['middleware'=>'auth'],function()
     {
         return view('home');
     });
-    Route::get('home',function()
-    {
-        return view('home');
-    });
+    // Route::get('home',function()
+    // {
+    //     return view('home');
+    // });
 });
 
 Auth::routes();
@@ -94,7 +96,7 @@ Auth::routes();
     Route::controller(CustomizedEngagementController::class)->group(function () {
     Route::get('form/customizedEngagement/new', [CustomizedEngagementController::class, 'index'])->middleware('auth')->name('form/customizedEngagement/new');
     Route::get('form/customizedEngagement/detail', [CustomizedEngagementController::class, 'viewRecord'])->middleware('auth')->name('form/customizedEngagement/detail');
-    Route::get('form/customizedEngagement/detail/{cstmzd_eng_form_id}', [CustomizedEngagementController::class, 'updateRecord'])->middleware('auth')->name('form/customizedEngagement/detail/{cstmzd_eng_form_id}');
+    Route::get('form/customizedEngagement/detail/{cstmzd_eng_form_id}/{id}', [CustomizedEngagementController::class, 'updateRecord'])->middleware('auth')->name('form/customizedEngagement/detail/{cstmzd_eng_form_id}');
 
     Route::post('save', [CustomizedEngagementController::class, 'store'])->name('save');
     Route::put('update', [CustomizedEngagementController::class, 'ceUpdateRecord','ceAddDeleteRecord'])->middleware('auth')->name('update');
@@ -102,7 +104,11 @@ Auth::routes();
     Route::post('delete',[CustomizedEngagementController::class, 'deleteRow'])->name('delete');
 
     //-------SUB FEE-------//
-    Route::get('form/customizedEngagement/sub-fee', [CustomizedEngagementController::class, 'formSubFee'])->middleware('auth')->name('form/customizedEngagement/sub-fee');
+    // Route::get('form/customizedEngagement/sub-fee', [CustomizedEngagementController::class, 'formSubFee'])->middleware('auth')->name('form/customizedEngagement/sub-fee');
+    Route::get('form/customizedEngagement/sub-fee', [CustomizedEngagementController::class, 'addBatch'])->middleware('auth')->name('form/customizedEngagement/sub-fee');
+    Route::get('form/customizedEngagement/sub-fee/{id}', [CustomizedEngagementController::class, 'editSubForm'])->middleware('auth')->name('form/customizedEngagement/sub-fee/{id}');
+
+    Route::put('updateBatch', [CustomizedEngagementController::class, 'saveBatchRecord','ceAddDeleteRecord'])->middleware('auth')->name('updateBatch');
     });
 // ----------------------------- F2F engagement form ------------------------------//
     Route::get('form/f2f_engagement/index', [App\Http\Controllers\F2fEngagementController::class, 'index'])->middleware('auth')->name('form/f2f_engagement/index');

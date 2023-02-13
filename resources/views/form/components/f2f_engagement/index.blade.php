@@ -1,6 +1,7 @@
 @section('title', 'F2F RECORD')
 <link rel="shortcut icon" type="image/png" href="{{ URL::to('assets/images/logo/logo.png') }}">
 <link rel="stylesheet" href="{{ URL::to('css/custom.css') }}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 @extends('layouts.master')
 @section('menu')
     @extends('sidebar.dashboard')
@@ -15,9 +16,17 @@
                         <h3>F2F Engagement Record</h3>
                         {{-- <p class="text-subtitle text-muted">Budget information list</p> --}}
                     </div>
+                    {{-- <div class="col-12 col-md-6 order-md-2 order-first">
+                        <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                            <ol class="breadcrumb"></ol>
+                                <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">F2F Engagement</li>
+                            </ol>
+                        </nav>
+                    </div> --}}
                     <div class="col-12 col-md-6 order-md-2 order-first">
                         <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
-                            <ol class="breadcrumb">
+                            <ol class="breadcrumb bg-transparent">
                                 <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">F2F Engagement</li>
                             </ol>
@@ -31,27 +40,29 @@
 
             <section class="section">
                 <div class="card mb-5 mt-5">
-                    <div class="card-header col-12 d-flex justify-content-left mt-3 mb-3 mx-3">
+                    <div class="card-header col-12 d-flex justify-content-left mt-3 mb-3">
                         <a class="btn btn-primary mt-2 mb-2" href="{{ route('form/f2f_engagement/new') }}">
                             <span><i class="fa-solid fa-file-circle-plus"></i> &nbsp; New Record</span>
                         </a>
                     </div>
-                    <div class="card-body">
-                        <table class="table table-striped" id="table1">
-                            <thead>
+                    <div class="card-body table-responsive">
+                        <table class="table display dt-responsive nowrap" id="table1">
+                            <thead class="table-secondary">
                                 <tr class="text-dark">
+                                    <th class="text-center" hidden></th>
                                     <th class="text-center">ID</th>
                                     <th class="text-center">STATUS</th>
                                     <th class="text-center">COMPANY NAME</th>
                                     <th class="text-center">ENGAGEMENT TYPE</th>
                                     <th class="text-center">ENGAGEMENT TITLE</th>
                                     <th class="text-center">NUMBER OF PAX</th>
-                                    <th class="text-center">SCHEDULED DATES</th>
-                                    <th class="text-center">SCHEDULED TIME</th>
+                                    {{-- <th class="text-center">SCHEDULED DATES</th>
+                                    <th class="text-center">SCHEDULED TIME</th> --}}
                                     <th class="text-center">DATE ADDED</th>
                                     <th class="text-center">Modify</th>
                                 </tr>
                             </thead>
+
                             <tbody>
                                 {{-- @foreach ($data as $key => $item) --}}
                                     <tr>
@@ -85,29 +96,15 @@
                                         <td class="name text-center fw-bold">Virtual</td>
                                         <td class="email text-center fw-bold">Test</td>
                                         <td class="fw-bold text-center">100</td>
-                                        <td class="fw-bold text-center">
-                                            {{-- @if($item->program_dates)
-                                                @foreach($item->program_dates as $dates)
-                                                    {{$dates.', '}}
-                                                @endforeach
-                                            @endif --}}
+                                        {{-- <td class="fw-bold text-center">
                                             Nov 3, 2022
                                         </td>
                                         <td class="fw-bold text-center">
-                                            {{-- @if($item->program_start_time)
-                                                @foreach($item->program_start_time as $time)
-                                                    {{$time}}
-                                                @endforeach
-                                            @endif --}}
                                             7:00 AM
-                                        </td>
+                                        </td> --}}
                                         {{-- <td class="fw-bold text-center">{{ \Carbon\Carbon::parse($item->created_at)->toFormattedDateString()}}</td> --}}
                                         <td class="fw-bold text-center">Nov 3, 2022</td>
                                         <td class="text-center fw-bold text-center">
-                                            <a href=".bd-example-modal-lg" data-toggle="modal" data-target=".bd-example-modal-lg">
-                                                <span class="badge bg-info"><i class="bi bi-person-plus-fill"></i></span>
-                                            </a>
-
                                             <a href="#">
                                                 <span class="badge bg-success"><i class="bi bi-pencil-square"></i></span>
                                             </a>
@@ -116,12 +113,6 @@
                                                 onclick="return confirm('Are you sure to want to delete Testing?')"><span
                                                     class="badge bg-danger"><i class="bi bi-trash"></i></span>
                                             </a>
-
-                                            {{-- <a href="#" class="delete"  data-toggle="modal" data-target="#delete_estimate">
-                                                <span class="badge bg-danger">
-                                                    <i class="bi bi-trash"></i>
-                                                </span>
-                                            </a> --}}
 
                                             <!-- Delete Customized Engagement Modal -->
                                             <div class="modal custom-modal fade" id="delete_estimate" role="dialog">
@@ -153,7 +144,6 @@
                                                 </div>
                                             </div>
                                             <!-- /Delete Customized Engagement Modal -->
-
                                         </td>
                                     </tr>
 
@@ -220,15 +210,6 @@
                 </div>
             </section>
         </div>
-        <!------------ FOOTER ------------>
-        <footer>
-            <div class="footer clearfix mb-0 text-muted">
-                <div class="float-end">
-                    <p><script>document.write(new Date().getFullYear());</script> Copyright &copy MGT-STRAT</p>
-                </div>
-            </div>
-        </footer>
-    <!------------ END OF FOOTER ------------>
     </div>
 @endsection
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>

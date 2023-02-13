@@ -15,7 +15,7 @@ class Client extends Model
 
     public function customized_engagement_forms()
     {
-        return $this->hasMany(Customized_engagement_form::class, 'client_id', 'id');
+        return $this->hasMany(Customized_engagement_form::class, 'client_id');
     	// return $this->hasMany('App\Models\Customized_engagement_form');
         // return $this->belongsTo('App\Models\Customized_engagement_form');
     }

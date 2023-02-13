@@ -13,10 +13,10 @@ class SequenceCustomizedEngagementForm extends Migration
      */
     public function up()
     {
-        Schema::create('sequence_customized_engagement_form', function (Blueprint $table) {
-            $table->id();
-            // $table->timestamps();
-        });
+        // Schema::create('sequence_customized_engagement_form', function (Blueprint $table) {
+        //     $table->id();
+        //     // $table->timestamps();
+        // });
     }
 
     /**

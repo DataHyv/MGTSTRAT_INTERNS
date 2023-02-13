@@ -3,9 +3,11 @@
     <h4 class="card-title">Information</h4>
 </div>
 <!------------ END CARD HEADER ------------>
+
 @php
     $dateRow = 0;
 @endphp
+
 <!------------ FORM BODY ------------>
 <div class="form-body container">
     <!------------ STATUS ------------>
@@ -37,31 +39,6 @@
             </div>
         </div>
 
-    <!------------ END ------------>
-
-    <!------------ BATCH NAME ------------>
-        {{-- <div class="form-group row">
-            <div class="col-md-2">
-                <label class="fw-bold required">Batch Name: </label>
-            </div>
-            <div class="col-md-3">
-                <div class="form-group has-icon-left">
-                    <div class="position-relative">
-                        <input type="text" class="form-control @error('batch_name') is-invalid @enderror" value="{{ $data->batch_name }}" name="batch_name" id="BatchNumber">
-                        <div class="form-control-icon">
-                            <i class="fa-solid fa-file-lines"></i>
-                        </div>
-                        <div class="invalid-feedback">
-                        @error('batch_name')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
     <!------------ END ------------>
 
     <!------------ CUSTOMIZED TYPE ------------>
@@ -186,12 +163,12 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-2 g-2">
+            {{-- <div class="col-md-2 g-2">
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
                     <label class="form-check-label" for="flexSwitchCheckDefault">Pilot</label>
                 </div>
-            </div>
+            </div> --}}
         </div>
 
         <div class="form-group row">
@@ -219,8 +196,57 @@
         </div>
     <!------------ END ------------>
 
+    <!------------ NUMBER OF BATCHES AND SESSION ------------>
+        <div class="form-group row d-none">
+            <div class="col-md-2">
+                <label class="fw-bold required">Number of Batches </label>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group has-icon-left">
+                    <div class="position-relative">
+                        <input type="number" class="form-control @error('') is-invalid @enderror"
+                            value="{{ $data->batch_number }}" name="batch_number" id="BatchNumber" placeholder="Enter # of Batches" min="0"
+                            oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null">
+                        <div class="form-control-icon">
+                            <i class="fa-regular fa-calendar-days"></i>
+                        </div>
+                        @error('')
+                            <span class="invalid-feedback" role="alert">
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row mb-5 d-none">
+            <div class="col-md-2">
+                <label class="fw-bold required">Number of Session </label>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group has-icon-left">
+                    <div class="position-relative">
+                        <input type="number" class="form-control @error('') is-invalid @enderror"
+                            value="{{ $data->session_number }}" name="session_number" id="SessionNumber" placeholder="Enter # of Session" min="0"
+                            oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null">
+                        <div class="form-control-icon">
+                            <i class="fa-solid fa-clock-rotate-left"></i>
+                        </div>
+                        @error('')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!------------ END ------------>
+
     <!------------ TO BE ANNOUNCE ------------>
-        <div class="row">
+        {{-- <div class="row">
             <div class="col-md-2">
                 <label class="fw-bold required">Date </label>
             </div>
@@ -231,11 +257,11 @@
                     <label class="form-check-label" for="dcbeCheck">To Be Announced</label>
                 </div>
             </div>
-        </div>
+        </div> --}}
     <!------------ END ------------>
 
     <!------------ DATE COVERED BY ENGAGEMENT ------------>
-        @if ($data->program_dates != null)
+        {{-- @if ($data->program_dates != null)
             <div class="row justify-content-center mt-3" id="dcbe">
                 <h5 class="text-center mt-5 fst-italic">Date Covered by Engagement</h5>
                 @foreach ($DateOfEngagements as $key => $dates)
@@ -328,13 +354,12 @@
             </div>
          @else
 
-        @endif
+        @endif --}}
     <!------------ END ------------>
-
 </div>
 <!------------ END OF FORM BODY ------------>
 
-<script>
+{{-- <script>
     $('document').ready(function() {
         /*************************************DATE OF ENGAGEMENT**************************************/
             var dates = [{{$dateRow}}];
@@ -482,4 +507,4 @@
             }
 
     });
-</script>
+</script> --}}

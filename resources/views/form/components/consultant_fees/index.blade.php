@@ -56,14 +56,14 @@
                     </button>
                 </div>
 
-                <div class="card-body">
-                    <table class="table table-striped" id="table1">
+                <div class="card-body table-responsive">
+                    <table class="table table-light display dt-responsive compact" id="consultant_table">
 
                         <thead>
                             <tr>
                                 <th class="text-center text-uppercase">#</th>
                                 <th class="text-center">Full Name</th>
-                                <th class="text-center">Lead Facilitator</th>
+                                {{-- <th class="text-center">Lead Facilitator</th>
                                 <th class="text-center">Co-lead</th>
                                 <th class="text-center">Co-lead f2f</th>
                                 <th class="text-center">Co-facilitator</th>
@@ -71,7 +71,7 @@
                                 <th class="text-center">Consulting</th>
                                 <th class="text-center">Designer</th>
                                 <th class="text-center">Moderator</th>
-                                <th class="text-center">Producer</th>
+                                <th class="text-center">Producer</th> --}}
                                 <th class="text-center">Date Added</th>
                                 <th class="text-center text-uppercase">Modify</th>
                             </tr>
@@ -84,7 +84,7 @@
                                     <td class="text-center">
                                         {{$data->first_name}} {{$data->last_name}}
                                     </td>
-                                    <td class="text-center">
+                                    {{-- <td class="text-center">
                                         {{$data->lead_faci}}
                                     </td>
                                     <td class="text-center">
@@ -110,7 +110,8 @@
                                     </td>
                                     <td class="text-center">
                                         {{$data->producer}}
-                                    </td>
+                                    </td> --}}
+
                                     <td class="text-center">
                                         {{ \Carbon\Carbon::parse($data->created_at)->toFormattedDateString()}}
                                     </td>
@@ -150,6 +151,24 @@
 
     {{-- F2F ENGAGEMENT SCRIPT --}}
     <script type="text/javascript" src="/js/currencyFormat.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+    @section('script')
+    <script>
+        $(document).ready( function () {
+            $.fn.dataTable.moment( 'HH:mm MMM D, YY' );
+            $.fn.dataTable.moment( 'dddd, MMMM Do, YYYY' );
+            $('#consultant_table').dataTable( {
+                responsive: true,
+                stateSave: true,
+                "bScrollCollapse": true,
+                "autoWidth": false,
+                "order": [ 2, 'desc' ],
+                "columnDefs": [
+                    { "type": "date", "targets":2 }
+                ],
+            } );
+        } );
+    </script>
+    @endsection
 @endsection

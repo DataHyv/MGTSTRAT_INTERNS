@@ -1,133 +1,17 @@
-//DEFAULT COLOR
-var statusLoad = document.getElementById("status").value;
-if(statusLoad == "Confirmed"){
-    $('#status').css('background-color', '#007bff')
-    $('#status').css('color', 'white')
-    $('#status option').css('background-color', 'white')
-    $('#status option').css('color', 'black')
-}
-else if(statusLoad == "In-progress"){
-    $('#status').css('background-color', '#ffc107')
-    $('#status').css('color', 'black')
-    $('#status option').css('background-color', 'white')
-    $('#status option').css('color', 'black')
-}
-else if(statusLoad == "Completed"){
-    $('#status').css('background-color', '#28a745')
-    $('#status').css('color', 'white')
-    $('#status option').css('background-color', 'white')
-    $('#status option').css('color', 'black')
-}
-else if(statusLoad == "Lost"){
-    $('#status').css('background-color', '#dc3545')
-    $('#status').css('color', 'white')
-    $('#status option').css('background-color', 'white')
-    $('#status option').css('color', 'black')
-}
-else if(statusLoad == "Trial"){
-    $('#status').css('background-color', '#17a2b8')
-    $('#status').css('color', 'white')
-    $('#status option').css('background-color', 'white')
-    $('#status option').css('color', 'black')
-}
-
-//ASSIGN EVENT LISTENER IN STATUS
-document.getElementById("status").addEventListener("change", status);
-window.addEventListener("load", status);
-
-//EVENT OF STATUS
-function status() {
-    var status = document.getElementById("status").value;
-    if(status == "Confirmed"){
-        $('#status').css('background-color', '#007bff')
-        $('#status').css('color', 'white')
-        $('#status option').css('background-color', 'white')
-        $('#status option').css('color', 'black')
-    } else if(status == "In-progress"){
-        $('#status').css('background-color', '#ffc107')
-        $('#status').css('color', 'black')
-        $('#status option').css('background-color', 'white')
-        $('#status option').css('color', 'black')
-    } else if(status == "Completed"){
-        $('#status').css('background-color', '#28a745')
-        $('#status').css('color', 'white')
-        $('#status option').css('background-color', 'white')
-        $('#status option').css('color', 'black')
-    } else if(status == "Lost"){
-        $('#status').css('background-color', '#dc3545')
-        $('#status').css('color', 'white')
-        $('#status option').css('background-color', 'white')
-        $('#status option').css('color', 'black')
-    } else if(status == "Trial"){
-        $('#status').css('background-color', '#17a2b8')
-        $('#status').css('color', 'white')
-        $('#status option').css('background-color', 'white')
-        $('#status option').css('color', 'black')
-    }
-};
-
-//NSWH TRIGGER THE VALUE WHEN ITS LOAD
-$(document).on("load change click", ".customized-engagement, .nswh-percent", function () {
-    $(".nswh-percent-value").val($("#nswh").val())
-});
-
-$(document).ready(function() {
-    //currency format
-    let currency = Intl.NumberFormat("en-US");
-
-    //All commanumber class names value
-    //will be formatted into currency format
-    $(".commanumber").each(function () {
-        $(this).val(currency.format($(this).val()));
-    });
-
-    //Lead facilitator
-    $("#tableLeadfaci").each(function () {
-        //Hourly Fees dropdown
-        $(`#ef_LeadfacilitatorHf1`).click(function () {
-            var others = $(`#ef_LeadfacilitatorHf1`);
-            //if "others" is selected the dropdown
-            //menu will transform into input field
-            if ($('#others1').is(':selected')) {
-                $(`#inputLeadfaci1`).css("display", "")
-                $(`#ef_InputLeadFaciHf1`).prop('disabled', false)
-                $(`#ef_InputLeadFaciHf1`).val("")
-                $(`#ef_LeadfacilitatorHf1`).prop('disabled', true)
-                $(`#ef_LeadfacilitatorHf1`).css("display", "none")
-            } else {
-                $(`#inputLeadfaci1`).css("display", "none")
-            }
-        });
-
-        $('#deleteIcon1').click(function() {
-            // $(this).prev('input').val('').trigger('change').focus();
-            $(`#inputLeadfaci1`).css("display", "none")
-            $(`#ef_InputLeadFaciHf1`).prop('disabled', true)
-            $(`#ef_LeadfacilitatorHf1`).prop('disabled', false)
-            $(`#ef_LeadfacilitatorHf1`).css("display", "")
-            $(`#ef_LeadfacilitatorHf1`).val("12,000")
-        });
-    });
-});
-
-//ENTER KEY NOT TO SUBMIT
-document.addEventListener('keypress', function (e) {
-    if (e.keyCode === 13 || e.which === 13) {
-        e.preventDefault();
-        return false;
-    }
-});
-
 $(document).on(
-    "load change keyup click",
+    "load change keyup keypress click",
     "#main, #ec_tableEngagementCost",
     function () {
+
     let currency = Intl.NumberFormat("en-US");
 
     // LEAD CONSULTANT
     leadConsultant = 0;
     $("#ec_tableLeadConsultant > tr").each(function () {
         leadConsultant++;
+        // $(`#roster${leadConsultant}`).keypress(function(){
+
+        // });
 
         let roster = $(`#roster${leadConsultant}`).val();
 
@@ -423,8 +307,8 @@ $(document).on(
                 document.getElementById(`roster${leadConsultant}`).defaultValue = 'TBA';
         }
 
-        $(`#ec_LeadconsultantHf${leadConsultant}`).prop('readonly', true).val(currency.format(Math.ceil(hourlyFees)) );
-        // document.getElementById(`ec_LeadconsultantHf${leadConsultant}`).value = currency.format( Math.ceil(hourlyFees) );
+        $(`#ec_LeadconsultantHf${leadConsultant}`).prop('readonly', true).val( currency.format(Math.ceil(hourlyFees)) );
+        // document.getElementById(`ec_LeadconsultantHf${leadConsultant}`).defaultValue = currency.format( Math.ceil(hourlyFees) );
 
     });
 
@@ -722,7 +606,7 @@ $(document).on(
         }
 
         $(`#ec_DesignerHf${designer}`).prop('readonly', true).val( currency.format(Math.ceil(hourlyFees)) );
-        // document.getElementById(`ec_DesignerHf${designer}`).value = currency.format( Math.ceil(hourlyFees) );
+        // document.getElementById(`ec_DesignerHf${designer}`).defaultValue = currency.format( Math.ceil(hourlyFees) );
 
     });
 
@@ -885,7 +769,7 @@ $(document).on(
         }
 
         $(`#ec_LeadfacilitatorHf${leadfaci}`).prop('readonly', true).val( currency.format(Math.ceil(hourlyFees)) );
-        // document.getElementById(`ec_LeadfacilitatorHf${leadfaci}`).value = currency.format( Math.ceil(hourlyFees) );
+        // document.getElementById(`ec_LeadfacilitatorHf${leadfaci}`).defaultValue = currency.format( Math.ceil(hourlyFees) );
 
     });
 
@@ -1185,7 +1069,7 @@ $(document).on(
 
             default:
                 hourlyFees = 1900;
-                document.getElementById(`roster4${leadConsultant}`).defaultValue = 'TBA';
+                document.getElementById(`roster4${colead}`).defaultValue = 'TBA';
         }
 
         $(`#ec_CoLeadfacilitatorHf${colead}`).prop('readonly', true).val( currency.format(Math.ceil(hourlyFees)) );
@@ -1795,8 +1679,9 @@ $(document).on(
                 document.getElementById(`roster6${moderator}`).defaultValue = 'TBA';
         }
 
+        // $(`#ec_ModeratorHf${moderator}`).prop('readonly', true).val( currency.format(Math.ceil(hourlyFees)) );
         $(`#ec_ModeratorHf${moderator}`).prop('readonly', true).val( currency.format(Math.ceil(hourlyFees)) );
-        // document.getElementById(`ec_ModeratorHf${moderator}`).value = currency.format( Math.ceil(hourlyFees) );
+        // document.getElementById(`ec_ModeratorHf${moderator}`).defaultValue = currency.format( Math.ceil(hourlyFees) );
     });
 
     // PRODUCER
@@ -2098,7 +1983,7 @@ $(document).on(
         }
 
         $(`#ec_ProducerHf${producer}`).prop('readonly', true).val( currency.format(Math.ceil(hourlyFees)) );
-        // document.getElementById(`ec_ProducerHf${producer}`).value = currency.format( Math.ceil(hourlyFees) );
+        // document.getElementById(`ec_ProducerHf${producer}`).defaultValue = currency.format( Math.ceil(hourlyFees) );
     });
 
 });

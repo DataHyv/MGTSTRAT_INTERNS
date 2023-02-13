@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Sub_fee extends Model
+class Sub_cost extends Model
 {
     // use HasFactory;
     public $timestamps = false;
@@ -16,14 +16,9 @@ class Sub_fee extends Model
         'hour_fee',
         'hour_num',
         'nswh',
-        'nswh_percent',
+        'rooster',
         'notes',
     ];
-
-    // public function client()
-    // {
-    //     return $this->belongsTo(Client::class);
-    // }
 
     public function sub_informations()
     {

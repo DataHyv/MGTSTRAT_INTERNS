@@ -38,8 +38,8 @@
                 {{-- <div class="card-header">
                     User Datatable
                 </div> --}}
-                <div class="card-body">
-                    <table class="table table-striped" id="table1">
+                <div class="card-body table-responsive">
+                    <table class="table table-light display dt-responsive compact" id="clients_table">
                         <thead>
                             <tr>
                                 <th>ID Number</th>
@@ -48,7 +48,7 @@
                                 <th>Sales Person</th>
                                 <th>Industry</th>
                                 <th>Old/ New</th>
-                                <th class="text-center">Total Contract</th>
+                                {{-- <th class="text-center">Total Contract</th> --}}
                                 <th>Latest Engagement</th>
                                 <th class="text-center">Modify</th>
                             </tr>
@@ -62,13 +62,13 @@
                                     <td class="status">{{$client->sales_person}}</td>
                                     <td class="status">{{$client->industry}}</td>
                                     <td class="status">{{$client->old_new}}</td>
-                                    <td class="status text-center">
+                                    {{-- <td class="status text-center">
                                         <a data-toggle="modal" href="#contractModal">
                                             <span class="badge bg-success">
                                                 <i class="fa-solid fa-book"></i> VIEW CONTRACTS
                                             </span>
                                         </a>
-                                    </td>
+                                    </td> --}}
                                     <td class="status">{{$client->latest_eng}}</td>
                                     <td class="text-center">
                                         <a href="{{ url('clients/view/detail/' . $client->id) }}" >
@@ -103,9 +103,27 @@
     </div>
 
     {{-- F2F ENGAGEMENT SCRIPT --}}
-    <script type="text/javascript" src="/js/f2fform.js"></script>
-    <script type="text/javascript" src="/js/MultiStep.js"></script>
-    <script type="text/javascript" src="/js/currencyFormat.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    {{-- <script type="text/javascript" src="/js/f2fform.js"></script> --}}
+    {{-- <script type="text/javascript" src="/js/MultiStep.js"></script> --}}
+    {{-- <script type="text/javascript" src="/js/currencyFormat.js"></script> --}}
+    {{-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+    @section('script')
+    <script>
+        $(document).ready( function () {
+            $.fn.dataTable.moment( 'HH:mm MMM D, YY' );
+            $.fn.dataTable.moment( 'dddd, MMMM Do, YYYY' );
+            $('#clients_table').dataTable( {
+                responsive: true,
+                stateSave: true,
+                "bScrollCollapse": true,
+                "autoWidth": false,
+                "order": [ 0, 'desc' ],
+                // "columnDefs": [
+                //     { "type": "date", "targets":2 }
+                // ],
+            } );
+        } );
+    </script>
+    @endsection
 @endsection

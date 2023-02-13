@@ -332,7 +332,7 @@
                     </td>
                     <td class="noc">
                         <input type="number" class="form-control input-table @error('') is-invalid @enderror"
-                            value="{{ old('') }}" name="fee_consultant_num[]" id="ef_LeadfacilitatorNoc${efLeadfaci}" max="100"
+                            value="{{ old('') }}" name="fee_consultant_num[]" id="ef_LeadfacilitatorNoc${efLeadfaci}"
                             oninput="document.getElementById('ec_LeadfacilitatorNoc${efLeadfaci}').value = document.getElementById('ef_LeadfacilitatorNoc${efLeadfaci}').value;">
                     </td>
                     <td>

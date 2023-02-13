@@ -1,6 +1,7 @@
 @section('title', 'COACHING RECORD')
 <link rel="shortcut icon" type="image/png" href="{{ URL::to('assets/images/logo/logo.png') }}">
 <link rel="stylesheet" href="{{ URL::to('css/custom.css') }}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 @extends('layouts.master')
 @section('menu')
     @extends('sidebar.dashboard')
@@ -46,9 +47,9 @@
                                     <th class="text-center">ENGAGEMENT TITLE</th>
                                     <th class="text-center">NUMBER OF PAX</th>
                                     <th class="text-center">SCHEDULED DATES</th>
-                                    <th class="text-center">SCHEDULED TIME</th>
                                     <th class="text-center">DATE ADDED</th>
                                     <th class="text-center">Modify</th>
+                                    <th hidden></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -91,14 +92,6 @@
                                                 @endforeach
                                             @endif --}}
                                             Nov 3, 2022
-                                        </td>
-                                        <td class="fw-bold text-center">
-                                            {{-- @if($item->program_start_time)
-                                                @foreach($item->program_start_time as $time)
-                                                    {{$time}}
-                                                @endforeach
-                                            @endif --}}
-                                            7:00 AM
                                         </td>
                                         {{-- <td class="fw-bold text-center">{{ \Carbon\Carbon::parse($item->created_at)->toFormattedDateString()}}</td> --}}
                                         <td class="fw-bold text-center">Nov 3, 2022</td>
@@ -219,15 +212,6 @@
                 </div>
             </section>
         </div>
-        <!------------ FOOTER ------------>
-        <footer>
-            <div class="footer clearfix mb-0 text-muted">
-                <div class="float-end">
-                    <p><script>document.write(new Date().getFullYear());</script> Copyright &copy MGT-STRAT</p>
-                </div>
-            </div>
-        </footer>
-    <!------------ END OF FOOTER ------------>
     </div>
 @endsection
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>

@@ -15,6 +15,78 @@
 <!------------ FORM BODY ------------>
 <div class="form-body container">
     <section>
+        <!------------ DATE COVERED BY ENGAGEMENT ------------>
+            <div class="row justify-content-center mb-5" id="dcbe">
+                <h5 class="text-center fst-italic">Date Covered by Engagement</h5>
+                <div class="d-flex justify-content-center" id="dateRows1">
+
+                    <div class="flex-column mt-3">
+                        <div>
+                            <fieldset class="row justify-content-center" id="dateRows">
+                                {{-- <div class="col-lg-2 col-md-2">
+                                    <div class="form-group has-icon-left">
+                                        <label class="fw-bold required">Date</label>
+                                        <div class="position-relative">
+                                            <input type="text" class="form-control date datepicker @error('doe') is-invalid @enderror"
+                                                value="{{ old('doe') }}" placeholder="Enter Date" name="program_dates[]" id="datepicker"
+                                                size="30">
+                                            <div class="form-control-icon">
+                                                <i class="bi bi-calendar"></i>
+                                            </div>
+                                            @error('doe')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div> --}}
+
+                                <div class="col-lg-2 col-md-2">
+                                    <div class="form-group has-icon-left">
+                                        <label class="fw-bold required">Start Time</label>
+                                        <div class="position-relative">
+                                            <input type="text" class="form-control start-time timepicker @error('dot') is-invalid @enderror"
+                                                value="{{ $data->program_start_time }}" placeholder="Enter Time" id="program_start_time" name="program_start_time">
+                                            <div class="form-control-icon">
+                                                <i class="bi bi-clock"></i>
+                                            </div>
+                                            @error('dot')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-2 col-md-2">
+                                    <div class="form-group has-icon-left">
+                                        <label class="fw-bold required">End Time</label>
+                                        <div class="position-relative">
+                                            <input type="text" class="form-control end-time timepicker @error('dot') is-invalid @enderror"
+                                                value="{{ $data->program_end_time }}" placeholder="Enter Time" id="program_end_time" name="program_end_time">
+                                            <div class="form-control-icon">
+                                                <i class="fa-solid fa-hourglass-end"></i>
+                                            </div>
+                                            @error('dot')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+                                @include('form.components.reference.cluster')
+                            </fieldset>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        <!------------------- END ----------------------->
+
         <div class="table-responsive" id="no-more-tables" data-animation="slideHorz">
             <table class="table table-bordered" id="ec_tableEngagementFees">
             <!-------------------------------------------------------------TABLE HEADING TITLE------------------------------------------------------------------>
@@ -37,7 +109,7 @@
                                 <input type="hidden" value="" name="fee_nswh[]">
                                 <input type="hidden" value="" name="fee_notes[]">
                                 <select
-                                    class="input js-mytooltip form-select form-select-sm engagement-fee nswh-percent @error('') is-invalid @enderror select"
+                                    class="input form-select form-select-sm engagement-fee nswh-percent @error('') is-invalid @enderror select"
                                     name="nswh_percent[]" id="nswh">
                                     <option value="0.1" {{ $fee_type->nswh_percent == '0.1' ? 'selected="selected"' : '' }}>
                                         &#8369;10%
@@ -69,7 +141,8 @@
                     <th class="px-4 title table-light">
                         <b>1. CONSULTING</b>
                     </th>
-                    <th></th>
+                    <th>
+                    </th>
                     <th></th>
                     <th></th>
                     <th></th>
@@ -142,7 +215,7 @@
                                 name="fee_notes[]" id="" rows="2" cols="55">{{$fee_type->notes}}</textarea>
                         </td>
 
-                        @if ($efLeadConsultant === 1)
+                        {{-- @if ($efLeadConsultant === 1)
                             <td style="background-color: #FFFFFF;" class="border border-white"><a href="javascript:void(0)"
                                     class="text-success font-18" title="Add" id="addBtn" onclick="$('#EcAddBtn').trigger('click');"><i
                                         class="fa fa-plus"></i></a>
@@ -153,7 +226,7 @@
                                     <i class="fa fa-trash-o"></i>
                                 </a>
                             </td>
-                        @endif
+                        @endif --}}
                     </tr>
                     @endif
                     @endforeach
@@ -196,7 +269,7 @@
                             <textarea class="form-control input-table @error('') is-invalid @enderror"
                                 name="fee_notes[]" id="" rows="2" cols="55">{{$fee_type->notes}}</textarea>
                         </td>
-                        @if($efAnalyst === 1)
+                        {{-- @if($efAnalyst === 1)
                             <td style="background-color: #FFFFFF;" class="border border-white">
                                 <a href="javascript:void(0)" class="text-success font-18" title="Add" id="addBtn2" onclick="$('#EcAddBtn2').trigger('click');">
                                     <i class="fa fa-plus"></i>
@@ -208,7 +281,7 @@
                                     <i class="fa fa-trash-o"></i>
                                 </a>
                             </td>
-                        @endif
+                        @endif --}}
                     </tr>
                     @endif
                     @endforeach
@@ -304,7 +377,7 @@
                             <textarea class="form-control input-table @error('') is-invalid @enderror"
                                 name="fee_notes[]" id="" rows="2" cols="55">{{$fee_type->notes}}</textarea>
                         </td>
-                        @if ($efDesigner === 1 )
+                        {{-- @if ($efDesigner === 1 )
                             <td style="background-color: #FFFFFF;" class="border border-white">
                                 <a href="javascript:void(0)" class="text-success font-18" title="Add" id="addBtn3" onclick="$('#EcAddBtn3').trigger('click');">
                                     <i class="fa fa-plus"></i>
@@ -316,7 +389,7 @@
                                     <i class="fa fa-trash-o"></i>
                                 </a>
                             </td>
-                        @endif
+                        @endif --}}
                     </tr>
                     @endif
                     @endforeach
@@ -346,8 +419,7 @@
                         <td class="noc">
                             <input type="text" class="commanumber form-control input-table @error('') is-invalid @enderror"
                                 value="{{ $fee_type->consultant_num }}" name="fee_consultant_num[]" id="ef_LeadfacilitatorNoc{{$efLeadfaci}}" data-type="currency"
-                                oninput="document.getElementById('ec_LeadfacilitatorNoc{{$efLeadfaci}}').value = document.getElementById('ef_LeadfacilitatorNoc{{$efLeadfaci}}').value;"
-                                max="100">
+                                oninput="document.getElementById('ec_LeadfacilitatorNoc{{$efLeadfaci}}').value = document.getElementById('ef_LeadfacilitatorNoc{{$efLeadfaci}}').value;">
                         </td>
                         <td>
                             <div class="form-group has-icon-right mb-0" id="inputLeadfaci1" style="display:none">
@@ -371,14 +443,13 @@
                                         &#8369;12,000 - all else</i>"
                                     data-mytooltip-theme="dark" data-mytooltip-action="focus"
                                     data-mytooltip-direction="right" style="background-color:#ffcccc; color:red;">
-                                    <option value="10,000" {{ $fee_type->hour_fee == '10,000' ? 'selected="selected"' : '' }}>
+                                    <option value="10000" {{ $fee_type->hour_fee == '10000' ? 'selected="selected"' : '' }}>
                                         &#8369;10,000
                                     </option>
-                                    <option value="11,000" {{ $fee_type->hour_fee == '11,000' ? 'selected="selected"' : '' }}>
+                                    <option value="11000" {{ $fee_type->hour_fee == '11000' ? 'selected="selected"' : '' }}>
                                         &#8369;11,000
                                     </option>
-                                    <option value="12,000" {{ $fee_type->hour_fee == '12,000' ? 'selected="selected"' : '' }}
-                                        selected>
+                                    <option value="12000" {{ $fee_type->hour_fee == '12000' ? 'selected="selected"' : '' }}>
                                         &#8369;12,000
                                     </option>
                                     <option value="others" {{ $fee_type->hour_fee == 'others' ? 'selected="selected"' : '' }}
@@ -415,7 +486,7 @@
                             <textarea class="form-control input-table @error('') is-invalid @enderror"
                                 name="fee_notes[]" id="" rows="2" cols="55">{{$fee_type->notes}}</textarea>
                         </td>
-                        @if ($efLeadfaci === 1)
+                        {{-- @if ($efLeadfaci === 1)
                             <td style="background-color: #FFFFFF;" class="border border-white">
                                 <a href="javascript:void(0)" class="text-success font-18" title="Add"id="addBtn4" onclick="$('#EcAddBtn4').trigger('click');">
                                     <i class="fa fa-plus"></i>
@@ -427,7 +498,7 @@
                                     <i class="fa fa-trash-o"></i>
                                 </a>
                             </td>
-                        @endif
+                        @endif --}}
                     </tr>
                     @endif
                     @endforeach
@@ -444,9 +515,7 @@
                         </td>
                         <td class="noc">
                             <input type="text" class="commanumber form-control input-table @error('') is-invalid @enderror"
-                                value="{{ $fee_type->consultant_num }}" name="fee_consultant_num[]" id="ef_CofaciNoc{{$efCofaci}}" data-type="currency"
-                                oninput="document.getElementById('ec_CofaciNoc{{$efCofaci}}').value = document.getElementById('ef_CofaciNoc{{$efCofaci}}').value;"
-                                max="100">
+                                value="{{ $fee_type->consultant_num }}" name="fee_consultant_num[]" id="ef_CofaciNoc{{$efCofaci}}" data-type="currency">
                         </td>
                         <td>
                             <input type="text" class="commanumber form-control input-table @error('') is-invalid @enderror"
@@ -473,7 +542,7 @@
                             <textarea class="form-control input-table @error('') is-invalid @enderror"
                                 name="fee_notes[]" id="" rows="2" cols="55">{{$fee_type->notes}}</textarea>
                         </td>
-                        @if ($efCofaci === 1)
+                        {{-- @if ($efCofaci === 1)
                             <td style="background-color: #FFFFFF;" class="border border-white">
                                 <a href="javascript:void(0)" class="text-success font-18" title="Add" id="addBtn5" onclick="$('#EcAddBtn5').trigger('click');">
                                     <i class="fa fa-plus"></i>
@@ -485,7 +554,7 @@
                                     <i class="fa fa-trash-o"></i>
                                 </a>
                             </td>
-                        @endif
+                        @endif --}}
                     </tr>
                     @endif
                     @endforeach
@@ -503,8 +572,7 @@
                         <td class="noc">
                             <input type="text" class="commanumber form-control input-table @error('') is-invalid @enderror"
                                 value="{{ $fee_type->consultant_num }}" name="fee_consultant_num[]" id="ef_ModeratorNoc{{$efModerator}}" data-type="currency"
-                                oninput="document.getElementById('ec_ModeratorNoc{{$efModerator}}').value = document.getElementById('ef_ModeratorNoc{{$efModerator}}').value;"
-                                max="100">
+                                oninput="document.getElementById('ec_ModeratorNoc{{$efModerator}}').value = document.getElementById('ef_ModeratorNoc{{$efModerator}}').value;">
                         </td>
                         <td>
                             <input type="text" class="commanumber form-control input-table @error('') is-invalid @enderror"
@@ -532,7 +600,7 @@
                             <textarea class="form-control input-table @error('') is-invalid @enderror"
                                 name="fee_notes[]" id="" rows="2" cols="55">{{$fee_type->notes}}</textarea>
                         </td>
-                        @if ($efModerator === 1)
+                        {{-- @if ($efModerator === 1)
                             <td style="background-color: #FFFFFF;" class="border border-white">
                                 <a href="javascript:void(0)" class="text-success font-18" title="Add" id="addBtn6" onclick="$('#EcAddBtn6').trigger('click');">
                                     <i class="fa fa-plus"></i></a>
@@ -543,7 +611,7 @@
                                     <i class="fa fa-trash-o"></i>
                                 </a>
                             </td>
-                        @endif
+                        @endif --}}
                     </tr>
                     @endif
                     @endforeach
@@ -561,8 +629,7 @@
                         <td class="noc">
                             <input type="text" class="commanumber form-control input-table @error('') is-invalid @enderror"
                                 value="{{ $fee_type->consultant_num }}" name="fee_consultant_num[]" id="ef_ProducerNoc{{$efProducer}}" data-type="currency"
-                                oninput="document.getElementById('ec_ProducerNoc{{$efProducer}}').value = document.getElementById('ef_ProducerNoc{{$efProducer}}').value;"
-                                max="100">
+                                oninput="document.getElementById('ec_ProducerNoc{{$efProducer}}').value = document.getElementById('ef_ProducerNoc{{$efProducer}}').value;">
                         </td>
                         <td>
                             <input type="text" class="commanumber form-control input-table @error('') is-invalid @enderror"
@@ -589,7 +656,7 @@
                             <textarea class="form-control input-table @error('') is-invalid @enderror"
                                 name="fee_notes[]" id="" rows="2" cols="55">{{$fee_type->notes}}</textarea>
                         </td>
-                        @if($efProducer === 1)
+                        {{-- @if($efProducer === 1)
                             <td style="background-color: #FFFFFF;" class="border border-white">
                                 <a href="javascript:void(0)" class="text-success font-18" title="Add" id="addBtn7" onclick="$('#EcAddBtn7').trigger('click');">
                                     <i class="fa fa-plus"></i>
@@ -601,7 +668,7 @@
                                     <i class="fa fa-trash-o"></i>
                                 </a>
                             </td>
-                        @endif
+                        @endif --}}
                     </tr>
                     @endif
                     @endforeach
@@ -645,8 +712,7 @@
                         <td class="noc">
                             <input type="text" class="commanumber form-control input-table @error('') is-invalid @enderror"
                                 value="{{ $fee_type->consultant_num }}" name="fee_consultant_num[]" id="ef_DocumentorNoc{{$efDocumentor}}" data-type="currency"
-                                oninput="document.getElementById('ec_DocumentorNoc{{$efDocumentor}}').value = document.getElementById('ef_DocumentorNoc{{$efDocumentor}}').value;"
-                                max="100">
+                                oninput="document.getElementById('ec_DocumentorNoc{{$efDocumentor}}').value = document.getElementById('ef_DocumentorNoc{{$efDocumentor}}').value;">
                         </td>
                         <td>
                             <input type="text" class="commanumber form-control input-table @error('') is-invalid @enderror"
@@ -674,7 +740,7 @@
                             <textarea class="form-control input-table @error('') is-invalid @enderror"
                                 name="fee_notes[]" id="" rows="2" cols="55">{{$fee_type->notes}}</textarea>
                         </td>
-                        @if($efDocumentor === 1)
+                        {{-- @if($efDocumentor === 1)
                         <td style="background-color: #FFFFFF;" class="border border-white">
                             <a href="javascript:void(0)" class="text-success font-18" title="Add" id="addBtn8" onclick="$('#EcAddBtn8').trigger('click');">
                                 <i class="fa fa-plus"></i>
@@ -686,7 +752,7 @@
                                     <i class="fa fa-trash-o"></i>
                                 </a>
                             </td>
-                        @endif
+                        @endif --}}
                     </tr>
                     @endif
                     @endforeach
@@ -760,5 +826,11 @@
     </section>
 </div>
 <!---------- END OF FORM BODY ---------->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+    $('#name').change(function() {
+        $('#firstname').val($(this).val());
+    });
+</script>
 
 @include('form.components.customized_engagement.update.script.ce_update_fees')
