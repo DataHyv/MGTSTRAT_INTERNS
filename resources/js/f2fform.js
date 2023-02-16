@@ -106,6 +106,19 @@ $("#ef_PDPdf").on({
     },
 });
 
+$("#input_totalPackages").on({
+    keyup: function () {
+        let input_val = $(this).val();
+        input_val = numberToCurrency(input_val);
+        $(this).val(input_val);
+    },
+    blur: function () {
+        let input_val = $(this).val();
+        input_val = numberToCurrency(input_val, true, true);
+        $(this).val(input_val);
+    },
+});
+
 //ENGAGEMENT COST
 $("#ec_LeadconsultantsPd").on({
     keyup: function () {
@@ -146,18 +159,18 @@ $("#ec_DesignersPd").on({
     },
 });
 
-$("#ec_CreatorPd").on({
-    keyup: function () {
-        let input_val = $(this).val();
-        input_val = numberToCurrency(input_val);
-        $(this).val(input_val);
-    },
-    blur: function () {
-        let input_val = $(this).val();
-        input_val = numberToCurrency(input_val, true, true);
-        $(this).val(input_val);
-    },
-});
+// $("#ec_CreatorPd").on({
+//     keyup: function () {
+//         let input_val = $(this).val();
+//         input_val = numberToCurrency(input_val);
+//         $(this).val(input_val);
+//     },
+//     blur: function () {
+//         let input_val = $(this).val();
+//         input_val = numberToCurrency(input_val, true, true);
+//         $(this).val(input_val);
+//     },
+// });
 
 $("#ec_LeadfacilitatorsPd").on({
     keyup: function () {
@@ -322,7 +335,7 @@ document.getElementById("ec_Programexpenses").defaultValue = 2 + "%";
 //Customized Engagement form of Engagement Fees
 $(document).on(
     "change keyup click",
-    ".f2f-customized-type, .ga-only-dropdown, .removed, #remove, #f2f-ef-table, #f2f-ec-table",
+    "#main, .f2f-customized-type, .ga-only-dropdown, .removed, #remove, #f2f-ef-table, #f2f-ec-table",
     function () {
         //customized type
         $(".f2f-customized-type").each(function () {
@@ -439,10 +452,10 @@ $(document).on(
         $("#tableLeadconsultant > tr").each(function () {
             rowIndx++;
 
-            $("#ec_LeadconsultantsNoc1").val($("#ef_LeadconsultantNoc1").val());
-            $("#ec_LeadconsultantsNod1").val($("#ef_LeadconsultantNoh1").val());
-            $("#ec_LeadconsultantsNwh1").val($("#ef_LeadconsultantNwh1").val());
-            $("#ec_LeadconsultantsAtd1").val($("#ef_LeadconsultantAtd1").val());
+            document.getElementById("ec_LeadconsultantsNoc1").defaultValue = $( "#ef_LeadconsultantNoc1" ).val();
+            document.getElementById("ec_LeadconsultantsNod1").defaultValue = $( "#ef_LeadconsultantNoh1" ).val();
+            document.getElementById("ec_LeadconsultantsNwh1").defaultValue = $( "#ef_LeadconsultantNwh1" ).val();
+            document.getElementById("ec_LeadconsultantsAtd1").defaultValue = $( "#ef_LeadconsultantAtd1" ).val();
 
             sumLc =
                 $(this).find(`#ef_LeadconsultantNoc${rowIndx}`).val() *
@@ -499,10 +512,10 @@ $(document).on(
             $("#ef_TableAnalyst > tr").each(function () {
                 rowAnalyst++;
 
-                $("#ec_AnalystsNoc1").val($("#ef_AnalystNoc1").val());
-                $("#ec_AnalystsNod1").val($("#ef_AnalystNod1").val());
-                $("#ec_AnalystsNwh1").val($("#ef_AnalystNsw1").val());
-                $("#ec_AnalystsAtd1").val($("#ef_AnalystAtd1").val());
+                document.getElementById("ec_AnalystsNoc1").defaultValue = $( "#ef_AnalystNoc1" ).val();
+                document.getElementById("ec_AnalystsNod1").defaultValue = $( "#ef_AnalystNod1" ).val();
+                document.getElementById("ec_AnalystsNwh1").defaultValue = $( "#ef_AnalystNsw1" ).val();
+                document.getElementById("ec_AnalystsAtd1").defaultValue = $( "#ef_AnalystAtd1" ).val();
 
                 sumAnlst =
                     $(this).find(`#ef_AnalystNoc${rowAnalyst}`).val() *
@@ -553,20 +566,20 @@ $(document).on(
             });
 
             $("#subtotalConsulting").html(
-               "₱" +  currency.format(Math.ceil(sumEf))
+                currency.format(Math.ceil(sumEf))
             );
             $("#ec_SubtotalsConsulting").html(
-               "₱" +  currency.format(Math.ceil(sumofEngagementCost))
+                currency.format(Math.ceil(sumofEngagementCost))
             );
 
             // Designer
             $("#ef_TableDesigner > tr").each(function () {
                 rowDesigner++;
 
-                $("#ec_DesignersNoc1").val($("#ef_DesignerNoc1").val());
-                $("#ec_DesignersNod1").val($("#ef_DesignerNod1").val());
-                $("#ec_DesignersNwh1").val($("#ef_DesignerNsw1").val());
-                $("#ec_DesignersAtd1").val($("#ef_DesignerAtd1").val());
+                document.getElementById("ec_DesignersNoc1").defaultValue = $( "#ef_DesignerNoc1" ).val();
+                document.getElementById("ec_DesignersNod1").defaultValue = $( "#ef_DesignerNod1" ).val();
+                document.getElementById("ec_DesignersNwh1").defaultValue = $( "#ef_DesignerNsw1" ).val();
+                document.getElementById("ec_DesignersAtd1").defaultValue = $( "#ef_DesignerAtd1" ).val();
 
                 sumDesigner =
                     $(this).find(`#ef_DesignerNoc${rowDesigner}`).val() *
@@ -622,11 +635,10 @@ $(document).on(
             $("#ef_TableLeadFaci > tr").each(function () {
 
                 rowLeadFaci++;
-
-                $("#ec_LeadfacilitatorsNoc1").val($("#ef_LeadFaciNoc1").val());
-                $("#ec_LeadfacilitatorsNod1").val($("#ef_LeadFaciNod1").val());
-                $("#ec_LeadfacilitatorsNwh1").val($("#ef_LeadFaciNsw1").val());
-                $("#ec_LeadfacilitatorsAtd1").val($("#ef_LeadFaciAtd1").val());
+                document.getElementById("ec_LeadfacilitatorsNoc1").defaultValue = $( "#ef_LeadFaciNoc1" ).val();
+                document.getElementById("ec_LeadfacilitatorsNod1").defaultValue = $( "#ef_LeadFaciNod1" ).val();
+                document.getElementById("ec_LeadfacilitatorsNwh1").defaultValue = $( "#ef_LeadFaciNsw1" ).val();
+                document.getElementById("ec_LeadfacilitatorsAtd1").defaultValue = $( "#ef_LeadFaciAtd1" ).val();
 
                 sumLeadFaci =
                     $(this).find(`#ef_LeadFaciNoc${rowLeadFaci}`).val() *
@@ -684,11 +696,10 @@ $(document).on(
             // Co Facilitator
             $("#ef_TableCoFaci > tr").each(function () {
                 rowCoFaci++;
-
-                $("#ec_CofacilitatorsNoc1").val($("#ef_CoFaciNoc1").val());
-                $("#ec_CofacilitatorsNod1").val($("#ef_CoFaciNod1").val());
-                $("#ec_CofacilitatorsNwh1").val($("#ef_CoFaciNsw1").val());
-                $("#ec_CofacilitatorsAtd1").val($("#ef_CoFaciAtd1").val());
+                document.getElementById("ec_CofacilitatorsNoc1").defaultValue = $( "#ef_CoFaciNoc1" ).val();
+                document.getElementById("ec_CofacilitatorsNod1").defaultValue = $( "#ef_CoFaciNod1" ).val();
+                document.getElementById("ec_CofacilitatorsNwh1").defaultValue = $( "#ef_CoFaciNsw1" ).val();
+                document.getElementById("ec_CofacilitatorsAtd1").defaultValue = $( "#ef_CoFaciAtd1" ).val();
 
                 sumCoFaci =
                     $(this).find(`#ef_CoFaciNoc${rowCoFaci}`).val() *
@@ -747,10 +758,10 @@ $(document).on(
             $("#ef_TableActionLearn > tr").each(function () {
                 rowActionLearn++;
 
-                $("#ec_ActionlearningcoachNoc1").val($("#ef_ActionLearnNoc1").val());
-                $("#ec_ActionlearningcoachNod1").val($("#ef_ActionLearnNod1").val());
-                $("#ec_ActionlearningcoachNwh1").val($("#ef_ActionLearnNsw1").val());
-                $("#ec_ActionlearningcoachAtd1").val($("#ef_ActionLearnAtd1").val());
+                document.getElementById("ec_ActionlearningcoachNoc1").defaultValue = $( "#ef_ActionLearnNoc1" ).val();
+                document.getElementById("ec_ActionlearningcoachNod1").defaultValue = $( "#ef_ActionLearnNod1" ).val();
+                document.getElementById("ec_ActionlearningcoachNwh1").defaultValue = $( "#ef_ActionLearnNsw1" ).val();
+                document.getElementById("ec_ActionlearningcoachAtd1").defaultValue = $( "#ef_ActionLearnAtd1" ).val();
 
                 sumActionLearn =
                     $(this).find(`#ef_ActionLearnNoc${rowActionLearn}`).val() *
@@ -781,11 +792,10 @@ $(document).on(
             // Marshal
             $("#ef_TableMarshal > tr").each(function () {
                 rowMarshal++;
-
-                $("#ec_MarshalNoc1").val($("#ef_MarshalNoc1").val());
-                $("#ec_MarshalNod1").val($("#ef_MarshalNod1").val());
-                $("#ec_MarshalNwh1").val($("#ef_MarshalNsw1").val());
-                $("#ec_MarshalAtd1").val($("#ef_MarshalAtd1").val());
+                document.getElementById("ec_MarshalNoc1").defaultValue = $( "#ef_MarshalNoc1" ).val();
+                document.getElementById("ec_MarshalNod1").defaultValue = $( "#ef_MarshalNod1" ).val();
+                document.getElementById("ec_MarshalNwh1").defaultValue = $( "#ef_MarshalNsw1" ).val();
+                document.getElementById("ec_MarshalAtd1").defaultValue = $( "#ef_MarshalAtd1" ).val();
 
                 sumMarshal =
                 $(this).find(`#ef_MarshalNoc${rowMarshal}`).val() *
@@ -818,10 +828,10 @@ $(document).on(
             $("#ef_TableDocumentor > tr").each(function () {
                 rowDocumentor++;
 
-                $("#ec_DocumentorsNoc1").val($("#ef_DocumentorNoc1").val());
-                $("#ec_DocumentorsNod1").val($("#ef_DocumentorNod1").val());
-                $("#ec_DocumentorsNwh1").val($("#ef_DocumentorNsw1").val());
-                $("#ec_DocumentorsAtd1").val($("#ef_DocumentorAtd1").val());
+                document.getElementById("ec_DocumentorsNoc1").defaultValue = $( "#ef_DocumentorNoc1" ).val();
+                document.getElementById("ec_DocumentorsNod1").defaultValue = $( "#ef_DocumentorNod1" ).val();
+                document.getElementById("ec_DocumentorsNwh1").defaultValue = $( "#ef_DocumentorNsw1" ).val();
+                document.getElementById("ec_DocumentorsAtd1").defaultValue = $( "#ef_DocumentorAtd1" ).val();
 
                 sumDocumentor =
                     $(this).find(`#ef_DocumentorNoc${rowDocumentor}`).val() *
@@ -849,7 +859,7 @@ $(document).on(
                 $(this).find("#subtotal-Documentor").html(currency.format(Math.ceil(sumDocumentor)));
             });
 
-            // $("#subtotal-Documentor").html("₱" + currency.format(Math.ceil(sumDocumentor)));
+            // $("#subtotal-Documentor").html(currency.format(Math.ceil(sumDocumentor)));
 
             // Per Diem
             $("#ef_PDPdf").each(function () {
@@ -867,17 +877,17 @@ $(document).on(
                 }
                 sumEf += +sumPD;
             });
-            $("#subtotal-PD").html("₱" + currency.format(Math.ceil(sumPD)));;
+            $("#subtotal-PD").html(currency.format(Math.ceil(sumPD)));;
 
 
             // Onsite PC
             $("#ef_TableOnsite > tr").each(function () {
                 rowOnsite++;
 
-                $("#ec_OnsitepcNoc1").val($("#ef_OnsiteNoc1").val());
-                $("#ec_OnsitepcNod1").val($("#ef_OnsiteNod1").val());
-                $("#ec_OnsitepcNwh1").val($("#ef_OnsiteNsw1").val());
-                $("#ec_OnsitepcAtd1").val($("#ef_OnsiteAtd1").val());
+                document.getElementById("ec_OnsitepcNoc1").defaultValue = $( "#ef_OnsiteNoc1" ).val();
+                document.getElementById("ec_OnsitepcNod1").defaultValue = $( "#ef_OnsiteNod1" ).val();
+                document.getElementById("ec_OnsitepcNwh1").defaultValue = $( "#ef_OnsiteNsw1" ).val();
+                document.getElementById("ec_OnsitepcAtd1").defaultValue = $( "#ef_OnsiteAtd1" ).val();
 
                 sumOnsite =
                 $(this).find(`#ef_OnsiteNoc${rowOnsite}`).val() *
@@ -908,8 +918,8 @@ $(document).on(
 
             // $("#subtotal-Onsite").html(currency.format(Math.ceil(sumOnsite)));
             $("#program-Subtotal").html(
-               "₱" + currency.format(Math.ceil(sumProgram)))
-            $("#standard_total").html("₱" + currency.format(Math.ceil(sumEf)));
+               currency.format(Math.ceil(sumProgram)))
+            $("#standard_total").html(currency.format(Math.ceil(sumEf)));
 
             // Discountsss-------------------------------------------------------------------
             $("#input_totalPackages").each(function () {
@@ -919,12 +929,16 @@ $(document).on(
                     sumDiscount2 = sum50 - 100;
                     $("#inpt_dsct").val("-" + sumDiscount2 + "%");
                 } else if (isNaN(sum50) != 0) {
-                    $("#inpt_dsct").val(100 + "%");
+                    $("#inpt_dsct").val(0 + "%");
                 } else {
                     sumDiscount2 = Math.round(sum50);
                     $("#inpt_dsct").val(sumDiscount2 + "%");
                 }
             });
+
+            /****************** TOTAL PACKAGE ******************/
+            document.getElementById("input_totalPackages").defaultValue = $("#standard_total").html();
+
             //Lead Consultant
             $("#sales1").each(function () {
                 sumSales1 +=
@@ -948,7 +962,7 @@ $(document).on(
                     ($("#input_totalPackages").val().replace(/\₱|,/g, "") / 100) *
                     $(this).find("#inputforSale").val().replace(/%/g, "");
 
-                    $(this).find("#ec_saleTotal").html("₱" + currency.format(Math.ceil(sumofSales)));
+                    $(this).find("#ec_saleTotal").html(currency.format(Math.ceil(sumofSales)));
 
                 sumofEngagementCost += +sumofSales;
             });
@@ -961,7 +975,7 @@ $(document).on(
                     ($("#input_totalPackages").val().replace(/\₱|,/g, "") / 100) *
                     $(this).find("#inputforReferrals").val().replace(/%/g, "");
 
-                    $(this).find("#referralsTotal").html("₱" + currency.format(Math.ceil(sumofReferral)));
+                    $(this).find("#referralsTotal").html(currency.format(Math.ceil(sumofReferral)));
 
                 sumofEngagementCost += +sumofReferral;
             });
@@ -974,7 +988,7 @@ $(document).on(
                     ($("#input_totalPackages").val().replace(/\₱|,/g, "") / 100) *
                     $(this).find("#inputforEngagementManager").val().replace(/%/g, "");
 
-                    $(this).find("#ecengagementManagerTotal").html("₱" + currency.format(Math.ceil(sumofEngagementManager)));
+                    $(this).find("#ecengagementManagerTotal").html(currency.format(Math.ceil(sumofEngagementManager)));
 
                 sumofEngagementCost += +sumofEngagementManager;
             });
@@ -989,7 +1003,7 @@ $(document).on(
                     $("#subtotalConsulting").val() - $("#subtotal-PD").val()) *
                     $(this).find("#inputforOffsite").val().replace(/\%|,/g, "");
 
-                    $(this).find("#ec_offsitePcTotal").html("₱" + currency.format(Math.ceil(sumofOffsitepc)));
+                    $(this).find("#ec_offsitePcTotal").html(currency.format(Math.ceil(sumofOffsitepc)));
 
 
                 sumofEngagementCost += +sumofOffsitepc;
@@ -1009,7 +1023,7 @@ $(document).on(
                 ecDesignSubtotal += +sumofecCreators;
                 sumofEngagementCost += +sumofecCreators;
             });
-                $("#ec_DesignsSubtotal").html("₱" + currency.format(Math.ceil(ecDesignSubtotal)));
+                $("#ec_DesignsSubtotal").html(currency.format(Math.ceil(ecDesignSubtotal)));
 
 
             //Action Learning Coach (Engagement Cost)
@@ -1094,7 +1108,7 @@ $(document).on(
 
         });
             $("#ec_ProgramsSubtotal").html(
-                "₱" + currency.format(
+                currency.format(
                     Math.ceil(
                         ecProgramSubtotal
                     )
@@ -1123,11 +1137,11 @@ $(document).on(
 
             sumofEngagementCost += +sumofecDocumentor;
 
-            $(this).find("#ec_DocumentorsTotal").html("₱" + currency.format(Math.ceil(sumofecDocumentor)));
+            $(this).find("#ec_DocumentorsTotal").html(currency.format(Math.ceil(sumofecDocumentor)));
         });
 
             //Per Diem (Engagement Cost)
-            $("#ec_PerdiemNod").val($("#ef_PDNod").val());
+            document.getElementById("ec_PerdiemNod").defaultValue = $( "#ef_PDNod" ).val();
 
             sumofecPerdiem +=
                 $("#ec_PerdiemPd").val() *
@@ -1137,7 +1151,7 @@ $(document).on(
 
             sumofEngagementCost += +sumofecPerdiem;
 
-            $("#ec_PerdiemTotal").html("₱" + currency.format(Math.ceil(sumofecPerdiem)));
+            $("#ec_PerdiemTotal").html(currency.format(Math.ceil(sumofecPerdiem)));
 
             //Off-program Fee (Engagement Cost)
             sumofecOffprogram +=
@@ -1148,7 +1162,7 @@ $(document).on(
             sumofEngagementCost += +sumofecOffprogram;
 
             $("#ec_OffprogramsTotal").html(
-                "₱" + currency.format(Math.ceil(sumofecOffprogram))
+                currency.format(Math.ceil(sumofecOffprogram))
             );
 
             //Program Expenses (Engagement Cost)
@@ -1160,10 +1174,10 @@ $(document).on(
             sumofEngagementCost += +sumofecProgramexpense;
 
             $("#ec_ProgramexpensesTotal").html(
-                "₱" + currency.format(Math.ceil(sumofecProgramexpense))
+                currency.format(Math.ceil(sumofecProgramexpense))
             );
             $("#ec_Totals").html(
-                "₱" + currency.format(Math.ceil(sumofEngagementCost))
+                currency.format(Math.ceil(sumofEngagementCost))
             );
 
     });
@@ -1230,13 +1244,13 @@ $(document).on(
                 }
 
                 // join number by .
-                input_val = "₱" + left_side + "." + right_side;
+                input_val = left_side + "." + right_side;
             } else {
                 // no decimal entered
                 // add commas to number
                 // remove all non-digits
                 input_val = formatNumber(input_val);
-                input_val = "₱" + input_val;
+                input_val = input_val;
             }
 
             // send updated string to input
