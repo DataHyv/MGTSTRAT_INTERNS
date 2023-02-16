@@ -109,10 +109,6 @@
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}"name="" id="">
                         </td>
-                        <td style="background-color: #FFFFFF;" class="border border-white"><a href="javascript:void(0)"
-                                class="text-success font-18" title="Add" id="addBtn1"><i
-                                    class="fa fa-plus"></i></a>
-                        </td>
                     </tr>
                 </tbody>
 
@@ -161,10 +157,6 @@
                         <td class="total-td">
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="" id="ef_AnalystNotes">
-                        </td>
-                        <td style="background-color: #FFFFFF;" class="border border-white"><a
-                                href="javascript:void(0)" class="text-success font-18" title="Add"
-                                id="addBtn2"><i class="fa fa-plus"></i></a>
                         </td>
                     </tr>
                 </tbody>
@@ -263,10 +255,6 @@
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="" id="">
                         </td>
-                        <td style="background-color: #FFFFFF;" class="border border-white"><a
-                                href="javascript:void(0)" class="text-success font-18" title="Add"
-                                id="addBtn3"><i class="fa fa-plus"></i></a>
-                        </td>
                     </tr>
                 </tbody>
 
@@ -325,10 +313,6 @@
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="" id="">
                         </td>
-                        <td style="background-color: #FFFFFF;" class="border border-white"><a
-                                href="javascript:void(0)" class="text-success font-18" title="Add"
-                                id="addBtn4"><i class="fa fa-plus"></i></a>
-                        </td>
                     </tr>
                 </tbody>
 
@@ -372,10 +356,6 @@
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="" id="">
                         </td>
-                        <td style="background-color: #FFFFFF;" class="border border-white"><a
-                                href="javascript:void(0)" class="text-success font-18" title="Add"
-                                id="addBtn5"><i class="fa fa-plus"></i></a>
-                        </td>
                     </tr>
                 </tbody>
 
@@ -418,10 +398,6 @@
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="" id="">
                         </td>
-                        <td style="background-color: #FFFFFF;" class="border border-white"><a
-                                href="javascript:void(0)" class="text-success font-18" title="Add"
-                                id="addBtn6"><i class="fa fa-plus"></i></a>
-                        </td>
                     </tr>
                 </tbody>
 
@@ -463,10 +439,6 @@
                         <td class="total-td">
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="" id="">
-                        </td>
-                        <td style="background-color: #FFFFFF;" class="border border-white"><a
-                                href="javascript:void(0)" class="text-success font-18" title="Add"
-                                id="addBtn7"><i class="fa fa-plus"></i></a>
                         </td>
                     </tr>
                 </tbody>
@@ -530,10 +502,6 @@
                         <td class="total-td">
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="" id="">
-                        </td>
-                        <td style="background-color: #FFFFFF;" class="border border-white"><a
-                                href="javascript:void(0)" class="text-success font-18" title="Add"
-                                id="addBtn8"><i class="fa fa-plus"></i></a>
                         </td>
                     </tr>
                 </tbody>
@@ -606,10 +574,6 @@
                         <td class="total-td">
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="" id="">
-                        </td>
-                        <td style="background-color: #FFFFFF;" class="border border-white"><a
-                                href="javascript:void(0)" class="text-success font-18" title="Add"
-                                id="addBtn9"><i class="fa fa-plus"></i></a>
                         </td>
                     </tr>
                 </tbody>

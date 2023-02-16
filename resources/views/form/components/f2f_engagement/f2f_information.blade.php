@@ -31,29 +31,6 @@
             </select>
         </div>
     </div>
-    <div class="form-group row">
-        <div class="col-md-2">
-            <label class="fw-bold required">Batch Number: </label>
-        </div>
-        <div class="col-md-3">
-            <div class="form-group has-icon-left">
-                <div class="position-relative">
-                    <input type="text" class="form-control @error('batch_number') is-invalid @enderror"
-                        value="{{ old('batch_number') }}" name="batch_number" id="batchNumber">
-                    <div class="form-control-icon">
-                        <i class="fa-solid fa-file-lines"></i>
-                    </div>
-                    <div class="invalid-feedback">
-                        @error('batch_number')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!------------ CUSTOMIZED TYPE ------------>
     <div class="form-group row">
