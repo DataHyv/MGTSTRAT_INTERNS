@@ -199,13 +199,13 @@
             <div class="flex-column">
                 <div>
                     <fieldset class="row justify-content-center" id="dateRows">
-                        <div class="col-lg-1 col-md-1">
+                        {{-- <div class="col-lg-1 col-md-1">
                             <div class="px-0">
                                     <label class="fw-bold invisible overflow-hidden mb-4">Add</label>
                                     <a href="javascript:void(0)" class="text-success font-18 px-0" title="Add"
                                     id="addDates"><i class="fa fa-plus"></i></a>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="col-lg-2 col-md-2">
                             <div class="form-group has-icon-left">
@@ -266,7 +266,6 @@
                 </div>
             </div>
         </div>
-        <hr class="mt-3">
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
