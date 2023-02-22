@@ -338,7 +338,7 @@
                         <td class="">
                             <input type="text"
                                 class="text-center fw-bold text-dark form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="" id="ec_LeadconsultantsPd">
+                                value="{{ old('') }}" name="" id="ec_LeadconsultantsPd" data-type="currency">
                         </td>
                         <td class="">
                             <input type="number"
@@ -362,7 +362,11 @@
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="" id="">
                         </td>
-                        <td style="background-color: #FFFFFF;" class="border border-white"></td>
+                        <td style="background-color: #FFFFFF;" class="border border-white">
+                            <a href="javascript:void(0)" class="text-success font-18" title="Add" id="ecaddButton5">
+                                <i class="fa fa-plus"></i>
+                            </a>
+                        </td>
                     </tr>
                 </tbody>
 
@@ -402,7 +406,11 @@
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="" id="">
                         </td>
-                        <td style="background-color: #FFFFFF;" class="border border-white"></td>
+                        <td style="background-color: #FFFFFF;" class="border border-white">
+                            <a href="javascript:void(0)" class="text-success font-18" title="Add" id="ecaddButton6">
+                                <i class="fa fa-plus"></i>
+                            </a>
+                        </td>
                     </tr>
                 </tbody>
 
@@ -416,12 +424,8 @@
                     <td class="total-td" style="background-color: rgba(146, 146, 146, 0.727">
                         <h4 class="text-center" id="ec_SubtotalsConsulting">-</h4>
                     </td>
-                    <td class="total-td">
-                        <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                            value="{{ old('') }}" name="" id="">
-                    </td>
+                    <td class="total-td"></td>
                     <td style="background-color: #FFFFFF;" class="border border-white"></td>
-
                 </tr>
 
                 {{-- break --}}
@@ -483,7 +487,11 @@
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="" id="">
                         </td>
-                        <td style="background-color: #FFFFFF;" class="border border-white"></td>
+                        <td style="background-color: #FFFFFF;" class="border border-white">
+                            <a href="javascript:void(0)" class="text-success font-18" title="Add" id="ecaddButton7">
+                                <i class="fa fa-plus"></i>
+                            </a>
+                        </td>
                     </tr>
                 </tbody>
 
@@ -537,7 +545,7 @@
                                 value="{{ old('') }}" name="" id="">
                         </td>
                         <td style="background-color: #FFFFFF;" class="border border-white">
-                            <a href="javascript:void(0)" class="text-success font-18" title="Add" id="ecaddButton5">
+                            <a href="javascript:void(0)" class="text-success font-18" title="Add" id="ecaddButton8">
                                 <i class="fa fa-plus"></i>
                             </a>
                         </td>
@@ -554,10 +562,7 @@
                     <td class="total-td" style="background-color: rgba(146, 146, 146, 0.727">
                         <h4 class="text-center" id="ec_DesignsSubtotal">-</h4>
                     </td>
-                    <td class="total-td">
-                        <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                            value="{{ old('') }}" name="" id="">
-                    </td>
+                    <td class="total-td"> </td>
                     <td style="background-color: #FFFFFF;" class="border border-white"></td>
                 </tr>
 
@@ -619,7 +624,11 @@
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="" id="">
                         </td>
-                        <td style="background-color: #FFFFFF;" class="border border-white"></td>
+                        <td style="background-color: #FFFFFF;" class="border border-white">
+                            <a href="javascript:void(0)" class="text-success font-18" title="Add" id="ecaddButton9">
+                                <i class="fa fa-plus"></i>
+                            </a>
+                        </td>
                     </tr>
                 </tbody>
 
@@ -659,7 +668,11 @@
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="" id="">
                         </td>
-                        <td style="background-color: #FFFFFF;" class="border border-white"></td>
+                        <td style="background-color: #FFFFFF;" class="border border-white">
+                            <a href="javascript:void(0)" class="text-success font-18" title="Add" id="ecaddButton10">
+                                <i class="fa fa-plus"></i>
+                            </a>
+                        </td>
                     </tr>
                 </tbody>
 
@@ -699,7 +712,11 @@
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="" id="">
                         </td>
-                        <td style="background-color: #FFFFFF;" class="border border-white"></td>
+                        <td style="background-color: #FFFFFF;" class="border border-white">
+                            <a href="javascript:void(0)" class="text-success font-18" title="Add" id="ecaddButton11">
+                                <i class="fa fa-plus"></i>
+                            </a>
+                        </td>
                     </tr>
                 </tbody>
 
@@ -739,7 +756,11 @@
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="" id="">
                         </td>
-                        <td style="background-color: #FFFFFF;" class="border border-white"></td>
+                        <td style="background-color: #FFFFFF;" class="border border-white">
+                            <a href="javascript:void(0)" class="text-success font-18" title="Add" id="ecaddButton12">
+                                <i class="fa fa-plus"></i>
+                            </a>
+                        </td>
                     </tr>
                 </tbody>
 
@@ -805,6 +826,11 @@
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="" id="">
                         </td>
+                        <td style="background-color: #FFFFFF;" class="border border-white">
+                            <a href="javascript:void(0)" class="text-success font-18" title="Add" id="ecaddButton13">
+                                <i class="fa fa-plus"></i>
+                            </a>
+                        </td>
                     </tr>
                 </tbody>
 
@@ -818,10 +844,7 @@
                     <td class="total-td" style="background-color: rgba(146, 146, 146, 0.727)">
                         <h4 class="text-center" id="ec_ProgramsSubtotal">-</h4>
                     </td>
-                    <td class="total-td">
-                        <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                            value="{{ old('') }}" name="" id="">
-                    </td>
+                    <td class="total-td"> </td>
                     <td style="background-color: #FFFFFF;" class="border border-white"></td>
                 </tr>
 
@@ -881,7 +904,11 @@
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="" id="">
                         </td>
-                        <td style="background-color: #FFFFFF;" class="border border-white"></td>
+                        <td style="background-color: #FFFFFF;" class="border border-white">
+                            <a href="javascript:void(0)" class="text-success font-18" title="Add" id="ecaddButton14">
+                                <i class="fa fa-plus"></i>
+                            </a>
+                        </td>
                     </tr>
                 </tbody>
 
@@ -895,34 +922,40 @@
                 </tr>
 
                 <!--------------------------PER DIEM----------------------------------------->
-                <tr class="th-blue-grey-lighten" id="rowofPerDiem">
-                    <th class="title px-4 text-dark">5. PER DIEM</th>
-                    <td>
-                        <input type="number"
-                            class="text-center form-control input-table @error('') is-invalid @enderror"
-                            value="{{ old('') }}" name="" id="ec_PerdiemNoc" max="100">
-                    </td>
-                    <td>
-                        <input type="text"
-                            class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
-                            value="{{ old('') }}" name="" id="ec_PerdiemPd">
-                    </td>
-                    <td>
-                        <input type="number"
-                            class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
-                            value="{{ old('') }}" name="" id="ec_PerdiemNod">
-                    </td>
-                    <td></td>
-                    <td></td>
-                    <td class="total-td" style="background-color: rgba(146, 146, 146, 0.727">
-                        <h4 class="text-center" id="ec_PerdiemTotal">-</h4>
-                    </td>
-                    <td class="total-td">
-                        <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                            value="{{ old('') }}" name="" id="">
-                    </td>
-                    <td style="background-color: #FFFFFF;" class="border border-white"></td>
-                </tr>
+                <tbody id="tableofPerdiem">
+                    <tr class="th-blue-grey-lighten" id="rowofPerDiem">
+                        <th class="title px-4 text-dark">5. PER DIEM</th>
+                        <td>
+                            <input type="number"
+                                class="text-center form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="" id="ec_PerdiemNoc" max="100">
+                        </td>
+                        <td>
+                            <input type="text"
+                                class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="" id="ec_PerdiemPd">
+                        </td>
+                        <td>
+                            <input type="number"
+                                class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="" id="ec_PerdiemNod">
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td class="total-td" style="background-color: rgba(146, 146, 146, 0.727">
+                            <h4 class="text-center" id="ec_PerdiemTotal">-</h4>
+                        </td>
+                        <td class="total-td">
+                            <input type="text" class="form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="" id="">
+                        </td>
+                        <td style="background-color: #FFFFFF;" class="border border-white">
+                            <a href="javascript:void(0)" class="text-success font-18" title="Add" id="ecaddButton15">
+                                <i class="fa fa-plus"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
 
                 {{-- break --}}
                 <tr class="th-blue-grey-darken-4">
@@ -946,37 +979,43 @@
                     <td style="background-color: #FFFFFF;" class="border border-white"></td>
                 </tr>
 
-                <tr class="th-blue-grey-lighten-2" id="rowofOffProgram">
-                    <td class="title">Off-Program fee</td>
-                    <td>
-                        <input type="number"
-                            class="input js-mytooltip text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
-                            value="{{ old('') }}" name="" id="ec_OffprogramsNoc" max="100"
-                            data-mytooltip-content="<i>
-                                        - For single or series of programs<br>
-                                        - One time only<br>
-                                        - Per person<br>
-                                        </i>"
-                            data-mytooltip-theme="dark" data-mytooltip-action="focus"
-                            data-mytooltip-direction="right">
-                    </td>
-                    <td>
-                        <input type="text"
-                            class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
-                            value="{{ old('') }}" name="" id="ec_OffprogramsPd">
-                    </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td class="total-td" style="background-color: rgba(146, 146, 146, 0.727">
-                        <h4 class="text-center" id="ec_OffprogramsTotal">-</h4>
-                    </td>
-                    <td class="total-td">
-                        <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                            value="{{ old('') }}" name="" id="">
-                    </td>
-                    <td style="background-color: #FFFFFF;" class="border border-white"></td>
-                </tr>
+                <tbody id="taleOffProgram">
+                    <tr class="th-blue-grey-lighten-2" id="rowofOffProgram1">
+                        <td class="title">Off-Program fee</td>
+                        <td>
+                            <input type="number"
+                                class="input js-mytooltip text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="" id="ec_OffprogramsNoc" max="100"
+                                data-mytooltip-content="<i>
+                                            - For single or series of programs<br>
+                                            - One time only<br>
+                                            - Per person<br>
+                                            </i>"
+                                data-mytooltip-theme="dark" data-mytooltip-action="focus"
+                                data-mytooltip-direction="right">
+                        </td>
+                        <td>
+                            <input type="text"
+                                class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="" id="ec_OffprogramsPd">
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="total-td" style="background-color: rgba(146, 146, 146, 0.727">
+                            <h4 class="text-center" id="ec_OffprogramsTotal">-</h4>
+                        </td>
+                        <td class="total-td">
+                            <input type="text" class="form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="" id="">
+                        </td>
+                        <td style="background-color: #FFFFFF;" class="border border-white">
+                            <a href="javascript:void(0)" class="text-success font-18" title="Add" id="ecaddButton16">
+                                <i class="fa fa-plus"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
 
                 {{-- break --}}
                 <tr class="th-blue-grey-darken-4">

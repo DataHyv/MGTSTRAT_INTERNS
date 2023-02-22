@@ -335,7 +335,7 @@ document.getElementById("ec_Programexpenses").defaultValue = 2 + "%";
 //Customized Engagement form of Engagement Fees
 $(document).on(
     "change keyup click",
-    "#main, .f2f-customized-type, .ga-only-dropdown, .removed, #remove, #f2f-ef-table, #f2f-ec-table",
+    "#main, .f2f-customized-type, .ga-only-dropdown, .removed, #remove, #f2f-ef-table, #f2f-ec-table, .remove",
     function () {
         //customized type
         $(".f2f-customized-type").each(function () {
@@ -1120,50 +1120,54 @@ $(document).on(
             $("#tableofDocumentor > tr").each(function () {
                 ecDocumentor++;
 
-            sumofecDocumentor =
-                $(this).find(`#ec_DocumentorsNoc${ecDocumentor}`).val() *
-                $(this).find("#ec_DocumentorsPd").val().replace(/,/g, "") *
-                $(this).find(`#ec_DocumentorsNod${ecDocumentor}`).val() +
-                $(this).find(`#ec_DocumentorsAtd${ecDocumentor}`).val() *
-                ($(this).find(`#ec_DocumentorsNoc${ecDocumentor}`).val() *
+                sumofecDocumentor =
+                    $(this).find(`#ec_DocumentorsNoc${ecDocumentor}`).val() *
                     $(this).find("#ec_DocumentorsPd").val().replace(/,/g, "") *
-                    $(this).find(`#ec_DocumentorsNod${ecDocumentor}`).val() *
-                    0.2) + $(this).find(`#ec_DocumentorsNwh${ecDocumentor}`).val() *
-                ($(this).find(`#ec_DocumentorsNoc${ecDocumentor}`).val() *
-                    $(this).find("#ec_DocumentorsPd").val().replace(/,/g, "") *
-                    $(this).find(`#ec_DocumentorsNod${ecDocumentor}`).val() *
-                    0.2);
+                    $(this).find(`#ec_DocumentorsNod${ecDocumentor}`).val() +
+                    $(this).find(`#ec_DocumentorsAtd${ecDocumentor}`).val() *
+                    ($(this).find(`#ec_DocumentorsNoc${ecDocumentor}`).val() *
+                        $(this).find("#ec_DocumentorsPd").val().replace(/,/g, "") *
+                        $(this).find(`#ec_DocumentorsNod${ecDocumentor}`).val() *
+                        0.2) + $(this).find(`#ec_DocumentorsNwh${ecDocumentor}`).val() *
+                    ($(this).find(`#ec_DocumentorsNoc${ecDocumentor}`).val() *
+                        $(this).find("#ec_DocumentorsPd").val().replace(/,/g, "") *
+                        $(this).find(`#ec_DocumentorsNod${ecDocumentor}`).val() *
+                        0.2);
 
 
-            sumofEngagementCost += +sumofecDocumentor;
+                sumofEngagementCost += +sumofecDocumentor;
 
-            $(this).find("#ec_DocumentorsTotal").html(currency.format(Math.ceil(sumofecDocumentor)));
-        });
+                $(this).find("#ec_DocumentorsTotal").html(currency.format(Math.ceil(sumofecDocumentor)));
+            });
 
             //Per Diem (Engagement Cost)
-            document.getElementById("ec_PerdiemNod").defaultValue = $( "#ef_PDNod" ).val();
+            $("#tableofPerdiem > tr").each(function () {
+                document.getElementById("ec_PerdiemNod").defaultValue = $( "#ef_PDNod" ).val();
 
-            sumofecPerdiem +=
-                $("#ec_PerdiemPd").val() *
-                $("#ec_PerdiemNod").val() *
-                $("#ec_PerdiemNoc").val();
+                sumofecPerdiem =
+                    $(this).find("#ec_PerdiemPd").val() *
+                    $(this).find("#ec_PerdiemNod").val() *
+                    $(this).find("#ec_PerdiemNoc").val();
 
 
-            sumofEngagementCost += +sumofecPerdiem;
+                sumofEngagementCost += +sumofecPerdiem;
 
-            $("#ec_PerdiemTotal").html(currency.format(Math.ceil(sumofecPerdiem)));
+                $(this).find("#ec_PerdiemTotal").html(currency.format(Math.ceil(sumofecPerdiem)));
+            });
 
             //Off-program Fee (Engagement Cost)
-            sumofecOffprogram +=
-                $("#ec_OffprogramsNoc").val() *
-                $("#ec_OffprogramsPd").val().replace(/,/g, "");
+            $("#taleOffProgram > tr").each(function () {
+                sumofecOffprogram =
+                    $(this).find("#ec_OffprogramsNoc").val() *
+                    $(this).find("#ec_OffprogramsPd").val().replace(/,/g, "");
 
 
-            sumofEngagementCost += +sumofecOffprogram;
+                sumofEngagementCost += +sumofecOffprogram;
 
-            $("#ec_OffprogramsTotal").html(
-                currency.format(Math.ceil(sumofecOffprogram))
-            );
+                $(this).find("#ec_OffprogramsTotal").html(
+                    currency.format(Math.ceil(sumofecOffprogram))
+                );
+            });
 
             //Program Expenses (Engagement Cost)
             sumofecProgramexpense +=
@@ -1185,7 +1189,7 @@ $(document).on(
 //*************************************** APPEND NUMBER FORMAT ********************************************************//
 $(document).on(
     "change keyup click",
-    "#ef_AnalystPdf, #ef_LeadFaciPdf, #ef_CoFaciPdf, #ef_ActionLearnPdf, #ef_MarshalPdf, #ef_DocumentorPdf, #ef_DocumentorHf",
+    "#ef_AnalystPdf, #ef_LeadFaciPdf, #ef_CoFaciPdf, #ef_ActionLearnPdf, #ef_MarshalPdf, #ef_DocumentorPdf, #ef_DocumentorHf, #ec_LeadconsultantsPd, #f2f-ec-table",
     function () {
         // Jquery Dependency
 
