@@ -1184,6 +1184,35 @@ $(document).on(
                 currency.format(Math.ceil(sumofEngagementCost))
             );
 
+            /***********************PROFIT FORECAST***********************/
+            //profit
+            sumProfit = $("#input_totalPackages").val().replace(/\₱|,/g, "") - sumofEngagementCost;
+            $("#Profit").html(currency.format(Math.ceil(sumProfit)));
+
+            //Less: Contribution to Overhead
+            sumCto = 0;
+            $("#LessCTO_NOC").each(function () {
+                sumCto +=
+                    ($("#input_totalPackages").val().replace(/\₱|,/g, "") *
+                        $(this).val()) / 100;
+            });
+
+            $("#LessContributionToOverhead").html(
+                currency.format(Math.ceil(sumCto))
+            );
+
+            //Net profit
+            sumNetprofit = sumProfit - sumCto;
+            $("#NetProfit").html(currency.format(Math.ceil(sumNetprofit)));
+
+            //Profit margin
+            sumProfitmargin = (sumNetprofit / $("#input_totalPackages").val().replace(/\₱|,/g, "")) * 100;
+            if (isNaN(sumProfitmargin) || sumProfitmargin === Number.NEGATIVE_INFINITY){
+                $("#ProfitMargin").html("0");
+            }
+            else {
+                $("#ProfitMargin").html(Math.floor(sumProfitmargin) + "%");
+            }
     });
 
 //*************************************** APPEND NUMBER FORMAT ********************************************************//

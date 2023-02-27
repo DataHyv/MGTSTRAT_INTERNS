@@ -1,4 +1,3 @@
-<hr>
 <div class="card-header">
     <h4 class="card-title">Profit Forecast</h4>
 </div>
