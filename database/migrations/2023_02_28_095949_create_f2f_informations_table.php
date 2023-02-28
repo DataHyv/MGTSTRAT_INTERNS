@@ -15,6 +15,7 @@ class CreateF2fInformationsTable extends Migration
     {
         Schema::create('f2f_informations', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('client_id')->nullable()->constrained()->onDelete('cascade');
             $table->string('cstmzd_eng_form_id', 15);
             $table->string('status', 15)->nullable();
             $table->string('customized_type', 50)->nullable();
@@ -26,7 +27,7 @@ class CreateF2fInformationsTable extends Migration
             $table->string('program_end_time')->nullable();
             $table->string('cluster')->nullable();
             $table->string('core_area')->nullable();
-            $table->string('fee_total', 30);
+            // $table->string('Engagement_fees_total', 30);
             $table->timestamps();
         });
     }

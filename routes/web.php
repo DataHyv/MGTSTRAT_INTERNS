@@ -11,6 +11,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\LockScreen;
 use App\Http\Controllers\CustomizedEngagementController;
+use App\Http\Controllers\F2fEngagementController;
 use App\Http\Controllers\ClientsController;
 use App\Http\Controllers\ConsultantFeesController;
 
@@ -111,9 +112,9 @@ Auth::routes();
     Route::put('updateBatch', [CustomizedEngagementController::class, 'saveBatchRecord','ceAddDeleteRecord'])->middleware('auth')->name('updateBatch');
     });
 // ----------------------------- F2F engagement form ------------------------------//
-    Route::get('form/f2f_engagement/index', [App\Http\Controllers\F2fEngagementController::class, 'index'])->middleware('auth')->name('form/f2f_engagement/index');
-    Route::get('form/f2f_engagement/new', [App\Http\Controllers\F2fEngagementController::class, 'newRecord'])->middleware('auth')->name('form/f2f_engagement/new');
-    Route::post('form/f2f_engagement/save', [App\Http\Controllers\F2fEngagementController::class, 'store'])->name('form/f2f_engagement/save');
+    Route::get('form/f2f_engagement/index', [F2fEngagementController::class, 'index'])->middleware('auth')->name('form/f2f_engagement/index');
+    Route::get('form/f2f_engagement/new', [F2fEngagementController::class, 'newRecord'])->middleware('auth')->name('form/f2f_engagement/new');
+    Route::post('form/f2f_engagement/save', [F2fEngagementController::class, 'store'])->name('form/f2f_engagement/save');
 
 // ----------------------------- MGTSTRAT U WORKSHOPS ------------------------------//
     Route::get('form/mgtstratu_workshops/index', [App\Http\Controllers\MgtstratUController::class, 'index'])->middleware('auth')->name('form/mgtstratu_workshops/index');

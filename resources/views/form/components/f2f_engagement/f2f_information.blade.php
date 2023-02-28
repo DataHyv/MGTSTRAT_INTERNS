@@ -105,10 +105,10 @@
             <div class="form-group has-icon-left">
                 <div class="position-relative">
                     <select class="select select2s-hidden-accessible" style="width: 100%;" tabindex="-1"
-                        aria-hidden="true" id="client" name="client">
+                        aria-hidden="true" id="client" name="client_id">
                         <option value="Select">-- Select --</option>
                         @foreach ($companyList as $key => $clients)
-                            <option value="{{ $clients->company_name }}" data-first_eng={{ $clients->first_eng }}>
+                            <option value="{{ $clients->id }}" data-first_eng={{ $clients->first_eng }}>
                                 {{ $clients->company_name }}</option>
                         @endforeach
                     </select>
@@ -212,7 +212,7 @@
                                 <label class="fw-bold required">Date</label>
                                 <div class="position-relative">
                                     <input type="text" class="form-control date datepicker @error('doe') is-invalid @enderror"
-                                        value="{{ old('doe') }}" placeholder="Enter Date" name="program_dates[]" id="datepicker"
+                                        value="{{ old('doe') }}" placeholder="Enter Date" name="program_dates" id="datepicker"
                                         size="30">
                                     <div class="form-control-icon">
                                         <i class="bi bi-calendar"></i>
@@ -231,7 +231,7 @@
                                 <label class="fw-bold required">Start Time</label>
                                 <div class="position-relative">
                                     <input type="text" class="form-control start-time timepicker @error('dot') is-invalid @enderror"
-                                        value="{{ old('dot') }}" placeholder="Enter Time" id="program_start_time" name="program_start_time[]">
+                                        value="{{ old('dot') }}" placeholder="Enter Time" id="program_start_time" name="program_start_time">
                                     <div class="form-control-icon">
                                         <i class="bi bi-clock"></i>
                                     </div>
@@ -249,7 +249,7 @@
                                 <label class="fw-bold required">End Time</label>
                                 <div class="position-relative">
                                     <input type="text" class="form-control end-time timepicker @error('dot') is-invalid @enderror"
-                                        value="{{ old('dot') }}" placeholder="Enter Time" id="program_end_time" name="program_end_time[]">
+                                        value="{{ old('dot') }}" placeholder="Enter Time" id="program_end_time" name="program_end_time">
                                     <div class="form-control-icon">
                                         <i class="fa-solid fa-hourglass-end"></i>
                                     </div>
