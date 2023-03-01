@@ -75,7 +75,7 @@
                             <input type="number" class="input  input-table form-control  @error('') is-invalid @enderror"
                                 value="{{ old('') }}"
                                 name="ef_customizationFeeNsw"
-                                id="eef_customizationFeeNsw"
+                                id="ef_customizationFeeNsw"
                                 title=""
                                 max="100"
                                 data-mytooltip-content="<i></i>"
@@ -89,9 +89,6 @@
                         <td class="total-td">
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}"name="" id="">
-                        </td>
-                        <td style="background-color: #FFFFFF;" class="border border-white"><a href="javascript:void(0)"
-                            class="text-success font-18" title="Add" id="addBtn1"><i class="fa fa-plus"></i></a>
                         </td>
                     </tr>
                     </tbody>

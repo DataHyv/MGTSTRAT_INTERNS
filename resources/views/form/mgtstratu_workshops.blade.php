@@ -122,7 +122,7 @@
     </div>
 
     {{-- F2F ENGAGEMENT SCRIPT --}}
-    <script type="text/javascript" src="/js/f2fform.js"></script>
+    <script type="text/javascript" src="/js/workshop.js"></script>
     <script type="text/javascript" src="/js/MultiStep.js"></script>
     <script type="text/javascript" src="/js/currencyFormat.js"></script>
 @endsection
