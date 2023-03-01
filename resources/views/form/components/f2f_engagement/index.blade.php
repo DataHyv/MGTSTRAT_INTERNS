@@ -64,13 +64,13 @@
                             </thead>
 
                             <tbody>
-                                {{-- @foreach ($data as $key => $item) --}}
+                                @foreach ($data as $key => $item)
                                     <tr>
-                                        <td hidden class="ids">1</td>
-                                        {{-- <td hidden class="budget_number">{{ $item->cstmzd_eng_form_id }}</td> --}}
-                                        <td class="id text-center text-uppercase fw-bold">1</td>
+                                        {{-- <td hidden class="ids">1</td> --}}
+                                        <td hidden class="budget_number">{{ $item->cstmzd_eng_form_id }}</td>
+                                        <td class="id text-center text-uppercase fw-bold">{{ $item->id }}</td>
                                         <td class="text-center">
-                                            <span id="status" class="badge">Confirmed</span>
+                                            <span id="status" class="badge">{{ $item->status }}</span>
                                             {{-- Automatic change the status color --}}
                                             <script>
                                                 $( ".badge" ).each(function() {
@@ -92,18 +92,13 @@
                                                 });
                                             </script>
                                         </td>
-                                        <td class="name text-center fw-bold">Testing</td>
-                                        <td class="name text-center fw-bold">Virtual</td>
-                                        <td class="email text-center fw-bold">Test</td>
-                                        <td class="fw-bold text-center">100</td>
-                                        {{-- <td class="fw-bold text-center">
-                                            Nov 3, 2022
-                                        </td>
+                                        <td class="name text-center fw-bold">{{ $item->client->company_name }}</td>
+                                        <td class="name text-center fw-bold">{{ $item->customized_type }}</td>
+                                        <td class="email text-center fw-bold">{{ $item->engagement_title }}</td>
+                                        <td class="fw-bold text-center">{{ $item->pax_number }}</td>
                                         <td class="fw-bold text-center">
-                                            7:00 AM
-                                        </td> --}}
-                                        {{-- <td class="fw-bold text-center">{{ \Carbon\Carbon::parse($item->created_at)->toFormattedDateString()}}</td> --}}
-                                        <td class="fw-bold text-center">Nov 3, 2022</td>
+                                            {{ \Carbon\Carbon::parse($item->created_at)->toFormattedDateString()}}
+                                        </td>
                                         <td class="text-center fw-bold text-center">
                                             <a href="#">
                                                 <span class="badge bg-success"><i class="bi bi-pencil-square"></i></span>
@@ -203,7 +198,7 @@
                                         </div>
                                     </div>
 
-                                {{-- @endforeach --}}
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -214,7 +209,11 @@
 @endsection
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
+@section('script')
+<script>
+    
+</script>
+@endsection
 {{-- <script>
     $(document).on('click','.delete',function()
     {

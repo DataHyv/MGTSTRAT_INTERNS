@@ -124,6 +124,7 @@
             </div>
         </div>
     </div>
+    
     <!------------ ENGAGEMENT TITLE AND NUMBER OF PAX ------------>
     <div class="form-group row">
         <div class="col-md-2">
