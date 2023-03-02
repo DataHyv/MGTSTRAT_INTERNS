@@ -16,7 +16,7 @@ class CreateF2fInformationsTable extends Migration
         Schema::create('f2f_informations', function (Blueprint $table) {
             $table->id();
             $table->foreignId('client_id')->nullable()->constrained()->onDelete('cascade');
-            $table->string('cstmzd_eng_form_id', 15);
+            $table->string('f2f_id', 15);
             $table->string('status', 15)->nullable();
             $table->string('customized_type', 50)->nullable();
             $table->string('ga_percent', 4)->nullable();

@@ -48,11 +48,11 @@ class F2fEngagementController extends Controller
 
         DB::beginTransaction();
         try{
-            $config = ['table'=>'f2f_informations', 'length'=>10, 'field'=>'cstmzd_eng_form_id', 'prefix'=>'F2F-'];
+            $config = ['table'=>'f2f_informations', 'length'=>10, 'field'=>'f2f_id', 'prefix'=>'F2F-'];
             $id_budget_form = IdGenerator::generate($config);
 
             $f2f_information = new F2f_information();
-            $f2f_information->cstmzd_eng_form_id    = $id_budget_form;
+            $f2f_information->f2f_id                = $id_budget_form;
             $f2f_information->status                = $request->status;
             $f2f_information->customized_type       = $request->customized_type;
             $f2f_information->ga_percent            = $request->ga_percent;

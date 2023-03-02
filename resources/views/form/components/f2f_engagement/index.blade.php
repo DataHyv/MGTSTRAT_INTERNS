@@ -47,7 +47,7 @@
                     </div>
                     <div class="card-body table-responsive">
                         <table class="table display dt-responsive nowrap" id="f2f-table">
-                            <thead class="table-secondary">
+                            <thead class="table-secondary" style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">
                                 <tr class="text-dark">
                                     <th class="text-center" hidden></th>
                                     <th class="text-center">ID</th>
@@ -56,8 +56,6 @@
                                     <th class="text-center">ENGAGEMENT TYPE</th>
                                     <th class="text-center">ENGAGEMENT TITLE</th>
                                     <th class="text-center">NUMBER OF PAX</th>
-                                    {{-- <th class="text-center">SCHEDULED DATES</th>
-                                    <th class="text-center">SCHEDULED TIME</th> --}}
                                     <th class="text-center">DATE ADDED</th>
                                     <th class="text-center">Modify</th>
                                 </tr>
@@ -76,7 +74,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 @section('script')
-{{-- <script src="https://cdn.datatables.net/plug-ins/1.13.3/dataRender/datetime.js"></script> --}}
 <script>
     $(document).ready(function (){
         fetchRecord();
@@ -100,7 +97,7 @@
                         // Declare and store the data into a variable
                         var body = "<tr>";
                         body    += '<td hidden class="budget_number">'+item.cstmzd_eng_form_id+'</td>';
-                        body    += '<td class="id text-center text-uppercase fw-bold">'+item.id+'</td>';
+                        body    += '<td class="id text-center text-uppercase fw-bold">'+item.f2f_id+'</td>';
                         body    += '<td class="text-center"><span id="status" class="badge">'+item.status+'</span></td>';
                         body    += '<td class="name text-center fw-bold">'+item.client.company_name+'</td>';
                         body    += '<td class="name text-center fw-bold">'+item.customized_type+'</td>';
@@ -138,7 +135,7 @@
                     });
                 },
                 error: function() {
-                    alert('Fail!');
+                    alert('Fail to load record!');
                 }
             });
         }
