@@ -15,8 +15,22 @@ class F2fEngagementController extends Controller
 {
     public function index()
     {
+        // $data = F2f_information::with('client')->latest()->get();
+        // return response()->json([
+        //     'f2f_records'=>$data,
+        // ]);
+        // return view('form.components.f2f_engagement.index', compact('data'));
+
+        return view('form.components.f2f_engagement.index');
+    }
+
+    public function fetchRecord()
+    {
         $data = F2f_information::with('client')->latest()->get();
-        return view('form.components.f2f_engagement.index', compact('data'));
+        // $data = F2f_information::all();
+        return response()->json([
+            'data'=>$data,
+        ]);
     }
 
     public function newRecord()

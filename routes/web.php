@@ -113,6 +113,7 @@ Auth::routes();
     });
 // ----------------------------- F2F engagement form ------------------------------//
     Route::get('form/f2f_engagement/index', [F2fEngagementController::class, 'index'])->middleware('auth')->name('form/f2f_engagement/index');
+    Route::get('form/f2f_engagement/fetch', [F2fEngagementController::class, 'fetchRecord'])->middleware('auth')->name('form/f2f_engagement/fetch');
     Route::get('form/f2f_engagement/new', [F2fEngagementController::class, 'newRecord'])->middleware('auth')->name('form/f2f_engagement/new');
     Route::post('form/f2f_engagement/save', [F2fEngagementController::class, 'store'])->name('form/f2f_engagement/save');
 
