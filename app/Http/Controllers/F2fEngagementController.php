@@ -27,7 +27,6 @@ class F2fEngagementController extends Controller
     public function fetchRecord()
     {
         $data = F2f_information::with('client')->latest()->get();
-        // $data = F2f_information::all();
         return response()->json([
             'data'=>$data,
         ]);

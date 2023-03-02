@@ -76,6 +76,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 @section('script')
+{{-- <script src="https://cdn.datatables.net/plug-ins/1.13.3/dataRender/datetime.js"></script> --}}
 <script>
     $(document).ready(function (){
         fetchRecord();
@@ -87,6 +88,16 @@
                 success: function (response) {
                     //EACH F2F RECORD
                     $.each(response.data, function (key, item) {
+                        // Declare and store the date into a variable
+                        const currDate = item.created_at;
+
+                        // Converts timestamp into Date Object
+                        const dt = new Date(currDate)
+
+                        // Print the Date string
+                        console.log(dt.toDateString())
+
+                        // Declare and store the data into a variable
                         var body = "<tr>";
                         body    += '<td hidden class="budget_number">'+item.cstmzd_eng_form_id+'</td>';
                         body    += '<td class="id text-center text-uppercase fw-bold">'+item.id+'</td>';
@@ -95,11 +106,12 @@
                         body    += '<td class="name text-center fw-bold">'+item.customized_type+'</td>';
                         body    += '<td class="email text-center fw-bold">'+item.engagement_title+'</td>';
                         body    += '<td class="fw-bold text-center">'+item.pax_number+'</td>';
-                        body    += '<td class="fw-bold text-center">'+item.created_at+'</td>';
+                        body    += '<td class="fw-bold text-center">'+dt.toDateString().split(' ').slice(1).join(' ')+'</td>';
                         body    += '<td class="text-center fw-bold text-center"><a href="#">\
                             <span class="badge bg-success"><i class="bi bi-pencil-square"></i></span></a>\
                             <a href="#"> <span class="badge bg-danger"><i class="bi bi-trash"></i></span> </a></td>';
                         body    += "</tr>";
+
                         $( "#f2f-table tbody" ).append(body);
                     });
 
