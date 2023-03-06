@@ -92,8 +92,8 @@
                         </td>
                     </tr>
                     </tbody>
-<!------------------------------------------------SUBTOTAL-------------------------------------------------------------------->
-                    <tr class="">
+<!------------------------------------------------SUBTOTAL CUSTOMIZATION FEE-------------------------------------------------------------------->
+                    <tr class="" id="tableTotal">
                         <td class="title fw-bold text-dark fst-italic">Subtotal</td>
                         <td></td>
                         <td></td>
@@ -333,8 +333,24 @@
                         </td>
                     </tr>
                     </tbody>
+<!------------------------------------------------SUBTOTAL PROGRAM-------------------------------------------------------------------->
+                    <tr class="" id="tableTotal">
+                        <td class="title fw-bold text-dark fst-italic">Subtotal</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="total-td" style="background-color: rgba(146, 146, 146, 0.727)">
+                            <h4 class="text-center" id="subtotalProgram">-</h4>
+                        </td>
+                        <td class="total-td">
+                            <input type="text" class="form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}"
+                                name="" id="">
+                        </td>
+                        <td class="border border-white"></td>
+                    </tr>
 <!------------------------------------------------TOTAL STANDARD FEES--------------------------------------------------------->
-                    <tr class="table-active overall-total">
+                    <tr class="table-active overall-total" id="tableStandardTotal">
                         <td class="text-uppercase text-dark fst-italic fw-bold overall-total-start">TOTAL STANDARD FEES</td>
                         <td class="overall-total-middle"></td>
                         <td class="overall-total-middle"></td>
@@ -353,14 +369,14 @@
                         <td class="fw-bold text-dark text-uppercase fst-italic overall-total-start">discount given (if any)</td>
                         <td class="overall-total-middle table-warning">
                             <input type="text" class="hf-c32 form-control input-table text-center @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="" id="mg_inpt_dsct" readonly>
+                                value="{{ old('') }}" name="mg_inpt_dsct" id="mg_inpt_dsct" readonly>
                         </td>
                         <td class="overall-total-middle"></td>
                         <td class="overall-total-middle"></td>
                         <td class="overall-total-end"></td>
                         <td class="overall-total-end">
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}"  name="" id="mg_total_dsct">
+                                value="{{ old('') }}"  name="mg_input_totalPackages" id="mg_total_dsct">
                         </td>
                     </tr>
 <!------------------------------------------------TOTAL PACKAGE--------------------------------------------------------->
@@ -371,7 +387,7 @@
                         <td class="overall-total-middle"></td>
                         <td class="overall-total-end table-warning">
                             <input type="text" class="tf-f34 form-control text-center text-danger fw-bolder input-table @error('') is-invalid @enderror"
-                            value="{{ old('') }}" name="" id="mg_input_totalPackages" style="font-size: 20px;">
+                            value="{{ old('') }}" name="mg_input_totalPackages" id="mg_input_totalPackages" style="font-size: 20px;">
                         </td>
                         <td class="overall-total-end">
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
