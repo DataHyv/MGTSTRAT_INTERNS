@@ -26,5 +26,5 @@ mix.js("resources/js/app.js", "public/js")
     .postCss("resources/css/custom.css", "public/css");
 
 //Disable the notification of laravel mix
-// mix.disableNotifications();
+mix.disableNotifications();
 mix.disableSuccessNotifications();
