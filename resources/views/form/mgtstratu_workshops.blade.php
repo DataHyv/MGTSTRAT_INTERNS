@@ -51,7 +51,7 @@
                     <div class="card-body">
 
                         {{-- Budget form --}}
-                        <form class="form form-horizontal multisteps-form__form"
+                        <form class="workshop form form-horizontal multisteps-form__form"
                             action="{{ route('form/mgtstratu_workshops/save') }}" method="POST">
                             @csrf
 

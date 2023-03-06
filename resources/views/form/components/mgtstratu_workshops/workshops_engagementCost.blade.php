@@ -590,7 +590,7 @@
                             <td class="total-td"></td>
                             <td style="background-color: #FFFFFF;" class="border border-white"></td>
                         </tr>
-                        <tr class="th-blue-grey-lighten-2">
+                        <tr class="th-blue-grey-lighten-2" id="rowofProgramExpenses">
                             <td class="title">Program Expenses</td>
                             <td>
                                 <input type="text"
@@ -619,7 +619,7 @@
                         </tr>
 
         <!--------------------------TOTAL-------------------------------------------->
-                        <tr class="table-active">
+                        <tr class="table-active" id="workshop_allTotals">
                             <td class="fw-bold text-uppercase text-dark fst-italic overall-total-start">TOTAL</td>
                             <td class="overall-total-middle"></td>
                             <td class="overall-total-middle"></td>
