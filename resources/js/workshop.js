@@ -13,9 +13,9 @@ $(document).on('change keyup', '#main', function () {
     //totalsales
     costTotal = 0;
     sale = 0;
-    $("#tableofSale").each(function () {
-        sale =   overallTotal * $('#workshop_sale').val();
-        $('#workshop_saleTotal').html(sale.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+    $("#tableofSale > tr").each(function () {
+        sale =   overallTotal * $('#workshop_sale').val() || overallTotal * $(this).find('#inputforSale').val().replace(/\%/g, "");
+        $(this).find('#workshop_saleTotal').html(sale.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         costTotal += sale;
     });
     console.log(sale);
@@ -78,7 +78,7 @@ $(document).on('change keyup', '#main', function () {
     });
     console.log(designTotal);
 
-  
+
     //2.PROGRAM
 
     programTotal = 0;
@@ -88,7 +88,7 @@ $(document).on('change keyup', '#main', function () {
         $('#workshop_LeadfacilitatorsTotal').html(leadFee.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         programTotal += leadFee;
     });
-    console.log(leadFee);   
+    console.log(leadFee);
 
     //Moderator
 
@@ -99,7 +99,7 @@ $(document).on('change keyup', '#main', function () {
         $('#workshop_ModeratorTotal').html(moderatorFee.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         modTotal += moderatorFee;
     });
-    console.log(moderatorFee); 
+    console.log(moderatorFee);
 
     //Producer
 
@@ -124,7 +124,7 @@ $(document).on('change keyup', '#main', function () {
 
     //3. OFF-PROGRAM
     //Off-Program Fee
-    
+
     offTotal = 0;
     offprogramFee = 0;
     $("#rowofOffProgram").each(function () {
