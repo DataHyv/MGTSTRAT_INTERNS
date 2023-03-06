@@ -93,7 +93,7 @@
                     </tr>
                     </tbody>
 <!------------------------------------------------SUBTOTAL CUSTOMIZATION FEE-------------------------------------------------------------------->
-                    <tr class="" id="tableTotal">
+                    <tr class="" id="tablesubtotalCustomization">
                         <td class="title fw-bold text-dark fst-italic">Subtotal</td>
                         <td></td>
                         <td></td>
@@ -334,7 +334,7 @@
                     </tr>
                     </tbody>
 <!------------------------------------------------SUBTOTAL PROGRAM-------------------------------------------------------------------->
-                    <tr class="" id="tableTotal">
+                    <tr class="" id="tableSubtotalProgram">
                         <td class="title fw-bold text-dark fst-italic">Subtotal</td>
                         <td></td>
                         <td></td>

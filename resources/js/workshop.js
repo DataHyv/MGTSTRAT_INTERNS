@@ -9,6 +9,65 @@ $(document).on('change keyup', '#main', function () {
     });
     console.log(customizationFee);
 
+    // Subtotal Customization
+    subtotalConsulting_DesignFee = 0;
+    consulting_designFee = 0;
+    $("#tablesubtotalCustomization").each(function () {
+        consulting_designFee += customizationFee;
+        $('#subtotalCustomization').html(consulting_designFee.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        subtotalConsulting_DesignFee += consulting_designFee;
+    });
+    console.log(consulting_designFee);
+
+    // Package 1 Total Fee
+    totalPackage1Fee = 0;
+    package1Fee = 0;
+    $("#tableLeadconsultant").each(function () {
+        package1Fee = ($('#f_package1FeePf').val() * $('#ef_package1FeeNos').val()) + ($('#f_package1FeePf').val() * $('#ef_package1FeeNsw').val() * 0.2);
+        ($('#ef_package1FeeTotal')).html(package1Fee.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        totalPackage1Fee += package1Fee;
+    });
+    console.log(package1Fee);
+
+    // Package 2 Total Fee
+    totalPackage2Fee = 0;
+    package2Fee = 0;
+    $("#tableLeadconsultant").each(function () {
+        package2Fee = ($('#ef_package2FeePfv').val() * $('#ef_package2FeeNos').val()) + ($('#ef_package2FeePfv').val() * $('#eef_package2FeeNsw').val() * 0.2);
+        ($('#ef_package2FeeTotal')).html(package2Fee.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        totalPackage2Fee += package2Fee;
+    });
+    console.log(package2Fee);
+
+    // Producer Total Fee
+    totalProducerFee = 0;
+    producerFee = 0;
+    $("#tableLeadconsultant").each(function () {
+        producerFee = ($('#ef_producerFeePfv').val() * $('#ef_producerFeeNoc').val()) + ($('#ef_producerFeePfv').val() * $('#ef_producerFeeNsw').val() * 0.2);
+        ($('#ef_producerFeeTotal')).html(producerFee.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        totalProducerFee += producerFee;
+    });
+    console.log(producerFee);
+
+    // Subtotal Program
+    subTotalProgram = 0;
+    ProgramFee = 0;
+    $("#tableSubtotalProgram").each(function () {
+        ProgramFee = package1Fee + package2Fee + producerFee;
+        $('#subtotalProgram').html(ProgramFee.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        subTotalProgram += ProgramFee;
+    });
+    console.log(ProgramFee);
+
+    // Total Standard Fees
+    totalStandardFees = 0;
+    standardFees = 0;
+    $("#tableStandardTotal").each(function () {
+        standardFees = subtotalConsulting_DesignFee + subTotalProgram;
+        $('#mg_standard_total').html(standardFees.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        subTotalProgram += standardFees;
+    });
+    console.log(standardFees);
 
     //totalsales
     costTotal = 0;
