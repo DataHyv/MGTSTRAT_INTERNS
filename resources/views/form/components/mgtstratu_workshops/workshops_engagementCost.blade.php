@@ -254,7 +254,7 @@
                                 <td>
                                     <input type="text"
                                         class="text-center fw-bold text-dark text-center form-control input-table @error('') is-invalid @enderror"
-                                        value="{{ old('') }}" name="" id="workshop_CustomizationHf1" max="100">
+                                        value="{{ old('') }}" name="" id="workshop_CustomizationHf" max="100">
                                 </td>
                                 <td class="">
                                     <fieldset>

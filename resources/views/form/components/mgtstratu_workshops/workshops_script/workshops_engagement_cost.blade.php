@@ -1,5 +1,5 @@
 <script>
-    
+
     //SALES
     var musaleNum = 1;
     $(document).ready(function() {
@@ -32,12 +32,12 @@
 
             if (musaleNum > 1) {
                 document.getElementById("dropdownforSale").style.display =
-                    "none"; 
+                    "none";
                 document.getElementById("inputforSale").style.display =
-                    ""; 
+                    "";
                 document.getElementById("inputforSale").disabled =
                     false;
-            
+
             }
         });
 
@@ -51,7 +51,7 @@
                 document.getElementById("inputforSale").style.display = "none";
                 document.getElementById("workshop_sale").value = "0";
                 document.getElementById("dropdownforSale").style.display = "";
-                document.getElementById("inputforSale").value = ""; 
+                document.getElementById("inputforSale").value = "";
             }
 
         });
@@ -90,12 +90,12 @@
 
             if (mureferralsNum > 1) {
                 document.getElementById("dropdownforReferrals").style.display =
-                    "none"; 
+                    "none";
                 document.getElementById("inputforReferrals").style.display =
-                    ""; 
+                    "";
                 document.getElementById("inputforReferrals").disabled =
                     false;
-            
+
             }
         });
 
@@ -109,7 +109,7 @@
                 document.getElementById("inputforReferrals").style.display = "none";
                 document.getElementById("workshop_referrals").value = "0";
                 document.getElementById("dropdownforReferrals").style.display = "";
-                document.getElementById("inputforReferrals").value = ""; 
+                document.getElementById("inputforReferrals").value = "";
             }
 
         });
@@ -148,12 +148,12 @@
 
             if (muengagementNum > 1) {
                 document.getElementById("dropdownforEngagementManager").style.display =
-                    "none"; 
+                    "none";
                 document.getElementById("inputforEngagementManager").style.display =
-                    ""; 
+                    "";
                 document.getElementById("inputforEngagementManager").disabled =
                     false;
-            
+
             }
         });
 
@@ -167,7 +167,7 @@
                 document.getElementById("inputforEngagementManager").style.display = "none";
                 document.getElementById("workshop_engagementManager").value = "0";
                 document.getElementById("dropdownforEngagementManager").style.display = "";
-                document.getElementById("inputforEngagementManager").value = ""; 
+                document.getElementById("inputforEngagementManager").value = "";
             }
 
         });
@@ -184,7 +184,7 @@
                                 <td class="hf">
                                     <input type="text"
                                         class="text-center fw-bold text-dark text-center form-control input-table @error('') is-invalid @enderror"
-                                        value="{{ old('') }}" name="" id="workshop_CustomizationHf${muCustomization}" max="100">
+                                        value="{{ old('') }}" name="" id="workshop_CustomizationHf" max="100">
                                 </td>
                                 <td class="">
                                     <fieldset>
@@ -228,14 +228,14 @@
                             </td>
                         </tr>
                     `);
-                }); 
+                });
 
             $("#tableofCustomization").on("click", ".removed", function () {
-            
+
             // Getting all the rows next to the row
             // containing the clicked button
             var child = $(this).closest("tr").nextAll();
-            
+
             // Iterating across all the rows
             // obtained to change the index
             child.each(function () {
@@ -259,11 +259,11 @@
             $(this).closest("tr").remove();
             // Decreasing total number of rows by 1.
             muCustomization--;
-        });    
+        });
 
     });
-    
-  
+
+
     //CREATORS FEES
     var muCreators = 1;
     $(document).ready(function () {
@@ -279,7 +279,7 @@
                                             500 - Creators Fee is the creator is the lead, for the 2nd session onwards<br><br>
                                             1,000 - Creators Fee if creator is NOT the lead, for the 2nd session onwards</i>"
                                         data-mytooltip-theme="dark"
-                                        data-mytooltip-action="focus" 
+                                        data-mytooltip-action="focus"
                                         data-mytooltip-direction="right"
                                         style="background-color:#ffcccc; color:red;">
                                         <option value="0" {{ old('') == '0' ? 'selected="selected"' : '' }} title="">
@@ -320,14 +320,14 @@
                             </td>
                         </tr>
                     `);
-                }); 
+                });
 
             $("#tableofCreator").on("click", ".removed", function () {
-            
+
             // Getting all the rows next to the row
             // containing the clicked button
             var child = $(this).closest("tr").nextAll();
-            
+
             // Iterating across all the rows
             // obtained to change the index
             child.each(function () {
@@ -351,10 +351,10 @@
             $(this).closest("tr").remove();
             // Decreasing total number of rows by 1.
             muCreators--;
-        });    
+        });
 
     });
-    
+
 
     //LEAD FACILITATOR
     var muLeadfaci = 1;
@@ -390,14 +390,14 @@
                             </td>
                         </tr>
                     `);
-                }); 
+                });
 
             $("#tableofLeadFacilitator").on("click", ".removed", function () {
-            
+
             // Getting all the rows next to the row
             // containing the clicked button
             var child = $(this).closest("tr").nextAll();
-            
+
             // Iterating across all the rows
             // obtained to change the index
             child.each(function () {
@@ -423,7 +423,7 @@
             $(this).closest("tr").remove();
             // Decreasing total number of rows by 1.
             muLeadfaci--;
-        });    
+        });
 
     });
 
@@ -487,14 +487,14 @@
                                 </td>
                         </tr>
                     `);
-                }); 
+                });
 
             $("#tableofModerator").on("click", ".removed", function () {
-            
+
             // Getting all the rows next to the row
             // containing the clicked button
             var child = $(this).closest("tr").nextAll();
-            
+
             // Iterating across all the rows
             // obtained to change the index
             child.each(function () {
@@ -520,7 +520,7 @@
             $(this).closest("tr").remove();
             // Decreasing total number of rows by 1.
             muModerator--;
-        });    
+        });
 
     });
 
@@ -558,14 +558,14 @@
                                 </td>
                         </tr>
                     `);
-                }); 
+                });
 
             $("#tableofProducer").on("click", ".removed", function () {
-            
+
             // Getting all the rows next to the row
             // containing the clicked button
             var child = $(this).closest("tr").nextAll();
-            
+
             // Iterating across all the rows
             // obtained to change the index
             child.each(function () {
@@ -591,7 +591,7 @@
             $(this).closest("tr").remove();
             // Decreasing total number of rows by 1.
             muProducer--;
-        });    
+        });
 
     });
 

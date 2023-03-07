@@ -1,4 +1,4 @@
-$(document).on('change keyup', '#main', function () {
+$(document).on('click load change keyup', '#main, #f2f-ef-table, #workshop-table', function () {
 
     overallTotal = 0;
     customizationFee = 0;
@@ -70,13 +70,13 @@ $(document).on('change keyup', '#main', function () {
     console.log(standardFees);
 
 
-    
 
 
 
 
 
-    
+
+
     //totalsales
     costTotal = 0;
     sale = 0;
@@ -125,7 +125,7 @@ $(document).on('change keyup', '#main', function () {
     desTotal = 0;
     design = 0;
     $("#tableofCustomization > tr").each(function () {
-        design =  $('#workshop_CustomizationHf1').val() * $('#workshop_CustomizationNoh').val() || $(this).find('#workshop_CustomizationHf2').val().replace(/\%/g, "") * $('#workshop_CustomizationNoh');
+        design =  $(this).find('#workshop_CustomizationHf').val() * $(this).find('#workshop_CustomizationNoh').val();
         $(this).find('#workshop_CustomizationsTotal').html(design.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         desTotal += design;
     });
