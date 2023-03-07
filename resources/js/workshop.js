@@ -69,6 +69,14 @@ $(document).on('change keyup', '#main', function () {
     });
     console.log(standardFees);
 
+
+    
+
+
+
+
+
+    
     //totalsales
     costTotal = 0;
     sale = 0;
@@ -84,50 +92,61 @@ $(document).on('change keyup', '#main', function () {
 
     refTotal = 0;
     referral = 0;
-    $("#tableofReferrals").each(function () {
-        referral =   overallTotal * $('#workshop_referrals').val();
-        $('#workshop_referralsTotal').html(referral.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+    $("#tableofReferrals > tr").each(function () {
+        referral =   overallTotal * $('#workshop_referrals').val() || overallTotal * $(this).find('#inputforReferrals').val().replace(/\%/g, "");
+        $(this).find('#workshop_referralsTotal').html(referral.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         refTotal += referral;
     });
     console.log(referral);
 
 
-    //engagementmanager
+
+    //engagement manager
     manTotal = 0;
     manager = 0;
-    $("#tableofCustomization").each(function () {
-        manager =   overallTotal * $('#workshop_engagementManager').val();
-        $('#workshop_engagementManagerTotal').html(manager.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+    $("#tableofEngagementManager > tr").each(function () {
+        manager =   overallTotal * $('#workshop_engagementManager').val() || overallTotal * $(this).find('#inputforEngagementManager').val().replace(/\%/g, "");
+        $(this).find('#workshop_engagementManagerTotal').html(manager.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         manTotal += manager;
     });
     console.log(manager);
 
 
-    //Customization Fee
 
+
+
+
+
+
+
+
+
+    //Customization Fee
     desTotal = 0;
     design = 0;
-    $("#tableofCustomization").each(function () {
-        design =  $('#workshop_CustomizationHf1').val()  * $('#workshop_CustomizationNoh').val();
-        $('#workshop_CustomizationsTotal').html(design.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+    $("#tableofCustomization > tr").each(function () {
+        design =  $('#workshop_CustomizationHf1').val() * $('#workshop_CustomizationNoh').val() || $(this).find('#workshop_CustomizationHf2').val().replace(/\%/g, "") * $('#workshop_CustomizationNoh');
+        $(this).find('#workshop_CustomizationsTotal').html(design.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         desTotal += design;
     });
     console.log(design);
 
 
-    //creatorFees
 
+    //creatorFees
     creTotal = 0;
     creatorFee = 0;
-    $("#tableofCreator").each(function () {
-        creatorFee =  $('#workshop_CreatorHf').val()  * $('#workshop_CreatorNoh1').val();
-        $('#workshop_CreatorTotal').html(creatorFee.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+    $("#tableofCreator > tr").each(function () {
+        creatorFee =  $('#workshop_CreatorHf').val() * $('#workshop_CreatorNoh1').val() || $('#workshop_CreatorHf').val() * $(this).find('#workshop_CreatorNoh2').val().replace(/\%/g, "");
+        $(this).find('#workshop_CreatorTotal').html(creatorFee.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         creTotal += creatorFee;
     });
     console.log(creatorFee);
 
-    //1. CONSULTING/DESIGN subtotal
 
+
+
+    //1. CONSULTING/DESIGN subtotal
     subTotal = 0;
     designTotal = 0;
     $("#workshop_DesignsSubtotal").each(function () {
