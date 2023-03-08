@@ -364,7 +364,7 @@
                 <tr class="th-blue-grey-lighten-2" id="rowofLeadFacilitator${++muLeadfaci}">
                                 <td class="title">Lead Facilitator</td>
                                 <td class="hf">
-                                    <input type="text"
+                                    <input type="number"
                                         class="text-center fw-bold text-center text-dark form-control input-table @error('') is-invalid @enderror"
                                         value="{{ old('') }}" name="" id="workshop_LeadfacilitatorsHf">
                                 </td>

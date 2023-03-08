@@ -392,7 +392,7 @@
                             <tr class="th-blue-grey-lighten-2" id="rowofLeadFacilitator">
                                 <td class="title">Lead Facilitator</td>
                                 <td>
-                                    <input type="text"
+                                    <input type="number"
                                         class="text-center fw-bold text-center text-dark form-control input-table @error('') is-invalid @enderror"
                                         value="{{ old('') }}" name="" id="workshop_LeadfacilitatorsHf">
                                 </td>
@@ -513,7 +513,7 @@
                             </tr>
                         </tbody>
 
-                        <tr class="table-secondary">
+                        <tr class="table-secondary" id="tableofProgramSubtotal">
                             <td class="title fw-bold text-dark fst-italic">Subtotal</td>
                             <td></td>
                             <td></td>
