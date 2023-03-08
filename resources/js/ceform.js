@@ -2,10 +2,11 @@ require("./components/clusterReference");
 require("./components/currencyFormat");
 
 /*************************************** CUSTOMIZED ENGAGEMENT SUB BUDGET FORM COMPUTATION ********************************************************/
-$(document).ready( function () {
-    $('#ec_tableEngagementFees1 input').attr('readonly','readonly');
-    $('#ec_tableEngagementFees1 select').attr('disabled','disabled');
-    $('#ec_tableEngagementFees1 textarea').attr('readonly','readonly');
+$(document).ready(function () {
+    // $('#ec_tableEngagementFees1 input').attr('readonly','readonly');
+    // $('#ec_tableEngagementFees1 select').attr('disabled','disabled');
+    // $('#ec_tableEngagementFees1 textarea').attr('readonly','readonly');
+    $('#main').click();
     //customized type
     $(".customized-type").each(function () {
         var gaPercentage = $(".customized-type");
@@ -1022,8 +1023,8 @@ $(document).ready( function () {
 
 /*************************************** CUSTOMIZED ENGAGEMENT BUDGET FORM COMPUTATION ********************************************************/
 $(document).on(
-    "load change keyup click",
-    ".engagement_fees, .engagement_cost, .frofit_forecast, .customized-engagement, .customized-type, .ga-only-dropdown, .remove, #ec_tableEngagementFees, #ec_tableEngagementCost, #LessCTO_NOC",
+    "click change keyup load",
+    "#main, .engagement_fees, .engagement_cost, .frofit_forecast, .customized-engagement, .customized-type, .ga-only-dropdown, .remove, #ec_tableEngagementFees, #ec_tableEngagementCost, #LessCTO_NOC",
     function () {
         //customized type
         $(".customized-type").each(function () {
