@@ -336,7 +336,7 @@
                                 <td>
                                     <input type="number"
                                         class="text-center form-control input-table @error('') is-invalid @enderror"
-                                        value="{{ old('') }}" name="" id="workshop_CreatorNoh1" max="100">
+                                        value="{{ old('') }}" name="" id="workshop_CreatorNoh" max="100">
                                 </td>
                                 <td class=""></td>
                                 <td class="total-td" style="border-left:3px solid black">
@@ -399,12 +399,12 @@
                                 <td>
                                     <input type="number"
                                         class="text-center form-control input-table @error('') is-invalid @enderror"
-                                        value="{{ old('') }}" name="" id="workshop_LeadfacilitatorsNoh1">
+                                        value="{{ old('') }}" name="" id="workshop_LeadfacilitatorsNoh">
                                 </td>
                                 <td>
                                     <input type="number"
                                         class="text-center form-control input-table @error('') is-invalid @enderror"
-                                        value="{{ old('') }}" name="" id="workshop_LeadfacilitatorsNwh1">
+                                        value="{{ old('') }}" name="" id="workshop_LeadfacilitatorsNwh">
                                 </td>
                                 <td class="total-td" style="border-left:3px solid black">
                                     <h4 class="text-center lead" id="workshop_LeadfacilitatorsTotal">-</h4>

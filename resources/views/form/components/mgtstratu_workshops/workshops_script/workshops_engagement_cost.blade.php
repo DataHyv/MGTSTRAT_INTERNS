@@ -273,7 +273,7 @@
                             <td class="title">Creators Fees (0, 500, 1K)</td>
                             <td class="hf">
                                 <fieldset>
-                                    <select class="input js-mytooltip  text-center form-select @error('') is-invalid @enderror" name="" id="workshop__CreatorHf"
+                                    <select class="input js-mytooltip  text-center form-select @error('') is-invalid @enderror" name="" id="workshop_CreatorHf"
                                         data-mytooltip-content="<i>
                                             Creators Fee - 0 - no creators fee<br><br>
                                             500 - Creators Fee is the creator is the lead, for the 2nd session onwards<br><br>
@@ -303,7 +303,7 @@
                             <td class="noh">
                                 <input type="number"
                                     class="text-center form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="" id=workshop_CreatorNoh${muCreators}" max="100"
+                                    value="{{ old('') }}" name="" id="workshop_CreatorNoh" max="100"
                                     >
                             </td>
                             <td class=""></td>
@@ -371,12 +371,12 @@
                                 <td class="noh">
                                     <input type="number"
                                         class="text-center form-control input-table @error('') is-invalid @enderror"
-                                        value="{{ old('') }}" name="" id="workshop_LeadfacilitatorsNoh${muLeadfaci}">
+                                        value="{{ old('') }}" name="" id="workshop_LeadfacilitatorsNoh">
                                 </td>
                                 <td class="nwh">
                                     <input type="number"
                                         class="text-center form-control input-table @error('') is-invalid @enderror"
-                                        value="{{ old('') }}" name="" id="workshop_LeadfacilitatorsNwh${muLeadfaci}">
+                                        value="{{ old('') }}" name="" id="workshop_LeadfacilitatorsNwh">
                                 </td>
                                 <td class="total-td" style="border-left:3px solid black">
                                     <h4 class="text-center lead" id="workshop_LeadfacilitatorsTotal">-</h4>
