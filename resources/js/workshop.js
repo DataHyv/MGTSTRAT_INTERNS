@@ -67,16 +67,13 @@ $(document).on('click load change keyup', '#main, #f2f-ef-table, #workshop-table
         $('#mg_standard_total').html(standardFees.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         subTotalProgram += standardFees;
     });
-    console.log(standardFees);
+  
 
 
 
 
 
-
-
-
-
+    
     //totalsales
     costTotal = 0;
     sale = 0;
@@ -85,11 +82,11 @@ $(document).on('click load change keyup', '#main, #f2f-ef-table, #workshop-table
         $(this).find('#workshop_saleTotal').html(sale.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         costTotal += sale;
     });
-    console.log(sale);
+
+
 
 
     //referrals
-
     refTotal = 0;
     referral = 0;
     $("#tableofReferrals > tr").each(function () {
@@ -97,6 +94,7 @@ $(document).on('click load change keyup', '#main, #f2f-ef-table, #workshop-table
         $(this).find('#workshop_referralsTotal').html(referral.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         refTotal += referral;
     });
+
 
 
 
@@ -112,20 +110,16 @@ $(document).on('click load change keyup', '#main, #f2f-ef-table, #workshop-table
 
 
 
-
-
-
-
-
-
     //Customization Fee
     costTotal = 0;
     designFee = 0;
     $("#tableofCustomization > tr").each(function () {
         designFee =  $(this).find('#workshop_CustomizationHf').val() * $(this).find('#workshop_CustomizationNoh').val();
         $(this).find('#workshop_CustomizationsTotal').html(designFee.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-        costTotal += parseFloat(designFee);
+        costTotal +=designFee;
     });
+
+
 
 
     //creatorFees
@@ -134,56 +128,60 @@ $(document).on('click load change keyup', '#main, #f2f-ef-table, #workshop-table
     $("#tableofCreator > tr").each(function () {
         creatorFee = $(this).find('#workshop_CreatorHf').val() * $(this).find('#workshop_CreatorNoh').val();
         $(this).find('#workshop_CreatorTotal').html(creatorFee.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-        creTotal += parseFloat(creatorFee);
+        creTotal +=creatorFee;
     });
 
     
+
+
     //1. CONSULTING/DESIGN subtotal
     subTotal = 0;
     designTotal = 0;
     $("#workshop_DesignsSubtotal").each(function () {
         designTotal = costTotal + creTotal;
         $('#workshop_DesignsSubtotal').html(designTotal.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-        subTotal += parseFloat(designTotal);
+        subTotal +=designTotal;
     });
+
+
 
 
     //2.PROGRAM
+    //Lead Facilitator
     programTotal = 0;
     facilitatorFee = 0;
-    $("#tableofLeadFacilitator").each(function () {
-        facilitatorFee = 
-        // ($("#workshop_LeadfacilitatorsHf").val() * $("#workshop_LeadfacilitatorsNoh1").val()) + ($("#workshop_LeadfacilitatorsHf").val() * $("#workshop_LeadfacilitatorsNoh1").val()) * ($("#workshop_LeadfacilitatorsNwh1").val() * 0.2);
-        ($(this).find('#workshop_LeadfacilitatorsHf').val() * $(this).find('#workshop_LeadfacilitatorsNoh').val()) + ($(this).find('#workshop_LeadfacilitatorsHf').val() * $(this).find('#workshop_LeadfacilitatorsNoh').val()) * ($(this).find('#workshop_LeadfacilitatorsNwh').val() * 0.2);
-        $('#workshop_LeadfacilitatorsTotal').html(facilitatorFee.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+    $("#tableofLeadFacilitator > tr").each(function () {
+        facilitatorFee = ($(this).find('#workshop_LeadfacilitatorsHf').val() * $(this).find('#workshop_LeadfacilitatorsNoh').val()) + ($(this).find('#workshop_LeadfacilitatorsHf').val() * $(this).find('#workshop_LeadfacilitatorsNoh').val()) * ($(this).find('#workshop_LeadfacilitatorsNwh').val() * 0.2);
+        $(this).find('#workshop_LeadfacilitatorsTotal').html(facilitatorFee.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         programTotal += facilitatorFee;
     });
+
 
 
 
     //Moderator
     modTotal = 0;
     moderatorFee = 0;
-    $("#tableofModerator").each(function () {
-        moderatorFee = ($("#workshop_ModeratorHf").val() * $("#workshop_ModeratorNoh1").val()) + ($("#workshop_ModeratorHf").val() * $("#workshop_ModeratorNoh1").val()) * ($("#workshop_ModeratorNwh1").val() * 0.2);
-        $('#workshop_ModeratorTotal').html(moderatorFee.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+    $("#tableofModerator > tr").each(function () {
+        moderatorFee = ($(this).find('#workshop_ModeratorHf').val() * $(this).find('#workshop_ModeratorNoh1').val()) + ($(this).find('#workshop_ModeratorHf').val() * $(this).find('#workshop_ModeratorNoh1').val()) * ($(this).find('#workshop_ModeratorNwh1').val() * 0.2);
+        $(this).find('#workshop_ModeratorTotal').html(moderatorFee.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         modTotal += moderatorFee;
     });
-    console.log(moderatorFee);
 
 
 
     //Producer
     proTotal = 0;
     producerFee = 0;
-    $("#tableofProducer").each(function () {
-        producerFee = ($("#workshop_ProducerHf").val() * $("#workshop_ProducerNoh1").val()) + ($("#workshop_ProducerHf").val() * $("#workshop_ProducerNoh1").val()) * ($("#workshop_ProducerNwh1").val() * 0.2);
-        $('#workshop_ProducersTotal').html(producerFee.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+    $("#tableofProducer > tr").each(function () {
+        producerFee =($(this).find('#workshop_ProducerHf').val() * $(this).find('#workshop_ProducerNoh').val()) + ($(this).find('#workshop_ProducerHf').val() * $(this).find('#workshop_ProducerNoh').val()) * ($(this).find('#workshop_ProducerNwh').val() * 0.2);
+        $(this).find('#workshop_ProducersTotal').html(producerFee.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        proTotal += producerFee;
     });
-    console.log(producerFee);
+
+
 
     //2. PROGRAM subtotal
-
     sub2Total = 0;
     producerTotal = 0;
     $("#workshop_ProgramsSubtotal").each(function () {
@@ -191,7 +189,6 @@ $(document).on('click load change keyup', '#main, #f2f-ef-table, #workshop-table
         $('#workshop_ProgramsSubtotal').html(producerTotal.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         sub2Total += producerTotal;
     });
-    console.log(producerTotal);
 
 
 
@@ -204,11 +201,10 @@ $(document).on('click load change keyup', '#main, #f2f-ef-table, #workshop-table
         $('#workshop_OffprogramsTotal').html(offprogramFee.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         offTotal += offprogramFee;
     });
-    console.log(offprogramFee);
+
 
     //MISCELLANEOUS
     //Program Expenses
-
     expTotal = 0;
     expensesTotal = 0;
     $("#rowofProgramExpenses").each(function () {
@@ -216,11 +212,10 @@ $(document).on('click load change keyup', '#main, #f2f-ef-table, #workshop-table
         $('#workshop_ProgramexpensesTotal').html(expensesTotal.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         expTotal += expensesTotal;
     });
-    console.log(referral);
+
 
 
     //overallcosttotal
-
     overAllcostTotal = 0;
     allcostTotal = 0;
     $("#workshop_allTotals").each(function () {
@@ -228,7 +223,7 @@ $(document).on('click load change keyup', '#main, #f2f-ef-table, #workshop-table
         $('#workshop_Totals').html(allcostTotal.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         overAllcostTotal += allcostTotal;
     });
-    console.log(allcostTotal);
+ 
 
 
 

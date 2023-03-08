@@ -392,7 +392,7 @@
                             <tr class="th-blue-grey-lighten-2" id="rowofLeadFacilitator">
                                 <td class="title">Lead Facilitator</td>
                                 <td>
-                                    <input type="text"
+                                    <input type="number"
                                         class="text-center fw-bold text-center text-dark form-control input-table @error('') is-invalid @enderror"
                                         value="{{ old('') }}" name="" id="workshop_LeadfacilitatorsHf">
                                 </td>
@@ -484,19 +484,19 @@
                             <tr class="th-blue-grey-lighten-2" id="rowofProducer">
                                 <td class="title">Producer</td>
                                 <td>
-                                    <input type="text"
+                                    <input type="number"
                                         class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
                                         value="{{ old('') }}" name="" id="workshop_ProducerHf">
                                 </td>
                                 <td>
                                     <input type="number"
                                         class="text-center form-control input-table @error('') is-invalid @enderror"
-                                        value="{{ old('') }}" name="" id="workshop_ProducerNoh1">
+                                        value="{{ old('') }}" name="" id="workshop_ProducerNoh">
                                 </td>
                                 <td>
                                     <input type="number"
                                         class="text-center form-control input-table @error('') is-invalid @enderror"
-                                        value="{{ old('') }}" name="" id="workshop_ProducerNwh1">
+                                        value="{{ old('') }}" name="" id="workshop_ProducerNwh">
                                 </td>
                                 <td class="total-td" style="border-left:3px solid black">
                                     <h4 class="text-center lead" id="workshop_ProducersTotal">-</h4>

@@ -364,7 +364,7 @@
                 <tr class="th-blue-grey-lighten-2" id="rowofLeadFacilitator${++muLeadfaci}">
                                 <td class="title">Lead Facilitator</td>
                                 <td class="hf">
-                                    <input type="text"
+                                    <input type="number"
                                         class="text-center fw-bold text-center text-dark form-control input-table @error('') is-invalid @enderror"
                                         value="{{ old('') }}" name="" id="workshop_LeadfacilitatorsHf">
                                 </td>
@@ -468,12 +468,12 @@
                                 <td class="noh">
                                     <input type="number"
                                         class="text-center  form-control input-table @error('') is-invalid @enderror"
-                                        value="{{ old('') }}" name="" id="workshop_ModeratorNoh${muModerator}">
+                                        value="{{ old('') }}" name="" id="workshop_ModeratorNoh1">
                                 </td>
                                 <td class="nwh">
                                     <input type="number"
                                         class="text-center form-control input-table @error('') is-invalid @enderror"
-                                        value="{{ old('') }}" name="" id="workshop_ModeratorNwh${muModerator}">
+                                        value="{{ old('') }}" name="" id="workshop_ModeratorNwh1">
                                 </td>
                                 <td class="total-td" style="border-left:3px solid black">
                                     <h4 class="text-center lead" id="workshop_ModeratorTotal">-</h4>
@@ -539,12 +539,12 @@
                                 <td>
                                     <input type="number"
                                         class="text-center form-control input-table @error('') is-invalid @enderror"
-                                        value="{{ old('') }}" name="" id="workshop_ProducerNoh${muProducer}">
+                                        value="{{ old('') }}" name="" id="workshop_ProducerNoh">
                                 </td>
                                 <td>
                                     <input type="number"
                                         class="text-center form-control input-table @error('') is-invalid @enderror"
-                                        value="{{ old('') }}" name="" id="workshop_ProducerNwh${muProducer}">
+                                        value="{{ old('') }}" name="" id="workshop_ProducerNwh">
                                 </td>
                                 <td class="total-td" style="border-left:3px solid black">
                                     <h4 class="text-center lead" id="workshop_ProducersTotal">-</h4>
