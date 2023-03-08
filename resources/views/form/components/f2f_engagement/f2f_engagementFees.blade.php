@@ -263,7 +263,7 @@
                         </td>
                         <td class="total-td">
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="fee_notes" id="">
+                                value="{{ old('') }}" name="fee_notes[]" id="">
                         </td>
                     </tr>
                 </tbody>
@@ -324,7 +324,7 @@
                         </td>
                         <td class="total-td">
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="fee_notes" id="">
+                                value="{{ old('') }}" name="fee_notes[]" id="">
                         </td>
                     </tr>
                 </tbody>
@@ -385,25 +385,25 @@
                         <td>
                             <input type="number"
                                 class="noc-b23 form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="ef_noc[]" id="ef_ActionLearnNoc1" max="100">
+                                value="{{ old('') }}" name="fee_noc[]" id="ef_ActionLearnNoc1" max="100">
                         </td>
                         <td>
                             <input type="text"
                                 class="hf-c22 form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="ef_pd[]" id="ef_ActionLearnPdf"
+                                value="{{ old('') }}" name="fee_pd[]" id="ef_ActionLearnPdf"
                                 data-type="currency";>
                         </td>
                         <td>
                             <input type="number"
                                 class="noh-d23 input js-mytooltip form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="ef_nod[]" id="ef_ActionLearnNod1"
+                                value="{{ old('') }}" name="fee_nod[]" id="ef_ActionLearnNod1"
                                 data-mytooltip-content="<i>½ Day = 0.70</i>" data-mytooltip-theme="dark"
                                 data-mytooltip-action="focus" data-mytooltip-direction="bottom">
                         </td>
                         <td>
                             <input type="number"
                                 class="nwh-e23 form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="ef_atd[]" id="ef_ActionLearnAtd1">
+                                value="{{ old('') }}" name="fee_atd[]" id="ef_ActionLearnAtd1">
                         </td>
                         <td>
                             <input type="number"
@@ -415,7 +415,7 @@
                         </td>
                         <td class="total-td">
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="fee_notes" id="">
+                                value="{{ old('') }}" name="fee_notes[]" id="">
                         </td>
                     </tr>
                 </tbody>
@@ -507,7 +507,7 @@
                         <td>
                             <input type="number"
                                 class="noh-d23 input js-mytooltip form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="fee_nod" id="ef_OnsiteNod1"
+                                value="{{ old('') }}" name="fee_nod[]" id="ef_OnsiteNod1"
                                 data-mytooltip-content="<i>½ Day = 0.70</i>" data-mytooltip-theme="dark"
                                 data-mytooltip-action="focus" data-mytooltip-direction="bottom">
                         </td>
@@ -613,8 +613,8 @@
                         5. PER DIEM
                     </th>
                     <td>
-                        {{-- <input type="number" class="noc-b28 form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="" id="ef_PDNoc" max="100"> --}}
+                        <input type="number" class=" d-none noc-b28 form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="fee_noc[]" id="ef_PDNoc" max="100">
                     </td>
                     <td>
                         <input type="text" class="hf-c22 form-control input-table @error('') is-invalid @enderror"
@@ -622,16 +622,16 @@
                     </td>
                     <td>
                         <input type="number"
-                            class="noh-d28 input  form-control input-table @error('') is-invalid @enderror"
+                            class="noh-d28 input form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="fee_nod[]" id="ef_PDNod">
                     </td>
                     <td>
-                        {{-- <input type="number" class="nwh-e28 form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="" id="ef_PDAtd"> --}}
+                        <input type="number" class="d-none nwh-e28 form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="fee_atd[]" id="ef_PDAtd">
                     </td>
                     <td>
-                        {{-- <input type="number" class="nwh-e28 form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="" id="ef_PDNsw"> --}}
+                        <input type="number" class="d-none nwh-e28 form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="fee_nswh[]" id="ef_PDNsw">
                     </td>
                     <td class="total-td" style="background-color: rgba(146, 146, 146, 0.727">
                         <h4 class="text-center" id="subtotal-PD">-</h4>
@@ -641,6 +641,7 @@
                             value="{{ old('') }}" name="fee_notes[]" id="">
                     </td>
                 </tr>
+
                 <tr class="table-active overall-total">
                     <td class="text-uppercase text-dark fst-italic fw-bold overall-total-start">TOTAL STANDARD FEES
                     </td>
@@ -663,26 +664,35 @@
                         <input type="text" class="d-none" value="discount given (if any)" name="fee_type[]" readonly>
                         discount given (if any)
                     </td>
-                    <td class="overall-total-middle"></td>
+                    <td class="overall-total-middle">
+                        <input type="number" class=" d-none noc-b28 form-control input-table @error('') is-invalid @enderror"
+                        value="{{ old('') }}" name="fee_noc[]" id="ef_PDNoc" max="100">
+                    </td>
                     <td class="overall-total-middle table-warning">
                         <input type="text"
                             class="hf-c32 form-control input-table text-center @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="fee_pd[]" id="inpt_dsct" readonly>
                     </td>
-                    <td class="overall-total-middle"></td>
-                    <td class="overall-total-middle"></td>
-                    <td class="overall-total-middle"></td>
+                    <td class="overall-total-middle">
+                        <input type="number" class="d-none noh-d28 input form-control input-table @error('') is-invalid @enderror" value="{{ old('') }}" name="fee_nod[]" id="ef_PDNod">
+                    </td>
+                    <td class="overall-total-middle">
+                        <input type="number" class="d-none nwh-e28 form-control input-table @error('') is-invalid @enderror" value="{{ old('') }}" name="fee_atd[]" id="ef_PDAtd">
+                    </td>
+                    <td class="overall-total-middle">
+                        <input type="number" class="d-none nwh-e28 form-control input-table @error('') is-invalid @enderror" value="{{ old('') }}" name="fee_nswh[]" id="ef_PDNsw">
+                    </td>
                     <td class="overall-total-end"></td>
                     <td class="overall-total-end">
                         <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                            value="{{ old('') }}" name="" id="total_dsct">
+                            value="{{ old('') }}" name="fee_notes[]" id="total_dsct">
                     </td>
 
                 </tr>
 
                 <tr class="table-active">
                     <td class="fw-bold text-uppercase text-dark fst-italic overall-total-start">
-                        <input type="text" class="d-none" value="Total Package" name="fee_type[]" readonly>
+                        <input type="text" class="d-none" value="Total Package" name="" readonly>
                         Total Package
                     </td>
                     <td class="overall-total-middle"></td>

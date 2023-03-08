@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\F2f_information;
+use App\Models\F2f_fees;
 use App\Models\Client;
 use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
@@ -66,8 +67,8 @@ class F2fEngagementController extends Controller
             $f2f_information->core_area             = $request->core_area;
             $f2f_information->save();
 
-            // $cstmzd_eng_form_id = DB::table('customized_engagement_forms')->orderBy('cstmzd_eng_form_id','DESC')->select('cstmzd_eng_form_id')->first();
-            // $cstmzd_eng_form_id = $cstmzd_eng_form_id->cstmzd_eng_form_id;
+            $f2f_id = DB::table('f2f_informations')->orderBy('f2f_id','DESC')->select('f2f_id')->first();
+            $f2f_id = $f2f_id->f2f_id;
             // $client_id = DB::table('customized_engagement_forms')->orderBy('client_id','DESC')->select('client_id')->first();
             // $client_id = $client_id->client_id;
             // $ce_id = DB::table('customized_engagement_forms')->orderBy('id','DESC')->select('id')->first();
@@ -75,26 +76,26 @@ class F2fEngagementController extends Controller
             // $batch_number = DB::table('customized_engagement_forms')->orderBy('batch_number','DESC')->select('batch_number')->first();
             // $batch_number = $batch_number->batch_number;
 
-            // try
-            //     {
-            //         foreach($request->fee_type as $key => $fee_types){
-            //             $engagement_fee['type']                 = $fee_types;
-            //             $engagement_fee['cstmzd_eng_form_id']   = $cstmzd_eng_form_id;
-            //             $engagement_fee['client_id']            = $client_id;
-            //             $engagement_fee['consultant_num']       = $request->fee_consultant_num[$key] ?? '0';
-            //             $engagement_fee['hour_fee']             = $request->fee_hour_fee[$key];
-            //             $engagement_fee['hour_num']             = $request->fee_hour_num[$key] ?? '0';
-            //             $engagement_fee['nswh']                 = $request->fee_nswh[$key] ?? '0';
-            //             $engagement_fee['nswh_percent']         = $request->nswh_percent[$key];
-            //             $engagement_fee['notes']                = $request->fee_notes[$key];
+            try
+                {
+                    foreach($request->fee_type as $key => $fee_typess){
+                        $f2f_fees['fee_type']      = $fee_typess;
+                        $f2f_fees['f2f_id']        = $f2f_id;
+                        $f2f_fees['fee_noc']       = $request->fee_noc[$key] ?? '0';
+                        $f2f_fees['fee_pd']        = $request->fee_pd[$key];
+                        $f2f_fees['fee_nod']       = $request->fee_nod[$key] ?? '0';
+                        $f2f_fees['fee_atd']       = $request->fee_atd[$key] ?? '0';
+                        $f2f_fees['fee_nswh']      = $request->fee_nswh[$key] ?? '0';
+                        // $f2f_fees['nswh_percent']  = $request->nswh_percent[$key];
+                        $f2f_fees['fee_notes']     = $request->fee_notes[$key];
 
-            //             Engagement_fee::create($engagement_fee);
-            //         }
-            //     }
-            // catch(\Exception $e){
-            //     DB::rollback();
-            //     Toastr::error('fee'.$e->getMessage(), 'Error');
-            // }
+                        F2f_fees::create($f2f_fees);
+                    }
+                }
+            catch(\Exception $e){
+                DB::rollback();
+                Toastr::error($e->getMessage(), 'Error');
+            }
 
             DB::commit();
             // info('This is some useful information.');
