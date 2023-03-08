@@ -252,7 +252,7 @@
                             <tr class="th-blue-grey-lighten-2" id="rowofCustomization">
                                 <td class="title">Customization Fee</td>
                                 <td>
-                                    <input type="text"
+                                    <input type="number"
                                         class="text-center fw-bold text-dark text-center form-control input-table @error('') is-invalid @enderror"
                                         value="{{ old('') }}" name="" id="workshop_CustomizationHf" max="100">
                                 </td>

@@ -124,9 +124,8 @@ $(document).on('click load change keyup', '#main, #f2f-ef-table, #workshop-table
     $("#tableofCustomization > tr").each(function () {
         designFee =  $(this).find('#workshop_CustomizationHf').val() * $(this).find('#workshop_CustomizationNoh').val();
         $(this).find('#workshop_CustomizationsTotal').html(designFee.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-        costTotal += designFee;
+        costTotal += parseFloat(designFee);
     });
-
 
 
     //creatorFees
@@ -135,20 +134,17 @@ $(document).on('click load change keyup', '#main, #f2f-ef-table, #workshop-table
     $("#tableofCreator > tr").each(function () {
         creatorFee = $(this).find('#workshop_CreatorHf').val() * $(this).find('#workshop_CreatorNoh').val();
         $(this).find('#workshop_CreatorTotal').html(creatorFee.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-        creTotal += creatorFee;
+        creTotal += parseFloat(creatorFee);
     });
-
-
 
     
     //1. CONSULTING/DESIGN subtotal
     subTotal = 0;
     designTotal = 0;
     $("#workshop_DesignsSubtotal").each(function () {
-        designTotal = (designFee) + (creatorFee);
-                            //$(this).find(designFee) + $(this).find(creatorFee);
+        designTotal = costTotal + creTotal;
         $('#workshop_DesignsSubtotal').html(designTotal.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-        subTotal +=designTotal;
+        subTotal += parseFloat(designTotal);
     });
 
 
