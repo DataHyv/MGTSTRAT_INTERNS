@@ -7,7 +7,6 @@ $(document).on('click load change keyup', '#main, #f2f-ef-table, #workshop-table
         $('#ef_customizationFeeTotal').html(customizationFee.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         overallTotal += customizationFee;
     });
-    console.log(customizationFee);
 
     // Subtotal Customization
     subtotalConsulting_DesignFee = 0;
@@ -17,7 +16,6 @@ $(document).on('click load change keyup', '#main, #f2f-ef-table, #workshop-table
         $('#subtotalCustomization').html(consulting_designFee.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         subtotalConsulting_DesignFee += consulting_designFee;
     });
-    console.log(consulting_designFee);
 
     // Package 1 Total Fee
     totalPackage1Fee = 0;
@@ -27,7 +25,6 @@ $(document).on('click load change keyup', '#main, #f2f-ef-table, #workshop-table
         ($('#ef_package1FeeTotal')).html(package1Fee.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         totalPackage1Fee += package1Fee;
     });
-    console.log(package1Fee);
 
     // Package 2 Total Fee
     totalPackage2Fee = 0;
@@ -37,7 +34,6 @@ $(document).on('click load change keyup', '#main, #f2f-ef-table, #workshop-table
         ($('#ef_package2FeeTotal')).html(package2Fee.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         totalPackage2Fee += package2Fee;
     });
-    console.log(package2Fee);
 
     // Producer Total Fee
     totalProducerFee = 0;
@@ -47,7 +43,6 @@ $(document).on('click load change keyup', '#main, #f2f-ef-table, #workshop-table
         ($('#ef_producerFeeTotal')).html(producerFee.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         totalProducerFee += producerFee;
     });
-    console.log(producerFee);
 
     // Subtotal Program
     subTotalProgram = 0;
@@ -57,7 +52,6 @@ $(document).on('click load change keyup', '#main, #f2f-ef-table, #workshop-table
         $('#subtotalProgram').html(ProgramFee.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         subTotalProgram += ProgramFee;
     });
-    console.log(ProgramFee);
 
     // Total Standard Fees
     totalStandardFees = 0;
@@ -68,11 +62,6 @@ $(document).on('click load change keyup', '#main, #f2f-ef-table, #workshop-table
         subTotalProgram += standardFees;
     });
   
-
-
-
-
-
     
     //totalsales
     costTotal = 0;
@@ -82,8 +71,6 @@ $(document).on('click load change keyup', '#main, #f2f-ef-table, #workshop-table
         $(this).find('#workshop_saleTotal').html(sale.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         costTotal += sale;
     });
-
-
 
 
     //referrals
@@ -96,8 +83,6 @@ $(document).on('click load change keyup', '#main, #f2f-ef-table, #workshop-table
     });
 
 
-
-
     //engagement manager
     manTotal = 0;
     manager = 0;
@@ -108,18 +93,14 @@ $(document).on('click load change keyup', '#main, #f2f-ef-table, #workshop-table
     });
 
 
-
-
     //Customization Fee
-    costTotal = 0;
+    customizationTotal = 0;
     designFee = 0;
     $("#tableofCustomization > tr").each(function () {
         designFee =  $(this).find('#workshop_CustomizationHf').val() * $(this).find('#workshop_CustomizationNoh').val();
         $(this).find('#workshop_CustomizationsTotal').html(designFee.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-        costTotal += designFee;
+        customizationTotal += designFee;
     });
-
-
 
 
     //creatorFees
@@ -130,8 +111,6 @@ $(document).on('click load change keyup', '#main, #f2f-ef-table, #workshop-table
         $(this).find('#workshop_CreatorTotal').html(creatorFee.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         creTotal += parseFloat(creatorFee);
     });
-
-    
 
 
     //1. CONSULTING/DESIGN subtotal
@@ -144,8 +123,6 @@ $(document).on('click load change keyup', '#main, #f2f-ef-table, #workshop-table
     });
 
 
-
-
     //2.PROGRAM
     programTotal = 0;
     facilitatorFee = 0;
@@ -154,7 +131,6 @@ $(document).on('click load change keyup', '#main, #f2f-ef-table, #workshop-table
         $(this).find('#workshop_LeadfacilitatorsTotal').html(facilitatorFee.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         programTotal += facilitatorFee;
     });
-
 
 
     //Moderator
@@ -166,6 +142,7 @@ $(document).on('click load change keyup', '#main, #f2f-ef-table, #workshop-table
         modTotal += moderatorFee;
     });
 
+
     // Producer
     proTotal = 0;
     producerFee = 0;
@@ -174,7 +151,6 @@ $(document).on('click load change keyup', '#main, #f2f-ef-table, #workshop-table
         $(this).find('#workshop_ProducersTotal').html(producerFee.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         proTotal += producerFee;
     });
-
 
 
     //2. PROGRAM subtotal
@@ -187,7 +163,6 @@ $(document).on('click load change keyup', '#main, #f2f-ef-table, #workshop-table
         sub2Total += producerTotal;
     });
 
-    
 
     //3. OFF-PROGRAM
     //Off-Program Fee
@@ -198,7 +173,6 @@ $(document).on('click load change keyup', '#main, #f2f-ef-table, #workshop-table
         $('#workshop_OffprogramsTotal').html(offprogramFee.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         offTotal += offprogramFee;
     });
-
 
     //MISCELLANEOUS
     //Program Expenses
@@ -211,27 +185,14 @@ $(document).on('click load change keyup', '#main, #f2f-ef-table, #workshop-table
     });
 
 
-
     //overallcosttotal
     overAllcostTotal = 0;
     allcostTotal = 0;
     $("#workshop_allTotals").each(function () {
-        allcostTotal =  sale + referral + manager + designTotal + producerTotal + offprogramFee +  expensesTotal;
+        allcostTotal =  costTotal + refTotal + manTotal + subTotal + sub2Total + offTotal + expTotal;
         $('#workshop_Totals').html(allcostTotal.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         overAllcostTotal += allcostTotal;
     });
- 
-
-
-
-
-
-
-
-
-
-
-
 
 
 });
