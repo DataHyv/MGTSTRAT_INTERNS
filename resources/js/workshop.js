@@ -62,7 +62,11 @@ $(document).on('click load change keyup', '#main, #f2f-ef-table, #workshop-table
         subTotalProgram += standardFees;
     });
   
+  
     
+
+
+    //------------------------------------------------------------ENGAGEMENT COST----------------------------------------------------------------------
     //totalsales
     costTotal = 0;
     sale = 0;
@@ -194,8 +198,40 @@ $(document).on('click load change keyup', '#main, #f2f-ef-table, #workshop-table
         overAllcostTotal += allcostTotal;
     });
 
-
 });
 
 
+    //customization Fee defaultvalue
+    $(document).ready(function(){
+        document.getElementById("workshop_CustomizationHf").defaultValue = "4";
+        document.getElementById("workshop_CreatorNoh").defaultValue = "3";
 
+        //LEADFACILITATOR DEFAULT VALUE
+        document.getElementById("workshop_LeadfacilitatorsHf").defaultValue = "2";
+        document.getElementById("workshop_LeadfacilitatorsNoh").defaultValue = "3";
+        document.getElementById("workshop_LeadfacilitatorsNwh").defaultValue = "5";
+
+        //MODERATOR DEFAULT VALUE
+        document.getElementById("workshop_ModeratorNoh1").defaultValue = "4";
+        document.getElementById("workshop_ModeratorNwh1").defaultValue = "5";
+
+        //PRODUCER DEFAULT VALUE
+        document.getElementById("workshop_ProducerHf").defaultValue = "2";
+        document.getElementById("workshop_ProducerNoh").defaultValue = "9";
+        document.getElementById("workshop_ProducerNwh").defaultValue = "7";
+
+        //OFF-PROGRAM DEFAULT VALUE
+        document.getElementById("workshop_OffprogramsHf").defaultValue = "7";
+        document.getElementById("workshop_OffprogramsNoh").defaultValue = "6";
+
+        //MISCELLANEOUS DEFAULT VALUE
+        document.getElementById("workshop_Programexpenses").defaultValue = "2";
+
+        
+    });
+
+
+    //
+
+    
+    
