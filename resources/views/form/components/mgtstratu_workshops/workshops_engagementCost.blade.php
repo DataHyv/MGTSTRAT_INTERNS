@@ -314,11 +314,11 @@
                                             data-mytooltip-theme="dark" data-mytooltip-action="focus"
                                             data-mytooltip-direction="right" style="background-color:#ffcccc; color:red;">
                                             <option value="0" {{ old('') == '0' ? 'selected="selected"' : '' }}
-                                                title="">
+                                                title=""selected>
                                                 &#8369;0
                                             </option>
                                             <option value="500" {{ old('') == '500' ? 'selected="selected"' : '' }}
-                                                title="" selected>
+                                                title="" >
                                                 &#8369;500
                                             </option>
                                             <option value="1000" {{ old('') == '1000' ? 'selected="selected"' : '' }}
