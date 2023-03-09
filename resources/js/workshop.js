@@ -4,7 +4,7 @@ $(document).on('click load change keyup', '#main, #f2f-ef-table, #workshop-table
     customizationFee = 0;
     $("#tableLeadconsultant").each(function () {
         customizationFee =   ($('#ef_LeadconsultantHf').val() * $('#ef_customizationFeeNos').val()) + ($('#ef_LeadconsultantHf').val() * $('#ef_customizationFeeNsw').val() * 0.2);
-        $('#ef_customizationFeeTotal').html(customizationFee.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        $('#ef_customizationFeeTotal').html(customizationFee.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         overallTotal += customizationFee;
     });
 
@@ -13,7 +13,7 @@ $(document).on('click load change keyup', '#main, #f2f-ef-table, #workshop-table
     consulting_designFee = 0;
     $("#tablesubtotalCustomization").each(function () {
         consulting_designFee += customizationFee;
-        $('#subtotalCustomization').html(consulting_designFee.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        $('#subtotalCustomization').html(consulting_designFee.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         subtotalConsulting_DesignFee += consulting_designFee;
     });
 
@@ -22,7 +22,7 @@ $(document).on('click load change keyup', '#main, #f2f-ef-table, #workshop-table
     package1Fee = 0;
     $("#tableLeadconsultant").each(function () {
         package1Fee = ($('#f_package1FeePf').val() * $('#ef_package1FeeNos').val()) + ($('#f_package1FeePf').val() * $('#ef_package1FeeNsw').val() * 0.2);
-        ($('#ef_package1FeeTotal')).html(package1Fee.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        ($('#ef_package1FeeTotal')).html(package1Fee.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         totalPackage1Fee += package1Fee;
     });
 
@@ -31,7 +31,7 @@ $(document).on('click load change keyup', '#main, #f2f-ef-table, #workshop-table
     package2Fee = 0;
     $("#tableLeadconsultant").each(function () {
         package2Fee = ($('#ef_package2FeePfv').val() * $('#ef_package2FeeNos').val()) + ($('#ef_package2FeePfv').val() * $('#eef_package2FeeNsw').val() * 0.2);
-        ($('#ef_package2FeeTotal')).html(package2Fee.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        ($('#ef_package2FeeTotal')).html(package2Fee.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         totalPackage2Fee += package2Fee;
     });
 
@@ -40,7 +40,7 @@ $(document).on('click load change keyup', '#main, #f2f-ef-table, #workshop-table
     producerFee = 0;
     $("#tableLeadconsultant").each(function () {
         producerFee = ($('#ef_producerFeePfv').val() * $('#ef_producerFeeNoc').val()) + ($('#ef_producerFeePfv').val() * $('#ef_producerFeeNsw').val() * 0.2);
-        ($('#ef_producerFeeTotal')).html(producerFee.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        ($('#ef_producerFeeTotal')).html(producerFee.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         totalProducerFee += producerFee;
     });
 
@@ -49,7 +49,7 @@ $(document).on('click load change keyup', '#main, #f2f-ef-table, #workshop-table
     ProgramFee = 0;
     $("#tableSubtotalProgram").each(function () {
         ProgramFee = package1Fee + package2Fee + producerFee;
-        $('#subtotalProgram').html(ProgramFee.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        $('#subtotalProgram').html(ProgramFee.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         subTotalProgram += ProgramFee;
     });
 
@@ -58,7 +58,7 @@ $(document).on('click load change keyup', '#main, #f2f-ef-table, #workshop-table
     standardFees = 0;
     $("#tableStandardTotal").each(function () {
         standardFees = subtotalConsulting_DesignFee + subTotalProgram;
-        $('#mg_standard_total').html(standardFees.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        $('#mg_standard_total').html(standardFees.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         subTotalProgram += standardFees;
     });
   
