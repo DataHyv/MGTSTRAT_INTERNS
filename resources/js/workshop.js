@@ -113,7 +113,7 @@ $(document).on('click load change keyup', '#main, #f2f-ef-table, #workshop-table
     $("#tableofCreator > tr").each(function () {
         creatorFee = $(this).find('#workshop_CreatorHf').val() * $(this).find('#workshop_CreatorNoh').val();
         $(this).find('#workshop_CreatorTotal').html(creatorFee.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-        creTotal += parseFloat(creatorFee);
+        creTotal += creatorFee;
     });
 
 
@@ -121,9 +121,9 @@ $(document).on('click load change keyup', '#main, #f2f-ef-table, #workshop-table
     subTotal = 0;
     designTotal = 0;
     $("#workshop_DesignsSubtotal").each(function () {
-        designTotal = costTotal + creTotal;
+        designTotal = customizationTotal + creTotal;
         $('#workshop_DesignsSubtotal').html(designTotal.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-        subTotal += parseFloat(designTotal);
+        subTotal += designTotal;
     });
 
 
@@ -203,26 +203,24 @@ $(document).on('click load change keyup', '#main, #f2f-ef-table, #workshop-table
 
     //customization Fee defaultvalue
     $(document).ready(function(){
-        document.getElementById("workshop_CustomizationHf").defaultValue = "4";
-        document.getElementById("workshop_CreatorNoh").defaultValue = "3";
+        
+        //CUSTOMIZATION DEFAULT VALUE
+        document.getElementById("workshop_CustomizationHf").defaultValue = "2250";
+       
+       //CREATOR DEFAULT VALUE
+        document.getElementById("workshop_CreatorNoh").defaultValue = "1";
 
         //LEADFACILITATOR DEFAULT VALUE
-        document.getElementById("workshop_LeadfacilitatorsHf").defaultValue = "2";
-        document.getElementById("workshop_LeadfacilitatorsNoh").defaultValue = "3";
-        document.getElementById("workshop_LeadfacilitatorsNwh").defaultValue = "5";
+        document.getElementById("workshop_LeadfacilitatorsHf").defaultValue = "3000";
 
         //MODERATOR DEFAULT VALUE
-        document.getElementById("workshop_ModeratorNoh1").defaultValue = "4";
-        document.getElementById("workshop_ModeratorNwh1").defaultValue = "5";
+
 
         //PRODUCER DEFAULT VALUE
-        document.getElementById("workshop_ProducerHf").defaultValue = "2";
-        document.getElementById("workshop_ProducerNoh").defaultValue = "9";
-        document.getElementById("workshop_ProducerNwh").defaultValue = "7";
+        document.getElementById("workshop_ProducerHf").defaultValue = "550";
 
         //OFF-PROGRAM DEFAULT VALUE
-        document.getElementById("workshop_OffprogramsHf").defaultValue = "7";
-        document.getElementById("workshop_OffprogramsNoh").defaultValue = "6";
+        document.getElementById("workshop_OffprogramsNoh").defaultValue = "1000";
 
         //MISCELLANEOUS DEFAULT VALUE
         document.getElementById("workshop_Programexpenses").defaultValue = "2";

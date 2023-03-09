@@ -266,11 +266,11 @@
                                             data-mytooltip-theme="dark" data-mytooltip-action="focus"
                                             data-mytooltip-direction="right" style="background-color:#ffcccc; color:red;">
                                             <option value="0" {{ old('') == '0' ? 'selected="selected"' : '' }}
-                                                title="">
+                                                title=""selected>
                                                 0
                                             </option>
                                             <option value="2" {{ old('') == '2' ? 'selected="selected"' : '' }}
-                                                title="" selected>
+                                                title="" >
                                                 2
                                             </option>
                                         </select>
