@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\F2f_information;
 use App\Models\F2f_fees;
+use App\Models\F2f_cost;
 use App\Models\Client;
 use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
@@ -96,6 +97,25 @@ class F2fEngagementController extends Controller
                 DB::rollback();
                 Toastr::error($e->getMessage(), 'Error');
             }
+
+            try
+            {
+                foreach($request->cost_type as $key => $cost_types){
+                    $F2f_cost['cost_type']      = $cost_types;
+                    $F2f_cost['f2f_id']         = $f2f_id;
+                    $F2f_cost['cost_noc']       = $request->cost_noc[$key] ?? '0';
+                    $F2f_cost['cost_pd']        = $request->cost_pd[$key] ?? '0';
+                    $F2f_cost['cost_nod']       = $request->cost_nod[$key] ?? '0';
+                    $F2f_cost['cost_atd']       = $request->cost_atd[$key] ?? '0';
+                    $F2f_cost['cost_nswh']      = $request->cost_nswh[$key] ?? '0';
+                    $F2f_cost['cost_roster']    = $request->cost_roster[$key] ?? '';
+                    F2f_cost::create($F2f_cost);
+                }
+            }
+        catch(\Exception $e){
+            DB::rollback();
+            Toastr::error('engagement_cost'.$e->getMessage(), 'Error');
+        }
 
             DB::commit();
             // info('This is some useful information.');

@@ -42,7 +42,7 @@
                             <input type="text" class="d-none" value="Sales" name="cost_type[]" readonly>
                             Sales (4% / 5% / 6% / 7%)
                         </td>
-                        <td></td>
+                        <td><input type="text" class="d-none" value="" name="cost_noc[]" readonly></td>
                         <td>
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_pd[]" id="inputforSale" style="display: none;"
@@ -99,9 +99,9 @@
                                 @enderror
                             </fieldset>
                         </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><input type="text" class="d-none" value="" name="cost_nod[]" readonly></td>
+                        <td><input type="text" class="d-none" value="" name="cost_atd[]" readonly></td>
+                        <td><input type="text" class="d-none" value="" name="cost_nswh[]" readonly></td>
                         <td class="total-td tbl-engmt-cost">
                             <h4 class="text-center" id="ec_saleTotal">-</h4>
                         </td>
@@ -124,7 +124,7 @@
                             <input type="text" class="d-none" value="Referral" name="cost_type[]" readonly>
                             Referral (2% / 3%)
                         </td>
-                        <td></td>
+                        <td><input type="text" class="d-none" value="" name="cost_noc[]" readonly></td>
                         <td>
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_pd[]" id="inputforReferrals" style="display: none;"
@@ -166,15 +166,15 @@
                             @enderror
                         </fieldset>
                         </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><input type="text" class="d-none" value="" name="cost_nod[]" readonly></td>
+                        <td><input type="text" class="d-none" value="" name="cost_atd[]" readonly></td>
+                        <td><input type="text" class="d-none" value="" name="cost_nswh[]" readonly></td>
                         <td class="total-td tbl-engmt-cost">
                             <h4 class="text-center" id="referralsTotal">-</h4>
                         </td>
                         <td class="total-td">
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_roster" id="">
+                                value="{{ old('') }}" name="cost_roster[]" id="">
                         </td>
                         <td style="background-color: #FFFFFF;" class="border border-white">
                             <a href="javascript:void(0)" class="text-success font-18" title="Add" id="ecaddButton2">
@@ -199,7 +199,7 @@
                             <input type="text" class="d-none" value="Engagement Manager" name="cost_type[]" readonly>
                             ENGAGEMENT MANAGER(4%)
                         </td>
-                        <td></td>
+                        <td><input type="text" class="d-none" value="" name="cost_noc[]" readonly></td>
                         <td>
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_pd[]" id="inputforEngagementManager"
@@ -235,9 +235,9 @@
                                 @enderror
                             </fieldset>
                         </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><input type="text" class="d-none" value="" name="cost_nod[]" readonly></td>
+                        <td><input type="text" class="d-none" value="" name="cost_atd[]" readonly></td>
+                        <td><input type="text" class="d-none" value="" name="cost_nswh[]" readonly></td>
                         <td class="total-td tbl-engmt-cost">
                             <h4 class="text-center" id="ecengagementManagerTotal">-</h4>
                         </td>
@@ -260,7 +260,7 @@
                             <input type="text" class="d-none" value="Offsite" name="cost_type[]" readonly>
                             OFFSITE PC(3%/4%/5%)
                         </td>
-                        <td></td>
+                        <td><input type="text" class="d-none" value="" name="cost_noc[]" readonly></td>
                         <td>
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_pd[]" id="inputforOffsite"
@@ -307,9 +307,9 @@
                                 @enderror
                             </fieldset>
                         </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><input type="text" class="d-none" value="" name="cost_nod[]" readonly></td>
+                        <td><input type="text" class="d-none" value="" name="cost_atd[]" readonly></td>
+                        <td><input type="text" class="d-none" value="" name="cost_nswh[]" readonly></td>
                         <td class="total-td tbl-engmt-cost">
                             <h4 class="text-center" id="ec_offsitePcTotal">-</h4>
                         </td>
@@ -559,8 +559,8 @@
                                 class="text-center form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_nod[]" id="ec_CreatorNod1" max="100">
                         </td>
-                        <td class=""></td>
-                        <td class=""></td>
+                        <td class=""><input type="text" class="d-none" value="" name="cost_atd[]" readonly></td>
+                        <td class=""><input type="text" class="d-none" value="" name="cost_nswh[]" readonly></td>
                         <td class="total-td">
                             <h4 class="text-center lead" id="ec_CreatorTotal">-</h4>
                         </td>
@@ -814,7 +814,7 @@
                         </td>
                         <td>
                             <fieldset>
-                                <select class="input js-mytooltip text-center form-select @error('') is-invalid @enderror select" name="cost_pd"
+                                <select class="input js-mytooltip text-center form-select @error('') is-invalid @enderror select" name="cost_pd[]"
                                     id="ec_OnsitepcPd" style="background-color:#ffcccc; color:red;"
                                     data-mytooltip-content="<i>
                                         <b>On-site PC</b><br/>
@@ -985,8 +985,8 @@
                                 class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_nod[]" id="ec_PerdiemNod">
                         </td>
-                        <td></td>
-                        <td></td>
+                        <td><input type="text" class="d-none" value="" name="cost_atd[]" readonly></td>
+                        <td><input type="text" class="d-none" value="" name="cost_nswh[]" readonly></td>
                         <td class="total-td" style="background-color: rgba(146, 146, 146, 0.727">
                             <h4 class="text-center" id="ec_PerdiemTotal">-</h4>
                         </td>
@@ -1047,9 +1047,9 @@
                                 class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_pd[]" id="ec_OffprogramsPd">
                         </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><input type="text" class="d-none" value="" name="cost_nod[]" readonly></td>
+                        <td><input type="text" class="d-none" value="" name="cost_atd[]" readonly></td>
+                        <td><input type="text" class="d-none" value="" name="cost_nswh[]" readonly></td>
                         <td class="total-td" style="background-color: rgba(146, 146, 146, 0.727">
                             <h4 class="text-center" id="ec_OffprogramsTotal">-</h4>
                         </td>
@@ -1092,15 +1092,15 @@
                         <input type="text" class="d-none" value="Program Expenses" name="cost_type[]" readonly>
                         Program Expenses
                     </td>
-                    <td></td>
+                    <td><input type="text" class="d-none" value="" name="cost_noc[]" readonly></td>
                     <td>
                         <input type="text"
                             class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_pd[]" id="ec_Programexpenses" maxlength="4">
                     </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td><input type="text" class="d-none" value="" name="cost_nod[]" readonly></td>
+                    <td><input type="text" class="d-none" value="" name="cost_atd[]" readonly></td>
+                    <td><input type="text" class="d-none" value="" name="cost_nswh[]" readonly></td>
                     <td class="total-td" style="background-color: rgba(146, 146, 146, 0.727">
                         <h4 class="text-center" id="ec_ProgramexpensesTotal">-</h4>
                     </td>

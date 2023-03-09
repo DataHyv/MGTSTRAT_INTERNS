@@ -17,6 +17,6 @@ class F2f_cost extends Model
         'cost_nod',
         'cost_atd',
         'cost_nswh',
-        'cost_notes',
+        'cost_roster',
     ];
 }
