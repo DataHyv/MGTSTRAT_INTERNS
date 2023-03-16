@@ -25,7 +25,7 @@
         <div class="col-md-2" id="dropdown-ga" style="visibility: hidden;">
         </div>
 
-        <div class="col-md-3">
+        {{-- <div class="col-md-3">
             <label class="fw-bold required">Client: </label>
         </div>
         <div class="col-md-8">
@@ -42,6 +42,40 @@
                     @enderror
                 </div>
             </div>
+        </div> --}}
+
+        <div class="form-group row">
+            <div class="col-md-3">
+                <label class="fw-bold required">Client: </label>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group has-icon-left">
+                    <div class="position-relative">
+                        <select class="input form-select @error('client_id') is-invalid @enderror"
+                        id="client_id"
+                        name="client_id"
+                        style="width: 100%;"
+                        tabindex="-1"
+                        aria-hidden="true">
+                            <option value="Select">-- Select --</option>
+                            @foreach ($companyList as $key=>$client)
+                                <option value="{{ $client->id }}"
+                                    data-first_eng={{ $client->first_eng }}>
+                                    {{ $client->company_name }}
+                                </option>
+                            @endforeach
+                        </select>
+                        <div class="form-control-icon">
+                            <i class="fa-solid fa-clients"></i>
+                        </div>
+                        @error('client_id')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="col-md-3">
@@ -50,7 +84,7 @@
         <div class="col-md-6">
             <div class="form-group has-icon-left">
                 <div class="position-relative">
-                    <input type="text" class="form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="" id="">
+                    <input type="text" class="form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="engagement_title" id="">
                     <div class="form-control-icon">
                         <i class="fa-solid fa-t"></i>
                     </div>
@@ -77,7 +111,7 @@
             <div class="form-group has-icon-left">
                 <div class="position-relative">
                     <fieldset class="form-group">
-                        <select class="input js-mytooltip form-select @error('') is-invalid @enderror" name="" id="Mgtstrat-U-Titles" data-mytooltip-content="<i>
+                        <select class="input js-mytooltip form-select @error('') is-invalid @enderror" name="workshop_title" id="Mgtstrat-U-Titles" data-mytooltip-content="<i>
                             If not on the list, choose suggested cluster title at Core Area.
                             </i>" data-mytooltip-theme="dark" data-mytooltip-action="focus" data-mytooltip-direction="right">
                             <option class="not-listed" id="not-listed" value="Not Listed" selected>-- Not listed --</option>
@@ -293,7 +327,7 @@
             <div class="form-group has-icon-left">
                 <div class="position-relative">
                     <fieldset class="form-group">
-                        <select class="form-select @error('') is-invalid @enderror" name="" id="cluster" disabled>
+                        <select class="form-select @error('') is-invalid @enderror" name="cluster" id="cluster" >
                             <option value="Anxiety">Anxiety</option>
                             <option value="Business Transformation">Business Transformation</option>
                             <option value="Collaborative Leadership">Collaborative Leadership</option>
@@ -353,7 +387,7 @@
                     {{-- <input type="text" class="form-control @error('') is-invalid @enderror" value="{{ old('') }}"
                     name="" id="core-valueInput" disabled> --}}
                     <fieldset class="form-group">
-                        <select class="form-select @error('') is-invalid @enderror" name="" id="intelligence" disabled>
+                        <select class="form-select @error('') is-invalid @enderror" name="intelligence" id="intelligence">
                             <option value="Contextual">Contextual</option>
                             <option value="Generative">Generative</option>
                             <option value="Moral">Moral</option>
@@ -395,7 +429,7 @@
 
         <div class="row">
             <div class="col-md-3">
-                <label class="fw-bold required">Date Covered by Engagement </label>
+                <label class="fw-bold required">Date Covered byent </label>
             </div>
             <div class="col-md-3">
                 <div class="form-check form-switch">
@@ -411,7 +445,7 @@
                 <div class="form-group has-icon-left">
                     <label class="fw-bold required">Date</label>
                     <div class="position-relative">
-                        <input type="text" class="form-control datepicker @error('doe') is-invalid @enderror" value="{{ old('doe') }}" placeholder="Enter Date" name="doe" id="datepicker" size="30">
+                        <input type="text" class="form-control datepicker @error('doe') is-invalid @enderror" value="{{ old('doe') }}" placeholder="Enter Date" name="program_dates" id="datepicker" size="30">
                         <div class="form-control-icon">
                             <i class="bi bi-calendar"></i>
                         </div>
@@ -427,7 +461,7 @@
                 <div class="form-group has-icon-left">
                     <label class="fw-bold required">Start Time</label>
                     <div class="position-relative">
-                        <input type="time" class="form-control @error('dot') is-invalid @enderror" value="{{ old('dot') }}" placeholder="Enter Time" name="dot">
+                        <input type="time" class="form-control @error('dot') is-invalid @enderror" value="{{ old('dot') }}" placeholder="Enter Time" name="program_start_time">
                         <div class="form-control-icon">
                             <i class="bi bi-clock"></i>
                         </div>
@@ -443,7 +477,7 @@
                 <div class="form-group has-icon-left">
                     <label class="fw-bold required">End Time</label>
                     <div class="position-relative">
-                        <input type="time" class="form-control @error('dot') is-invalid @enderror" value="{{ old('dot') }}" placeholder="Enter Time" name="dot">
+                        <input type="time" class="form-control @error('dot') is-invalid @enderror" value="{{ old('dot') }}" placeholder="Enter Time" name="program_end_time">
                         <div class="form-control-icon">
                             <i class="fa-solid fa-hourglass-end"></i>
                         </div>
