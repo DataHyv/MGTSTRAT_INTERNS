@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use DB;
+use Illuminate\Support\Facades\DB;
 use App\Models\Client;
 use App\Models\Sub_fee;
 use App\Models\Sub_cost;
@@ -15,7 +15,7 @@ use Brian2694\Toastr\Facades\Toastr;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Customized_engagement_form;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class CustomizedEngagementController extends Controller
 {

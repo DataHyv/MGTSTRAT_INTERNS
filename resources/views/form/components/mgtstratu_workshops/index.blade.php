@@ -97,9 +97,6 @@
                                         {{-- <td class="fw-bold text-center">{{ \Carbon\Carbon::parse($item->created_at)->toFormattedDateString()}}</td> --}}
                                         <td class="fw-bold text-center">Nov 4, 2022</td>
                                         <td class="text-center fw-bold text-center">
-                                            <a href=".bd-example-modal-lg" data-toggle="modal" data-target=".bd-example-modal-lg">
-                                                <span class="badge bg-info"><i class="bi bi-person-plus-fill"></i></span>
-                                            </a>
 
                                             <a href="#">
                                                 <span class="badge bg-success"><i class="bi bi-pencil-square"></i></span>

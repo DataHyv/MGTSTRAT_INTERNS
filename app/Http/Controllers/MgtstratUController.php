@@ -3,13 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Workshop_information;
-use App\Models\Client;
-use DB;
-use Illuminate\Support\Facades\Log;
-use Brian2694\Toastr\Facades\Toastr;
-use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
+use Brian2694\Toastr\Toastr;
 
 class MgtstratUController extends Controller
 {
