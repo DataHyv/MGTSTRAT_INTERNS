@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 use Brian2694\Toastr\Toastr;
+use App\Models\Client;
 
 class MgtstratUController extends Controller
 {
