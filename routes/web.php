@@ -137,3 +137,5 @@ Auth::routes();
 
 // ----------------------------- Client Management -----------------------//
 Route::resource('consultant-fees', 'App\Http\Controllers\ConsultantFeesController');
+Route::get('consultant-fetch', [App\Http\Controllers\ConsultantFeesController::class, 'fetchConsultantFees'])->middleware('auth')->name('consultant-fetch');
+Route::get('edit-consultant/{id}', [App\Http\Controllers\ConsultantFeesController::class, 'edit'])->middleware('auth')->name('edit-consultant/{id}');

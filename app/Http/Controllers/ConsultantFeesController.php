@@ -22,6 +22,14 @@ class ConsultantFeesController extends Controller
         return view('form.components.consultant_fees.index',compact('consultantFee'));
     }
 
+    public function fetchConsultantFees()
+    {
+        $data = Consultantfee::all();
+        return response()->json([
+            'data'=>$data,
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -77,7 +85,19 @@ class ConsultantFeesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $consultant_fees = Consultantfee::find($id);
+        if($consultant_fees){
+            return response()->json([
+                'status'=>200,
+                'consultant_fees'=>$consultant_fees,
+            ]);
+        }
+        else {
+            return respons()->json([
+                'status'=>404,
+                'message'=>'Consultant not found',
+            ]);
+        }
     }
 
     /**
