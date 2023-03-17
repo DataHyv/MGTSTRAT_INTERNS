@@ -5,7 +5,6 @@
 <!------------ END CARD HEADER ------------>
 
 <!------------ FORM BODY ------------>
-<<<<<<< HEAD
     <div class="form-body container">
         <section>
             <div class="table-responsive-md" id="no-more-tables">
@@ -99,11 +98,6 @@
             </div>
         </section>
     </div>
-=======
-
-{{-- nyaaa form --}}
-
->>>>>>> 99a51477740fd5c0f8a66e3c97f4fe57a1bcaab8
 <!------------ END OF FORM BODY ------------>
 
 <script>
@@ -112,8 +106,4 @@
     });
 
     $('input[type="number"]').attr('min', '0');
-<<<<<<< HEAD
 </script>
-=======
-</script>
->>>>>>> 99a51477740fd5c0f8a66e3c97f4fe57a1bcaab8
