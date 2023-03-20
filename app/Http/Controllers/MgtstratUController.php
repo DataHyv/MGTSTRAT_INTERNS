@@ -5,9 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Model;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
-use Brian2694\Toastr\Toastr;
+use RealRashid\SweetAlert\Facades\Alert;
+use Brian2694\Toastr\Facades\Toastr;
 use App\Models\Client;
+use App\Models\Workshop_information;
+use App\Models\WorkshopFee;
+
 
 class MgtstratUController extends Controller
 {
@@ -17,6 +22,7 @@ class MgtstratUController extends Controller
     }
 
 
+    /* Save Record */
     public function store(Request $request)
     {
         // $request->validate([
@@ -25,7 +31,7 @@ class MgtstratUController extends Controller
         // ]);
 
         DB::beginTransaction();
-        try{
+        try {
             // $config = ['table'=>'customized_engagement_forms', 'length'=>12, 'field'=>'cstmzd_eng_form_id', 'prefix'=>'CSTMZD-'];
             $config = ['table'=>'workshop_informations', 'length'=>12, 'field'=>'workshop_id', 'prefix'=>'CSTMZD-'];
             $id_budget_form = IdGenerator::generate($config);
@@ -35,20 +41,49 @@ class MgtstratUController extends Controller
             // $workshop_form->status                = $request->status;
             // $workshop_form->ga_percent            = $request->ga_percent;
             // $workshop_form->client_id             = (int)$request->client_id;
-            $workshop_form->workshop_title          = $request->workshop_title;
             $workshop_form->engagement_title        = $request->engagement_title;
+            $workshop_form->workshop_title          = $request->workshop_title;
+            $workshop_form->cluster                 = $request->cluster;
+            $workshop_form->intelligence            = $request->intelligence;
             $workshop_form->pax_number              = $request->pax_number;
             // $workshop_form->batch_number          = $request->batch_number;
             // $workshop_form->session_number        = $request->session_number;
             $workshop_form->program_dates           = $request->program_dates;
             $workshop_form->program_start_time      = $request->program_start_time;
             $workshop_form->program_end_time        = $request->program_end_time;
-            $workshop_form->cluster                 = $request->cluster;
-            $workshop_form->intelligence            = $request->intelligence;
             
             // $workshop_form->core_area             = $request->core_area;
             // $workshop_form->workshop_fees_total   = $request->workshop_fees_total;
             $workshop_form->save();
+
+            $config_workshop_fee = ['table'=>'workshop_fees', 'length'=>12, 'field'=>'workshop_id', 'prefix'=>'CSTMZD-'];
+            $workshop_fee_id_generator = IdGenerator::generate($config_workshop_fee);
+            $workshop_fee_form = new WorkshopFee();
+            $workshop_fee_form->workshop_id                                     =    $workshop_fee_id_generator;
+            $workshop_fee_form->customizationFee_packageFees                    =    $request->ef_customizationFeePfv;
+            $workshop_fee_form->customizationFee_sessions                       =    $request->ef_customizationFeeNos;
+            $workshop_fee_form->customizationFee_nightShift_weekendsHolidays    =    $request->ef_customizationFeeNsw;
+            $workshop_fee_form->customizationFee_notes                          =    $request->customizationFee_notes;
+            $workshop_fee_form->customizationFeeSubtotal_notes                  =    $request->customizationFeeSubtotal_notes;
+            $workshop_fee_form->package1_packageFees                            =    $request->ef_package1FeePfv;
+            $workshop_fee_form->package1_sessions                               =    $request->ef_package1FeeNos;
+            $workshop_fee_form->package1_nightShift_weekendsHolidays            =    $request->ef_package1FeeNsw;
+            $workshop_fee_form->package1_notes                                  =    $request->package1_notes;
+            $workshop_fee_form->package2_packageFees                            =    $request->ef_package2FeePfv;
+            $workshop_fee_form->package2_sessions                               =    $request->ef_package2FeeNos;
+            $workshop_fee_form->package2_nightShift_weekendsHolidays            =    $request->ef_package2FeeNsw;
+            $workshop_fee_form->package2_notes                                  =    $request->package2_notes;
+            $workshop_fee_form->producer_packageFees                            =    $request->ef_producerFeePfv;
+            $workshop_fee_form->producer_sessions                               =    $request->ef_producerFeeNoc;
+            $workshop_fee_form->producer_nightShift_weekendsHolidays            =    $request->ef_producerFeeNsw;
+            $workshop_fee_form->producer_notes                                  =    $request->producer_notes;
+            $workshop_fee_form->programSubtotal_notes                           =    $request->programSubtotal_notes;
+            $workshop_fee_form->totalStandardFees_notes                         =    $request->totalStandardFees_notes;
+            $workshop_fee_form->discount_given                                  =    $request->mg_inpt_dsct;
+            $workshop_fee_form->discount_notes                                  =    $request->discount_notes;
+            $workshop_fee_form->totalPackage                                    =    $request->mg_input_totalPackages;
+            $workshop_fee_form->totalPackage_notes                              =    $request->totalPackage_notes;
+            $workshop_fee_form->save();
 
             // $cstmzd_eng_form_id = DB::table('workshop_informations')->orderBy('workshop_id','DESC')->select('workshop_id')->first();
             // $cstmzd_eng_form_id = $cstmzd_eng_form_id->cstmzd_eng_form_id;
@@ -91,7 +126,6 @@ class MgtstratUController extends Controller
         } catch(\Exception $e){
             DB::rollback();
             Alert::error('Data added fail','Error');
-            Toastr::error('test'.$e->getMessage(), 'Error');
             return redirect()->back();
         }
 

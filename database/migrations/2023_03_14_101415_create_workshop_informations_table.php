@@ -28,7 +28,7 @@ class CreateWorkshopInformationsTable extends Migration
                 $table->string('program_dates')->nullable();
                 $table->string('program_start_time')->nullable();
                 $table->string('program_end_time')->nullable();
-                $table->string('workshop_fees_total', 30);
+                $table->string('workshop_fees_total', 30)->default(0)->comment('Set the default value workshop fees total to 0 in migration');
                 $table->timestamps();
 
         });

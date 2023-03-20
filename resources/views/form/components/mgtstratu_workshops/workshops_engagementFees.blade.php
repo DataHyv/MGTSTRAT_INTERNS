@@ -88,7 +88,7 @@
                         </td>
                         <td class="total-td">
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}"name="" id="">
+                                value="{{ old('') }}"name="customizationFee_notes" id="">
                         </td>
                     </tr>
                     </tbody>
@@ -104,7 +104,7 @@
                         <td class="total-td">
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}"
-                                name="" id="">
+                                name="customizationFeeSubtotal_notes" id="">
                         </td>
                         <td class="border border-white"></td>
                     </tr>
@@ -185,7 +185,7 @@
                         </td>
                         <td class="total-td">
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}"name="" id="">
+                                value="{{ old('') }}"name="package1_notes" id="">
                         </td>
                         <td style="background-color: #FFFFFF;" class="border border-white"><a href="javascript:void(0)"
                             class="text-success font-18" title="Add" id="addBtn1"><i class="fa fa-plus"></i></a>
@@ -260,7 +260,7 @@
                         </td>
                         <td class="total-td">
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}"name="" id="">
+                                value="{{ old('') }}"name="package2_notes" id="">
                         </td>
                         <td style="background-color: #FFFFFF;" class="border border-white"><a href="javascript:void(0)"
                             class="text-success font-18" title="Add" id="addBtn1"><i class="fa fa-plus"></i></a>
@@ -326,7 +326,7 @@
                         </td>
                         <td class="total-td">
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}"name="" id="">
+                                value="{{ old('') }}"name="producer_notes" id="">
                         </td>
                         <td style="background-color: #FFFFFF;" class="border border-white"><a href="javascript:void(0)"
                             class="text-success font-18" title="Add" id="addBtn1"><i class="fa fa-plus"></i></a>
@@ -345,7 +345,7 @@
                         <td class="total-td">
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}"
-                                name="" id="">
+                                name="programSubtotal_notes" id="">
                         </td>
                         <td class="border border-white"></td>
                     </tr>
@@ -361,7 +361,7 @@
                         <td class="overall-total-end">
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}"
-                                name="" id="">
+                                name="totalStandardFees_notes" id="">
                         </td>
                     </tr>
 <!------------------------------------------------DISCOUNT IF ANY GIVEN--------------------------------------------------------->
@@ -376,7 +376,7 @@
                         <td class="overall-total-end"></td>
                         <td class="overall-total-end">
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}"  name="mg_input_totalPackages" id="mg_total_dsct">
+                                value="{{ old('') }}"  name="discount_notes" id="mg_total_dsct">
                         </td>
                     </tr>
 <!------------------------------------------------TOTAL PACKAGE--------------------------------------------------------->
@@ -391,7 +391,7 @@
                         </td>
                         <td class="overall-total-end">
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="" id="">
+                                value="{{ old('') }}" name="totalPackage_notes" id="">
                         </td>
 
                     </tr>

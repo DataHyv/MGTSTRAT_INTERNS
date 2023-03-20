@@ -99,14 +99,9 @@
                                 {{-- prev and submit button --}}
                                 <div class="col-12 d-flex justify-content-center mt-3">
                                     <button class="btn btn-secondary mx-2 js-btn-prev" type="button"
-<<<<<<< HEAD
-                                        title="Prev">Prev</button>
-                                    <button class="btn btn-success mx-2" type="submit" title="Submit">Submit</button> 
-=======
                                         title="Prev">Prev</button>  
                                     <button class="btn btn-success mx-2 js-btn-next" type="submit" 
                                         title="Submit">Submit</button>
->>>>>>> 99a51477740fd5c0f8a66e3c97f4fe57a1bcaab8
                                 </div>
                             </div>
                         </form>
