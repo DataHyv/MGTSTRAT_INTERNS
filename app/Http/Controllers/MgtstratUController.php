@@ -12,6 +12,7 @@ use Brian2694\Toastr\Facades\Toastr;
 use App\Models\Client;
 use App\Models\Workshop_information;
 use App\Models\WorkshopFee;
+use App\Models\Workshop_cost;
 
 
 class MgtstratUController extends Controller
@@ -84,6 +85,49 @@ class MgtstratUController extends Controller
             $workshop_fee_form->totalPackage                                    =    $request->mg_input_totalPackages;
             $workshop_fee_form->totalPackage_notes                              =    $request->totalPackage_notes;
             $workshop_fee_form->save();
+
+
+
+
+            $config_workshop_cost = ['table'=>'workshop_costs', 'length'=>12, 'field'=>'workshop_id', 'prefix'=>'CSTMZD-'];
+            $workshop_cost_id_generator = IdGenerator::generate($config_workshop_cost);
+
+            $workshop_cost_form = new Workshop_cost();
+            $workshop_cost_form->workshop_id                        =  $workshop_cost_id_generator;
+            $workshop_cost_form->commission_sales                   =  $request-> commission_sales_HF;
+            $workshop_cost_form->commission_sales_rooster           =  $request-> com_sale_rooster;
+            $workshop_cost_form->commission_referral                =  $request-> commission_referral;
+            $workshop_cost_form->commission_referral_rooster        =  $request-> com_rooster;
+            $workshop_cost_form->eng_mng_hourfee                    =  $request-> engagementMan_HF;
+            $workshop_cost_form->eng_mng_rooster                    =  $request-> engMan_rooster;
+            // $workshop_cost_form->cstmzdfee_hourfee                  =  $request-> customizationFee_hourfee;
+            // $workshop_cost_form->cstmzdfee_Numfee                   =  $request-> customizationFee_numfee;
+            $workshop_cost_form->cstmzdefee_rooster                 =  $request-> customizationFee_rooster;
+            $workshop_cost_form->creatorFee_hourfee                 =  $request-> creatorfee_hourfee;
+            $workshop_cost_form->creatorFee_Numfee                  =  $request-> creatorfee_Noh;
+            $workshop_cost_form->creatorFee_Rooster                 =  $request-> creatorfee_rooster;
+            $workshop_cost_form->consultationdesignsub_rooster      =  $request-> consulationdesignsubtotal;
+            $workshop_cost_form->LeadF_hourfee                      =  $request-> LeadFacilitator_HF;
+            $workshop_cost_form->LeadF_numfee                       =  $request-> LeadFacilitator_noh;
+            $workshop_cost_form->LeadF_nswh                         =  $request-> LeadFacilitator_nswh;
+            $workshop_cost_form->LeadF_rooster                      =  $request-> LeadFacilitator_rooster;
+            $workshop_cost_form->moderator_hourfee                  =  $request-> moderator_HF;
+            $workshop_cost_form->moderator_Numfee                   =  $request-> moderator_noh;
+            $workshop_cost_form->moderator_nswh                     =  $request-> moderator_nswh;
+            $workshop_cost_form->modmoderator_rooster               =  $request->moderator_rooster;
+            $workshop_cost_form->producer_hourfee                   =  $request-> producer_HF;
+            $workshop_cost_form->producer_numfee                    =  $request-> producer_noh;
+            $workshop_cost_form->producer_nswh                      =  $request-> producer_nswh;
+            $workshop_cost_form->producer_rooster                   =  $request-> producer_rooster;
+            $workshop_cost_form->programsubtotal_rooster            =  $request-> programsub_rooster;
+            $workshop_cost_form->offprogram_hourfee                 =  $request-> offprogram_HF;
+            $workshop_cost_form->offprogram_numfee                  =  $request-> offprogram_noh;
+            $workshop_cost_form->offprogram_rooster                 =  $request-> offprogram_rooster;
+            $workshop_cost_form->programexpenses_hourfee            =  $request-> miscellaneous_HF;
+            $workshop_cost_form->programexpenses_rooster            =  $request-> miscellaneous_rooster;
+            $workshop_cost_form->Costtotal_rooster                  =  $request-> total_rooster;
+               
+            $workshop_cost_form->save();
 
             // $cstmzd_eng_form_id = DB::table('workshop_informations')->orderBy('workshop_id','DESC')->select('workshop_id')->first();
             // $cstmzd_eng_form_id = $cstmzd_eng_form_id->cstmzd_eng_form_id;

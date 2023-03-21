@@ -36,7 +36,7 @@
                                     <td class="title">Sales (4% / 5% / 6% / 7%)</td>
                                     <td>
                                         <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                        value="{{ old('') }}" name="" id="inputforSale" style="display: none;"
+                                        value="{{ old('') }}" name="com_sales" id="inputforSale" style="display: none;"
                                         onblur="this.value = this.value.replace('%', '') + '%';"
                                         oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
                                         maxlength="5" disabled>
@@ -44,7 +44,7 @@
                                     <fieldset id="dropdownforSale">
                                         <select
                                             class="input js-mytooltip  text-center form-select @error('') is-invalid @enderror"
-                                            name="" id="workshop_sale"
+                                            name="commission_sales_HF" id="workshop_sale"
                                             data-mytooltip-content="<i>
                                                     <b>Sales</b><br>
                                                     0% - if reffered or sold by a reseller<br><br>
@@ -98,7 +98,7 @@
                                     </td>
                                     <td class="total-td">
                                         <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                            value="{{ old('') }}" name="" id="">
+                                            value="{{ old('') }}" name="com_sale_rooster" id="">
                                     </td>
                                     <td style="background-color: #FFFFFF;" class="border border-white">
                                         <a href="javascript:void(0)" class="text-success font-18" title="Add" id="muaddButton">
@@ -113,7 +113,7 @@
                                     <td class="title">Referral (2% / 3% / 10%)</td>
                                     <td>
                                         <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                        value="{{ old('') }}" name="" id="inputforReferrals" style="display: none;"
+                                        value="{{ old('') }}" name="com_referral" id="inputforReferrals" style="display: none;"
                                         onblur="this.value = this.value.replace('%', '') + '%';"
                                         oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
                                         maxlength="5" disabled>
@@ -121,7 +121,7 @@
                                     <fieldset id="dropdownforReferrals">
                                         <select
                                             class="input js-mytooltip text-center  form-select @error('') is-invalid @enderror"
-                                            name="" id="workshop_referrals"
+                                            name="commission_referral" id="workshop_referrals"
                                             data-mytooltip-content="<i>
                                                     Referral - 2% - repeat contracts from the same client<br>
                                                     3% - 1st contract with a new client, or with a 2-year dormant client<br>
@@ -163,7 +163,7 @@
                                 </td>
                                 <td class="total-td">
                                     <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                        value="{{ old('') }}" name="" id="">
+                                        value="{{ old('') }}" name="com_rooster" id="">
                                 </td>
                                 <td style="background-color: #FFFFFF;" class="border border-white">
                                     <a href="javascript:void(0)" class="text-success font-18" title="Add" id="muaddButton2">
@@ -186,7 +186,7 @@
                                 <td class="title fw-bold text-dark">ENGAGEMENT MANAGER(4%)</td>
                                 <td>
                                     <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                        value="{{ old('') }}" name="" id="inputforEngagementManager"
+                                        value="{{ old('') }}" name="engMan_hourfee" id="inputforEngagementManager"
                                         style="display: none;" onblur="this.value = this.value.replace('%', '') + '%';"
                                         oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
                                         maxlength="5" disabled>
@@ -194,7 +194,7 @@
                                     <fieldset id="dropdownforEngagementManager">
                                         <select
                                             class="input js-mytooltip text-center  form-select @error('') is-invalid @enderror"
-                                            name="" id="workshop_engagementManager"
+                                            name="engagementMan_HF" id="workshop_engagementManager"
                                             style="background-color:#ffcccc; color:red;"
                                             data-mytooltip-content="<i>
                                                     Engagement Manager - 4% - all Key Accounts and large engagements <br>
@@ -227,7 +227,7 @@
                                 </td>
                                 <td class="total-td">
                                     <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                        value="{{ old('') }}" name="" id="">
+                                        value="{{ old('') }}" name="engMan_rooster" id="">
                                 </td>
                                 <td style="background-color: #FFFFFF;" class="border border-white">
                                     <a href="javascript:void(0)" class="text-success font-18" title="Add" id="muaddButton3">
@@ -252,13 +252,13 @@
                             <tr class="th-blue-grey-lighten-2" id="rowofCustomization">
                                 <td class="title">Customization Fee</td>
                                 <td>
-                                    {{-- <input type="number"
+                                   <input type="number"
                                         class="text-center fw-bold text-dark text-center form-control input-table @error('') is-invalid @enderror"
-                                        value="{{ old('') }}" name="" id="workshop_CustomizationHf" max="100"> --}}
+                                        value="{{ old('') }}" name="customizationFee_hourfee" id="workshop_CustomizationHf" max="100"> 
                                 </td>
                                 <td class="">
                                     <fieldset>
-                                        <select class="input js-mytooltip  text-center form-select @error('') is-invalid @enderror" name="" id="workshop_CustomizationNoh"
+                                        <select class="input js-mytooltip  text-center form-select @error('') is-invalid @enderror" name="customizationFee_numfee" id="workshop_CustomizationNoh"
                                             data-mytooltip-content="<i>
                                                 # of Hours<br>
                                                 0 - no customization<br><br>
@@ -288,10 +288,10 @@
                                 </td>
                                 <td class="total-td" style="border-left:3px solid black">
                                     <h4 class="text-center lead" id="workshop_CustomizationsTotal">-</h4>
-                                </td>
+                                </td> 
                                 <td class="total-td">
                                     <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                        value="{{ old('') }}" name="" id="">
+                                        value="{{ old('') }}" name="customizationFee_rooster" id="">
                                 </td>
                                 <td style="background-color: #FFFFFF;" class="border border-white">
                                     <a href="javascript:void(0)" class="text-success font-18" title="Add" id="muaddButton4">
@@ -306,7 +306,7 @@
                                 <td class="title">Creators Fees (0, 500, 1K)</td>
                                 <td>
                                     <fieldset>
-                                        <select class="input js-mytooltip  text-center form-select @error('') is-invalid @enderror" name="" id="workshop_CreatorHf"
+                                        <select class="input js-mytooltip  text-center form-select @error('') is-invalid @enderror" name="creatorfee_hourfee" id="workshop_CreatorHf"
                                             data-mytooltip-content="<i>
                                                 Creators Fee - 0 - no creators fee<br><br>
                                                 500 - Creators Fee is the creator is the lead, for the 2nd session onwards<br><br>
@@ -336,7 +336,7 @@
                                 <td>
                                     <input type="number"
                                         class="text-center form-control input-table @error('') is-invalid @enderror"
-                                        value="{{ old('') }}" name="" id="workshop_CreatorNoh" max="100">
+                                        value="{{ old('') }}" name="creatorfee_Noh" id="workshop_CreatorNoh" max="100">
                                 </td>
                                 <td class=""></td>
                                 <td class="total-td" style="border-left:3px solid black">
@@ -344,7 +344,7 @@
                                 </td>
                                 <td class="total-td">
                                     <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                        value="{{ old('') }}" name="" id="">
+                                        value="{{ old('') }}" name="creatorfee_rooster" id="">
                                 </td>
                                 <td style="background-color: #FFFFFF;" class="border border-white">
                                     <a href="javascript:void(0)" class="text-success font-18" title="Add" id="muaddButton5">
@@ -363,7 +363,7 @@
                             </td>
                             <td class="total-td">
                                 <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="" id="">
+                                    value="{{ old('') }}" name="consulationdesignsubtotal" id="">
                             </td>
                             <td style="background-color: #FFFFFF;" class="border border-white"></td>
                         </tr>
@@ -394,24 +394,24 @@
                                 <td>
                                     <input type="number"
                                         class="text-center fw-bold text-center text-dark form-control input-table @error('') is-invalid @enderror"
-                                        value="{{ old('') }}" name="" id="workshop_LeadfacilitatorsHf">
+                                        value="{{ old('') }}" name="LeadFacilitator_HF" id="workshop_LeadfacilitatorsHf">
                                 </td>
                                 <td>
                                     <input type="number"
                                         class="text-center form-control input-table @error('') is-invalid @enderror"
-                                        value="{{ old('') }}" name="" id="workshop_LeadfacilitatorsNoh">
+                                        value="{{ old('') }}" name="LeadFacilitator_noh" id="workshop_LeadfacilitatorsNoh">
                                 </td>
                                 <td>
                                     <input type="number"
                                         class="text-center form-control input-table @error('') is-invalid @enderror"
-                                        value="{{ old('') }}" name="" id="workshop_LeadfacilitatorsNwh">
+                                        value="{{ old('') }}" name="LeadFacilitator_nswh" id="workshop_LeadfacilitatorsNwh">
                                 </td>
                                 <td class="total-td" style="border-left:3px solid black">
                                     <h4 class="text-center lead" id="workshop_LeadfacilitatorsTotal">-</h4>
                                 </td>
                                 <td class="total-td">
                                     <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                        value="{{ old('') }}" name="" id="">
+                                        value="{{ old('') }}" name="LeadFacilitator_rooster" id="">
                                 </td>
                                 <td style="background-color: #FFFFFF;" class="border border-white">
                                     <a href="javascript:void(0)" class="text-success font-18" title="Add" id="muaddButton6">
@@ -426,7 +426,7 @@
                                 <td class="title">Moderator (P800/P1100/P1350)</td>
                                 <td>
                                     <fieldset>
-                                        <select class="input js-mytooltip text-center form-select @error('') is-invalid @enderror select" name=""
+                                        <select class="input js-mytooltip text-center form-select @error('') is-invalid @enderror select" name="moderator_HF"
                                             id="workshop_ModeratorHf" style="background-color:#ffcccc; color:red;"
                                             data-mytooltip-content="<i>
                                                 <b>Moderator</b><br/>
@@ -458,19 +458,19 @@
                                 <td>
                                     <input type="number"
                                         class="text-center  form-control input-table @error('') is-invalid @enderror"
-                                        value="{{ old('') }}" name="" id="workshop_ModeratorNoh1">
+                                        value="{{ old('') }}" name="moderator_noh" id="workshop_ModeratorNoh1">
                                 </td>
                                 <td>
                                     <input type="number"
                                         class="text-center form-control input-table @error('') is-invalid @enderror"
-                                        value="{{ old('') }}" name="" id="workshop_ModeratorNwh1">
+                                        value="{{ old('') }}" name="moderator_nswh" id="workshop_ModeratorNwh1">
                                 </td>
                                 <td class="total-td" style="border-left:3px solid black">
                                     <h4 class="text-center lead" id="workshop_ModeratorTotal">-</h4>
                                 </td>
                                 <td class="total-td">
                                     <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                        value="{{ old('') }}" name="" id="">
+                                        value="{{ old('') }}" name="moderator_rooster" id="">
                                 </td>
                                 <td style="background-color: #FFFFFF;" class="border border-white">
                                     <a href="javascript:void(0)" class="text-success font-18" title="Add" id="muaddButton7">
@@ -486,24 +486,24 @@
                                 <td>
                                     <input type="number"
                                         class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
-                                        value="{{ old('') }}" name="" id="workshop_ProducerHf">
+                                        value="{{ old('') }}" name="producer_HF" id="workshop_ProducerHf">
                                 </td>
                                 <td>
                                     <input type="number"
                                         class="text-center form-control input-table @error('') is-invalid @enderror"
-                                        value="{{ old('') }}" name="" id="workshop_ProducerNoh">
+                                        value="{{ old('') }}" name="producer_noh" id="workshop_ProducerNoh">
                                 </td>
                                 <td>
                                     <input type="number"
                                         class="text-center form-control input-table @error('') is-invalid @enderror"
-                                        value="{{ old('') }}" name="" id="workshop_ProducerNwh">
+                                        value="{{ old('') }}" name="producer_nswh" id="workshop_ProducerNwh">
                                 </td>
                                 <td class="total-td" style="border-left:3px solid black">
                                     <h4 class="text-center lead" id="workshop_ProducersTotal">-</h4>
                                 </td>
                                 <td class="total-td">
-                                    <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                        value="{{ old('') }}" name="" id="">
+                                    <input type="number" class="form-control input-table @error('') is-invalid @enderror"
+                                        value="{{ old('') }}" name="producer_rooster" id="">
                                 </td>
                                 <td style="background-color: #FFFFFF;" class="border border-white">
                                     <a href="javascript:void(0)" class="text-success font-18" title="Add" id="muaddButton8">
@@ -523,7 +523,7 @@
                             </td>
                             <td class="total-td">
                                 <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="" id="">
+                                    value="{{ old('') }}" name="programsub_rooster" id="">
                             </td>
                             <td style="background-color: #FFFFFF;" class="border border-white"></td>
                         </tr>
@@ -551,14 +551,14 @@
                         <tr class="th-blue-grey-lighten-2" id="rowofOffProgram">
                             <td class="title">Off-Program Fee</td>
                             <td>
-                                <input type="text"
+                                <input type="number"
                                     class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="" id="workshop_OffprogramsHf">
+                                    value="{{ old('') }}" name="offprogram_HF" id="workshop_OffprogramsHf">
                             </td>
                             <td>
                                 <input type="number"
                                     class="text-center  form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="" id="workshop_OffprogramsNoh">
+                                    value="{{ old('') }}" name="offprogram_noh" id="workshop_OffprogramsNoh">
                             </td>
                             <td></td>
                             <td class="total-td" style="background-color: rgba(146, 146, 146, 0.727">
@@ -566,7 +566,7 @@
                             </td>
                             <td class="total-td">
                                 <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="" id="">
+                                    value="{{ old('') }}" name="offprogram_rooster" id="">
                             </td>
                             <td style="background-color: #FFFFFF;" class="border border-white"></td>
                         </tr>
@@ -593,9 +593,9 @@
                         <tr class="th-blue-grey-lighten-2" id="rowofProgramExpenses">
                             <td class="title">Program Expenses</td>
                             <td>
-                                <input type="text"
+                                <input type="number"
                                     class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="" id="workshop_Programexpenses" maxlength="4">
+                                    value="{{ old('') }}" name="miscellaneous_HF" id="workshop_Programexpenses" maxlength="4">
                             </td>
                             <td></td>
                             <td></td>
@@ -604,7 +604,7 @@
                             </td>
                             <td class="total-td">
                                 <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="" id="">
+                                    value="{{ old('') }}" name="miscellaneous_rooster" id="">
                             </td>
                             <td style="background-color: #FFFFFF;" class="border border-white"></td>
                         </tr>
@@ -629,7 +629,7 @@
                             </td>
                             <td class="overall-total-end" style="border:3px solid black">
                                 <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="" id="">
+                                    value="{{ old('') }}" name="total_rooster" id="">
                             </td>
                         </tr>
 
