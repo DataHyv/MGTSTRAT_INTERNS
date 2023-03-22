@@ -119,6 +119,7 @@ Auth::routes();
     Route::get('form/mgtstratu_workshops/index', [App\Http\Controllers\MgtstratUController::class, 'index'])->middleware('auth')->name('form/mgtstratu_workshops/index');
     Route::get('form/mgtstratu_workshops/new', [App\Http\Controllers\MgtstratUController::class, 'newRecord'])->middleware('auth')->name('form/mgtstratu_workshops/new');
     Route::post('form/mgtstratu_workshops/save', [App\Http\Controllers\MgtstratUController::class, 'store'])->name('form/mgtstratu_workshops/save');
+    Route::put('update', [MgtstratUController::class, 'workshopUpdateRecord','workshopAddDeleteRecord'])->middleware('auth')->name('update');
 
 // ----------------------------- MGTSTRAT WEBINARS WORKSHOPS ------------------------------//
     Route::resource('form/webinars', 'App\Http\Controllers\MgtstratWebinarsController');

@@ -129,41 +129,6 @@ class MgtstratUController extends Controller
                
             $workshop_cost_form->save();
 
-            // $cstmzd_eng_form_id = DB::table('workshop_informations')->orderBy('workshop_id','DESC')->select('workshop_id')->first();
-            // $cstmzd_eng_form_id = $cstmzd_eng_form_id->cstmzd_eng_form_id;
-            // $client_id = DB::table('workshop_informations')->orderBy('client_id','DESC')->select('client_id')->first();
-            // $client_id = $client_id->client_id;
-            // $ce_id = DB::table('customized_engagement_forms')->orderBy('id','DESC')->select('id')->first();
-            // $ce_id = $ce_id->id;
-            // $batch_number = DB::table('customized_engagement_forms')->orderBy('batch_number','DESC')->select('batch_number')->first();
-            // $batch_number = $batch_number->batch_number;
-
-            // try
-            //     {
-            //         foreach($request->fee_type as $key => $fee_types){
-            //             $engagement_fee['type']                 = $fee_types;
-            //             $engagement_fee['cstmzd_eng_form_id']   = $cstmzd_eng_form_id;
-            //             $engagement_fee['client_id']            = $client_id;
-            //             $engagement_fee['consultant_num']       = $request->fee_consultant_num[$key] ?? '0';
-            //             $engagement_fee['hour_fee']             = $request->fee_hour_fee[$key];
-            //             $engagement_fee['hour_num']             = $request->fee_hour_num[$key] ?? '0';
-            //             $engagement_fee['nswh']                 = $request->fee_nswh[$key] ?? '0';
-            //             $engagement_fee['nswh_percent']         = $request->nswh_percent[$key];
-            //             $engagement_fee['notes']                = $request->fee_notes[$key];
-
-            //             Engagement_fee::create($engagement_fee);
-            //         }
-
-            //         //insert loop for batch count
-            //         // for ($batch_count = 1; $batch_count <= $request->batch_number; $batch_count++) {
-                
-            //     }
-                
-            // catch(\Exception $e){
-            //     DB::rollback();
-            //     Toastr::error('fee'.$e->getMessage(), 'Error');
-            // }
-
             DB::commit();
             // info('This is some useful information.');
             return redirect()->route('form/mgtstratu_workshops/index')->with('success', 'Added Successfully!');
