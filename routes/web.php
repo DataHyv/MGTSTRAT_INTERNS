@@ -136,6 +136,10 @@ Auth::routes();
     Route::post('update', [App\Http\Controllers\ClientsController::class, 'updateClient'])->name('update');
 
 // ----------------------------- Client Management -----------------------//
-Route::resource('consultant-fees', 'App\Http\Controllers\ConsultantFeesController');
+// Route::resource('consultant-fees', 'App\Http\Controllers\ConsultantFeesController');
+Route::get('consultant-fees', [App\Http\Controllers\ConsultantFeesController::class, 'index'])->middleware('auth')->name('consultant-fees');
+Route::post('consultant-fees', [App\Http\Controllers\ConsultantFeesController::class, 'store'])->middleware('auth')->name('consultant-fees');
 Route::get('consultant-fetch', [App\Http\Controllers\ConsultantFeesController::class, 'fetchConsultantFees'])->middleware('auth')->name('consultant-fetch');
 Route::get('edit-consultant/{id}', [App\Http\Controllers\ConsultantFeesController::class, 'edit'])->middleware('auth')->name('edit-consultant/{id}');
+Route::put('update-consultant/{id}', [App\Http\Controllers\ConsultantFeesController::class, 'update'])->middleware('auth')->name('update-consultant/{id}');
+Route::delete('delete-consultant/{id}', [App\Http\Controllers\ConsultantFeesController::class, 'destroy'])->middleware('auth')->name('delete-consultant/{id}');

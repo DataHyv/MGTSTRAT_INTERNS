@@ -71,6 +71,8 @@
     <script src="{{ URL::to('assets/js/pages/dashboard.js') }}"></script>
     <script src="{{ URL::to('assets/js/main.js') }}"></script>
     <script src="{{ URL::to('assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     {{-- <script src="{{ URL::to('assets/vendors/simple-datatables/simple-datatables.js') }}"></script> --}}
     {{-- DATATABLES --}}
     {{-- <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
