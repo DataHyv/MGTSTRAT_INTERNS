@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Database\Eloquent\Model;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 use RealRashid\SweetAlert\Facades\Alert;
 use Brian2694\Toastr\Facades\Toastr;
@@ -17,31 +16,54 @@ use App\Models\Workshop_cost;
 
 class MgtstratUController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return view('form.components.mgtstratu_workshops.index');
+        $companyList = Client::orderBy('company_name')->get();
+        $data = DB::table('workshop_informations')->where('client_id', $request->client)->count();
+        if (Auth::guest()){
+            return redirect()->route('/');
+        }
+        return view('form.components.mgtstratu_workshops.index', compact('companyList', 'data'));
     }
 
+    // // view record
+    // public function viewRecord()
+    // {
+    //     $data = Customized_engagement_form::with('client')->latest()->get();
+    //     $data2 = Sub_information::with('Customized_engagement_form')->get();
+    //     // $data2 = Sub_information::with('Customized_engagement_form')->latest('updated_at')->get();
+    //     // $data2 = DB::table('sub_informations')->where('customized_engagement_form_id', $request->customized_engagement_forms)->count();
+    //     $dataJoin1  = DB::table('customized_engagement_forms')
+    //         ->join('engagement_fees', 'customized_engagement_forms.cstmzd_eng_form_id', '=', 'engagement_fees.cstmzd_eng_form_id')
+    //         ->select('customized_engagement_forms.*', 'engagement_fees.*')
+    //         ->get();
+    //     $dataJoin2  = DB::table('customized_engagement_forms')
+    //         ->join('engagement_costs', 'customized_engagement_forms.cstmzd_eng_form_id', '=', 'engagement_costs.cstmzd_eng_form_id')
+    //         ->select('customized_engagement_forms.*', 'engagement_costs.*')
+    //         ->get();
+    //     return view('form.components.customized_engagement.ce_view_record',compact('data', 'dataJoin1', 'dataJoin2', 'data2'));
+    // }
 
     /* Save Record */
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'client_id'   => 'required|integer',
-        //     // 'engagement_title'   => 'required',
-        // ]);
+        $request->validate([
+            'client_id'   => 'required|integer',
+            // 'engagement_title'   => 'required',
+        ]);
 
         DB::beginTransaction();
+
         try {
-            // $config = ['table'=>'customized_engagement_forms', 'length'=>12, 'field'=>'cstmzd_eng_form_id', 'prefix'=>'CSTMZD-'];
-            $config = ['table'=>'workshop_informations', 'length'=>12, 'field'=>'workshop_id', 'prefix'=>'CSTMZD-'];
+
+            $config = ['table'=>'workshop_informations', 'length'=>12, 'field'=>'workshop_id', 'prefix'=>'WRKSHP-'];
             $id_budget_form = IdGenerator::generate($config);
 
             $workshop_form = new Workshop_information();
             $workshop_form->workshop_id             = $id_budget_form;
             // $workshop_form->status                = $request->status;
             // $workshop_form->ga_percent            = $request->ga_percent;
-            // $workshop_form->client_id             = (int)$request->client_id;
+            $workshop_form->client_id             = (int)$request->client_id;
             $workshop_form->engagement_title        = $request->engagement_title;
             $workshop_form->workshop_title          = $request->workshop_title;
             $workshop_form->cluster                 = $request->cluster;
@@ -52,93 +74,69 @@ class MgtstratUController extends Controller
             $workshop_form->program_dates           = $request->program_dates;
             $workshop_form->program_start_time      = $request->program_start_time;
             $workshop_form->program_end_time        = $request->program_end_time;
-            
             // $workshop_form->core_area             = $request->core_area;
-            // $workshop_form->workshop_fees_total   = $request->workshop_fees_total;
+
+            $workshop_form->workshop_fees_total   = $request->mg_input_totalPackages;
             $workshop_form->save();
 
-            $config_workshop_fee = ['table'=>'workshop_fees', 'length'=>12, 'field'=>'workshop_id', 'prefix'=>'CSTMZD-'];
-            $workshop_fee_id_generator = IdGenerator::generate($config_workshop_fee);
-            $workshop_fee_form = new WorkshopFee();
-            $workshop_fee_form->workshop_id                                     =    $workshop_fee_id_generator;
-            $workshop_fee_form->customizationFee_packageFees                    =    $request->ef_customizationFeePfv;
-            $workshop_fee_form->customizationFee_sessions                       =    $request->ef_customizationFeeNos;
-            $workshop_fee_form->customizationFee_nightShift_weekendsHolidays    =    $request->ef_customizationFeeNsw;
-            $workshop_fee_form->customizationFee_notes                          =    $request->customizationFee_notes;
-            $workshop_fee_form->customizationFeeSubtotal_notes                  =    $request->customizationFeeSubtotal_notes;
-            $workshop_fee_form->package1_packageFees                            =    $request->ef_package1FeePfv;
-            $workshop_fee_form->package1_sessions                               =    $request->ef_package1FeeNos;
-            $workshop_fee_form->package1_nightShift_weekendsHolidays            =    $request->ef_package1FeeNsw;
-            $workshop_fee_form->package1_notes                                  =    $request->package1_notes;
-            $workshop_fee_form->package2_packageFees                            =    $request->ef_package2FeePfv;
-            $workshop_fee_form->package2_sessions                               =    $request->ef_package2FeeNos;
-            $workshop_fee_form->package2_nightShift_weekendsHolidays            =    $request->ef_package2FeeNsw;
-            $workshop_fee_form->package2_notes                                  =    $request->package2_notes;
-            $workshop_fee_form->producer_packageFees                            =    $request->ef_producerFeePfv;
-            $workshop_fee_form->producer_sessions                               =    $request->ef_producerFeeNoc;
-            $workshop_fee_form->producer_nightShift_weekendsHolidays            =    $request->ef_producerFeeNsw;
-            $workshop_fee_form->producer_notes                                  =    $request->producer_notes;
-            $workshop_fee_form->programSubtotal_notes                           =    $request->programSubtotal_notes;
-            $workshop_fee_form->totalStandardFees_notes                         =    $request->totalStandardFees_notes;
-            $workshop_fee_form->discount_given                                  =    $request->mg_inpt_dsct;
-            $workshop_fee_form->discount_notes                                  =    $request->discount_notes;
-            $workshop_fee_form->totalPackage                                    =    $request->mg_input_totalPackages;
-            $workshop_fee_form->totalPackage_notes                              =    $request->totalPackage_notes;
-            $workshop_fee_form->save();
 
+            $workshop_id = DB::table('workshop_informations')->orderBy('workshop_id','DESC')->select('workshop_id')->first();
+            // another variable accessing the first variable's table column workshop_id
+            $workshop_id = $workshop_id->workshop_id;
+            
+            $client_id = DB::table('workshop_informations')->orderBy('client_id','DESC')->select('client_id')->first();
+            // another variable accessing the first variable's table column client_id
+            $client_id = $client_id->client_id;
+            // workshop informations id, wi_id
+            $wi_id = DB::table('workshop_informations')->orderBy('id','DESC')->select('id')->first();
+            $wi_id = $wi_id->id;
 
+            // FOR FEES
+            try {
+                foreach($request->fee_type as $key => $fee_types) {
+                    $engagement_fee['type']                 = $fee_types;
+                    $engagement_fee['workshop_id']          = $workshop_id;
+                    $engagement_fee['client_id']            = $client_id;
+                    $engagement_fee['package_fees']         = $request->fee_package_num[$key] ?? '0';
+                    $engagement_fee['num_sessions']         = $request->fee_num_sessions[$key] ?? '0';
+                    $engagement_fee['nswh']                 = $request->fee_nswh[$key] ?? '0';
+                    $engagement_fee['notes']                = $request->fee_notes[$key];
 
+                    WorkshopFee::create($engagement_fee);
+                }
+            } catch(\Exception $e) {
+                DB::rollback();
+                Toastr::error('fee'.$e->getMessage(), 'Error');
+            }
 
-            $config_workshop_cost = ['table'=>'workshop_costs', 'length'=>12, 'field'=>'workshop_id', 'prefix'=>'CSTMZD-'];
-            $workshop_cost_id_generator = IdGenerator::generate($config_workshop_cost);
+            // FOR COSTS
+            try {
+                foreach ($request->cost_type as $key => $cost_types){
+                    $engagement_cost['type']                = $cost_types;
+                    $engagement_cost['client_id']           = $client_id;
+                    $engagement_cost['workshop_id']         = $workshop_id;
+                    $engagement_cost['hour_fee']            = $request->cost_hour_fee[$key] ?? '0';
+                    $engagement_cost['hour_num']            = $request->cost_hour_num[$key] ?? '0';
+                    $engagement_cost['nswh']                = $request->cost_nswh[$key] ?? '0';
+                    $engagement_cost['rooster']             = $request->cost_rooster[$key];
 
-            $workshop_cost_form = new Workshop_cost();
-            $workshop_cost_form->workshop_id                        =  $workshop_cost_id_generator;
-            $workshop_cost_form->commission_sales                   =  $request-> commission_sales_HF;
-            $workshop_cost_form->commission_sales_rooster           =  $request-> com_sale_rooster;
-            $workshop_cost_form->commission_referral                =  $request-> commission_referral;
-            $workshop_cost_form->commission_referral_rooster        =  $request-> com_rooster;
-            $workshop_cost_form->eng_mng_hourfee                    =  $request-> engagementMan_HF;
-            $workshop_cost_form->eng_mng_rooster                    =  $request-> engMan_rooster;
-            // $workshop_cost_form->cstmzdfee_hourfee                  =  $request-> customizationFee_hourfee;
-            // $workshop_cost_form->cstmzdfee_Numfee                   =  $request-> customizationFee_numfee;
-            $workshop_cost_form->cstmzdefee_rooster                 =  $request-> customizationFee_rooster;
-            $workshop_cost_form->creatorFee_hourfee                 =  $request-> creatorfee_hourfee;
-            $workshop_cost_form->creatorFee_Numfee                  =  $request-> creatorfee_Noh;
-            $workshop_cost_form->creatorFee_Rooster                 =  $request-> creatorfee_rooster;
-            $workshop_cost_form->consultationdesignsub_rooster      =  $request-> consulationdesignsubtotal;
-            $workshop_cost_form->LeadF_hourfee                      =  $request-> LeadFacilitator_HF;
-            $workshop_cost_form->LeadF_numfee                       =  $request-> LeadFacilitator_noh;
-            $workshop_cost_form->LeadF_nswh                         =  $request-> LeadFacilitator_nswh;
-            $workshop_cost_form->LeadF_rooster                      =  $request-> LeadFacilitator_rooster;
-            $workshop_cost_form->moderator_hourfee                  =  $request-> moderator_HF;
-            $workshop_cost_form->moderator_Numfee                   =  $request-> moderator_noh;
-            $workshop_cost_form->moderator_nswh                     =  $request-> moderator_nswh;
-            $workshop_cost_form->modmoderator_rooster               =  $request->moderator_rooster;
-            $workshop_cost_form->producer_hourfee                   =  $request-> producer_HF;
-            $workshop_cost_form->producer_numfee                    =  $request-> producer_noh;
-            $workshop_cost_form->producer_nswh                      =  $request-> producer_nswh;
-            $workshop_cost_form->producer_rooster                   =  $request-> producer_rooster;
-            $workshop_cost_form->programsubtotal_rooster            =  $request-> programsub_rooster;
-            $workshop_cost_form->offprogram_hourfee                 =  $request-> offprogram_HF;
-            $workshop_cost_form->offprogram_numfee                  =  $request-> offprogram_noh;
-            $workshop_cost_form->offprogram_rooster                 =  $request-> offprogram_rooster;
-            $workshop_cost_form->programexpenses_hourfee            =  $request-> miscellaneous_HF;
-            $workshop_cost_form->programexpenses_rooster            =  $request-> miscellaneous_rooster;
-            $workshop_cost_form->Costtotal_rooster                  =  $request-> total_rooster;
-               
-            $workshop_cost_form->save();
+                    Workshop_cost::create($engagement_cost);
+                }
+            } catch(\Exception $e) {
+                DB::rollback();
+                Toastr::error('cost'.$e->getMessage(), 'Error');
+            }
 
             DB::commit();
-            // info('This is some useful information.');
+            
             return redirect()->route('form/mgtstratu_workshops/index')->with('success', 'Added Successfully!');
+        
         } catch(\Exception $e){
             DB::rollback();
             Alert::error('Data added fail','Error');
+            Toastr::error('test'.$e->getMessage(), 'Error');
             return redirect()->back();
         }
-
-        // return redirect('form/customizedEngagement/save');
         
     }
 

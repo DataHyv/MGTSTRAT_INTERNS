@@ -8,10 +8,15 @@ use App\Models\Client;
 
 class Workshop_cost extends Model
 {
-    use HasFactory;
+    public $timestamps = false;
     protected $fillable = [
         'client_id',
         'workshop_id',
+        'type',
+        'hour_fee',
+        'hour_num',
+        'nswh',
+        'rooster'
     ];
 
     public function client()

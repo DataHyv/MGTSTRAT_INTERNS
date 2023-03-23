@@ -15,20 +15,19 @@ class CreateWorkshopInformationsTable extends Migration
     {
         Schema::create('workshop_informations', function (Blueprint $table) {
                 $table->id();
-                $table->foreignId('client_id')->nullable()->constrained()->onDelete('cascade');
+                $table->foreignId('client_id')->nullable()->constrained()->cascadeOnDelete();
                 $table->string('workshop_id', 15);
-                $table->string('status', 15)->nullable();
+                // $table->string('status', 15)->nullable();
                 // $table->string('batch_name', 100)->nullable();
                 $table->string('engagement_title', 100)->nullable();
                 $table->string('workshop_title', 100)->nullable();
-                $table->string('ga_percent', 4)->nullable();
                 $table->string('cluster')->nullable();
                 $table->string('intelligence')->nullable();
                 $table->integer('pax_number')->nullable();
                 $table->string('program_dates')->nullable();
                 $table->string('program_start_time')->nullable();
                 $table->string('program_end_time')->nullable();
-                $table->string('workshop_fees_total', 30)->default(0)->comment('Set the default value workshop fees total to 0 in migration');
+                $table->string('workshop_fees_total', 30)->nullable();
                 $table->timestamps();
 
         });

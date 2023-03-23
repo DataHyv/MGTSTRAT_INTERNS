@@ -11,11 +11,13 @@ class Client extends Model
     public $timestamps = false;
     protected $fillable = [
         'cstmzd_eng_form_id',
+        'workshop_id'
     ];
 
     public function customized_engagement_forms()
     {
         return $this->hasMany(Customized_engagement_form::class, 'client_id');
+        return $this->hasMany(Workshop_information::class, 'client_id');
     	// return $this->hasMany('App\Models\Customized_engagement_form');
         // return $this->belongsTo('App\Models\Customized_engagement_form');
     }
