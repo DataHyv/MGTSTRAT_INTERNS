@@ -19,30 +19,21 @@ class MgtstratUController extends Controller
     public function index(Request $request)
     {
         $companyList = Client::orderBy('company_name')->get();
-        $data = DB::table('workshop_informations')->where('client_id', $request->client)->count();
-        if (Auth::guest()){
-            return redirect()->route('/');
-        }
-        return view('form.components.mgtstratu_workshops.index', compact('companyList', 'data'));
+        // $data = DB::table('workshop_informations')->where('client_id', $request->client)->count();
+        $data = Workshop_information::with('client')->latest()->get();
+        // if (Auth::guest()){
+        //     return redirect()->route('/');
+        // }
+        $dataJoin1  = DB::table('workshop_informations')
+            ->join('workshop_fees', 'workshop_informations.workshop_id', '=', 'workshop_fees.workshop_id')
+            ->select('workshop_informations.*', 'workshop_fees.*')
+            ->get();
+        $dataJoin2  = DB::table('workshop_informations')
+            ->join('workshop_costs', 'workshop_informations.workshop_id', '=', 'workshop_costs.workshop_id')
+            ->select('workshop_informations.*', 'workshop_costs.*')
+            ->get();
+        return view('form.components.mgtstratu_workshops.index', compact('companyList', 'dataJoin1', 'dataJoin2', 'data'));
     }
-
-    // // view record
-    // public function viewRecord()
-    // {
-    //     $data = Customized_engagement_form::with('client')->latest()->get();
-    //     $data2 = Sub_information::with('Customized_engagement_form')->get();
-    //     // $data2 = Sub_information::with('Customized_engagement_form')->latest('updated_at')->get();
-    //     // $data2 = DB::table('sub_informations')->where('customized_engagement_form_id', $request->customized_engagement_forms)->count();
-    //     $dataJoin1  = DB::table('customized_engagement_forms')
-    //         ->join('engagement_fees', 'customized_engagement_forms.cstmzd_eng_form_id', '=', 'engagement_fees.cstmzd_eng_form_id')
-    //         ->select('customized_engagement_forms.*', 'engagement_fees.*')
-    //         ->get();
-    //     $dataJoin2  = DB::table('customized_engagement_forms')
-    //         ->join('engagement_costs', 'customized_engagement_forms.cstmzd_eng_form_id', '=', 'engagement_costs.cstmzd_eng_form_id')
-    //         ->select('customized_engagement_forms.*', 'engagement_costs.*')
-    //         ->get();
-    //     return view('form.components.customized_engagement.ce_view_record',compact('data', 'dataJoin1', 'dataJoin2', 'data2'));
-    // }
 
     /* Save Record */
     public function store(Request $request)

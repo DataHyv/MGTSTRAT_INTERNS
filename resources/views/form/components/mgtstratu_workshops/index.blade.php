@@ -54,13 +54,15 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- @foreach ($data as $key => $item) --}}
+                                @foreach ($data as $key => $item)
                                     <tr>
                                         <td hidden class="ids">1</td>
-                                        {{-- <td hidden class="budget_number">{{ $item->cstmzd_eng_form_id }}</td> --}}
-                                        <td class="id text-center text-uppercase fw-bold">1</td>
+                                        <td class="id text-center text-uppercase fw-bold">{{ $item->workshop_id }}</td>
                                         <td class="text-center">
-                                            <span id="status" class="badge">Confirmed</span>
+
+                                            {{-- No field "status" in the database yet  --}}
+                                            <span id="status" class="badge">{{ $item->status }}</span>
+                                            
                                             {{-- Automatic change the status color --}}
                                             <script>
                                                 $( ".badge" ).each(function() {
@@ -82,20 +84,26 @@
                                                 });
                                             </script>
                                         </td>
-                                        <td class="name text-center fw-bold">Testing MgtStrat-U Workshops</td>
-                                        <td class="name text-center fw-bold">Virtual</td>
-                                        <td class="email text-center fw-bold">Test MgtStrat-U Workshops</td>
-                                        <td class="fw-bold text-center">100</td>
+                                        
+                                        {{-- No field "company_name" in the database yet  --}}
+                                        <td class="name text-center fw-bold">{{ $item->company_name }}</td>
+
+                                        {{-- No field "engagement_type" in the database yet  --}}
+                                        <td class="name text-center fw-bold">{{ $item->engagement_type }}</td>
+
+                                        <td class="email text-center fw-bold">{{ $item->engagement_title }}</td>
+                                        <td class="fw-bold text-center">{{ $item->pax_number }}</td>
                                         <td class="fw-bold text-center">
+                                           
                                             {{-- @if($item->program_dates)
                                                 @foreach($item->program_dates as $dates)
                                                     {{$dates.', '}}
                                                 @endforeach
                                             @endif --}}
-                                            Nov 4, 2022
+                                            {{$item->program_dates}}
                                         </td>
                                         {{-- <td class="fw-bold text-center">{{ \Carbon\Carbon::parse($item->created_at)->toFormattedDateString()}}</td> --}}
-                                        <td class="fw-bold text-center">Nov 4, 2022</td>
+                                        <td class="fw-bold text-center">{{ \Carbon\Carbon::parse($item->created_at)->toFormattedDateString()}}</td>
                                         <td class="text-center fw-bold text-center">
 
                                             <a href="#">
@@ -203,7 +211,7 @@
                                         </div>
                                     </div>
 
-                                {{-- @endforeach --}}
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
