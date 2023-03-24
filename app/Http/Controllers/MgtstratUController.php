@@ -136,4 +136,46 @@ class MgtstratUController extends Controller
         $companyList = Client::orderBy('company_name')->get();
         return view('form.mgtstratu_workshops', compact('companyList'));
     }
+
+    /* Delete CE row data */
+    public function deleteRow(Request $request)
+    {
+        $id = $request->id;
+        WorkshopFee::where('id', $id)->delete();
+        Workshop_cost::where('id', $id)->delete();
+        // Sub_cost::where('id', $id)->delete();
+    }
+    
+    /* Delete record */
+    public function viewDelete(Request $request)
+    {
+        DB::beginTransaction();
+        try {
+
+        /* delete record table estimates */
+        $engagement_fees = DB::table('workshop_fees')->where('workshop_id',$request->workshop_id)->get();
+        foreach ($engagement_fees as $key => $id_engagement_fees) {
+            DB::table('workshop_fees')->where('id', $id_engagement_fees->id)->delete();
+        }
+        $engagement_costs = DB::table('workshop_costs')->where('workshop_id',$request->workshop_id)->get();
+        foreach ($engagement_costs as $key => $id_engagement_cost) {
+            DB::table('workshop_costs')->where('id', $id_engagement_cost->id)->delete();
+        }
+
+        $workshop_name = $request->engagement_title;
+
+        /* delete record table estimates */
+        Workshop_information::destroy($request->id);
+
+        DB::commit();
+        // Alert::success('MgtStrat-U Workshop deleted successfully','Success');
+        return redirect()->back()->with('success', '<b>'.$workshop_name.'</b><br>Deleted successfully');
+
+        } catch(\Exception $e) {
+            DB::rollback();
+            Alert::error('MgtStrat-U Workshop deleted fail','Error');
+            return redirect()->back();
+        }
+    }
+
 }
