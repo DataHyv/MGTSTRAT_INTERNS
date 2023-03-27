@@ -465,7 +465,7 @@
                 <div class="form-group has-icon-left">
                     <label class="fw-bold required">Start Time</label>
                     <div class="position-relative">
-                        <input type="time" id="start-time" class="form-control start-time timepicker @error('dot') is-invalid @enderror" value="{{ old('dot') }}" placeholder="Enter Time" name="program_start_time">
+                        <input type="text" id="start-time" class="form-control start-time timepicker @error('dot') is-invalid @enderror" value="{{ old('dot') }}" placeholder="Enter Time" name="program_start_time">
                         <div class="form-control-icon">
                             <i class="bi bi-clock"></i>
                         </div>
@@ -481,7 +481,7 @@
                 <div class="form-group has-icon-left">
                     <label class="fw-bold required">End Time</label>
                     <div class="position-relative">
-                        <input type="time" id="end-time" class="form-control end-time timepicker @error('dot') is-invalid @enderror" value="{{ old('dot') }}" placeholder="Enter Time" name="program_end_time">
+                        <input type="text" id="end-time" class="form-control end-time timepicker @error('dot') is-invalid @enderror" value="{{ old('dot') }}" placeholder="Enter Time" name="program_end_time">
                         <div class="form-control-icon">
                             <i class="fa-solid fa-hourglass-end"></i>
                         </div>
@@ -498,20 +498,22 @@
     </div>
 </div>
 <script>
-    // This will help with displaying the date
-    $('.date').datepicker();
-    $('#ui-datepicker-div').css('clip', 'auto');
+    $(document).ready(function() {
+        // This will help with displaying the date
+        $('.date').datepicker();
+        $('#ui-datepicker-div').css('clip', 'auto');
 
-    $('.timepicker').timepicker({
-        timeFormat: 'h:mm p',
-        interval: 30,
-        minTime: '06',
-        maxTime: '10:00pm',
-        // defaultTime: '06',
-        startTime: '06:00',
-        dynamic: false,
-        dropdown: true,
-        scrollbar: true
+        $('.timepicker').timepicker({
+            timeFormat: 'h:mm p',
+            interval: 30,
+            minTime: '06',
+            maxTime: '10:00pm',
+            // defaultTime: '06',
+            startTime: '06:00',
+            dynamic: false,
+            dropdown: true,
+            scrollbar: true
+        });
     });
 
     document.getElementById('Mgtstrat-U-Titles').addEventListener("change", titles);
