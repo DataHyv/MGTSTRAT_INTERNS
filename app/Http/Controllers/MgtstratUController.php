@@ -35,7 +35,13 @@ class MgtstratUController extends Controller
         return view('form.components.mgtstratu_workshops.index', compact('companyList', 'dataJoin1', 'dataJoin2', 'data'));
     }
 
-    /* Save Record */
+    public function newRecord()
+    {
+        $companyList = Client::orderBy('company_name')->get();
+        return view('form.mgtstratu_workshops', compact('companyList'));
+    }
+
+    /** Save Record */
     public function store(Request $request)
     {
         $request->validate([
@@ -84,8 +90,8 @@ class MgtstratUController extends Controller
 
             // FOR FEES
             try {
-                foreach($request->fee_type as $key => $fee_types) {
-                    $engagement_fee['type']                 = $fee_types;
+                foreach($request->fee_type as $key => $fee_type) {
+                    $engagement_fee['type']                 = $fee_type;
                     $engagement_fee['workshop_id']          = $workshop_id;
                     $engagement_fee['client_id']            = $client_id;
                     $engagement_fee['package_fees']         = $request->fee_package_num[$key] ?? '0';
@@ -102,8 +108,8 @@ class MgtstratUController extends Controller
 
             // FOR COSTS
             try {
-                foreach ($request->cost_type as $key => $cost_types){
-                    $engagement_cost['type']                = $cost_types;
+                foreach ($request->cost_type as $key => $cost_type){
+                    $engagement_cost['type']                = $cost_type;
                     $engagement_cost['client_id']           = $client_id;
                     $engagement_cost['workshop_id']         = $workshop_id;
                     $engagement_cost['hour_fee']            = $request->cost_hour_fee[$key] ?? '0';
@@ -130,23 +136,8 @@ class MgtstratUController extends Controller
         }
         
     }
-
-    public function newRecord()
-    {
-        $companyList = Client::orderBy('company_name')->get();
-        return view('form.mgtstratu_workshops', compact('companyList'));
-    }
-
-    /* Delete CE row data */
-    public function deleteRow(Request $request)
-    {
-        $id = $request->id;
-        WorkshopFee::where('id', $id)->delete();
-        Workshop_cost::where('id', $id)->delete();
-        // Sub_cost::where('id', $id)->delete();
-    }
     
-    /* Delete record */
+    /** Delete record */
     public function viewDelete(Request $request)
     {
         DB::beginTransaction();
@@ -174,6 +165,99 @@ class MgtstratUController extends Controller
         } catch(\Exception $e) {
             DB::rollback();
             Alert::error('MgtStrat-U Workshop deleted fail','Error');
+            return redirect()->back();
+        }
+    }
+
+    /** Update record */
+    public function updateRecord($workshop_id, $id) {
+        $data = DB::table('workshop_informations')
+        ->where('workshop_id',$workshop_id)
+        ->first();
+        $data2 = Client::orderBy('company_name')->get();
+
+        $dataJoin1 = DB::table('workshop_informations')
+            ->join('workshop_fees', 'workshop_informations.workshop_id', '=', 'workshop_fees.workshop_id')
+            ->select('workshop_informations.*', 'workshop_fees.*')
+            ->where('workshop_fees.workshop_id',$workshop_id)
+            ->get();
+        $dataJoin2 = DB::table('workshop_informations')
+            ->join('workshop_costs', 'workshop_informations.workshop_id', '=', 'workshop_costs.workshop_id')
+            ->select('workshop_informations.*', 'workshop_costs.*')
+            ->where('workshop_costs.workshop_id',$workshop_id)
+            ->get();
+        
+        return view('form.components.mgtstratu_workshops.update.workshop_update_index', compact('data', 'data2', 'dataJoin1', 'dataJoin2'));
+    }
+    
+    public function workshopUpdateRecord(Request $request)
+    {
+        $request->validate([
+            'client_id'   => 'required|integer',
+        ]);
+        DB::beginTransaction();
+        try {
+
+            $update = [
+                'id'                    => $request->id,
+                'client_id'             => (int)$request->client_id,
+                'engagement_title'      => $request->engagement_title,
+                'workshop_title'        => $request->workshop_title,
+                'cluster'               => $request->cluster,
+                'intelligence'          => $request->intelligence,
+                'pax_number'            => $request->pax_number,
+                'program_dates'         => $request->program_dates,
+                'program_start_time'    => $request->program_start_time,
+                'program_end_time'      => $request->program_end_time,
+                'workshop_fees_total'   => $request->workshop_fees_total,
+            ];
+            Workshop_information::where('id',$request->id)->update($update);
+
+            /** delete record */
+            foreach ($request->fee_type as $key => $fee_types) {
+                DB::table('workshop_fees')->where('id', $request->fee_type[$key])->delete();
+            }
+            foreach ($request->cost_type as $key => $cost_types) {
+                DB::table('workshop_costs')->where('id', $request->cost_type[$key])->delete();
+            }
+
+            /** insert new record
+             * $fee_type(s)?
+             */
+            foreach($request->fee_type as $key => $fee_types)
+            {
+                $engagement_fee['client_id']            = $request->client_id;
+                $engagement_fee['workshop_id']          = $request->workshop_id;
+                $engagement_fee['type']                 = $request->fee_type[$key];
+                $engagement_fee['package_fees']         = $request->fee_package_num[$key] ?? '0';
+                $engagement_fee['num_sessions']         = $request->fee_num_sessions[$key] ?? '0'; 
+                $engagement_fee['nswh']                 = $request->fee_nswh[$key] ?? '0';
+                $engagement_fee['notes']                = $request->fee_notes[$key];
+
+                WorkshopFee::create($engagement_fee);
+            }
+
+            foreach($request->cost_type as $key => $cost_types)
+            {
+                $engagement_cost['client_id']           = $request->client_id;
+                $engagement_cost['workshop_id']         = $request->workshop_id;
+                $engagement_cost['type']                = $request->cost_type[$key];
+                $engagement_cost['hour_fee']            = $request->cost_hour_fee[$key] ?? '0';
+                $engagement_cost['hour_num']            = $request->cost_hour_num[$key] ?? '0';
+                $engagement_cost['nswh']                = $request->cost_nswh[$key] ?? '0';
+                $engagement_cost['rooster']             = $request->cost_rooster[$key];
+
+                Workshop_cost::create($engagement_cost);
+            }
+
+            $engagement_title = $request->engagement_title;
+
+            DB::commit();
+
+            return redirect()->route('form/mgtstratu_workshops/index')->with('success', '<b>'.$engagement_title.'</b><br>Updated successfully');
+        } catch(\Exception $e) {
+            DB::rollback();
+            Toastr::error($e->getMessage());
             return redirect()->back();
         }
     }

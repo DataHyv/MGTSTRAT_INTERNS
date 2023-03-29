@@ -106,14 +106,10 @@
                                         <td class="fw-bold text-center">{{ \Carbon\Carbon::parse($item->created_at)->toFormattedDateString()}}</td>
                                         <td class="text-center fw-bold text-center">
 
-                                            <a href="#">
+                                            {{-- UPDATE --}}
+                                            <a href="{{ url('form/mgtstratu_workshops/update/'.$item->workshop_id.'/'.$item->id) }}">
                                                 <span class="badge bg-success"><i class="bi bi-pencil-square"></i></span>
                                             </a>
-
-                                            {{-- <a href="#"
-                                                onclick="return confirm('Are you sure to want to delete Testing MgtStrat-U Workshops?')"><span
-                                                    class="badge bg-danger"><i class="bi bi-trash"></i></span>
-                                            </a> --}}
 
                                             <a href="#" class="delete"  data-toggle="modal" data-target="#delete_estimate{{ $item->id }}">
                                                 <span class="badge bg-danger">

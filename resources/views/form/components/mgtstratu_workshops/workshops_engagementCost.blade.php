@@ -113,6 +113,7 @@
                         <!---------------REFERRALS--------------------->
                             <tbody id="tableofReferrals">
                                 <tr class="th-blue-grey-lighten-2" id="rowofReferrals">
+                                    <input type="text" class="d-none" value="Referral" name="cost_type[]" readonly>
                                     <td class="title">Referral (2% / 3% / 10%)</td>
                                     <td>
                                         <input type="text" class="form-control input-table @error('') is-invalid @enderror"
@@ -188,7 +189,7 @@
                             <tr class="th-blue-grey-lighten" id="rowofEngagementManager">
                                 <td class="title fw-bold text-dark">
                                     <input type="text" class="d-none" value="Engagement Manager" name="cost_type[]" readonly>
-                                    ENGAGEMENT MANAGER(4%)
+                                    ENGAGEMENT MANAGER (4%)
                                 </td>
                                 <td>
                                     <input type="text" class="form-control input-table @error('') is-invalid @enderror"
@@ -312,7 +313,9 @@
                     <!---------------CREATORS FEE------------------>
                         <tbody id="tableofCreator">
                             <tr class="th-blue-grey-lighten-2" id="rowofCreator">
-                                <td class="title">Creators Fees (0, 500, 1K)</td>
+                                <td class="title">
+                                    <input type="text" class="d-none" value="Creators Fees" name="cost_type[]" readonly>
+                                    Creators Fees (0, 500, 1K)</td>
                                 <td>
                                     <fieldset>
                                         <select class="input js-mytooltip  text-center form-select @error('') is-invalid @enderror" name="cost_hour_fee[]" id="workshop_CreatorHf"
