@@ -112,19 +112,6 @@
                         </td>
                     </tr>
 
-                    {{-- @if ($efLeadConsultant === 1)
-                        <td style="background-color: #FFFFFF;" class="border border-white"><a href="javascript:void(0)"
-                                class="text-success font-18" title="Add" id="addBtn" onclick="$('#EcAddBtn').trigger('click');"><i
-                                    class="fa fa-plus"></i></a>
-                        </td>
-                    @else
-                        <td class="border border-white" style="background-color: #FFFFFF;">
-                            <a href="javascript:void(0)" class="text-danger font-18 remove" title="Remove" data-id="{{ $fee_type->id }}">
-                                <i class="fa fa-trash-o"></i>
-                            </a>
-                        </td>
-                    @endif --}}
-
                     @endif
                     @endforeach
                     {{-- End of Type: Customization Fee --}}
@@ -250,19 +237,6 @@
                         </td>
                     </tr>
 
-                    {{-- @if ($efLeadConsultant === 1)
-                        <td style="background-color: #FFFFFF;" class="border border-white"><a href="javascript:void(0)"
-                                class="text-success font-18" title="Add" id="addBtn" onclick="$('#EcAddBtn').trigger('click');"><i
-                                    class="fa fa-plus"></i></a>
-                        </td>
-                    @else
-                        <td class="border border-white" style="background-color: #FFFFFF;">
-                            <a href="javascript:void(0)" class="text-danger font-18 remove" title="Remove" data-id="{{ $fee_type->id }}">
-                                <i class="fa fa-trash-o"></i>
-                            </a>
-                        </td>
-                    @endif --}}
-
                     @endif
                     @endforeach
                     {{-- End of Type: Package 1 --}}
@@ -363,19 +337,6 @@
                         </td>
                     </tr>
 
-                    {{-- @if ($efLeadConsultant === 1)
-                        <td style="background-color: #FFFFFF;" class="border border-white"><a href="javascript:void(0)"
-                                class="text-success font-18" title="Add" id="addBtn" onclick="$('#EcAddBtn').trigger('click');"><i
-                                    class="fa fa-plus"></i></a>
-                        </td>
-                    @else
-                        <td class="border border-white" style="background-color: #FFFFFF;">
-                            <a href="javascript:void(0)" class="text-danger font-18 remove" title="Remove" data-id="{{ $fee_type->id }}">
-                                <i class="fa fa-trash-o"></i>
-                            </a>
-                        </td>
-                    @endif --}}
-
                     @endif
                     @endforeach
                     {{-- End of Type: Package 2 --}}                    
@@ -393,7 +354,7 @@
 
                             <input type="hidden" name="fee_id[]" value="{{ $fee_type->id }}">
                             <input type="text" class="d-none" value="{{ $fee_type->type }}" name="fee_type[]">
-                            $fee_type->type (5K, 7.5K)
+                            {{ $fee_type->type }} (5K, 7.5K)
 
                         </td>
 
@@ -465,19 +426,6 @@
                             class="text-success font-18" title="Add" id="addBtn1"><i class="fa fa-plus"></i></a>
                         </td>
                     </tr>
-
-                    {{-- @if ($efLeadConsultant === 1)
-                        <td style="background-color: #FFFFFF;" class="border border-white"><a href="javascript:void(0)"
-                                class="text-success font-18" title="Add" id="addBtn" onclick="$('#EcAddBtn').trigger('click');"><i
-                                    class="fa fa-plus"></i></a>
-                        </td>
-                    @else
-                        <td class="border border-white" style="background-color: #FFFFFF;">
-                            <a href="javascript:void(0)" class="text-danger font-18 remove" title="Remove" data-id="{{ $fee_type->id }}">
-                                <i class="fa fa-trash-o"></i>
-                            </a>
-                        </td>
-                    @endif --}}
 
                     @endif
                     @endforeach

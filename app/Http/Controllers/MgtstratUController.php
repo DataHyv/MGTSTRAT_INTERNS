@@ -214,11 +214,11 @@ class MgtstratUController extends Controller
             Workshop_information::where('id',$request->id)->update($update);
 
             /** delete record */
-            foreach ($request->fee_type as $key => $fee_types) {
-                DB::table('workshop_fees')->where('id', $request->fee_type[$key])->delete();
+            foreach ($request->fee_id as $key => $fee_types) {
+                DB::table('workshop_fees')->where('id', $request->fee_id[$key])->delete();
             }
-            foreach ($request->cost_type as $key => $cost_types) {
-                DB::table('workshop_costs')->where('id', $request->cost_type[$key])->delete();
+            foreach ($request->cost_id as $key => $cost_types) {
+                DB::table('workshop_costs')->where('id', $request->cost_id[$key])->delete();
             }
 
             /** insert new record
