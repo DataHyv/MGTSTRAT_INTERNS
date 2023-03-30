@@ -1,21 +1,3 @@
-{{-- datepicker css --}}
-<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
-{{-- timepicker css --}}
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
-{{-- tooltip css --}}
-<link rel="stylesheet" href="{{ url('css/tooltip-css/jquery.mytooltip.min.css') }}">
-{{--
-<link rel="stylesheet" href="{{ url('css/tooltip-css/demo/style.css') }}"> --}}
-{{-- datepicker js --}}
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
-{{-- timepicker js --}}
-<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
-{{-- tooltip js --}}
-{{-- <script src="{{ url('js/tooltipJs/jquery-1.11.3.min.js') }}"></script> --}}
-<script src="{{ url('js/tooltipJs/jquery.mytooltip.js') }}"></script>
-<script src="{{ url('js/tooltipJs/demo/script.js') }}"></script>
-
 <!------------ CARD HEADER ------------>
 <div class="card-header">
     <h4 class="card-title">Information</h4>
@@ -53,6 +35,7 @@
                                     {{ $client->company_name }}
                                 </option>
                             @endforeach
+
                         </select>
 
                         @error('client_id')
@@ -509,12 +492,12 @@
                     name="" id="core-valueInput" disabled> --}}
                     <fieldset class="form-group">
                         <select class="form-select @error('') is-invalid @enderror" name="intelligence" id="intelligence">
-                            <option value="Contextual" {{ $data->cluster == 'Contextual' ? 'selected="selected"' : '' }} >Contextual</option>
-                            <option value="Generative" {{ $data->cluster == 'Generative' ? 'selected="selected"' : '' }} >Generative</option>
-                            <option value="Moral" {{ $data->cluster == 'Moral' ? 'selected="selected"' : '' }} >Moral</option>
-                            <option value="Social & Emotional" {{ $data->cluster == 'Social & Emotional' ? 'selected="selected"' : '' }} >Social & Emotional</option>
-                            <option value="Technological" {{ $data->cluster == 'Technological' ? 'selected="selected"' : '' }} >Technological</option>
-                            <option value="Transformative" {{ $data->cluster == 'Transformative' ? 'selected="selected"' : '' }} >Transformative</option>
+                            <option value="Contextual" {{ $data->intelligence == 'Contextual' ? 'selected="selected"' : '' }} >Contextual</option>
+                            <option value="Generative" {{ $data->intelligence == 'Generative' ? 'selected="selected"' : '' }} >Generative</option>
+                            <option value="Moral" {{ $data->intelligence == 'Moral' ? 'selected="selected"' : '' }} >Moral</option>
+                            <option value="Social & Emotional" {{ $data->intelligence == 'Social & Emotional' ? 'selected="selected"' : '' }} >Social & Emotional</option>
+                            <option value="Technological" {{ $data->intelligence == 'Technological' ? 'selected="selected"' : '' }} >Technological</option>
+                            <option value="Transformative" {{ $data->intelligence == 'Transformative' ? 'selected="selected"' : '' }} >Transformative</option>
                         </select>
                     </fieldset>
                     <div class="form-control-icon">
@@ -624,23 +607,6 @@
 </div>
 
 <script>
-    $(document).ready(function() {
-        // This will help with displaying the date
-        $('.date').datepicker();
-        $('#ui-datepicker-div').css('clip', 'auto');
-
-        $('.timepicker').timepicker({
-            timeFormat: 'h:mm p',
-            interval: 30,
-            minTime: '06',
-            maxTime: '10:00pm',
-            startTime: '06:00',
-            dynamic: false,
-            dropdown: true,
-            scrollbar: true
-        });
-    });
-
     document.getElementById('Mgtstrat-U-Titles').addEventListener("change", titles);
 
     function titles() {

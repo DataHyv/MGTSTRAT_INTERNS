@@ -1,3 +1,4 @@
+
 <hr>
 <div class="card-header">
     <h4 class="card-title">Engagement Fees</h4>
@@ -40,7 +41,7 @@
                     <tr class="th-blue-grey-lighten-2" id="customizationFee">
                         <td class="title">
 
-                            <input type="hidden" name="fee_id[]" value="{{ $fee_type->id }}">
+                            <input type="hidden" name="fee_id[]" value="{{ $fee_type->id }}" readonly>
                             <input type="text" class="d-none" value="{{ $fee_type->type }}" name="fee_type[]">
                             {{ $fee_type->type }}
 
@@ -81,7 +82,13 @@
                                 name="fee_num_sessions[]"
                                 id="ef_customizationFeeNos"
                                 title=""
+
+                                {{-- input validation --}}
                                 max="100"
+                                oninput="checkInputValidity(this)"
+                                data-toggle="tooltip" data-placement="bottom" data-trigger="manual"
+                                data-html="true" data-original-title="" data-error-message="Value should not exceed 100"
+
                                 data-mytooltip-content="<i></i>"
                                 data-mytooltip-theme="dark"
                                 data-mytooltip-action="focus"
@@ -95,7 +102,13 @@
                                 name="fee_nswh[]"
                                 id="ef_customizationFeeNsw"
                                 title=""
+
+                                {{-- input validation --}}
                                 max="100"
+                                oninput="checkInputValidity(this)"
+                                data-toggle="tooltip" data-placement="bottom" data-trigger="manual"
+                                data-html="true" data-original-title="" data-error-message="Value should not exceed 100"
+
                                 data-mytooltip-content="<i></i>"
                                 data-mytooltip-theme="dark"
                                 data-mytooltip-action="focus"
@@ -152,8 +165,8 @@
                     <tr class="th-blue-grey-lighten-2" id="package1">
                         <td class="title">
 
-                            <input type="hidden" name="fee_id[]" value="{{ $fee_type->id }}">
-                            <input type="text" class="d-none" value="Package 1" name="fee_type[]">
+                            <input type="hidden" name="fee_id[]" value="{{ $fee_type->id }}" readonly>
+                            <input type="text" class="d-none" value="{{ $fee_type->type }}" name="fee_type[]">
                             {{-- {{ $fee_type->type }} --}}
                             Package, up to 30 pax (P31.5K, P35K, P40.5K, P45K)
 
@@ -203,7 +216,13 @@
                                 name="fee_num_sessions[]"
                                 id="ef_package1FeeNos"
                                 title=""
+
+                                {{-- input validation --}}
                                 max="100"
+                                oninput="checkInputValidity(this)"
+                                data-toggle="tooltip" data-placement="bottom" data-trigger="manual"
+                                data-html="true" data-original-title="" data-error-message="Value should not exceed 100"
+
                                 data-mytooltip-content="<i>Minimum is 1 session</i>"
                                 data-mytooltip-theme="dark"
                                 data-mytooltip-action="focus"
@@ -217,7 +236,13 @@
                                 name="fee_nswh[]"
                                 id="ef_package1FeeNsw"
                                 title=""
+
+                                {{-- input validation --}}
                                 max="100"
+                                oninput="checkInputValidity(this)"
+                                data-toggle="tooltip" data-placement="bottom" data-trigger="manual"
+                                data-html="true" data-original-title="" data-error-message="Value should not exceed 100"
+
                                 data-mytooltip-content="<i></i>"
                                 data-mytooltip-theme="dark"
                                 data-mytooltip-action="focus"
@@ -252,7 +277,7 @@
                     <tr class="th-blue-grey-lighten-2" id="package2">
                         <td class="title">
 
-                            <input type="hidden" name="fee_id[]" value="{{ $fee_type->id }}">
+                            <input type="hidden" name="fee_id[]" value="{{ $fee_type->id }}" readonly>
                             <input type="text" class="d-none" value="{{ $fee_type->type }}" name="fee_type[]">
                             {{-- {{ $fee_type->type }} --}}
                             Package, 31-50 pax (P40.5K, P45K, P49.5K, P55K)
@@ -303,7 +328,13 @@
                                 name="fee_num_sessions[]"
                                 id="ef_package2FeeNos"
                                 title=""
+
+                                {{-- input validation --}}
                                 max="100"
+                                oninput="checkInputValidity(this)"
+                                data-toggle="tooltip" data-placement="bottom" data-trigger="manual"
+                                data-html="true" data-original-title="" data-error-message="Value should not exceed 100"
+
                                 data-mytooltip-content="<i>Minimum is 1 session</i>"
                                 data-mytooltip-theme="dark"
                                 data-mytooltip-action="focus"
@@ -317,7 +348,13 @@
                                 name="fee_nswh[]"
                                 id="eef_package2FeeNsw"
                                 title=""
+
+                                {{-- input validation --}}
                                 max="100"
+                                oninput="checkInputValidity(this)"
+                                data-toggle="tooltip" data-placement="bottom" data-trigger="manual"
+                                data-html="true" data-original-title="" data-error-message="Value should not exceed 100"
+
                                 data-mytooltip-content="<i></i>"
                                 data-mytooltip-theme="dark"
                                 data-mytooltip-action="focus"
@@ -352,7 +389,7 @@
                     <tr class="th-blue-grey-lighten-2" id="ef_producer">
                         <td class="title">
 
-                            <input type="hidden" name="fee_id[]" value="{{ $fee_type->id }}">
+                            <input type="hidden" name="fee_id[]" value="{{ $fee_type->id }}" readonly>
                             <input type="text" class="d-none" value="{{ $fee_type->type }}" name="fee_type[]">
                             {{ $fee_type->type }} (5K, 7.5K)
 
@@ -393,7 +430,13 @@
                                 name="fee_num_sessions[]"
                                 id="ef_producerFeeNoc"
                                 title=""
+
+                                {{-- input validation --}}
                                 max="100"
+                                oninput="checkInputValidity(this)"
+                                data-toggle="tooltip" data-placement="bottom" data-trigger="manual"
+                                data-html="true" data-original-title="" data-error-message="Value should not exceed 100"
+
                                 data-mytooltip-content="<i>Minimum is 1 session</i>"
                                 data-mytooltip-theme="dark"
                                 data-mytooltip-action="focus"
@@ -407,7 +450,13 @@
                                 name="fee_nswh[]"
                                 id="ef_producerFeeNsw"
                                 title=""
+
+                                {{-- input validation --}}
                                 max="100"
+                                oninput="checkInputValidity(this)"
+                                data-toggle="tooltip" data-placement="bottom" data-trigger="manual"
+                                data-html="true" data-original-title="" data-error-message="Value should not exceed 100"
+
                                 data-mytooltip-content="<i></i>"
                                 data-mytooltip-theme="dark"
                                 data-mytooltip-action="focus"
@@ -506,5 +555,25 @@ $('input[type="number"]').on('input', function () {
 });
 
 $('input[type="number"]').attr('min', '0');
+
+// input validation script
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip();
+});
+
+function checkInputValidity(input) {
+  var max = parseInt(input.max);
+  var value = parseInt(input.value);
+  var errorMessage = input.dataset.errorMessage;
+
+  if (value > max) {
+    input.classList.add('is-invalid');
+    input.dataset.originalTitle = errorMessage;
+    $(input).tooltip('show');
+  } else {
+    input.classList.remove('is-invalid');
+    $(input).tooltip('hide');
+  }
+}
 
 </script>

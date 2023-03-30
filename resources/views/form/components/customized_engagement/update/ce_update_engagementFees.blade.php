@@ -424,7 +424,7 @@
                         <td>
                             <div class="form-group has-icon-right mb-0" id="inputLeadfaci1" style="display:none">
                                 <div class="position-relative">
-                                    <input type="text" class="commanumber form-control input-table @error('') is-invalid @enderror" value="{{ old('') }}"
+                                    <input type="text" class="commanumber form-control input-table @error('') is-invalid @enderror"
                                         value="{{ $fee_type->hour_fee }}" name="fee_hour_fee[]" id="ef_InputLeadFaciHf{{$efLeadfaci}}" data-type="currency" disabled>
                                     <div class="form-control-icon">
                                         <a href="javascript:void(0)" class="deleteIcon" id="deleteIcon1">

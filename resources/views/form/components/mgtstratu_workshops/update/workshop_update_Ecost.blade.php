@@ -35,13 +35,13 @@
 
                                 {{-- Type: Sales --}}
                                 @foreach ($dataJoin2 as $key=>$cost_type)
-                                @if ($cost_type->type == 'Sales')
+                                @if ($cost_type->type === 'Sales')
 
                                 <tr class="th-blue-grey-lighten-2" id="rowofSale">
                                     <td class="title">
 
                                         <input type="hidden" name="cost_id[]" value="{{ $cost_type->id }}" readonly>
-                                        <input type="text" class="d-none" value="Sales" name="cost_type[]" readonly>
+                                        <input type="text" class="d-none" value="{{ $cost_type->type }}" name="cost_type[]">
                                         {{ $cost_type->type }} (4% / 5% / 6% / 7%)
 
                                     </td>
@@ -106,8 +106,8 @@
                                     </td>
 
                                     {{-- NUMBER OF HOURS and NIGHT SHIFT, WEEKENDS HOLIDAYS * --}}
-                                    <td><input type="hidden" class="d-none" name="cost_hour_num[]" readonly></td>
-                                    <td><input type="hidden" class="d-none" name="cost_nswh[]" readonly></td>
+                                    <td><input type="hidden" value="{{ old('') }}" class="d-none" name="cost_hour_num[]" readonly></td>
+                                    <td><input type="hidden" value="{{ old('') }}" class="d-none" name="cost_nswh[]" readonly></td>
 
                                     <td class="total-td tbl-engmt-cost" style="border-left:3px solid black">
                                         <h4 class="text-center" id="workshop_saleTotal">-</h4>
@@ -135,14 +135,14 @@
 
                                 {{-- Type: Referral --}}
                                 @foreach ($dataJoin2 as $key=>$cost_type )
-                                @if ($cost_type->type == 'Referral')
+                                @if ($cost_type->type === 'Referral')
 
                                 <tr class="th-blue-grey-lighten-2" id="rowofReferrals">
                                     <td class="title">
                                         
-                                    <input type="hidden" name="cost_id[]" value="{{ $cost_type->id }}" readonly>
-                                    <input type="text" class="d-none" value="Referral" name="cost_type[]" readonly>
-                                    {{ $cost_type->type }} (2% / 3% / 10%)</td>
+                                        <input type="hidden" name="cost_id[]" value="{{ $cost_type->id }}" readonly>
+                                        <input type="text" class="d-none" value="{{ $cost_type->type }}" name="cost_type[]">
+                                        {{ $cost_type->type }} (2% / 3% / 10%)</td>
 
                                     <td>
 
@@ -193,8 +193,8 @@
                                     </td>
 
                                     {{-- NUMBER OF HOURS and NIGHT SHIFT, WEEKENDS HOLIDAYS * --}}
-                                    <td><input type="hidden" class="d-none" name="cost_hour_num[]" readonly></td>
-                                    <td><input type="hidden" class="d-none" name="cost_nswh[]" readonly></td>
+                                    <td><input type="hidden" class="d-none" value="{{ old('') }}" name="cost_hour_num[]" readonly></td>
+                                    <td><input type="hidden" class="d-none" value="{{ old('') }}" name="cost_nswh[]" readonly></td>
 
                                     <td class="total-td tbl-engmt-cost" style="border-left:3px solid black">
                                         <h4 class="text-center" id="workshop_referralsTotal">-</h4>
@@ -231,14 +231,15 @@
 
                             {{-- Type: Engagement Manager --}}
                             @foreach ($dataJoin2 as $key=>$cost_type )
-                            @if ($cost_type->type == 'Engagement Manager')
+                            @if ($cost_type->type === 'Engagement Manager')
 
                             <tr class="th-blue-grey-lighten" id="rowofEngagementManager">
                                 <td class="title fw-bold text-dark">
 
                                     <input type="hidden" name="cost_id[]" value="{{ $cost_type->id }}" readonly>
-                                    <input type="text" class="d-none" value="Engagement Manager" name="cost_type[]" readonly>
-                                    ENGAGEMENT MANAGER (4%)
+                                    <input type="text" class="d-none" value="{{ $cost_type->type }}" name="cost_type[]">
+                                    {{ strtoupper($cost_type->type) }} (4%)
+
                                 </td>
                                 <td>
                                     {{-- <input type="text" class="form-control input-table @error('') is-invalid @enderror"
@@ -279,8 +280,8 @@
                                 </td>
 
                                 {{-- NUMBER OF HOURS and NIGHT SHIFT, WEEKENDS HOLIDAYS * --}}
-                                <td><input type="hidden" class="d-none" name="cost_hour_num[]" readonly></td>
-                                <td><input type="hidden" class="d-none" name="cost_nswh[]" readonly></td>
+                                <td><input type="hidden" class="d-none" value="{{ old('') }}" name="cost_hour_num[]" readonly></td>
+                                <td><input type="hidden" class="d-none" value="{{ old('') }}" name="cost_nswh[]" readonly></td>
 
                                 <td class="total-td tbl-engmt-cost" style="border-left:3px solid black">
                                     <h4 class="text-center" id="workshop_engagementManagerTotal">-</h4>
@@ -319,20 +320,21 @@
 
                             {{-- Type: Customization Fee --}}
                             @foreach ($dataJoin2 as $key=>$cost_type )
-                            @if ($cost_type->type == 'Customization Fee')
+                            @if ($cost_type->type === 'Customization Fee')
 
                             <tr class="th-blue-grey-lighten-2" id="rowofCustomization">
                                 <td class="title">
+
                                     <input type="hidden" name="cost_id[]" value="{{ $cost_type->id }}" readonly>
-                                    <input type="text" class="d-none" value="Customization Fee" name="cost_type[]" readonly>
+                                    <input type="text" class="d-none" value="{{ $cost_type->type }}" name="cost_type[]">
                                     {{ $cost_type->type }}
+
                                 </td>
 
                                 {{-- hour_fee --}}
                                 <td>
-                                   <input type="number"
-                                        class="text-center fw-bold text-dark text-center form-control input-table @error('') is-invalid @enderror"
-                                        value="{{ $cost_type->hour_fee }}" name="cost_hour_fee[]" id="workshop_CustomizationHf"> 
+                                   <input type="number" class="text-center fw-bold text-dark text-center form-control input-table @error('') is-invalid @enderror"
+                                   name="cost_hour_fee[]" value="{{ $cost_type->hour_fee }}" id="workshop_CustomizationHf"> 
                                 </td>
 
                                 {{-- hour_num --}}
@@ -363,7 +365,7 @@
                                 </td>
                                 
                                 {{-- NIGHT SHIFT, WEEKENDS HOLIDAYS * --}}
-                                <td><input type="hidden" class="d-none" name="cost_nswh[]" readonly></td>
+                                <td><input type="hidden" class="d-none" value="{{ old('') }}" name="cost_nswh[]" readonly></td>
 
                                 <td class="total-td" style="border-left:3px solid black">
                                     <h4 class="text-center lead" id="workshop_CustomizationsTotal">-</h4>
@@ -372,7 +374,7 @@
                                 {{-- rooster --}}
                                 <td class="total-td">
                                     <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                        value="{{ $cost_type->rooster }}" name="cost_rooster[]" id="">
+                                        name="cost_rooster[]" value="{{ $cost_type->rooster }}" id="">
                                 </td>
                                 <td style="background-color: #FFFFFF;" class="border border-white">
                                     <a href="javascript:void(0)" class="text-success font-18" title="Add" id="muaddButton4">
@@ -391,20 +393,21 @@
 
                             {{-- Type: Creators Fees --}}
                             @foreach ($dataJoin2 as $key=>$cost_type )
-                            @if ($cost_type->type == 'Creators Fees')
+                            @if ($cost_type->type === 'Creators Fees')
 
                             <tr class="th-blue-grey-lighten-2" id="rowofCreator">
                                 <td class="title">
                                     
                                     <input type="hidden" name="cost_id[]" value="{{ $cost_type->id }}" readonly>
-                                    <input type="text" class="d-none" value="Creators Fees" name="cost_type[]" readonly>
+                                    <input type="text" class="d-none" value="{{ $cost_type->type }}" name="cost_type[]" readonly>
                                     {{ $cost_type->type }} (0, 500, 1K)</td>
 
                                 <td>
 
                                     {{-- hour_fee --}}
                                     <fieldset>
-                                        <select class="input js-mytooltip  text-center form-select @error('') is-invalid @enderror" name="cost_hour_fee[]" id="workshop_CreatorHf"
+                                        <select class="input js-mytooltip  text-center form-select @error('') is-invalid @enderror" 
+                                        name="cost_hour_fee[]" id="workshop_CreatorHf"
                                             data-mytooltip-content="<i>
                                                 Creators Fee - 0 - no creators fee<br><br>
                                                 500 - Creators Fee is the creator is the lead, for the 2nd session onwards<br><br>
@@ -436,11 +439,11 @@
                                 <td>
                                     <input type="number"
                                         class="text-center form-control input-table @error('') is-invalid @enderror"
-                                        value="{{ $cost_type->hour_num }}" name="cost_hour_num[]" id="workshop_CreatorNoh" max="100">
+                                        value="{{ $cost_type->hour_num }}" name="cost_hour_num[]" id="workshop_CreatorNoh">
                                 </td>
                                 
                                 {{-- NIGHT SHIFT, WEEKENDS HOLIDAYS * --}}
-                                <td><input type="hidden" class="d-none" name="cost_nswh[]" readonly></td>
+                                <td><input type="hidden" class="d-none" value="{{ old('') }}" name="cost_nswh[]" readonly></td>
 
                                 <td class="total-td" style="border-left:3px solid black">
                                     <h4 class="text-center lead" id="workshop_CreatorTotal">-</h4>
@@ -502,14 +505,15 @@
 
                             {{-- Type: Lead Facilitator --}}
                             @foreach ($dataJoin2 as $key=>$cost_type )
-                            @if ($cost_type->type == 'Lead Facilitator')
+                            @if ($cost_type->type === 'Lead Facilitator')
 
                             <tr class="th-blue-grey-lighten-2" id="rowofLeadFacilitator">
                                 <td class="title">
 
                                     <input type="hidden" name="cost_id[]" value="{{ $cost_type->id }}" readonly>
-                                    <input type="text" class="d-none" value="Lead Facilitator" name="cost_type[]" readonly>
+                                    <input type="text" class="d-none" value="{{ $cost_type->type }}" name="cost_type[]" readonly>
                                     {{ $cost_type->type }}
+
                                 </td>
 
                                 {{-- hour_fee --}}
@@ -559,21 +563,22 @@
 
                             {{-- Type: Moderator --}}
                             @foreach ($dataJoin2 as $key=>$cost_type )
-                            @if ($cost_type->type == 'Moderator')
+                            @if ($cost_type->type === 'Moderator')
 
                             <tr class="th-blue-grey-lighten-2" id="rowofModerator">
                                 <td class="title">
 
                                     <input type="hidden" name="cost_id[]" value="{{ $cost_type->id }}" readonly>
-                                    <input type="text" class="d-none" value="Moderator" name="cost_type[]" readonly>
+                                    <input type="text" class="d-none" value="{{ $cost_type->type }}" name="cost_type[]" readonly>
                                     {{ $cost_type->type }} (P800/P1100/P1350)
+
                                 </td>
                                 
                                 {{-- hour_fee --}}
                                 <td>
                                     <fieldset>
-                                        <select class="input js-mytooltip text-center form-select @error('') is-invalid @enderror select" name="cost_hour_fee[]"
-                                            id="workshop_ModeratorHf" style="background-color:#ffcccc; color:red;"
+                                        <select class="input js-mytooltip text-center form-select @error('') is-invalid @enderror select" 
+                                        name="cost_hour_fee[]" id="workshop_ModeratorHf" style="background-color:#ffcccc; color:red;"
                                             data-mytooltip-content="<i>
                                                 <b>Moderator</b><br/>
                                                 P800 - Associates<br/>
@@ -642,13 +647,13 @@
 
                             {{-- Type: Producer --}}
                             @foreach ($dataJoin2 as $key=>$cost_type )
-                            @if ($cost_type->type == 'Producer')
+                            @if ($cost_type->type === 'Producer')
 
                             <tr class="th-blue-grey-lighten-2" id="rowofProducer">
                                 <td class="title">
 
                                     <input type="hidden" name="cost_id[]" value="{{ $cost_type->id }}" readonly>
-                                    <input type="text" class="d-none" value="Producer" name="cost_type[]" readonly>
+                                    <input type="text" class="d-none" value="{{ $cost_type->type }}" name="cost_type[]" readonly>
                                     {{ $cost_type->type }}
 
                                 </td>
@@ -733,14 +738,15 @@
 
                         {{-- Type: Off-Program Fee --}}
                         @foreach ($dataJoin2 as $key=>$cost_type )
-                        @if ($cost_type->type == 'Off-Program Fee')
+                        @if ($cost_type->type === 'Off-Program Fee')
 
                         <tr class="th-blue-grey-lighten-2" id="rowofOffProgram">
                             <td class="title">
 
                                 <input type="hidden" name="cost_id[]" value="{{ $cost_type->id }}" readonly>
-                                <input type="text" class="d-none" value="Off-Program Fee" name="cost_type[]" readonly>
+                                <input type="text" class="d-none" value="{{ $cost_type->type }}" name="cost_type[]" readonly>
                                 {{ $cost_type->type }}
+
                             </td>
 
                             {{-- hour_fee --}}
@@ -758,7 +764,7 @@
                             </td>
                             
                             {{-- NIGHT SHIFT, WEEKENDS HOLIDAYS * --}}
-                            <td><input type="hidden" class="d-none" name="cost_nswh[]" readonly></td>
+                            <td><input type="hidden" class="d-none" value="{{ old('') }}" name="cost_nswh[]" readonly></td>
 
                             <td class="total-td" style="background-color: rgba(146, 146, 146, 0.727">
                                 <h4 class="text-center" id="workshop_OffprogramsTotal">-</h4>
@@ -798,13 +804,15 @@
 
                         {{-- Type: Program Expenses --}}
                         @foreach ($dataJoin2 as $key=>$cost_type )
-                        @if ($cost_type->type == 'Program Expenses')
+                        @if ($cost_type->type === 'Program Expenses')
 
                         <tr class="th-blue-grey-lighten-2" id="rowofProgramExpenses">
                             <td class="title">
+
                                 <input type="hidden" name="cost_id[]" value="{{ $cost_type->id }}" readonly>
-                                <input type="text" class="d-none" value="Program Expenses" name="cost_type[]" readonly>
+                                <input type="text" class="d-none" value="{{ $cost_type->type }}" name="cost_type[]" readonly>
                                 {{ $cost_type->type }}
+
                             </td>
 
                             {{-- hour_fee --}}
@@ -815,8 +823,8 @@
                             </td>
                             
                             {{-- NUMBER OF HOURS and NIGHT SHIFT, WEEKENDS HOLIDAYS * --}}
-                            <td><input type="hidden" class="d-none" name="cost_hour_num[]" readonly></td>
-                            <td><input type="hidden" class="d-none" name="cost_nswh[]" readonly></td>
+                            <td><input type="hidden" class="d-none" value="{{ old('') }}" name="cost_hour_num[]" readonly></td>
+                            <td><input type="hidden" class="d-none" value="{{ old('') }}" name="cost_nswh[]" readonly></td>
 
                             <td class="total-td" style="background-color: rgba(146, 146, 146, 0.727">
                                 <h4 class="text-center" id="workshop_ProgramexpensesTotal">-</h4>
@@ -864,5 +872,3 @@
         </section>
     </div>
 <!--------------------------END OF MGTSTRAT-U WORKSHOPS ENGAGEMENT COST FORM-------------------------------->
-
-@include('form.components.mgtstratu_workshops.workshops_script.workshops_engagement_cost')

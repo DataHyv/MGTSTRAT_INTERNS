@@ -9,6 +9,7 @@
     "/js/currencyFormat.js": "/js/currencyFormat.js",
     "/js/roster.js": "/js/roster.js",
     "/js/workshop.js": "/js/workshop.js",
+    "/js/workshop-update.js": "/js/workshop-update.js",
     "/css/app.css": "/css/app.css",
     "/css/custom.css": "/css/custom.css"
 }

@@ -214,17 +214,17 @@ class MgtstratUController extends Controller
             Workshop_information::where('id',$request->id)->update($update);
 
             /** delete record */
-            foreach ($request->fee_id as $key => $fee_types) {
+            foreach ($request->fee_id as $key => $fee_type) {
                 DB::table('workshop_fees')->where('id', $request->fee_id[$key])->delete();
             }
-            foreach ($request->cost_id as $key => $cost_types) {
+            foreach ($request->cost_id as $key => $cost_type) {
                 DB::table('workshop_costs')->where('id', $request->cost_id[$key])->delete();
             }
 
-            /** insert new record
-             * $fee_type(s)?
+            /** 
+             * insert new record
              */
-            foreach($request->fee_type as $key => $fee_types)
+            foreach($request->fee_type as $key => $fee_type)
             {
                 $engagement_fee['client_id']            = $request->client_id;
                 $engagement_fee['workshop_id']          = $request->workshop_id;
@@ -237,7 +237,7 @@ class MgtstratUController extends Controller
                 WorkshopFee::create($engagement_fee);
             }
 
-            foreach($request->cost_type as $key => $cost_types)
+            foreach($request->cost_type as $key => $cost_type)
             {
                 $engagement_cost['client_id']           = $request->client_id;
                 $engagement_cost['workshop_id']         = $request->workshop_id;
