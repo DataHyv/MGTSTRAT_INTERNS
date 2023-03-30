@@ -3,14 +3,6 @@
     <h4 class="card-title">Engagement Fees</h4>
 </div>
 
-{{-- Types --}}
-@php
-    $wfCustomizationFee = 0;
-    $wfPackage1 = 0;
-    $wfPackage2 = 0;
-    $wfProducer = 0;
-@endphp
-
 <div class="form-body container">
     <section>
         <div class="table-responsive-md" id="no-more-tables">
@@ -45,7 +37,7 @@
                     @foreach ($dataJoin1 as $key=>$fee_type)
                     @if ($fee_type->type === 'Customization Fee')
 
-                    <tr class="th-blue-grey-lighten-2" id="customizationFee{{ ++$wfCustomizationFee }}">
+                    <tr class="th-blue-grey-lighten-2" id="customizationFee">
                         <td class="title">
 
                             <input type="hidden" name="fee_id[]" value="{{ $fee_type->id }}">
@@ -170,7 +162,7 @@
                     @foreach ($dataJoin1 as $key=>$fee_type)
                     @if ($fee_type->type === 'Package 1')
                         
-                    <tr class="th-blue-grey-lighten-2" id="package1{{ ++$wfPackage1 }}">
+                    <tr class="th-blue-grey-lighten-2" id="package1">
                         <td class="title">
 
                             <input type="hidden" name="fee_id[]" value="{{ $fee_type->id }}">
@@ -283,7 +275,7 @@
                     @foreach ($dataJoin1 as $key=>$fee_type)
                     @if ($fee_type->type === 'Package 2')
                     
-                    <tr class="th-blue-grey-lighten-2" id="package2{{ ++$wfPackage2 }}">
+                    <tr class="th-blue-grey-lighten-2" id="package2">
                         <td class="title">
 
                             <input type="hidden" name="fee_id[]" value="{{ $fee_type->id }}">
@@ -396,7 +388,7 @@
                     @foreach ($dataJoin1 as $key=>$fee_type)
                     @if ($fee_type->type === 'Producer')
 
-                    <tr class="th-blue-grey-lighten-2" id="ef_producer{{ ++$wfProducer }}">
+                    <tr class="th-blue-grey-lighten-2" id="ef_producer">
                         <td class="title">
 
                             <input type="hidden" name="fee_id[]" value="{{ $fee_type->id }}">

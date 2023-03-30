@@ -122,7 +122,7 @@ Auth::routes();
     Route::post('form/mgtstratu_workshops/save', [App\Http\Controllers\MgtstratUController::class, 'store'])->name('form/mgtstratu_workshops/save');
 
     Route::get('form/mgtstratu_workshops/update/{workshop_id}/{id}', [MgtstratUController::class, 'updateRecord'])->middleware('auth')->name('form/mgtstratu_workshops/update/{workshop_id}');
-    Route::put('update', [MgtstratUController::class, 'workshopUpdateRecord'])->middleware('auth')->name('update');
+    Route::put('update', [MgtstratUController::class, 'workshopUpdateRecord'])->middleware('auth')->name('updateWorkshop');
 
     Route::post('deleteRecord', [MgtstratUController::class, 'viewDelete'])->middleware('auth')->name('deleteRecord');
 

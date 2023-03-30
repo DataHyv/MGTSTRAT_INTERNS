@@ -1,3 +1,21 @@
+{{-- datepicker css --}}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+{{-- timepicker css --}}
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+{{-- tooltip css --}}
+<link rel="stylesheet" href="{{ url('css/tooltip-css/jquery.mytooltip.min.css') }}">
+{{--
+<link rel="stylesheet" href="{{ url('css/tooltip-css/demo/style.css') }}"> --}}
+{{-- datepicker js --}}
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+{{-- timepicker js --}}
+<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+{{-- tooltip js --}}
+{{-- <script src="{{ url('js/tooltipJs/jquery-1.11.3.min.js') }}"></script> --}}
+<script src="{{ url('js/tooltipJs/jquery.mytooltip.js') }}"></script>
+<script src="{{ url('js/tooltipJs/demo/script.js') }}"></script>
+
 <!------------ CARD HEADER ------------>
 <div class="card-header">
     <h4 class="card-title">Information</h4>
@@ -616,7 +634,6 @@
             interval: 30,
             minTime: '06',
             maxTime: '10:00pm',
-            // defaultTime: '06',
             startTime: '06:00',
             dynamic: false,
             dropdown: true,
@@ -625,7 +642,7 @@
     });
 
     document.getElementById('Mgtstrat-U-Titles').addEventListener("change", titles);
-    // var title = $("#Mgtstrat-U-Titles");
+
     function titles() {
         $( "#Mgtstrat-U-Titles option:selected" ).each(function() {
             if($('.mindfullness').is(':selected')){
@@ -782,22 +799,4 @@
             }
         });
     }
-
-    // $( "#Mgtstrat-U-Titles" ).change(function() {
-    //     // var str = "";
-    //     $( "#Mgtstrat-U-Titles option:selected" ).each(function() {
-    //         // str += $( this ).text() + " ";
-    //         // $( this ).text() + " ";
-    //         if ($( this ).text() == 'A Case for Mindfulness: A Strategic Approach to Stress') {
-    //             $('#cluster').val('Mindfullness');
-    //             $('#intelligence').val('Social & Emotional');
-    //         }
-    //         else {
-    //             $('#cluster').val('');
-    //             $('#intelligence').val('');
-    //         }
-    //     });
-    //     $( "div" ).text( str );
-    // })
-    // .trigger( "change" );
 </script>
