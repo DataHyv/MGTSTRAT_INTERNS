@@ -42,10 +42,11 @@
                             <thead>
                                 <tr class="text-dark">
                                     <th class="text-center">ID</th>
-                                    <th class="text-center">STATUS</th>
                                     <th class="text-center">COMPANY NAME</th>
-                                    <th class="text-center">ENGAGEMENT TYPE</th>
                                     <th class="text-center">ENGAGEMENT TITLE</th>
+                                    <th class="text-center">WORKSHOP TITLE</th>
+                                    <th class="text-center">CLUSTER</th>
+                                    <th class="text-center">INTELLIGENCE</th>
                                     <th class="text-center">NUMBER OF PAX</th>
                                     <th class="text-center">SCHEDULED DATES</th>
                                     <th class="text-center">DATE ADDED</th>
@@ -58,43 +59,15 @@
                                     <tr>
                                         <td hidden class="ids">1</td>
                                         <td class="id text-center text-uppercase fw-bold">{{ $item->workshop_id }}</td>
-                                        <td class="text-center">
-
-                                            {{-- No field "status" in the database yet  --}}
-                                            <span id="status" class="badge">{{ $item->status }}</span>
-                                            
-                                            {{-- Automatic change the status color --}}
-                                            <script>
-                                                $( ".badge" ).each(function() {
-                                                    if($(this).html() === 'Trial'){
-                                                        $(this).addClass( "bg-info" );
-                                                    }
-                                                    else if($(this).html() === 'Confirmed'){
-                                                        $(this).addClass( "bg-primary" );
-                                                    }
-                                                    else if($(this).html() === 'In-progress'){
-                                                        $(this).addClass( "bg-warning" );
-                                                    }
-                                                    else if($(this).html() === 'Completed'){
-                                                        $(this).addClass( "bg-success" );
-                                                    }
-                                                    else if($(this).html() === 'Lost'){
-                                                        $(this).addClass( "bg-danger" );
-                                                    }
-                                                });
-                                            </script>
-                                        </td>
-                                        
-                                        {{-- No field "company_name" in the database yet  --}}
-                                        <td class="name text-center fw-bold">{{ $item->company_name }}</td>
-
-                                        {{-- No field "engagement_type" in the database yet  --}}
-                                        <td class="name text-center fw-bold">{{ $item->engagement_type }}</td>
-
-                                        <td class="email text-center fw-bold">{{ $item->engagement_title }}</td>
+                                        @foreach ($companyList as $company)
+                                            <td class="name text-center text-uppercase fw-bold">{{ $company->company_name }}</td>
+                                        @endforeach
+                                        <td class="name text-center fw-bold">{{ ucfirst($item->engagement_title) }}</td>
+                                        <td class="name text-center fw-bold">{{ $item->workshop_title }}</td>
+                                        <td class="fw-bold text-center">{{ $item->cluster }}</td>
+                                        <td class="fw-bold text-center">{{ $item->intelligence }}</td>
                                         <td class="fw-bold text-center">{{ $item->pax_number }}</td>
                                         <td class="fw-bold text-center">
-                                           
                                             {{-- @if($item->program_dates)
                                                 @foreach($item->program_dates as $dates)
                                                     {{$dates.', '}}
@@ -102,7 +75,6 @@
                                             @endif --}}
                                             {{ $item->program_dates }}
                                         </td>
-                                        {{-- <td class="fw-bold text-center">{{ \Carbon\Carbon::parse($item->created_at)->toFormattedDateString()}}</td> --}}
                                         <td class="fw-bold text-center">{{ \Carbon\Carbon::parse($item->created_at)->toFormattedDateString()}}</td>
                                         <td class="text-center fw-bold text-center">
 
