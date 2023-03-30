@@ -27,7 +27,7 @@ class CreateWorkshopInformationsTable extends Migration
                 $table->string('program_dates')->nullable();
                 $table->string('program_start_time')->nullable();
                 $table->string('program_end_time')->nullable();
-                $table->integer('workshop_fees_total')->nullable();
+                $table->string('workshop_fees_total')->nullable(); // will revert it back to integer
                 $table->timestamps();
 
         });

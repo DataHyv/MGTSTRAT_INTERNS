@@ -229,9 +229,9 @@ class MgtstratUController extends Controller
                 $engagement_fee['client_id']            = $request->client_id;
                 $engagement_fee['workshop_id']          = $request->workshop_id;
                 $engagement_fee['type']                 = $request->fee_type[$key];
-                $engagement_fee['package_fees']         = $request->fee_package_num[$key] ?? '0';
-                $engagement_fee['num_sessions']         = $request->fee_num_sessions[$key] ?? '0'; 
-                $engagement_fee['nswh']                 = $request->fee_nswh[$key] ?? '0';
+                $engagement_fee['package_fees']         = $request->fee_package_num[$key] ?? 0;
+                $engagement_fee['num_sessions']         = $request->fee_num_sessions[$key] ?? 0; 
+                $engagement_fee['nswh']                 = $request->fee_nswh[$key] ?? 0;
                 $engagement_fee['notes']                = $request->fee_notes[$key];
 
                 WorkshopFee::create($engagement_fee);
@@ -242,9 +242,9 @@ class MgtstratUController extends Controller
                 $engagement_cost['client_id']           = $request->client_id;
                 $engagement_cost['workshop_id']         = $request->workshop_id;
                 $engagement_cost['type']                = $request->cost_type[$key];
-                $engagement_cost['hour_fee']            = $request->cost_hour_fee[$key] ?? '0';
-                $engagement_cost['hour_num']            = $request->cost_hour_num[$key] ?? '0';
-                $engagement_cost['nswh']                = $request->cost_nswh[$key] ?? '0';
+                $engagement_cost['hour_fee']            = $request->cost_hour_fee[$key] ?? 0;
+                $engagement_cost['hour_num']            = $request->cost_hour_num[$key] ?? 0;
+                $engagement_cost['nswh']                = $request->cost_nswh[$key] ?? 0;
                 $engagement_cost['rooster']             = $request->cost_rooster[$key];
 
                 Workshop_cost::create($engagement_cost);
