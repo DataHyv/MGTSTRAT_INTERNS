@@ -254,7 +254,7 @@ class MgtstratUController extends Controller
 
             DB::commit();
 
-            return redirect()->route('form/mgtstratu_workshops/index')->with('success', '<b>'.$engagement_title.'</b><br>Updated successfully');
+            return redirect()->route('form/mgtstratu_workshops/index')->with('success', '<b>'.ucfirst($engagement_title).'</b><br>Updated successfully');
         } catch(\Exception $e) {
             DB::rollback();
             Toastr::error($e->getMessage());
