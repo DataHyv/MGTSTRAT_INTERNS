@@ -497,7 +497,7 @@
                         </td>
                         <td class="border border-white"></td>
                     </tr>
-<!------------------------------------------------TOTAL STANDARD FEES--------------------------------------------------------->
+<!-----------------------------------------------TOTAL STANDARD FEES--------------------------------------------------------->
                     <tr class="table-active overall-total" id="tableStandardTotal">
                         <td class="text-uppercase text-dark fst-italic fw-bold overall-total-start">TOTAL STANDARD FEES</td>
                         <td class="overall-total-middle"></td>
