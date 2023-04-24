@@ -19,7 +19,7 @@ $(document).ready(function(){
             $("#designer").val(formatWithCommas(designer));
     
             // Calculate average
-            var sum =leadFaci + coFaci + Marshal + leadConsultant + consultingSup + designer;
+            var sum = leadFaci + coFaci + Marshal + leadConsultant + consultingSup + designer;
             var avg = sum / 6;
             var total = avg + 3250;
             var f2ftotal = avg + coFaci;
@@ -38,19 +38,14 @@ $(document).ready(function(){
         }
     });
     
-
-
-
-
-
-
-    //Function to format input with commas
+    //Function to format input with commas and round the number down to the nearest integer: Math.floor()
     function formatWithCommas(input){
-        return input.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        var num = Math.floor(input);
+        return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 
     //Format input with commas whenever a new value is inputted
-    $('#producer, #moderator, #lead_faci, #co_lead, #marshal').on('input', function(){
+    $('#producer, #moderator, #lead_faci, #co_lead, #marshal, #leadConsultant, #conSupport, #designer, #co_lead, #co_lead_f2f').on('input', function(){
         var val = $(this).val().replace(/,/g,'');
         $(this).val(formatWithCommas(val));
     });
