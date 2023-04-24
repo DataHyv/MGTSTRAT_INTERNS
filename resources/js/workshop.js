@@ -59,10 +59,21 @@ $(document).on('click load change keyup', '#main, #f2f-ef-table, #workshop-table
     $("#tableStandardTotal").each(function () {
         standardFees = subtotalConsulting_DesignFee + subTotalProgram;
         $('#mg_standard_total').html(standardFees.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-        subTotalProgram += standardFees;
+        totalStandardFees += standardFees;
     });
-  
-  
+
+    // TOTAL PACKAGE
+
+        // should include calculation for discount
+        // there's also workshop-update.js for update form
+
+    // Perform the calculation and get the result
+    const result = subtotalConsulting_DesignFee + subTotalProgram;
+     // Format the result with commas and a fixed number of decimal places
+  const formattedResult = result.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+    // Update the value attribute of the input element
+    document.getElementById("mg_input_totalPackages").value = formattedResult;
     
 
 

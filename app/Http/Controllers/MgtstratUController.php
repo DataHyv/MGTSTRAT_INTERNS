@@ -209,8 +209,9 @@ class MgtstratUController extends Controller
                 'program_dates'         => $request->program_dates,
                 'program_start_time'    => $request->program_start_time,
                 'program_end_time'      => $request->program_end_time,
-                'workshop_fees_total'   => $request->workshop_fees_total,
+                'workshop_fees_total'   => $request->mg_input_totalPackages,
             ];
+            
             Workshop_information::where('id',$request->id)->update($update);
 
             /** delete record */
