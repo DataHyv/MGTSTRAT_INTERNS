@@ -44,49 +44,49 @@
                                 <div class="form-group row justify-content-center">
                                     <label for="inputCoFaci" class="col-md-3 col-form-label">Co-Facilitator</label>
                                     <div class="col-md-8">
-                                    <input type="text" class="form-control" id="" placeholder="" name="co_faci">
+                                    <input type="text" class="form-control" id="co_faci" placeholder="" name="co_faci">
                                     </div>
                                 </div>
 
                                 <div class="form-group row justify-content-center">
-                                    <label for="inputCoFaci" class="col-md-3 col-form-label">Marshal</label>
+                                    <label for="inputMarshal" class="col-md-3 col-form-label">Marshal</label>
                                     <div class="col-md-8">
-                                    <input type="text" class="form-control" id="Marshal" placeholder="" name="Marshal">
+                                    <input type="text" class="form-control" id="marshal" placeholder="" name="marshal">
                                     </div>
                                 </div>
 
                                 <div class="form-group row justify-content-center">
                                     <label for="inputLeadConsultant" class="col-md-3 col-form-label">Lead Consultant</label>
                                     <div class="col-md-8">
-                                    <input type="text" class="form-control" id="" placeholder="" name="lead_consultant">
+                                    <input type="text" class="form-control" id="leadConsultant" placeholder="" name="lead_consultant">
                                     </div>
                                 </div>
 
                                 <div class="form-group row justify-content-center">
-                                    <label for="inputConsulting" class="col-md-3 col-form-label">Consulting</label>
+                                    <label for="inputConsulting" class="col-md-3 col-form-label">Consulting Support</label>
                                     <div class="col-md-8">
-                                    <input type="text" class="form-control" id="" placeholder="" name="consulting">
+                                    <input type="text" class="form-control" id="conSupport" placeholder="" name="consulting">
                                     </div>
                                 </div>
 
                                 <div class="form-group row justify-content-center">
                                     <label for="inputDesigner" class="col-md-3 col-form-label">Designer</label>
                                     <div class="col-md-8">
-                                    <input type="text" class="form-control" id="" placeholder="" name="designer">
+                                    <input type="text" class="form-control" id="designer" placeholder="" name="designer">
                                     </div>
                                 </div>
 
                                 <div class="form-group row justify-content-center">
                                     <label for="inputModerator" class="col-md-3 col-form-label">Moderator</label>
                                     <div class="col-md-8">
-                                    <input type="text" class="form-control" id="moderator" placeholder="" name="moderator" title="1.) Associate level P800 2.) Consultant - P1,100 3.) Sr. Consultant - P1,350">
+                                    <input type="text" class="form-control" id="moderator" placeholder="" name="moderator">
                                     </div>
                                 </div>
 
                                 <div class="form-group row justify-content-center">
                                     <label for="inputProducer" class="col-md-3 col-form-label">Producer</label>
                                     <div class="col-md-8">
-                                    <input type="text" class="form-control" id="producer" placeholder="" name="producer">
+                                    <input type="number" class="form-control" id="producer" placeholder="" name="producer">
                                     </div>
                                 </div>
 
@@ -101,7 +101,7 @@
                                 <div class="form-group row justify-content-center">
                                     <label for="inputCoLeadF2f" class="col-md-3 col-form-label">Co-Lead F2F</label>
                                     <div class="col-md-8">
-                                    <input type="text" class="form-control" id="" placeholder="" name="co_lead_f2f">
+                                    <input type="text" class="form-control" id="co_lead_f2f" placeholder="" name="co_lead_f2f">
                                     </div>
                                 </div>
 
