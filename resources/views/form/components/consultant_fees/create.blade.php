@@ -42,24 +42,16 @@
                                 </div>
 
                                 <div class="form-group row justify-content-center">
-                                    <label for="inputCoLead" class="col-md-3 col-form-label">Co-Lead</label>
-                                    <div class="col-md-8">
-                                    <input type="text" class="form-control" id="co_lead" placeholder=""  name="co_lead">
-                                    </div>
-                                </div>
-
-
-                                <div class="form-group row justify-content-center">
-                                    <label for="inputCoLeadF2f" class="col-md-3 col-form-label">Co-Lead F2F</label>
-                                    <div class="col-md-8">
-                                    <input type="text" class="form-control" id="" placeholder="" name="co_lead_f2f">
-                                    </div>
-                                </div>
-
-                                <div class="form-group row justify-content-center">
-                                    <label for="inputCoFaci" class="col-md-3 col-form-label">Co-Faci</label>
+                                    <label for="inputCoFaci" class="col-md-3 col-form-label">Co-Facilitator</label>
                                     <div class="col-md-8">
                                     <input type="text" class="form-control" id="" placeholder="" name="co_faci">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row justify-content-center">
+                                    <label for="inputCoFaci" class="col-md-3 col-form-label">Marshal</label>
+                                    <div class="col-md-8">
+                                    <input type="text" class="form-control" id="Marshal" placeholder="" name="Marshal">
                                     </div>
                                 </div>
 
@@ -95,6 +87,21 @@
                                     <label for="inputProducer" class="col-md-3 col-form-label">Producer</label>
                                     <div class="col-md-8">
                                     <input type="text" class="form-control" id="producer" placeholder="" name="producer">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row justify-content-center">
+                                    <label for="inputCoLead" class="col-md-3 col-form-label">Co-Lead</label>
+                                    <div class="col-md-8">
+                                    <input type="text" class="form-control" id="co_lead" placeholder=""  name="co_lead">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row justify-content-center">
+                                    <label for="inputCoLeadF2f" class="col-md-3 col-form-label">Co-Lead F2F</label>
+                                    <div class="col-md-8">
+                                    <input type="text" class="form-control" id="" placeholder="" name="co_lead_f2f">
                                     </div>
                                 </div>
 
