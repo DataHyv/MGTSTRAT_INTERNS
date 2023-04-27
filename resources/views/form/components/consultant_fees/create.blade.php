@@ -79,9 +79,45 @@
                                 <div class="form-group row justify-content-center">
                                     <label for="inputModerator" class="col-md-3 col-form-label">Moderator</label>
                                     <div class="col-md-8">
-                                    <input type="text" class="form-control" id="moderator" placeholder="" name="moderator" pattern="[0-9,]*" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="moderator" id="moderator1" value="800" {{ old('moderator') == '800' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="moderator1">
+                                                Associate level
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="moderator" id="moderator2" value="1100" {{ old('moderator') == '1100' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="moderator2">
+                                                Consultant
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="moderator" id="moderator3" value="1350" {{ old('moderator') == '1350' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="moderator3">
+                                                Sr. Consultant
+                                            </label>
+                                        </div>
+                                        <input type="text" class="form-control" id="moderator_input" placeholder="" name="moderator_input" pattern="[0-9,]*" oninput="this.value = this.value.replace(/[^0-9]/g, '')" value="{{ old('moderator') }}">
+                                        <script>
+                                            document.querySelectorAll('input[name="moderator"]').forEach((elem) => {
+                                                elem.addEventListener('change', () => {
+                                                    document.getElementById('moderator_input').value = document.querySelector('input[name="moderator"]:checked').value;
+                                                });
+                                            });
+                                        </script>
                                     </div>
                                 </div>
+                                
+                                
+                                
+                                
+
+                                {{-- <div class="form-group row justify-content-center">
+                                    <label for="inputModerator" class="col-md-3 col-form-label">Moderator</label>
+                                    <div class="col-md-8">
+                                    <input type="text" class="form-control" id="moderator" placeholder="" name="moderator" pattern="[0-9,]*" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                                    </div>
+                                </div> --}}
 
                                 <div class="form-group row justify-content-center">
                                     <label for="inputProducer" class="col-md-3 col-form-label">Producer</label>

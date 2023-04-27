@@ -1,7 +1,6 @@
 $(document).ready(function(){
     //Set default values for producer and moderator fields
     $('#producer').val(formatWithCommas(550));
-    $('#moderator').val(formatWithCommas(3250));
 
     //Calculate Co-Lead field when Lead Facilitator field value changes
     $("#lead_faci").on('input', function(){
@@ -21,10 +20,17 @@ $(document).ready(function(){
             // Calculate average
             var sum = leadFaci + coFaci + Marshal + leadConsultant + consultingSup + designer;
             var avg = sum / 6;
-            var total = avg + 3250;
-            var f2ftotal = avg + coFaci;
 
-            $("#co_lead").val(formatWithCommas(total));
+            // Calculate co-lead total with moderator
+            var moderator = parseFloat($('#moderator_input').val().replace(/,/g,''));
+            if(isNaN(moderator)){
+                moderator = 0;
+            }
+            var coleadtotal = avg + moderator;
+            $("#co_lead").val(formatWithCommas(coleadtotal));
+            
+            // Calculate co-lead F2F total
+            var f2ftotal = avg + coFaci;
             $("#co_lead_f2f").val(formatWithCommas(f2ftotal));
 
         } else {
