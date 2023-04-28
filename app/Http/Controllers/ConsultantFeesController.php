@@ -52,6 +52,8 @@ class ConsultantFeesController extends Controller
         $consultantFee->designer = $request->input('designer');
         $consultantFee->moderator = $request->input('moderator');
         $consultantFee->producer = $request->input('producer');
+        $consultantFee->marshal = $request->input('marshal');
+        $consultantFee->mod_opt = $request->input('mod_opt');
         $consultantFee->save();
         Alert::success('Consultant Fees added successfully','Success');
         // return redirect()->back()->with('status', 'Consultant Fees added successfully');
@@ -101,5 +103,59 @@ class ConsultantFeesController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function updateConsultantFees(Request $request)
+    {
+
+        try {
+            $first_name = $request->input('first_name');
+            $last_name = $request->input('last_name');
+            $lead_faci = $request->input('lead_faci');
+            $co_lead = $request->input('co_lead');
+            $co_lead_f2f = $request->input('co_lead_f2f');
+            $co_faci = $request->input('co_faci');
+            $lead_consultant = $request->input('lead_consultant');
+            $consulting = $request->input('consulting');
+            $designer = $request->input('designer');
+            $moderator = $request->input('moderator');
+            $producer = $request->input('producer');
+            $marshal = $request->input('marshal');
+            $mod_opt = $request->input('mod_opt');
+
+
+            $update = [
+
+                'first_name' => $first_name,
+                'last_name' => $last_name,
+                'lead_faci' => $lead_faci,
+                'co_lead' => $co_lead,
+                'co_lead_f2f' => $co_lead_f2f,
+                'co_faci' => $co_faci,
+                'lead_consultant' => $lead_consultant,
+                'consulting' => $consulting,
+                'designer' => $designer,
+                'moderator' => $moderator,
+                'producer' => $producer,
+                'marshal' => $marshal,
+                'mod_opt' => $mod_opt
+
+            ];
+
+            Consultantfee::where('id',$request->id)->update($update);
+            Alert::success('Consultant Fees updated successfully','Success');
+            return redirect()->back();
+        }catch(\Exception $e){
+
+            Alert::error('Data updated fail :)','Error');
+            return redirect()->back();
+        }
+    }
+
+    public function deleteConsultantFees($id)
+    {
+        $deleteClients = Consultantfee::find($id)->delete();
+        Alert::success('Data deleted successfully :)','Success');
+        return redirect()->back();
     }
 }

@@ -15,37 +15,92 @@
                 {{-- <div class="card"> --}}
                     {{-- <div class="card-content"> --}}
                         <div class="modal-body">
-                            <form method="POST" action="form/consultant-fees" class="form form-horizontal"
+                            <form method="POST" action="{{ url('form/consultant-fees/update') }}" class="form form-horizontal"
                                 enctype="multipart/form-data" autocomplete="off" id="editForm">
                                 @csrf
-                                @method('PUT')
-
+                                <input type="hidden" id="EFI0" name="id">
                                 <div class="form-group row justify-content-center">
                                     <label for="inputFname" class="col-md-3 col-form-label">First Name</label>
                                     <div class="col-md-8">
-                                    <input type="text" class="form-control" id="" placeholder="" name="first_name">
+                                    <input type="text" class="form-control" id="EFI1" placeholder="" name="first_name">
                                     </div>
                                 </div>
 
                                 <div class="form-group row justify-content-center">
                                     <label for="inputLname" class="col-md-3 col-form-label">Last Name</label>
                                     <div class="col-md-8">
-                                    <input type="text" class="form-control" id="" placeholder="" name="last_name">
+                                    <input type="text" class="form-control" id="EFI2" placeholder="" name="last_name">
                                     </div>
                                 </div>
 
                                 <div class="form-group row justify-content-center">
                                     <label for="inputLeadFaci" class="col-md-3 col-form-label">Lead Facilitator</label>
                                     <div class="col-md-8">
-                                    <input type="text" class="form-control" id="" placeholder="" data-type="currency" name="lead_faci">
+                                    <input type="text" class="form-control" id="EFI3" placeholder="" data-type="currency" name="lead_faci">
                                     </div>
                                     {{-- <div class="col-md-3"></div> --}}
                                 </div>
 
                                 <div class="form-group row justify-content-center">
+                                    <label for="inputCoFaci" class="col-md-3 col-form-label">Co-Faci</label>
+                                    <div class="col-md-8">
+                                    <input type="text" class="form-control" id="EFI6" placeholder="" data-type="currency" name="co_faci">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row justify-content-center">
+                                    <label for="inputMarshal" class="col-md-3 col-form-label">Marshal</label>
+                                    <div class="col-md-8">
+                                    <input type="text" class="form-control" id="EFI12" placeholder="" data-type="currency" name="marshal">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row justify-content-center">
+                                    <label for="inputLeadConsultant" class="col-md-3 col-form-label">Lead Consultant</label>
+                                    <div class="col-md-8">
+                                    <input type="text" class="form-control" id="EFI7" placeholder="" data-type="currency" name="lead_consultant">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row justify-content-center">
+                                    <label for="inputConsulting" class="col-md-3 col-form-label">Consulting</label>
+                                    <div class="col-md-8">
+                                    <input type="text" class="form-control" id="EFI8" placeholder="" data-type="currency" name="consulting">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row justify-content-center">
+                                    <label for="inputDesigner" class="col-md-3 col-form-label">Designer</label>
+                                    <div class="col-md-8">
+                                    <input type="text" class="form-control" id="EFI9" placeholder="" data-type="currency" name="designer">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row justify-content-center">
+                                    <label for="inputModerator" class="col-md-3 col-form-label">Moderator</label>
+                                    <div class="col-md-8">
+                                    <input type="text" class="form-control" id="EFI10" placeholder="" data-type="currency" name="moderator">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row justify-content-center">
+                                    <label for="inputModOpt" class="col-md-3 col-form-label">Moderator option</label>
+                                    <div class="col-md-8">
+                                    <input type="text" class="form-control" id="EFI13" placeholder="" name="mod_opt">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row justify-content-center">
+                                    <label for="inputProducer" class="col-md-3 col-form-label">Producer</label>
+                                    <div class="col-md-8">
+                                    <input type="text" class="form-control" id="EFI11" placeholder="" data-type="currency" name="producer">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row justify-content-center">
                                     <label for="inputCoLead" class="col-md-3 col-form-label">Co-Lead</label>
                                     <div class="col-md-8">
-                                    <input type="text" class="form-control" id="" placeholder="" data-type="currency"  name="co_lead">
+                                    <input type="text" class="form-control" id="EFI4" placeholder="" data-type="currency"  name="co_lead">
                                     </div>
                                 </div>
 
@@ -53,49 +108,7 @@
                                 <div class="form-group row justify-content-center">
                                     <label for="inputCoLeadF2f" class="col-md-3 col-form-label">Co-Lead F2F</label>
                                     <div class="col-md-8">
-                                    <input type="text" class="form-control" id="" placeholder="" data-type="currency" name="co_lead_f2f">
-                                    </div>
-                                </div>
-
-                                <div class="form-group row justify-content-center">
-                                    <label for="inputCoFaci" class="col-md-3 col-form-label">Co-Faci</label>
-                                    <div class="col-md-8">
-                                    <input type="text" class="form-control" id="" placeholder="" data-type="currency" name="co_faci">
-                                    </div>
-                                </div>
-
-                                <div class="form-group row justify-content-center">
-                                    <label for="inputLeadConsultant" class="col-md-3 col-form-label">Lead Consultant</label>
-                                    <div class="col-md-8">
-                                    <input type="text" class="form-control" id="" placeholder="" data-type="currency" name="lead_consultant">
-                                    </div>
-                                </div>
-
-                                <div class="form-group row justify-content-center">
-                                    <label for="inputConsulting" class="col-md-3 col-form-label">Consulting</label>
-                                    <div class="col-md-8">
-                                    <input type="text" class="form-control" id="" placeholder="" data-type="currency" name="consulting">
-                                    </div>
-                                </div>
-
-                                <div class="form-group row justify-content-center">
-                                    <label for="inputDesigner" class="col-md-3 col-form-label">Designer</label>
-                                    <div class="col-md-8">
-                                    <input type="text" class="form-control" id="" placeholder="" data-type="currency" name="designer">
-                                    </div>
-                                </div>
-
-                                <div class="form-group row justify-content-center">
-                                    <label for="inputModerator" class="col-md-3 col-form-label">Moderator</label>
-                                    <div class="col-md-8">
-                                    <input type="text" class="form-control" id="" placeholder="" data-type="currency" name="moderator">
-                                    </div>
-                                </div>
-
-                                <div class="form-group row justify-content-center">
-                                    <label for="inputProducer" class="col-md-3 col-form-label">Producer</label>
-                                    <div class="col-md-8">
-                                    <input type="text" class="form-control" id="" placeholder="" data-type="currency" name="producer">
+                                    <input type="text" class="form-control" id="EFI5" placeholder="" data-type="currency" name="co_lead_f2f">
                                     </div>
                                 </div>
 

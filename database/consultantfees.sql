@@ -41,6 +41,8 @@ CREATE TABLE `consultantfees` (
   `designer` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `moderator` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `producer` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `marshal` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mod_opt` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

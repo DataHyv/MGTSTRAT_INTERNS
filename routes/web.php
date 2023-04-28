@@ -135,3 +135,6 @@ Auth::routes();
 
 // ----------------------------- Client Management -----------------------//
 Route::resource('consultant-fees', 'App\Http\Controllers\ConsultantFeesController');
+Route::post('form/consultant-fees', [App\Http\Controllers\ConsultantFeesController::class, 'store'])->name('form/consultant-fees');
+Route::post('form/consultant-fees/update', [App\Http\Controllers\ConsultantFeesController::class, 'updateConsultantFees'])->name('form/consultant-fees/update');
+Route::get('deleteConsultantFees/{id}', [App\Http\Controllers\ConsultantFeesController::class, 'deleteConsultantFees'])->middleware('auth');

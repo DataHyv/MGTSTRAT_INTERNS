@@ -84,6 +84,20 @@
                                             </div>
                                         </div>
                                         <div class="col-md-4">
+                                            <label>Sales Person</label>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="form-group has-icon-left">
+                                                <div class="position-relative">
+                                                    <input type="text" class="form-control" placeholder="Sales Person"
+                                                        id="first-name-icon" name="sales_person" value="{{ $dataClnt[0]->sales_person }}">
+                                                    <div class="form-control-icon">
+                                                        <i class="bi bi-people"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
                                             <label>Industry</label>
                                         </div>
                                         <div class="col-md-8">
