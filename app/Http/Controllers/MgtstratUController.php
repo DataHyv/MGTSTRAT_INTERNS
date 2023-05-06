@@ -68,10 +68,20 @@ class MgtstratUController extends Controller
             $workshop_form->pax_number              = $request->pax_number;
             // $workshop_form->batch_number          = $request->batch_number;
             // $workshop_form->session_number        = $request->session_number;
-            $workshop_form->program_dates           = $request->program_dates;
+            $workshop_form->program_date           = $request->program_date;
             $workshop_form->program_start_time      = $request->program_start_time;
             $workshop_form->program_end_time        = $request->program_end_time;
-            // $workshop_form->core_area             = $request->core_area;
+            
+            // Check if the switch is toggled on or off
+            if ($request->input('dcbeCheck')) {
+                $workshop_form->program_date = null;
+                $workshop_form->program_start_time = null;
+                $workshop_form->program_end_time = null;
+            } else {
+                $workshop_form->program_date           = $request->program_date;
+                $workshop_form->program_start_time      = $request->program_start_time;
+                $workshop_form->program_end_time        = $request->program_end_time;
+            }
 
             $workshop_form->workshop_fees_total   = $request->mg_input_totalPackages;
             $workshop_form->save();
@@ -206,7 +216,7 @@ class MgtstratUController extends Controller
                 'cluster'               => $request->cluster,
                 'intelligence'          => $request->intelligence,
                 'pax_number'            => $request->pax_number,
-                'program_dates'         => $request->program_dates,
+                'program_date'         => $request->program_date,
                 'program_start_time'    => $request->program_start_time,
                 'program_end_time'      => $request->program_end_time,
                 'workshop_fees_total'   => $request->mg_input_totalPackages,

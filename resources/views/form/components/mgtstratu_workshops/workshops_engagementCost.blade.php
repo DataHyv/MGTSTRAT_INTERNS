@@ -382,7 +382,7 @@
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td class="total-td" style="background-color: rgba(146, 146, 146, 0.727">
+                            <td class="total-td" style="background-color: rgba(146, 146, 146, 0.727)">
                                 <h4 class="text-center" id="workshop_DesignsSubtotal">-</h4>
                             </td>
                             <td class="total-td">
@@ -600,7 +600,7 @@
                             {{-- NIGHT SHIFT, WEEKENDS HOLIDAYS * --}}
                             <td><input type="hidden" class="d-none" name="cost_nswh[]" readonly></td>
 
-                            <td class="total-td" style="background-color: rgba(146, 146, 146, 0.727">
+                            <td class="total-td" style="background-color: rgba(146, 146, 146, 0.727)">
                                 <h4 class="text-center" id="workshop_OffprogramsTotal">-</h4>
                             </td>
                             <td class="total-td">
@@ -644,7 +644,7 @@
                             <td><input type="hidden" class="d-none" name="cost_hour_num[]" readonly></td>
                             <td><input type="hidden" class="d-none" name="cost_nswh[]" readonly></td>
                             
-                            <td class="total-td" style="background-color: rgba(146, 146, 146, 0.727">
+                            <td class="total-td" style="background-color: rgba(146, 146, 146, 0.727)">
                                 <h4 class="text-center" id="workshop_ProgramexpensesTotal">-</h4>
                             </td>
                             <td class="total-td">

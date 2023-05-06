@@ -431,13 +431,14 @@
             </div>
         </div>
 
+        <!-- To hide the date and time fields when the "To Be Announced" checkbox is checked, configured id="dcbe" in the script below -->
         <div class="row">
             <div class="col-md-3">
                 <label class="fw-bold required">Date Covered byent </label>
             </div>
             <div class="col-md-3">
                 <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="dcbeCheck">
+                    <input class="form-check-input" type="checkbox" name="dcbeCheck" role="switch" id="dcbeCheck">
                     <label class="form-check-label" for="dcbeCheck">To Be Announced</label>
                 </div>
             </div>
@@ -449,11 +450,11 @@
                 <div class="form-group has-icon-left">
                     <label class="fw-bold required">Date</label>
                     <div class="position-relative">
-                        <input type="text" class="form-control date datepicker @error('doe') is-invalid @enderror" value="{{ old('doe') }}" placeholder="Enter Date" name="program_dates" id="datepicker" size="30">
+                        <input type="text" class="form-control date datepicker @error('dot') is-invalid @enderror" value="{{ old('doe') }}" placeholder="Enter Date" name="program_date" id="datepicker" size="30">
                         <div class="form-control-icon">
                             <i class="bi bi-calendar"></i>
                         </div>
-                        @error('doe')
+                        @error('dot')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -497,6 +498,26 @@
 
     </div>
 </div>
+
+<!-- JQuery to listen to the click event of the "To Be Announced" checkbox and hide/show the date and time fields container whether the checkbox is checked or not -->
+<script>
+    $(function() {
+        // get the checkbox element
+        var dcbeCheck = $('#dcbeCheck');
+        // get the date and time fields container
+        var dcbe = $('#dcbe');
+        
+        // toggle the visibility of the date and time fields container when the checkbox is clicked
+        dcbeCheck.on('click', function() {
+            if (dcbeCheck.is(':checked')) {
+                dcbe.hide();
+            } else {
+                dcbe.show();
+            }
+        });
+    });
+</script>
+
 <script>
     $(document).ready(function() {
         // This will help with displaying the date
