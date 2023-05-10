@@ -20,6 +20,7 @@ class CreateWorkshopInformationsTable extends Migration
                 // $table->string('status', 15)->nullable();
                 // $table->string('batch_name', 100)->nullable();
                 $table->string('engagement_title')->nullable();
+                $table->boolean('pilot')->nullable(); //  If the value is 0, the switch is off. If the value is 1, the switch is on.
                 $table->string('workshop_title')->nullable();
                 $table->string('cluster')->nullable();
                 $table->string('intelligence')->nullable();
