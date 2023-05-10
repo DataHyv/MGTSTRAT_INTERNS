@@ -19,11 +19,10 @@ class MgtstratUController extends Controller
     public function index(Request $request)
     {
         $companyList = Client::orderBy('company_name')->get();
-        // $data = DB::table('workshop_informations')->where('client_id', $request->client)->count();
         $data = Workshop_information::with('client')->latest()->get();
-        // if (Auth::guest()){
-        //     return redirect()->route('/');
-        // }
+        if (Auth::guest()){
+            return redirect()->route('/');
+        }
         $dataJoin1  = DB::table('workshop_informations')
             ->join('workshop_fees', 'workshop_informations.workshop_id', '=', 'workshop_fees.workshop_id')
             ->select('workshop_informations.*', 'workshop_fees.*')
@@ -149,7 +148,7 @@ class MgtstratUController extends Controller
     }
     
     /** Delete record */
-    public function viewDelete(Request $request)
+    public function deleteRecord(Request $request)
     {
         DB::beginTransaction();
         try {
@@ -181,7 +180,7 @@ class MgtstratUController extends Controller
     }
 
     /** Update record */
-    public function updateRecord($workshop_id, $id) {
+    public function editRecord($workshop_id, $id) {
         $data = DB::table('workshop_informations')
         ->where('workshop_id',$workshop_id)
         ->first();
@@ -201,7 +200,7 @@ class MgtstratUController extends Controller
         return view('form.components.mgtstratu_workshops.update.workshop_update_index', compact('data', 'data2', 'dataJoin1', 'dataJoin2'));
     }
     
-    public function workshopUpdateRecord(Request $request)
+    public function update(Request $request)
     {
         $request->validate([
             'client_id'   => 'required|integer',
