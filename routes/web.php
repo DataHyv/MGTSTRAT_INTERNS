@@ -112,17 +112,19 @@ Auth::routes();
     Route::put('updateBatch', [CustomizedEngagementController::class, 'saveBatchRecord','ceAddDeleteRecord'])->middleware('auth')->name('updateBatch');
     });
 // ----------------------------- F2F engagement form ------------------------------//
-    Route::get('form/f2f_engagement/index', [F2fEngagementController::class, 'index'])->middleware('auth')->name('form/f2f_engagement/index');
-    Route::get('form/f2f_engagement/new', [F2fEngagementController::class, 'newRecord'])->middleware('auth')->name('form/f2f_engagement/new');
-    Route::post('form/f2f_engagement/save', [F2fEngagementController::class, 'store'])->name('form/f2f_engagement/save');
+    Route::get('form/f2f_engagement/index', [App\Http\Controllers\F2fEngagementController::class, 'index'])->middleware('auth')->name('form/f2f_engagement/index');
+    Route::get('form/f2f_engagement/new', [App\Http\Controllers\F2fEngagementController::class, 'newRecord'])->middleware('auth')->name('form/f2f_engagement/new');
+    Route::post('form/f2f_engagement/save', [App\Http\Controllers\F2fEngagementController::class, 'store'])->name('form/f2f_engagement/save');
 
 // ----------------------------- MGTSTRAT U WORKSHOPS ------------------------------//
-    Route::get('form/mgtstratu_workshops/index', [MgtstratUController::class, 'index'])->middleware('auth')->name('workshop.index');
-    Route::get('form/mgtstratu_workshops/new', [MgtstratUController::class, 'newRecord'])->middleware('auth')->name('workshop.new');
-    Route::post('store', [MgtstratUController::class, 'store'])->name('store');
-    Route::get('form/mgtstratu_workshops/{workshop_id}/{id}', [MgtstratUController::class, 'editRecord'])->middleware('auth')->name('workshop.edit');
-    Route::put('update', [MgtstratUController::class, 'update'])->middleware('auth')->name('workshop.update');
-    Route::post('delete', [MgtstratUController::class, 'deleteRecord'])->middleware('auth')->name('workshop.delete');
+    Route::get('form/mgtstratu_workshops/index', [App\Http\Controllers\MgtstratUController::class, 'index'])->middleware('auth')->name('form/mgtstratu_workshops/index');
+    Route::get('form/mgtstratu_workshops/new', [App\Http\Controllers\MgtstratUController::class, 'newRecord'])->middleware('auth')->name('form/mgtstratu_workshops/new');
+    Route::post('form/mgtstratu_workshops/save', [App\Http\Controllers\MgtstratUController::class, 'store'])->name('form/mgtstratu_workshops/save');
+
+    Route::get('form/mgtstratu_workshops/update/{workshop_id}/{id}', [MgtstratUController::class, 'updateRecord'])->middleware('auth')->name('form/mgtstratu_workshops/update/{workshop_id}');
+    Route::put('update', [MgtstratUController::class, 'workshopUpdateRecord'])->middleware('auth')->name('updateWorkshop');
+
+    Route::post('deleteRecord', [MgtstratUController::class, 'viewDelete'])->middleware('auth')->name('deleteRecord');
 
 // ----------------------------- MGTSTRAT WEBINARS WORKSHOPS ------------------------------//
     Route::resource('form/webinars', 'App\Http\Controllers\MgtstratWebinarsController');
