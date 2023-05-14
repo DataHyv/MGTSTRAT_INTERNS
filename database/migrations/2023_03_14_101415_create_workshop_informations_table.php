@@ -25,8 +25,7 @@ class CreateWorkshopInformationsTable extends Migration
                 $table->string('cluster')->nullable();
                 $table->string('intelligence')->nullable();
                 $table->integer('pax_number')->nullable();
-                $table->boolean('date_covered')->nullable(); //  If the value is 0, the switch is off. If the value is 1, the switch is on.
-                $table->string('program_date')->nullable();
+                $table->string('program_dates')->nullable();
                 $table->string('program_start_time')->nullable();
                 $table->string('program_end_time')->nullable();
                 $table->string('workshop_fees_total')->nullable(); // will revert it back to integer

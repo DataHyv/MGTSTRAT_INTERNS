@@ -423,7 +423,7 @@
             </div>
             <div class="col-md-3">
                 <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" name="dcbeCheck" role="switch" id="dcbeCheck">
+                    <input class="form-check-input" type="checkbox" role="switch" id="dcbeCheck">
                     <label class="form-check-label" for="dcbeCheck">To Be Announced</label>
                 </div>
             </div>

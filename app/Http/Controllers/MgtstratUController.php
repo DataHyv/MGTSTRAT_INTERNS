@@ -221,7 +221,7 @@ class MgtstratUController extends Controller
                 'cluster'               => $request->cluster,
                 'intelligence'          => $request->intelligence,
                 'pax_number'            => $request->pax_number,
-                'program_date'         => $request->program_date,
+                'program_dates'         => $request->program_dates,
                 'program_start_time'    => $request->program_start_time,
                 'program_end_time'      => $request->program_end_time,
                 'workshop_fees_total'   => $request->mg_input_totalPackages,
