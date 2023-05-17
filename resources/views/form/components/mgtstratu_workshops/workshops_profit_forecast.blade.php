@@ -32,20 +32,23 @@
                             </td>
                             <td class="profit-forecast-middle" scope="col" width=14%>
                                 <fieldset>
-                                    <select class="input js-mytooltip form-select @error('LessCTO') is-invalid @enderror" name="LessCTO" id="LessCTO_NOC"
-                                        data-mytooltip-content="<i>35% Standard, <br>15% for NGO's</i>"
+                                    <select class="input js-mytooltip form-select @error('') is-invalid @enderror" name="" id="LessCTO_NOC"
+                                        data-mytooltip-content="<i>
+                                            35% Standard, <br>
+                                            15% for NGO's 
+                                            </i>"
                                         data-mytooltip-theme="dark"
                                         data-mytooltip-action="focus" 
                                         data-mytooltip-direction="right"
                                         style="background-color:#ffcccc; color:red;">
-                                        <option value="35" {{ old('LessCTO') == '35' ? 'selected' : '' }} selected>
+                                        <option value="35" {{ old('') == '35' ? 'selected="selected"' : '' }} selected>
                                             35%
                                         </option>
-                                        <option value="15" {{ old('LessCTO') == '15' ? 'selected' : '' }}>
+                                        <option value="15" {{ old('') == '15' ? 'selected="selected"' : '' }}>
                                             15%
                                         </option>
                                     </select>
-                                    @error('LessCTO')
+                                    @error('ef_customFee')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>

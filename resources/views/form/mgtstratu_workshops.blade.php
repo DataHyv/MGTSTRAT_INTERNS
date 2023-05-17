@@ -19,8 +19,7 @@
                     <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('form/mgtstratu_workshops/index') }}">MgtStrat-U Workshops</a></li>
-                            <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('form/mgtstratu_workshops/new') }}">New Record</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">MgtStrat-U Workshops</li>
                         </ol>
                     </nav>
                 </div>

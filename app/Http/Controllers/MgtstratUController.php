@@ -19,10 +19,11 @@ class MgtstratUController extends Controller
     public function index(Request $request)
     {
         $companyList = Client::orderBy('company_name')->get();
+        // $data = DB::table('workshop_informations')->where('client_id', $request->client)->count();
         $data = Workshop_information::with('client')->latest()->get();
-        if (Auth::guest()){
-            return redirect()->route('/');
-        }
+        // if (Auth::guest()){
+        //     return redirect()->route('/');
+        // }
         $dataJoin1  = DB::table('workshop_informations')
             ->join('workshop_fees', 'workshop_informations.workshop_id', '=', 'workshop_fees.workshop_id')
             ->select('workshop_informations.*', 'workshop_fees.*')
@@ -45,11 +46,7 @@ class MgtstratUController extends Controller
     {
         $request->validate([
             'client_id'   => 'required|integer',
-            'engagement_title'   => 'required',
-            'workshop_title'   => 'required',
-            'cluster'   => 'required',
-            'intelligence'   => 'required',
-            'pax_number'   => 'required',
+            // 'engagement_title'   => 'required',
         ]);
 
         DB::beginTransaction();
@@ -61,26 +58,20 @@ class MgtstratUController extends Controller
 
             $workshop_form = new Workshop_information();
             $workshop_form->workshop_id             = $id_budget_form;
-            $workshop_form->client_id               = (int)$request->client_id;
+            // $workshop_form->status                = $request->status;
+            // $workshop_form->ga_percent            = $request->ga_percent;
+            $workshop_form->client_id             = (int)$request->client_id;
             $workshop_form->engagement_title        = $request->engagement_title;
             $workshop_form->workshop_title          = $request->workshop_title;
             $workshop_form->cluster                 = $request->cluster;
             $workshop_form->intelligence            = $request->intelligence;
             $workshop_form->pax_number              = $request->pax_number;
-            $workshop_form->program_date            = $request->program_date;
+            // $workshop_form->batch_number          = $request->batch_number;
+            // $workshop_form->session_number        = $request->session_number;
+            $workshop_form->program_dates           = $request->program_dates;
             $workshop_form->program_start_time      = $request->program_start_time;
             $workshop_form->program_end_time        = $request->program_end_time;
-            
-            // Check if the switch is toggled on or off
-            if ($request->input('dcbeCheck')) {
-                $workshop_form->program_date = null;
-                $workshop_form->program_start_time = null;
-                $workshop_form->program_end_time = null;
-            } else {
-                $workshop_form->program_date           = $request->program_date;
-                $workshop_form->program_start_time     = $request->program_start_time;
-                $workshop_form->program_end_time       = $request->program_end_time;
-            }
+            // $workshop_form->core_area             = $request->core_area;
 
             $workshop_form->workshop_fees_total   = $request->mg_input_totalPackages;
             $workshop_form->save();
@@ -93,7 +84,6 @@ class MgtstratUController extends Controller
             $client_id = DB::table('workshop_informations')->orderBy('client_id','DESC')->select('client_id')->first();
             // another variable accessing the first variable's table column client_id
             $client_id = $client_id->client_id;
-
             // workshop informations id, wi_id
             $wi_id = DB::table('workshop_informations')->orderBy('id','DESC')->select('id')->first();
             $wi_id = $wi_id->id;
@@ -148,7 +138,7 @@ class MgtstratUController extends Controller
     }
     
     /** Delete record */
-    public function deleteRecord(Request $request)
+    public function viewDelete(Request $request)
     {
         DB::beginTransaction();
         try {
@@ -169,7 +159,7 @@ class MgtstratUController extends Controller
         Workshop_information::destroy($request->id);
 
         DB::commit();
-        
+        // Alert::success('MgtStrat-U Workshop deleted successfully','Success');
         return redirect()->back()->with('success', '<b>'.$workshop_name.'</b><br>Deleted successfully');
 
         } catch(\Exception $e) {
@@ -180,7 +170,7 @@ class MgtstratUController extends Controller
     }
 
     /** Update record */
-    public function editRecord($workshop_id, $id) {
+    public function updateRecord($workshop_id, $id) {
         $data = DB::table('workshop_informations')
         ->where('workshop_id',$workshop_id)
         ->first();
@@ -200,15 +190,10 @@ class MgtstratUController extends Controller
         return view('form.components.mgtstratu_workshops.update.workshop_update_index', compact('data', 'data2', 'dataJoin1', 'dataJoin2'));
     }
     
-    public function update(Request $request)
+    public function workshopUpdateRecord(Request $request)
     {
         $request->validate([
             'client_id'   => 'required|integer',
-            'engagement_title'   => 'required',
-            'workshop_title'   => 'required',
-            'cluster'   => 'required',
-            'intelligence'   => 'required',
-            'pax_number'   => 'required',
         ]);
         DB::beginTransaction();
         try {

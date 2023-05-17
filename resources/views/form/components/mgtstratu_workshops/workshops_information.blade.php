@@ -16,13 +16,10 @@
 <script src="{{ url('js/tooltipJs/jquery.mytooltip.js') }}"></script>
 <script src="{{ url('js/tooltipJs/demo/script.js') }}"></script>
 
-<!------------ CARD HEADER ------------>
+{{-- p --}}
 <div class="card-header">
     <h4 class="card-title">Information</h4>
 </div>
-<!------------ END OF CARD HEADER ------------>
-
-<!------------ FORM BODY ------------>
 <div class="form-body container">
     <div class="form-group row">
         <div class="col-md-3">
@@ -32,7 +29,25 @@
         <div class="col-md-2" id="dropdown-ga" style="visibility: hidden;">
         </div>
 
-        <!------------ CLIENT NAME ------------>
+        {{-- <div class="col-md-3">
+            <label class="fw-bold required">Client: </label>
+        </div>
+        <div class="col-md-8">
+            <div class="form-group has-icon-left">
+                <div class="position-relative">
+                    <input type="text" class="form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="" id="fourth" title="asdasdasd">
+                    <div class="form-control-icon">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    @error('')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+            </div>
+        </div> --}}
+
         <div class="form-group row">
             <div class="col-md-3">
                 <label class="fw-bold required">Client: </label>
@@ -40,10 +55,16 @@
             <div class="col-md-6">
                 <div class="form-group has-icon-left">
                     <div class="position-relative">
-                        <select class="input form-select @error('client_id') is-invalid @enderror" id="client_id" name="client_id" style="width: 100%;" tabindex="-1" aria-hidden="true">
-                            <option value="">-- Select --</option>
+                        <select class="input form-select @error('client_id') is-invalid @enderror"
+                        id="client_id"
+                        name="client_id"
+                        style="width: 100%;"
+                        tabindex="-1"
+                        aria-hidden="true">
+                            <option value="Select">-- Select --</option>
                             @foreach ($companyList as $key=>$client)
-                                <option value="{{ $client->id }}" data-first_eng={{ $client->first_eng }} {{ old('client_id') == $client->id ? 'selected' : '' }}>
+                                <option value="{{ $client->id }}"
+                                    data-first_eng={{ $client->first_eng }}>
                                     {{ $client->company_name }}
                                 </option>
                             @endforeach
@@ -60,20 +81,18 @@
                 </div>
             </div>
         </div>
-        <!------------ END OF CLIENT NAME ------------>
 
-        <!------------ ENGAGEMENT TITLE AND PILOT SWITCH ------------>
         <div class="col-md-3">
             <label class="fw-bold required">Engagement Title: </label>
         </div>
         <div class="col-md-6">
             <div class="form-group has-icon-left">
                 <div class="position-relative">
-                    <input type="text" class="form-control @error('engagement_title') is-invalid @enderror" value="{{ old('engagement_title') }}" name="engagement_title" id="">
+                    <input type="text" class="form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="engagement_title" id="">
                     <div class="form-control-icon">
                         <i class="fa-solid fa-t"></i>
                     </div>
-                    @error('engagement_title')
+                    @error('')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
@@ -87,212 +106,215 @@
                 <label class="form-check-label" for="flexSwitchCheckDefault">Pilot</label>
             </div>
         </div>
-        <!------------ END OF ENGAGEMENT TITLE AND PILOT SWITCH ------------>
-        
-        <!------------ WORKSHOP TITLE ------------>
+
         <div class="col-md-3">
             <label class="fw-bold required">MGTSTRAT-U Workshop Title</label>
         </div>
+
         <div class="col-md-7">
             <div class="form-group has-icon-left">
                 <div class="position-relative">
                     <fieldset class="form-group">
-                        <select class="input js-mytooltip form-select @error('workshop_title') is-invalid @enderror" name="workshop_title" id="Mgtstrat-U-Titles" data-mytooltip-content="<i>If not on the list, choose suggested cluster title at Core Area.</i>" data-mytooltip-theme="dark" data-mytooltip-action="focus" data-mytooltip-direction="right">
-                            <option class="not-listed" id="not-listed" value="" selected>-- Not listed --</option>
-                            <option class="mindfullness" id="mindfullness" value="A Case for Mindfulness: A Strategic Approach to Stress" {{ old('workshop_title') == 'A Case for Mindfulness: A Strategic Approach to Stress' ? 'selected' : '' }}>
+                        <select class="input js-mytooltip form-select @error('') is-invalid @enderror" name="workshop_title" id="Mgtstrat-U-Titles" data-mytooltip-content="<i>
+                            If not on the list, choose suggested cluster title at Core Area.
+                            </i>" data-mytooltip-theme="dark" data-mytooltip-action="focus" data-mytooltip-direction="right">
+                            <option class="not-listed" id="not-listed" value="Not Listed" selected>-- Not listed --</option>
+                            <option class="mindfullness" id="mindfullness" value="A Case for Mindfulness: A Strategic Approach to Stress" {{
+                                old('')=='A Case for Mindfulness: A Strategic Approach to Stress'
+                                ? 'selected="selected"' : '' }}>
                                 A Case for Mindfulness: A Strategic Approach to Stress
                             </option>
-                            <option class="diversity-and-inclusion" id="" value="ABC's of Gen XYZ" {{ old('workshop_title') == 'ABC\'s of Gen XYZ' ? 'selected' : '' }}>
+                            <option class="diversity-and-inclusion" id="" value="ABC's of Gen XYZ">
                                 ABC's of Gen XYZ
                             </option>
-                            <option class="growth-mindset" id="" value="Activating the Growth Mindset" {{ old('workshop_title') == 'Activating the Growth Mindset' ? 'selected' : '' }}>
+                            <option class="growth-mindset" id="" value="Activating the Growth Mindset">
                                 Activating the Growth Mindset
                             </option>
-                            <option class="anxiety" id="" value="Anxiety Parties" {{ old('workshop_title') == 'Anxiety Parties' ? 'selected' : '' }}>
+                            <option class="anxiety" id="" value="Anxiety Parties">
                                 Anxiety Parties
                             </option>
-                            <option class="leadership-brand" id="" value="Brand Called You" {{ old('workshop_title') == 'Brand Called You' ? 'selected' : '' }}>
+                            <option class="leadership-brand" id="" value="Brand Called You">
                                 Brand Called You
                             </option>
-                            <option class="virtual-team-building" id="" value="Choose Your Own Adventure" {{ old('workshop_title') == 'Choose Your Own Adventure' ? 'selected' : '' }}>
+                            <option class="virtual-team-building" id="" value="Choose Your Own Adventure">
                                 Choose Your Own Adventure
                             </option>
-                            <option class="conflict-resolution" id="" value="Co-operative Power and the Willingness to Resolve" {{ old('workshop_title') == 'Co-operative Power and the Willingness to Resolve' ? 'selected' : '' }}>
+                            <option class="conflict-resolution" id="" value="Co-operative Power and the Willingness to Resolve">
                                 Co-operative Power and the Willingness to Resolve
                             </option>
-                            <option class="collaborative-leadership" id="" value="Collaboration on the Fly" {{ old('workshop_title') == 'Collaboration on the Fly' ? 'selected' : '' }}>
+                            <option class="collaborative-leadership" id="" value="Collaboration on the Fly">
                                 Collaboration on the Fly
                             </option>
-                            <option class="collaborative-leadership" id="" value="Creating Digital Bonds (Collborative Leadership)" {{ old('workshop_title') == 'Creating Digital Bonds (Collborative Leadership)' ? 'selected' : '' }}>
+                            <option class="collaborative-leadership" id="" value="Creating Digital Bonds (Collborative Leadership)">
                                 Creating Digital Bonds (Collborative Leadership)
                             </option>
-                            <option class="creativity" id="" value="Creative Thinking in the Workplace" {{ old('workshop_title') == 'Creative Thinking in the Workplace' ? 'selected' : '' }}>
+                            <option class="creativity" id="" value="Creative Thinking in the Workplace">
                                 Creative Thinking in the Workplace
                             </option>
-                            <option class="virtual-team-building" id="" value="Culture Driven Team Building" {{ old('workshop_title') == 'Culture Driven Team Building' ? 'selected' : '' }}>
+                            <option class="virtual-team-building" id="" value="Culture Driven Team Building">
                                 Culture Driven Team Building
                             </option>
-                            <option class="mental-health" id="" value="Deep Dive: Psychological Resilience" {{ old('workshop_title') == 'Deep Dive: Psychological Resilience' ? 'selected' : '' }}>
+                            <option class="mental-health" id="" value="Deep Dive: Psychological Resilience">
                                 Deep Dive: Psychological Resilience
                             </option>
-                            <option class="mental-health" id="" value="Deep Dive: The Role of Positive Emotions" {{ old('workshop_title') == 'Deep Dive: The Role of Positive Emotions' ? 'selected' : '' }}>
+                            <option class="mental-health" id="" value="Deep Dive: The Role of Positive Emotions">
                                 Deep Dive: The Role of Positive Emotions
                             </option>
-                            <option class="strengths" id="" value="Deep Diving with Strengths" {{ old('workshop_title') == 'Deep Diving with Strengths' ? 'selected' : '' }}>
+                            <option class="strengths" id="" value="Deep Diving with Strengths">
                                 Deep Diving with Strengths
                             </option>
-                            <option class="learning-evolution" id="" value="Designing Slides for Non-Designers" {{ old('workshop_title') == 'Designing Slides for Non-Designers' ? 'selected' : '' }}>
+                            <option class="learning-evolution" id="" value="Designing Slides for Non-Designers">
                                 Designing Slides for Non-Designers
                             </option>
-                            <option class="learning-evolution" id="" value="Designing Virtual Learning" {{ old('workshop_title') == 'Designing Virtual Learning' ? 'selected' : '' }}>
+                            <option class="learning-evolution" id="" value="Designing Virtual Learning">
                                 Designing Virtual Learning
                             </option>
-                            <option class="growth-mindset" id="" value="Developing the Growth Mindset" {{ old('workshop_title') == 'Developing the Growth Mindset' ? 'selected' : '' }}>
+                            <option class="growth-mindset" id="" value="Developing the Growth Mindset">
                                 Developing the Growth Mindset
                             </option>
-                            <option class="communication" id="" value="Effective Virtual Communication" {{ old('workshop_title') == 'Effective Virtual Communication' ? 'selected' : '' }}>
+                            <option class="communication" id="" value="Effective Virtual Communication">
                                 Effective Virtual Communication
                             </option>
-                            <option class="everyday-innovation" id="" value="Everyday Workplace Innovation" {{ old('workshop_title') == 'Everyday Workplace Innovation' ? 'selected' : '' }}>
+                            <option class="everyday-innovation" id="" value="Everyday Workplace Innovation">
                                 Everyday Workplace Innovation
                             </option>
-                            <option class="learning-evolution" id="" value="Facilitating Virtual Learning" {{ old('workshop_title') == 'Facilitating Virtual Learning' ? 'selected' : '' }}>
+                            <option class="learning-evolution" id="" value="Facilitating Virtual Learning">
                                 Facilitating Virtual Learning
                             </option>
-                            <option class="facilitating-virtual-meetings" id="" value="Facilitating Virtual Meetings" {{ old('workshop_title') == 'Facilitating Virtual Meetings' ? 'selected' : '' }}>
+                            <option class="facilitating-virtual-meetings" id="" value="Facilitating Virtual Meetings">
                                 Facilitating Virtual Meetings
                             </option>
-                            <option class="feedback" id="" value="Feedback with Candor (Feedback)" {{ old('workshop_title') == 'Feedback with Candor (Feedback)' ? 'selected' : '' }}>
+                            <option class="feedback" id="" value="Feedback with Candor (Feedback)">
                                 Feedback with Candor (Feedback)
                             </option>
-                            <option class="radical-candor" id="" value="Feedback with Candor (Radical Candor)" {{ old('workshop_title') == 'Feedback with Candor (Radical Candor)' ? 'selected' : '' }}>
+                            <option class="radical-candor" id="" value="Feedback with Candor (Radical Candor)">
                                 Feedback with Candor (Radical Candor)
                             </option>
-                            <option class="find-your-why" id="" value="Find Your Why" {{ old('workshop_title') == 'Find Your Why' ? 'selected' : '' }}>
+                            <option class="find-your-why" id="" value="Find Your Why">
                                 Find Your Why
                             </option>
-                            <option class="conflict-resolution" id="" value="Foundations of Conflict Resolution" {{ old('workshop_title') == 'Foundations of Conflict Resolution' ? 'selected' : '' }}>
+                            <option class="conflict-resolution" id="" value="Foundations of Conflict Resolution">
                                 Foundations of Conflict Resolution
                             </option>
-                            <option class="strategic-agility" id="" value="Foundations of Strategic Agility" {{ old('workshop_title') == 'Foundations of Strategic Agility' ? 'selected' : '' }}>
+                            <option class="strategic-agility" id="" value="Foundations of Strategic Agility">
                                 Foundations of Strategic Agility
                             </option>
-                            <option class="strengths" id="" value="Foundations of Strengths Based Development" {{ old('workshop_title') == 'Foundations of Strengths Based Development' ? 'selected' : '' }}>
+                            <option class="strengths" id="" value="Foundations of Strengths Based Development">
                                 Foundations of Strengths Based Development
                             </option>
-                            <option class="collaborative-leadership" id="" value="Fundamentals of Collaboration" {{ old('workshop_title') == 'Fundamentals of Collaboration' ? 'selected' : '' }}>
+                            <option class="collaborative-leadership" id="" value="Fundamentals of Collaboration">
                                 Fundamentals of Collaboration
                             </option>
-                            <option class="future-proof-leadership" id="" value="Future Proof Leadership" {{ old('workshop_title') == 'Future Proof Leadership' ? 'selected' : '' }}>
+                            <option class="future-proof-leadership" id="" value="Future Proof Leadership">
                                 Future Proof Leadership
                             </option>
-                            <option class="business-transformation" id="" value="Future-Backwards" {{ old('workshop_title') == 'Future-Backwards' ? 'selected' : '' }}>
+                            <option class="business-transformation" id="" value="Future-Backwards">
                                 Future-Backwards
                             </option>
-                            <option class="game-night" id="" value="Game Nights" {{ old('workshop_title') == 'Game Nights' ? 'selected' : '' }}>
+                            <option class="game-night" id="" value="Game Nights">
                                 Game Nights
                             </option>
-                            <option class="feedback" id="" value="Giving and Receiving Feedback" {{ old('workshop_title') == 'Giving and Receiving Feedback' ? 'selected' : '' }}>
+                            <option class="feedback" id="" value="Giving and Receiving Feedback">
                                 Giving and Receiving Feedback
                             </option>
-                            <option class="business-transformation" id="" value="Graphic Gameplanning" {{ old('workshop_title') == 'Graphic Gameplanning' ? 'selected' : '' }}>
+                            <option class="business-transformation" id="" value="Graphic Gameplanning">
                                 Graphic Gameplanning
                             </option>
-                            <option class="heroes-assemble" id="" value="Heroes Assemble" {{ old('workshop_title') == 'Heroes Assemble' ? 'selected' : '' }}>
+                            <option class="heroes-assemble" id="" value="Heroes Assemble">
                                 Heroes Assemble
                             </option>
-                            <option class="diversity-inclusion" id="" value="Inclusion is your Competitive Advantage" {{ old('workshop_title') == 'Inclusion is your Competitive Advantage' ? 'selected' : '' }}>
+                            <option class="diversity-inclusion" id="" value="Inclusion is your Competitive Advantage">
                                 Inclusion is your Competitive Advantage
                             </option>
-                            <option class="improv" id="" value="Just Say &quot;Yes, And&quot; to Improv" {{ old('workshop_title') == 'Just Say "Yes, And" to Improv' ? 'selected' : '' }}>
+                            <option class="improv" id="" value="Just Say &quot;Yes, And&quot; to Improv">
                                 Just Say "Yes, And" to Improv
                             </option>
-                            <option class="leading-hybrid-teams" id="" value="Leading Hybrid Teams" {{ old('workshop_title') == 'Leading Hybrid Teams' ? 'selected' : '' }}>
+                            <option class="leading-hybrid-teams" id="" value="Leading Hybrid Teams">
                                 Leading Hybrid Teams
                             </option>
-                            <option class="leading-virtual-teams" id="" value="Leading Virtual Teams" {{ old('workshop_title') == 'Leading Virtual Teams' ? 'selected' : '' }}>
+                            <option class="leading-virtual-teams" id="" value="Leading Virtual Teams">
                                 Leading Virtual Teams
                             </option>
-                            <option class="leading-emotional-intelligence" id="" value="Leading with Emotional Intelligence" {{ old('workshop_title') == 'Leading with Emotional Intelligence' ? 'selected' : '' }}>
+                            <option class="leading-emotional-intelligence" id="" value="Leading with Emotional Intelligence">
                                 Leading with Emotional Intelligence
                             </option>
-                            <option class="growth-mindset" id="" value="Leading with the Growth Mindset" {{ old('workshop_title') == 'Leading with the Growth Mindset' ? 'selected' : '' }}>
+                            <option class="growth-mindset" id="" value="Leading with the Growth Mindset">
                                 Leading with the Growth Mindset
                             </option>
-                            <option class="lip-sync-battle" id="" value="Lip Sync Battle" {{ old('workshop_title') == 'Lip Sync Battle' ? 'selected' : '' }}>
+                            <option class="lip-sync-battle" id="" value="Lip Sync Battle">
                                 Lip Sync Battle
                             </option>
-                            <option class="find-your-why" id="" value="Live Your Why" {{ old('workshop_title') == 'Live Your Why' ? 'selected' : '' }}>
+                            <option class="find-your-why" id="" value="Live Your Why">
                                 Live Your Why
                             </option>
-                            <option class="habit-formation" id="" value="Magic of Habits" {{ old('workshop_title') == 'Magic of Habits' ? 'selected' : '' }}>
+                            <option class="habit-formation" id="" value="Magic of Habits">
                                 Magic of Habits
                             </option>
-                            <option class="emotional-intelligence" id="" value="Making Emotional Intelligence Visible" {{ old('workshop_title') == 'Making Emotional Intelligence Visible' ? 'selected' : '' }}>
+                            <option class="emotional-intelligence" id="" value="Making Emotional Intelligence Visible">
                                 Making Emotional Intelligence Visible
                             </option>
-                            <option class="emotional-intelligence" id="" value="Managing Relationship thru EI" {{ old('workshop_title') == 'Managing Relationship thru EI' ? 'selected' : '' }}>
+                            <option class="emotional-intelligence" id="" value="Managing Relationship thru EI">
                                 Managing Relationship thru EI
                             </option>
-                            <option class="conflict-resolution" id="" value="Mapping the Conflict and Design Options" {{ old('workshop_title') == 'Mapping the Conflict and Design Options' ? 'selected' : '' }}>
+                            <option class="conflict-resolution" id="" value="Mapping the Conflict and Design Options">
                                 Mapping the Conflict and Design Options
                             </option>
-                            <option class="mental-health" id="" value="Mental Health Foundations" {{ old('workshop_title') == 'Mental Health Foundations' ? 'selected' : '' }}>
+                            <option class="mental-health" id="" value="Mental Health Foundations">
                                 Mental Health Foundations
                             </option>
-                            <option class="virtual-team-building" id="" value="Points of You" {{ old('workshop_title') == 'Points of You' ? 'selected' : '' }}>
+                            <option class="virtual-team-building" id="" value="Points of You">
                                 Points of You
                             </option>
-                            <option class="influencing" id="" value="Power of Influence" {{ old('workshop_title') == 'Power of Influence' ? 'selected' : '' }}>
+                            <option class="influencing" id="" value="Power of Influence">
                                 Power of Influence
                             </option>
-                            <option class="productivity" id="" value="Productivity Sprint: Designing your Flow State" {{ old('workshop_title') == 'Productivity Sprint: Designing your Flow State' ? 'selected' : '' }}>
+                            <option class="productivity" id="" value="Productivity Sprint: Designing your Flow State">
                                 Productivity Sprint: Designing your Flow State
                             </option>
-                            <option class="productivity" id="" value="Productivity Sprint: Flow State on Demand" {{ old('workshop_title') == 'Productivity Sprint: Flow State on Demand' ? 'selected' : '' }}>
+                            <option class="productivity" id="" value="Productivity Sprint: Flow State on Demand">
                                 Productivity Sprint: Flow State on Demand
                             </option>
-                            <option class="anxiety" id="" value="Riding the Wave" {{ old('workshop_title') == 'Riding the Wave' ? 'selected' : '' }}>
+                            <option class="anxiety" id="" value="Riding the Wave">
                                 Riding the Wave
                             </option>
-                            <option class="psychological-safety" id="" value="Secret Ingredient to High Performing Teams" {{ old('workshop_title') == 'Secret Ingredient to High Performing Teams' ? 'selected' : '' }}>
+                            <option class="psychological-safety" id="" value="Secret Ingredient to High Performing Teams">
                                 Secret Ingredient to High Performing Teams
                             </option>
-                            <option class="virtual-team-building" id="" value="Squid Games" {{ old('workshop_title') == 'Squid Games' ? 'selected' : '' }}>
+                            <option class="virtual-team-building" id="" value="Squid Games">
                                 Squid Games
                             </option>
-                            <option class="emotional-intelligence" id="" value="The Emotional Agility Toolbox" {{ old('workshop_title') == 'The Emotional Agility Toolbox' ? 'selected' : '' }}>
+                            <option class="emotional-intelligence" id="" value="The Emotional Agility Toolbox">
                                 The Emotional Agility Toolbox
                             </option>
-                            <option class="the-heist" id="" value="The Heist" {{ old('workshop_title') == 'The Heist' ? 'selected' : '' }}>
+                            <option class="the-heist" id="" value="The Heist">
                                 The Heist
                             </option>
-                            <option class="the-lab" id="" value="The Lab" {{ old('workshop_title') == 'The Lab' ? 'selected' : '' }}>
+                            <option class="the-lab" id="" value="The Lab">
                                 The Lab
                             </option>
-                            <option class="growth-mindset" id="" value="The Power of Yet (Growth MIndset)" {{ old('workshop_title') == 'The Power of Yet (Growth MIndset)' ? 'selected' : '' }}>
+                            <option class="growth-mindset" id="" value="The Power of Yet (Growth MIndset)">
                                 The Power of Yet (Growth MIndset)
                             </option>
-                            <option class="productivity" id="" value="Time and Energy Management: Rethinking our Productivity Models" {{ old('workshop_title') == 'Time and Energy Management: Rethinking our Productivity Models' ? 'selected' : '' }}>
+                            <option class="productivity" id="" value="Time and Energy Management: Rethinking our Productivity Models">
                                 Time and Energy Management: Rethinking our Productivity Models
                             </option>
-                            <option class="diversity-inclusion" id="" value="Unconscious Bias" {{ old('workshop_title') == 'Unconscious Bias' ? 'selected' : '' }}>
+                            <option class="diversity-inclusion" id="" value="Unconscious Bias">
                                 Unconscious Bias
                             </option>
-                            <option class="virtual-team-building" id="" value="Virtual Teaming" {{ old('workshop_title') == 'Virtual Teaming' ? 'selected' : '' }}>
+                            <option class="virtual-team-building" id="" value="Virtual Teaming">
                                 Virtual Teaming
                             </option>
-                            <option class="mindfullness" id="" value="Win over Anxiety: Addressing the Worrisome Thoughts in your Head" {{ old('workshop_title') == 'Win over Anxiety: Addressing the Worrisome Thoughts in your Head' ? 'selected' : '' }}>
+                            <option class="mindfullness" id="" value="Win over Anxiety: Addressing the Worrisome Thoughts in your Head">
                                 Win over Anxiety: Addressing the Worrisome Thoughts in your Head
                             </option>
-                            <option class="work-from-home" id="" value="Work from Home Essentials" {{ old('workshop_title') == 'Work from Home Essentials' ? 'selected' : '' }}>
+                            <option class="work-from-home" id="" value="Work from Home Essentials">
                                 Work from Home Essentials
                             </option>
                         </select>
                         <div class="form-control-icon">
                             <i class="fa-solid fa-diagram-project"></i>
                         </div>
-                        @error('workshop_title')
+                        @error('')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -301,9 +323,7 @@
                 </div>
             </div>
         </div>
-        <!------------ END OF WORKSHOP TITLE ------------>
 
-        <!------------ CLUSTER ------------>
         <div class="col-md-3">
             <label class="fw-bold required">CLUSTER</label>
         </div>
@@ -311,50 +331,49 @@
             <div class="form-group has-icon-left">
                 <div class="position-relative">
                     <fieldset class="form-group">
-                        <fieldset class="form-group">
-                            <select class="form-select @error('cluster') is-invalid @enderror" name="cluster" id="cluster">
-                                <option value="Anxiety" {{ old('cluster') == 'Anxiety' ? 'selected' : '' }}>Anxiety</option>
-                                <option value="Business Transformation" {{ old('cluster') == 'Business Transformation' ? 'selected' : '' }}>Business Transformation</option>
-                                <option value="Collaborative Leadership" {{ old('cluster') == 'Collaborative Leadership' ? 'selected' : '' }}>Collaborative Leadership</option>
-                                <option value="Communication" {{ old('cluster') == 'Communication' ? 'selected' : '' }}>Communication</option>
-                                <option value="Conflict Resolution" {{ old('cluster') == 'Conflict Resolution' ? 'selected' : '' }}>Conflict Resolution</option>
-                                <option value="Creativity" {{ old('cluster') == 'Creativity' ? 'selected' : '' }}>Creativity</option>
-                                <option value="Diversity &amp; Inclusion" {{ old('cluster') == 'Diversity &amp; Inclusion' ? 'selected' : '' }}>Diversity &amp; Inclusion</option>
-                                <option value="Emotional Intelligence" {{ old('cluster') == 'Emotional Intelligence' ? 'selected' : '' }}>Emotional Intelligence</option>
-                                <option value="Everyday Innovation" {{ old('cluster') == 'Everyday Innovation' ? 'selected' : '' }}>Everyday Innovation</option>
-                                <option value="Facilitating Virtual Meetings" {{ old('cluster') == 'Facilitating Virtual Meetings' ? 'selected' : '' }}>Facilitating Virtual Meetings</option>
-                                <option value="Feedback" {{ old('cluster') == 'Feedback' ? 'selected' : '' }}>Feedback</option>
-                                <option value="Find Your Why" {{ old('cluster') == 'Find Your Why' ? 'selected' : '' }}>Find Your Why</option>
-                                <option value="Future Proof Leadership" {{ old('cluster') == 'Future Proof Leadership' ? 'selected' : '' }}>Future Proof Leadership</option>
-                                <option value="Game Night" {{ old('cluster') == 'Game Night' ? 'selected' : '' }}>Game Night</option>
-                                <option value="Growth Mindset" {{ old('cluster') == 'Growth Mindset' ? 'selected' : '' }}>Growth Mindset</option>
-                                <option value="Habit Formation" {{ old('cluster') == 'Habit Formation' ? 'selected' : '' }}>Habit Formation</option>
-                                <option value="Heroes Assemble" {{ old('cluster') == 'Heroes Assemble' ? 'selected' : '' }}>Heroes Assemble</option>
-                                <option value="Improv" {{ old('cluster') == 'Improv' ? 'selected' : '' }}>Improv</option>
-                                <option value="Influencing" {{ old('cluster') == 'Influencing' ? 'selected' : '' }}>Influencing</option>
-                                <option value="Leadership Brand" {{ old('cluster') == 'Leadership Brand' ? 'selected' : '' }}>Leadership Brand</option>
-                                <option value="Leading Hybrid Teams" {{ old('cluster') == 'Leading Hybrid Teams' ? 'selected' : '' }}>Leading Hybrid Teams</option>
-                                <option value="Leading Virtual Teams" {{ old('cluster') == 'Leading Virtual Teams' ? 'selected' : '' }}>Leading Virtual Teams</option>
-                                <option value="Leading with Emotional Intelligence" {{ old('cluster') == 'Leading with Emotional Intelligence' ? 'selected' : '' }}>Leading with Emotional Intelligence</option>
-                                <option value="Learning Evolution" {{ old('cluster') == 'Learning Evolution' ? 'selected' : '' }}>Learning Evolution</option>
-                                <option value="Lip Sync Battle" {{ old('cluster') == 'Lip Sync Battle' ? 'selected' : '' }}>Lip Sync Battle</option>
-                                <option value="Mental Health" {{ old('cluster') == 'Mental Health' ? 'selected' : '' }}>Mental Health</option>
-                                <option value="Mindfullness" {{ old('cluster') == 'Mindfullness' ? 'selected' : '' }}>Mindfullness</option>
-                                <option value="Productivity" {{ old('cluster') == 'Productivity' ? 'selected' : '' }}>Productivity</option>
-                                <option value="Psychological Safety" {{ old('cluster') == 'Psychological Safety' ? 'selected' : '' }}>Psychological Safety</option>
-                                <option value="Radical Candor" {{ old('cluster') == 'Radical Candor' ? 'selected' : '' }}>Radical Candor</option>
-                                <option value="Strategic Agility" {{ old('cluster') == 'Strategic Agility' ? 'selected' : '' }}>Strategic Agility</option>
-                                <option value="Strengths" {{ old('cluster') == 'Strengths' ? 'selected' : '' }}>Strengths</option>
-                                <option value="The Heist" {{ old('cluster') == 'The Heist' ? 'selected' : '' }}>The Heist</option>
-                                <option value="The Lab" {{ old('cluster') == 'The Lab' ? 'selected' : '' }}>The Lab</option>
-                                <option value="Virtual Team Building" {{ old('cluster') == 'Virtual Team Building' ? 'selected' : '' }}>Virtual Team Building</option>
-                                <option value="Work From Home" {{ old('cluster') == 'Work From Home' ? 'selected' : '' }}>Work From Home</option>
+                        <select class="form-select @error('') is-invalid @enderror" name="cluster" id="cluster" >
+                            <option value="Anxiety">Anxiety</option>
+                            <option value="Business Transformation">Business Transformation</option>
+                            <option value="Collaborative Leadership">Collaborative Leadership</option>
+                            <option value="Communication">Communication</option>
+                            <option value="Conflict Resolution">Conflict Resolution</option>
+                            <option value="Creativity">Creativity</option>
+                            <option value="Diversity & Inclusion">Diversity & Inclusion</option>
+                            <option value="Emotional Intelligence">Emotional Intelligence</option>
+                            <option value="Everyday Innovation">Everyday Innovation</option>
+                            <option value="Facilitating Virtual Meetings">Facilitating Virtual Meetings</option>
+                            <option value="Feedback">Feedback</option>
+                            <option value="Find Your Why">Find Your Why</option>
+                            <option value="Future Proof Leadership">Future Proof Leadership</option>
+                            <option value="Game Night">Game Night</option>
+                            <option value="Growth Mindset">Growth Mindset</option>
+                            <option value="Habit Formation">Habit Formation</option>
+                            <option value="Heroes Assemble">Heroes Assemble</option>
+                            <option value="Improv">Improv</option>
+                            <option value="Influencing">Influencing</option>
+                            <option value="Leadership Brand">Leadership Brand</option>
+                            <option value="Leading Hybrid Teams">Leading Hybrid Teams</option>
+                            <option value="Leading Virtual Teams">Leading Virtual Teams</option>
+                            <option value="Leading with Emotional Intelligence">Leading with Emotional Intelligence</option>
+                            <option value="Learning Evolution">Learning Evolution</option>
+                            <option value="Lip Sync Battle">Lip Sync Battle</option>
+                            <option value="Mental Health">Mental Health</option>
+                            <option value="Mindfullness">Mindfullness</option>
+                            <option value="Productivity">Productivity</option>
+                            <option value="Psychological Safety">Psychological Safety</option>
+                            <option value="Radical Candor">Radical Candor</option>
+                            <option value="Strategic Agility">Strategic Agility</option>
+                            <option value="Strengths">Strengths</option>
+                            <option value="The Heist">The Heist</option>
+                            <option value="The Lab">The Lab</option>
+                            <option value="Virtual Team Building">Virtual Team Building</option>
+                            <option value="Work From Home">Work From Home</option>
                         </select>
                     </fieldset>
                     <div class="form-control-icon">
                         <i class="fa-solid fa-circle-nodes"></i>
                     </div>
-                    @error('cluster')
+                    @error('')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
@@ -362,29 +381,29 @@
                 </div>
             </div>
         </div>
-        <!------------ END OF CLUSTER ------------>
 
-        <!------------ INTELLIGENCE ------------>
         <div class="col-md-3">
             <label class="fw-bold required">INTELLIGENCE:</label>
         </div>
         <div class="col-md-7">
             <div class="form-group has-icon-left">
                 <div class="position-relative">
+                    {{-- <input type="text" class="form-control @error('') is-invalid @enderror" value="{{ old('') }}"
+                    name="" id="core-valueInput" disabled> --}}
                     <fieldset class="form-group">
-                        <select class="form-select @error('intelligence') is-invalid @enderror" name="intelligence" id="intelligence">
-                            <option value="Contextual" {{ old('intelligence') == 'Contextual' ? 'selected' : '' }}>Contextual</option>
-                            <option value="Generative" {{ old('intelligence') == 'Generative' ? 'selected' : '' }}>Generative</option>
-                            <option value="Moral" {{ old('intelligence') == 'Moral' ? 'selected' : '' }}>Moral</option>
-                            <option value="Social & Emotional" {{ old('intelligence') == 'Social & Emotional' ? 'selected' : '' }}>Social & Emotional</option>
-                            <option value="Technological" {{ old('intelligence') == 'Technological' ? 'selected' : '' }}>Technological</option>
-                            <option value="Transformative" {{ old('intelligence') == 'Transformative' ? 'selected' : '' }}>Transformative</option>
+                        <select class="form-select @error('') is-invalid @enderror" name="intelligence" id="intelligence">
+                            <option value="Contextual">Contextual</option>
+                            <option value="Generative">Generative</option>
+                            <option value="Moral">Moral</option>
+                            <option value="Social & Emotional">Social & Emotional</option>
+                            <option value="Technological">Technological</option>
+                            <option value="Transformative">Transformative</option>
                         </select>
-                    </fieldset>                    
+                    </fieldset>
                     <div class="form-control-icon">
                         <i class="fa-solid fa-circle-nodes"></i>
                     </div>
-                    @error('intelligence')
+                    @error('')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
@@ -392,9 +411,7 @@
                 </div>
             </div>
         </div>
-        <!------------ END OF INTELLIGENCE ------------>
 
-        <!------------ NUMBER OF PAX ------------>
         <div class="col-md-3">
             <label class="fw-bold required">Number of pax </label>
         </div>
@@ -413,10 +430,7 @@
                 </div>
             </div>
         </div>
-        <!------------ END OF NUMBER OF PAX ------------>
 
-        <!------------ DATE COVERED BYENT ------------>
-        <!-- To hide the date and time fields when the "To Be Announced" checkbox is checked, configured id="dcbe" in the script below -->
         <div class="row">
             <div class="col-md-3">
                 <label class="fw-bold required">Date Covered byent </label>
@@ -428,20 +442,18 @@
                 </div>
             </div>
         </div>
-        <!------------ END OF DATE COVERED BYENT ------------>
 
-        <!------------ DATE ------------>
         <div class="row justify-content-center g-3 gx-5" id="dcbe">
             <h6 class="text-center mt-3 fst-italic">Date</h3>
             <div class="col-md-3">
                 <div class="form-group has-icon-left">
                     <label class="fw-bold required">Date</label>
                     <div class="position-relative">
-                        <input type="text" class="form-control date datepicker @error('program_date') is-invalid @enderror" value="{{ old('program_date') }}" placeholder="Enter Date" name="program_date" id="datepicker" size="30">
+                        <input type="text" class="form-control date datepicker @error('doe') is-invalid @enderror" value="{{ old('doe') }}" placeholder="Enter Date" name="program_dates" id="datepicker" size="30">
                         <div class="form-control-icon">
                             <i class="bi bi-calendar"></i>
                         </div>
-                        @error('program_date')
+                        @error('doe')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -453,11 +465,11 @@
                 <div class="form-group has-icon-left">
                     <label class="fw-bold required">Start Time</label>
                     <div class="position-relative">
-                        <input type="text" id="start-time" class="form-control start-time timepicker @error('program_start_time') is-invalid @enderror" value="{{ old('program_start_time') }}" placeholder="Enter Time" name="program_start_time">
+                        <input type="text" id="start-time" class="form-control start-time timepicker @error('dot') is-invalid @enderror" value="{{ old('dot') }}" placeholder="Enter Time" name="program_start_time">
                         <div class="form-control-icon">
                             <i class="bi bi-clock"></i>
                         </div>
-                        @error('program_start_time')
+                        @error('dot')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -469,11 +481,11 @@
                 <div class="form-group has-icon-left">
                     <label class="fw-bold required">End Time</label>
                     <div class="position-relative">
-                        <input type="text" id="end-time" class="form-control end-time timepicker @error('program_end_time') is-invalid @enderror" value="{{ old('program_end_time') }}" placeholder="Enter Time" name="program_end_time">
+                        <input type="text" id="end-time" class="form-control end-time timepicker @error('dot') is-invalid @enderror" value="{{ old('dot') }}" placeholder="Enter Time" name="program_end_time">
                         <div class="form-control-icon">
                             <i class="fa-solid fa-hourglass-end"></i>
                         </div>
-                        @error('program_end_time')
+                        @error('dot')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -482,30 +494,9 @@
                 </div>
             </div>
         </div>
-        <!------------ END OF DATE ------------>
+
     </div>
 </div>
-<!------------ END OF FORM BODY ------------>
-
-<!-- JQuery to listen to the click event of the "To Be Announced" checkbox and hide/show the date and time fields container whether the checkbox is checked or not -->
-<script>
-    $(function() {
-        // get the checkbox element
-        var dcbeCheck = $('#dcbeCheck');
-        // get the date and time fields container
-        var dcbe = $('#dcbe');
-        
-        // toggle the visibility of the date and time fields container when the checkbox is clicked
-        dcbeCheck.on('click', function() {
-            if (dcbeCheck.is(':checked')) {
-                dcbe.hide();
-            } else {
-                dcbe.show();
-            }
-        });
-    });
-</script>
-
 <script>
     $(document).ready(function() {
         // This will help with displaying the date
