@@ -257,7 +257,7 @@
                                 value="{{ old('') }}"
                                 name="webinar_CustomizationHf"
                                 id="webinar_CustomizationHf"
-                                data-type="currency"
+                            
                                 data-mytooltip-content="<i></i>"
                                 data-mytooltip-theme="dark"
                                 data-mytooltip-action="focus"
@@ -345,7 +345,7 @@
                                 value="{{ old('') }}"
                                 name="webinar_CreatorNoh"
                                 id="webinar_CreatorNoh"
-                                data-type="currency"
+                            
                                 data-mytooltip-content="<i></i>"
                                 data-mytooltip-theme="dark"
                                 data-mytooltip-action="focus"
@@ -404,15 +404,15 @@
                             <td class="title">Lead Facilitator</td>
 
                             <td>
-                                <input type="text" class="package-fees input input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="webinar_LeadfacilitatorsHf" id="webinar_LeadfacilitatorsHf" data-type="currency">
+                                <input type="text" class="package-fees input input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="webinar_LeadfacilitatorsHf" id="webinar_LeadfacilitatorsHf">
                             </td>
 
                             <td data-title="# OF HOURS">
-                                <input type="text" class="number-session input input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="webinar_LeadfacilitatorsNoh" id="webinar_LeadfacilitatorsNoh" data-type="currency">
+                                <input type="text" class="number-session input input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="webinar_LeadfacilitatorsNoh" id="webinar_LeadfacilitatorsNoh">
                             </td>
 
                             <td data-title="# NIGHT SHIFT, WEEKENDS HOLIDAYS">
-                                <input type="text" class="nswh input js-mytooltip input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="webinar_LeadfacilitatorsNwh" id="webinar_LeadfacilitatorsNwh" data-type="currency">
+                                <input type="text" class="nswh input js-mytooltip input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="webinar_LeadfacilitatorsNwh" id="webinar_LeadfacilitatorsNwh">
                             </td>
 
                             <td class="total-td">
@@ -435,15 +435,15 @@
                             <td class="title">Moderator</td>
 
                             <td>
-                                <input type="text" class="package-fees input input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="webinar_ModeratorHf" id="webinar_ModeratorHf" data-type="currency">
+                                <input type="text" class="package-fees input input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="webinar_ModeratorHf" id="webinar_ModeratorHf">
                             </td>
 
                             <td data-title="# OF HOURS">
-                                <input type="text" class="number-session input input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="webinar_ModeratorNoh1" id="webinar_ModeratorNoh1" data-type="currency">
+                                <input type="text" class="number-session input input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="webinar_ModeratorNoh1" id="webinar_ModeratorNoh1">
                             </td>
 
                             <td data-title="# NIGHT SHIFT, WEEKENDS HOLIDAYS">
-                                <input type="text" class="nswh input js-mytooltip input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="webinar_ModeratorNwh1" id="webinar_ModeratorNwh1" data-type="currency">
+                                <input type="text" class="nswh input js-mytooltip input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="webinar_ModeratorNwh1" id="webinar_ModeratorNwh1">
                             </td>
 
                             <td class="total-td">
@@ -464,15 +464,15 @@
                             <td class="title">Producer</td>
 
                             <td>
-                                <input type="text" class="package-fees input input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="webinar_ProducerHf" id="webinar_ProducerHf" data-type="currency">
+                                <input type="text" class="package-fees input input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="webinar_ProducerHf" id="webinar_ProducerHf">
                             </td>
 
                             <td data-title="# OF HOURS">
-                                <input type="text" class="number-session input input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="webinar_ProducerNoh" id="webinar_ProducerNoh1" data-type="currency">
+                                <input type="text" class="number-session input input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="webinar_ProducerNoh" id="webinar_ProducerNoh1">
                             </td>
 
                             <td data-title="# NIGHT SHIFT, WEEKENDS HOLIDAYS">
-                                <input type="text" class="nswh input js-mytooltip input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="webinar_ProducerNwh" id="webinar_ProducerNwh" data-type="currency">
+                                <input type="text" class="nswh input js-mytooltip input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="webinar_ProducerNwh" id="webinar_ProducerNwh">
                             </td>
 
                             <td class="total-td">
@@ -521,11 +521,11 @@
                             <td class="title">Off Program Fee</td>
 
                             <td>
-                                <input type="text" class="package-fees input input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="webinar_OffprogramsHf" id="webinar_OffprogramsHf" data-type="currency">
+                                <input type="text" class="package-fees input input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="webinar_OffprogramsHf" id="webinar_OffprogramsHf">
                             </td>
 
-                            <td data-title="# OF HOURS">
-                                <input type="text" class="number-session input input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="webinar_OffprogramsNoh" id="webinar_OffprogramsNoh" data-type="currency">
+                            <td data-titFe="# OF HOURS">
+                                <input type="text" class="number-session input input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="webinar_OffprogramsNoh" id="webinar_OffprogramsNoh">
                             </td>
 
                             <td data-title="# NIGHT SHIFT, WEEKENDS HOLIDAYS">
