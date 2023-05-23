@@ -135,6 +135,7 @@
     </script>
     {{-- <script type="text/javascript" src="/js/ceform.js"></script>
     <script type="text/javascript" src="/js/ceFormAdd.js"></script> --}}
+    <script type="text/javascript" src="/js/webinar.js"></script>
     <script type="text/javascript" src="/js/computation.js"></script>
     <script type="text/javascript" src="/js/MultiStep.js"></script>
     <script type="text/javascript" src="/js/currencyFormat.js"></script>
