@@ -18,7 +18,6 @@
                                     WEEKENDS HOLIDAYS *</th>
                                 <th class="title-th" scope="col" style="border:3px solid black" width=18%>TOTAL FEE</th>
                                 <th class="title-th" scope="col" width=17%>ROSTER</th>
-                                <!----<th class="add-row border border-white" scope="col"></th>--->
                             </tr>
                         </thead>
         <!--------------------------COMMISSION--------------------------------------->
@@ -118,11 +117,6 @@
                                         <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                             value="{{ $cost_type->rooster }}" name="cost_rooster[]" id="">
                                     </td>
-                                    <td style="background-color: #FFFFFF;" class="border border-white">
-                                        <a href="javascript:void(0)" class="text-success font-18" title="Add" id="muaddButton">
-                                            <i class="fa fa-plus"></i>
-                                        </a>
-                                    </td>
                                 </tr>
 
                                 @endif
@@ -205,11 +199,6 @@
                                         <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                             value="{{ $cost_type->rooster }}" name="cost_rooster[]" id="">
                                     </td>
-                                    <td style="background-color: #FFFFFF;" class="border border-white">
-                                        <a href="javascript:void(0)" class="text-success font-18" title="Add" id="muaddButton2">
-                                            <i class="fa fa-plus"></i>
-                                        </a>
-                                    </td>
                                 </tr>
 
                                 @endif
@@ -223,7 +212,6 @@
                             <td class="" colspan="3"></td>
                             <td class="title" colspan=""></td>
                             <td class="title" colspan=""></td>
-                            <td style="background-color: #FFFFFF;" class="border border-white" colspan=""></td>
                             </tr>
 
         <!--------------------------ENGAGEMENT MANAGER------------------------------->
@@ -292,11 +280,6 @@
                                     <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                         value="{{ $cost_type->rooster }}" name="cost_rooster[]" id="">
                                 </td>
-                                <td style="background-color: #FFFFFF;" class="border border-white">
-                                    <a href="javascript:void(0)" class="text-success font-18" title="Add" id="muaddButton3">
-                                        <i class="fa fa-plus"></i>
-                                    </a>
-                                </td>
                             </tr>
 
                             @endif
@@ -313,7 +296,6 @@
                             <td></td>
                             <td class="total-td" style="border-left:3px solid black"></td>
                             <td class="total-td"></td>
-                            <td style="background-color: #FFFFFF;" class="border border-white"></td>
                         </tr>
                     <!---------------CUSTOMIZATION FEE------------->
                         <tbody id="tableofCustomization">
@@ -332,7 +314,7 @@
                                 </td>
 
                                 {{-- hour_fee --}}
-                                <td>
+                                <td class="table-warning">
                                    <input type="number" class="text-center fw-bold text-dark text-center form-control input-table @error('') is-invalid @enderror"
                                    name="cost_hour_fee[]" value="{{ $cost_type->hour_fee }}" id="workshop_CustomizationHf"> 
                                 </td>
@@ -376,11 +358,6 @@
                                     <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                         name="cost_rooster[]" value="{{ $cost_type->rooster }}" id="">
                                 </td>
-                                <td style="background-color: #FFFFFF;" class="border border-white">
-                                    <a href="javascript:void(0)" class="text-success font-18" title="Add" id="muaddButton4">
-                                    <i class="fa fa-plus"></i>
-                                </a>
-                            </td>
                             </tr>
 
                             @endif
@@ -436,7 +413,7 @@
                                 </td>
 
                                 {{-- hour_num --}}
-                                <td>
+                                <td class="table-warning">
                                     <input type="number"
                                         class="text-center form-control input-table @error('') is-invalid @enderror"
                                         value="{{ $cost_type->hour_num }}" name="cost_hour_num[]" id="workshop_CreatorNoh">
@@ -453,10 +430,6 @@
                                 <td class="total-td">
                                     <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                         value="{{ $cost_type->rooster }}" name="cost_rooster[]" id="">
-                                </td>
-                                <td style="background-color: #FFFFFF;" class="border border-white">
-                                    <a href="javascript:void(0)" class="text-success font-18" title="Add" id="muaddButton5">
-                                        <i class="fa fa-plus"></i></a>
                                 </td>
                             </tr>
 
@@ -478,7 +451,6 @@
                                 <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                     value="{{ old('') }}" name="consulationdesignsubtotal" id="">
                             </td>
-                            <td style="background-color: #FFFFFF;" class="border border-white"></td>
                         </tr>
 
                         {{-- break --}}
@@ -487,7 +459,6 @@
                             <td class="" colspan="3"></td>
                             <td class="title" colspan=""></td>
                             <td class="title" colspan=""></td>
-                            <td style="background-color: #FFFFFF;" class="border border-white"></td>
                         </tr>
 
         <!--------------------------PROGRAM------------------------------------------>
@@ -498,7 +469,6 @@
                             <td></td>
                             <td class="total-td" style="border-left:3px solid black"></td>
                             <td class="total-td"></td>
-                            <td style="background-color: #FFFFFF;" class="border border-white"></td>
                         </tr>
                     <!---------------LEAD FACILITATOR-------------->
                         <tbody id="tableofLeadFacilitator">
@@ -517,21 +487,21 @@
                                 </td>
 
                                 {{-- hour_fee --}}
-                                <td>
+                                <td class="table-warning">
                                     <input type="number"
                                         class="text-center fw-bold text-center text-dark form-control input-table @error('') is-invalid @enderror"
                                         value="{{ $cost_type->hour_fee }}" name="cost_hour_fee[]" id="workshop_LeadfacilitatorsHf">
                                 </td>
 
                                 {{-- hour_num --}}
-                                <td>
+                                <td class="table-warning">
                                     <input type="number"
                                         class="text-center form-control input-table @error('') is-invalid @enderror"
                                         value="{{ $cost_type->hour_num }}" name="cost_hour_num[]" id="workshop_LeadfacilitatorsNoh">
                                 </td>
 
                                 {{-- nswh --}}
-                                <td>
+                                <td class="table-warning">
                                     <input type="number"
                                         class="text-center form-control input-table @error('') is-invalid @enderror"
                                         value="{{ $cost_type->nswh }}" name="cost_nswh[]" id="workshop_LeadfacilitatorsNwh">
@@ -544,11 +514,6 @@
                                 <td class="total-td">
                                     <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                         value="{{ $cost_type->rooster }}" name="cost_rooster[]" id="">
-                                </td>
-                                <td style="background-color: #FFFFFF;" class="border border-white">
-                                    <a href="javascript:void(0)" class="text-success font-18" title="Add" id="muaddButton6">
-                                        <i class="fa fa-plus"></i>
-                                    </a>
                                 </td>
                             </tr>
 
@@ -608,14 +573,14 @@
                                 </td>
 
                                 {{-- hour_num --}}
-                                <td>
+                                <td class="table-warning">
                                     <input type="number"
                                         class="text-center  form-control input-table @error('') is-invalid @enderror"
                                         value="{{ $cost_type->hour_num }}" name="cost_hour_num[]" id="workshop_ModeratorNoh1">
                                 </td>
 
                                 {{-- nswh --}}
-                                <td>
+                                <td class="table-warning">
                                     <input type="number"
                                         class="text-center form-control input-table @error('') is-invalid @enderror"
                                         value="{{ $cost_type->nswh }}" name="cost_nswh[]" id="workshop_ModeratorNwh1">
@@ -628,11 +593,6 @@
                                 <td class="total-td">
                                     <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                         value="{{ $cost_type->rooster }}" name="cost_rooster[]" id="">
-                                </td>
-                                <td style="background-color: #FFFFFF;" class="border border-white">
-                                    <a href="javascript:void(0)" class="text-success font-18" title="Add" id="muaddButton7">
-                                        <i class="fa fa-plus"></i>
-                                    </a>
                                 </td>
                             </tr>
 
@@ -659,21 +619,21 @@
                                 </td>
 
                                 {{-- hour_fee --}}
-                                <td>
+                                <td class="table-warning">
                                     <input type="number"
                                         class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
                                         value="{{ $cost_type->hour_fee }}" name="cost_hour_fee[]" id="workshop_ProducerHf">
                                 </td>
 
                                 {{-- hour_num --}}
-                                <td>
+                                <td class="table-warning">
                                     <input type="number"
                                         class="text-center form-control input-table @error('') is-invalid @enderror"
                                         value="{{ $cost_type->hour_num }}" name="cost_hour_num[]" id="workshop_ProducerNoh">
                                 </td>
 
                                 {{-- nswh --}}
-                                <td>
+                                <td class="table-warning">
                                     <input type="number"
                                         class="text-center form-control input-table @error('') is-invalid @enderror"
                                         value="{{ $cost_type->nswh }}" name="cost_nswh[]" id="workshop_ProducerNwh">
@@ -686,11 +646,6 @@
                                 <td class="total-td">
                                     <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                         value="{{ $cost_type->rooster }}" name="cost_rooster[]" id="">
-                                </td>
-                                <td style="background-color: #FFFFFF;" class="border border-white">
-                                    <a href="javascript:void(0)" class="text-success font-18" title="Add" id="muaddButton8">
-                                        <i class="fa fa-plus"></i>
-                                    </a>
                                 </td>
                             </tr>
 
@@ -712,7 +667,6 @@
                                 <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                     value="{{ old('') }}" name="programsub_rooster" id="">
                             </td>
-                            <td style="background-color: #FFFFFF;" class="border border-white"></td>
                         </tr>
 
                         {{-- break --}}
@@ -721,8 +675,6 @@
                             <td class="" colspan="3"></td>
                             <td class="title" colspan=""></td>
                             <td class="title" colspan=""></td>
-                            <td style="background-color: #FFFFFF;" class="border border-white"></td>
-
                         </tr>
 
         <!--------------------------OFF-PROGRAM-------------------------------------->
@@ -733,7 +685,6 @@
                             <td></td>
                             <td class="total-td" style="border-left:3px solid black"></td>
                             <td class="total-td"></td>
-                            <td style="background-color: #FFFFFF;" class="border border-white"></td>
                         </tr>
 
                         {{-- Type: Off-Program Fee --}}
@@ -750,14 +701,14 @@
                             </td>
 
                             {{-- hour_fee --}}
-                            <td>
+                            <td class="table-warning">
                                 <input type="number"
                                     class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
                                     value="{{ $cost_type->hour_fee }}" name="cost_hour_fee[]" id="workshop_OffprogramsHf">
                             </td>
 
                             {{-- hour_num --}}
-                            <td>
+                            <td class="table-warning">
                                 <input type="number"
                                     class="text-center form-control input-table @error('') is-invalid @enderror"
                                     value="{{ $cost_type->hour_num }}" name="cost_hour_num[]" id="workshop_OffprogramsNoh">
@@ -775,7 +726,6 @@
                                 <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                     value="{{ $cost_type->rooster }}" name="cost_rooster[]" id="">
                             </td>
-                            <td style="background-color: #FFFFFF;" class="border border-white"></td>
                         </tr>
 
                         @endif
@@ -788,7 +738,6 @@
                             <td class="" colspan="3"></td>
                             <td class="title" colspan=""></td>
                             <td class="title" colspan=""></td>
-                            <td style="background-color: #FFFFFF;" class="border border-white"></td>
                         </tr>
 
         <!--------------------------MISCELLANEOUS------------------------------------>
@@ -799,7 +748,6 @@
                             <td></td>
                             <td class="total-td" style="border-left:3px solid black"></td>
                             <td class="total-td"></td>
-                            <td style="background-color: #FFFFFF;" class="border border-white"></td>
                         </tr>
 
                         {{-- Type: Program Expenses --}}
@@ -816,7 +764,7 @@
                             </td>
 
                             {{-- hour_fee --}}
-                            <td>
+                            <td class="table-warning">
                                 <input type="number"
                                     class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
                                     value="{{ $cost_type->hour_fee }}" name="cost_hour_fee[]" id="workshop_Programexpenses" maxlength="4">
@@ -835,7 +783,6 @@
                                 <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                     value="{{ $cost_type->rooster }}" name="cost_rooster[]" id="">
                             </td>
-                            <td style="background-color: #FFFFFF;" class="border border-white"></td>
                         </tr>
 
                         @endif 
@@ -848,7 +795,6 @@
                             <td class="" colspan="3"></td>
                             <td class="title" colspan=""></td>
                             <td class="title" colspan=""></td>
-                            <td style="background-color: #FFFFFF;" class="border border-white"></td>
                         </tr>
 
         <!--------------------------TOTAL-------------------------------------------->

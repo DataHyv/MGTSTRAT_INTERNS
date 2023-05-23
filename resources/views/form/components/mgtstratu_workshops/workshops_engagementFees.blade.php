@@ -14,7 +14,6 @@
                         <th class="title-middle" scope="col" style="font-size: 0.9rem;">NIGHT SHIFT, <br>WEEKENDS <br>HOLIDAYS *</th>
                         <th class="title-middle" scope="col" style="font-size: 0.9rem;">TOTAL FEE</th>
                         <th class="title-middle" scope="col" style="font-size: 0.9rem;" width=10%>NOTES</th>
-                        {{-- <td class="add-row border border-white" scope="col"></td> --}}
                     </tr>
                 </thead>
 
@@ -39,7 +38,7 @@
                         <td>
                             <fieldset>
                                 <select class="form-select hf-c13 input js-mytooltip @error('') is-invalid @enderror"
-                                    name="fee_package_num[]"
+                                    name=""
                                     id="ef_LeadconsultantHf"
                                     data-mytooltip-content="<i>P15,000 - with minimal design customization,
                                         or platform customization outside of Zoom/Goggle Meets/MS Teams.
@@ -62,7 +61,7 @@
                                 @enderror
                             </fieldset>
                         </td>
-                        <td data-title="# OF SESSIONS">
+                        <td data-title="# OF SESSIONS" class="table-warning">
                             <input type="number" class="input  input-table form-control  @error('') is-invalid @enderror"
                                 value="{{ old('') }}"
                                 name="fee_num_sessions[]"
@@ -74,7 +73,7 @@
                                 data-mytooltip-action="focus"
                                 data-mytooltip-direction="bottom">
                         </td>
-                        <td data-title="# NIGHT SHIFT, WEEKENDS HOLIDAYS">
+                        <td data-title="# NIGHT SHIFT, WEEKENDS HOLIDAYS" class="table-warning">
                             <input type="number" class="input  input-table form-control  @error('') is-invalid @enderror"
                                 value="{{ old('') }}"
                                 name="fee_nswh[]"
@@ -96,7 +95,7 @@
                     </tr>
                     </tbody>
 <!------------------------------------------------SUBTOTAL CUSTOMIZATION FEE-------------------------------------------------------------------->
-                    <tr class="" id="tablesubtotalCustomization">
+                    <tr class="table-secondary" id="tablesubtotalCustomization">
                         <td class="title fw-bold text-dark fst-italic">Subtotal</td>
                         <td></td>
                         <td></td>
@@ -109,7 +108,6 @@
                                 value="{{ old('') }}"
                                 name="customizationFeeSubtotal_notes" id="">
                         </td>
-                        <td class="border border-white"></td>
                     </tr>
 <!------------------------------------------------PROGRAM--------------------------------------------------------------------->
                     <tr class="th-blue-grey-lighten">
@@ -162,7 +160,7 @@
                                 @enderror
                             </fieldset>
                         </td>
-                        <td data-title="# OF SESSIONS">
+                        <td data-title="# OF SESSIONS" class="table-warning">
                             <input type="number" class="input js-mytooltip input-table form-control  @error('') is-invalid @enderror"
                                 value="1"
                                 name="fee_num_sessions[]"
@@ -174,7 +172,7 @@
                                 data-mytooltip-action="focus"
                                 data-mytooltip-direction="bottom">
                         </td>
-                        <td data-title="NIGHT SHIFT, WEEKENDS HOLIDAYS *">
+                        <td data-title="NIGHT SHIFT, WEEKENDS HOLIDAYS *" class="table-warning">
                             <input type="number" class="input  input-table form-control  @error('') is-invalid @enderror"
                                 value="{{ old('') }}"
                                 name="fee_nswh[]"
@@ -192,9 +190,6 @@
                         <td class="total-td">
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}"name="fee_notes[]" id="">
-                        </td>
-                        <td style="background-color: #FFFFFF;" class="border border-white"><a href="javascript:void(0)"
-                            class="text-success font-18" title="Add" id="addBtn1"><i class="fa fa-plus"></i></a>
                         </td>
                     </tr>
                     </tbody>
@@ -240,7 +235,7 @@
                                 @enderror
                             </fieldset>
                         </td>
-                        <td data-title="# OF SESSIONS">
+                        <td data-title="# OF SESSIONS" class="table-warning">
                             <input type="number" class="input js-mytooltip input-table form-control  @error('') is-invalid @enderror"
                                 value="{{ old('') }}"
                                 name="fee_num_sessions[]"
@@ -252,7 +247,7 @@
                                 data-mytooltip-action="focus"
                                 data-mytooltip-direction="bottom">
                         </td>
-                        <td data-title="NIGHT SHIFT, WEEKENDS HOLIDAYS *">
+                        <td data-title="NIGHT SHIFT, WEEKENDS HOLIDAYS *" class="table-warning">
                             <input type="number" class="input  input-table form-control  @error('') is-invalid @enderror"
                                 value="{{ old('') }}"
                                 name="fee_nswh[]"
@@ -270,9 +265,6 @@
                         <td class="total-td">
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}"name="fee_notes[]" id="">
-                        </td>
-                        <td style="background-color: #FFFFFF;" class="border border-white"><a href="javascript:void(0)"
-                            class="text-success font-18" title="Add" id="addBtn1"><i class="fa fa-plus"></i></a>
                         </td>
                     </tr>
                     </tbody>
@@ -309,7 +301,7 @@
                                 @enderror
                             </fieldset>
                         </td>
-                        <td data-title="# OF SESSIONS">
+                        <td data-title="# OF SESSIONS" class="table-warning">
                             <input type="number" class="input js-mytooltip input-table form-control  @error('') is-invalid @enderror"
                                 value="1"
                                 name="fee_num_sessions[]"
@@ -321,7 +313,7 @@
                                 data-mytooltip-action="focus"
                                 data-mytooltip-direction="bottom">
                         </td>
-                        <td data-title="NIGHT SHIFT, WEEKENDS LIDAYS *">
+                        <td data-title="NIGHT SHIFT, WEEKENDS LIDAYS *" class="table-warning">
                             <input type="number" class="input  input-table form-control  @error('') is-invalid @enderror"
                                 value="{{ old('') }}"
                                 name="fee_nswh[]"
@@ -340,13 +332,10 @@
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}"name="fee_notes[]" id="">
                         </td>
-                        <td style="background-color: #FFFFFF;" class="border border-white"><a href="javascript:void(0)"
-                            class="text-success font-18" title="Add" id="addBtn1"><i class="fa fa-plus"></i></a>
-                        </td>
                     </tr>
                     </tbody>
 <!------------------------------------------------SUBTOTAL PROGRAM-------------------------------------------------------------------->
-                    <tr class="" id="tableSubtotalProgram">
+                    <tr class="table-secondary" id="tableSubtotalProgram">
                         <td class="title fw-bold text-dark fst-italic">Subtotal</td>
                         <td></td>
                         <td></td>
@@ -359,7 +348,6 @@
                                 value="{{ old('') }}"
                                 name="programSubtotal_notes" id="">
                         </td>
-                        <td class="border border-white"></td>
                     </tr>
 <!------------------------------------------------TOTAL STANDARD FEES--------------------------------------------------------->
                     <tr class="table-active overall-total" id="tableStandardTotal">
@@ -398,8 +386,8 @@
                         <td class="overall-total-middle"></td>
                         <td class="overall-total-middle"></td>
                         <td class="overall-total-end table-warning">
-                            <input type="text" class="tf-f34 form-control text-center text-danger fw-bolder input-table @error('') is-invalid @enderror"
-                            value="{{ old('') }}" name="mg_input_totalPackages" id="mg_input_totalPackages" style="font-size: 20px;" readonly>
+                            <input type="number" class="tf-f34 form-control text-center text-danger fw-bolder input-table @error('') is-invalid @enderror"
+                            value="{{ old('') }}" name="mg_input_totalPackages" id="mg_input_totalPackages" style="font-size: 20px;">
                         </td>
                         <td class="overall-total-end">
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"

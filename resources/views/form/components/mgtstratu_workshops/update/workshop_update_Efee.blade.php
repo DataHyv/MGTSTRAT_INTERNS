@@ -16,7 +16,6 @@
                         <th class="title-middle" scope="col" style="font-size: 0.9rem;">NIGHT SHIFT, <br>WEEKENDS <br>HOLIDAYS *</th>
                         <th class="title-middle" scope="col" style="font-size: 0.9rem;">TOTAL FEE</th>
                         <th class="title-middle" scope="col" style="font-size: 0.9rem;" width=10%>NOTES</th>
-                        {{-- <td class="add-row border border-white" scope="col"></td> --}}
                     </tr>
                 </thead>
 
@@ -29,7 +28,6 @@
                         <th></th>
                         <th class="total-td"></th>
                         <th class="total-td"></th>
-
                     </tr>
 <!------------------------------------------------CUSTOMIZATION FEE----------------------------------------------------------->
                     <tbody id="tableLeadconsultant">
@@ -76,7 +74,7 @@
                         </td>
 
                         {{-- num_sessions --}}
-                        <td data-title="# OF SESSIONS">
+                        <td data-title="# OF SESSIONS" class="table-warning">
                             <input type="number" class="input  input-table form-control  @error('') is-invalid @enderror"
                                 value="{{ $fee_type->num_sessions }}"
                                 name="fee_num_sessions[]"
@@ -96,7 +94,7 @@
                         </td>
 
                         {{-- nswh --}}
-                        <td data-title="# NIGHT SHIFT, WEEKENDS HOLIDAYS">
+                        <td data-title="# NIGHT SHIFT, WEEKENDS HOLIDAYS" class="table-warning">
                             <input type="number" class="input  input-table form-control  @error('') is-invalid @enderror"
                                 value="{{ $fee_type->nswh }}"
                                 name="fee_nswh[]"
@@ -131,7 +129,7 @@
 
                     </tbody>
 <!------------------------------------------------SUBTOTAL CUSTOMIZATION FEE-------------------------------------------------------------------->
-                    <tr class="" id="tablesubtotalCustomization">
+                    <tr class="table-secondary" id="tablesubtotalCustomization">
                         <td class="title fw-bold text-dark fst-italic">Subtotal</td>
                         <td></td>
                         <td></td>
@@ -144,7 +142,6 @@
                                 value="{{ old('') }}"
                                 name="customizationFeeSubtotal_notes" id="">
                         </td>
-                        <td class="border border-white"></td>
                     </tr>
 <!------------------------------------------------PROGRAM--------------------------------------------------------------------->
                     <tr class="th-blue-grey-lighten">
@@ -210,7 +207,7 @@
                         </td>
 
                         {{-- num_sessions --}}
-                        <td data-title="# OF SESSIONS">
+                        <td data-title="# OF SESSIONS" class="table-warning">
                             <input type="number" class="input js-mytooltip input-table form-control  @error('') is-invalid @enderror"
                                 value="{{ $fee_type->num_sessions }}"
                                 name="fee_num_sessions[]"
@@ -230,7 +227,7 @@
                         </td>
 
                         {{-- nswh --}}
-                        <td data-title="NIGHT SHIFT, WEEKENDS HOLIDAYS *">
+                        <td data-title="NIGHT SHIFT, WEEKENDS HOLIDAYS *" class="table-warning">
                             <input type="number" class="input  input-table form-control  @error('') is-invalid @enderror"
                                 value="{{ $fee_type->nswh }}"
                                 name="fee_nswh[]"
@@ -256,9 +253,6 @@
                         <td class="total-td">
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                 value="{{ $fee_type->notes }}"name="fee_notes[]" id="">
-                        </td>
-                        <td style="background-color: #FFFFFF;" class="border border-white"><a href="javascript:void(0)"
-                            class="text-success font-18" title="Add" id="addBtn1"><i class="fa fa-plus"></i></a>
                         </td>
                     </tr>
 
@@ -322,7 +316,7 @@
                         </td>
 
                         {{-- num_sessions --}}
-                        <td data-title="# OF SESSIONS">
+                        <td data-title="# OF SESSIONS" class="table-warning">
                             <input type="number" class="input js-mytooltip input-table form-control  @error('') is-invalid @enderror"
                                 value="{{ $fee_type->num_sessions }}"
                                 name="fee_num_sessions[]"
@@ -342,7 +336,7 @@
                         </td>
 
                         {{-- nswh --}}
-                        <td data-title="NIGHT SHIFT, WEEKENDS HOLIDAYS *">
+                        <td data-title="NIGHT SHIFT, WEEKENDS HOLIDAYS *" class="table-warning">
                             <input type="number" class="input  input-table form-control  @error('') is-invalid @enderror"
                                 value="{{ $fee_type->nswh }}"
                                 name="fee_nswh[]"
@@ -368,9 +362,6 @@
                         <td class="total-td">
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                 value="{{ $fee_type->notes }}"name="fee_notes[]" id="">
-                        </td>
-                        <td style="background-color: #FFFFFF;" class="border border-white"><a href="javascript:void(0)"
-                            class="text-success font-18" title="Add" id="addBtn1"><i class="fa fa-plus"></i></a>
                         </td>
                     </tr>
 
@@ -424,7 +415,7 @@
                         </td>
 
                         {{-- num_sessions --}}
-                        <td data-title="# OF SESSIONS">
+                        <td data-title="# OF SESSIONS" class="table-warning">
                             <input type="number" class="input js-mytooltip input-table form-control  @error('') is-invalid @enderror"
                                 value="{{ $fee_type->num_sessions }}"
                                 name="fee_num_sessions[]"
@@ -444,7 +435,7 @@
                         </td>
 
                         {{-- nswh --}}
-                        <td data-title="NIGHT SHIFT, WEEKENDS LIDAYS *">
+                        <td data-title="NIGHT SHIFT, WEEKENDS LIDAYS *" class="table-warning">
                             <input type="number" class="input  input-table form-control  @error('') is-invalid @enderror"
                                 value="{{ $fee_type->nswh }}"
                                 name="fee_nswh[]"
@@ -471,9 +462,6 @@
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                 value="{{ $fee_type->notes }}"name="fee_notes[]" id="">
                         </td>
-                        <td style="background-color: #FFFFFF;" class="border border-white"><a href="javascript:void(0)"
-                            class="text-success font-18" title="Add" id="addBtn1"><i class="fa fa-plus"></i></a>
-                        </td>
                     </tr>
 
                     @endif
@@ -482,7 +470,7 @@
 
                     </tbody>
 <!------------------------------------------------SUBTOTAL PROGRAM-------------------------------------------------------------------->
-                    <tr class="" id="tableSubtotalProgram">
+                    <tr class="table-secondary" id="tableSubtotalProgram">
                         <td class="title fw-bold text-dark fst-italic">Subtotal</td>
                         <td></td>
                         <td></td>
@@ -495,7 +483,6 @@
                                 value="{{ old('') }}"
                                 name="programSubtotal_notes" id="">
                         </td>
-                        <td class="border border-white"></td>
                     </tr>
 <!-----------------------------------------------TOTAL STANDARD FEES--------------------------------------------------------->
                     <tr class="table-active overall-total" id="tableStandardTotal">

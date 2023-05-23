@@ -559,7 +559,7 @@
             </div>
             <div class="col-md-3">
                 <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="dcbeCheck">
+                    <input class="form-check-input" type="checkbox" role="switch" id="dcbeCheck" name="dcbeCheck">
                     <label class="form-check-label" for="dcbeCheck">To Be Announced</label>
                 </div>
             </div>
@@ -623,6 +623,25 @@
 
     </div>
 </div>
+
+<!-- JQuery to listen to the click event of the "To Be Announced" checkbox and hide/show the date and time fields container whether the checkbox is checked or not -->
+<script>
+    $(function() {
+        // get the checkbox element
+        var dcbeCheck = $('#dcbeCheck');
+        // get the date and time fields container
+        var dcbe = $('#dcbe');
+        
+        // toggle the visibility of the date and time fields container when the checkbox is clicked
+        dcbeCheck.on('click', function() {
+            if (dcbeCheck.is(':checked')) {
+                dcbe.hide();
+            } else {
+                dcbe.show();
+            }
+        });
+    });
+</script>
 
 <script>
     $(document).ready(function() {
