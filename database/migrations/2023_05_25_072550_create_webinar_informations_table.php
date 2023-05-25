@@ -20,6 +20,7 @@ class CreateWebinarInformationsTable extends Migration
             // $table->string('status', 15)->nullable();
             // $table->string('batch_name', 100)->nullable();
             $table->string('engagement_title')->nullable();
+            $table->string('engagement_type')->nullable();
             $table->string('webinar_title')->nullable();
             $table->string('cluster')->nullable();
             $table->string('intelligence')->nullable();

@@ -122,6 +122,7 @@ Auth::routes();
 
 // ----------------------------- MGTSTRAT WEBINARS WORKSHOPS ------------------------------//
     Route::resource('form/webinars', 'App\Http\Controllers\MgtstratWebinarsController');
+    Route::post('form/mgtstratu_webinar/save', [App\Http\Controllers\MgtstratWebinarsController::class, 'store'])->name('form/mgtstratu_webinar/save');
 
 // ----------------------------- COACHING -----------------------//
     Route::resource('form/coaching', 'App\Http\Controllers\CoachingController');

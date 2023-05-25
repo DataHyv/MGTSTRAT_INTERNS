@@ -4,6 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\MgtstratWebinars;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
+use RealRashid\SweetAlert\Facades\Alert;
+use Brian2694\Toastr\Facades\Toastr;
+use App\Models\Client;
+// use App\Models\Workshop_information;
+// use App\Models\WorkshopFee;
+// use App\Models\Workshop_cost;
 
 class MgtstratWebinarsController extends Controller
 {
@@ -12,9 +21,15 @@ class MgtstratWebinarsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         return view('form.components.mgtstrat_webinars.index');
+    }
+
+    public function newRecord()
+    {
+        $companyList = Client::orderBy('company_name')->get();
+        return view('form.mgtstratu_webinar', compact('companyList'));
     }
     
     public function store(Request $request)
@@ -33,16 +48,13 @@ class MgtstratWebinarsController extends Controller
 
             $webinar_form = new Webinar_information();
             $webinar_form->webinar_id             = $id_budget_form;
-            // $webinar_form->status                = $request->status;
-            // $webinar_form->ga_percent            = $request->ga_percent;
             $webinar_form->client_id             = (int)$request->client_id;
+            $webinar_form->engagement_type        = $request->engagement_type;
             $webinar_form->engagement_title        = $request->engagement_title;
             $webinar_form->webinar_title          = $request->webinar_title;
             $webinar_form->cluster                 = $request->cluster;
             $webinar_form->intelligence            = $request->intelligence;
             $webinar_form->pax_number              = $request->pax_number;
-            // $webinar_form->batch_number          = $request->batch_number;
-            // $webinar_form->session_number        = $request->session_number;
             $webinar_form->program_date           = $request->program_date;
             $webinar_form->program_start_time      = $request->program_start_time;
             $webinar_form->program_end_time        = $request->program_end_time;
@@ -111,7 +123,7 @@ class MgtstratWebinarsController extends Controller
 
             DB::commit();
             
-            return redirect()->route('form/mgtstratu_workshops/index')->with('success', 'Added Successfully!');
+            return redirect()->route('form/mgtstratu_webinar/index')->with('success', 'Added Successfully!');
         
         } catch(\Exception $e){
             DB::rollback();
