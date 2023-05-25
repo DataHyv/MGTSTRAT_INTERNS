@@ -34,7 +34,7 @@
         <div class="col-md-7">
             <div class="form-group has-icon-left">
                 <div class="position-relative">
-                    <input type="text" class="form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="" id="fourth" title="asdasdasd">
+                    <input type="text" class="form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="client_id" id="fourth" title="asdasdasd">
                     <div class="form-control-icon">
                         <i class="fa-solid fa-user"></i>
                     </div>

@@ -10,7 +10,7 @@ use Haruncpi\LaravelIdGenerator\IdGenerator;
 use RealRashid\SweetAlert\Facades\Alert;
 use Brian2694\Toastr\Facades\Toastr;
 use App\Models\Client;
-// use App\Models\Workshop_information;
+use App\Models\Webinar_information;
 // use App\Models\WorkshopFee;
 // use App\Models\Workshop_cost;
 
@@ -123,7 +123,7 @@ class MgtstratWebinarsController extends Controller
 
             DB::commit();
             
-            return redirect()->route('form/mgtstratu_webinar/index')->with('success', 'Added Successfully!');
+            return redirect()->route('form/mgtstrat_webinars/index')->with('success', 'Added Successfully!');
         
         } catch(\Exception $e){
             DB::rollback();
