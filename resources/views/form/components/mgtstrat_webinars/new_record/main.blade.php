@@ -65,7 +65,7 @@
 
                                     <!------------ INFORMATION ------------>
                                         <div class="multisteps-form__panel js-active" data-animation="slideHorz">
-                                            @include('form.components.mgtstrat_webinars.information')
+                                            @include('form.components.mgtstrat_webinars.new_record.information')
                                             {{-- next button --}}
                                             <div class="col-12 d-flex justify-content-center mt-3">
                                                 <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
@@ -74,7 +74,7 @@
 
                                     <!------------ ENGAGEMENT FEES ------------>
                                         <div class="multisteps-form__panel" data-animation="slideHorz">
-                                            @include('form.components.mgtstrat_webinars.engagement_fees')
+                                            @include('form.components.mgtstrat_webinars.new_record.engagement_fees')
                                             {{-- next and prev button --}}
                                             <div class="button-row d-flex justify-content-center mt-3">
                                                 <button class="btn btn-secondary mx-2 js-btn-prev" type="button" title="Prev">Prev</button>
@@ -84,7 +84,7 @@
 
                                     <!------------ ENGAGEMENT COST ------------>
                                         <div class="multisteps-form__panel" data-animation="slideHorz">
-                                            @include('form.components.mgtstrat_webinars.engagement_cost')
+                                            @include('form.components.mgtstrat_webinars.new_record.engagement_cost')
                                             {{-- next and prev button --}}
                                             <div class="col-12 d-flex justify-content-center mt-3">
                                                 <button class="btn btn-secondary mx-2 js-btn-prev" type="button" title="Prev">Prev</button>
@@ -94,7 +94,7 @@
 
                                     <!------------ PROFIT FORECAST ------------>
                                         <div class="multisteps-form__panel" data-animation="slideHorz">
-                                            {{-- @include('form.components.customized_engagement.add.ce_profit_forecast') --}}
+                                            {{-- @include('form.components.mgtstrat_webinars.new_record.??') --}}
                                             {{-- prev and submit button --}}
                                             <div class="col-12 d-flex justify-content-center mt-3">
                                                 <button class="btn btn-secondary mx-2 js-btn-prev" type="button" title="Prev">Prev</button>

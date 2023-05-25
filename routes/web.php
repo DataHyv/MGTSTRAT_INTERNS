@@ -122,8 +122,9 @@ Auth::routes();
     Route::post('form/mgtstratu_workshops/save', [App\Http\Controllers\MgtstratUController::class, 'store'])->name('form/mgtstratu_workshops/save');
 
 // ----------------------------- MGTSTRAT WEBINARS WORKSHOPS ------------------------------//
-    Route::resource('form/webinars', 'App\Http\Controllers\MgtstratWebinarsController');
-    Route::post('form/mgtstrat_webinars/save', [App\Http\Controllers\MgtstratWebinarsController::class, 'store'])->name('form/mgtstrat_webinars/save');
+    Route::get('form/webinars/index', [MgtstratWebinarsController::class, 'index'])->middleware('auth')->name('form/webinars/index');
+    Route::get('form/webinars/new', [MgtstratWebinarsController::class, 'newRecord'])->middleware('auth')->name('form/webinars/new');
+    Route::post('save', [MgtstratWebinarsController::class, 'store'])->name('save');
 
 // ----------------------------- COACHING -----------------------//
     Route::resource('form/coaching', 'App\Http\Controllers\CoachingController');

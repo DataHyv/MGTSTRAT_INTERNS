@@ -34,14 +34,21 @@
         <div class="col-md-7">
             <div class="form-group has-icon-left">
                 <div class="position-relative">
-                    <input type="text" class="form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="client_id" id="fourth" title="asdasdasd">
+                    <select class="input form-select @error('client_id') is-invalid @enderror" id="client_id" name="client_id" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                        <option value="">-- Select --</option>
+                        @foreach ($companyList as $key=>$client)
+                            <option value="{{ $client->id }}" data-first_eng={{ $client->first_eng }} {{ old('client_id') == $client->id ? 'selected' : '' }}>
+                                {{ $client->company_name }}
+                            </option>
+                        @endforeach
+                    </select>
                     <div class="form-control-icon">
-                        <i class="fa-solid fa-user"></i>
+                        <i class="fa-solid fa-clients"></i>
                     </div>
-                    @error('')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
+                    @error('client_id')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
                     @enderror
                 </div>
             </div>
@@ -444,11 +451,11 @@
                 <div class="form-group has-icon-left">
                     <label class="fw-bold required">Date</label>
                     <div class="position-relative">
-                        <input type="text" class="form-control datepicker @error('doe') is-invalid @enderror" value="{{ old('doe') }}" placeholder="Enter Date" name="program_date" id="datepicker" size="30">
+                        <input type="text" class="form-control datepicker @error('program_date') is-invalid @enderror" value="{{ old('program_date') }}" placeholder="Enter Date" name="program_date" id="datepicker" size="30">
                         <div class="form-control-icon">
                             <i class="bi bi-calendar"></i>
                         </div>
-                        @error('doe')
+                        @error('program_date')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -460,11 +467,11 @@
                 <div class="form-group has-icon-left">
                     <label class="fw-bold required">Start Time</label>
                     <div class="position-relative">
-                        <input type="time" class="form-control @error('dot') is-invalid @enderror" value="{{ old('dot') }}" placeholder="Enter Time" name="program_start_time">
+                        <input type="time" class="form-control @error('program_start_time') is-invalid @enderror" value="{{ old('program_start_time') }}" placeholder="Enter Time" name="program_start_time">
                         <div class="form-control-icon">
                             <i class="bi bi-clock"></i>
                         </div>
-                        @error('dot')
+                        @error('program_start_time')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -476,11 +483,11 @@
                 <div class="form-group has-icon-left">
                     <label class="fw-bold required">End Time</label>
                     <div class="position-relative">
-                        <input type="time" class="form-control @error('dot') is-invalid @enderror" value="{{ old('dot') }}" placeholder="Enter Time" name="program_end_time">
+                        <input type="time" class="form-control @error('program_end_time') is-invalid @enderror" value="{{ old('program_end_time') }}" placeholder="Enter Time" name="program_end_time">
                         <div class="form-control-icon">
                             <i class="fa-solid fa-hourglass-end"></i>
                         </div>
-                        @error('dot')
+                        @error('program_end_time')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -492,6 +499,25 @@
 
     </div>
 </div>
+
+<!-- JQuery to listen to the click event of the "To Be Announced" checkbox and hide/show the date and time fields container whether the checkbox is checked or not -->
+<script>
+    $(function() {
+        // get the checkbox element
+        var dcbeCheck = $('#dcbeCheck');
+        // get the date and time fields container
+        var dcbe = $('#dcbe');
+        
+        // toggle the visibility of the date and time fields container when the checkbox is clicked
+        dcbeCheck.on('click', function() {
+            if (dcbeCheck.is(':checked')) {
+                dcbe.hide();
+            } else {
+                dcbe.show();
+            }
+        });
+    });
+</script>
 
 <script>
     document.getElementById('Mgtstrat-U-Titles').addEventListener("change", titles);

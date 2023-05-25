@@ -22,13 +22,28 @@ class MgtstratWebinarsController extends Controller
      */
     public function index(Request $request)
     {
+        // $companyList = Client::orderBy('company_name')->get();
+        // $data = Workshop_information::with('client')->latest()->get();
+        // // if (Auth::guest()){
+        // //     return redirect()->route('/');
+        // // }
+        // $dataJoin1  = DB::table('workshop_informations')
+        //     ->join('workshop_fees', 'workshop_informations.workshop_id', '=', 'workshop_fees.workshop_id')
+        //     ->select('workshop_informations.*', 'workshop_fees.*')
+        //     ->get();
+        // $dataJoin2  = DB::table('workshop_informations')
+        //     ->join('workshop_costs', 'workshop_informations.workshop_id', '=', 'workshop_costs.workshop_id')
+        //     ->select('workshop_informations.*', 'workshop_costs.*')
+        //     ->get();
+        // return view('form.components.mgtstratu_workshops.index', compact('companyList', 'dataJoin1', 'dataJoin2', 'data'));
+
         return view('form.components.mgtstrat_webinars.index');
     }
 
     public function newRecord()
     {
         $companyList = Client::orderBy('company_name')->get();
-        return view('form.mgtstrat_webinars', compact('companyList'));
+        return view('form.components.mgtstrat_webinars.new_record.main', compact('companyList'));
     }
     
     public function store(Request $request)
@@ -122,7 +137,7 @@ class MgtstratWebinarsController extends Controller
 
             DB::commit();
             
-            return redirect()->route('form/mgtstratu_webinar/index')->with('success', 'Added Successfully!');
+            return redirect()->route('form/webinars/index')->with('success', 'Added Successfully!');
         
         } catch(\Exception $e){
             DB::rollback();
@@ -133,67 +148,4 @@ class MgtstratWebinarsController extends Controller
         
     }
 
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('form.components.mgtstrat_webinars.create');
-        // return View::make('form.components.mgtstrat_webinars.create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\MgtstratWebinars  $mgtstratWebinars
-     * @return \Illuminate\Http\Response
-     */
-    public function show(MgtstratWebinars $mgtstratWebinars)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\MgtstratWebinars  $mgtstratWebinars
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(MgtstratWebinars $mgtstratWebinars)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\MgtstratWebinars  $mgtstratWebinars
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, MgtstratWebinars $mgtstratWebinars)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\MgtstratWebinars  $mgtstratWebinars
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(MgtstratWebinars $mgtstratWebinars)
-    {
-        //
-    }
 }
