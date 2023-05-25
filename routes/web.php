@@ -13,6 +13,7 @@ use App\Http\Controllers\LockScreen;
 use App\Http\Controllers\CustomizedEngagementController;
 use App\Http\Controllers\ClientsController;
 use App\Http\Controllers\ConsultantFeesController;
+use App\Http\Controllers\MgtstratWebinarsController;
 
 
 /*
@@ -121,7 +122,7 @@ Auth::routes();
     Route::post('form/mgtstratu_workshops/save', [App\Http\Controllers\MgtstratUController::class, 'store'])->name('form/mgtstratu_workshops/save');
 
 // ----------------------------- MGTSTRAT WEBINARS WORKSHOPS ------------------------------//
-    Route::get('form/mgtstrat_webinars/index', [App\Http\Controllers\MgtstratWebinarsController::class, 'index'])->middleware('auth')->name('form/mgtstrat_webinars/index');
+    Route::resource('form/webinars', 'App\Http\Controllers\MgtstratWebinarsController');
     Route::post('form/mgtstrat_webinars/save', [App\Http\Controllers\MgtstratWebinarsController::class, 'store'])->name('form/mgtstrat_webinars/save');
 
 // ----------------------------- COACHING -----------------------//

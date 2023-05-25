@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\MgtstratWebinars;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -29,7 +28,7 @@ class MgtstratWebinarsController extends Controller
     public function newRecord()
     {
         $companyList = Client::orderBy('company_name')->get();
-        return view('form.mgtstratu_webinar', compact('companyList'));
+        return view('form.mgtstrat_webinars', compact('companyList'));
     }
     
     public function store(Request $request)
@@ -123,7 +122,7 @@ class MgtstratWebinarsController extends Controller
 
             DB::commit();
             
-            return redirect()->route('form/mgtstrat_webinars/index')->with('success', 'Added Successfully!');
+            return redirect()->route('form/mgtstratu_webinar/index')->with('success', 'Added Successfully!');
         
         } catch(\Exception $e){
             DB::rollback();
