@@ -5,7 +5,9 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="ConsultantFeesModalLabel">Create Consultant Fees</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="true">&times;
+
+                    </span>
                 </button>
             </div>
             {{-- <form> --}}
@@ -16,7 +18,7 @@
                     {{-- <div class="card-content"> --}}
                         <div class="modal-body">
                             <form method="POST" action="{{ url('form/consultant-fees') }}" class="form form-horizontal"
-                                enctype="multipart/form-data" autocomplete="off">
+                                enctype="multipart/form-data" autocomplete="off" id="createForm">
                                 @csrf
 
                                 <div class="form-group row justify-content-center">
@@ -33,18 +35,100 @@
                                     </div>
                                 </div>
 
+                                <div class="hr-sect text-secondary mb-3 mt-4"> <small><i>Hourly Rate</i></small> </div>
+
                                 <div class="form-group row justify-content-center">
                                     <label for="inputLeadFaci" class="col-md-3 col-form-label">Lead Facilitator</label>
                                     <div class="col-md-8">
-                                    <input type="number" class="form-control" id="" placeholder="" name="lead_faci">
+                                    <input type="text" data-type='currency' class="form-control" id="CFI1" placeholder="" name="lead_faci" oninput="computeConsultantFees();">
                                     </div>
                                     {{-- <div class="col-md-3"></div> --}}
                                 </div>
 
                                 <div class="form-group row justify-content-center">
-                                    <label for="inputCoLead" class="col-md-3 col-form-label">Co-Lead</label>
+                                    <label for="inputCoFaci" class="col-md-3 col-form-label">Co-Facilitator</label>
                                     <div class="col-md-8">
-                                    <input type="number" class="form-control" id="" placeholder=""  name="co_lead">
+                                    <input type="text" data-type='currency' class="form-control" id="CFI2" placeholder="" name="co_faci" disabled>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group row justify-content-center">
+                                    <label for="inputMarshal" class="col-md-3 col-form-label">Marshal</label>
+                                    <div class="col-md-8">
+                                    <input type="text" data-type='currency' class="form-control" id="CFI3" placeholder="" name="marshal" disabled>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group row justify-content-center">
+                                    <label for="inputLeadConsultant" class="col-md-3 col-form-label">Lead Consultant</label>
+                                    <div class="col-md-8">
+                                    <input type="text" data-type='currency' class="form-control" id="CFI4" placeholder="" name="lead_consultant" disabled>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group row justify-content-center">
+                                    <label for="inputConsulting" class="col-md-3 col-form-label">Consulting Support</label>
+                                    <div class="col-md-8">
+                                    <input type="text" data-type='currency' class="form-control" id="CFI5" placeholder="" name="consulting" disabled>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group row justify-content-center">
+                                    <label for="inputDesigner" class="col-md-3 col-form-label">Designer</label>
+                                    <div class="col-md-8">
+                                    <input type="text" data-type='currency' class="form-control" id="CFI6" placeholder="" name="designer" disabled>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group row justify-content-center">
+                                    <label for="inputModerator" class="col-md-3 col-form-label">Moderator</label>
+                                    <div class="col-md-8">
+                                        <div>
+                                            <label style="margin-right: 8px;
+                                            ">
+                                            <input type="radio" id="associate-level" name="mod_opt" value="Associate level" checked 
+                                            onclick="
+                                                (()=>{document.querySelector('#CFI7').value='800';
+                                                if(document.querySelector('#CFI1').value!='') {
+                                                    computeConsultantFees();
+                                                }
+                                            })()"> Associate level
+                                            </label>
+                                            <label style="margin-right: 8px;
+                                            ">
+                                            <input type="radio" id="consultant" name="mod_opt" value="Consultant" onclick="
+                                                (()=>{
+                                                    document.querySelector('#CFI7').value='1,100';
+                                                    if(document.querySelector('#CFI1').value!='') {
+                                                        computeConsultantFees();
+                                                    }
+                                            })()"> Consultant
+                                            </label>
+                                            <label class="radio-inline">
+                                            <input type="radio" id="sr-consultant" name="mod_opt" value="Sr. Consultant" onclick="
+                                                (()=>{
+                                                    document.querySelector('#CFI7').value='1,350';
+                                                    if(document.querySelector('#CFI1').value!='') {
+                                                        computeConsultantFees();
+                                                    }
+                                            })()"> Sr. Consultant
+                                            </label>
+                                        </div>
+                                        <input type="text" data-type='currency' class="form-control" id="CFI7" placeholder="" name="moderator" value="800" disabled>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group row justify-content-center">
+                                    <label for="inputProducer" class="col-md-3 col-form-label">Producer</label>
+                                    <div class="col-md-8">
+                                    <input type="text" data-type='currency' class="form-control" id="CFI10" placeholder="" name="producer" value="550" disabled>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row justify-content-center">
+                                    <label for="inputCoLead" class="col-md-3 col-form-label">Co-Lead Virtual</label>
+                                    <div class="col-md-8">
+                                    <input type="text" data-type='currency' class="form-control" id="CFI8" placeholder=""  name="co_lead" disabled>
                                     </div>
                                 </div>
 
@@ -52,54 +136,32 @@
                                 <div class="form-group row justify-content-center">
                                     <label for="inputCoLeadF2f" class="col-md-3 col-form-label">Co-Lead F2F</label>
                                     <div class="col-md-8">
-                                    <input type="number" class="form-control" id="" placeholder="" name="co_lead_f2f">
-                                    </div>
-                                </div>
-
-                                <div class="form-group row justify-content-center">
-                                    <label for="inputCoFaci" class="col-md-3 col-form-label">Co-Faci</label>
-                                    <div class="col-md-8">
-                                    <input type="number" class="form-control" id="" placeholder="" name="co_faci">
-                                    </div>
-                                </div>
-
-                                <div class="form-group row justify-content-center">
-                                    <label for="inputLeadConsultant" class="col-md-3 col-form-label">Lead Consultant</label>
-                                    <div class="col-md-8">
-                                    <input type="number" class="form-control" id="" placeholder="" name="lead_consultant">
-                                    </div>
-                                </div>
-
-                                <div class="form-group row justify-content-center">
-                                    <label for="inputConsulting" class="col-md-3 col-form-label">Consulting</label>
-                                    <div class="col-md-8">
-                                    <input type="number" class="form-control" id="" placeholder="" name="consulting">
-                                    </div>
-                                </div>
-
-                                <div class="form-group row justify-content-center">
-                                    <label for="inputDesigner" class="col-md-3 col-form-label">Designer</label>
-                                    <div class="col-md-8">
-                                    <input type="number" class="form-control" id="" placeholder="" name="designer">
-                                    </div>
-                                </div>
-
-                                <div class="form-group row justify-content-center">
-                                    <label for="inputModerator" class="col-md-3 col-form-label">Moderator</label>
-                                    <div class="col-md-8">
-                                    <input type="number" class="form-control" id="" placeholder="" name="moderator">
-                                    </div>
-                                </div>
-
-                                <div class="form-group row justify-content-center">
-                                    <label for="inputProducer" class="col-md-3 col-form-label">Producer</label>
-                                    <div class="col-md-8">
-                                    <input type="number" class="form-control" id="" placeholder="" name="producer">
+                                    <input type="text" data-type='currency' class="form-control" id="CFI9" placeholder="" name="co_lead_f2f" disabled>
                                     </div>
                                 </div>
 
                                 <div class="modal-footer">
-                                    <button type="submit" class="btn btn-primary">Save</button>
+                                    <button type="button" class="btn btn-primary" onclick="(()=>{
+                                        document.querySelector('#CFI2').disabled=false;
+                                        document.querySelector('#CFI3').disabled=false;
+                                        document.querySelector('#CFI4').disabled=false;
+                                        document.querySelector('#CFI5').disabled=false;
+                                        document.querySelector('#CFI6').disabled=false;
+                                        document.querySelector('#CFI7').disabled=false;
+                                        document.querySelector('#CFI10').disabled=false;
+                                        document.querySelector('#CFI8').disabled=false;
+                                        document.querySelector('#CFI9').disabled=false;
+                                        document.querySelector('#createForm').submit();
+                                        document.querySelector('#CFI2').disabled=true;
+                                        document.querySelector('#CFI3').disabled=true;
+                                        document.querySelector('#CFI4').disabled=true;
+                                        document.querySelector('#CFI5').disabled=true;
+                                        document.querySelector('#CFI6').disabled=true;
+                                        document.querySelector('#CFI7').disabled=true;
+                                        document.querySelector('#CFI10').disabled=true;
+                                        document.querySelector('#CFI8').disabled=true;
+                                        document.querySelector('#CFI9').disabled=true;
+                                    })()">Submit</button>
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 </div>
 
@@ -124,5 +186,6 @@
             placeholder: 'Enter Client',
             tags: true,
         });
+
     });
 </script>

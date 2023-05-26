@@ -12,9 +12,6 @@ $("input[data-type='currency']").on({
 $("input[data-type='currencyTotal']").on({
     keyup: function() {
       formatCurrencyTotal($(this));
-    },
-    blur: function() {
-      formatCurrencyTotal($(this), "blur");
     }
 });
 

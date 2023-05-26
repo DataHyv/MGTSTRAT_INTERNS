@@ -101,11 +101,17 @@ Auth::routes();
 
     Route::post('save', [CustomizedEngagementController::class, 'store'])->name('save');
     Route::put('update', [CustomizedEngagementController::class, 'ceUpdateRecord','ceAddDeleteRecord'])->middleware('auth')->name('update');
-    Route::post('deleteRecord', [CustomizedEngagementController::class, 'viewDelete'])->middleware('auth')->name('deleteRecord');
+    // Route::post('deleteRecord', [CustomizedEngagementController::class, 'viewDelete'])->middleware('auth')->name('deleteRecord');
+    Route::post('/viewDelete', [CustomizedEngagementController::class, 'viewDelete'])->middleware('auth')->name('customized_deleteRecord');
     Route::post('delete',[CustomizedEngagementController::class, 'deleteRow'])->name('delete');
 
+    Route::put('/ce_UpdateRecord', [CustomizedEngagementController::class, 'ce_UpdateRecord'])->middleware('auth')->name('update_custom_eng');
+    Route::get('/modify-sessions/{id}', [CustomizedEngagementController::class, 'modify_all_session'])->name('modify-sessions/{id}');
+    Route::post('/save-modify-session', [CustomizedEngagementController::class, 'save_modified_sessions'])->name('savebatchsessions');
+    // Route::get('/save-modify-session', [CustomizedEngagementController::class, 'save_modified_sessions'])->name('savebatchsessions');
+
     //-------SUB FEE-------//
-    // Route::get('form/customizedEngagement/sub-fee', [CustomizedEngagementController::class, 'formSubFee'])->middleware('auth')->name('form/customizedEngagement/sub-fee');
+    Route::get('form/customizedEngagement/sub-fee', [CustomizedEngagementController::class, 'formSubFee'])->middleware('auth')->name('form/customizedEngagement/sub-fee');
     Route::get('form/customizedEngagement/sub-fee', [CustomizedEngagementController::class, 'addBatch'])->middleware('auth')->name('form/customizedEngagement/sub-fee');
     Route::get('form/customizedEngagement/sub-fee/{id}', [CustomizedEngagementController::class, 'editSubForm'])->middleware('auth')->name('form/customizedEngagement/sub-fee/{id}');
 
@@ -141,3 +147,6 @@ Auth::routes();
 
 // ----------------------------- Client Management -----------------------//
 Route::resource('consultant-fees', 'App\Http\Controllers\ConsultantFeesController');
+Route::post('form/consultant-fees', [App\Http\Controllers\ConsultantFeesController::class, 'store'])->name('form/consultant-fees');
+Route::post('form/consultant-fees/update', [App\Http\Controllers\ConsultantFeesController::class, 'updateConsultantFees'])->name('form/consultant-fees/update');
+Route::get('deleteConsultantFees/{id}', [App\Http\Controllers\ConsultantFeesController::class, 'deleteConsultantFees'])->middleware('auth');

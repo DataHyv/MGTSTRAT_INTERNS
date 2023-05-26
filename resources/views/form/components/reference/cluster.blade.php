@@ -1,7 +1,8 @@
 {{-- <div class="form-group row justify-content-center clusterRows" id="clusterRows"> --}}
     <div class="col-lg-3 col-md-3 listed" id="listed1">
         <div class="form-group has-icon-left">
-            <label class="fw-bold required">Cluster</label>
+            <!-- <label class="fw-bold required">Cluster</label> -->
+            <label class="fw-bold">Cluster</label>
             <div class="position-relative">
                 @if(Route::is('form/customizedEngagement/new') || Route::is('form/f2f_engagement/new'))
                 <fieldset class="form-group">
@@ -920,7 +921,8 @@
 
     <div class="col-lg-2 col-md-2">
         <div class="form-group has-icon-left">
-            <label class="fw-bold required">Core Area</label>
+            <!-- <label class="fw-bold required">Core Area</label> -->
+            <label class="fw-bold">Core Area</label>
             <div class="position-relative">
                 @if(Route::is('form/customizedEngagement/new') || Route::is('form/f2f_engagement/new'))
                     <fieldset class="form-group">

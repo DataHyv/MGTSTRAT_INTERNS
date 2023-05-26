@@ -64,14 +64,14 @@
                                 <th class="text-center text-uppercase">#</th>
                                 <th class="text-center">Full Name</th>
                                 {{-- <th class="text-center">Lead Facilitator</th>
-                                <th class="text-center">Co-lead</th>
-                                <th class="text-center">Co-lead f2f</th>
                                 <th class="text-center">Co-facilitator</th>
                                 <th class="text-center">Lead Consultant</th>
                                 <th class="text-center">Consulting</th>
                                 <th class="text-center">Designer</th>
                                 <th class="text-center">Moderator</th>
-                                <th class="text-center">Producer</th> --}}
+                                <th class="text-center">Producer</th>
+                                <th class="text-center">Co-lead</th>
+                                <th class="text-center">Co-lead f2f</th> --}}
                                 <th class="text-center">Date Added</th>
                                 <th class="text-center text-uppercase">Modify</th>
                             </tr>
@@ -88,13 +88,10 @@
                                         {{$data->lead_faci}}
                                     </td>
                                     <td class="text-center">
-                                        {{$data->co_lead}}
-                                    </td>
-                                    <td class="text-center">
-                                        {{$data->co_lead_f2f}}
-                                    </td>
-                                    <td class="text-center">
                                         {{$data->co_faci}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{$data->marshal}}
                                     </td>
                                     <td class="text-center">
                                         {{$data->lead_consultant}}
@@ -110,6 +107,12 @@
                                     </td>
                                     <td class="text-center">
                                         {{$data->producer}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{$data->co_lead}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{$data->co_lead_f2f}}
                                     </td> --}}
 
                                     <td class="text-center">
@@ -117,11 +120,36 @@
                                     </td>
                                     <td class="text-center">
                                         {{-- <a href="{{ url('form/consultant-fees/'.$data->id.'/edit') }}" > --}}
-                                        <a href="#editModal"  data-toggle="modal" data-target="#editModal" >
+                                        <a href="#editModal"  data-toggle="modal" data-target="#editModal" onclick="
+                                        (()=>{
+                                            document.querySelector('#EFI0').value='{{$data->id}}';
+                                            document.querySelector('#EFI1').value='{{$data->first_name}}';
+                                            document.querySelector('#EFI2').value='{{$data->last_name}}';
+                                            document.querySelector('#EFI3').value='{{$data->lead_faci}}';
+                                            document.querySelector('#EFI4').value='{{$data->co_lead}}';
+                                            document.querySelector('#EFI5').value='{{$data->co_lead_f2f}}';
+                                            document.querySelector('#EFI6').value='{{$data->co_faci}}';
+                                            document.querySelector('#EFI7').value='{{$data->lead_consultant}}';
+                                            document.querySelector('#EFI8').value='{{$data->consulting}}';
+                                            document.querySelector('#EFI9').value='{{$data->designer}}';
+                                            document.querySelector('#EFI10').value='{{$data->moderator}}';
+                                            document.querySelector('#EFI11').value='{{$data->producer}}';
+                                            document.querySelector('#EFI12').value='{{$data->marshal}}';
+                                            document.getElementById('associatelevel').checked = false;
+                                            document.getElementById('consultant').checked = false;
+                                            document.getElementById('srconsultant').checked = false;
+                                            if ('{{$data->mod_opt}}' == 'Associate level') {
+                                                document.getElementById('associatelevel').checked = true;
+                                            } else if ('{{$data->mod_opt}}' == 'Consultant') {
+                                                document.getElementById('consultant_update').checked = true;
+                                            } else if ('{{$data->mod_opt}}' == 'Sr. Consultant') {
+                                                document.getElementById('srconsultant').checked = true;
+                                            }
+                                        })()" >
                                             <span class="badge bg-success"><i class="bi bi-pencil-square"></i></span>
                                         </a>
 
-                                        <a href="#"
+                                        <a href="{{ url('deleteConsultantFees/' . $data->id) }}"
                                             onclick="return confirm('Are you sure to want to delete it?')"><span
                                                 class="badge bg-danger"><i class="bi bi-trash"></i></span>
                                         </a>
@@ -169,6 +197,42 @@
                 ],
             } );
         } );
+        function computeConsultantFees() {
+            document.querySelector('#CFI2').value = Math.round((Number($('#CFI1').val().replace(/,/g, ""))*0.6).toString());
+            document.querySelector('#CFI3').value = Math.round((Number($('#CFI1').val().replace(/,/g, ""))*0.4).toString());
+            document.querySelector('#CFI4').value = Math.round((Number($('#CFI1').val().replace(/,/g, ""))*0.85).toString());
+            document.querySelector('#CFI5').value = Math.round((Number($('#CFI1').val().replace(/,/g, ""))*0.75).toString());
+            document.querySelector('#CFI6').value = Math.round((Number($('#CFI1').val().replace(/,/g, ""))*0.75).toString());
+            document.querySelector('#CFI8').value = Math.round(
+                                                        ( 
+                                                            // ( Number(document.querySelector('#CFI1').value) * 0.725 ) + 
+                                                            (Number( $('#CFI1').val().replace(/,/g, "")) + Number($('#CFI7').val().replace(/,/g, ""))) / 2
+                                                        ).toString());
+            document.querySelector('#CFI9').value = Math.round((
+                                                                // Number(document.querySelector('#CFI1').value)*1.325
+                                                                (Number($('#CFI1').val().replace(/,/g, "")) + Number($('#CFI2').val().replace(/,/g, ""))) / 2
+                                                            ).toString());
+            $("input[data-type='currency']").keyup();
+        }
+
+        function computeConsultantFees_update() {
+            document.querySelector('#EFI6').value = Math.round((Number ($('#EFI3').val().replace(/,/g, ""))*0.6).toString());
+            document.querySelector('#EFI12').value = Math.round((Number($('#EFI3').val().replace(/,/g, ""))*0.4).toString());
+            document.querySelector('#EFI7').value = Math.round((Number ($('#EFI3').val().replace(/,/g, ""))*0.85).toString());
+            document.querySelector('#EFI8').value = Math.round((Number ($('#EFI3').val().replace(/,/g, ""))*0.75).toString());
+            document.querySelector('#EFI9').value = Math.round((Number ($('#EFI3').val().replace(/,/g, ""))*0.75).toString());
+            document.querySelector('#EFI4').value = 
+                Math.round((
+                    (( Number($('#EFI3').val().replace(/,/g, "")) ) + 
+                    Number($('#EFI10').val().replace(/,/g, ""))) /2
+                ).toString());
+            document.querySelector('#EFI5').value = 
+                Math.round((
+                    (Number($('#EFI3').val().replace(/,/g, "")) + 
+                    Number( $('#EFI6').val().replace(/,/g, ""))) / 2
+                ).toString());
+                $("input[data-type='currency']").keyup();
+        }
     </script>
     @endsection
 @endsection

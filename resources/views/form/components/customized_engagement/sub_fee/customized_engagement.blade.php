@@ -31,11 +31,40 @@
             </div>
         </div>
 
+        <div class="card m-0">
+            <div class="card-body">
+                <div class="alert alert-light" role="alert" style="border-left: 3px solid #818182;">
+                    <div class="form-group row m-0">
+                        <div class="col-lg-6 col-md-6"> 
+                            <span style="font-size:10pt">Customized Type</span>
+                            <h5 id="custType">{{ $cstm_eng_data[0]->customized_type }}</h5>
+
+                            <span style="font-size:10pt">Client</span>
+                            <h5 id="clientName">{{$getClient[0]->company_name }}</h5>
+                            
+                            <span style="font-size:10pt">Engagement Title</span>
+                            <h5 id="engType">{{ $cstm_eng_data[0]->engagement_title }}</h5>
+                        </div>
+                        <div class="col-lg-6 col-md-6"> 
+                            <span style="font-size:10pt">Number of Pax</span>
+                            <h5 id="paxhNo">{{ $cstm_eng_data[0]->pax_number }}</h5>
+                            
+                            <span style="font-size:10pt">Batch Number</span>
+                            <h5 id="batchNo">{{$data->batch_number}}</h5>
+                            
+                            <span style="font-size:10pt">Session Number</span>
+                            <h5 id="sessionNo">{{$data->session_number}}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+
         {{-- message --}}
         {!! Toastr::message() !!}
 
         <!-- PROGRESS BAR -->
-        <div class="multisteps-form">
+        <div class="multisteps-form mt-5">
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-8 ml-auto mr-auto mb-4">
                     <div class="multisteps-form__progress">
@@ -71,6 +100,7 @@
                                     <input class="form-control" type="hidden" id="id" name="id" value="{{$data->id}}">
                                     <input class="form-control" type="hidden" id="id" name="batch_name" value="{{$data->batch_number}}">
                                     <input class="form-control" type="hidden" id="id" name="session_number" value="{{$data->session_number}}">
+                                    <input class="form-control" type="hidden" id="customized_type" name="customized_type" value="{{$cstm_eng_data[0]->customized_type}}">
                                     {{-- <input class="form-control" type="hidden" id="sub_informations_id" name="sub_informations_id" value="{{$data2->sub_informations_id}}"> --}}
 
                                     <!------------ ENGAGEMENT FEES ------------>
@@ -93,8 +123,7 @@
                                         {{-- next and prev button --}}
                                         <div class="button-row d-flex justify-content-center mt-3">
                                             <button class="btn btn-secondary mx-2 js-btn-prev" type="button" title="Prev">Prev</button>
-                                            <button class="btn btn-success mx-2 js-btn-next submit" type="submit" title="Submit" sub-id="{{$data->id}}">Submit</button>
-                                            {{-- <button class="btn btn-primary mx-2 js-btn-next" type="button" title="Next">Next</button> --}}
+                                            <button class="btn btn-success mx-2 js-btn-next submit" type="submit" title="Submit" sub-id="{{$data->id}}">Save</button>
                                         </div>
 
                                     </div>
@@ -228,11 +257,19 @@
 
     <script type="text/javascript" src="/js/ceform.js"></script>
     {{-- <script type="text/javascript" src="/js/ceFormUpdate.js"></script> --}}
-    <script type="text/javascript" src="/js/roster.js"></script>
+    <!-- <script type="text/javascript" src="/js/roster.js"></script> -->
     {{-- <script type="text/javascript" src="/js/ceFormAdd.js"></script> --}}
     <script type="text/javascript" src="/js/MultiStep.js"></script>
     <script type="text/javascript" src="/js/currencyFormat.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.full.min.js" integrity="sha512-RtZU3AyMVArmHLiW0suEZ9McadTdegwbgtiQl5Qqo9kunkVg1ofwueXD8/8wv3Af8jkME3DDe3yLfR8HSJfT2g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-@endsection
+
+    <script>
+        $(document).ready(function() {
+            $('h4.lead, h5.lead').addClass('text-danger');
+            // $('input[name="cost_rooster[]"][id=""]').addClass('d-none');
+            $('tr input[name="cost_rooster[]"][id!=""]').addClass('table-warning');
+        });
+    </script>
+    @endsection

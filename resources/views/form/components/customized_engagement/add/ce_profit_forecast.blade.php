@@ -1,15 +1,25 @@
 <!------------ CARD HEADER ------------>
 <div class="card-header">
-    <h4 class="card-title">Profit Forecast</h4>
+    <h4 class="card-title"  style="display: inline;">Profit Forecast</h4>
+    <div style="float:right">
+        <button class="btn btn-secondary mx-0 js-btn-prev" type="button" title="Prev">Prev</button>
+        @if($data)                                                    
+            @if($data->cstmzd_eng_form_id)
+                <button class="btn btn-success mx-0 js-btn-next" type="submit" title="Submit">Save</button>
+            @endif
+        @else
+                <button class="btn btn-success mx-0 js-btn-next" type="submit" title="Submit">Submit</button>
+        @endif
+    </div>
 </div>
 <!------------ END CARD HEADER ------------>
 
 <!------------ FORM BODY ------------>
-    <div class="form-body container">
+    <div class="form-body">
         <section>
             <div class="table-responsive-md" id="no-more-tables">
                 <table class="table table-bordered table-hover">
-                    <tbody>
+                    <tbody class="th-blue-grey-lighten-2">
                         {{-- PROFIT --}}
                         <tr>
                             <td class="profit-forecast-start text-dark" scope="col" width=20%>
@@ -20,7 +30,7 @@
                             <td class="profit-forecast-middle" scope="col"></td>
                             <td class="profit-forecast-middle" scope="col" width=10%></td>
                             <td class="profit-forecast-middle text-center" scope="col" width=15%>
-                                <h5 id="Profit">-</h5>
+                                <h5 id="Profit" class="text-danger">-</h5>
                             </td>
                             <td class="profit-forecast-end" scope="col" width=15%></td>
                         </tr>
@@ -30,17 +40,10 @@
                             <td class="profit-forecast-start text-dark" scope="col" width=20%>
                                 <h6>LESS: CONTRIBUTION TO OVERHEAD</h6>
                             </td>
-                            <td class="profit-forecast-middle" scope="col" width=14%>
+                            <td class="profit-forecast-middle table-danger" scope="col" width=14%>
                                 <fieldset>
-                                    <select class="input js-mytooltip form-select @error('') is-invalid @enderror" name="" id="LessCTO_NOC"
-                                        data-mytooltip-content="<i>
-                                            35% Standard, <br>
-                                            15% for NGO's 
-                                            </i>"
-                                        data-mytooltip-theme="dark"
-                                        data-mytooltip-action="focus" 
-                                        data-mytooltip-direction="right"
-                                        style="background-color:#ffcccc; color:red;">
+                                    <select class="input js-mytooltip form-select @error('') is-invalid @enderror" 
+                                    name="lesscto_noc" id="lesscto_noc" style="background-color:#ffcccc; color:red;">
                                         <option value="35" {{ old('') == '35' ? 'selected="selected"' : '' }} selected>
                                             35%
                                         </option>
@@ -59,7 +62,7 @@
                             <td class="profit-forecast-middle" scope="col"></td>
                             <td class="profit-forecast-middle" scope="col" width=10%></td>
                             <td class="profit-forecast-middle text-center" scope="col" width=15%>
-                                <h5 id="LessContributionToOverhead">-</h5>
+                                <h5 id="LessContributionToOverhead" class="text-danger">-</h5>
                             </td>
                             <td class="profit-forecast-end" scope="col" width=15%></td>
                         </tr>
@@ -74,7 +77,7 @@
                             <td class="profit-forecast-middle" scope="col"></td>
                             <td class="profit-forecast-middle" scope="col"width=10%></td>
                             <td class="profit-forecast-middle text-center" scope="col" width=15%>
-                                <h5 id="NetProfit">-</h5>
+                                <h5 id="NetProfit" class="text-danger">-</h5>
                             </td>
                             <td class="profit-forecast-end" scope="col" width=15%></td>
                         </tr>
@@ -88,8 +91,8 @@
                             <td class="profit-forecast-middle" scope="col" width=15%></td>
                             <td class="profit-forecast-middle" scope="col"></td>
                             <td class="profit-forecast-middle" scope="col"width=10%></td>
-                            <td class="profit-forecast-middle text-center" scope="col" width=15%>
-                                <h5 id="ProfitMargin">-</h5>
+                            <td class="profit-forecast-middle text-center mgt-td-dark-bg table-success" scope="col" width=15% id="profitMargin-td">
+                                <h5 id="ProfitMargin" class="text-danger">-</h5>
                             </td>
                             <td class="profit-forecast-end" scope="col" width=15%></td>
                         </tr>
@@ -104,6 +107,14 @@
     $('input[type="number"]').on('input', function () {
         this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null
     });
-
     $('input[type="number"]').attr('min', '0');
 </script>
+@if($data)
+    @if($data->cstmzd_eng_form_id)
+        <script>
+            $(document).ready( function () {
+                document.getElementById('lesscto_noc').value = '{{ $data->less_contri_to_overhead }}';
+            } );
+        </script>
+    @endif
+@endif

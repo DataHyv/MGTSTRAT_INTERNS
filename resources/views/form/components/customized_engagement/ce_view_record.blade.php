@@ -151,7 +151,8 @@
                                                                     <b>{{$item->engagement_title}}</b>?
                                                                 </h4>
                                                             </div>
-                                                            <form action="{{ route('deleteRecord') }}" method="POST">
+                                                            <!-- <form action="{{-- route('deleteRecord') --}}" method="POST"> -->
+                                                            <form action="{{ route('customized_deleteRecord') }}" method="POST">
                                                                 @csrf
                                                                 <input type="hidden" name="id" class="e_id" value="">
                                                                 <input type="hidden" name="cstmzd_eng_form_id" class="budget_number" value="">
@@ -255,7 +256,10 @@
                                                             </table>
                                                         </div>
 
-                                                        <div class="modal-footer">
+                                                        <div class="modal-footer">                                                           
+                                                            <a href="{{ url('modify-sessions/' . $item->id) }}" class="btn btn-success active" role="button">
+                                                                Modify All <i class="bi bi-pencil-square"></i>
+                                                            </a>
                                                             <button type="button" class="btn btn-secondary modal-close" data-dismiss="modal">Close</button>
                                                         </div>
 

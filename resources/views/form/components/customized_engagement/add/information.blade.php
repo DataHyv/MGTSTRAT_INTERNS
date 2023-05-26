@@ -1,6 +1,16 @@
 <!------------ CARD HEADER ------------>
     <div class="card-header">
-        <h4 class="card-title">Information</h4>
+        <h4 class="card-title" style="display: inline;">Information</h4>
+        <div style="float:right">
+            <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
+            @if($data)                                                    
+                @if($data->cstmzd_eng_form_id)
+                    <button class="btn btn-success mx-0 js-btn-next" type="submit" title="Submit">Save</button>
+                @endif
+            @else
+                    <button class="btn btn-success mx-0 js-btn-next" type="submit" title="Submit">Submit</button>
+            @endif
+        </div>
     </div>
 <!------------ END CARD HEADER ------------>
 
@@ -88,11 +98,11 @@
                     <select class="input js-mytooltip form-select @error('status') is-invalid @enderror"
                         name="status" id="status" value="{{ old('status') }}" data-mytooltip-content="<i>Please Choose Status</i>"
                         data-mytooltip-theme="dark" data-mytooltip-action="focus" data-mytooltip-direction="right">
-                        <option value="Trial" {{ old('status') == 'Trial' ? 'selected="selected"' : '' }}>
-                            Trial
-                        </option>
                         <option value="Confirmed" {{ old('status') == 'Confirmed' ? 'selected="selected"' : '' }} selected>
                             Confirmed
+                        </option>
+                        <option value="Trial" {{ old('status') == 'Trial' ? 'selected="selected"' : '' }}>
+                            Trial
                         </option>
                         <option value="In-progress" {{ old('status') == 'In-progress' ? 'selected="selected"' : '' }}>
                             In-progress
@@ -142,7 +152,7 @@
                     <div class="form-group has-icon-left">
                         <div class="position-relative">
                             <select class="input js-mytooltip form-select customized-type @error('') is-invalid @enderror"
-                                name="customized_type" id="" value="{{ old('customized_type') }}" data-mytooltip-content="<i>
+                                name="customized_type" id="customized_type" value="{{ old('customized_type') }}" data-mytooltip-content="<i>
                                     Please Choose
                                     </i>"
                                 data-mytooltip-theme="dark"
@@ -291,7 +301,7 @@
         <!------------ END ------------>
 
         <!------------ NUMBER OF BATCHES AND SESSION ------------>
-            <div class="form-group row">
+            <div class="form-group row" id="strt_batchNumber">
                 <div class="col-md-2">
                     <label class="fw-bold required">Start of Batch Number </label>
                 </div>
@@ -300,7 +310,7 @@
                     <div class="form-group has-icon-left">
                         <div class="position-relative">
                             <input type="number" class="form-control @error('start_batch_number') is-invalid @enderror"
-                                value="{{ old('start_batch_number') }}" name="start_batch_number" id="BatchNumber" placeholder="Enter # of Batches" min="0"
+                                value="{{ old('start_batch_number') }}" name="start_batch_number" id="str_BatchNumber" placeholder="Enter # of Batches" min="0"
                                 oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null">
                             <div class="form-control-icon">
                                 <i class="fa-regular fa-calendar-days"></i>
@@ -451,6 +461,27 @@
 
     </div>
 <!------------ END OF FORM BODY ------------>
+@if($data)
+    @if($data->cstmzd_eng_form_id)
+        <script>
+            $(document).ready( function () {
+                document.getElementById('status').value = '{{ $data->status }}';
+                document.getElementById('customized_type').value = '{{ $data->customized_type }}';
+                document.getElementById('ga-only-dropdown').value = '{{ $data->ga_percent}}';
+                document.getElementById('client_id').value = '{{ $data->client_id}}';
+                document.getElementById('engagement_title').value = '{{ $data->engagement_title}}';
+                document.getElementById('pax_number').value = '{{ $data->pax_number}}';
+                document.getElementById('BatchNumber').value = '{{ $data->batch_number}}';
+                document.getElementById('SessionNumber').value = '{{ $data->session_number}}';
+
+                document.getElementById('strt_batchNumber').style.display = 'none';
+                document.getElementById('BatchNumber').readOnly = true;
+                document.getElementById('SessionNumber').readOnly = true;
+            } );
+        </script>
+    @endif
+@endif
+
 <script>
     //DYNAMIC BATCH
     $(document).ready(function() {

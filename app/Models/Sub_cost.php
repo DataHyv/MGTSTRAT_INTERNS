@@ -17,6 +17,7 @@ class Sub_cost extends Model
         'hour_num',
         'nswh',
         'rooster',
+        'consultant_id',
         'notes',
     ];
 

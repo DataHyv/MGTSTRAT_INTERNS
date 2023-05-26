@@ -20,6 +20,10 @@
     padding-left: 2.5rem;
 }
 
+.mgt-td-dark-bg {
+    background-color: rgba(146, 146, 146, 0.727) !important;
+}
+
 .form-group[class*=has-icon-] .form-control-icon {
 position: absolute;
 top: 5%;
@@ -423,4 +427,40 @@ display:block;
 }
 .modal .card {
 	box-shadow: unset;
+}
+
+.hr-sect {
+    display: flex;
+    flex-basis: 100%;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.35);
+    margin: 8px 0px;
+}
+.hr-sect:before,
+.hr-sect:after {
+    content: "";
+    flex-grow: 1;
+    background: rgba(0, 0, 0, 0.35);
+    height: 1px;
+    font-size: 0px;
+    line-height: 0px;
+    margin: 0px 8px;
+}
+
+#batchSession {
+position: sticky;
+left: 0;
+z-index: 2;
+background-color: #cfd8dc;
+}
+
+table#ec_tableEngagementBatchSession tbody tr td:first-child {
+position: sticky;
+left: 0;
+z-index: 5;
+background-color: #eceff1;
+}
+
+.text-link:hover {
+    text-decoration: underline;
 }

@@ -59,12 +59,29 @@
                         <div class="card-body">
 
                             <!------------ BUDGET FORM ------------>
-                                <form class="form form-horizontal multisteps-form__form" action="{{ route('save') }}"
-                                    method="POST" autocomplete="off" onsubmit="submitForm(event)">
-                                    @csrf
+                                @if($data)                                                    
+                                    @if($data->cstmzd_eng_form_id)
+                                        <form class="form form-horizontal multisteps-form__form" 
+                                        action="{{ route('update_custom_eng') }}"
+                                        method="POST" autocomplete="off" onsubmit="submitForm(event)">     
+                                    @endif
+                                @else
+                                   <form class="form form-horizontal multisteps-form__form" 
+                                    action="{{ route('save') }}"
+                                    method="POST" autocomplete="off" onsubmit="submitForm(event)">  
+                                @endif
+                                    @csrf 
 
+                                    @if($data)                                                    
+                                        @if($data->cstmzd_eng_form_id)
+                                        @method('PUT')
+                                        <input class="form-control" type="hidden" id="id" name="id" value="{{$data->id}}"> 
+                                        <input class="form-control" type="hidden" id="cstmzd_eng_form_id" name="cstmzd_eng_form_id" value="{{$data->cstmzd_eng_form_id}}">
+                                        @endif
+                                    @endif
+                                    
                                     <!------------ INFORMATION ------------>
-                                        <div class="multisteps-form__panel js-active" data-animation="slideHorz">
+                                        <div class="multisteps-form__panel js-active" data-animation="slideHorz" id="customized_engagement_info_tab">    
                                             @include('form.components.customized_engagement.add.information')
                                             {{-- next button --}}
                                             <div class="col-12 d-flex justify-content-center mt-3">
@@ -73,7 +90,7 @@
                                         </div>
 
                                     <!------------ ENGAGEMENT FEES ------------>
-                                        <div class="multisteps-form__panel" data-animation="slideHorz">
+                                        <div class="multisteps-form__panel" data-animation="slideHorz" id="customized_engagement_fees_tab">
                                             @include('form.components.customized_engagement.add.engagement_fees')
                                             {{-- next and prev button --}}
                                             <div class="button-row d-flex justify-content-center mt-3">
@@ -83,7 +100,7 @@
                                         </div>
 
                                     <!------------ ENGAGEMENT COST ------------>
-                                        <div class="multisteps-form__panel" data-animation="slideHorz">
+                                        <div class="multisteps-form__panel" data-animation="slideHorz" id="customized_engagement_cost_tab">
                                             @include('form.components.customized_engagement.add.engagement_cost')
                                             {{-- next and prev button --}}
                                             <div class="col-12 d-flex justify-content-center mt-3">
@@ -93,12 +110,18 @@
                                         </div>
 
                                     <!------------ PROFIT FORECAST ------------>
-                                        <div class="multisteps-form__panel" data-animation="slideHorz">
+                                        <div class="multisteps-form__panel" data-animation="slideHorz" id="customized_engagement_profitForecast_tab">
                                             @include('form.components.customized_engagement.add.ce_profit_forecast')
                                             {{-- prev and submit button --}}
                                             <div class="col-12 d-flex justify-content-center mt-3">
                                                 <button class="btn btn-secondary mx-2 js-btn-prev" type="button" title="Prev">Prev</button>
-                                                <button class="btn btn-success mx-2 js-btn-next" type="submit" title="Submit">Submit</button>
+                                                @if($data)                                                    
+                                                    @if($data->cstmzd_eng_form_id)
+                                                        <button class="btn btn-success mx-2 js-btn-next" type="submit" title="Submit">Save</button>
+                                                    @endif
+                                                @else
+                                                        <button class="btn btn-success mx-2 js-btn-next" type="submit" title="Submit">Submit</button>
+                                                @endif
                                             </div>
                                         </div>
                                 </form>
@@ -139,6 +162,7 @@
             document.getElementById("ef_Totalpackage").defaultValue = '0';
         });
     </script>
+    <!-- <script type="text/javascript" src="/js/engagement_show_roster.js"></script> -->
     <script type="text/javascript" src="/js/ceform.js"></script>
     <script type="text/javascript" src="/js/ceFormAdd.js"></script>
     <script type="text/javascript" src="/js/MultiStep.js"></script>

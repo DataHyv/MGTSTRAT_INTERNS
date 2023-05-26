@@ -21,5 +21,7 @@ class Consultantfee extends Model
         'designer',
         'moderator',
         'producer',
+        'marshal',
+        'mod_opt',
     ];
 }

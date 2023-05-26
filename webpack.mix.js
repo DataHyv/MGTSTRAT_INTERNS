@@ -22,6 +22,7 @@ mix.js("resources/js/app.js", "public/js")
     .js("resources/js/components/roster.js", "public/js")
     .js("resources/js/workshop.js", "public/js")
     .js("resources/js/workshop-update.js", "public/js")
+    .js("resources/js/engagement_show_roster.js", "public/js")
     .vue()
     .sass("resources/sass/app.scss", "public/css")
     .postCss("resources/css/custom.css", "public/css");
