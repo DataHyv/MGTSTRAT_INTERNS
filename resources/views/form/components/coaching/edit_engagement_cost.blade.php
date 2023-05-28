@@ -60,19 +60,19 @@
                                         data-mytooltip-action="focus"
                                         data-mytooltip-direction="bottom"
                                         style="background-color:#ffcccc; color:red;">
-                                        <option value="0" {{ old('') == '0' ? 'selected="selected"' : '' }} selected>
+                                        <option value="0" {{ $coachings->s_session_fees == '0' ? 'selected="selected"' : '' }} selected>
                                             0%
                                         </option>
-                                        <option value="4" {{ old('') == '4' ? 'selected="selected"' : '' }} >
+                                        <option value="4" {{ $coachings->s_session_fees == '4' ? 'selected="selected"' : '' }} >
                                             4%
                                         </option>
-                                        <option value="5" {{ old('') == '5' ? 'selected="selected"' : '' }} >
+                                        <option value="5" {{ $coachings->s_session_fees == '5' ? 'selected="selected"' : '' }} >
                                             5%
                                         </option>
-                                        <option value="6" {{ old('') == '6' ? 'selected="selected"' : '' }} >
+                                        <option value="6" {{ $coachings->s_session_fees == '6' ? 'selected="selected"' : '' }} >
                                             6%
                                         </option>
-                                        <option value="7" {{ old('') == '7' ? 'selected="selected"' : '' }} >
+                                        <option value="7" {{ $coachings->s_session_fees == '7' ? 'selected="selected"' : '' }} >
                                             7%
                                         </option>
                                     </select>
@@ -95,7 +95,7 @@
                             </td>
                             <td class="total-td">
                                 <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="s_roster" id="">
+                                    value="{{ $coachings->s_roster }}" name="s_roster" id="">
                             </td>
                             <td style="background-color: #FFFFFF;" class="border border-white"><a href="javascript:void(0)"
                                 class="text-success font-18" title="Add" id="addBtn1"><i class="fa fa-plus"></i></a>
@@ -124,13 +124,13 @@
                                         data-mytooltip-action="focus"
                                         data-mytooltip-direction="bottom"
                                         style="background-color:#ffcccc; color:red;">
-                                        <option value="0" {{ old('') == '0' ? 'selected="selected"' : '' }} selected>
+                                        <option value="0" {{ $coachings->r_session_fees == '0' ? 'selected="selected"' : '' }} selected>
                                             0%
                                         </option>
-                                        <option value="2" {{ old('') == '2' ? 'selected="selected"' : '' }} >
+                                        <option value="2" {{ $coachings->r_session_fees == '2' ? 'selected="selected"' : '' }} >
                                             2%
                                         </option>
-                                        <option value="3" {{ old('') == '3' ? 'selected="selected"' : '' }} >
+                                        <option value="3" {{ $coachings->r_session_fees == '3' ? 'selected="selected"' : '' }} >
                                             3%
                                         </option>
                                     </select>
@@ -153,7 +153,7 @@
                             </td>
                             <td class="total-td">
                                 <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}"name="r_roster" id="">
+                                    value="{{ $coachings->r_roster }}"name="r_roster" id="">
                             </td>
                             <td style="background-color: #FFFFFF;" class="border border-white"><a href="javascript:void(0)"
                                 class="text-success font-18" title="Add" id="addBtn1"><i class="fa fa-plus"></i></a>
@@ -182,10 +182,10 @@
                                         data-mytooltip-action="focus"
                                         data-mytooltip-direction="bottom"
                                         style="background-color:#ffcccc; color:red;">
-                                        <option value="0" {{ old('') == '0' ? 'selected="selected"' : '' }} selected>
+                                        <option value="0" {{ $coachings->em_session_fees == '0' ? 'selected="selected"' : '' }} selected>
                                             0%
                                         </option>
-                                        <option value="4" {{ old('') == '4' ? 'selected="selected"' : '' }} >
+                                        <option value="4" {{ $coachings->em_session_fees == '4' ? 'selected="selected"' : '' }} >
                                             4%
                                         </option>
                                     </select>
@@ -208,7 +208,7 @@
                             </td>
                             <td class="total-td">
                                 <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}"name="em__roster" id="">
+                                    value="{{ $coachings->em_roster }}"name="em__roster" id="">
                             </td>
                             <td style="background-color: #FFFFFF;" class="border border-white"><a href="javascript:void(0)"
                                 class="text-success font-18" title="Add" id="addBtn1"><i class="fa fa-plus"></i></a>
@@ -228,7 +228,7 @@
                         </td>
                         <td class="total-td">
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}"
+                                value="{{ $coachings->subtotal_roster }}"
                                 name="subtotal_roster" id="">
                         </td>
                         <td class="border border-white"></td>
@@ -244,11 +244,11 @@
                         <td class="overall-total-middle"></td>
                         <td class="overall-total-end table-warning">
                             <input type="number" class="tf-f34 form-control text-center text-danger fw-bolder input-table @error('') is-invalid @enderror"
-                            value="0" name="engagement_cost_total" id="mg_input_totalPackages" style="font-size: 20px;">
+                            value="{{ $coachings->engagement_cost_total }}" name="engagement_cost_total" id="mg_input_totalPackages" style="font-size: 20px;">
                         </td>
                         <td class="overall-total-end">
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="total_package_roster" id="">
+                                value="{{ $coachings->total_package_roster }}" name="total_package_roster" id="">
                         </td>
                     </tr>
                 <!-------------- END TOTAL -------------->

@@ -1,4 +1,4 @@
-@section('title', 'NEW RECORD')
+@section('title', 'EDIT RECORD')
 {{--
 <link rel="shortcut icon" type="image/png" href="{{ URL::to('assets/images/logo/logo.png') }}"> --}}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
@@ -67,13 +67,14 @@
 
                     <!------------ BUDGET FORM ------------>
                     <!--<form class="form form-horizontal multisteps-form__form" action="{{ route('save') }}" method="POST"-->
-                    <form class="form form-horizontal multisteps-form__form" action="{{ url('form/coaching/save') }}" method="POST"
+                    <form class="form form-horizontal multisteps-form__form" action="{{ url('form/coaching/confirm-edit') }}" method="POST"
                         autocomplete="off" onsubmit="submitForm(event)">
                         @csrf
 
                         <!------------ INFORMATION ------------>
+                        <input type="hidden" name="id" value="{{ $coachings->id }}">
                         <div class="multisteps-form__panel js-active" data-animation="slideHorz">
-                            @include('form.components.coaching.information')
+                            @include('form.components.coaching.edit_information')
                             {{-- next button --}}
                             <div class="col-12 d-flex justify-content-center mt-5">
                                 <button class="btn btn-primary ml-auto js-btn-next" type="button"
@@ -83,7 +84,7 @@
 
                         <!------------ ENGAGEMENT FEES ------------>
                         <div class="multisteps-form__panel" data-animation="slideHorz">
-                            @include('form.components.coaching.engagement_fees')
+                            @include('form.components.coaching.edit_engagement_fees')
                             {{-- next and prev button --}}
                             <div class="button-row d-flex justify-content-center mt-3">
                                 <button class="btn btn-secondary mx-2 js-btn-prev" type="button"
@@ -95,7 +96,7 @@
 
                         <!------------ ENGAGEMENT COST ------------>
                         <div class="multisteps-form__panel" data-animation="slideHorz">
-                            @include('form.components.coaching.engagement_cost')
+                            @include('form.components.coaching.edit_engagement_cost')
                             {{-- next and prev button --}}
                             <div class="col-12 d-flex justify-content-center mt-3">
                                 <button class="btn btn-secondary mx-2 js-btn-prev" type="button"
@@ -107,7 +108,7 @@
 
                         <!------------ PROFIT FORECAST ------------>
                         <div class="multisteps-form__panel" data-animation="slideHorz">
-                            @include('form.components.coaching.profit_forecast')
+                            @include('form.components.coaching.edit_profit_forecast')
                             {{-- prev and submit button --}}
                             <div class="col-12 d-flex justify-content-center mt-3">
                                 <button class="btn btn-secondary mx-2 js-btn-prev" type="button"
@@ -214,12 +215,6 @@
         });
         $('document').ready(function() {
         /*************************************STATUS**************************************/
-        //DEFAULT COLOR
-        $('#status').css('background-color', '#007bff')
-        $('#status').css('color', 'white')
-        $('#status option').css('background-color', 'white')
-        $('#status option').css('color', 'black')
-
         //ASSIGN EVENT LISTENER IN STATUS
         document.getElementById("status").addEventListener("change", status);
 
@@ -253,6 +248,7 @@
                 $('#status option').css('color', 'black')
             }
         };
+        status();
     });
 </script>
 <script type="text/javascript" src="/js/MultiStep.js"></script>

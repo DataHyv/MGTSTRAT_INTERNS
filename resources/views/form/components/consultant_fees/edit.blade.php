@@ -84,7 +84,7 @@
                                 </div>
 
                                 <div class="form-group row justify-content-center">
-                                    <label for="inputModOpt" class="col-md-3 col-form-label">Moderator option</label>
+                                    <label for="inputModOpt" class="col-md-3 col-form-label">Moderator optan</label>
                                     <div class="col-md-8">
                                     <input type="text" class="form-control" id="EFI13" placeholder="" name="mod_opt">
                                     </div>

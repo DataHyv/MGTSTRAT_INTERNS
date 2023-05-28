@@ -53,13 +53,13 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- @foreach ($data as $key => $item) --}}
+                                @foreach ($coachings as $key => $item)
                                     <tr>
-                                        <td hidden class="ids">1</td>
+                                        <td hidden class="ids">{{ $item->id }}</td>
                                         {{-- <td hidden class="budget_number">{{ $item->cstmzd_eng_form_id }}</td> --}}
-                                        <td class="id text-center text-uppercase fw-bold">1</td>
+                                        <td class="id text-center text-uppercase fw-bold">{{ $item->id }}</td>
                                         <td class="text-center">
-                                            <span id="status" class="badge">Confirmed</span>
+                                            <span id="status" class="badge">{{ $item->status }}</span>
                                             {{-- Automatic change the status color --}}
                                             <script>
                                                 $( ".badge" ).each(function() {
@@ -81,33 +81,29 @@
                                                 });
                                             </script>
                                         </td>
-                                        <td class="name text-center fw-bold">Testing</td>
-                                        <td class="name text-center fw-bold">Virtual</td>
-                                        <td class="email text-center fw-bold">Test Coaching Record</td>
-                                        <td class="fw-bold text-center">100</td>
+                                        <td class="name text-center fw-bold">{{ $item->client }}</td>
+                                        <td class="name text-center fw-bold">{{ $item->engagement_type }}</td>
+                                        <td class="email text-center fw-bold">{{ $item->engagement_title }}</td>
+                                        <td class="fw-bold text-center">{{ $item->number_of_pax }}</td>
                                         <td class="fw-bold text-center">
                                             {{-- @if($item->program_dates)
                                                 @foreach($item->program_dates as $dates)
                                                     {{$dates.', '}}
                                                 @endforeach
                                             @endif --}}
-                                            Nov 3, 2022
+                                            {{ $item->date }}
                                         </td>
                                         {{-- <td class="fw-bold text-center">{{ \Carbon\Carbon::parse($item->created_at)->toFormattedDateString()}}</td> --}}
-                                        <td class="fw-bold text-center">Nov 3, 2022</td>
+                                        <td class="fw-bold text-center">{{ \Carbon\Carbon::parse($item->created_at)->toFormattedDateString()}}</td>
                                         <td class="text-center fw-bold text-center">
-                                            <a href=".bd-example-modal-lg" data-toggle="modal" data-target=".bd-example-modal-lg">
-                                                <span class="badge bg-info"><i class="bi bi-person-plus-fill"></i></span>
-                                            </a>
-
-                                            <a href="#">
+                                            <a href="{{ URL::to('form/coaching/edit/' . $item->id) }}">
                                                 <span class="badge bg-success"><i class="bi bi-pencil-square"></i></span>
                                             </a>
 
-                                            <a href="#"
-                                                onclick="return confirm('Are you sure to want to delete Testing?')"><span
-                                                    class="badge bg-danger"><i class="bi bi-trash"></i></span>
-                                            </a>
+                                            <a href="{{ URL::to('form/coaching/delete/' . $item->id) }}"
+                                            onclick="return confirm('Are you sure to want to delete it?')"><span
+                                                class="badge bg-danger"><i class="bi bi-trash"></i></span>
+                                        </a>
 
                                             {{-- <a href="#" class="delete"  data-toggle="modal" data-target="#delete_estimate">
                                                 <span class="badge bg-danger">
@@ -205,7 +201,7 @@
                                         </div>
                                     </div>
 
-                                {{-- @endforeach --}}
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

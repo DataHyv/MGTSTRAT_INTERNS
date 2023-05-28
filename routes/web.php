@@ -125,6 +125,12 @@ Auth::routes();
 
 // ----------------------------- COACHING -----------------------//
     Route::resource('form/coaching', 'App\Http\Controllers\CoachingController');
+    Route::get('form/coaching/index', [App\Http\Controllers\CoachingController::class, 'index'])->middleware('auth')->name('form/coaching/index');
+    Route::get('form/coaching/new', [App\Http\Controllers\CoachingController::class, 'newRecord'])->middleware('auth')->name('form/coaching/new');
+    Route::post('form/coaching/save', [App\Http\Controllers\CoachingController::class, 'store'])->middleware('auth')->name('form/coaching/save');
+    Route::get('form/coaching/edit/{id}', [App\Http\Controllers\CoachingController::class, 'editRecord'])->middleware('auth');
+    Route::post('form/coaching/confirm-edit', [App\Http\Controllers\CoachingController::class, 'confirmEdit'])->middleware('auth')->name('form/coaching/confirm-edit');
+    Route::get('form/coaching/delete/{id}', [App\Http\Controllers\CoachingController::class, 'deleteRecord'])->middleware('auth');
 
 // ----------------------------- Client Management -----------------------//
     Route::get('clients', [App\Http\Controllers\ClientsController::class, 'index'])->middleware('auth')->name('clients');

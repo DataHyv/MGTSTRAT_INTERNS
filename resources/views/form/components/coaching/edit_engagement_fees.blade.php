@@ -49,7 +49,7 @@
                         <td data-title="# OF CONSULTANTS">
                             <input type="text"
                                 class="number-coaches input js-mytooltip input-table form-control commanumber @error('') is-invalid @enderror"
-                                value="{{ old('') }}"
+                                value="{{ $coachings->cd_num_coaches }}"
                                 name="cd_num_of_coaches"
                                 id=""
                                 data-type="currency">
@@ -58,10 +58,10 @@
                         <td>
                             <fieldset>
                                 <select class="daily-fees text-center form-select input js-mytooltip @error('') is-invalid @enderror" name="cd_daily_fees" id="" data-mytooltip-content="<i> Consulting - &#8369;5,000 - Consultants <br> &#8369;6,250 - Senior Consultants</i>" data-mytooltip-theme="dark" data-mytooltip-action="focus" data-mytooltip-direction="right" style="background-color:#ffcccc; color:red;">
-                                    <option value="5000" {{ old('') == '5000' ? 'selected="selected"' : '' }}>
+                                    <option value="5000" {{ $coachings->cd_daily_fees == '5000' ? 'selected="selected"' : '' }}>
                                         &#8369;5,000
                                     </option>
-                                    <option value="6250" {{ old('') == '6250' ? 'selected="selected"' : '' }}>
+                                    <option value="6250" {{ $coachings->cd_daily_fees == '6250' ? 'selected="selected"' : '' }}>
                                         &#8369;6,250
                                     </option>
                                 </select>
@@ -74,11 +74,11 @@
                         </td>
 
                         <td>
-                            <input type="text" class="number-session form-control input-table input js-mytooltip commanumber @error('') is-invalid @enderror" value="{{ old('') }}" name="cd_num_of_sessions" id="" data-type="currency">
+                            <input type="text" class="number-session form-control input-table input js-mytooltip commanumber @error('') is-invalid @enderror" value="{{ $coachings->cd_num_of_sessions }}" name="cd_num_of_sessions" id="" data-type="currency">
                         </td>
 
                         <td>
-                            <input type="text" class="nswh form-control input-table commanumber @error('') is-invalid @enderror" value="{{ old('') }}" name="cd_nswh" id="" data-type="currency">
+                            <input type="text" class="nswh form-control input-table commanumber @error('') is-invalid @enderror" value="{{ $coachings->cd_nswh }}" name="cd_nswh" id="" data-type="currency">
                         </td>
 
                         <td class="total-td table-light">
@@ -86,7 +86,7 @@
                         </td>
 
                         <td class="total-td table-light">
-                            <textarea class="form-control input-table @error('') is-invalid @enderror" name="cd_notes" id="" rows="2" cols="55"></textarea>
+                            <textarea class="form-control input-table @error('') is-invalid @enderror" value="{{ $coachings->cd_notes }}" name="cd_notes" id="" rows="2" cols="55"></textarea>
                         </td>
                         
                         <td style="background-color: #FFFFFF;" class="border border-white">
@@ -135,7 +135,7 @@
                         <td data-title="# OF CONSULTANTS">
                             <input type="text"
                                 class="number-coaches input js-mytooltip input-table form-control commanumber @error('') is-invalid @enderror"
-                                value="{{ old('') }}"
+                                value="{{ $coachings->ec_num_of_coaches }}"
                                 name="ec_num_of_coaches"
                                 id=""
                                 data-type="currency">
@@ -144,10 +144,10 @@
                         <td>
                             <fieldset>
                                 <select class="daily-fees text-center form-select input js-mytooltip @error('') is-invalid @enderror" name="ec_daily_fees" id="" data-mytooltip-content="<i> Consulting - &#8369;5,000 - Consultants <br> &#8369;6,250 - Senior Consultants</i>" data-mytooltip-theme="dark" data-mytooltip-action="focus" data-mytooltip-direction="right" style="background-color:#ffcccc; color:red;">
-                                    <option value="20000" {{ old('') == '20000' ? 'selected="selected"' : '' }}>
+                                    <option value="20000" {{ $coachings->ec_daily_fees == '20000' ? 'selected="selected"' : '' }}>
                                         &#8369;20,000
                                     </option>
-                                    <option value="24000" {{ old('') == '24000' ? 'selected="selected"' : '' }}>
+                                    <option value="24000" {{ $coachings->ec_daily_fees == '24000' ? 'selected="selected"' : '' }}>
                                         &#8369;24,000
                                     </option>
                                 </select>
@@ -160,11 +160,11 @@
                         </td>
 
                         <td>
-                            <input type="text" class="number-session form-control input-table input js-mytooltip commanumber @error('') is-invalid @enderror" value="{{ old('') }}" name="ec_num_of_sessions" id="" data-type="currency">
+                            <input type="text" class="number-session form-control input-table input js-mytooltip commanumber @error('') is-invalid @enderror" value="{{ $coachings->ec_num_of_sessions }}" name="ec_num_of_sessions" id="" data-type="currency">
                         </td>
 
                         <td>
-                            <input type="text" class="nswh form-control input-table commanumber @error('') is-invalid @enderror" value="{{ old('') }}" name="ec_nswh" id="" data-type="currency">
+                            <input type="text" class="nswh form-control input-table commanumber @error('') is-invalid @enderror" value="{{ $coachings->ec_nswh }}" name="ec_nswh" id="" data-type="currency">
                         </td>
 
                         <td class="total-td table-light">
@@ -172,7 +172,7 @@
                         </td>
 
                         <td class="total-td table-light">
-                            <textarea class="form-control input-table @error('') is-invalid @enderror" name="ec_notes" id="" rows="2" cols="55"></textarea>
+                            <textarea class="form-control input-table @error('') is-invalid @enderror" value="{{ $coachings->ec_notes }}" name="ec_notes" id="" rows="2" cols="55"></textarea>
                         </td>
                         
                         <td style="background-color: #FFFFFF;" class="border border-white">
@@ -193,22 +193,22 @@
                         <td data-title="# OF CONSULTANTS">
                             <input type="text"
                                 class="number-coaches input js-mytooltip input-table form-control commanumber @error('') is-invalid @enderror"
-                                value="{{ old('') }}"
+                                value="{{ $coachings->pdc_num_of_coaches }}"
                                 name="pdc_num_of_coaches"
                                 id=""
                                 data-type="currency">
                         </td>
 
                         <td>
-                            <input type="text" class="daily-fees form-control input-table input js-mytooltip commanumber @error('') is-invalid @enderror" value="{{ old('') }}" name="pdc_daily_fees" id="" data-type="currency">
+                            <input type="text" class="daily-fees form-control input-table input js-mytooltip commanumber @error('') is-invalid @enderror" value="{{ $coachings->pdc_daily_fees }}" name="pdc_daily_fees" id="" data-type="currency">
                         </td>
 
                         <td>
-                            <input type="text" class="number-session form-control input-table input js-mytooltip commanumber @error('') is-invalid @enderror" value="{{ old('') }}" name="pdc_num_of_sessions" id="" data-type="currency">
+                            <input type="text" class="number-session form-control input-table input js-mytooltip commanumber @error('') is-invalid @enderror" value="{{ $coachings->pdc_num_of_sessions }}" name="pdc_num_of_sessions" id="" data-type="currency">
                         </td>
 
                         <td>
-                            <input type="text" class="nswh form-control input-table commanumber @error('') is-invalid @enderror" value="{{ old('') }}" name="pdc_nswh" id="" data-type="currency">
+                            <input type="text" class="nswh form-control input-table commanumber @error('') is-invalid @enderror" value="{{ $coachings->pdc_nswh }}" name="pdc_nswh" id="" data-type="currency">
                         </td>
 
                         <td class="total-td table-light">
@@ -216,7 +216,7 @@
                         </td>
 
                         <td class="total-td table-light">
-                            <textarea class="form-control input-table @error('') is-invalid @enderror" name="pdc_notes" id="" rows="2" cols="55"></textarea>
+                            <textarea class="form-control input-table @error('') is-invalid @enderror" value="{{ $coachings->pdc_notes }}" name="pdc_notes" id="" rows="2" cols="55"></textarea>
                         </td>
                         
                         <td style="background-color: #FFFFFF;" class="border border-white">
@@ -237,22 +237,22 @@
                         <td data-title="# OF CONSULTANTS">
                             <input type="text"
                                 class="number-coaches input js-mytooltip input-table form-control commanumber @error('') is-invalid @enderror"
-                                value="{{ old('') }}"
+                                value="{{ $coachings->gsc_num_of_coaches }}"
                                 name="gsc_num_of_coaches"
                                 id=""
                                 data-type="currency">
                         </td>
 
                         <td>
-                            <input type="text" class="daily-fees form-control input-table input js-mytooltip commanumber @error('') is-invalid @enderror" value="{{ old('') }}" name="gsc_daily_fees" id="" data-type="currency">
+                            <input type="text" class="daily-fees form-control input-table input js-mytooltip commanumber @error('') is-invalid @enderror" value="{{ $coachings->gsc_daily_fees }}" name="gsc_daily_fees" id="" data-type="currency">
                         </td>
 
                         <td>
-                            <input type="text" class="number-session form-control input-table input js-mytooltip commanumber @error('') is-invalid @enderror" value="{{ old('') }}" name="gsc_num_of_sessions" id="" data-type="currency">
+                            <input type="text" class="number-session form-control input-table input js-mytooltip commanumber @error('') is-invalid @enderror" value="{{ $coachings->gsc_num_of_sessions }}" name="gsc_num_of_sessions" id="" data-type="currency">
                         </td>
 
                         <td>
-                            <input type="text" class="nswh form-control input-table commanumber @error('') is-invalid @enderror" value="{{ old('') }}" name="gsc_nswh" id="" data-type="currency">
+                            <input type="text" class="nswh form-control input-table commanumber @error('') is-invalid @enderror" value="{{ $coachings->gsc_nswh }}" name="gsc_nswh" id="" data-type="currency">
                         </td>
 
                         <td class="total-td table-light">
@@ -260,7 +260,7 @@
                         </td>
 
                         <td class="total-td table-light">
-                            <textarea class="form-control input-table @error('') is-invalid @enderror" name="gsc_notes" id="" rows="2" cols="55"></textarea>
+                            <textarea class="form-control input-table @error('') is-invalid @enderror" value="{{ $coachings->gsc_notes }}" name="gsc_notes" id="" rows="2" cols="55"></textarea>
                         </td>
                         
                         <td style="background-color: #FFFFFF;" class="border border-white">
@@ -281,22 +281,22 @@
                         <td data-title="# OF CONSULTANTS">
                             <input type="text"
                                 class="number-coaches input js-mytooltip input-table form-control commanumber @error('') is-invalid @enderror"
-                                value="{{ old('') }}"
+                                value="{{ $coachings->waltc_num_of_coaches }}"
                                 name="waltc_num_of_coaches"
                                 id=""
                                 data-type="currency">
                         </td>
 
                         <td>
-                            <input type="text" class="daily-fees form-control input-table input js-mytooltip commanumber @error('') is-invalid @enderror" value="{{ old('') }}" name="waltc_daily_fees" id="" data-type="currency">
+                            <input type="text" class="daily-fees form-control input-table input js-mytooltip commanumber @error('') is-invalid @enderror" value="{{ $coachings->waltc_daily_fees }}" name="waltc_daily_fees" id="" data-type="currency">
                         </td>
 
                         <td>
-                            <input type="text" class="number-session form-control input-table input js-mytooltip commanumber @error('') is-invalid @enderror" value="{{ old('') }}" name="waltc_num_of_sessions" id="" data-type="currency">
+                            <input type="text" class="number-session form-control input-table input js-mytooltip commanumber @error('') is-invalid @enderror" value="{{ $coachings->waltc_num_of_sessions }}" name="waltc_num_of_sessions" id="" data-type="currency">
                         </td>
 
                         <td>
-                            <input type="text" class="nswh form-control input-table commanumber @error('') is-invalid @enderror" value="{{ old('') }}" name="waltc_nswh" id="" data-type="currency">
+                            <input type="text" class="nswh form-control input-table commanumber @error('') is-invalid @enderror" value="{{ $coachings->waltc_nswh }}" name="waltc_nswh" id="" data-type="currency">
                         </td>
 
                         <td class="total-td table-light">
@@ -304,7 +304,7 @@
                         </td>
 
                         <td class="total-td table-light">
-                            <textarea class="form-control input-table @error('') is-invalid @enderror" name="waltc_notes" id="" rows="2" cols="55"></textarea>
+                            <textarea class="form-control input-table @error('') is-invalid @enderror" value="{{ $coachings->waltc_notes }}" name="waltc_notes" id="" rows="2" cols="55"></textarea>
                         </td>
                         
                         <td style="background-color: #FFFFFF;" class="border border-white">
@@ -355,7 +355,7 @@
                     <td class="overall-total-middle table-warning">
                         <input type="text"
                             class="hf-c32 form-control input-table text-center @error('') is-invalid @enderror"
-                            value="{{ old('') }}" name="dg_percentage" id="input-discount" readonly>
+                            value="{{ $coachings->dg_percentage }}" name="dg_percentage" id="input-discount" readonly>
                     </td>
                     <td class="overall-total-middle">
                         <input type="text" class="d-none" value=" " name="fee_hour_num[]" readonly>
@@ -367,7 +367,7 @@
                     <td class="overall-total-end"></td>
                     <td class="overall-total-end">
                         <textarea class="form-control input-table @error('') is-invalid @enderror"
-                            name="dg_notes" id="" rows="2" cols="55"></textarea>
+                            value="{{ $coachings->dg_notes }}" name="dg_notes" id="" rows="2" cols="55"></textarea>
                     </td>
                 </tr>
 
@@ -382,7 +382,7 @@
                     <td class="overall-total-end table-warning">
                         <input type="number"
                             class="tf-f34 form-control text-center text-danger fw-bolder input-table @error('') is-invalid @enderror"
-                            value="0" name="engagement_fees_total" id="ef_Totalpackage" style="font-size: 22px;">
+                            value="{{ $coachings->engagement_fees_total }}" name="engagement_fees_total" id="ef_Totalpackage" style="font-size: 22px;">
                     </td>
                     <td class="overall-total-end"></td>
                 </tr>
