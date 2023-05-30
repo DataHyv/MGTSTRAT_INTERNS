@@ -66,7 +66,7 @@
                                         <td class="fw-bold text-center">{{ $item->cluster }}</td>
                                         <td class="fw-bold text-center">{{ $item->intelligence }}</td>
                                         <td class="fw-bold text-center">{{ $item->pax_number }}</td>
-                                        <td class="fw-bold text-center">{{ $item->program_dates }}</td>
+                                        <td class="fw-bold text-center">{{ $item->program_dates ? $item->program_dates : 'To be announced' }}</td>
                                         <td class="fw-bold text-center">{{ \Carbon\Carbon::parse($item->created_at)->toFormattedDateString()}}</td>
                                         <td class="text-center fw-bold text-center">
 

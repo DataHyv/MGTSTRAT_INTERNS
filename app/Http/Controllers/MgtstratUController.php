@@ -46,7 +46,14 @@ class MgtstratUController extends Controller
     {
         $request->validate([
             'client_id'   => 'required|integer',
-            // 'engagement_title'   => 'required',
+            'engagement_title'   => 'required',
+            'workshop_title'   => 'required',
+            'cluster'   => 'required',
+            'intelligence'   => 'required',
+            'pax_number'   => 'required',
+            'program_dates' => $request->input('dcbeCheck') ? 'nullable' : 'required',
+            'program_start_time' => $request->input('dcbeCheck') ? 'nullable' : 'required',
+            'program_end_time' => $request->input('dcbeCheck') ? 'nullable' : 'required',
         ]);
 
         DB::beginTransaction();
@@ -72,6 +79,16 @@ class MgtstratUController extends Controller
             $workshop_form->program_start_time      = $request->program_start_time;
             $workshop_form->program_end_time        = $request->program_end_time;
             // $workshop_form->core_area             = $request->core_area;
+
+            if ($request->input('dcbeCheck')) {
+                $workshop_form->program_dates = null;
+                $workshop_form->program_start_time = null;
+                $workshop_form->program_end_time = null;
+            } else {
+                $workshop_form->program_dates = $request->program_dates;
+                $workshop_form->program_start_time = $request->program_start_time;
+                $workshop_form->program_end_time = $request->program_end_time;
+            }
 
             $workshop_form->workshop_fees_total   = $request->mg_input_totalPackages;
             $workshop_form->save();
@@ -194,7 +211,16 @@ class MgtstratUController extends Controller
     {
         $request->validate([
             'client_id'   => 'required|integer',
+            'engagement_title'   => 'required',
+            'workshop_title'   => 'required',
+            'cluster'   => 'required',
+            'intelligence'   => 'required',
+            'pax_number'   => 'required',
+            'program_dates' => $request->input('dcbeCheck') ? 'nullable' : 'required',
+            'program_start_time' => $request->input('dcbeCheck') ? 'nullable' : 'required',
+            'program_end_time' => $request->input('dcbeCheck') ? 'nullable' : 'required',
         ]);
+        
         DB::beginTransaction();
         try {
 
@@ -206,11 +232,18 @@ class MgtstratUController extends Controller
                 'cluster'               => $request->cluster,
                 'intelligence'          => $request->intelligence,
                 'pax_number'            => $request->pax_number,
-                'program_dates'         => $request->program_dates,
-                'program_start_time'    => $request->program_start_time,
-                'program_end_time'      => $request->program_end_time,
                 'workshop_fees_total'   => $request->mg_input_totalPackages,
             ];
+    
+            if ($request->input('dcbeCheck')) {
+                $update['program_dates'] = '';
+                $update['program_start_time'] = '';
+                $update['program_end_time'] = '';
+            } else {
+                $update['program_dates'] = $request->program_dates;
+                $update['program_start_time'] = $request->program_start_time;
+                $update['program_end_time'] = $request->program_end_time;
+            }
             
             Workshop_information::where('id',$request->id)->update($update);
 

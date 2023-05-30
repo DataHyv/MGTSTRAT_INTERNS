@@ -4,17 +4,7 @@
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
 {{-- tooltip css --}}
 <link rel="stylesheet" href="{{ url('css/tooltip-css/jquery.mytooltip.min.css') }}">
-{{--
-<link rel="stylesheet" href="{{ url('css/tooltip-css/demo/style.css') }}"> --}}
-{{-- datepicker js --}}
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
-{{-- timepicker js --}}
-<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
-{{-- tooltip js --}}
-{{-- <script src="{{ url('js/tooltipJs/jquery-1.11.3.min.js') }}"></script> --}}
-<script src="{{ url('js/tooltipJs/jquery.mytooltip.js') }}"></script>
-<script src="{{ url('js/tooltipJs/demo/script.js') }}"></script>
+{{-- <link rel="stylesheet" href="{{ url('css/tooltip-css/demo/style.css') }}"> --}}
 
 <!------------ CARD HEADER ------------>
 <div class="card-header">
@@ -40,13 +30,8 @@
             <div class="col-md-6">
                 <div class="form-group has-icon-left">
                     <div class="position-relative">
-                        <select class="input form-select @error('client_id') is-invalid @enderror"
-                        id="client_id"
-                        name="client_id"
-                        style="width: 100%;"
-                        tabindex="-1"
-                        aria-hidden="true">
-                            <option value="Select">-- Select --</option>
+                        <select class="input form-select @error('client_id') is-invalid @enderror" id="client_id" name="client_id" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                            <option value="">-- Select --</option>
                             @foreach ($data2 as $client)
                                 <option @if ($client->id === (int)$data->client_id) selected @endif value="{{ $client->id }}">
                                     {{ $client->company_name }}
@@ -74,13 +59,13 @@
         <div class="col-md-6">
             <div class="form-group has-icon-left">
                 <div class="position-relative">
-                    <input type="text" class="form-control @error('') is-invalid @enderror" 
+                    <input type="text" class="form-control @error('engagement_title') is-invalid @enderror" 
                     value="{{ $data->engagement_title }}" 
                     name="engagement_title" id="">
                     <div class="form-control-icon">
                         <i class="fa-solid fa-t"></i>
                     </div>
-                    @error('')
+                    @error('engagement_title')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
@@ -105,7 +90,7 @@
             <div class="form-group has-icon-left">
                 <div class="position-relative">
                     <fieldset class="form-group">
-                        <select class="input js-mytooltip form-select @error('') is-invalid @enderror" name="workshop_title" id="Mgtstrat-U-Titles" data-mytooltip-content="<i>
+                        <select class="input js-mytooltip form-select @error('workshop_title') is-invalid @enderror" name="workshop_title" id="Mgtstrat-U-Titles" data-mytooltip-content="<i>
                             If not on the list, choose suggested cluster title at Core Area.
                             </i>" data-mytooltip-theme="dark" data-mytooltip-action="focus" data-mytooltip-direction="right">
                             <option class="not-listed" id="not-listed" value="Not Listed" selected>-- Not listed --</option>
@@ -428,7 +413,7 @@
                         <div class="form-control-icon">
                             <i class="fa-solid fa-diagram-project"></i>
                         </div>
-                        @error('')
+                        @error('workshop_title')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -447,7 +432,7 @@
             <div class="form-group has-icon-left">
                 <div class="position-relative">
                     <fieldset class="form-group">
-                        <select class="form-select @error('') is-invalid @enderror" name="cluster" id="cluster" >
+                        <select class="form-select @error('cluster') is-invalid @enderror" name="cluster" id="cluster" >
                             <option value="Anxiety" {{ $data->cluster == 'Anxiety' ? 'selected="selected"' : '' }} >Anxiety</option>
                             <option value="Business Transformation" {{ $data->cluster == 'Business Transformation' ? 'selected="selected"' : '' }} >Business Transformation</option>
                             <option value="Collaborative Leadership" {{ $data->cluster == 'Collaborative Leadership' ? 'selected="selected"' : '' }} >Collaborative Leadership</option>
@@ -489,7 +474,7 @@
                     <div class="form-control-icon">
                         <i class="fa-solid fa-circle-nodes"></i>
                     </div>
-                    @error('')
+                    @error('cluster')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
@@ -506,10 +491,8 @@
         <div class="col-md-7">
             <div class="form-group has-icon-left">
                 <div class="position-relative">
-                    {{-- <input type="text" class="form-control @error('') is-invalid @enderror" value="{{ old('') }}"
-                    name="" id="core-valueInput" disabled> --}}
                     <fieldset class="form-group">
-                        <select class="form-select @error('') is-invalid @enderror" name="intelligence" id="intelligence">
+                        <select class="form-select @error('intelligence') is-invalid @enderror" name="intelligence" id="intelligence">
                             <option value="Contextual" {{ $data->intelligence == 'Contextual' ? 'selected="selected"' : '' }} >Contextual</option>
                             <option value="Generative" {{ $data->intelligence == 'Generative' ? 'selected="selected"' : '' }} >Generative</option>
                             <option value="Moral" {{ $data->intelligence == 'Moral' ? 'selected="selected"' : '' }} >Moral</option>
@@ -521,7 +504,7 @@
                     <div class="form-control-icon">
                         <i class="fa-solid fa-circle-nodes"></i>
                     </div>
-                    @error('')
+                    @error('intelligence')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
@@ -559,9 +542,9 @@
             </div>
             <div class="col-md-3">
                 <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="dcbeCheck" name="dcbeCheck">
+                    <input class="form-check-input" type="checkbox" role="switch" id="dcbeCheck" name="dcbeCheck" {{ empty($data->program_dates) && empty($data->program_start_time) && empty($data->program_end_time) ? 'checked' : '' }}>
                     <label class="form-check-label" for="dcbeCheck">To Be Announced</label>
-                </div>
+                </div>                
             </div>
         </div>
         <!------------ END ------------>
@@ -569,32 +552,34 @@
         <!------------ DATE ------------>
         <div class="row justify-content-center g-3 gx-5" id="dcbe">
             <h6 class="text-center mt-3 fst-italic">Date</h3>
+                <div class="col-md-3">
 
-            <div class="col-md-3">
-                <div class="form-group has-icon-left">
-                    <label class="fw-bold required">Date</label>
-                    <div class="position-relative">
-                        <input type="text" class="form-control date datepicker @error('doe') is-invalid @enderror" value="{{ $data->program_dates }}" placeholder="Enter Date" name="program_dates" id="datepicker" size="30">
-                        <div class="form-control-icon">
-                            <i class="bi bi-calendar"></i>
+                    <div class="form-group has-icon-left">
+                        <label class="fw-bold required">Date</label>
+                        <div class="position-relative">
+                            <input type="text" class="form-control datepicker @error('program_dates') is-invalid @enderror" value="{{ $data->program_dates }}" placeholder="Enter Date" name="program_dates" id="datepicker" size="30">
+                            <div class="form-control-icon">
+                                <i class="bi bi-calendar"></i>
+                            </div>
+                            @error('program_dates')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
-                        @error('doe')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
                     </div>
-                </div>
-            </div>
+                    
+                    
+                </div>                
             <div class="col-md-3">
                 <div class="form-group has-icon-left">
                     <label class="fw-bold required">Start Time</label>
                     <div class="position-relative">
-                        <input type="text" id="start-time" class="form-control start-time timepicker @error('dot') is-invalid @enderror" value="{{ $data->program_start_time }}" placeholder="Enter Time" name="program_start_time">
+                        <input type="text" id="start-time" class="form-control start-time timepicker @error('program_start_time') is-invalid @enderror" value="{{ $data->program_start_time }}" placeholder="Enter Time" name="program_start_time">
                         <div class="form-control-icon">
                             <i class="bi bi-clock"></i>
                         </div>
-                        @error('dot')
+                        @error('program_start_time')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -606,11 +591,11 @@
                 <div class="form-group has-icon-left">
                     <label class="fw-bold required">End Time</label>
                     <div class="position-relative">
-                        <input type="text" id="end-time" class="form-control end-time timepicker @error('dot') is-invalid @enderror" value="{{ $data->program_end_time }}" placeholder="Enter Time" name="program_end_time">
+                        <input type="text" id="end-time" class="form-control end-time timepicker @error('program_end_time') is-invalid @enderror" value="{{ $data->program_end_time }}" placeholder="Enter Time" name="program_end_time">
                         <div class="form-control-icon">
                             <i class="fa-solid fa-hourglass-end"></i>
                         </div>
-                        @error('dot')
+                        @error('program_end_time')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -624,15 +609,27 @@
     </div>
 </div>
 
-<!-- JQuery to listen to the click event of the "To Be Announced" checkbox and hide/show the date and time fields container whether the checkbox is checked or not -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+<script src="{{ url('js/tooltipJs/jquery.mytooltip.js') }}"></script>
+<script src="{{ url('js/tooltipJs/demo/script.js') }}"></script>
+
+{{-- change ui datepicker, see below for this script --}}
+{{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script> --}}
+
 <script>
-    $(function() {
-        // get the checkbox element
+    $(document).ready(function() {
         var dcbeCheck = $('#dcbeCheck');
-        // get the date and time fields container
         var dcbe = $('#dcbe');
         
-        // toggle the visibility of the date and time fields container when the checkbox is clicked
+        if (dcbeCheck.is(':checked')) {
+            dcbe.hide();
+        } else {
+            dcbe.show();
+        }
+        
         dcbeCheck.on('click', function() {
             if (dcbeCheck.is(':checked')) {
                 dcbe.hide();
@@ -640,13 +637,15 @@
                 dcbe.show();
             }
         });
-    });
-</script>
 
-<script>
-    $(document).ready(function() {
-        // This will help with displaying the date
-        $('.date').datepicker();
+        $('.datepicker').datepicker({
+        autoclose: true,
+        onSelect: function(dateText, inst) {
+            // Prevent scrolling to the top of the page
+            return false;
+        }
+        });
+
         $('#ui-datepicker-div').css('clip', 'auto');
 
         $('.timepicker').timepicker({
@@ -661,6 +660,17 @@
             scrollbar: true
         });
     });
+
+    // change ui datepicker
+    // document.addEventListener("DOMContentLoaded", function() {
+    //     flatpickr("#datepicker", {
+    //         allowInput: true,
+    //         onClose: function(selectedDates, dateStr, instance) {
+    //             instance.element.blur(); // Remove focus after selecting a date
+    //         }
+    //     });
+    // });
+
 
     document.getElementById('Mgtstrat-U-Titles').addEventListener("change", titles);
     // var title = $("#Mgtstrat-U-Titles");

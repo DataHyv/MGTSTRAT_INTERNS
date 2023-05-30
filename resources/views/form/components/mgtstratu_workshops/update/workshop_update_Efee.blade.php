@@ -119,7 +119,7 @@
                         {{-- notes --}}
                         <td class="total-td">
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                value="{{ $fee_type->notes }}"name="fee_notes[]" id="">
+                            value="{{ $fee_type->notes }}" name="fee_notes[]" id="">
                         </td>
                     </tr>
 

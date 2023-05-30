@@ -8,7 +8,7 @@
     @extends('sidebar.dashboard')
 @endsection
 @section('content')
-    <div class="customized-engagement" id="main">
+    <div id="main">
         @include('headers.header')
         <div class="page-title">
             <div class="row">

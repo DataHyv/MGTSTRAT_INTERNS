@@ -4,17 +4,7 @@
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
 {{-- tooltip css --}}
 <link rel="stylesheet" href="{{ url('css/tooltip-css/jquery.mytooltip.min.css') }}">
-{{--
-<link rel="stylesheet" href="{{ url('css/tooltip-css/demo/style.css') }}"> --}}
-{{-- datepicker js --}}
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
-{{-- timepicker js --}}
-<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
-{{-- tooltip js --}}
-{{-- <script src="{{ url('js/tooltipJs/jquery-1.11.3.min.js') }}"></script> --}}
-<script src="{{ url('js/tooltipJs/jquery.mytooltip.js') }}"></script>
-<script src="{{ url('js/tooltipJs/demo/script.js') }}"></script>
+{{-- <link rel="stylesheet" href="{{ url('css/tooltip-css/demo/style.css') }}"> --}}
 
 <!------------ CARD HEADER ------------>
 <div class="card-header">
@@ -423,7 +413,7 @@
             </div>
             <div class="col-md-3">
                 <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="dcbeCheck" name="dcbeCheck">
+                    <input class="form-check-input" type="checkbox" role="switch" id="dcbeCheck" name="dcbeCheck" {{ old('dcbeCheck') ? 'checked' : '' }}>
                     <label class="form-check-label" for="dcbeCheck">To Be Announced</label>
                 </div>
             </div>
@@ -437,11 +427,11 @@
                 <div class="form-group has-icon-left">
                     <label class="fw-bold required">Date</label>
                     <div class="position-relative">
-                        <input type="text" class="form-control date datepicker @error('program_date') is-invalid @enderror" value="{{ old('program_date') }}" placeholder="Enter Date" name="program_date" id="datepicker" size="30">
+                        <input type="text" class="form-control date datepicker @error('program_dates') is-invalid @enderror" value="{{ old('program_dates') }}" placeholder="Enter Date" name="program_dates" id="datepicker" size="30">
                         <div class="form-control-icon">
                             <i class="bi bi-calendar"></i>
                         </div>
-                        @error('program_date')
+                        @error('program_dates')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -488,12 +478,28 @@
 <!------------ END OF FORM BODY ------------>
 
 <!-- JQuery to listen to the click event of the "To Be Announced" checkbox and hide/show the date and time fields container whether the checkbox is checked or not -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+{{-- datepicker js --}}
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+{{-- timepicker js --}}
+<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+{{-- tooltip js --}}
+<script src="{{ url('js/tooltipJs/jquery.mytooltip.js') }}"></script>
+<script src="{{ url('js/tooltipJs/demo/script.js') }}"></script>
 <script>
-    $(function() {
+    // The $(document).ready() function is used to ensure that the script is executed after the HTML has finished loading
+    $(document).ready(function() {
         // get the checkbox element
         var dcbeCheck = $('#dcbeCheck');
         // get the date and time fields container
         var dcbe = $('#dcbe');
+        
+        // check initial state on page load
+        if (dcbeCheck.is(':checked')) {
+            dcbe.hide();
+        } else {
+            dcbe.show();
+        }
         
         // toggle the visibility of the date and time fields container when the checkbox is clicked
         dcbeCheck.on('click', function() {
@@ -503,13 +509,15 @@
                 dcbe.show();
             }
         });
-    });
-</script>
 
-<script>
-    $(document).ready(function() {
         // This will help with displaying the date
-        $('.date').datepicker();
+        $('.datepicker').datepicker({
+        autoclose: true,
+        onSelect: function(dateText, inst) {
+            // Prevent scrolling to the top of the page
+            return false;
+        }
+        });
         $('#ui-datepicker-div').css('clip', 'auto');
 
         $('.timepicker').timepicker({
