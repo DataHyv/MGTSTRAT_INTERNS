@@ -2,9 +2,9 @@ $(document).on('click load change keyup', '#main, #f2f-ef-table, #workshop-table
 
     overallTotal = 0;
     customizationFee = 0;
-    $("#tableLeadconsultant").each(function () {
-        customizationFee =   ($('#ef_LeadconsultantHf').val() * $('#ef_customizationFeeNos').val()) + ($('#ef_LeadconsultantHf').val() * $('#ef_customizationFeeNsw').val() * 0.2);
-        $('#ef_customizationFeeTotal').html(customizationFee.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+    $("#tableCustomizationFee > tr").each(function () {
+        customizationFee =   ($(this).find('#ef_LeadconsultantHf').val() * $(this).find('#ef_customizationFeeNos').val()) + ($(this).find('#ef_LeadconsultantHf').val() * $(this).find('#ef_customizationFeeNsw').val() * 0.2);
+        $(this).find('#ef_customizationFeeTotal').html(customizationFee.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         overallTotal += customizationFee;
     });
 
@@ -20,27 +20,27 @@ $(document).on('click load change keyup', '#main, #f2f-ef-table, #workshop-table
     // Package 1 Total Fee
     totalPackage1Fee = 0;
     package1Fee = 0;
-    $("#tableLeadconsultant").each(function () {
-        package1Fee = ($('#f_package1FeePf').val() * $('#ef_package1FeeNos').val()) + ($('#f_package1FeePf').val() * $('#ef_package1FeeNsw').val() * 0.2);
-        ($('#ef_package1FeeTotal')).html(package1Fee.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+    $("#tablePackage1 > tr").each(function () {
+        package1Fee = ($(this).find('#f_package1FeePf').val() * $(this).find('#ef_package1FeeNos').val()) + ($(this).find('#f_package1FeePf').val() * $(this).find('#ef_package1FeeNsw').val() * 0.2);
+        ($(this).find('#ef_package1FeeTotal')).html(package1Fee.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         totalPackage1Fee += package1Fee;
     });
 
     // Package 2 Total Fee
     totalPackage2Fee = 0;
     package2Fee = 0;
-    $("#tableLeadconsultant").each(function () {
-        package2Fee = ($('#ef_package2FeePfv').val() * $('#ef_package2FeeNos').val()) + ($('#ef_package2FeePfv').val() * $('#eef_package2FeeNsw').val() * 0.2);
-        ($('#ef_package2FeeTotal')).html(package2Fee.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+    $("#tablePackage2 > tr").each(function () {
+        package2Fee = ($(this).find('#ef_package2FeePfv').val() * $(this).find('#ef_package2FeeNos').val()) + ($(this).find('#ef_package2FeePfv').val() * $(this).find('#eef_package2FeeNsw').val() * 0.2);
+        ($(this).find('#ef_package2FeeTotal')).html(package2Fee.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         totalPackage2Fee += package2Fee;
     });
 
     // Producer Total Fee
     totalProducerFee = 0;
     producerFee = 0;
-    $("#tableLeadconsultant").each(function () {
-        producerFee = ($('#ef_producerFeePfv').val() * $('#ef_producerFeeNoc').val()) + ($('#ef_producerFeePfv').val() * $('#ef_producerFeeNsw').val() * 0.2);
-        ($('#ef_producerFeeTotal')).html(producerFee.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+    $("#tableProducer > tr").each(function () {
+        producerFee = ($(this).find('#ef_producerFeePfv').val() * $(this).find('#ef_producerFeeNoc').val()) + ($(this).find('#ef_producerFeePfv').val() * $(this).find('#ef_producerFeeNsw').val() * 0.2);
+        ($(this).find('#ef_producerFeeTotal')).html(producerFee.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         totalProducerFee += producerFee;
     });
 
@@ -61,15 +61,15 @@ $(document).on('click load change keyup', '#main, #f2f-ef-table, #workshop-table
         $('#mg_standard_total').html(standardFees.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         totalStandardFees += standardFees;
     });
-  
-      // TOTAL PACKAGE
+
+    // TOTAL PACKAGE
 
         // should include calculation for discount
+        // there's also workshop-update.js for update form
 
     // Perform the calculation and get the result
     const result = subtotalConsulting_DesignFee + subTotalProgram;
-    
-    // Format the result with commas and a fixed number of decimal places
+     // Format the result with commas and a fixed number of decimal places
     const formattedResult = result.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
     // Update the value attribute of the input element
@@ -183,19 +183,20 @@ $(document).on('click load change keyup', '#main, #f2f-ef-table, #workshop-table
     //Off-Program Fee
     offTotal = 0;
     offprogramFee = 0;
-    $("#rowofOffProgram").each(function () {
-        offprogramFee =  $('#workshop_OffprogramsHf').val()  * $('#workshop_OffprogramsNoh').val();
-        $('#workshop_OffprogramsTotal').html(offprogramFee.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+    $("#tableofOffProgram > tr").each(function () {
+        offprogramFee =($(this).find('#workshop_OffprogramsHf').val() * $(this).find('#workshop_OffprogramsNoh').val());
+        $(this).find('#workshop_OffprogramsTotal').html(offprogramFee.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         offTotal += offprogramFee;
     });
+
 
     //MISCELLANEOUS
     //Program Expenses
     expTotal = 0;
     expensesTotal = 0;
-    $("#rowofProgramExpenses").each(function () {
-        expensesTotal =   overallTotal * $('#workshop_Programexpenses').val();
-        $('#workshop_ProgramexpensesTotal').html(expensesTotal.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+    $("#tableofProgramExpenses > tr").each(function () {
+        expensesTotal =   overallTotal * $(this).find('#workshop_Programexpenses').val();
+        $(this).find('#workshop_ProgramexpensesTotal').html(expensesTotal.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         expTotal += expensesTotal;
     });
 
@@ -205,7 +206,7 @@ $(document).on('click load change keyup', '#main, #f2f-ef-table, #workshop-table
     allcostTotal = 0;
     $("#workshop_allTotals").each(function () {
         allcostTotal =  costTotal + refTotal + manTotal + subTotal + sub2Total + offTotal + expTotal;
-        $('#workshop_Totals').html(allcostTotal.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        $(this).find('#workshop_Totals').html(allcostTotal.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         overAllcostTotal += allcostTotal;
     });
 

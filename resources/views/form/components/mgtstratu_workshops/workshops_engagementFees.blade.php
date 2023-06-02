@@ -26,10 +26,9 @@
                         <th></th>
                         <th class="total-td"></th>
                         <th class="total-td"></th>
-
                     </tr>
 <!------------------------------------------------CUSTOMIZATION FEE----------------------------------------------------------->
-                    <tbody id="tableLeadconsultant">
+                    <tbody id="tableCustomizationFee">
                     <tr class="th-blue-grey-lighten-2" id="customizationFee">
                         <td class="title">
                             <input type="text" class="d-none" value="Customization Fee" name="fee_type[]" readonly>
@@ -92,6 +91,11 @@
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}"name="fee_notes[]" id="">
                         </td>
+                        <td style="background-color: #FFFFFF;" class="border border-white">
+                            <a href="javascript:void(0)" class="text-success font-18" title="Add" id="mufeeaddButton1">
+                                <i class="fa fa-plus"></i>
+                            </a>
+                        </td>
                     </tr>
                     </tbody>
 <!------------------------------------------------SUBTOTAL CUSTOMIZATION FEE-------------------------------------------------------------------->
@@ -119,7 +123,7 @@
                         <td class="total-td"></td>
                     </tr>
 <!------------------------------------------------Package, up to 30 pax (P31.5K, P35K, P40.5K, P45K)-------------------------->
-                    <tbody id="tableLeadconsultant">
+                    <tbody id="tablePackage1">
                     <tr class="th-blue-grey-lighten-2" id="package1">
                         <td class="title">
                             <input type="text" class="d-none" value="Package 1" name="fee_type[]" readonly>
@@ -191,10 +195,15 @@
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}"name="fee_notes[]" id="">
                         </td>
+                        <td style="background-color: #FFFFFF;" class="border border-white">
+                            <a href="javascript:void(0)" class="text-success font-18" title="Add" id="mufeeaddButton2">
+                                <i class="fa fa-plus"></i>
+                            </a>
+                        </td>
                     </tr>
                     </tbody>
 <!------------------------------------------------Package, 31-50 pax (P40.5K, P45K, P49.5K, P55K)----------------------------->
-                    <tbody id="tableLeadconsultant">
+                    <tbody id="tablePackage2">
                     <tr class="th-blue-grey-lighten-2" id="package2">
                         <td class="title">
                             <input type="text" class="d-none" value="Package 2" name="fee_type[]" readonly>
@@ -266,10 +275,15 @@
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}"name="fee_notes[]" id="">
                         </td>
+                        <td style="background-color: #FFFFFF;" class="border border-white">
+                            <a href="javascript:void(0)" class="text-success font-18" title="Add" id="mufeeaddButton3">
+                                <i class="fa fa-plus"></i>
+                            </a>
+                        </td>
                     </tr>
                     </tbody>
 <!------------------------------------------------Producer (5K, 7.5K)--------------------------------------------------------->
-                    <tbody id="tableLeadconsultant">
+                    <tbody id="tableProducer">
                     <tr class="th-blue-grey-lighten-2" id="ef_producer">
                         <td class="title">
                             <input type="text" class="d-none" value="Producer" name="fee_type[]" readonly>
@@ -331,6 +345,11 @@
                         <td class="total-td">
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}"name="fee_notes[]" id="">
+                        </td>
+                        <td style="background-color: #FFFFFF;" class="border border-white">
+                            <a href="javascript:void(0)" class="text-success font-18" title="Add" id="mufeeaddButton4">
+                                <i class="fa fa-plus"></i>
+                            </a>
                         </td>
                     </tr>
                     </tbody>
@@ -409,3 +428,6 @@ $('input[type="number"]').on('input', function () {
 $('input[type="number"]').attr('min', '0');
 
 </script>
+
+{{-- scripts for this engagement fees --}}
+@include('form.components.mgtstratu_workshops.workshops_script.workshops_engagementFees')

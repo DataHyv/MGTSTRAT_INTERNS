@@ -6,23 +6,23 @@
         $("#muaddButton").on("click", function() {
             $("#tableofSale").append(
                 `<tr class="th-blue-grey-lighten-2" id="rowofSale${++musaleNum}">
-                            <td class="title">Sales (4% / 5% / 6% / 7%)</td>
-                            <td>
-                                <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="" id="inputforSale"
-                                onblur="this.value = this.value.replace('%', '') + '%';"
-                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
-                            </td>
-                            <td></td>
-                            <td></td>
-                            <td class="total-td tbl-engmt-cost" style="border-left:3px solid black">
-                                <h4 class="text-center" id="workshop_saleTotal">-</h4>
-                            </td>
-                            <td class="total-td">
-                                <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="" id="">
-                            </td>
-                            <td><a href="javascript:void(0)" class="text-danger font-18 remove" title="Remove"><i class="fa fa-trash-o"></i></a></td>
+                    <td class="title">Sales (4% / 5% / 6% / 7%)</td>
+                    <td class="table-warning">
+                        <input type="text" class="form-control input-table @error('') is-invalid @enderror"
+                        value="{{ old('') }}" name="" id="inputforSale"
+                        onblur="this.value = this.value.replace('%', '') + '%';"
+                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td class="total-td tbl-engmt-cost" style="border-left:3px solid black">
+                        <h4 class="text-center" id="workshop_saleTotal">-</h4>
+                    </td>
+                    <td class="total-td">
+                        <input type="text" class="form-control input-table @error('') is-invalid @enderror"
+                            value="{{ old('') }}" name="" id="">
+                    </td>
+                    <td><a href="javascript:void(0)" class="text-danger font-18 remove" title="Remove"><i class="fa fa-trash-o"></i></a></td>
                 </tr>`);
 
             const musaleId = document.querySelectorAll("#workshop_sale");
@@ -64,23 +64,23 @@
         $("#muaddButton2").on("click", function() {
             $("#tableofReferrals").append(
                 `<tr class="th-blue-grey-lighten-2" id="rowofReferrals${++mureferralsNum}">
-                            <td class="title">Referral (2% / 3% / 10%)</td>
-                            <td>
-                                <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="" id="inputforReferrals"
-                                onblur="this.value = this.value.replace('%', '') + '%';"
-                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
-                            </td>
-                            <td></td>
-                            <td></td>
-                            <td class="total-td tbl-engmt-cost" style="border-left:3px solid black">
-                                <h4 class="text-center" id="workshop_referralsTotal">-</h4>
-                            </td>
-                            <td class="total-td">
-                                <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="" id="">
-                            </td>
-                            <td><a href="javascript:void(0)" class="text-danger font-18 remove" title="Remove"><i class="fa fa-trash-o"></i></a></td>
+                    <td class="title">Referral (2% / 3% / 10%)</td>
+                    <td class="table-warning">
+                        <input type="text" class="form-control input-table @error('') is-invalid @enderror"
+                        value="{{ old('') }}" name="" id="inputforReferrals"
+                        onblur="this.value = this.value.replace('%', '') + '%';"
+                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td class="total-td tbl-engmt-cost" style="border-left:3px solid black">
+                        <h4 class="text-center" id="workshop_referralsTotal">-</h4>
+                    </td>
+                    <td class="total-td">
+                        <input type="text" class="form-control input-table @error('') is-invalid @enderror"
+                            value="{{ old('') }}" name="" id="">
+                    </td>
+                    <td><a href="javascript:void(0)" class="text-danger font-18 remove" title="Remove"><i class="fa fa-trash-o"></i></a></td>
                 </tr>`);
 
             const mureferralsId = document.querySelectorAll("#workshop_referrals");
@@ -122,23 +122,23 @@
         $("#muaddButton3").on("click", function() {
             $("#tableofEngagementManager").append(
                 `<tr class="th-blue-grey-lighten" id="rowofEngagementManager${++muengagementNum}">
-                            <td class="title fw-bold text-dark">ENGAGEMENT MANAGER(4%)</td>
-                            <td>
-                                <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="" id="inputforEngagementManager"
-                                onblur="this.value = this.value.replace('%', '') + '%';"
-                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
-                            </td>
-                            <td></td>
-                            <td></td>
-                            <td class="total-td tbl-engmt-cost" style="border-left:3px solid black">
-                                <h4 class="text-center" id="workshop_engagementManagerTotal">-</h4>
-                            </td>
-                            <td class="total-td">
-                                <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="" id="">
-                            </td>
-                            <td><a href="javascript:void(0)" class="text-danger font-18 remove" title="Remove"><i class="fa fa-trash-o"></i></a></td>
+                    <td class="title fw-bold text-dark">ENGAGEMENT MANAGER (4%)</td>
+                    <td class="table-warning">
+                        <input type="text" class="form-control input-table @error('') is-invalid @enderror"
+                        value="{{ old('') }}" name="" id="inputforEngagementManager"
+                        onblur="this.value = this.value.replace('%', '') + '%';"
+                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td class="total-td tbl-engmt-cost" style="border-left:3px solid black">
+                        <h4 class="text-center" id="workshop_engagementManagerTotal">-</h4>
+                    </td>
+                    <td class="total-td">
+                        <input type="text" class="form-control input-table @error('') is-invalid @enderror"
+                            value="{{ old('') }}" name="" id="">
+                    </td>
+                    <td><a href="javascript:void(0)" class="text-danger font-18 remove" title="Remove"><i class="fa fa-trash-o"></i></a></td>
                 </tr>`);
 
             const muengagementId = document.querySelectorAll("#workshop_engagementManager");
@@ -181,7 +181,7 @@
             $("#tableofCustomization").append(`
                 <tr class="th-blue-grey-lighten-2" id="rowofCustomization${++muCustomization}">
                     <td class="title">Customization Fee</td>
-                                <td class="hf">
+                                <td class="table-warning hf">
                                     <input type="number"
                                         class="text-center fw-bold text-dark text-center form-control input-table @error('') is-invalid @enderror"
                                         value="{{ old('') }}" name="" id="workshop_CustomizationHf" max="100">
@@ -300,7 +300,7 @@
                                     @enderror
                                 </fieldset>
                             </td>
-                            <td class="noh">
+                            <td class="table-warning noh">
                                 <input type="number"
                                     class="text-center form-control input-table @error('') is-invalid @enderror"
                                     value="{{ old('') }}" name="" id="workshop_CreatorNoh" max="100"
@@ -362,35 +362,35 @@
         $("#muaddButton6").on("click", function() {
             $("#tableofLeadFacilitator").append(`
                 <tr class="th-blue-grey-lighten-2" id="rowofLeadFacilitator${++muLeadfaci}">
-                                <td class="title">Lead Facilitator</td>
-                                <td class="hf">
-                                    <input type="number"
-                                        class="text-center fw-bold text-center text-dark form-control input-table @error('') is-invalid @enderror"
-                                        value="{{ old('') }}" name="" id="workshop_LeadfacilitatorsHf">
-                                </td>
-                                <td class="noh">
-                                    <input type="number"
-                                        class="text-center form-control input-table @error('') is-invalid @enderror"
-                                        value="{{ old('') }}" name="" id="workshop_LeadfacilitatorsNoh">
-                                </td>
-                                <td class="nwh">
-                                    <input type="number"
-                                        class="text-center form-control input-table @error('') is-invalid @enderror"
-                                        value="{{ old('') }}" name="" id="workshop_LeadfacilitatorsNwh">
-                                </td>
-                                <td class="total-td" style="border-left:3px solid black">
-                                    <h4 class="text-center lead" id="workshop_LeadfacilitatorsTotal">-</h4>
-                                </td>
-                                <td class="total-td">
-                                    <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                        value="{{ old('') }}" name="" id="">
-                                </td>
-                            <td>
-                            <a href="javascript:void(0)" class="text-danger font-18 removed" title="Remove"><i class="fa fa-trash-o"></i></a>
-                            </td>
-                        </tr>
-                    `);
-                });
+                    <td class="title">Lead Facilitator</td>
+                    <td class="table-warning hf">
+                        <input type="number"
+                            class="text-center fw-bold text-center text-dark form-control input-table @error('') is-invalid @enderror"
+                            value="{{ old('') }}" name="" id="workshop_LeadfacilitatorsHf">
+                    </td>
+                    <td class="table-warning noh">
+                        <input type="number"
+                            class="text-center form-control input-table @error('') is-invalid @enderror"
+                            value="{{ old('') }}" name="" id="workshop_LeadfacilitatorsNoh">
+                    </td>
+                    <td class="table-warning nwh">
+                        <input type="number"
+                            class="text-center form-control input-table @error('') is-invalid @enderror"
+                            value="{{ old('') }}" name="" id="workshop_LeadfacilitatorsNwh">
+                    </td>
+                    <td class="total-td" style="border-left:3px solid black">
+                        <h4 class="text-center lead" id="workshop_LeadfacilitatorsTotal">-</h4>
+                    </td>
+                    <td class="total-td">
+                        <input type="text" class="form-control input-table @error('') is-invalid @enderror"
+                            value="{{ old('') }}" name="" id="">
+                    </td>
+                    <td>
+                    <a href="javascript:void(0)" class="text-danger font-18 removed" title="Remove"><i class="fa fa-trash-o"></i></a>
+                    </td>
+                </tr>
+                `);
+            });
 
             $("#tableofLeadFacilitator").on("click", ".removed", function () {
 
@@ -450,7 +450,7 @@
                                             &#8369;800
                                         </option>
                                         <option value="1100" {{ old('') == '1100' ? 'selected="selected"' : '' }}
-                                            title="">
+                                            title="" selected>
                                             &#8369;1,100
                                         </option>
                                         <option value="1350" {{ old('') == '1350' ? 'selected="selected"' : '' }}
@@ -465,12 +465,12 @@
                                     @enderror
                                 </fieldset>
                                 </td>
-                                <td class="noh">
+                                <td class="table-warning noh">
                                     <input type="number"
                                         class="text-center  form-control input-table @error('') is-invalid @enderror"
                                         value="{{ old('') }}" name="" id="workshop_ModeratorNoh1">
                                 </td>
-                                <td class="nwh">
+                                <td class="table-warning nwh">
                                     <input type="number"
                                         class="text-center form-control input-table @error('') is-invalid @enderror"
                                         value="{{ old('') }}" name="" id="workshop_ModeratorNwh1">
@@ -530,33 +530,33 @@
         $("#muaddButton8").on("click", function() {
             $("#tableofProducer").append(`
                 <tr class="th-blue-grey-lighten-2" id="rowoProducer${++muProducer}">
-                        <td class="title">Producer</td>
-                                <td>
-                                    <input type="text"
-                                        class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
-                                        value="{{ old('') }}" name="" id="workshop_ProducerHf">
-                                </td>
-                                <td>
-                                    <input type="number"
-                                        class="text-center form-control input-table @error('') is-invalid @enderror"
-                                        value="{{ old('') }}" name="" id="workshop_ProducerNoh">
-                                </td>
-                                <td>
-                                    <input type="number"
-                                        class="text-center form-control input-table @error('') is-invalid @enderror"
-                                        value="{{ old('') }}" name="" id="workshop_ProducerNwh">
-                                </td>
-                                <td class="total-td" style="border-left:3px solid black">
-                                    <h4 class="text-center lead" id="workshop_ProducersTotal">-</h4>
-                                </td>
-                                <td class="total-td">
-                                    <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                        value="{{ old('') }}" name="" id="">
-                                </td>
-                                <td>
-                                <a href="javascript:void(0)" class="text-danger font-18 removed" title="Remove"><i class="fa fa-trash-o"></i></a>
-                                </td>
-                        </tr>
+                    <td class="title">Producer</td>
+                        <td class="table-warning">
+                            <input type="number"
+                                class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="" id="workshop_ProducerHf">
+                        </td>
+                        <td class="table-warning noh">
+                            <input type="number"
+                                class="text-center form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="" id="workshop_ProducerNoh">
+                        </td>
+                        <td class="table-warning nwh">
+                            <input type="number"
+                                class="text-center form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="" id="workshop_ProducerNwh">
+                        </td>
+                        <td class="total-td" style="border-left:3px solid black">
+                            <h4 class="text-center lead" id="workshop_ProducersTotal">-</h4>
+                        </td>
+                        <td class="total-td">
+                            <input type="text" class="form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="" id="">
+                        </td>
+                        <td>
+                        <a href="javascript:void(0)" class="text-danger font-18 removed" title="Remove"><i class="fa fa-trash-o"></i></a>
+                        </td>
+                    </tr>
                     `);
                 });
 
@@ -591,6 +591,143 @@
             $(this).closest("tr").remove();
             // Decreasing total number of rows by 1.
             muProducer--;
+        });
+
+    });
+
+
+    //OFF-PROGRAM
+    var muOffProgram = 1;
+    $(document).ready(function () {
+        $("#muaddButton9").on("click", function() {
+            $("#tableofOffProgram").append(`
+                <tr class="th-blue-grey-lighten-2" id="rowofOffProgram${++muOffProgram}">
+                    <td class="title">Off-Program Fee</td>
+                    <td class="table-warning noh">
+                        <input type="number"
+                            class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
+                            value="{{ old('') }}" name="cost_hour_fee[]" id="workshop_OffprogramsHf">
+                    </td>
+                    <td class="table-warning nwh">
+                        <input type="number"
+                            class="text-center form-control input-table @error('') is-invalid @enderror"
+                            value="{{ old('') }}" name="cost_hour_num[]" id="workshop_OffprogramsNoh">
+                    </td>
+                    
+                    {{-- NIGHT SHIFT, WEEKENDS HOLIDAYS * --}}
+                    <td><input type="hidden" class="d-none" name="cost_nswh[]" readonly></td>
+
+                    <td class="total-td" style="border-left:3px solid black">
+                        <h4 class="text-center lead" id="workshop_OffprogramsTotal">-</h4>
+                    </td>
+                    <td class="total-td">
+                        <input type="text" class="form-control input-table @error('') is-invalid @enderror"
+                            value="{{ old('') }}" name="cost_rooster[]" id="">
+                    </td>
+                    <td>
+                        <a href="javascript:void(0)" class="text-danger font-18 removed" title="Remove"><i class="fa fa-trash-o"></i></a>
+                    </td>
+                </tr>
+                `);
+            });
+
+            $("#tableofOffProgram").on("click", ".removed", function () {
+
+            // Getting all the rows next to the row
+            // containing the clicked button
+            var child = $(this).closest("tr").nextAll();
+
+            // Iterating across all the rows
+            // obtained to change the index
+            child.each(function () {
+                // Getting <tr> id.
+                var id = $(this).attr("id");
+
+                // Getting the <input> inside the .noc, .nod.
+                var noh = $(this).children(".noh").children("input");
+                var nwh = $(this).children(".nwh").children("input");
+
+                // Gets the row number from <tr> id.
+                var dig = parseInt(id.substring(13));
+
+                // Modifying row id.
+                $(this).attr("id", `rowofOffProgram${dig - 1}`);
+
+                // Modifying row index.
+                noh.attr("id", `workshop_OffprogramsHf${dig - 1}`);
+                nwh.attr("id", `workshop_OffprogramsNoh${dig - 1}`);
+            });
+
+            // Removing the current row.
+            $(this).closest("tr").remove();
+            // Decreasing total number of rows by 1.
+            muOffProgram--;
+        });
+
+    });
+
+
+    //PROGRAM EXPENSES
+    var muProgramExpenses = 1;
+    $(document).ready(function () {
+        $("#muaddButton10").on("click", function() {
+            $("#tableofProgramExpenses").append(`
+            <tr class="th-blue-grey-lighten-2" id="rowofProgramExpenses${++muProgramExpenses}">
+                <td class="title">Program Expenses</td>
+                <td class="table-warning noh">
+                    <input type="number"
+                        class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
+                        value="{{ old('') }}" name="cost_hour_fee[]" id="workshop_Programexpenses" maxlength="4">
+                </td>
+                
+                {{-- NUMBER OF HOURS and NIGHT SHIFT, WEEKENDS HOLIDAYS * --}}
+                <td><input type="hidden" class="d-none" name="cost_hour_num[]" readonly></td>
+                <td><input type="hidden" class="d-none" name="cost_nswh[]" readonly></td>
+                
+                <td class="total-td" style="background-color: rgba(146, 146, 146, 0.727">
+                    <h4 class="text-center" id="workshop_ProgramexpensesTotal">-</h4>
+                </td>
+                <td class="total-td">
+                    <input type="text" class="form-control input-table @error('') is-invalid @enderror"
+                        value="{{ old('') }}" name="cost_rooster[]" id="">
+                </td>
+                <td>
+                    <a href="javascript:void(0)" class="text-danger font-18 removed" title="Remove"><i class="fa fa-trash-o"></i></a>
+                </td>
+            </tr>
+                `);
+            });
+
+            $("#tableofProgramExpenses").on("click", ".removed", function () {
+
+            // Getting all the rows next to the row
+            // containing the clicked button
+            var child = $(this).closest("tr").nextAll();
+
+            // Iterating across all the rows
+            // obtained to change the index
+            child.each(function () {
+                // Getting <tr> id.
+                var id = $(this).attr("id");
+
+                // Getting the <input> inside the .noc, .nod.
+                var noh = $(this).children(".noh").children("input");
+                // var nwh = $(this).children(".nwh").children("input");
+
+                // Gets the row number from <tr> id.
+                var dig = parseInt(id.substring(13));
+
+                // Modifying row id.
+                $(this).attr("id", `rowofProgramExpenses${dig - 1}`);
+
+                // Modifying row index.
+                noh.attr("id", `workshop_Programexpenses${dig - 1}`);
+            });
+
+            // Removing the current row.
+            $(this).closest("tr").remove();
+            // Decreasing total number of rows by 1.
+            muProgramExpenses--;
         });
 
     });

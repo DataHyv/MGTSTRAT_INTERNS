@@ -30,7 +30,7 @@
                         <th class="total-td"></th>
                     </tr>
 <!------------------------------------------------CUSTOMIZATION FEE----------------------------------------------------------->
-                    <tbody id="tableLeadconsultant">
+                    <tbody id="tableCustomizationFee">
 
                     {{-- Type: Customization Fee --}}
                     @foreach ($dataJoin1 as $key=>$fee_type)
@@ -153,7 +153,7 @@
                         <td class="total-td"></td>
                     </tr>
 <!------------------------------------------------Package, up to 30 pax (P31.5K, P35K, P40.5K, P45K)-------------------------->
-                    <tbody id="tableLeadconsultant">
+                    <tbody id="tablePackage1">
 
                     {{-- Type: Package 1 --}}
                     @foreach ($dataJoin1 as $key=>$fee_type)
@@ -262,7 +262,7 @@
 
                     </tbody>
 <!------------------------------------------------Package, 31-50 pax (P40.5K, P45K, P49.5K, P55K)----------------------------->
-                    <tbody id="tableLeadconsultant">
+                    <tbody id="tablePackage2">
 
                     {{-- Type: Package 2 --}}
                     @foreach ($dataJoin1 as $key=>$fee_type)
@@ -371,7 +371,7 @@
 
                     </tbody>
 <!------------------------------------------------Producer (5K, 7.5K)--------------------------------------------------------->
-                    <tbody id="tableLeadconsultant">
+                    <tbody id="tableProducer">
 
                     {{-- Type: Producer --}}
                     @foreach ($dataJoin1 as $key=>$fee_type)
@@ -564,3 +564,5 @@ function checkInputValidity(input) {
 }
 
 </script>
+{{-- scripts for this engagement fees --}}
+@include('form.components.mgtstratu_workshops.workshops_script.workshops_engagementFees')

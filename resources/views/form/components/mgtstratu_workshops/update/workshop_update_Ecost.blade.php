@@ -818,3 +818,6 @@
         </section>
     </div>
 <!--------------------------END OF MGTSTRAT-U WORKSHOPS ENGAGEMENT COST FORM-------------------------------->
+
+{{-- scripts for this engagement cost --}}
+@include('form.components.mgtstratu_workshops.workshops_script.workshops_engagement_cost')

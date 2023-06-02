@@ -423,54 +423,80 @@
         <!------------ DATE ------------>
         <div class="row justify-content-center g-3 gx-5" id="dcbe">
             <h6 class="text-center mt-3 fst-italic">Date</h3>
-            <div class="col-md-3">
-                <div class="form-group has-icon-left">
-                    <label class="fw-bold required">Date</label>
-                    <div class="position-relative">
-                        <input type="text" class="form-control date datepicker @error('program_dates') is-invalid @enderror" value="{{ old('program_dates') }}" placeholder="Enter Date" name="program_dates" id="datepicker" size="30">
-                        <div class="form-control-icon">
-                            <i class="bi bi-calendar"></i>
+
+            <div class="d-flex justify-content-center mt-4">
+            <div class="flex-column">
+                <fieldset class="row justify-content-center" id="dateRows">
+                
+                    {{-- add button --}}
+                    <div class="col-md-1">
+                        <div class="px-0">
+                            <label class="fw-bold invisible overflow-hidden mb-4">Add</label>
+                            <a href="javascript:void(0)" class="text-success font-18 px-0" title="Add"
+                            id="addDates"><i class="fa fa-plus"></i></a>
                         </div>
-                        @error('program_dates')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
                     </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-group has-icon-left">
-                    <label class="fw-bold required">Start Time</label>
-                    <div class="position-relative">
-                        <input type="text" id="start-time" class="form-control start-time timepicker @error('program_start_time') is-invalid @enderror" value="{{ old('program_start_time') }}" placeholder="Enter Time" name="program_start_time">
-                        <div class="form-control-icon">
-                            <i class="bi bi-clock"></i>
+
+                    {{-- date --}}
+                    <div class="col-md-3">
+                        <div class="form-group has-icon-left">
+                            <label class="fw-bold required">Date</label>
+                            <div class="position-relative">
+                                <input type="text" class="form-control date datepicker @error('program_dates') is-invalid @enderror" value="{{ old('program_dates') }}" placeholder="Enter Date" name="program_dates" id="datepicker" size="30">
+                                <div class="form-control-icon">
+                                    <i class="bi bi-calendar"></i>
+                                </div>
+                                @error('program_dates')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
                         </div>
-                        @error('program_start_time')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
                     </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-group has-icon-left">
-                    <label class="fw-bold required">End Time</label>
-                    <div class="position-relative">
-                        <input type="text" id="end-time" class="form-control end-time timepicker @error('program_end_time') is-invalid @enderror" value="{{ old('program_end_time') }}" placeholder="Enter Time" name="program_end_time">
-                        <div class="form-control-icon">
-                            <i class="fa-solid fa-hourglass-end"></i>
+
+                    {{-- start time --}}
+                    <div class="col-md-3">
+                        <div class="form-group has-icon-left">
+                            <label class="fw-bold required">Start Time</label>
+                            <div class="position-relative">
+                                <input type="text" id="start-time" class="form-control start-time timepicker @error('program_start_time') is-invalid @enderror" value="{{ old('program_start_time') }}" placeholder="Enter Time" name="program_start_time">
+                                <div class="form-control-icon">
+                                    <i class="bi bi-clock"></i>
+                                </div>
+                                @error('program_start_time')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
                         </div>
-                        @error('program_end_time')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
                     </div>
-                </div>
+
+                    {{-- end time --}}
+                    <div class="col-md-3">
+                        <div class="form-group has-icon-left">
+                            <label class="fw-bold required">End Time</label>
+                            <div class="position-relative">
+                                <input type="text" id="end-time" class="form-control end-time timepicker @error('program_end_time') is-invalid @enderror" value="{{ old('program_end_time') }}" placeholder="Enter Time" name="program_end_time">
+                                <div class="form-control-icon">
+                                    <i class="fa-solid fa-hourglass-end"></i>
+                                </div>
+                                @error('program_end_time')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+
+                </fieldset>
             </div>
+            </div>
+
+            <hr class="mt-3">
+            
         </div>
         <!------------ END OF DATE ------------>
     </div>
@@ -531,6 +557,160 @@
             dropdown: true,
             scrollbar: true
         });
+
+        // add date of engagement
+        var dates = 1;
+        $("#addDates").on("click", function() {
+            // Adding a row inside the tbody.
+            $("#dcbe").append(`
+
+            <fieldset class="d-flex justify-content-center mt-4" id="dateRows${++dates}">
+                <div class="flex-column">
+                    <div>
+                        <div class="row align-items-center justify-content-center">
+                            <div class="col-lg-1 col-md-1" style="margin-top: 40px;">
+                                <div class="px-0 text-center">
+                                    <label class="fw-bold invisible mb-4">Add</label>
+                                    <a href="javascript:void(0)" class="text-danger font-18 remove px-0" title="Remove">
+                                        <i class="fa fa-trash-o"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group has-icon-left">
+                                    <label class="fw-bold required">Date</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control date datepicker @error('doe') is-invalid @enderror"
+                                            value="{{ old('doe') }}" placeholder="Enter Date" name="program_dates[]" id="datepicker${dates}"
+                                            size="30">
+                                        <div class="form-control-icon">
+                                            <i class="bi bi-calendar"></i>
+                                        </div>
+                                        @error('doe')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group has-icon-left">
+                                    <label class="fw-bold required">Start Time</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control start-time timepicker @error('dot') is-invalid @enderror"
+                                            value="{{ old('dot') }}" placeholder="Enter Time" id="program_start_time" name="program_start_time[]">
+                                        <div class="form-control-icon">
+                                            <i class="bi bi-clock"></i>
+                                        </div>
+                                        @error('dot')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group has-icon-left">
+                                    <label class="fw-bold required">End Time</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control end-time timepicker @error('dot') is-invalid @enderror"
+                                            value="{{ old('dot') }}" placeholder="Enter Time" id="program_end_time" name="program_end_time[]">
+                                        <div class="form-control-icon">
+                                            <i class="fa-solid fa-hourglass-end"></i>
+                                        </div>
+                                        @error('dot')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </fieldset>
+            `);
+
+            // This will help with displaying the date
+        $('.datepicker').datepicker({
+        autoclose: true,
+        onSelect: function(dateText, inst) {
+            // Prevent scrolling to the top of the page
+            return false;
+        }
+        });
+        $('#ui-datepicker-div').css('clip', 'auto');
+
+        $('.timepicker').timepicker({
+            timeFormat: 'h:mm p',
+            interval: 30,
+            minTime: '06',
+            maxTime: '10:00pm',
+            // defaultTime: '06',
+            startTime: '06:00',
+            dynamic: false,
+            dropdown: true,
+            scrollbar: true
+        });
+
+        });
+
+        // remove date of engagement
+        $("#dcbe").on("click", ".remove", function () {
+            // Getting all the rows next to the row
+            // containing the clicked button
+            var child = $(this).closest('.d-flex').nextAll();
+
+            // Iterating across all the rows
+            // obtained to change the index
+            child.each(function () {
+                // Getting <tr> id.
+                var id = $(this).attr("id");
+
+
+                // Gets the row number from <tr> id.
+                var dig = parseInt(id.substring(8));
+
+                // Modifying row id.
+                $(this).attr("id", `dateRows${dig - 1}`);
+
+            });
+
+            // Removing the current row.
+            $(this).closest('.d-flex').remove();
+
+            // Decreasing total number of rows by 1.
+            dates--;
+        });
+
+        // This will help with displaying the date
+        $('.datepicker').datepicker({
+        autoclose: true,
+        onSelect: function(dateText, inst) {
+            // Prevent scrolling to the top of the page
+            return false;
+        }
+        });
+        $('#ui-datepicker-div').css('clip', 'auto');
+
+        $('.timepicker').timepicker({
+            timeFormat: 'h:mm p',
+            interval: 30,
+            minTime: '06',
+            maxTime: '10:00pm',
+            // defaultTime: '06',
+            startTime: '06:00',
+            dynamic: false,
+            dropdown: true,
+            scrollbar: true
+        });
+
     });
 
     document.getElementById('Mgtstrat-U-Titles').addEventListener("change", titles);
