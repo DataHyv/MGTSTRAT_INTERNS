@@ -32,12 +32,14 @@
 
                     <tbody id="salescommission">
                         <tr class="th-blue-grey-lighten-2 sum" id="customizationFee">
-                            <td class="title">Sales (4% / 5% / 6% / 7%)</td>
+                            <td class="title"> 
+                            <input type="text" class="d-none" value="Sales" name="cost_type[]" readonly>
+                                Sales (4% / 5% / 6% / 7%)</td>
 
                             <td>
                                 <fieldset>
                                     <select class="input js-mytooltip package-fees form-select @error('') is-invalid @enderror"
-                                        name="ef_customizationFeePfv"
+                                        name="cost_hour_fee[]"
                                         id="ef_LeadconsultantHf1"
                                         data-mytooltip-content="<i>if referred or sold by a reseller <br><br>
 
@@ -91,7 +93,7 @@
                             </td>
                             <td class="total-td">
                                 <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="" id="">
+                                    value="{{ old('') }}" name="cost_rooster[]" id="">
                             </td>
                             <td style="background-color: #FFFFFF;" class="border border-white"><a href="javascript:void(0)"
                                 class="text-success font-18" title="Add" id="addBtn1"><i class="fa fa-plus"></i></a>
@@ -103,12 +105,13 @@
 
                     <tbody id="referralcommission">
                         <tr class="th-blue-grey-lighten-2 sum" id="customizationFee">
-                            <td class="title">Referral (2% / 3% / 10%)</td>
+                            <td class="title">
+                                <input type="text" class="d-none" value="Referrals" name="cost_type[]" readonly>    Referral (2% / 3% / 10%)</td>
 
                             <td>
                                 <fieldset>
                                     <select class="input js-mytooltip package-fees form-select @error('') is-invalid @enderror"
-                                        name="ef_customizationFeePfv"
+                                        name="cost_hour_fee[]"
                                         id="ef_LeadconsultantHf2"
                                         data-mytooltip-content="<i>Referral - 2% - repeat contracts from the same client <br>
                                             3% - 1st contract with a new client, or with a 2-year dormant client<br>
@@ -153,7 +156,7 @@
                             </td>
                             <td class="total-td">
                                 <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}"name="" id="">
+                                    value="{{ old('') }}"name="cost_rooster[]" id="">
                             </td>
                             <td style="background-color: #FFFFFF;" class="border border-white"><a href="javascript:void(0)"
                                 class="text-success font-18" title="Add" id="addBtn1"><i class="fa fa-plus"></i></a>
@@ -165,12 +168,13 @@
 
                     <tbody id="commissionManager">
                         <tr class="th-blue-grey-lighten-2 sum" id="customizationFee">
-                            <td class="title text-uppercase fw-bold">Engagement Manager (4%)</td>
+                            <td class="title text-uppercase fw-bold">
+                                <input type="text" class="d-none" value="Engagement Manager" name="cost_type[]" readonly>Engagement Manager (4%)</td>
 
                             <td>
                                 <fieldset>
                                     <select class="input js-mytooltip package-fees form-select @error('') is-invalid @enderror"
-                                        name="webinar_engagementManager"
+                                        name="cost_hour_fee[]"
                                         id="webinar_engagementManager"
                                         data-mytooltip-content="<i>
                                             Engagement Manager - 4% - all Key Accounts and large engagements <br><br>
@@ -209,7 +213,7 @@
                             </td>
                             <td class="total-td">
                                 <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}"name="" id="">
+                                    value="{{ old('') }}"name="cost_rooster[]" id="">
                             </td>
                             <td style="background-color: #FFFFFF;" class="border border-white"><a href="javascript:void(0)"
                                 class="text-success font-18" title="Add" id="addBtn1"><i class="fa fa-plus"></i></a>
@@ -250,12 +254,13 @@
                     <!-------------- Customization Fee-------------->
                     <tbody class="consulting" id="tableofCustomization">
                         <tr class="th-blue-grey-lighten-2 sum" id="">
-                            <td class="title">Customization Fee</td>
+                            <td class="title">
+                            <input type="text" class="d-none" value="Customization Fee" name="cost_type[]" readonly>Customization Fee</td>
 
                             <td>
-                                <input type="text" class="package-fees input input-table form-control @error('') is-invalid @enderror"
+                                <input type="number" class="package-fees input input-table form-control @error('') is-invalid @enderror"
                                 value="{{ old('') }}"
-                                name="webinar_CustomizationHf"
+                                name="cost_hour_fee[]"
                                 id="webinar_CustomizationHf"
                             
                                 data-mytooltip-content="<i></i>"
@@ -267,7 +272,7 @@
                             <td data-title="# OF HOURS">
                                 <fieldset>
                                     <select class="input js-mytooltip number-session form-select @error('') is-invalid @enderror"
-                                        name="ef_customizationFeePfv"
+                                        name="cost_hour_num[]"
                                         id="webinar_CustomizationNoh"
                                         data-mytooltip-content="<i># of Hours - 0 - no customization <br><br> 2 - automatic when we charge customization fee</i>"
                                         data-mytooltip-theme="dark"
@@ -298,7 +303,7 @@
                             </td>
                             <td class="total-td">
                                 <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}"name="" id="">
+                                    value="{{ old('') }}"name="cost_rooster[]" id="">
                             </td>
                             <td style="background-color: #FFFFFF;" class="border border-white"><a href="javascript:void(0)"
                                 class="text-success font-18" title="Add" id="addBtn1"><i class="fa fa-plus"></i></a>
@@ -310,12 +315,13 @@
 
                     <tbody class="consulting" id="tableofCreator">
                         <tr class="th-blue-grey-lighten-2 sum" id="">
-                            <td class="title">Creators Fees (&#8369;0, &#8369;500, &#8369;1K)</td>
-
+                            <td class="title">
+                            <input type="text" class="d-none" value="Creators Fees" name="cost_type[]" readonly>Creators Fees (&#8369;0, &#8369;500, &#8369;1K)
+                        </td>
                             <td>
                                 <fieldset>
                                     <select class="package-fees input js-mytooltip form-select @error('') is-invalid @enderror"
-                                        name="ef_customizationFeePfv"
+                                        name="cost_hour_fee[]"
                                         id="ef_LeadconsultantHf3"
                                         data-mytooltip-content="<i># of Hours - 0 - no customization <br><br> 2 - automatic when we charge customization fee</i>"
                                         data-mytooltip-theme="dark"
@@ -341,9 +347,9 @@
                             </td>
 
                             <td data-title="# OF HOURS">
-                                <input type="text" class="number-session input input-table form-control @error('') is-invalid @enderror"
+                                <input type="number" class="number-session input input-table form-control @error('') is-invalid @enderror"
                                 value="{{ old('') }}"
-                                name="webinar_CreatorNoh"
+                                name="cost_hour_num[]"
                                 id="webinar_CreatorNoh"
                             
                                 data-mytooltip-content="<i></i>"
@@ -362,7 +368,7 @@
 
                             <td class="total-td">
                                 <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}"name="" id="">
+                                    value="{{ old('') }}"name="cost_rooster[]" id="">
                             </td>
 
                             <td style="background-color: #FFFFFF;" class="border border-white"><a href="javascript:void(0)"
@@ -383,7 +389,7 @@
                         <td class="total-td">
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}"
-                                name="" id="">
+                                name="consulationdesignsubtotal" id="">
                         </td>
                         <td class="border border-white"></td>
                     </tr>
@@ -401,18 +407,19 @@
 
                     <tbody class="program" id="tableofLeadFacilitator">
                         <tr class="th-blue-grey-lighten-2 sum" id="">
-                            <td class="title">Lead Facilitator</td>
+                            <td class="title">
+                            <input type="text" class="d-none" value="Lead Facilitator" name="cost_type[]" readonly>Lead Facilitator</td>
 
                             <td>
-                                <input type="text" class="package-fees input input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="webinar_LeadfacilitatorsHf" id="webinar_LeadfacilitatorsHf">
+                                <input type="number" class="package-fees input input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="cost_hour_fee[]" id="webinar_LeadfacilitatorsHf">
                             </td>
 
                             <td data-title="# OF HOURS">
-                                <input type="text" class="number-session input input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="webinar_LeadfacilitatorsNoh" id="webinar_LeadfacilitatorsNoh">
+                                <input type="number" class="number-session input input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="cost_hour_num[]" id="webinar_LeadfacilitatorsNoh">
                             </td>
 
                             <td data-title="# NIGHT SHIFT, WEEKENDS HOLIDAYS">
-                                <input type="text" class="nswh input js-mytooltip input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="webinar_LeadfacilitatorsNwh" id="webinar_LeadfacilitatorsNwh">
+                                <input type="number" class="nswh input js-mytooltip input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="cost_nswh[]" id="webinar_LeadfacilitatorsNwh">
                             </td>
 
                             <td class="total-td">
@@ -420,7 +427,7 @@
                             </td>
                             <td class="total-td">
                                 <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}"name="" id="">
+                                    value="{{ old('') }}"name="cost_rooster[]" id="">
                             </td>
                             <td style="background-color: #FFFFFF;" class="border border-white"><a href="javascript:void(0)"
                                 class="text-success font-18" title="Add" id="addBtn1"><i class="fa fa-plus"></i></a>
@@ -432,18 +439,20 @@
 
                     <tbody class="program" id="tableofModerator">
                         <tr class="th-blue-grey-lighten-2 sum" id="">
-                            <td class="title">Moderator</td>
+                            <td class="title">
+                            <input type="text" class="d-none" value="Moderator" name="cost_type[]" readonly>
+                            Moderator</td>
 
                             <td>
-                                <input type="text" class="package-fees input input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="webinar_ModeratorHf" id="webinar_ModeratorHf">
+                                <input type="number" class="package-fees input input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="cost_hour_fee[]" id="webinar_ModeratorHf">
                             </td>
 
                             <td data-title="# OF HOURS">
-                                <input type="text" class="number-session input input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="webinar_ModeratorNoh1" id="webinar_ModeratorNoh1">
+                                <input type="number" class="number-session input input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="cost_hour_num[]" id="webinar_ModeratorNoh1">
                             </td>
 
                             <td data-title="# NIGHT SHIFT, WEEKENDS HOLIDAYS">
-                                <input type="text" class="nswh input js-mytooltip input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="webinar_ModeratorNwh1" id="webinar_ModeratorNwh1">
+                                <input type="number" class="nswh input js-mytooltip input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="cost_nswh[]" id="webinar_ModeratorNwh1">
                             </td>
 
                             <td class="total-td">
@@ -451,7 +460,7 @@
                             </td>
                             <td class="total-td">
                                 <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}"name="" id="">
+                                    value="{{ old('') }}"name="cost_rooster[]" id="">
                             </td>
                             <td style="background-color: #FFFFFF;" class="border border-white"><a href="javascript:void(0)"
                                 class="text-success font-18" title="Add" id="addBtn1"><i class="fa fa-plus"></i></a>
@@ -459,20 +468,23 @@
                         </tr>
                     </tbody>
 
+                    <!----------------PRODUCER---------------->
+
                     <tbody class="program" id="tableofProducer">
                         <tr class="th-blue-grey-lighten-2 sum" id="">
-                            <td class="title">Producer</td>
+                            <td class="title">
+                            <input type="text" class="d-none" value="Producer" name="cost_type[]" readonly>Producer</td>
 
                             <td>
-                                <input type="text" class="package-fees input input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="webinar_ProducerHf" id="webinar_ProducerHf">
+                                <input type="number" class="package-fees input input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="cost_hour_fee[]" id="webinar_ProducerHf">
                             </td>
 
                             <td data-title="# OF HOURS">
-                                <input type="text" class="number-session input input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="webinar_ProducerNoh" id="webinar_ProducerNoh1">
+                                <input type="number" class="number-session input input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="cost_hour_num[]" id="webinar_ProducerNoh1">
                             </td>
 
                             <td data-title="# NIGHT SHIFT, WEEKENDS HOLIDAYS">
-                                <input type="text" class="nswh input js-mytooltip input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="webinar_ProducerNwh" id="webinar_ProducerNwh">
+                                <input type="number" class="nswh input js-mytooltip input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="cost_nswh[]" id="webinar_ProducerNwh">
                             </td>
 
                             <td class="total-td">
@@ -480,7 +492,7 @@
                             </td>
                             <td class="total-td">
                                 <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}"name="" id="">
+                                    value="{{ old('') }}"name="cost_rooster[]" id="">
                             </td>
                             <td style="background-color: #FFFFFF;" class="border border-white"><a href="javascript:void(0)"
                                 class="text-success font-18" title="Add" id="addBtn1"><i class="fa fa-plus"></i></a>
@@ -518,14 +530,15 @@
 
                     <tbody class="off-program" id="rowofOffProgram">
                         <tr class="th-blue-grey-lighten-2 sum" id="">
-                            <td class="title">Off Program Fee</td>
+                            <td class="title">
+                            <input type="text" class="d-none" value="Off-Program Fee" name="cost_type[]" readonly>Off Program Fee</td>
 
                             <td>
-                                <input type="text" class="package-fees input input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="webinar_OffprogramsHf" id="webinar_OffprogramsHf">
+                                <input type="number" class="package-fees input input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="cost_hour_fee[]" id="webinar_OffprogramsHf">
                             </td>
 
                             <td data-titFe="# OF HOURS">
-                                <input type="text" class="number-session input input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="webinar_OffprogramsNoh" id="webinar_OffprogramsNoh">
+                                <input type="number" class="number-session input input-table form-control @error('') is-invalid @enderror" value="{{ old('') }}" name="cost_hour_num[]" id="webinar_OffprogramsNoh">
                             </td>
 
                             <td data-title="# NIGHT SHIFT, WEEKENDS HOLIDAYS">
@@ -536,7 +549,7 @@
                             </td>
                             <td class="total-td">
                                 <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                    value="{{ old('') }}"name="" id="">
+                                    value="{{ old('') }}"name="cost_rooster[]" id="">
                             </td>
                             <td style="background-color: #FFFFFF;" class="border border-white"><a href="javascript:void(0)"
                                 class="text-success font-18" title="Add" id="addBtn1"><i class="fa fa-plus"></i></a>
@@ -590,8 +603,8 @@
                         <td class="overall-total-middle"></td>
                         <td class="overall-total-middle"></td>
                         <td class="overall-total-end table-warning">
-                            <input type="text" class="tf-f34 form-control text-center text-danger fw-bolder input-table @error('') is-invalid @enderror"
-                            value="{{ old('') }}" name="mg_input_totalPackages" id="mg_input_totalPackages" style="font-size: 20px;">
+                            <input type="number" class="tf-f34 form-control text-center text-danger fw-bolder input-table @error('') is-invalid @enderror"
+                            value="{{ old('') }}" name="mg_input_totalPackages" id="mg_input_totalPackages" style="font-size: 20px;" readonly>
                         </td>
                         <td class="overall-total-end">
                             <input type="text" class="form-control input-table @error('') is-invalid @enderror"

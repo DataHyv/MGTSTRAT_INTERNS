@@ -42,7 +42,6 @@
                             <thead>
                                 <tr class="text-dark">
                                     <th class="text-center">ID</th>
-                                    <th class="text-center">STATUS</th>
                                     <th class="text-center">COMPANY NAME</th>
                                     <th class="text-center">ENGAGEMENT TYPE</th>
                                     <th class="text-center">ENGAGEMENT TITLE</th>
@@ -54,49 +53,32 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- @foreach ($data as $key => $item) --}}
+                                @foreach ($data as $key => $item)
                                     <tr>
                                         <td hidden class="ids">1</td>
-                                        {{-- <td hidden class="budget_number">{{ $item->cstmzd_eng_form_id }}</td> --}}
-                                        <td class="id text-center text-uppercase fw-bold">1</td>
-                                        <td class="text-center">
-                                            <span id="status" class="badge">Confirmed</span>
-                                            {{-- Automatic change the status color --}}
-                                            <script>
-                                                $( ".badge" ).each(function() {
-                                                    if($(this).html() === 'Trial'){
-                                                        $(this).addClass( "bg-info" );
-                                                    }
-                                                    else if($(this).html() === 'Confirmed'){
-                                                        $(this).addClass( "bg-primary" );
-                                                    }
-                                                    else if($(this).html() === 'In-progress'){
-                                                        $(this).addClass( "bg-warning" );
-                                                    }
-                                                    else if($(this).html() === 'Completed'){
-                                                        $(this).addClass( "bg-success" );
-                                                    }
-                                                    else if($(this).html() === 'Lost'){
-                                                        $(this).addClass( "bg-danger" );
-                                                    }
-                                                });
-                                            </script>
-                                        </td>
-                                        <td class="name text-center fw-bold">Testing MgtStrat Webinars</td>
-                                        <td class="name text-center fw-bold">Virtual</td>
-                                        <td class="email text-center fw-bold">Test</td>
-                                        <td class="fw-bold text-center">100</td>
+                                        <td class="id text-center text-uppercase fw-bold">{{ $item->webinar_id }}</td>
+                                        @foreach ($companyList as $company)
+                                        <td class="name text-center text-uppercase fw-bold">{{ $company->company_name }}</td>
+                                        @endforeach
+                                        
+                                        {{-- No field "engagement_type" in the database yet  --}}
+                                        <td class="name text-center fw-bold">{{ $item->engagement_type }}</td>
+
+                                        <td class="email text-center fw-bold">{{ $item->engagement_title }}</td>
+                                        <td class="fw-bold text-center">{{ $item->pax_number }}</td>
                                         <td class="fw-bold text-center">
                                             {{-- @if($item->program_dates)
                                                 @foreach($item->program_dates as $dates)
                                                     {{$dates.', '}}
                                                 @endforeach
                                             @endif --}}
-                                            Nov 3, 2022
+                                            {{$item->program_date}}
                                         </td>
                                         {{-- <td class="fw-bold text-center">{{ \Carbon\Carbon::parse($item->created_at)->toFormattedDateString()}}</td> --}}
-                                        <td class="fw-bold text-center">Nov 3, 2022</td>
+                                        <td class="fw-bold text-center">{{ \Carbon\Carbon::parse($item->created_at)->toFormattedDateString()}}</td>
+                                        
                                         <td class="text-center fw-bold text-center">
+
                                             <a href=".bd-example-modal-lg" data-toggle="modal" data-target=".bd-example-modal-lg">
                                                 <span class="badge bg-info"><i class="bi bi-person-plus-fill"></i></span>
                                             </a>
@@ -105,33 +87,34 @@
                                                 <span class="badge bg-success"><i class="bi bi-pencil-square"></i></span>
                                             </a>
 
-                                            <a href="#"
+                                            {{-- <a href="#"
                                                 onclick="return confirm('Are you sure to want to delete Testing?')"><span
                                                     class="badge bg-danger"><i class="bi bi-trash"></i></span>
-                                            </a>
+                                            </a> --}}
 
-                                            {{-- <a href="#" class="delete"  data-toggle="modal" data-target="#delete_estimate">
+                                            <a href="#" class="delete"  data-toggle="modal" data-target="#delete_estimate{{ $item->id }}">
                                                 <span class="badge bg-danger">
                                                     <i class="bi bi-trash"></i>
                                                 </span>
-                                            </a> --}}
+                                            </a>
 
-                                            <!-- Delete Customized Engagement Modal -->
-                                            <div class="modal custom-modal fade" id="delete_estimate" role="dialog">
+                                            <!-- Delete Webinar  Modal -->
+                                            <div class="modal custom-modal fade" id="delete_estimate{{ $item->id }}" role="dialog">
                                                 <div class="modal-dialog modal-dialog-centered">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h3 class="mb-2 text-center">Delete Customized Engagement</h3>
+                                                            <h3 class="mb-2 text-center">Delete Webinar Record</h3>
                                                         </div>
                                                         <div class="modal-body">
                                                             <div class="form-header">
                                                                 <h5 class="text-center mx-5">Are you sure want to delete
-                                                                    <b>Test</b>?</h5>
+                                                                    <b>{{ $item->engagement_title }}</b>?</h5>
                                                             </div>
                                                             <form action="{{ route('deleteRecord') }}" method="POST">
                                                                 @csrf
-                                                                <input type="hidden" name="id" class="e_id" value="">
-                                                                <input type="hidden" name="cstmzd_eng_form_id" class="budget_number" value="">
+                                                                <input type="hidden" name="id" class="e_id" value="{{ $item->id }}" readonly>
+                                                                <input type="hidden" name="webinar_id" class="budget_number" value="{{ $item->webinar_id }}" readonly>
+                                                                <input type="hidden" name="engagement_title" value="{{ $item->engagement_title }}" readonly>
                                                                 <div class="modal-footer">
                                                                     <div class="">
                                                                         <button type="submit" class="btn btn-primary continue-btn submit-btn">Delete</button>
@@ -206,7 +189,7 @@
                                         </div>
                                     </div>
 
-                                {{-- @endforeach --}}
+                                    @endforeach
                             </tbody>
                         </table>
                     </div>

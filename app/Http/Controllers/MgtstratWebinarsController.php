@@ -10,8 +10,8 @@ use RealRashid\SweetAlert\Facades\Alert;
 use Brian2694\Toastr\Facades\Toastr;
 use App\Models\Client;
 use App\Models\Webinar_information;
-// use App\Models\WorkshopFee;
-// use App\Models\Workshop_cost;
+use App\Models\WebinarFee;
+use App\Models\WebinarCost;
 
 class MgtstratWebinarsController extends Controller
 {
@@ -22,22 +22,21 @@ class MgtstratWebinarsController extends Controller
      */
     public function index(Request $request)
     {
-        // $companyList = Client::orderBy('company_name')->get();
-        // $data = Workshop_information::with('client')->latest()->get();
-        // // if (Auth::guest()){
-        // //     return redirect()->route('/');
-        // // }
-        // $dataJoin1  = DB::table('workshop_informations')
-        //     ->join('workshop_fees', 'workshop_informations.workshop_id', '=', 'workshop_fees.workshop_id')
-        //     ->select('workshop_informations.*', 'workshop_fees.*')
-        //     ->get();
-        // $dataJoin2  = DB::table('workshop_informations')
-        //     ->join('workshop_costs', 'workshop_informations.workshop_id', '=', 'workshop_costs.workshop_id')
-        //     ->select('workshop_informations.*', 'workshop_costs.*')
-        //     ->get();
-        // return view('form.components.mgtstratu_workshops.index', compact('companyList', 'dataJoin1', 'dataJoin2', 'data'));
+        $companyList = Client::orderBy('company_name')->get();
+        $data = Webinar_information::with('client')->latest()->get();
+        if (Auth::guest()){
+            return redirect()->route('/');
+        }
+        $dataJoin1  = DB::table('webinar_informations')
+            ->join('webinar_fees', 'webinar_informations.webinar_id', '=', 'webinar_fees.webinar_id')
+            ->select('webinar_informations.*', 'webinar_fees.*')
+            ->get();
+        $dataJoin2  = DB::table('webinar_informations')
+            ->join('webinar_costs', 'webinar_informations.webinar_id', '=', 'webinar_costs.webinar_id')
+            ->select('webinar_informations.*', 'webinar_costs.*')
+            ->get();
+        return view('form.components.mgtstrat_webinars.index', compact('companyList','data','dataJoin1','dataJoin2'));
 
-        return view('form.components.mgtstrat_webinars.index');
     }
 
     public function newRecord()
@@ -100,40 +99,40 @@ class MgtstratWebinarsController extends Controller
             $wi_id = $wi_id->id;
 
             // FOR FEES
-            // try {
-            //     foreach($request->fee_type as $key => $fee_type) {
-            //         $engagement_fee['type']                 = $fee_type;
-            //         $engagement_fee['workshop_id']          = $workshop_id;
-            //         $engagement_fee['client_id']            = $client_id;
-            //         $engagement_fee['package_fees']         = $request->fee_package_num[$key] ?? '0';
-            //         $engagement_fee['num_sessions']         = $request->fee_num_sessions[$key] ?? '0';
-            //         $engagement_fee['nswh']                 = $request->fee_nswh[$key] ?? '0';
-            //         $engagement_fee['notes']                = $request->fee_notes[$key];
+            try {
+                foreach($request->fee_type as $key => $fee_type) {
+                    $engagement_fee['type']                 = $fee_type;
+                    $engagement_fee['webinar_id']           = $webinar_id;
+                    $engagement_fee['client_id']            = $client_id;
+                    $engagement_fee['package_fees']         = $request->fee_package_num[$key] ?? '0';
+                    $engagement_fee['num_sessions']         = $request->fee_num_sessions[$key] ?? '0';
+                    $engagement_fee['nswh']                 = $request->fee_nswh[$key] ?? '0';
+                    $engagement_fee['notes']                = $request->fee_notes[$key];
 
-            //         WorkshopFee::create($engagement_fee);
-            //     }
-            // } catch(\Exception $e) {
-            //     DB::rollback();
-            //     Toastr::error('fee'.$e->getMessage(), 'Error');
-            // }
+                    WebinarFee::create($engagement_fee);
+                }
+            } catch(\Exception $e) {
+                DB::rollback();
+                Toastr::error('fee'.$e->getMessage(), 'Error');
+            }
 
-            // // FOR COSTS
-            // try {
-            //     foreach ($request->cost_type as $key => $cost_type){
-            //         $engagement_cost['type']                = $cost_type;
-            //         $engagement_cost['client_id']           = $client_id;
-            //         $engagement_cost['workshop_id']         = $workshop_id;
-            //         $engagement_cost['hour_fee']            = $request->cost_hour_fee[$key] ?? '0';
-            //         $engagement_cost['hour_num']            = $request->cost_hour_num[$key] ?? '0';
-            //         $engagement_cost['nswh']                = $request->cost_nswh[$key] ?? '0';
-            //         $engagement_cost['rooster']             = $request->cost_rooster[$key];
+            // FOR COSTS
+            try {
+                foreach ($request->cost_type as $key => $cost_type){
+                    $engagement_cost['type']                = $cost_type;
+                    $engagement_cost['client_id']           = $client_id;
+                    $engagement_cost['webinar_id']          = $webinar_id;
+                    $engagement_cost['hour_fee']            = $request->cost_hour_fee[$key] ?? '0';
+                    $engagement_cost['hour_num']            = $request->cost_hour_num[$key] ?? '0';
+                    $engagement_cost['nswh']                = $request->cost_nswh[$key] ?? '0';
+                    $engagement_cost['rooster']             = $request->cost_rooster[$key];
 
-            //         Workshop_cost::create($engagement_cost);
-            //     }
-            // } catch(\Exception $e) {
-            //     DB::rollback();
-            //     Toastr::error('cost'.$e->getMessage(), 'Error');
-            // }
+                    WebinarCost::create($engagement_cost);
+                }
+            } catch(\Exception $e) {
+                DB::rollback();
+                Toastr::error('cost'.$e->getMessage(), 'Error');
+            }
 
             DB::commit();
             
@@ -147,5 +146,47 @@ class MgtstratWebinarsController extends Controller
         }
         
     }
+
+
+    public function deleteRow(Request $request)
+    {
+        $id = $request->id;
+        WebinarFee::where('id', $id)->delete();
+        WebinarCostr::where('id', $id)->delete();
+        // Sub_cost::where('id', $id)->delete();
+    }
+
+    /* Delete record */
+    public function viewDelete(Request $request)
+    {
+        DB::beginTransaction();
+        try {
+
+        /* delete record table estimates */
+        $engagement_fees = DB::table('webinar_fees')->where('webinar_id',$request->webinar_id)->get();
+        foreach ($engagement_fees as $key => $id_engagement_fees) {
+            DB::table('webinar_fees')->where('id', $id_engagement_fees->id)->delete();
+        }
+        $engagement_costs = DB::table('webinar_costs')->where('webinar_id',$request->webinar_id)->get();
+        foreach ($engagement_costs as $key => $id_engagement_cost) {
+            DB::table('webinar_costs')->where('id', $id_engagement_cost->id)->delete();
+        }
+
+        $webinar_name = $request->engagement_title;
+
+        /* delete record table estimates */
+        Webinar_information::destroy($request->id);
+
+        DB::commit();
+        // Alert::success('MgtStrat-U Workshop deleted successfully','Success');
+        return redirect()->back()->with('success', '<b>'.$webinar_name.'</b><br>Deleted successfully');
+
+        } catch(\Exception $e) {
+            DB::rollback();
+            Alert::error('MgtStrat-U Webinar deleted fail','Error');
+            return redirect()->back();
+        }
+    }
+
 
 }

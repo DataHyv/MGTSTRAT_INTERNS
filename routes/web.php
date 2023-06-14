@@ -125,6 +125,7 @@ Auth::routes();
     Route::get('form/webinars/index', [MgtstratWebinarsController::class, 'index'])->middleware('auth')->name('form/webinars/index');
     Route::get('form/webinars/new', [MgtstratWebinarsController::class, 'newRecord'])->middleware('auth')->name('form/webinars/new');
     Route::post('save', [MgtstratWebinarsController::class, 'store'])->name('save');
+    Route::post('deleteRecord', [MgtstratWebinarsController::class, 'viewDelete'])->middleware('auth')->name('deleteRecord');
 
 // ----------------------------- COACHING -----------------------//
     Route::resource('form/coaching', 'App\Http\Controllers\CoachingController');
