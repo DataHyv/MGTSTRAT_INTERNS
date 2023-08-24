@@ -127,7 +127,7 @@
     </div>
 
     {{-- F2F ENGAGEMENT SCRIPT --}}
-    <script type="text/javascript" src="/js/workshop.js"></script>
+    <script type="text/javascript" src="{{ asset('/js/workshop.js') }}"></script>
     <script type="text/javascript" src="/js/MultiStep.js"></script>
     <script type="text/javascript" src="/js/currencyFormat.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

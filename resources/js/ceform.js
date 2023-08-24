@@ -3,9 +3,9 @@ require("./components/currencyFormat");
 
 /*************************************** CUSTOMIZED ENGAGEMENT SUB BUDGET FORM COMPUTATION ********************************************************/
 $(document).ready( function () {
-    $('#ec_tableEngagementFees1 input').attr('readonly','readonly');
-    $('#ec_tableEngagementFees1 select').attr('disabled','disabled');
-    $('#ec_tableEngagementFees1 textarea').attr('readonly','readonly');
+    // $('#ec_tableEngagementFees1 input').attr('readonly','readonly');
+    // $('#ec_tableEngagementFees1 select').attr('disabled','disabled');
+    // $('#ec_tableEngagementFees1 textarea').attr('readonly','readonly');
     //customized type
     big_budget_form_computation();
 
@@ -895,14 +895,28 @@ function big_budget_form_computation() {
     sumProfitmargin = (sumNetprofit / $("#ef_Totalpackage").val().replace(/\₱|,/g, "")) * 100;
     if (isNaN(sumProfitmargin) || sumProfitmargin === Number.NEGATIVE_INFINITY){
         $("#ProfitMargin").html("0");
+        $("#profitMargin-td").removeClass('mgt-td-dark-bg');
+        $("#profitMargin-td").removeClass('table-danger');
+        $("#profitMargin-td").removeClass('table-success');
+        $("#profitMargin-td").removeClass('text-success');
+        $("#profitMargin-td").removeClass('text-danger');
+        $("#profitMargin-td").addClass('mgt-td-dark-bg');
     }
     else {
         $("#ProfitMargin").html(Math.round(sumProfitmargin) + "%");
-        $("#ProfitMargin").addClass('text-success');
-        $("#ProfitMargin").removeClass('text-danger');
-
-        $("#profitMargin-td").addClass('table-success');
-        $("#profitMargin-td").removeClass('mgt-td-dark-bg');
+        if (sumProfitmargin > 0) {
+            $("#profitMargin-td").addClass('table-success');
+            $("#profitMargin-td").removeClass('mgt-td-dark-bg');
+            $("#profitMargin-td").removeClass('table-danger');
+            $("#ProfitMargin").addClass('text-success');
+            $("#ProfitMargin").removeClass('text-danger');
+        } else {
+            $("#profitMargin-td").addClass('table-danger');
+            $("#profitMargin-td").removeClass('mgt-td-dark-bg');
+            $("#profitMargin-td").removeClass('table-success');
+            $("#ProfitMargin").addClass('text-danger');
+            $("#ProfitMargin").removeClass('text-success');
+        }
     }
 } // big_budget_form_computation FUNCTION END
 

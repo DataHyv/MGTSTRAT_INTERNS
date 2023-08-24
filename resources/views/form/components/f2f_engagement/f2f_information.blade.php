@@ -1,5 +1,13 @@
 <div class="card-header">
-    <h4 class="card-title">Information</h4>
+    <h4 class="card-title" style="display: inline;">Information</h4>
+    <div style="float:right">
+        <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
+        @if($parentInfoList)                                                    
+            <button class="btn btn-success mx-0 js-btn-next" type="button" title="Submit" onclick="validate_required_field();">Save</button>   
+        @else
+            <button class="btn btn-success mx-0 js-btn-next" type="button" title="Submit" onclick="validate_required_field()">Submit</button>
+        @endif
+    </div>
 </div>
 
 <div class="form-body container">
@@ -41,23 +49,9 @@
             <div class="form-group has-icon-left">
                 <div class="position-relative">
                     <select class="input js-mytooltip form-select f2f-customized-type @error('') is-invalid @enderror"
-                        name="customized_type" id="" value="{{ old('customized_type') }}"
-                        data-mytooltip-content="<i>
-                                    Please Choose
-                                    </i>"
-                        data-mytooltip-theme="dark" data-mytooltip-action="focus" data-mytooltip-direction="right">
-                        <option value="Hybrid" {{ old('') == 'Hybrid' ? 'selected="selected"' : '' }}>Hybrid
-                        </option>
-                        <option value="Virtual" {{ old('') == 'Virtual' ? 'selected="selected"' : '' }} selected>
-                            Virtual
-                        </option>
-                        <option value="G.A Hybrid" {{ old('') == 'G.A Hybrid' ? 'selected="selected"' : '' }}>
-                            G.A Hybrid</option>
-                        <option value="G.A Virtual" {{ old('') == 'G.A Virtual' ? 'selected="selected"' : '' }}>G.A
-                            Virtual
-                        </option>
-                        <option value="Team Journeys" {{ old('') == 'Team Journeys' ? 'selected="selected"' : '' }}>
-                            Team Journeys
+                        name="customized_type" id="customized_type" value="{{ old('customized_type') }}" readonly>
+                        <option value="FACE-TO-FACE" selected>
+                            FACE-TO-FACE
                         </option>
                     </select>
                     <div class="form-control-icon">
@@ -105,10 +99,10 @@
             <div class="form-group has-icon-left">
                 <div class="position-relative">
                     <select class="select select2s-hidden-accessible" style="width: 100%;" tabindex="-1"
-                        aria-hidden="true" id="client" name="client">
+                        aria-hidden="true" id="client_id" name="client_id" required>
                         <option value="Select">-- Select --</option>
                         @foreach ($companyList as $key => $clients)
-                            <option value="{{ $clients->company_name }}" data-first_eng={{ $clients->first_eng }}>
+                            <option value="{{ $clients->id }}" data-first_eng={{ $clients->first_eng }}>
                                 {{ $clients->company_name }}</option>
                         @endforeach
                     </select>
@@ -133,7 +127,7 @@
             <div class="form-group has-icon-left">
                 <div class="position-relative">
                     <input type="text" class="form-control @error('') is-invalid @enderror"
-                        value="{{ old('') }}" name="engagement_title" id="">
+                        value="{{ old('') }}" name="engagement_title" id="engagement_title" required>
                     <div class="form-control-icon">
                         <i class="fa-solid fa-t"></i>
                     </div>
@@ -145,12 +139,13 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-2 g-2">
+        <!-- NEED TO COMMENT OUT -->
+        <!-- <div class="col-md-2 g-2">
             <div class="form-check form-switch">
                 <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
                 <label class="form-check-label" for="flexSwitchCheckDefault">Pilot</label>
             </div>
-        </div>
+        </div> -->
     </div>
 
     <div class="form-group row">
@@ -163,7 +158,7 @@
                 <div class="position-relative">
                     <input type="number" class="form-control @error('pax_number') is-invalid @enderror"
                         value="{{ old('pax_number') }}" name="pax_number" id="pax_number" min="0"
-                        oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null">
+                        oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" required>
                     <div class="form-control-icon">
                         <i class="fa-solid fa-users"></i>
                     </div>
@@ -177,65 +172,116 @@
         </div>
     </div>
 
-    <!------------ TO BE ANNOUNCE ------------>
-    <div class="row">
+    <!------------ NUMBER OF BATCHES AND SESSION ------------>
+    <div class="form-group row" id="strt_batchNumber">
         <div class="col-md-2">
-            <label class="fw-bold required">Date </label>
+            <label class="fw-bold required">Start of Batch Number </label>
         </div>
 
+        <div class="col-md-3">
+            <div class="form-group has-icon-left">
+                <div class="position-relative">
+                    <input type="number" class="form-control @error('start_batch_number') is-invalid @enderror"
+                        value="{{ old('start_batch_number') }}" name="start_batch_number" id="str_BatchNumber" placeholder="Enter # of Batches" min="0"
+                        oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" required>
+                    <div class="form-control-icon">
+                        <i class="fa-regular fa-calendar-days"></i>
+                    </div>
+                    @error('start_batch_number')
+                        <span class="invalid-feedback" role="alert">
+                        </span>
+                    @enderror
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row">
         <div class="col-md-2">
-            <div class="form-check form-switch mt-1">
-                <input class="form-check-input" type="checkbox" role="switch" id="dcbeCheck">
-                <label class="form-check-label" for="dcbeCheck">To Be Announced</label>
+            <label class="fw-bold required">Number of Batches </label>
+        </div>
+
+        <div class="col-md-3">
+            <div class="form-group has-icon-left">
+                <div class="position-relative">
+                    <input type="number" class="form-control @error('batch_number') is-invalid @enderror"
+                        value="{{ old('batch_number') }}" name="batch_number" id="BatchNumber" placeholder="Enter # of Batches" min="0"
+                        oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" required>
+                    <div class="form-control-icon">
+                        <i class="fa-regular fa-calendar-days"></i>
+                    </div>
+                    @error('batch_number')
+                        <span class="invalid-feedback" role="alert">
+                        </span>
+                    @enderror
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row mb-5">
+        <div class="col-md-2">
+            <label class="fw-bold required">Number of Session </label>
+        </div>
+
+        <div class="col-md-3">
+            <div class="form-group has-icon-left">
+                <div class="position-relative">
+                    <input type="number" class="form-control @error('session_number') is-invalid @enderror"
+                        value="{{ old('session_number') }}" name="session_number" id="SessionNumber" placeholder="Enter # of Session" min="0"
+                        oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" required>
+                    <div class="form-control-icon">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                    </div>
+                    @error('')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
             </div>
         </div>
     </div>
 
     <!------------ DATE COVERED BY ENGAGEMENT ------------>
-    <div class="row justify-content-center mt-3" id="dcbe">
-        <h5 class="text-center mt-5 fst-italic">Date Covered by Engagement</h5>
-        <div class="d-flex justify-content-center mt-4" id="dateRows1">
-
-            <div class="flex-column">
+    <h5>Date Covered by Engagement</h5>
+    <div class="row mb-5" id="dcbe">
+        
+        <div class="d-flex" id="dateRows1">
+            <div class="flex-column mt-3">
                 <div>
-                    <fieldset class="row justify-content-center" id="dateRows">
-                        <div class="col-lg-1 col-md-1">
-                            <div class="px-0">
-                                    <label class="fw-bold invisible overflow-hidden mb-4">Add</label>
-                                    <a href="javascript:void(0)" class="text-success font-18 px-0" title="Add"
-                                    id="addDates"><i class="fa fa-plus"></i></a>
-                            </div>
-                        </div>
+                    <fieldset class="row" id="dateRows">
 
-                        <div class="col-lg-2 col-md-2">
+                        <div class="col-lg-9 col-md-9">
                             <div class="form-group has-icon-left">
-                                <label class="fw-bold required">Date</label>
+                                <label class="fw-bold">Venue</label>
                                 <div class="position-relative">
-                                    <input type="text" class="form-control date datepicker @error('doe') is-invalid @enderror"
-                                        value="{{ old('doe') }}" placeholder="Enter Date" name="program_dates[]" id="datepicker"
-                                        size="30">
+                                    <input 
+                                        type="text" 
+                                        class="form-control" 
+                                        value="" 
+                                        placeholder="Enter Venue" 
+                                        id="program_venue" 
+                                        name="program_venue">
                                     <div class="form-control-icon">
-                                        <i class="bi bi-calendar"></i>
+                                        <i class="fa-solid fa-location-arrow"></i>
                                     </div>
-                                    @error('doe')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
                                 </div>
                             </div>
                         </div>
 
+                        <div class="col-lg-3 col-md-3"></div>
+
                         <div class="col-lg-2 col-md-2">
                             <div class="form-group has-icon-left">
-                                <label class="fw-bold required">Start Time</label>
+                                <label class="fw-bold">Start Time</label>
                                 <div class="position-relative">
-                                    <input type="text" class="form-control start-time timepicker @error('dot') is-invalid @enderror"
-                                        value="{{ old('dot') }}" placeholder="Enter Time" id="program_start_time" name="program_start_time[]">
+                                    <input type="text" class="form-control start-time timepicker @error('program_start_time') is-invalid @enderror"
+                                        value="{{ old('program_start_time') }}" placeholder="Enter Time" id="program_start_time" name="program_start_time">
                                     <div class="form-control-icon">
                                         <i class="bi bi-clock"></i>
                                     </div>
-                                    @error('dot')
+                                    @error('program_start_time')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -246,14 +292,14 @@
 
                         <div class="col-lg-2 col-md-2">
                             <div class="form-group has-icon-left">
-                                <label class="fw-bold required">End Time</label>
+                                <label class="fw-bold">End Time</label>
                                 <div class="position-relative">
-                                    <input type="text" class="form-control end-time timepicker @error('dot') is-invalid @enderror"
-                                        value="{{ old('dot') }}" placeholder="Enter Time" id="program_end_time" name="program_end_time[]">
+                                    <input type="text" class="form-control end-time timepicker @error('program_end_time') is-invalid @enderror"
+                                        value="{{ old('program_end_time') }}" placeholder="Enter Time" id="program_end_time" name="program_end_time">
                                     <div class="form-control-icon">
                                         <i class="fa-solid fa-hourglass-end"></i>
                                     </div>
-                                    @error('dot')
+                                    @error('program_end_time')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -262,14 +308,38 @@
                             </div>
                         </div>
                         @include('form.components.reference.cluster')
+
                     </fieldset>
                 </div>
             </div>
+
         </div>
-        <hr class="mt-3">
     </div>
+    <!------------------- END ----------------------->
+<!------------ END ------------>    
 </div>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+@if($parentInfoList)
+    <script>
+        document.getElementById('status').value = '{{ $parentInfoList->status }}';
+        document.getElementById('customized_type').value = '{{ $parentInfoList->customized_type }}';
+        document.getElementById('client_id').value = '{{ $parentInfoList->client_id }}';
+        document.getElementById('engagement_title').value = '{{ $parentInfoList->engagement_title }}';
+        document.getElementById('pax_number').value = '{{ $parentInfoList->pax_number }}';
+        document.getElementById('BatchNumber').value = '{{ $parentInfoList->batch_number }}';
+        document.getElementById('SessionNumber').value = '{{ $parentInfoList->session_number }}';
+        document.getElementById('program_venue').value = '{{ $parentInfoList->venue }}';
+        document.getElementById('program_start_time').value = '{{ $parentInfoList->program_start_time }}';
+        document.getElementById('program_end_time').value = '{{ $parentInfoList->program_end_time }}';
+
+        document.getElementById('strt_batchNumber').style.display = 'none';
+        document.getElementById('str_BatchNumber').removeAttribute('required');
+        document.getElementById('BatchNumber').readOnly = true;
+        document.getElementById('SessionNumber').readOnly = true; 
+    </script>
+@endif
+
 <script>
     $(document).ready(function() {
         $('.select2s-hidden-accessible').select2({

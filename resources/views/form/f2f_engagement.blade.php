@@ -1,4 +1,8 @@
+@if($parentInfoList) 
+    @section('title', 'UPDATE RECORD')
+@else
     @section('title', 'NEW RECORD')
+@endif
 {{-- <link rel="shortcut icon" type="image/png" href="{{ URL::to('assets/images/logo/logo.png') }}"> --}}
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
 <link rel="stylesheet" href="{{ URL::asset('css/custom.css') }}">
@@ -32,7 +36,7 @@
                 <div class="col-12 col-lg-8 ml-auto mr-auto mb-4">
                     <div class="multisteps-form__progress">
                         <button class="multisteps-form__progress-btn js-active" type="button"
-                            title="User Info">Information</button>
+                            title="User Info" id="ftf_engagement_info">Information</button>
                         <button class="multisteps-form__progress-btn" type="button" title="Engagement Fees">Engagement
                             Fees</button>
                         <button class="multisteps-form__progress-btn" type="button" title="Engagement Cost">Engagement
@@ -54,9 +58,16 @@
                     <div class="card-body">
 
                         {{-- Budget form --}}
-                        <form class="form form-horizontal multisteps-form__form"
-                            action="{{ route('form/f2f_engagement/new') }}" method="POST" autocomplete="off">
+                        @if($parentInfoList)             
+                            <form class="form form-horizontal multisteps-form__form" action="{{ route('save_update_ftf_record') }}"
+                            method="POST" autocomplete="off" onsubmit="submitForm(event)" name="ftf_engagement_form" id="ftf_engagement_form">  
+                                @csrf 
+                                @method('PUT')
+                                <input class="form-control" type="hidden" id="engagement_form_id" name="engagement_form_id" value="{{$parentInfoList->id}}">   
+                        @else
+                            <form class="form form-horizontal multisteps-form__form" action="{{ route('ftf_record_save') }}" method="POST" autocomplete="off" name="ftf_engagement_form" id="ftf_engagement_form">
                             @csrf
+                        @endif    
 
                             {{-- INFORMATION --}}
                             <div class="multisteps-form__panel js-active" data-animation="slideHorz">
@@ -97,9 +108,12 @@
                                 @include('form.components.f2f_engagement.f2f_profit_forecast')
                                 {{-- prev and submit button --}}
                                 <div class="col-12 d-flex justify-content-center mt-3">
-                                    <button class="btn btn-secondary mx-2 js-btn-prev" type="button"
-                                        title="Prev">Prev</button>
-                                    {{-- <button class="btn btn-success mx-2 js-btn-next" type="submit" title="Submit">Submit</button> --}}
+                                    <button class="btn btn-secondary mx-2 js-btn-prev" type="button" title="Prev">Prev</button>
+                                    @if($parentInfoList)                                                    
+                                        <button class="btn btn-success mx-0 js-btn-next" type="button" title="Submit" onclick="validate_required_field();">Save</button>   
+                                    @else
+                                        <button class="btn btn-success mx-0 js-btn-next" type="button" title="Submit" onclick="validate_required_field()">Submit</button>
+                                    @endif
                                 </div>
                             </div>
                         </form>
@@ -129,4 +143,20 @@
     <script type="text/javascript" src="/js/MultiStep.js"></script>
     <script type="text/javascript" src="/js/currencyFormat.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+
+    <script>
+        function validate_required_field() {
+            // Get the forms we want to add validation styles to
+            var forms = document.getElementById('ftf_engagement_form');
+            if (forms.checkValidity() === false) {
+                forms.classList.add('was-validated');
+                document.getElementById('ftf_engagement_info').click();
+                event.preventDefault();
+                event.stopPropagation();
+            } else {
+                forms.submit();
+            }
+        }
+    </script>
+
 @endsection

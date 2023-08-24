@@ -40,7 +40,8 @@
                                 <div class="form-group row justify-content-center">
                                     <label for="inputLeadFaci" class="col-md-3 col-form-label">Lead Facilitator</label>
                                     <div class="col-md-8">
-                                    <input type="text" data-type='currency' class="form-control" id="CFI1" placeholder="" name="lead_faci" oninput="computeConsultantFees();">
+                                    <input type="text" data-type='currency' class="form-control" id="CFI1" placeholder="" name="lead_faci" oninput="computeConsultantFees();"
+                                    onblur="formatCurrency(this);">
                                     </div>
                                     {{-- <div class="col-md-3"></div> --}}
                                 </div>
@@ -88,7 +89,7 @@
                                             ">
                                             <input type="radio" id="associate-level" name="mod_opt" value="Associate level" checked 
                                             onclick="
-                                                (()=>{document.querySelector('#CFI7').value='800';
+                                                (()=>{document.querySelector('#CFI7').value='800.00';
                                                 if(document.querySelector('#CFI1').value!='') {
                                                     computeConsultantFees();
                                                 }
@@ -98,7 +99,7 @@
                                             ">
                                             <input type="radio" id="consultant" name="mod_opt" value="Consultant" onclick="
                                                 (()=>{
-                                                    document.querySelector('#CFI7').value='1,100';
+                                                    document.querySelector('#CFI7').value='1,100.00';
                                                     if(document.querySelector('#CFI1').value!='') {
                                                         computeConsultantFees();
                                                     }
@@ -107,21 +108,21 @@
                                             <label class="radio-inline">
                                             <input type="radio" id="sr-consultant" name="mod_opt" value="Sr. Consultant" onclick="
                                                 (()=>{
-                                                    document.querySelector('#CFI7').value='1,350';
+                                                    document.querySelector('#CFI7').value='1,350.00';
                                                     if(document.querySelector('#CFI1').value!='') {
                                                         computeConsultantFees();
                                                     }
                                             })()"> Sr. Consultant
                                             </label>
                                         </div>
-                                        <input type="text" data-type='currency' class="form-control" id="CFI7" placeholder="" name="moderator" value="800" disabled>
+                                        <input type="text" data-type='currency' class="form-control" id="CFI7" placeholder="" name="moderator" value="800.00" disabled>
                                     </div>
                                 </div>
                                 
                                 <div class="form-group row justify-content-center">
                                     <label for="inputProducer" class="col-md-3 col-form-label">Producer</label>
                                     <div class="col-md-8">
-                                    <input type="text" data-type='currency' class="form-control" id="CFI10" placeholder="" name="producer" value="550" disabled>
+                                    <input type="text" data-type='currency' class="form-control" id="CFI10" placeholder="" name="producer" value="550.00" disabled>
                                     </div>
                                 </div>
 

@@ -62,7 +62,7 @@ class ConsultantFeesController extends Controller
         $consultantFee->marshal = $request->input('marshal');
         $consultantFee->mod_opt = $request->input('mod_opt');
         $consultantFee->save();
-        Alert::success('Consultant Fees added successfully','Success');
+        Alert::success('Consultant Fees added successfully');
         // return redirect()->back()->with('status', 'Consultant Fees added successfully');
         return redirect()->back();
     }
@@ -156,7 +156,7 @@ class ConsultantFeesController extends Controller
             ];
 
             Consultantfee::where('id',$request->id)->update($update);
-            Alert::success('Consultant Fees updated successfully','Success');
+            Alert::success('Consultant Fees updated successfully');
             return redirect()->back();
         }catch(\Exception $e){
 
@@ -168,7 +168,7 @@ class ConsultantFeesController extends Controller
     public function deleteConsultantFees($id)
     {
         $deleteClients = Consultantfee::find($id)->delete();
-        Alert::success('Data deleted successfully :)','Success');
+        Alert::success('Consultant Fees deleted successfully');
         return redirect()->back();
     }
 }

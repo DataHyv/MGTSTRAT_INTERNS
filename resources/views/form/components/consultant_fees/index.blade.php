@@ -1,5 +1,6 @@
 @section('title', 'CLIENTS')
 <link rel="stylesheet" href="{{ URL::asset('css/custom.css') }}">
+<link rel="shortcut icon" type="image/png" href="{{ URL::to('assets/images/logo/logo.png') }}">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 @extends('layouts.master')
 @section('menu')
@@ -149,10 +150,34 @@
                                             <span class="badge bg-success"><i class="bi bi-pencil-square"></i></span>
                                         </a>
 
-                                        <a href="{{ url('deleteConsultantFees/' . $data->id) }}"
-                                            onclick="return confirm('Are you sure to want to delete it?')"><span
+                                        <a href="#" data-toggle="modal" data-target="#delete_consultant{{$data->id}}"><span
                                                 class="badge bg-danger"><i class="bi bi-trash"></i></span>
                                         </a>
+
+                                        <!-- Delete Modal -->
+                                        <div class="modal custom-modal fade" id="delete_consultant{{$data->id}}" role="dialog">
+                                            <div class="modal-dialog modal-dialog-centered modal-md">
+                                                <div class="modal-content">
+                                                    <div class="modal-header" style="display: block; border: none">
+                                                        <h3 class="mb-2 text-center">Consultant Fee</h3>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="form-header">
+                                                            <h5 class="text-center">Are you sure want to delete <br>
+                                                                <b>{{$data->first_name}} {{$data->last_name}}</b>?
+                                                            </h5>
+                                                        </div>
+                                                        <form action="{{ url('deleteConsultantFees/' . $data->id) }}" method="GET">
+                                                            @csrf
+                                                            <div class="modal-footer text-center" style="border-top: none;justify-content: center;">
+                                                                <button type="submit" class="btn btn-primary continue-btn submit-btn">Delete</button>
+                                                                <a href="javascript:void(0);" data-dismiss="modal" class="btn btn-secondary cancel-btn">Cancel</a>
+                                                            </div>  
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach
@@ -198,40 +223,45 @@
             } );
         } );
         function computeConsultantFees() {
-            document.querySelector('#CFI2').value = Math.round((Number($('#CFI1').val().replace(/,/g, ""))*0.6).toString());
-            document.querySelector('#CFI3').value = Math.round((Number($('#CFI1').val().replace(/,/g, ""))*0.4).toString());
-            document.querySelector('#CFI4').value = Math.round((Number($('#CFI1').val().replace(/,/g, ""))*0.85).toString());
-            document.querySelector('#CFI5').value = Math.round((Number($('#CFI1').val().replace(/,/g, ""))*0.75).toString());
-            document.querySelector('#CFI6').value = Math.round((Number($('#CFI1').val().replace(/,/g, ""))*0.75).toString());
+            document.querySelector('#CFI2').value = Math.round((Number($('#CFI1').val().replace(/,/g, ""))*0.6).toString()).toFixed(2);
+            document.querySelector('#CFI3').value = Math.round((Number($('#CFI1').val().replace(/,/g, ""))*0.4).toString()).toFixed(2);
+            document.querySelector('#CFI4').value = Math.round((Number($('#CFI1').val().replace(/,/g, ""))*0.85).toString()).toFixed(2);
+            document.querySelector('#CFI5').value = Math.round((Number($('#CFI1').val().replace(/,/g, ""))*0.75).toString()).toFixed(2);
+            document.querySelector('#CFI6').value = Math.round((Number($('#CFI1').val().replace(/,/g, ""))*0.75).toString()).toFixed(2);
             document.querySelector('#CFI8').value = Math.round(
                                                         ( 
                                                             // ( Number(document.querySelector('#CFI1').value) * 0.725 ) + 
                                                             (Number( $('#CFI1').val().replace(/,/g, "")) + Number($('#CFI7').val().replace(/,/g, ""))) / 2
-                                                        ).toString());
+                                                        ).toString()).toFixed(2);
             document.querySelector('#CFI9').value = Math.round((
                                                                 // Number(document.querySelector('#CFI1').value)*1.325
                                                                 (Number($('#CFI1').val().replace(/,/g, "")) + Number($('#CFI2').val().replace(/,/g, ""))) / 2
-                                                            ).toString());
+                                                            ).toString()).toFixed(2);
             $("input[data-type='currency']").keyup();
         }
 
         function computeConsultantFees_update() {
-            document.querySelector('#EFI6').value = Math.round((Number ($('#EFI3').val().replace(/,/g, ""))*0.6).toString());
-            document.querySelector('#EFI12').value = Math.round((Number($('#EFI3').val().replace(/,/g, ""))*0.4).toString());
-            document.querySelector('#EFI7').value = Math.round((Number ($('#EFI3').val().replace(/,/g, ""))*0.85).toString());
-            document.querySelector('#EFI8').value = Math.round((Number ($('#EFI3').val().replace(/,/g, ""))*0.75).toString());
-            document.querySelector('#EFI9').value = Math.round((Number ($('#EFI3').val().replace(/,/g, ""))*0.75).toString());
+            document.querySelector('#EFI6').value = Math.round((Number ($('#EFI3').val().replace(/,/g, ""))*0.6).toString()).toFixed(2);
+            document.querySelector('#EFI12').value = Math.round((Number($('#EFI3').val().replace(/,/g, ""))*0.4).toString()).toFixed(2);
+            document.querySelector('#EFI7').value = Math.round((Number ($('#EFI3').val().replace(/,/g, ""))*0.85).toString()).toFixed(2);
+            document.querySelector('#EFI8').value = Math.round((Number ($('#EFI3').val().replace(/,/g, ""))*0.75).toString()).toFixed(2);
+            document.querySelector('#EFI9').value = Math.round((Number ($('#EFI3').val().replace(/,/g, ""))*0.75).toString()).toFixed(2);
             document.querySelector('#EFI4').value = 
                 Math.round((
                     (( Number($('#EFI3').val().replace(/,/g, "")) ) + 
                     Number($('#EFI10').val().replace(/,/g, ""))) /2
-                ).toString());
+                ).toString()).toFixed(2);
             document.querySelector('#EFI5').value = 
                 Math.round((
                     (Number($('#EFI3').val().replace(/,/g, "")) + 
                     Number( $('#EFI6').val().replace(/,/g, ""))) / 2
-                ).toString());
+                ).toString()).toFixed(2);
                 $("input[data-type='currency']").keyup();
+        }
+
+        function formatCurrency(element) { 
+            var inputValue = element.value.replace(/,/g, "");
+            return element.value = Number(inputValue).toFixed(2);
         }
     </script>
     @endsection

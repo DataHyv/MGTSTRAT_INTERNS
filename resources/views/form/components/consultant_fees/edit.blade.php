@@ -38,7 +38,8 @@
                                 <div class="form-group row justify-content-center">
                                     <label for="inputLeadFaci" class="col-md-3 col-form-label">Lead Facilitator</label>
                                     <div class="col-md-8">
-                                    <input type="text" class="form-control" id="EFI3" placeholder="" data-type="currency" name="lead_faci" oninput="computeConsultantFees_update();">
+                                    <input type="text" class="form-control" id="EFI3" placeholder="" data-type="currency" name="lead_faci" 
+                                    oninput="computeConsultantFees_update();" onblur="formatCurrency(this);">
                                     </div>
                                     {{-- <div class="col-md-3"></div> --}}
                                 </div>
@@ -86,7 +87,7 @@
                                         ">
                                         <input type="radio" id="associatelevel" name="mod_opt_update" value="Associate level" onclick="
                                         (()=>{
-                                            document.querySelector('#EFI10').value = '800';
+                                            document.querySelector('#EFI10').value = '800.00';
                                             if (document.querySelector('#EFI3').value != ''){
                                                 computeConsultantFees_update();
                                             }
@@ -96,7 +97,7 @@
                                         ">
                                         <input type="radio" id="consultant_update" name="mod_opt_update" value="Consultant" onclick="
                                         (()=>{
-                                            document.querySelector('#EFI10').value = '1,100';
+                                            document.querySelector('#EFI10').value = '1,100.00';
                                             if (document.querySelector('#EFI3').value != '') {
                                                 computeConsultantFees_update();
                                             }
@@ -105,7 +106,7 @@
                                         <label class="radio-inline">
                                         <input type="radio" id="srconsultant" name="mod_opt_update" value="Sr. Consultant" onclick="
                                         (()=>{
-                                            document.querySelector('#EFI10').value = '1,350';
+                                            document.querySelector('#EFI10').value = '1,350.00';
                                             if(document.querySelector('#EFI3').value != '') {
                                                 computeConsultantFees_update();
                                             }
