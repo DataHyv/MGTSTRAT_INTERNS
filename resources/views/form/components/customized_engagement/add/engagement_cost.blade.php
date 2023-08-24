@@ -6,10 +6,10 @@
             <button class="btn btn-primary mx-0 js-btn-next" type="button" title="Next">Next</button>
             @if($data)                                                    
                 @if($data->cstmzd_eng_form_id)
-                    <button class="btn btn-success mx-0 js-btn-next" type="submit" title="Submit">Save</button>
+                    <button class="btn btn-success mx-0 js-btn-next" type="button" title="Submit" onclick="validate_required_field()">Save</button>
                 @endif
             @else
-                    <button class="btn btn-success mx-0 js-btn-next" type="submit" title="Submit">Submit</button>
+                    <button class="btn btn-success mx-0 js-btn-next" type="button" title="Submit" onclick="validate_required_field()">Submit</button>
             @endif
         </div>
     </div>
@@ -121,6 +121,7 @@
                                         name="cost_rooster[]" 
                                         id="roster201"
                                         oninput="filterConsultant(`roster201`, ``);"
+                                        
                                         list="filtered_consultant_list" 
                                         autocomplete="off"
                                         >   
@@ -198,6 +199,7 @@
                                 <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                     value="{{ old('') }}" name="cost_rooster[]" id="roster211"                                     
                                     oninput="filterConsultant(`roster211`, ``);"
+                                    
                                     list="filtered_consultant_list" 
                                     autocomplete="off"
                                     >
@@ -262,6 +264,7 @@
                                 <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                     value="{{ old('') }}" name="cost_rooster[]" id="roster221" 
                                     oninput="filterConsultant(`roster221`, ``);"
+                                    
                                     list="filtered_consultant_list" 
                                     autocomplete="off">
                                 <input  type="hidden" value="" name="cost_rooster_id[]" id="id_roster221">
@@ -303,7 +306,7 @@
                             <td class="mgt-td-dark-bg">
                                 <input type="text"
                                     class="text-center form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_consultant_num[]" id="ec_LeadconsultantNoc1" data-type="currency" readonly="readonly">
+                                    value="{{ old('') }}" name="cost_consultant_num[]" id="ec_LeadconsultantNoc1" data-type="currency" >
                             </td>
                             <td class="mgt-td-dark-bg">
                                 <input type="text"
@@ -313,20 +316,21 @@
                             <td class="mgt-td-dark-bg">
                                 <input type="text"
                                     class="text-center form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_hour_num[]" id="ec_LeadconsultantNoh1" data-type="currency" readonly="readonly">
+                                    value="{{ old('') }}" name="cost_hour_num[]" id="ec_LeadconsultantNoh1" data-type="currency" >
                             </td>
                             <td class="mgt-td-dark-bg">
                                 <input type="text"
                                     class="text-center form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_nswh[]" id="ec_LeadconsultantNwh1" data-type="currency" readonly="readonly">
+                                    value="{{ old('') }}" name="cost_nswh[]" id="ec_LeadconsultantNwh1" data-type="currency" >
                             </td>
                             <td class="total-td">
                                 <h4 class="text-center lead text-danger" id="ec_LeadconsultantTotal">-</h4>
                             </td>
                             <td class="total-td table-warning">
-                                <input class="text-uppercase form-control input-table @error('') is-invalid @enderror"
+                                <input class=" form-control input-table @error('') is-invalid @enderror"
                                     name="cost_rooster[]" id="roster1"
                                     oninput="filterConsultant(`roster1`, `ec_LeadconsultantHf1`, `leadConsultant`);"
+                                    
                                     list="filtered_consultant_list" 
                                     autocomplete="off"
                                     >
@@ -356,7 +360,7 @@
                             <td class="mgt-td-dark-bg">
                                 <input type="text"
                                     class="text-center form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_consultant_num[]" id="ec_AnalystNoc1" data-type="currency" readonly="readonly">
+                                    value="{{ old('') }}" name="cost_consultant_num[]" id="ec_AnalystNoc1" data-type="currency" >
                             </td>
                             <td class="bg-white">
                                 <input type="text"
@@ -366,20 +370,21 @@
                             <td class="mgt-td-dark-bg">
                                 <input type="text"
                                     class="text-center form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_hour_num[]" id="ec_AnalystNoh1" data-type="currency" readonly="readonly">
+                                    value="{{ old('') }}" name="cost_hour_num[]" id="ec_AnalystNoh1" data-type="currency" >
                             </td>
                             <td class="mgt-td-dark-bg">
                                 <input type="text"
                                     class="text-center form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_nswh[]" id="ec_AnalystNwh1" data-type="currency" readonly="readonly">
+                                    value="{{ old('') }}" name="cost_nswh[]" id="ec_AnalystNwh1" data-type="currency" >
                             </td>
                             <td class="total-td">
                                 <h4 class="text-center lead text-danger" id="ec_AnalystTotal">-</h4>
                             </td>
                             <td class="total-td">
-                                <input class="text-uppercase form-control input-table @error('') is-invalid @enderror"
+                                <input class=" form-control input-table @error('') is-invalid @enderror"
                                     name="cost_rooster[]" id="roster231" 
                                     oninput="filterConsultant(`roster231`, ``, ``);"
+                                    
                                     list="filtered_consultant_list" 
                                     autocomplete="off">
                                 <input  type="hidden" value="" name="cost_rooster_id[]" id="id_roster231">
@@ -434,7 +439,7 @@
                             <td class="mgt-td-dark-bg">
                                 <input type="text"
                                     class="text-center form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_consultant_num[]" id="ec_DesignerNoc1" data-type="currency" readonly="readonly">
+                                    value="{{ old('') }}" name="cost_consultant_num[]" id="ec_DesignerNoc1" data-type="currency" >
                             </td>
                             <td class="mgt-td-dark-bg">
                                 <input type="text"
@@ -444,7 +449,7 @@
                             <td class="mgt-td-dark-bg">
                                 <input type="text"
                                     class="text-center form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_hour_num[]" id="ec_DesignerNoh1" data-type="currency" readonly="readonly">
+                                    value="{{ old('') }}" name="cost_hour_num[]" id="ec_DesignerNoh1" data-type="currency" >
                             </td>
                             <td class="">
                                 <input type="text"
@@ -455,9 +460,10 @@
                                 <h4 class="text-center lead text-danger" id="ec_DesignerTotal">-</h4>
                             </td>
                             <td class="total-td table-warning">
-                                <input type="text" class="text-uppercase form-control input-table @error('') is-invalid @enderror"
+                                <input type="text" class=" form-control input-table @error('') is-invalid @enderror"
                                     value="{{ old('') }}" name="cost_rooster[]" id="roster21" 
                                     oninput="filterConsultant(`roster21`, `ec_DesignerHf1`, `designer`);"
+                                    
                                     list="filtered_consultant_list" 
                                     autocomplete="off">
                                 <input  type="hidden" value="" name="cost_rooster_id[]" id="id_roster21">
@@ -495,6 +501,10 @@
                                                 1,000 - Creators Fee if creator is NOT the lead, for the 2nd session onwards</i>"
                                         data-mytooltip-theme="dark" data-mytooltip-action="focus"
                                         data-mytooltip-direction="right" style="background-color:#ffcccc; color:red;">
+                                        <option value="0" {{ old('') == '0' ? 'selected="selected"' : '' }}
+                                            title="">
+                                            &#8369;0
+                                        </option>
                                         <option value="500" {{ old('') == '500' ? 'selected="selected"' : '' }}
                                             title="">
                                             &#8369;500
@@ -525,9 +535,10 @@
                                 <h4 class="text-center lead text-danger" id="ec_CreatorsTotal">-</h4>
                             </td>
                             <td class="total-td">
-                                <input type="text" class="text-uppercase form-control input-table @error('') is-invalid @enderror"
+                                <input type="text" class=" form-control input-table @error('') is-invalid @enderror"
                                     value="{{ old('') }}" name="cost_rooster[]" id="roster241"  
                                     oninput="filterConsultant(`roster241`, ``, ``);" 
+                                    
                                     list="filtered_consultant_list" 
                                     autocomplete="off">
                                 <input  type="hidden" value="" name="cost_rooster_id[]" id="id_roster241">
@@ -583,7 +594,7 @@
                             <td class="mgt-td-dark-bg">
                                 <input type="text"
                                     class="text-center form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_consultant_num[]" id="ec_LeadfacilitatorNoc1" data-type="currency" readonly="readonly">
+                                    value="{{ old('') }}" name="cost_consultant_num[]" id="ec_LeadfacilitatorNoc1" data-type="currency" >
                             </td>
                             <td  class="mgt-td-dark-bg">
                                 <input type="text"
@@ -593,20 +604,21 @@
                             <td class="mgt-td-dark-bg">
                                 <input type="text"
                                     class="text-center form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_hour_num[]" id="ec_LeadfacilitatorNoh1" data-type="currency" readonly="readonly">
+                                    value="{{ old('') }}" name="cost_hour_num[]" id="ec_LeadfacilitatorNoh1" data-type="currency" >
                             </td>
                             <td class="mgt-td-dark-bg">
                                 <input type="text"
                                     class="text-center form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_nswh[]" id="ec_LeadfacilitatorNwh1" data-type="currency" readonly="readonly">
+                                    value="{{ old('') }}" name="cost_nswh[]" id="ec_LeadfacilitatorNwh1" data-type="currency" >
                             </td>
                             <td class="total-td">
                                 <h4 class="text-center lead text-danger" id="ec_LeadfacilitatorTotal">-</h4>
                             </td>
                             <td class="total-td table-warning">
-                                <input type="text" class="text-uppercase form-control input-table @error('') is-invalid @enderror"
+                                <input type="text" class=" form-control input-table @error('') is-invalid @enderror"
                                     value="{{ old('') }}" name="cost_rooster[]" id="roster31" 
                                     oninput="filterConsultant(`roster31`, `ec_LeadfacilitatorHf1`, `leadFacilitator`);"
+                                    
                                     list="filtered_consultant_list" 
                                     autocomplete="off"
                                     >
@@ -654,9 +666,10 @@
                                 <h4 class="text-center lead text-danger" id="ec_CoLeadfacilitatorTotal">-</h4>
                             </td>
                             <td class="total-td table-warning">
-                                <input type="text" class="text-uppercase form-control input-table @error('') is-invalid @enderror"
+                                <input type="text" class=" form-control input-table @error('') is-invalid @enderror"
                                     value="{{ old('') }}" name="cost_rooster[]" id="roster41"
                                     oninput="filterConsultant(`roster41`, `ec_CoLeadfacilitatorHf1`, `coLead`);"
+                                    
                                     list="filtered_consultant_list" 
                                     autocomplete="off">
                                 <input  type="hidden" value="" name="cost_rooster_id[]" id="id_roster41">
@@ -687,7 +700,7 @@
                             <td class="mgt-td-dark-bg">
                                 <input type="text"
                                     class="text-center fw-bold text-center text-dark form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_hour_fee[]" id="ec_AlCoachHf1" data-type="currency" readonly="readonly">
+                                    value="{{ old('') }}" name="cost_hour_fee[]" id="ec_AlCoachHf1" data-type="currency" >
                             </td>
                             <td class="mgt-td-dark-bg">
                                 <input type="text"
@@ -706,6 +719,7 @@
                                 <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                                     value="{{ old('') }}" name="cost_rooster[]" id="roster101" 
                                     oninput="filterConsultant(`roster101`, `ec_AlCoachHf1`, `alCoach`);"
+                                    
                                     list="filtered_consultant_list" 
                                     autocomplete="off">
                                 <input  type="hidden" value="" name="cost_rooster_id[]" id="id_roster101">
@@ -731,7 +745,7 @@
                             <td class="mgt-td-dark-bg">
                                 <input type="text"
                                     class="text-center text-dark form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_consultant_num[]" id="ec_CofacilitatorNoc1" data-type="currency" readonly="readonly">
+                                    value="{{ old('') }}" name="cost_consultant_num[]" id="ec_CofacilitatorNoc1" data-type="currency" >
                             </td>
                             <td class="mgt-td-dark-bg">
                                 <input type="text"
@@ -741,20 +755,21 @@
                             <td class="mgt-td-dark-bg">
                                 <input type="text"
                                     class="text-center text-dark form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_hour_num[]" id="ec_CofacilitatorNoh1" data-type="currency" readonly="readonly">
+                                    value="{{ old('') }}" name="cost_hour_num[]" id="ec_CofacilitatorNoh1" data-type="currency" >
                             </td>
                             <td class="mgt-td-dark-bg">
                                 <input type="text"
                                     class="text-center text-dark form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_nswh[]" id="ec_CofacilitatorNwh1" data-type="currency" readonly="readonly">
+                                    value="{{ old('') }}" name="cost_nswh[]" id="ec_CofacilitatorNwh1" data-type="currency" >
                             </td>
                             <td class="total-td">
                                 <h4 class="text-center lead text-danger" id="ec_CofacilitatorTotal">-</h4>
                             </td>
                             <td class="total-td table-warning">
-                                <input type="text" class="text-uppercase form-control input-table @error('') is-invalid @enderror"
+                                <input type="text" class=" form-control input-table @error('') is-invalid @enderror"
                                     value="{{ old('') }}" name="cost_rooster[]" id="roster51" 
                                     oninput="filterConsultant(`roster51`, `ec_CofacilitatorHf1`, `coFaci`);"
+                                    
                                     list="filtered_consultant_list" 
                                     autocomplete="off">
                                 <input  type="hidden" value="" name="cost_rooster_id[]" id="id_roster51">
@@ -780,7 +795,7 @@
                             <td class="mgt-td-dark-bg">
                                 <input type="text"
                                     class="text-dark text-center form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_consultant_num[]" id="ec_ModeratorNoc1" data-type="currency" readonly="readonly">
+                                    value="{{ old('') }}" name="cost_consultant_num[]" id="ec_ModeratorNoc1" data-type="currency" >
                             </td>
                             <td class="mgt-td-dark-bg">
                                 <fieldset>
@@ -797,20 +812,21 @@
                             <td class="mgt-td-dark-bg">
                                 <input type="text"
                                     class="text-dark text-center form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_hour_num[]" id="ec_ModeratorNoh1" data-type="currency" readonly="readonly">
+                                    value="{{ old('') }}" name="cost_hour_num[]" id="ec_ModeratorNoh1" data-type="currency" >
                             </td>
                             <td class="mgt-td-dark-bg">
                                 <input type="text"
                                     class="text-dark text-center form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_nswh[]" id="ec_ModeratorNwh1" data-type="currency" readonly="readonly">
+                                    value="{{ old('') }}" name="cost_nswh[]" id="ec_ModeratorNwh1" data-type="currency" >
                             </td>
                             <td class="total-td">
                                 <h4 class="text-center lead text-danger" id="ec_ModeratorTotal">-</h4>
                             </td>
                             <td class="total-td table-warning">
-                                <input type="text" class="text-uppercase form-control input-table @error('') is-invalid @enderror"
+                                <input type="text" class=" form-control input-table @error('') is-invalid @enderror"
                                     value="{{ old('') }}" name="cost_rooster[]" id="roster61" 
                                     oninput="filterConsultant(`roster61`, `ec_ModeratorHf1`, `moderator`);"
+                                    
                                     list="filtered_consultant_list" 
                                     autocomplete="off">
                                 <input  type="hidden" value="" name="cost_rooster_id[]" id="id_roster61">
@@ -836,7 +852,7 @@
                             <td class="mgt-td-dark-bg">
                                 <input type="text"
                                     class="text-center text-dark form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_consultant_num[]" id="ec_ProducerNoc1" data-type="currency" readonly="readonly">
+                                    value="{{ old('') }}" name="cost_consultant_num[]" id="ec_ProducerNoc1" data-type="currency" >
                             </td>
                             <td class="mgt-td-dark-bg">
                                 <input type="text"
@@ -846,20 +862,21 @@
                             <td class="mgt-td-dark-bg">
                                 <input type="text"
                                     class="text-center text-dark form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_hour_num[]" id="ec_ProducerNoh1" data-type="currency" readonly="readonly">
+                                    value="{{ old('') }}" name="cost_hour_num[]" id="ec_ProducerNoh1" data-type="currency" >
                             </td>
                             <td class="mgt-td-dark-bg">
                                 <input type="text"
                                     class="text-center text-dark form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_nswh[]" id="ec_ProducerNwh1" data-type="currency" readonly="readonly">
+                                    value="{{ old('') }}" name="cost_nswh[]" id="ec_ProducerNwh1" data-type="currency" >
                             </td>
                             <td class="total-td">
                                 <h4 class="text-center lead text-danger" id="ec_ProducerTotal">-</h4>
                             </td>
                             <td class="total-td table-warning">
-                                <input type="text" class="text-uppercase form-control input-table @error('') is-invalid @enderror"
+                                <input type="text" class=" form-control input-table @error('') is-invalid @enderror"
                                     value="{{ old('') }}" name="cost_rooster[]" id="roster71" 
                                     oninput="filterConsultant(`roster71`, `ec_ProducerHf1`, `producer`);"
+                                    
                                     list="filtered_consultant_list" 
                                     autocomplete="off">
                                 <input  type="hidden" value="" name="cost_rooster_id[]" id="id_roster71">
@@ -915,7 +932,7 @@
                             <td class="mgt-td-dark-bg">
                                 <input type="text"
                                     class="text-center text-dark  form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_consultant_num[]" id="ec_DocumentorNoc1" data-type="currency" readonly='readonly'>
+                                    value="{{ old('') }}" name="cost_consultant_num[]" id="ec_DocumentorNoc1" data-type="currency">
                             </td>
                             <td class="bg-white">
                                 <input type="text"
@@ -925,20 +942,21 @@
                             <td class="mgt-td-dark-bg">
                                 <input type="text"
                                     class="text-center text-dark  form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_hour_num[]" id="ec_DocumentorNoh1" data-type="currency" readonly='readonly'>
+                                    value="{{ old('') }}" name="cost_hour_num[]" id="ec_DocumentorNoh1" data-type="currency">
                             </td>
                             <td class="mgt-td-dark-bg">
                                 <input type="text"
                                     class="text-center text-dark  form-control input-table commanumber @error('') is-invalid @enderror"
-                                    value="{{ old('') }}" name="cost_nswh[]" id="ec_DocumentorNwh1" data-type="currency" readonly='readonly'>
+                                    value="{{ old('') }}" name="cost_nswh[]" id="ec_DocumentorNwh1" data-type="currency">
                             </td>
                             <td class="total-td" style="background-color: rgba(146, 146, 146, 0.727">
                                 <h4 class="text-center text-danger" id="ec_DocumentorTotal">-</h4>
                             </td>
                             <td class="total-td">
-                                <input type="text" class="text-uppercase form-control input-table @error('') is-invalid @enderror"
+                                <input type="text" class=" form-control input-table @error('') is-invalid @enderror"
                                     value="{{ old('') }}" name="cost_rooster[]" id="roster251" 
                                     oninput="filterConsultant(`roster251`, ``, ``);"
+                                    
                                     list="filtered_consultant_list" 
                                     autocomplete="off">
                                 <input  type="hidden" value="" name="cost_rooster_id[]" id="id_roster251">
@@ -1000,9 +1018,10 @@
                                 <h4 class="text-center text-danger" id="ec_ProgramTotal">-</h4>
                             </td>
                             <td class="total-td">
-                                <input type="text" class="text-uppercase form-control input-table @error('') is-invalid @enderror"
+                                <input type="text" class=" form-control input-table @error('') is-invalid @enderror"
                                     value="{{ old('') }}" name="op_rooster[]" id="roster261" 
                                     oninput="filterConsultant(`roster261`, ``, ``);"
+                                    
                                     list="filtered_consultant_list" 
                                     autocomplete="off">
                                     <input  type="hidden" value="" name="op_rooster_id[]" id="id_roster261">
@@ -1107,7 +1126,7 @@
 
                 <!-------------------TOTAL------------------------->
                     <tr class="table-active">
-                        <td class="fw-bold text-uppercase text-dark fst-italic overall-total-start">
+                        <td class="fw-bold  text-dark fst-italic overall-total-start">
                             <b>TOTAL</b>
                         </td>
                         <td class="overall-total-middle"></td>
@@ -1126,7 +1145,7 @@
                 </table>
             </div>            
             <!-- AUTO COMPLETE -->
-            <template id="all_consultant_list">
+            {{-- <template id="all_consultant_list">
                 @foreach ($consultantFee as $key => $feeData)
                     <option 
                         value="{{ strtoupper($feeData->first_name) }} {{ strtoupper($feeData->last_name) }}" 
@@ -1145,66 +1164,86 @@
                         {{ strtoupper($feeData->first_name) }} {{ strtoupper($feeData->last_name) }}
                     </option>
                 @endforeach
-            </template>
-            <datalist id="filtered_consultant_list"></datalist>
+            </template> --}}
+            <datalist id="filtered_consultant_list">
+                @foreach ($consultantFee as $key => $feeData)
+                    <option 
+                        value="{{ $feeData->first_name }} {{ $feeData->last_name }}" 
+                        data-id="{{$feeData->id}}"
+                        data-feeleadfaci="{{$feeData->lead_faci}}"
+                        data-cofaci="{{$feeData->co_faci}}",
+                        data-marshal="{{$feeData->marshal}}",
+                        data-leadconsultant="{{$feeData->lead_consultant}}",
+                        data-consulting="{{$feeData->consulting}}",
+                        data-designer="{{$feeData->designer}}",
+                        data-moderator="{{$feeData->moderator}}",
+                        data-producer="{{$feeData->producer}}",
+                        data-colead="{{$feeData->co_lead}}",
+                        data-coleadf2f="{{$feeData->co_lead_f2f}}"
+                        >
+                        {{ $feeData->first_name }} {{ $feeData->last_name }}
+                    </option>
+                @endforeach
+            </datalist>
             <!-- END AUTO COMPLETE -->
         </section>
     </div>
 <!------------ END OF FORM BODY ------------>
 <script>
 var results = document.querySelector('#filtered_consultant_list');
-var templateContent = document.querySelector('#all_consultant_list').content;
+// var templateContent = document.querySelector('#all_consultant_list').content;
 
 function filterConsultant(rosterFieldID, hourlyFeeID = '', costType = '') {
-    var search = document.querySelector('#' + rosterFieldID);
+    // 
+    // var search = document.querySelector('#' + rosterFieldID);
 
-    while (results.children.length) {
-        results.removeChild(results.firstChild);
-    }
-    var inputVal = new RegExp('^'+search.value.trim(), 'i');
-    var clonedOptions = templateContent.cloneNode(true);
-    var set = Array.prototype.reduce.call(clonedOptions.children, 
-        function searchFilter(frag, el) {
-          if (inputVal.test(el.textContent.trim()) && frag.children.length < 10) { 
-            frag.appendChild(el)
-        };
-        return frag;
-        }
-    , document.createDocumentFragment());
-    results.appendChild(set);
+    // while (results.children.length) {
+    //     results.removeChild(results.firstChild);
+    // }
+    // var inputVal = new RegExp('^'+search.value.trim(), 'i');
+    // var clonedOptions = templateContent.cloneNode(true);
+    // var set = Array.prototype.reduce.call(clonedOptions.children, 
+    //     function searchFilter(frag, el) {
+    //       if (inputVal.test(el.textContent.trim()) && frag.children.length < 10) { 
+    //         frag.appendChild(el)
+    //     };
+    //     return frag;
+    //     }
+    // , document.createDocumentFragment());
+    // results.appendChild(set);
 
     getFee(rosterFieldID, hourlyFeeID, costType);
 }
 
 function getFee(rosterFieldID, hourlyFeeID = '', costType = '') {
     var rosterValue = document.querySelector('#' + rosterFieldID);
-    var getFee = $('#filtered_consultant_list option[value="' + rosterValue.value.toUpperCase() + '"]');
-    var customizedType = $('#customized_type').val();
-    $('#id_' + rosterFieldID).val(getFee.data('id'));
-    if (customizedType == 'Virtual' && hourlyFeeID != '') {
+    // var getFee = $('#filtered_consultant_list option[value="' + rosterValue.value.toUpperCase() + '"]');
+    var getFee = $('#filtered_consultant_list option[value="' + rosterValue.value + '"]');
+    (getFee) ? $('#id_' + rosterFieldID).val(getFee.data('id')) : '';
+    if (hourlyFeeID != '') {
         switch(costType) {
-            case 'leadConsultant':
-                $('#' + hourlyFeeID).val(getFee.data('leadconsultant'));
+            case 'leadConsultant':                
+                (getFee.data('leadconsultant')) ? $('#' + hourlyFeeID).val(getFee.data('leadconsultant')) : '';
                 break; 
             case 'designer':
-                $('#' + hourlyFeeID).val(getFee.data('designer'));
+                (getFee.data('designer')) ? $('#' + hourlyFeeID).val(getFee.data('designer')) : '';
                 break; 
             case 'leadFacilitator':
-                $('#' + hourlyFeeID).val(getFee.data('feeleadfaci'));
+                (getFee.data('feeleadfaci')) ? $('#' + hourlyFeeID).val(getFee.data('feeleadfaci')) : '';
                 break; 
             case 'coLead':
-                $('#' + hourlyFeeID).val(getFee.data('colead'));
+                (getFee.data('colead')) ? $('#' + hourlyFeeID).val(getFee.data('colead')) : '';
                 break; 
             case 'alCoach':
                 break;
             case 'coFaci':
-                $('#' + hourlyFeeID).val(getFee.data('cofaci'));
+                (getFee.data('cofaci')) ? $('#' + hourlyFeeID).val(getFee.data('cofaci')) : '';
                 break; 
             case 'moderator':
-                $('#' + hourlyFeeID).val(getFee.data('moderator'));
+                (getFee.data('moderator')) ? $('#' + hourlyFeeID).val(getFee.data('moderator')) : '';
                 break; 
             case 'producer':
-                $('#' + hourlyFeeID).val(getFee.data('producer'));
+                (getFee.data('producer')) ? $('#' + hourlyFeeID).val(getFee.data('producer')) : '';
                 break; 
             default: 
                 break;

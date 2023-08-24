@@ -163,7 +163,7 @@
                             </fieldset>
                         </td>
                         <td data-title="# OF SESSIONS">
-                            <input type="number" class="input js-mytooltip input-table form-control  @error('') is-invalid @enderror"
+                            <input type="text" class="number_input input js-mytooltip input-table form-control  @error('') is-invalid @enderror"
                                 value="1"
                                 name="fee_num_sessions[]"
                                 id="ef_package1FeeNos"
@@ -175,7 +175,7 @@
                                 data-mytooltip-direction="bottom">
                         </td>
                         <td data-title="NIGHT SHIFT, WEEKENDS HOLIDAYS *">
-                            <input type="number" class="input  input-table form-control  @error('') is-invalid @enderror"
+                            <input type="text" class="number_input input  input-table form-control  @error('') is-invalid @enderror"
                                 value="{{ old('') }}"
                                 name="fee_nswh[]"
                                 id="ef_package1FeeNsw"

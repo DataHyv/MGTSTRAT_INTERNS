@@ -290,7 +290,7 @@
                         <h4 class="text-center lead text-danger" id="ec_LeadconsultantTotal">-</h4>
                     </td>
                     <td class="total-td table-warning">
-                        <input type="text" class="text-uppercase form-control input-table @error('') is-invalid @enderror"
+                        <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_rooster[]" id="roster${leadConsultant}" 
                             oninput="filterConsultant( 'roster${leadConsultant}','ec_LeadconsultantHf${leadConsultant}','leadConsultant');"
                             list="filtered_consultant_list" 
@@ -473,7 +473,7 @@
                         <h4 class="text-center lead text-danger" id="ec_DesignerTotal">-</h4>
                     </td>
                     <td class="total-td table-warning">
-                        <input type="text" class="text-uppercase form-control input-table @error('') is-invalid @enderror"
+                        <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_rooster[]" id="roster2${ecDesigner}" 
                             oninput="filterConsultant( 'roster2${ecDesigner}','ec_DesignerHf${ecDesigner}','designer');"
                             list="filtered_consultant_list" 
@@ -672,7 +672,7 @@
                         <h4 class="text-center lead text-danger" id="ec_LeadfacilitatorTotal">-</h4>
                     </td>
                     <td class="total-td table-warning">
-                        <input type="text" class="text-uppercase form-control input-table @error('') is-invalid @enderror"
+                        <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_rooster[]" id="roster3${ecLeadfaci}" 
                             oninput="filterConsultant( 'roster3${ecLeadfaci}','ec_LeadfacilitatorHf${ecLeadfaci}','leadFacilitator');"
                             list="filtered_consultant_list" 
@@ -763,7 +763,7 @@
                         <h4 class="text-center lead text-danger" id="ec_CoLeadfacilitatorTotal">-</h4>
                     </td>
                     <td class="total-td table-warning">
-                        <input type="text" class="text-uppercase form-control input-table @error('') is-invalid @enderror"
+                        <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_rooster[]" id="roster4${ecCoLead}" 
                             oninput="filterConsultant( 'roster4${ecCoLead}','ec_CoLeadfacilitatorHf${ecCoLead}','coLead');"
                             list="filtered_consultant_list" 
@@ -840,7 +840,7 @@
                     <td class="mgt-td-dark-bg">
                         <input type="text"
                             class="commanumber text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
-                            value="{{ old('') }}" name="cost_hour_fee[]" id="ec_AlCoachHf${ecAlCoach}" data-type="currency" readonly>
+                            value="{{ old('') }}" name="cost_hour_fee[]" id="ec_AlCoachHf${ecAlCoach}" data-type="currency">
                     </td>
                     <td class="noh mgt-td-dark-bg">
                         <input type="text"
@@ -947,7 +947,7 @@
                         <h4 class="text-center lead text-danger" id="ec_CofacilitatorTotal">-</h4>
                     </td>
                     <td class="total-td table-warning">
-                        <input type="text" class="text-uppercase form-control input-table @error('') is-invalid @enderror"
+                        <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_rooster[]" id="roster5${ecCofaci}" 
                             oninput="filterConsultant( 'roster5${ecCofaci}','ec_CofacilitatorHf${ecCofaci}','coFaci');"
                             list="filtered_consultant_list" 
@@ -1045,7 +1045,7 @@
                         <h4 class="text-center lead text-danger" id="ec_ModeratorTotal">-</h4>
                     </td>
                     <td class="total-td table-warning">
-                        <input type="text" class="text-uppercase form-control input-table @error('') is-invalid @enderror"
+                        <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_rooster[]" id="roster6${ecModerator}" 
                             oninput="filterConsultant( 'roster6${ecModerator}','ec_ModeratorHf${ecModerator}','moderator');"
                             list="filtered_consultant_list" 
@@ -1136,7 +1136,7 @@
                         <h4 class="text-center lead text-danger" id="ec_ProducerTotal">-</h4>
                     </td>
                     <td class="total-td table-warning">
-                        <input type="text" class="text-uppercase form-control input-table @error('') is-invalid @enderror"
+                        <input type="text" class="form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_rooster[]" id="roster7${ecProducer}"  
                             oninput="filterConsultant( 'roster7${ecProducer}','ec_ProducerHf${ecProducer}','producer');"
                             list="filtered_consultant_list" 

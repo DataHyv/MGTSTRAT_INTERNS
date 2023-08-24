@@ -3,7 +3,6 @@
         <div class="sidebar-header">
             <div class="d-flex justify-content-between">
                 <div class="logo">
-                    {{-- <a href="{{ route('home') }}"><img src="{{ URL::to('assets/images/logo/logo.png') }}" alt="Logo" srcset=""></a> --}}
                     <a href="{{ route('home') }}"><img class="img-fluid" src="{{ URL::to('assets/images/logo/main-logo1.png') }}" alt="Logo"
                             srcset=""></a>
                 </div>
@@ -58,38 +57,6 @@
                     </ul>
                 </li>
 
-                {{-- <li class="sidebar-item">
-                    <div class="card-body">
-                        <div class="badges">
-                            @if (Auth::user()->role_name == 'Admin')
-                                <span>Name: <span class="fw-bolder">{{ Auth::user()->name }}</span></span>
-                                <hr>
-                                <span>Role Name:</span>
-                                <span class="badge bg-success">Admin</span>
-                            @endif
-                            @if (Auth::user()->role_name == 'Super Admin')
-                                <span>Name: <span class="fw-bolder">{{ Auth::user()->name }}</span></span>
-                                <hr>
-                                <span>Role Name:</span>
-                                <span class="badge bg-info">Super Admin</span>
-                            @endif
-                            @if (Auth::user()->role_name == 'Normal User')
-                                <span>Name: <span class="fw-bolder">{{ Auth::user()->name }}</span></span>
-                                <hr>
-                                <span>Role Name:</span>
-                                <span class="badge bg-warning">User Normal</span>
-                            @endif
-                        </div>
-                    </div>
-                </li>
-
-                <li class="sidebar-item">
-                    <a href="{{ route('change/password') }}" class='sidebar-link'>
-                        <i class="bi bi-shield-lock"></i>
-                        <span>Change Password</span>
-                    </a>
-                </li> --}}
-
                 @if (Auth::user()->role_name == 'Admin')
                     <li class="sidebar-title">Page &amp; Controller</li>
                     <li class="sidebar-item  has-sub {{ request()->is('maintenance/*') ? 'active' : '' }}">
@@ -134,39 +101,22 @@
 
                 <li class="sidebar-title">Forms &amp; Tables</li>
 
-                {{-- <li class="sidebar-item has-sub {{ Request::routeIs('form/customizedEngagement/new', 'form/f2f_engagement/new', 'form/mgtstratu_workshops/new') ? 'active' : '' }}">
-                    <a href="#" class='sidebar-link'>
-                        <i class="bi bi-file-earmark-medical-fill"></i>
-                        <span>Budget Form</span>
-                    </a>
-                    <ul class="submenu {{ Request::routeIs('form/customizedEngagement/new', 'form/f2f_engagement/new', 'form/mgtstratu_workshops/new') ? 'active' : '' }}">
-                        <li class="submenu-item {{ Request::routeIs('form/customizedEngagement/new') ? 'active' : '' }}">
-                            <a href="{{ route('form/customizedEngagement/new') }}">CUSTOMIZED ENGAGEMENT</a>
-                        </li>
-                        <li class="submenu-item {{ Request::routeIs('form/f2f_engagement/new') ? 'active' : '' }}">
-                            <a href="{{ route('form/f2f_engagement/new') }}">F2F ENGAGEMENT</a>
-                        </li>
-                        <li class="submenu-item {{ Request::routeIs('form/mgtstratu_workshops/new') ? 'active' : '' }}">
-                            <a href="{{ route('form/mgtstratu_workshops/new') }}">MGTSTRAT-U WORKSHOPS</a>
-                        </li>
-                    </ul>
-                </li> --}}
 
                 <li class="sidebar-item has-sub {{ request()->is('form/*') ? 'active' : '' }}">
 
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-grid-1x2-fill"></i>
-                        <span>View Record</span>
+                        <span>Engagement</span>
                     </a>
 
                     <ul class="submenu {{ request()->is('form/*') ? 'active' : '' }}">
 
                         <li class="submenu-item {{ request()->is('form/customizedEngagement/*') ? 'active' : '' }}">
-                            <a href="{{ route('form/customizedEngagement/detail') }}">Customized Engagement</a>
+                            <a href="{{ route('form/customizedEngagement/detail') }}">Customized</a>
                         </li>
 
                         <li class="submenu-item {{ request()->is('form/f2f_engagement/*') ? 'active' : '' }}">
-                            <a href="{{ route('form/f2f_engagement/index') }}">F2F Engagement</a>
+                            <a href="{{ route('form/f2f_engagement/index') }}">Face-to-Face</a>
                         </li>
 
                         <li class="submenu-item {{ request()->is('form/mgtstratu_workshops/*') ? 'active' : '' }}">
@@ -181,21 +131,14 @@
                             <a href="{{ url('form/coaching') }}">Coaching</a>
                         </li>
 
-                        <li class="submenu-item">
+                        <!-- <li class="submenu-item">
                             <a href="#">SubContracted Work</a>
-                        </li>
+                        </li> -->
 
                     </ul>
                 </li>
 
             </ul>
-
-            {{-- <li class="sidebar-item">
-                    <a href="{{ route('logout') }}" class='sidebar-link'>
-                        <i class="bi bi-box-arrow-right"></i>
-                        <span>Log Out</span>
-                    </a>
-                </li> --}}
 
         </div>
         <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>

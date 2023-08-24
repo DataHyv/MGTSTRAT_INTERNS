@@ -168,6 +168,7 @@
                         <th></th>
                         <th class=" total-td"></th>
                         <th class=" total-td"></th>
+                        <td class="add-row border border-white"> </td>
                     </tr>
 
                     <tbody id="tableLeadconsultant">

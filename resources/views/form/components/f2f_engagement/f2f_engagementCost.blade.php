@@ -118,6 +118,7 @@
                             <input  type="text" class="form-control input-table" name="cost_roster[]" id="sales_roster1"
                                     value="{{ old('') }}"                                     
                                     oninput="filterConsultant('sales_roster1');"
+                                    
                                     list="filtered_consultant_list" 
                                     autocomplete="off"
                                     >   
@@ -194,6 +195,7 @@
                             <input  type="text" class="form-control input-table" name="cost_roster[]" id="referrals_roster1"
                                     value="{{ old('') }}"                                     
                                     oninput="filterConsultant('referrals_roster1');"
+                                    
                                     list="filtered_consultant_list" 
                                     autocomplete="off"
                                     >   
@@ -264,6 +266,7 @@
                             <input  type="text" class="form-control input-table" name="cost_roster[]" id="engagementManager_roster1"
                                     value="{{ old('') }}"                                     
                                     oninput="filterConsultant('engagementManager_roster1');"
+                                    
                                     list="filtered_consultant_list" 
                                     autocomplete="off"
                                     >   
@@ -345,6 +348,7 @@
                             <input  type="text" class="form-control input-table" name="cost_roster[]" id="Offsite_roster1"
                                     value="{{ old('') }}"                                     
                                     oninput="filterConsultant('Offsite_roster1');"
+                                    
                                     list="filtered_consultant_list" 
                                     autocomplete="off"
                                     >   
@@ -384,29 +388,29 @@
                             <input type="hidden" value="Lead Consultant" name="cost_type[]">
                         </td>
                         <td class="mgt-td-dark-bg">
-                            <input type="number"
-                                class="text-center form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_consultant_num[]" id="ec_LeadconsultantsNoc1" max="100" readonly>
+                            <input type="text"
+                                class="number_input text-center form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_consultant_num[]" id="ec_LeadconsultantsNoc1" max="100">
                         </td>
                         <td class="mgt-td-dark-bg">
                             <input type="text"
-                                class="text-center fw-bold text-dark form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_day_fee[]" id="ec_LeadconsultantsPd1" data-type="currency" readonly>
+                                class="currency_input text-center fw-bold text-dark form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_day_fee[]" id="ec_LeadconsultantsPd1">
                         </td>
                         <td class="mgt-td-dark-bg">
-                            <input type="number"
-                                class="text-center form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_day_num[]" id="ec_LeadconsultantsNod1" readonly>
+                            <input type="text"
+                                class="number_input text-center form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_day_num[]" id="ec_LeadconsultantsNod1">
                         </td>
                         <td class="mgt-td-dark-bg">
-                            <input type="number"
-                                class="text-center form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_day_atd[]" id="ec_LeadconsultantsAtd1" readonly>
+                            <input type="text"
+                                class="number_input text-center form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_day_atd[]" id="ec_LeadconsultantsAtd1">
                         </td>
                         <td class="mgt-td-dark-bg">
-                            <input type="number"
-                                class="text-center form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_nswh[]" id="ec_LeadconsultantsNwh1" readonly>
+                            <input type="text"
+                                class="number_input text-center form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_nswh[]" id="ec_LeadconsultantsNwh1">
                         </td>
                         <td class="total-td">
                             <h4 class="text-center lead text-danger" id="ec_LeadconsultantsTotal1">-</h4>
@@ -414,7 +418,8 @@
                         <td class="total-td table-warning">
                             <input  type="text" class="form-control input-table" name="cost_roster[]" id="leadConsultants_roster1"
                                     value="{{ old('') }}"                                     
-                                    oninput="filterConsultant('leadConsultants_roster1', 'ec_LeadconsultantsPd1' ,'leadconsultant');"
+                                    oninput="filterConsultant('leadConsultants_roster1', 'ec_LeadconsultantsPd1' ,'leadConsultant');"
+                                    
                                     list="filtered_consultant_list" 
                                     autocomplete="off"
                                     >   
@@ -440,29 +445,29 @@
                             <input type="hidden" value="Analyst" name="cost_type[]">
                         </td>
                         <td class="mgt-td-dark-bg">
-                            <input type="number"
-                                class="text-center form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_consultant_num[]" id="ec_AnalystsNoc1" max="100" readonly>
+                            <input type="text"
+                                class="number_input text-center form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_consultant_num[]" id="ec_AnalystsNoc1" max="100">
                         </td>
                         <td class="bg-white">
                             <input type="text"
-                                class="text-center fw-bold text-dark form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_day_fee[]" id="ec_AnalystsPd1" data-type="currency" >
+                                class="currency_input text-center fw-bold text-dark form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_day_fee[]" id="ec_AnalystsPd1">
                         </td>
                         <td class="mgt-td-dark-bg">
-                            <input type="number"
-                                class="text-center form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_day_num[]" id="ec_AnalystsNod1" readonly>
+                            <input type="text"
+                                class="number_input text-center form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_day_num[]" id="ec_AnalystsNod1">
                         </td>
                         <td class="mgt-td-dark-bg">
-                            <input type="number"
-                                class="text-center form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_day_atd[]" id="ec_AnalystsAtd1" readonly>
+                            <input type="text"
+                                class="number_input text-center form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_day_atd[]" id="ec_AnalystsAtd1">
                         </td>
                         <td class="mgt-td-dark-bg">
-                            <input type="number"
-                                class="text-center form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_nswh[]" id="ec_AnalystsNwh1" readonly>
+                            <input type="text"
+                                class="number_input text-center form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_nswh[]" id="ec_AnalystsNwh1">
                         </td>
                         <td class="total-td">
                             <h4 class="text-center lead text-danger" id="ec_AnalystsTotal1">-</h4>
@@ -471,6 +476,7 @@
                             <input  type="text" class="form-control input-table" name="cost_roster[]" id="analysts_roster1"
                                     value="{{ old('') }}"                                     
                                     oninput="filterConsultant('analysts_roster1');"
+                                    
                                     list="filtered_consultant_list" 
                                     autocomplete="off"
                                     >   
@@ -525,27 +531,27 @@
                             <input type="hidden" value="Designer" name="cost_type[]">
                         </td>
                         <td class="mgt-td-dark-bg">
-                            <input type="number"
-                                class="text-center form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_consultant_num[]" id="ec_DesignersNoc1" max="100" readonly>
+                            <input type="text"
+                                class="number_input text-center form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_consultant_num[]" id="ec_DesignersNoc1" max="100">
                         </td>
                         <td class="mgt-td-dark-bg">
                             <input type="text"
-                                class="text-center fw-bold text-dark text-center form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_day_fee[]" id="ec_DesignersPd1" max="100" readonly data-type="currency" >
+                                class="currency_input text-center fw-bold text-dark text-center form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_day_fee[]" id="ec_DesignersPd1" max="100">
                         </td>
                         <td class="mgt-td-dark-bg">
-                            <input type="number"
-                                class="text-center form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_day_num[]" id="ec_DesignersNod1" readonly>
+                            <input type="text"
+                                class="number_input text-center form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_day_num[]" id="ec_DesignersNod1">
                         </td>
                         <td class="">
-                            <input type="number"
+                            <input type="text"
                                 class="text-center form-control input-table @error('') is-invalid @enderror d-none"
                                 value="{{ old('') }}" name="cost_day_atd[]" id="ec_DesignersAtd1">
                         </td>
                         <td class="">
-                            <input type="number"
+                            <input type="text"
                                 class="text-center form-control input-table @error('') is-invalid @enderror d-none"
                                 value="{{ old('') }}" name="cost_nswh[]" id="ec_DesignersNwh1">
                         </td>
@@ -556,6 +562,7 @@
                             <input  type="text" class="form-control input-table" name="cost_roster[]" id="designers_roster1"
                                     value="{{ old('') }}"                                     
                                     oninput="filterConsultant('designers_roster1','ec_DesignersPd1','designer');"
+                                    
                                     list="filtered_consultant_list" 
                                     autocomplete="off"
                                     >   
@@ -581,7 +588,7 @@
                             <input type="hidden" value="Creators Fees" name="cost_type[]">
                         </td>
                         <td>
-                            <input type="number"
+                            <input type="text"
                                 class="text-center form-control input-table @error('') is-invalid @enderror d-none"
                                 value="{{ old('') }}" name="cost_consultant_num[]" id="ec_CreatorNoc1" max="100">
                         </td>
@@ -609,8 +616,8 @@
                             </fieldset>
                         </td>
                         <td class="table-warning">
-                            <input type="number"
-                                class="text-center form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input text-center form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_day_num[]" id="ec_CreatorNod1" max="100">
                         </td>
                         <td><input type="hidden" value="0" name="cost_day_atd[]"></td>
@@ -622,6 +629,7 @@
                             <input  type="text" class="form-control input-table" name="cost_roster[]" id="creator_roster1"
                                     value="{{ old('') }}"                                     
                                     oninput="filterConsultant('creator_roster1');"
+                                    
                                     list="filtered_consultant_list" 
                                     autocomplete="off"
                                     >   
@@ -676,28 +684,28 @@
                             <input type="hidden" value="Lead Facilitator" name="cost_type[]">
                         </td>
                         <td class="mgt-td-dark-bg">
-                            <input type="number"
-                                class="text-center form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input text-center form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_consultant_num[]" id="ec_LeadfacilitatorsNoc1" max="100">
                         </td>
                         <td class="mgt-td-dark-bg">
                             <input type="text"
-                                class="text-center fw-bold text-center text-dark form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_day_fee[]" id="ec_LeadfacilitatorsPd1" data-type="currency" >
+                                class="currency_input text-center fw-bold text-center text-dark form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_day_fee[]" id="ec_LeadfacilitatorsPd1">
                         </td>
                         <td class="mgt-td-dark-bg">
-                            <input type="number"
-                                class="text-center form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input text-center form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_day_num[]" id="ec_LeadfacilitatorsNod1">
                         </td>
                         <td class="mgt-td-dark-bg">
-                            <input type="number"
-                                class="text-center form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input text-center form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_day_atd[]" id="ec_LeadfacilitatorsAtd1">
                         </td>
                         <td class="mgt-td-dark-bg">
-                            <input type="number"
-                                class="text-center form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input text-center form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_nswh[]" id="ec_LeadfacilitatorsNwh1">
                         </td>
                         <td class="total-td">
@@ -707,6 +715,7 @@
                             <input  type="text" class="form-control input-table" name="cost_roster[]" id="leadfacilitators_roster1"
                                     value="{{ old('') }}"                                     
                                     oninput="filterConsultant('leadfacilitators_roster1','ec_LeadfacilitatorsPd1','leadFacilitator');"
+                                    
                                     list="filtered_consultant_list" 
                                     autocomplete="off"
                                     >   
@@ -732,28 +741,28 @@
                             <input type="hidden" value="Co-lead" name="cost_type[]">
                         </td>
                         <td class="table-warning">
-                            <input type="number"
-                                class="text-center text-dark form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input text-center text-dark form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_consultant_num[]" id="ec_CoLeadNoc1" max="100">
                         </td>
                         <td class="bg-white">
                             <input type="text"
-                                class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_day_fee[]" id="ec_CoLeadPd1" data-type="currency" >
+                                class="currency_input text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_day_fee[]" id="ec_CoLeadPd1">
                         </td>
                         <td class="table-warning">
-                            <input type="number"
-                                class="text-center text-dark form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input text-center text-dark form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_day_num[]" id="ec_CoLeadNod1">
                         </td>
                         <td class="table-warning">
-                            <input type="number"
-                                class="text-center text-dark form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input text-center text-dark form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_day_atd[]" id="ec_CoLeadAtd1">
                         </td>
                         <td class="table-warning">
-                            <input type="number"
-                                class="text-center text-dark form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input text-center text-dark form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_nswh[]" id="ec_CoLeadNwh1">
                         </td>
                         <td class="total-td">
@@ -763,6 +772,7 @@
                             <input  type="text" class="form-control input-table" name="cost_roster[]" id="coLead_roster1"
                                     value="{{ old('') }}"                                     
                                     oninput="filterConsultant('coLead_roster1','ec_CoLeadPd1','coLead');"
+                                    
                                     list="filtered_consultant_list" 
                                     autocomplete="off"
                                     >   
@@ -788,28 +798,28 @@
                             <input type="hidden" value="Co-Facilitator / Resource Speaker" name="cost_type[]">
                         </td>
                         <td class="mgt-td-dark-bg">
-                            <input type="number"
-                                class="text-center text-dark form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input text-center text-dark form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_consultant_num[]" id="ec_CofacilitatorsNoc1" max="100">
                         </td>
                         <td class="mgt-td-dark-bg">
                             <input type="text"
-                                class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_day_fee[]" id="ec_CofacilitatorsPd1" data-type="currency" >
+                                class="currency_input text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_day_fee[]" id="ec_CofacilitatorsPd1">
                         </td>
                         <td class="mgt-td-dark-bg">
-                            <input type="number"
-                                class="text-center text-dark form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input text-center text-dark form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_day_num[]" id="ec_CofacilitatorsNod1">
                         </td>
                         <td class="mgt-td-dark-bg">
-                            <input type="number"
-                                class="text-center text-dark form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input text-center text-dark form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_day_atd[]" id="ec_CofacilitatorsAtd1">
                         </td>
                         <td class="mgt-td-dark-bg">
-                            <input type="number"
-                                class="text-center text-dark form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input text-center text-dark form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_nswh[]" id="ec_CofacilitatorsNwh1">
                         </td>
                         <td class="total-td">
@@ -819,6 +829,7 @@
                             <input  type="text" class="form-control input-table" name="cost_roster[]" id="cofacilitator_roster1"
                                     value="{{ old('') }}"                                     
                                     oninput="filterConsultant('cofacilitator_roster1','ec_CofacilitatorsPd1','coFaci');"
+                                    
                                     list="filtered_consultant_list" 
                                     autocomplete="off"
                                     >   
@@ -844,28 +855,28 @@
                             <input type="hidden" value="Action Learning Coach" name="cost_type[]">
                         </td>
                         <td class="mgt-td-dark-bg">
-                            <input type="number"
-                                class="text-dark text-center form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input text-dark text-center form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_consultant_num[]" id="ec_ActionlearningcoachNoc1" max="100">
                         </td>
                         <td class="bg-white">
                             <input type="text"
-                                class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_day_fee[]" id="ec_ActionlearningcoachPd1" data-type="currency" >
+                                class="currency_input text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_day_fee[]" id="ec_ActionlearningcoachPd1">
                         </td>
                         <td class="mgt-td-dark-bg">
-                            <input type="number"
-                                class="text-dark text-center form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input text-dark text-center form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_day_num[]" id="ec_ActionlearningcoachNod1">
                         </td>
                         <td class="mgt-td-dark-bg">
-                            <input type="number"
-                                class="text-dark text-center form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input text-dark text-center form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_day_atd[]" id="ec_ActionlearningcoachAtd1">
                         </td>
                         <td class="mgt-td-dark-bg">
-                            <input type="number"
-                                class="text-dark text-center form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input text-dark text-center form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_nswh[]" id="ec_ActionlearningcoachNwh1">
                         </td>
                         <td class="total-td">
@@ -875,6 +886,7 @@
                             <input  type="text" class="form-control input-table" name="cost_roster[]" id="actionlearningcoach_roster1"
                                     value="{{ old('') }}"                                     
                                     oninput="filterConsultant('actionlearningcoach_roster1');"
+                                    
                                     list="filtered_consultant_list" 
                                     autocomplete="off"
                                     >   
@@ -900,37 +912,38 @@
                             <input type="hidden" value="Marshal" name="cost_type[]">
                         </td>
                         <td class="mgt-td-dark-bg">
-                            <input type="number"
-                                class="text-center form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input text-center form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_consultant_num[]" id="ec_MarshalNoc1">
                         </td>
                         <td class="mgt-td-dark-bg">
                             <input type="text"
-                                class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_day_fee[]" id="ec_MarshalPd1" data-type="currency" >
+                                class="currency_input text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_day_fee[]" id="ec_MarshalPd1">
                         </td>
                         <td class="mgt-td-dark-bg">
-                            <input type="number"
-                                class="text-center  form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input text-center  form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_day_num[]" id="ec_MarshalNod1">
                         </td>
                         <td class="mgt-td-dark-bg">
-                            <input type="number"
-                                class="text-center form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input text-center form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_day_atd[]" id="ec_MarshalAtd1">
                         </td>
                         <td class="mgt-td-dark-bg">
-                            <input type="number"
-                                class="text-center  form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input text-center  form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_nswh[]" id="ec_MarshalNwh1">
                         </td>
                         <td class="total-td">
-                            <h4 class="text-center lead text-danger" id="ec_MarshalTotal1">-</h4>
+                            <h4 class="number_input text-center lead text-danger" id="ec_MarshalTotal1">-</h4>
                         </td>
                         <td class="total-td table-warning">
                         <input  type="text" class="form-control input-table" name="cost_roster[]" id="marshal_roster1"
                                     value="{{ old('') }}"                                     
                                     oninput="filterConsultant('marshal_roster1','ec_MarshalPd1','marshal');"
+                                    
                                     list="filtered_consultant_list" 
                                     autocomplete="off"
                                     >   
@@ -956,8 +969,8 @@
                             <input type="hidden" value="On-site PC" name="cost_type[]">
                         </td>
                         <td class="mgt-td-dark-bg">
-                            <input type="number"
-                                class="text-center form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input text-center form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_consultant_num[]" id="ec_OnsitepcNoc1">
                         </td>
                         <td class="table-danger">
@@ -996,27 +1009,28 @@
                         </fieldset>
                         </td>
                         <td class="mgt-td-dark-bg">
-                            <input type="number"
-                                class="text-center  form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input text-center  form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_day_num[]" id="ec_OnsitepcNod1">
                         </td>
                         <td class="mgt-td-dark-bg">
-                            <input type="number"
-                                class="text-center form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input text-center form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_day_atd[]" id="ec_OnsitepcAtd1">
                         </td>
                         <td class="mgt-td-dark-bg">
-                            <input type="number"
-                                class="text-center form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input text-center form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_nswh[]" id="ec_OnsitepcNwh1">
                         </td>
                         <td class="total-td">
-                            <h4 class="text-center lead text-danger" id="ec_OnsitepcTotal1">-</h4>
+                            <h4 class="number_input text-center lead text-danger" id="ec_OnsitepcTotal1">-</h4>
                         </td>
                         <td class="total-td">
                             <input  type="text" class="form-control input-table" name="cost_roster[]" id="onsitepc_roster1"
                                     value="{{ old('') }}"                                     
                                     oninput="filterConsultant('onsitepc_roster1');"
+                                    
                                     list="filtered_consultant_list" 
                                     autocomplete="off"
                                     >   
@@ -1070,26 +1084,26 @@
                             <input type="hidden" value="Documentor" name="cost_type[]">
                         </td>
                         <td class="mgt-td-dark-bg">
-                            <input type="number" class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror" value="{{ old('') }}" name="cost_consultant_num[]" id="ec_DocumentorsNoc1" max="100" >
+                            <input type="text" class="number_input text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror" value="{{ old('') }}" name="cost_consultant_num[]" id="ec_DocumentorsNoc1" max="100" >
                         </td>
                         <td class="bg-white">
                             <input type="text"
-                                class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_day_fee[]" id="ec_DocumentorsPd1" data-type="currency" >
+                                class="currency_input text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_day_fee[]" id="ec_DocumentorsPd1">
                         </td>
                         <td class="mgt-td-dark-bg">
-                            <input type="number"
-                                class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_day_num[]" id="ec_DocumentorsNod1">
                         </td>
                         <td class="mgt-td-dark-bg">
-                            <input type="number"
-                                class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_day_atd[]" id="ec_DocumentorsAtd1">
                         </td>
                         <td class="mgt-td-dark-bg">
-                            <input type="number"
-                                class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_nswh[]" id="ec_DocumentorsNwh1">
                         </td>
                         <td class="total-td" style="background-color: rgba(146, 146, 146, 0.727">
@@ -1099,6 +1113,7 @@
                             <input  type="text" class="form-control input-table" name="cost_roster[]" id="documentor_roster1"
                                     value="{{ old('') }}"                                     
                                     oninput="filterConsultant('documentor_roster1');"
+                                    
                                     list="filtered_consultant_list" 
                                     autocomplete="off"
                                     >   
@@ -1124,18 +1139,18 @@
                             <input type="hidden" value="Per Diem" name="cost_type[]">
                         </th>
                         <td class="table-warning">
-                            <input type="number"
-                                class="text-center form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input text-center form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_consultant_num[]" id="ec_PerdiemNoc1" max="100">
                         </td>
                         <td class="bg-white">
                             <input type="text"
-                                class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="cost_day_fee[]" id="ec_PerdiemPd1" data-type="currency" >
+                                class="currency_input text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="cost_day_fee[]" id="ec_PerdiemPd1">
                         </td>
                         <td class="mgt-td-dark-bg">
-                            <input type="number"
-                                class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_day_num[]" id="ec_PerdiemNod1">
                         </td>
                         <td><input type="hidden" value="0" name="cost_day_atd[]"></td>
@@ -1147,6 +1162,7 @@
                             <input  type="text" class="form-control input-table" name="cost_roster[]" id="perdiem_roster1"
                                     value="{{ old('') }}"                                     
                                     oninput="filterConsultant('perdiem_roster1');"
+                                    
                                     list="filtered_consultant_list" 
                                     autocomplete="off"
                                     >   
@@ -1183,8 +1199,8 @@
                             Off-Program fee
                             <input type="hidden" value="Off-Program fee" name="cost_type[]"></td>
                         <td class="table-warning">
-                            <input type="number"
-                                class="input js-mytooltip text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input input js-mytooltip text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="cost_consultant_num[]" id="ec_OffprogramsNoc1" max="100"
                                 data-mytooltip-content="<i>
                                             - For single or series of programs<br>
@@ -1196,8 +1212,8 @@
                         </td>
                         <td class="bg-white">
                             <input type="text"
-                                class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}"  name="cost_day_fee[]" id="ec_OffprogramsPd1" data-type="currency" >
+                                class="currency_input text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}"  name="cost_day_fee[]" id="ec_OffprogramsPd1">
                         </td>
                         <td><input type="hidden" value="0" name="cost_day_num[]"></td>
                         <td><input type="hidden" value="0" name="cost_day_atd[]"></td>
@@ -1209,6 +1225,7 @@
                             <input  type="text" class="form-control input-table" name="cost_roster[]" id="offprogram_roster1"
                                         value="{{ old('') }}"                                     
                                         oninput="filterConsultant('offprogram_roster1');"
+                                        
                                         list="filtered_consultant_list" 
                                         autocomplete="off"
                                         >   
@@ -1248,8 +1265,8 @@
                     <td><input type="hidden" value="0" name="cost_consultant_num[]"></td>
                     <td class="bg-white">
                         <input type="text"
-                            class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
-                            value="{{ old('') }}" name="cost_day_fee[]" id="ec_Programexpenses" maxlength="4">
+                            class="number_input text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
+                            value="{{ old('') }}" name="cost_day_fee[]" id="ec_Programexpenses" maxlength="4" data-type="currency">
                     </td>
                     <td><input type="hidden" value="0" name="cost_day_num[]"></td>
                     <td><input type="hidden" value="0" name="cost_day_atd[]"></td>
@@ -1258,9 +1275,10 @@
                         <h4 class="text-center text-danger" id="ec_ProgramexpensesTotal">-</h4>
                     </td>
                     <td class="total-td">
-                        <input  type="text" class="form-control input-table" name="cost_roster[]" id="Programexpenses_roster1"
+                        <input  type="hidden" class="form-control input-table" name="cost_roster[]" id="Programexpenses_roster1"
                             value="{{ old('') }}"                                     
                             oninput="filterConsultant('Programexpenses_roster1');"
+                            
                             list="filtered_consultant_list" 
                             autocomplete="off"
                             >   
@@ -1273,24 +1291,25 @@
                     <td style="background-color: #FFFFFF;" class="border border-white"></td>
                 </tr>
                 <!--------------------------TOTAL-------------------------------------------->
-                <tr class="table-active">
-                    <td class="fw-bold text-uppercase text-dark fst-italic overall-total-start">TOTAL</td>
-                    <td class="overall-total-middle"></td>
-                    <td class="overall-total-middle"></td>
-                    <td class="overall-total-middle"></td>
-                    <td class="overall-total-middle"></td>
-                    <td class="overall-total-middle"></td>
-                    <td class="overall-total-end">
+                <tr class="">
+                    <td class="table-active fw-bold text-uppercase text-dark fst-italic overall-total-start">TOTAL</td>
+                    <td class="table-active overall-total-middle"></td>
+                    <td class="table-active overall-total-middle"></td>
+                    <td class="table-active overall-total-middle"></td>
+                    <td class="table-active overall-total-middle"></td>
+                    <td class="table-active overall-total-middle"></td>
+                    <td class="table-active overall-total-end">
                         <h4 class="text-center text-danger" id="ec_Totals">-</h4>
                     </td>
-                    <td class="overall-total-end"></td>
-                    <td class="overall-total-end"style="border:3px solid black"></td>
+                    <td class="table-active overall-total-end"></td>
+                    <td class="table-active overall-total-end"style="border:3px solid black"></td>
+                    <td class="border border-white add-row bg-white" scope="col"></td>
                 </tr>
 
             </table>
         </div>
         <!-- AUTO COMPLETE -->
-        <template id="all_consultant_list">
+        {{-- <template id="all_consultant_list">
             @foreach ($consultantFee as $key => $feeData)
                 <option 
                     value="{{ strtoupper($feeData->first_name) }} {{ strtoupper($feeData->last_name) }}" 
@@ -1309,8 +1328,27 @@
                     {{ strtoupper($feeData->first_name) }} {{ strtoupper($feeData->last_name) }}
                 </option>
             @endforeach
-        </template>
-        <datalist id="filtered_consultant_list"></datalist>
+        </template> --}}
+        <datalist id="filtered_consultant_list">
+            @foreach ($consultantFee as $key => $feeData)
+                <option 
+                    value="{{ $feeData->first_name }} {{ $feeData->last_name }}" 
+                    data-id="{{$feeData->id}}"
+                    data-feeleadfaci="{{$feeData->lead_faci}}"
+                    data-cofaci="{{$feeData->co_faci}}",
+                    data-marshal="{{$feeData->marshal}}",
+                    data-leadconsultant="{{$feeData->lead_consultant}}",
+                    data-consulting="{{$feeData->consulting}}",
+                    data-designer="{{$feeData->designer}}",
+                    data-moderator="{{$feeData->moderator}}",
+                    data-producer="{{$feeData->producer}}",
+                    data-colead="{{$feeData->co_lead}}",
+                    data-coleadf2f="{{$feeData->co_lead_f2f}}"
+                    >
+                    {{ $feeData->first_name }} {{ $feeData->last_name }}
+                </option>
+            @endforeach
+        </datalist>
         <!-- END AUTO COMPLETE -->
     </section>
 </div>
@@ -1318,63 +1356,79 @@
 @include('form.components.f2f_engagement.f2f_script.f2f_engagement_cost')
 <script>
 var results = document.querySelector('#filtered_consultant_list');
-var templateContent = document.querySelector('#all_consultant_list').content;
+// var templateContent = document.querySelector('#all_consultant_list').content;
 
 function filterConsultant(rosterFieldID, hourlyFeeID = '', costType = '') {
-    var search = document.querySelector('#' + rosterFieldID);
+    // 
+    // var search = document.querySelector('#' + rosterFieldID);
 
-    while (results.children.length) {
-        results.removeChild(results.firstChild);
-    }
-    var inputVal = new RegExp('^'+search.value.trim(), 'i');
-    var clonedOptions = templateContent.cloneNode(true);
-    var set = Array.prototype.reduce.call(clonedOptions.children, 
-        function searchFilter(frag, el) {
-          if (inputVal.test(el.textContent.trim()) && frag.children.length < 10) { 
-            frag.appendChild(el)
-        };
-        return frag;
-        }
-    , document.createDocumentFragment());
-    results.appendChild(set);
+    // while (results.children.length) {
+    //     results.removeChild(results.firstChild);
+    // }
+    // var inputVal = new RegExp('^'+search.value.trim(), 'i');
+    // var clonedOptions = templateContent.cloneNode(true);
+    // var set = Array.prototype.reduce.call(clonedOptions.children, 
+    //     function searchFilter(frag, el) {
+    //       if (inputVal.test(el.textContent.trim()) && frag.children.length < 10) { 
+    //         frag.appendChild(el)
+    //     };
+    //     return frag;
+    //     }
+    // , document.createDocumentFragment());
+    // results.appendChild(set);
 
     getFee(rosterFieldID, hourlyFeeID, costType);
 }
 
 function getFee(rosterFieldID, hourlyFeeID = '', costType = '') {
     var rosterValue = document.querySelector('#' + rosterFieldID);
-    var getFee = $('#filtered_consultant_list option[value="' + rosterValue.value.toUpperCase() + '"]');
-    $('#id_' + rosterFieldID).val(getFee.data('id'));
+    // var getFee = $('#filtered_consultant_list option[value="' + rosterValue.value.toUpperCase() + '"]');
+    var getFee = $('#filtered_consultant_list option[value="' + rosterValue.value + '"]');
+    (getFee) ? $('#id_' + rosterFieldID).val(getFee.data('id')) : '';
     if (hourlyFeeID != '') {
         let currency = Intl.NumberFormat("en-US");
         switch(costType) {
             case 'leadConsultant':
-                $('#' + hourlyFeeID).val(currency.format(getFee.data('leadconsultant').replace(/,/g, "") * 8));
+                if(getFee.data('leadconsultant') != undefined) {    
+                    $('#' + hourlyFeeID).val(currency.format(getFee.data('leadconsultant').replace(/,/g, "") * 8));
+                }
                 break; 
             case 'designer':
-                $('#' + hourlyFeeID).val(currency.format(getFee.data('designer').replace(/,/g, "") * 8));
-                
+                if(getFee.data('designer') != undefined) {   
+                    $('#' + hourlyFeeID).val(currency.format(getFee.data('designer').replace(/,/g, "") * 8));
+                }
                 break; 
             case 'leadFacilitator':
-                $('#' + hourlyFeeID).val(currency.format(getFee.data('feeleadfaci').replace(/,/g, "") * 8));
-                
+                if(getFee.data('feeleadfaci') != undefined) {
+                    $('#' + hourlyFeeID).val(currency.format(getFee.data('feeleadfaci').replace(/,/g, "") * 8));
+                }
                 break; 
             case 'coLead':
-                $('#' + hourlyFeeID).val(currency.format(getFee.data('coleadf2f').replace(/,/g, "") * 8));                
+                if(getFee.data('coleadf2f') != undefined) {
+                    $('#' + hourlyFeeID).val(currency.format(getFee.data('coleadf2f').replace(/,/g, "") * 8));  
+                }              
                 break; 
             case 'alCoach':
                 break;
             case 'coFaci':
-                $('#' + hourlyFeeID).val(currency.format(getFee.data('cofaci').replace(/,/g, "") * 8));                
+                if(getFee.data('cofaci') != undefined) {
+                    $('#' + hourlyFeeID).val(currency.format(getFee.data('cofaci').replace(/,/g, "") * 8));                
+                }
                 break; 
-            case 'marshal':
-                $('#' + hourlyFeeID).val(currency.format(getFee.data('marshal').replace(/,/g, "") * 8));                
+            case 'marshal': 
+                if(getFee.data('marshal') != undefined) {           
+                    $('#' + hourlyFeeID).val(currency.format(getFee.data('marshal') * 8)); 
+                }
                 break; 
             case 'moderator':
-                $('#' + hourlyFeeID).val(currency.format(getFee.data('moderator').replace(/,/g, "") * 8));                
+                if(getFee.data('moderator') != undefined) {  
+                    $('#' + hourlyFeeID).val(currency.format(getFee.data('moderator').replace(/,/g, "") * 8));         
+                }       
                 break; 
             case 'producer':
-                $('#' + hourlyFeeID).val(currency.format(getFee.data('producer').replace(/,/g, "") * 8));                
+                if(getFee.data('producer') != undefined) {  
+                    $('#' + hourlyFeeID).val(currency.format(getFee.data('producer').replace(/,/g, "") * 8));   
+                }             
                 break; 
             default: 
                 break;
@@ -1680,6 +1734,7 @@ function getFee(rosterFieldID, hourlyFeeID = '', costType = '') {
 
         @endforeach
 
+        $('#f2f-ec-table input').click();
     });
     </script>
 @endif

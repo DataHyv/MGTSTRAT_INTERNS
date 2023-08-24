@@ -76,8 +76,8 @@
                             <input type="text" class="d-none" value="Lead Consultant" name="fee_type[]" readonly>
                         </td>
                         <td data-title="# OF CONSULTANTS" class="table-warning">
-                            <input type="number"
-                                class="input js-mytooltip input-table form-control  @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input input js-mytooltip input-table form-control  @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="fee_consultant_num[]" id="ef_LeadconsultantNoc1"
                                 min="0"
                                 max="100"
@@ -120,8 +120,8 @@
                             </fieldset>
                         </td>
                         <td class="table-warning">
-                            <input type="number"
-                                class=" form-control input-table input js-mytooltip @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input form-control input-table input js-mytooltip @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="fee_day_num[]" id="ef_LeadconsultantNoh1"
                                 data-mytooltip-content="<i>½ Day = 0.50<br>
                                     ¼ Day = 0.25 </i>"
@@ -129,13 +129,13 @@
                                 data-mytooltip-direction="bottom">
                         </td>
                         <td class="table-warning">
-                            <input type="number"
-                                class=" form-control input-table input @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input form-control input-table input @error('') is-invalid @enderror"
                                 value="{{ old('') }}" id="ef_LeadconsultantAtd1" name="fee_atd[]">
                         </td>
 
                         <td class="table-warning">
-                            <input type="number" class=" form-control input-table @error('') is-invalid @enderror"
+                            <input type="text" class="number_input form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="fee_nswh[]" id="ef_LeadconsultantNwh1">
                         </td>
                         <td class="total-td">
@@ -156,8 +156,8 @@
                             <input type="hidden" value="Analyst" name="fee_type[]">
                         </td>
                         <td class="table-warning">
-                            <input type="number"
-                                class=" input js-mytooltip form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input input js-mytooltip form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="fee_consultant_num[]" id="ef_AnalystNoc1" max="100"
                                 data-mytooltip-content="<i>Includes in depth needs analysis (i.e. surveys, interviews, FGDs),
                                 special research (i.e. to study client materials or client -required materials, industry
@@ -168,12 +168,12 @@
                         </td>
 
                         <td class="bg-white">
-                            <input type="text" class="form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="fee_day[]" id="ef_AnalystPdf" data-type="currency">
+                            <input type="text" class="currency_input form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="fee_day[]" id="ef_AnalystPdf">
                         </td>
                         <td class="table-warning">
-                            <input type="number"
-                                class=" input js-mytooltip form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input input js-mytooltip form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="fee_day_num[]" id="ef_AnalystNod1"
                                 data-mytooltip-content="<i>½ Day = 0.50<br>
                                                            ¼ Day = 0.25 Number of Hours</i>"
@@ -181,13 +181,13 @@
                                 data-mytooltip-direction="bottom">
                         </td>
                         <td class="table-warning">
-                            <input type="number"
-                                class="nwh-e14 form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input nwh-e14 form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="fee_atd[]" id="ef_AnalystAtd1">
                         </td>
                         <td class="table-warning">
-                            <input type="number"
-                                class="nwh-e14 form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input nwh-e14 form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="fee_nswh[]" id="ef_AnalystNsw1">
                         </td>
                         <td class="total-td">
@@ -234,8 +234,8 @@
                             <input type="hidden" value="Designer" name="fee_type[]">
                         </td>
                         <td class="table-warning">
-                            <input type="number"
-                                class="noc-b18 input js-mytooltip form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input noc-b18 input js-mytooltip form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="fee_consultant_num[]" id="ef_DesignerNoc1" max="100"
                                 data-mytooltip-content="<i>Includes in depth needs analysis (i.e. surveys, interviews, FGDs),
                                 special research (i.e. to study client materials or client -required materials, industry
@@ -268,8 +268,8 @@
                             </fieldset>
                         </td>
                         <td class="table-warning">
-                            <input type="number"
-                                class="noh-d18 input js-mytooltip form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input noh-d18 input js-mytooltip form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="fee_day_num[]" id="ef_DesignerNod1"
                                 data-mytooltip-content="<i>½ Day = 0.50<br>
                                     ¼ Day = 0.25 <br>Number of Hours</i>"
@@ -316,15 +316,15 @@
                             <input type="hidden" value="Lead Facilitator" name="fee_type[]">
                         </td>
                         <td class="table-warning">
-                            <input type="number"
-                                class="noc-b21 form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input noc-b21 form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="fee_consultant_num[]" id="ef_LeadFaciNoc1" max="100">
                         </td>
                         <td class="table-danger"> 
                             <div class="form-group has-icon-right mb-0" id="inputLeadfaci1" style="display:none">
                                 <div class="position-relative">
-                                    <input type="text" class="form-control input-table commanumber @error('fee_hour_fee.4') is-invalid @enderror" value="{{ old('fee_hour_fee.4') }}"
-                                        name="fee_day[]" id="ef_InputLeadFaciPdf1" data-type="currency" disabled>
+                                    <input type="text" class="currency_input form-control input-table commanumber @error('fee_hour_fee.4') is-invalid @enderror" 
+                                        value="{{ old('fee_hour_fee.4') }}" name="fee_day[]" id="ef_InputLeadFaciPdf1" disabled>
                                     <div class="form-control-icon">
                                         <a href="javascript:void(0)" class="deleteIcon" id="deleteIcon1">
                                             <i class="fa-solid fa-square-xmark text-danger"></i>
@@ -360,20 +360,20 @@
                             </fieldset>
                         </td>
                         <td class="table-warning">
-                            <input type="number"
-                                class="noh-d21 input js-mytooltip form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input noh-d21 input js-mytooltip form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="fee_day_num[]" id="ef_LeadFaciNod1"
                                 data-mytooltip-content="<i>½ Day = 0.70</i>" data-mytooltip-theme="dark"
                                 data-mytooltip-action="focus" data-mytooltip-direction="bottom">
                         </td>
                         <td class="table-warning">
-                            <input type="number"
-                                class="nwh-e21 form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input nwh-e21 form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="fee_atd[]" id="ef_LeadFaciAtd1">
                         </td>
                         <td class="table-warning">
-                            <input type="number"
-                                class="nwh-e21 form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input nwh-e21 form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="fee_nswh[]" id="ef_LeadFaciNsw1">
                         </td>
                         <td class="total-td">
@@ -394,32 +394,32 @@
                             <input type="hidden" value="Co-facilitator / Resource Speaker" name="fee_type[]">
                         </td>
                         <td class="table-warning">
-                            <input type="number"
-                                class="noc-b22 form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input noc-b22 form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="fee_consultant_num[]" id="ef_CoFaciNoc1" max="100">
                         </td>
                         <td class="bg-white">
                             <input type="text"
-                                class="hf-c22 form-control input-table @error('') is-invalid @enderror"
+                                class="currency_input hf-c22 form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="fee_day[]" id="ef_CoFaciPdf";
                                 data-mytooltip-content="<i>½ Day = 0.70</i>" data-mytooltip-theme="dark"
-                                data-mytooltip-action="focus" data-mytooltip-direction="bottom" data-type="currency">
+                                data-mytooltip-action="focus" data-mytooltip-direction="bottom">
                         </td>
                         <td class="table-warning">
-                            <input type="number"
-                                class="noh-d22 input js-mytooltip form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input noh-d22 input js-mytooltip form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="fee_day_num[]" id="ef_CoFaciNod1"
                                 data-mytooltip-content="<i>½ Day = 0.70</i>" data-mytooltip-theme="dark"
                                 data-mytooltip-action="focus" data-mytooltip-direction="bottom">
                         </td>
                         <td class="table-warning">
-                            <input type="number"
-                                class="nwh-e22 form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input nwh-e22 form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="fee_atd[]" id="ef_CoFaciAtd1">
                         </td>
                         <td class="table-warning">
-                            <input type="number"
-                                class="nwh-e22 form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input nwh-e22 form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="fee_nswh[]" id="ef_CoFaciNsw1">
                         </td>
                         <td class="total-td">
@@ -440,31 +440,30 @@
                             <input type="hidden" value="Action Learning Coach" name="fee_type[]">
                         </td>
                         <td class="table-warning">
-                            <input type="number"
-                                class="noc-b23 form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input noc-b23 form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="fee_consultant_num[]" id="ef_ActionLearnNoc1" max="100">
                         </td>
                         <td class="bg-white">
                             <input type="text"
-                                class="hf-c22 form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="fee_day[]" id="ef_ActionLearnPdf"
-                                data-type="currency";>
+                                class="currency_input hf-c22 form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="fee_day[]" id="ef_ActionLearnPdf">
                         </td>
                         <td class="table-warning">
-                            <input type="number"
-                                class="noh-d23 input js-mytooltip form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input noh-d23 input js-mytooltip form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="fee_day_num[]" id="ef_ActionLearnNod1"
                                 data-mytooltip-content="<i>½ Day = 0.70</i>" data-mytooltip-theme="dark"
                                 data-mytooltip-action="focus" data-mytooltip-direction="bottom">
                         </td>
                         <td class="table-warning">
-                            <input type="number"
-                                class="nwh-e23 form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input nwh-e23 form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="fee_atd[]" id="ef_ActionLearnAtd1">
                         </td>
                         <td class="table-warning">
-                            <input type="number"
-                                class="nwh-e23 form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input nwh-e23 form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="fee_nswh[]" id="ef_ActionLearnNsw1">
                         </td>
                         <td class="total-td">
@@ -485,31 +484,30 @@
                             <input type="hidden" value="Marshal" name="fee_type[]">
                         </td>
                         <td class="table-warning">
-                            <input type="number"
-                                class="noc-b23 form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input noc-b23 form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="fee_consultant_num[]" id="ef_MarshalNoc1" max="100">
                         </td>
                         <td class="bg-white">
                             <input type="text"
-                                class="hf-c22 form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="fee_day[]" id="ef_MarshalPdf"
-                                data-type="currency";>
+                                class="currency_input hf-c22 form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="fee_day[]" id="ef_MarshalPdf">
                         </td>
                         <td class="table-warning">
-                            <input type="number"
-                                class="noh-d23 input js-mytooltip form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input noh-d23 input js-mytooltip form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="fee_day_num[]" id="ef_MarshalNod1"
                                 data-mytooltip-content="<i>½ Day = 0.70</i>" data-mytooltip-theme="dark"
                                 data-mytooltip-action="focus" data-mytooltip-direction="bottom">
                         </td>
                         <td class="table-warning">
-                            <input type="number"
-                                class="nwh-e23 form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input nwh-e23 form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="fee_atd[]" id="ef_MarshalAtd1">
                         </td>
                         <td class="table-warning">
-                            <input type="number"
-                                class="nwh-e23 form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input nwh-e23 form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="fee_nswh[]" id="ef_MarshalNsw1">
                         </td>
                         <td class="total-td">
@@ -530,8 +528,8 @@
                             <input type="hidden" value="On-site PC" name="fee_type[]">
                         </td>
                         <td class="table-warning">
-                            <input type="number"
-                                class="noc-b23 form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input noc-b23 form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="fee_consultant_num[]" id="ef_OnsiteNoc1" max="100">
                         </td>
                         <td class="table-danger">
@@ -565,20 +563,20 @@
                             </fieldset>
                         </td>
                         <td class="table-warning">
-                            <input type="number"
-                                class="noh-d23 input js-mytooltip form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input noh-d23 input js-mytooltip form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="fee_day_num[]" id="ef_OnsiteNod1"
                                 data-mytooltip-content="<i>½ Day = 0.70</i>" data-mytooltip-theme="dark"
                                 data-mytooltip-action="focus" data-mytooltip-direction="bottom">
                         </td>
                         <td class="table-warning">
-                            <input type="number"
-                                class="nwh-e23 form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input nwh-e23 form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="fee_atd[]" id="ef_OnsiteAtd1">
                         </td>
                         <td class="table-warning">
-                            <input type="number"
-                                class="nwh-e23 form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input nwh-e23 form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="fee_nswh[]" id="ef_OnsiteNsw1">
                         </td>
                         <td class="total-td">
@@ -625,31 +623,30 @@
                             <input type="hidden" value="Documentor" name="fee_type[]">
                         </td>
                         <td class="table-warning">
-                            <input type="number"
-                                class="noc-b28 form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input noc-b28 form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="fee_consultant_num[]" id="ef_DocumentorNoc1" max="100">
                         </td>
                         <td class="bg-white">
                             <input type="text"
-                                class="hf-c22 form-control input-table @error('') is-invalid @enderror"
-                                value="{{ old('') }}" name="fee_day[]" id="ef_DocumentorPdf"
-                                data-type="currency";>
+                                class="currency_input hf-c22 form-control input-table @error('') is-invalid @enderror"
+                                value="{{ old('') }}" name="fee_day[]" id="ef_DocumentorPdf">
                         </td>
                         <td class="table-warning">
-                            <input type="number"
-                                class="noh-d28 input js-mytooltip form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input noh-d28 input js-mytooltip form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="fee_day_num[]" id="ef_DocumentorNod1"
                                 data-mytooltip-content="<i>½ Day = 0.70</i>" data-mytooltip-theme="dark"
                                 data-mytooltip-action="focus" data-mytooltip-direction="bottom">
                         </td>
                         <td class="table-warning">
-                            <input type="number"
-                                class="nwh-e28 form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input nwh-e28 form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="fee_atd[]" id="ef_DocumentorAtd1">
                         </td>
                         <td class="table-warning">
-                            <input type="number"
-                                class="nwh-e28 form-control input-table @error('') is-invalid @enderror"
+                            <input type="text"
+                                class="number_input nwh-e28 form-control input-table @error('') is-invalid @enderror"
                                 value="{{ old('') }}" name="fee_nswh[]" id="ef_DocumentorNsw1">
                         </td>
                         <td class="total-td" style="background-color: rgba(146, 146, 146, 0.727">
@@ -663,7 +660,7 @@
                 </tbody>
 
                 <!------------------------------------------------PER DIEM-------------------------------------------------------------------->
-                <tr class="th-blue-grey-lighten">
+                <tr class="th-blue-grey-lighten" id="ef_TablePerDiem">
                     <th class="title px-4 text-dark">
                         5. PER DIEM
                         <input type="hidden" value="Per Diem" name="fee_type[]">
@@ -673,12 +670,12 @@
                                 value="{{ old('') }}" name="fee_consultant_num[]" id="ef_PDNoc" max="100"> 
                     </td>
                     <td class="bg-white">
-                        <input type="text" class="hf-c22 form-control input-table @error('') is-invalid @enderror"
-                            value="{{ old('') }}" name="fee_day[]" id="ef_PDPdf";>
+                        <input type="text" class="currency_input hf-c22 form-control input-table @error('') is-invalid @enderror"
+                            value="{{ old('') }}" name="fee_day[]" id="ef_PDPdf">
                     </td>
                     <td class="table-warning">
-                        <input type="number"
-                            class="noh-d28 input  form-control input-table @error('') is-invalid @enderror"
+                        <input type="text"
+                            class="number_input noh-d28 input  form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="fee_day_num[]" id="ef_PDNod">
                     </td>
                     <td>
@@ -752,7 +749,7 @@
                     <td class="overall-total-middle"><input type="hidden"  value=""></td>
                     <td class="overall-total-end table-warning">
                         <input type="text"
-                            class="tf-f34 form-control text-center text-danger fw-bolder input-table @error('') is-invalid @enderror"
+                            class="currency_input tf-f34 form-control text-center text-danger fw-bolder input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="input_totalPackages" id="input_totalPackages"
                             style="font-size: 20px;">
                     </td>
@@ -882,7 +879,10 @@
             @endif
             
         @endforeach
-
-        document.getElementById("input_totalPackages").value = '{{ $parentInfoList->Engagement_fees_total }}';   
+        
+        $(document).ready(function () {
+            $('#f2f-ef-table input').click();
+            document.getElementById("input_totalPackages").value = '{{ $parentInfoList->Engagement_fees_total }}';   
+        });
     </script>
 @endif

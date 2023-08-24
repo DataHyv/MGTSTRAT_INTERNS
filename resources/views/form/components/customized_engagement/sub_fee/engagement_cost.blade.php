@@ -375,7 +375,7 @@
                                     <h5 class="text-center lead" id="ec_LeadconsultantTotal">-</h5>
                                 </td>
                                 <td class="total-td table-warning">
-                                    <input type="text" class="text-uppercase form-control input-table @error('') is-invalid @enderror"
+                                    <input type="text" class=" form-control input-table @error('') is-invalid @enderror"
                                         value="{{ $cost_types->rooster }}" name="cost_rooster[]" id="roster{{$ecLeadConsultant}}"
                                         oninput="filterConsultant(`roster{{$ecLeadConsultant}}`, `ec_LeadconsultantHf{{$ecLeadConsultant}}`, `leadConsultant`);"
                                         list="filtered_consultant_list" 
@@ -528,7 +528,7 @@
                                     <h5 class="text-center lead" id="ec_DesignerTotal">-</h5>
                                 </td>
                                 <td class="total-td table-warning">
-                                    <input type="text" class="text-uppercase form-control input-table @error('') is-invalid @enderror"
+                                    <input type="text" class=" form-control input-table @error('') is-invalid @enderror"
                                         value="{{ $cost_types->rooster }}" name="cost_rooster[]" id="roster2{{$ecDesigner}}"
                                         oninput="filterConsultant(`roster2{{$ecDesigner}}`, `ec_DesignerHf{{$ecDesigner}}`, `designer`);"
                                         list="filtered_consultant_list" 
@@ -581,6 +581,10 @@
                                                     1,000 - Creators Fee if creator is NOT the lead, for the 2nd session onwards</i>"
                                             data-mytooltip-theme="dark" data-mytooltip-action="focus"
                                             data-mytooltip-direction="right" style="background-color:#ffcccc; color:red;">
+                                            <option value="0" {{ $cost_types->hour_fee == '0' ? 'selected="selected"' : '' }}
+                                                title="">
+                                                &#8369;0
+                                            </option>
                                             <option value="500" {{ $cost_types->hour_fee == '500' ? 'selected="selected"' : '' }}
                                                 title="">
                                                 &#8369;500
@@ -706,7 +710,7 @@
                                     <h5 class="text-center lead" id="ec_LeadfacilitatorTotal">-</h5>
                                 </td>
                                 <td class="total-td table-warning">
-                                    <input type="text" class="text-uppercase form-control input-table @error('') is-invalid @enderror"
+                                    <input type="text" class=" form-control input-table @error('') is-invalid @enderror"
                                         value="{{$cost_types->rooster}}" name="cost_rooster[]" id="roster3{{$ecLeadfaci}}"
                                         oninput="filterConsultant(`roster3{{$ecLeadfaci}}`, `ec_LeadfacilitatorHf{{$ecLeadfaci}}`, `leadFacilitator`);"
                                         list="filtered_consultant_list" 
@@ -770,7 +774,7 @@
                                     <h5 class="text-center lead" id="ec_CoLeadfacilitatorTotal">-</h5>
                                 </td>
                                 <td class="total-td table-warning">
-                                    <input type="text" class="text-uppercase form-control input-table @error('') is-invalid @enderror"
+                                    <input type="text" class=" form-control input-table @error('') is-invalid @enderror"
                                         value="{{$cost_types->rooster}}" name="cost_rooster[]" id="roster4{{$ecColeadfaci}}"
                                         oninput="filterConsultant(`roster4{{$ecColeadfaci}}`, `ec_CoLeadfacilitatorHf{{$ecColeadfaci}}`, `coLead`);"
                                         list="filtered_consultant_list" 
@@ -898,7 +902,7 @@
                                     <h5 class="text-center lead" id="ec_CofacilitatorTotal">-</h5>
                                 </td>
                                 <td class="total-td table-warning">
-                                    <input type="text" class="text-uppercase form-control input-table @error('') is-invalid @enderror"
+                                    <input type="text" class=" form-control input-table @error('') is-invalid @enderror"
                                         value="{{$cost_types->rooster}}" name="cost_rooster[]" id="roster5{{$ecCofaci}}"
                                         oninput="filterConsultant(`roster5{{$ecCofaci}}`, `ec_CofacilitatorHf{{$ecCofaci}}`, `coFaci`);"
                                         list="filtered_consultant_list" 
@@ -992,7 +996,7 @@
                                     <h5 class="text-center lead" id="ec_ModeratorTotal">-</h5>
                                 </td>
                                 <td class="total-td table-warning">
-                                    <input type="text" class="text-uppercase form-control input-table @error('') is-invalid @enderror"
+                                    <input type="text" class=" form-control input-table @error('') is-invalid @enderror"
                                         value="{{$cost_types->rooster}}" name="cost_rooster[]" id="roster6{{$ecModerator}}"
                                         oninput="filterConsultant(`roster6{{$ecModerator}}`, `ec_ModeratorHf{{$ecModerator}}`, `moderator`);"
                                         list="filtered_consultant_list" 
@@ -1054,7 +1058,7 @@
                                     <h5 class="text-center lead" id="ec_ProducerTotal">-</h5>
                                 </td>
                                 <td class="total-td table-warning">
-                                    <input type="text" class="text-uppercase form-control input-table @error('') is-invalid @enderror"
+                                    <input type="text" class=" form-control input-table @error('') is-invalid @enderror"
                                         value="{{$cost_types->rooster}}" name="cost_rooster[]" id="roster7{{$ecProducer}}" 
                                         oninput="filterConsultant(`roster7{{$ecProducer}}`, `ec_ProducerHf{{$ecProducer}}`, `producer`);"
                                         list="filtered_consultant_list" 
@@ -1357,7 +1361,7 @@
 
             <!------------------- TOTAL ----------------------->
                 <tr class="table-active">
-                    <td class="fw-bold text-uppercase text-dark fst-italic overall-total-start">
+                    <td class="fw-bold  text-dark fst-italic overall-total-start">
                         <b>TOTAL</b>
                     </td>
                     <td class="overall-total-middle"></td>
@@ -1375,85 +1379,105 @@
             </table>
         </div>
         <!-- AUTO COMPLETE -->
-        <template id="all_consultant_list">
-            @foreach ($consultantFee as $key => $feeData)
-                <option 
-                    value="{{ strtoupper($feeData->first_name) }} {{ strtoupper($feeData->last_name) }}" 
-                    data-id="{{$feeData->id}}"
-                    data-feeleadfaci="{{$feeData->lead_faci}}"
-                    data-cofaci="{{$feeData->co_faci}}",
-                    data-marshal="{{$feeData->marshal}}",
-                    data-leadconsultant="{{$feeData->lead_consultant}}",
-                    data-consulting="{{$feeData->consulting}}",
-                    data-designer="{{$feeData->designer}}",
-                    data-moderator="{{$feeData->moderator}}",
-                    data-producer="{{$feeData->producer}}",
-                    data-colead="{{$feeData->co_lead}}",
-                    data-coleadf2f="{{$feeData->co_lead_f2f}}"
-                    >
-                    {{ strtoupper($feeData->first_name) }} {{ strtoupper($feeData->last_name) }}
-                </option>
-            @endforeach
-        </template>
-        <datalist id="filtered_consultant_list"></datalist>
-        <!-- END AUTO COMPLETE -->
+        {{-- <template id="all_consultant_list">
+                @foreach ($consultantFee as $key => $feeData)
+                    <option 
+                        value="{{ strtoupper($feeData->first_name) }} {{ strtoupper($feeData->last_name) }}" 
+                        data-id="{{$feeData->id}}"
+                        data-feeleadfaci="{{$feeData->lead_faci}}"
+                        data-cofaci="{{$feeData->co_faci}}",
+                        data-marshal="{{$feeData->marshal}}",
+                        data-leadconsultant="{{$feeData->lead_consultant}}",
+                        data-consulting="{{$feeData->consulting}}",
+                        data-designer="{{$feeData->designer}}",
+                        data-moderator="{{$feeData->moderator}}",
+                        data-producer="{{$feeData->producer}}",
+                        data-colead="{{$feeData->co_lead}}",
+                        data-coleadf2f="{{$feeData->co_lead_f2f}}"
+                        >
+                        {{ strtoupper($feeData->first_name) }} {{ strtoupper($feeData->last_name) }}
+                    </option>
+                @endforeach
+            </template> --}}
+            <datalist id="filtered_consultant_list">
+                @foreach ($consultantFee as $key => $feeData)
+                    <option 
+                        value="{{ $feeData->first_name }} {{ $feeData->last_name }}" 
+                        data-id="{{$feeData->id}}"
+                        data-feeleadfaci="{{$feeData->lead_faci}}"
+                        data-cofaci="{{$feeData->co_faci}}",
+                        data-marshal="{{$feeData->marshal}}",
+                        data-leadconsultant="{{$feeData->lead_consultant}}",
+                        data-consulting="{{$feeData->consulting}}",
+                        data-designer="{{$feeData->designer}}",
+                        data-moderator="{{$feeData->moderator}}",
+                        data-producer="{{$feeData->producer}}",
+                        data-colead="{{$feeData->co_lead}}",
+                        data-coleadf2f="{{$feeData->co_lead_f2f}}"
+                        >
+                        {{ $feeData->first_name }} {{ $feeData->last_name }}
+                    </option>
+                @endforeach
+            </datalist>
+            <!-- END AUTO COMPLETE -->
     </section>
 </div>
 <!------------ END OF FORM BODY ------------>
 <script>
 var results = document.querySelector('#filtered_consultant_list');
-var templateContent = document.querySelector('#all_consultant_list').content;
+// var templateContent = document.querySelector('#all_consultant_list').content;
 
 function filterConsultant(rosterFieldID, hourlyFeeID = '', costType = '') {
-    var search = document.querySelector('#' + rosterFieldID);
+    // 
+    // var search = document.querySelector('#' + rosterFieldID);
 
-    while (results.children.length) {
-        results.removeChild(results.firstChild);
-    }
-    var inputVal = new RegExp('^'+search.value.trim(), 'i');
-    var clonedOptions = templateContent.cloneNode(true);
-    var set = Array.prototype.reduce.call(clonedOptions.children, 
-        function searchFilter(frag, el) {
-          if (inputVal.test(el.textContent.trim()) && frag.children.length < 10) { 
-            frag.appendChild(el)
-        };
-        return frag;
-        }
-    , document.createDocumentFragment());
-    results.appendChild(set);
+    // while (results.children.length) {
+    //     results.removeChild(results.firstChild);
+    // }
+    // var inputVal = new RegExp('^'+search.value.trim(), 'i');
+    // var clonedOptions = templateContent.cloneNode(true);
+    // var set = Array.prototype.reduce.call(clonedOptions.children, 
+    //     function searchFilter(frag, el) {
+    //       if (inputVal.test(el.textContent.trim()) && frag.children.length < 10) { 
+    //         frag.appendChild(el)
+    //     };
+    //     return frag;
+    //     }
+    // , document.createDocumentFragment());
+    // results.appendChild(set);
 
     getFee(rosterFieldID, hourlyFeeID, costType);
 }
 
 function getFee(rosterFieldID, hourlyFeeID = '', costType = '') {
     var rosterValue = document.querySelector('#' + rosterFieldID);
-    var getFee = $('#filtered_consultant_list option[value="' + rosterValue.value.toUpperCase() + '"]');
-    var customizedType = $('#customized_type').val();
-    $('#id_' + rosterFieldID).val(getFee.data('id'));
-    if (customizedType == 'Virtual' && hourlyFeeID != '') {
+    // var getFee = $('#filtered_consultant_list option[value="' + rosterValue.value.toUpperCase() + '"]');
+    var getFee = $('#filtered_consultant_list option[value="' + rosterValue.value + '"]');
+    (getFee) ? $('#id_' + rosterFieldID).val(getFee.data('id')) : '';
+    if (hourlyFeeID != '') {
         switch(costType) {
-            case 'leadConsultant':
-                $('#' + hourlyFeeID).val(getFee.data('leadconsultant'));
+            case 'leadConsultant':                
+                (getFee.data('leadconsultant')) ? $('#' + hourlyFeeID).val(getFee.data('leadconsultant')) : '';
                 break; 
             case 'designer':
-                $('#' + hourlyFeeID).val(getFee.data('designer'));
+                (getFee.data('designer')) ? $('#' + hourlyFeeID).val(getFee.data('designer')) : '';
                 break; 
             case 'leadFacilitator':
-                $('#' + hourlyFeeID).val(getFee.data('feeleadfaci'));
+                (getFee.data('feeleadfaci')) ? $('#' + hourlyFeeID).val(getFee.data('feeleadfaci')) : '';
                 break; 
             case 'coLead':
-                $('#' + hourlyFeeID).val(getFee.data('colead'));
+                (getFee.data('colead')) ? $('#' + hourlyFeeID).val(getFee.data('colead')) : '';
                 break; 
             case 'alCoach':
                 break;
             case 'coFaci':
-                $('#' + hourlyFeeID).val(getFee.data('cofaci'));
+                (getFee.data('cofaci')) ? $('#' + hourlyFeeID).val(getFee.data('cofaci')) : '';
                 break; 
             case 'moderator':
-                $('#' + hourlyFeeID).val(getFee.data('moderator'));
+                (getFee.data('moderator')) ? $('#' + hourlyFeeID).val(getFee.data('moderator')) : '';
                 break; 
             case 'producer':
-                $('#' + hourlyFeeID).val(getFee.data('producer'));
+                (getFee.data('producer')) ? $('#' + hourlyFeeID).val(getFee.data('producer')) : '';
                 break; 
             default: 
                 break;

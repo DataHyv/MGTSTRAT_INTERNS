@@ -8,6 +8,11 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
 @extends('layouts.master')
 @section('menu')
     @extends('sidebar.dashboard')
@@ -43,7 +48,11 @@
                             <h5 id="clientName">{{$getClient[0]->company_name }}</h5>
                             
                             <span style="font-size:10pt">Engagement Title</span>
-                            <h5 id="engType">{{ $cstm_eng_data[0]->engagement_title }}</h5>
+                            <a href="{{ url('form/customizedEngagement/detail/' . $cstm_eng_data[0]->cstmzd_eng_form_id . '/' . $cstm_eng_data[0]->id ) }}" target="_blank">
+                                <h5 id="engType" style="text-decoration: underline">
+                                    {{ $cstm_eng_data[0]->engagement_title }}
+                                </h5>
+                            </a>
                         </div>
                         <div class="col-lg-6 col-md-6"> 
                             <span style="font-size:10pt">Number of Pax</span>
@@ -57,8 +66,86 @@
                         </div>
                     </div>
                 </div>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#subformList">Batch List</button>
             </div>
         </div> 
+
+        <div class="modal fade" id="subformList" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-uppercase fw-bold">Batches</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body table-responsive">
+                        <table class="table table-light display dt-responsive nowrap tables" id="tables">
+                            <thead style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">
+                                <tr class="table-secondary">
+                                    <th class="text-center">ID</th>
+                                    <th class="text-center">Batch Name</th>
+                                    <th class="text-center">Sessions</th>
+                                    <th class="text-center">Status</th>
+                                    <th class="text-center">Program date</th>
+                                    <th class="text-center">Contract Price</th>
+                                    <th class="text-center">Modify</th>
+                                    <th hidden></th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-center appendBatch" style="font-family:Arial, Helvetica, sans-serif">
+                                @foreach ($subInfosList as $key => $item2)
+                                    <tr>
+                                        <td>
+                                            <label class="fw-bold " for="formGroupBatchInput">{{ ++$key }}</label>
+                                        </td>
+                                        <td>
+                                            <label class="fw-bold" for="">
+                                                Batch {{ $item2->batch_number }}
+                                            </label>
+                                        </td>
+                                        <td>
+                                            <label class="fw-bold" for="">{{ $item2->session_number }}</label>
+                                        </td>
+                                        <td>
+                                            <label class="fw-bold" for="">{{ $item2->status }}</label>
+                                        </td>
+                                        @if ($item2->date == null)
+                                        <td>
+                                            <label class="fw-bold" for="">TBA</label>
+                                        </td>
+                                        @else
+                                        <td>
+                                            <label class="fw-bold" for="">{{ $item2->date }}</label>
+                                        </td>
+                                        @endif
+                                        <td>
+                                            <label class="fw-bold" for="">
+                                                {{ str_replace(',', '', $item2->sub_fees_total) }}
+                                            </label>
+                                        </td>
+                                        <td>
+                                            <a href="{{ url('form/customizedEngagement/sub-fee/' . $item2->id) }}" class="text-success font-18 px-0" title="Add" id="edit">
+                                                <i class="fa-regular fa-pen-to-square"></i>
+                                            </a>
+                                        </td>
+                                        <td hidden></td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="modal-footer">                                                           
+                        <a href="{{ url('modify-sessions/' . $cstm_eng_data[0]->id) }}" class="btn btn-success active" role="button">
+                            Modify All <i class="bi bi-pencil-square"></i>
+                        </a>
+                        <button type="button" class="btn btn-secondary modal-close" data-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
 
         {{-- message --}}
         {!! Toastr::message() !!}
@@ -92,7 +179,7 @@
 
                             <!------------ BUDGET FORM ------------>
                                 <form class="form form-horizontal multisteps-form__form" action="{{ route('updateBatch') }}"
-                                    method="POST" autocomplete="off" onsubmit="submitForm(event)">
+                                    method="POST" autocomplete="off" onsubmit="submitForm(event)" name="sub_customized_engagement_form">
                                     @csrf
                                     @method('PUT')
 
@@ -252,6 +339,12 @@
                     $('#status option').css('color', 'black')
                 }
             };
+
+            var formName = document.getElementById('sub_customized_engagement_form');
+            var i;
+            for (i = 0; i < x.length; i++) {
+                x.elements[i].value = "{{ old('" + x.elements[i].name + "') }}";
+            }
         });
     </script>
 
@@ -270,6 +363,19 @@
             $('h4.lead, h5.lead').addClass('text-danger');
             // $('input[name="cost_rooster[]"][id=""]').addClass('d-none');
             $('tr input[name="cost_rooster[]"][id!=""]').addClass('table-warning');
+
+            $(`.tables`).dataTable( {
+                responsive: true,
+                stateSave: true,
+                "bScrollCollapse": true,
+                "autoWidth": false,
+                stateSaveCallback: function(settings,data) {
+                    localStorage.setItem( 'DataTables_' + settings.sInstance, JSON.stringify(data) )
+                },
+                stateLoadCallback: function(settings) {
+                    return JSON.parse( localStorage.getItem( 'DataTables_' + settings.sInstance ) )
+                },
+            } );
         });
     </script>
     @endsection

@@ -6,10 +6,10 @@
             <button class="btn btn-primary mx-0 js-btn-next" type="button" title="Next">Next</button>
             @if($data)                                                    
                 @if($data->cstmzd_eng_form_id)
-                    <button class="btn btn-success mx-0 js-btn-next" type="submit" title="Submit">Save</button>
+                    <button class="btn btn-success mx-0 js-btn-next" type="button" title="Submit" onclick="validate_required_field()">Save</button>
                 @endif
             @else
-                    <button class="btn btn-success mx-0 js-btn-next" type="submit" title="Submit">Submit</button>
+                    <button class="btn btn-success mx-0 js-btn-next" type="button" title="Submit" onclick="validate_required_field()">Submit</button>
             @endif
         </div>
     </div>
@@ -131,7 +131,6 @@
                                 </th>
                                 <th class="title-th" scope="col" width=15%>TOTAL FEE</th>
                                 <th class="title-th" scope="col" width=15%>NOTES</th>
-                                <td class="add-row border border-white"> </td>
                             </tr>
                         </b>
                     </thead>
@@ -148,7 +147,6 @@
                         <th></th>
                         <th class=" total-td"></th>
                         <th class=" total-td"></th>
-                        <td class="border border-white bg-white"> </td>
                     </tr>
 
                     <tbody id="tableLeadconsultant">
@@ -265,7 +263,6 @@
                             <h4 class="text-center text-danger" id="subtotal-consulting">-</h4>
                         </td>
                         <td class="total-td"></td>
-                        <td class="border border-white add-row"></td>
                     </tr>
                 <!------------------- END ----------------------->
 
@@ -567,7 +564,6 @@
                             <h4 class="text-center text-danger" id="program-subtotal">-</h4>
                         </td>
                         <td class=" total-td"></td>
-                        <td class="border border-white add-row"></td>
                     </tr>
                 <!------------------- END ----------------------->
 
@@ -659,7 +655,7 @@
                         </td>
                         <td class="overall-total-middle">
                             <input type="text" class="d-none" value=" " name="fee_nswh[]" readonly>
-                        <input type="text" class="" value=" " name="nswh_percent[]" hidden>
+                            <input type="text" class="" value=" " name="nswh_percent[]" hidden>
                         </td>
                         <td class="overall-total-end"></td>
                         <td class="overall-total-end">

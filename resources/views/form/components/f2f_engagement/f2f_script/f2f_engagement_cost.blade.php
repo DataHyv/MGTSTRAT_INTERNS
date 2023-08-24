@@ -314,27 +314,32 @@
                         <input type="hidden" value="Lead Consultant" name="cost_type[]">
                     </td>
                     <td class="noc mgt-td-dark-bg">
-                        <input type="number"
+                        <input type="text"
+                            oninput='return this.value = this.value.replace(/[^0-9.]+/g, "")'
                             class="text-center form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_consultant_num[]" id="ec_LeadconsultantsNoc${ecleadConsultant}" max="100">
                     </td>
                     <td class="pd mgt-td-dark-bg">
                         <input type="text"
+                            oninput='return this.value = this.value.replace(/[^0-9]+/g, "").replace(/\\B(?=(\\d{3})+(?!\\d))/g, ",")'
                             class="text-center fw-bold text-dark form-control input-table @error('') is-invalid @enderror"
-                            value="{{ old('') }}" name="cost_day_fee[]" id="ec_LeadconsultantsPd${ecleadConsultant}" readonly>
+                            value="{{ old('') }}" name="cost_day_fee[]" id="ec_LeadconsultantsPd${ecleadConsultant}">
                     </td>
                     <td class="nod mgt-td-dark-bg">
-                        <input type="number"
+                        <input type="text"
+                            oninput='return this.value = this.value.replace(/[^0-9.]+/g, "")'
                             class="text-center form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_day_num[]" id="ec_LeadconsultantsNod${ecleadConsultant}">
                     </td>
                     <td class="atd mgt-td-dark-bg">
-                        <input type="number"
+                        <input type="text"
+                            oninput='return this.value = this.value.replace(/[^0-9.]+/g, "")'
                             class="text-center form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_day_atd[]" id="ec_LeadconsultantsAtd${ecleadConsultant}">
                     </td>
                     <td class="nwh mgt-td-dark-bg">
-                        <input type="number"
+                        <input type="text"
+                            oninput='return this.value = this.value.replace(/[^0-9.]+/g, "")'
                             class="text-center form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_nswh[]" id="ec_LeadconsultantsNwh${ecleadConsultant}">
                     </td>
@@ -418,27 +423,32 @@
                         <input type="hidden" value="Analyst" name="cost_type[]">
                     </td>
                     <td class="noc mgt-td-dark-bg">
-                        <input type="number"
+                        <input type="text"
+                            oninput='return this.value = this.value.replace(/[^0-9.]+/g, "")'
                             class="text-center form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_consultant_num[]" id="ec_AnalystsNoc${ecAnalyst}" max="100">
                     </td>
                     <td class=" bg-white">
                         <input type="text"
+                            oninput='return this.value = this.value.replace(/[^0-9]+/g, "").replace(/\\B(?=(\\d{3})+(?!\\d))/g, ",")'
                             class="text-center fw-bold text-dark form-control input-table @error('') is-invalid @enderror"
                             value="13600" name="cost_day_fee[]" id="ec_AnalystsPd${ecAnalyst}">
                     </td>
                     <td class="nod mgt-td-dark-bg">
-                        <input type="number"
+                        <input type="text"
+                            oninput='return this.value = this.value.replace(/[^0-9.]+/g, "")'
                             class="text-center form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_day_num[]" id="ec_AnalystsNod${ecAnalyst}">
                     </td>
                     <td class="atd mgt-td-dark-bg">
-                        <input type="number"
+                        <input type="text"
+                            oninput='return this.value = this.value.replace(/[^0-9.]+/g, "")'
                             class="text-center form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_day_atd[]" id="ec_AnalystsAtd${ecAnalyst}">
                     </td>
                     <td class="nwh mgt-td-dark-bg">
-                        <input type="number"
+                        <input type="text"
+                            oninput='return this.value = this.value.replace(/[^0-9.]+/g, "")'
                             class="text-center form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_nswh[]" id="ec_AnalystsNwh${ecAnalyst}">
                     </td>
@@ -519,27 +529,32 @@
                         <input type="hidden" value="Designer" name="cost_type[]">
                     </td>
                     <td class="noc mgt-td-dark-bg">
-                        <input type="number"
+                        <input type="text"
+                            oninput='return this.value = this.value.replace(/[^0-9.]+/g, "")'
                             class="text-center form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_consultant_num[]" id="ec_DesignersNoc${ecDesigner}" max="100">
                     </td>
                     <td class="pd mgt-td-dark-bg">
                         <input type="text"
+                            oninput='return this.value = this.value.replace(/[^0-9]+/g, "").replace(/\\B(?=(\\d{3})+(?!\\d))/g, ",")'
                             class="text-center fw-bold text-dark text-center form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_day_fee[]" id="ec_DesignersPd${ecDesigner}" max="100">
                     </td>
                     <td class="nod mgt-td-dark-bg">
-                        <input type="number"
+                        <input type="text"
+                            oninput='return this.value = this.value.replace(/[^0-9.]+/g, "")'
                             class="text-center form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_day_num[]" id="ec_DesignersNod${ecDesigner}">
                     </td>
                     <td class="atd">
-                        <input type="number"
+                        <input type="text"
+                            oninput='return this.value = this.value.replace(/[^0-9.]+/g, "")'
                             class="text-center form-control input-table @error('') is-invalid @enderror d-none"
                             value="{{ old('') }}" name="cost_day_atd[]" id="ec_DesignersAtd${ecDesigner}">
                     </td>
                     <td class="nwh">
-                        <input type="number"
+                        <input type="text"
+                            oninput='return this.value = this.value.replace(/[^0-9.]+/g, "")'
                             class="text-center form-control input-table @error('') is-invalid @enderror d-none"
                             value="{{ old('') }}" name="cost_nswh[]" id="ec_DesignersNwh${ecDesigner}">
                     </td>
@@ -619,7 +634,7 @@
                     <input type="hidden" value="Creators Fees" name="cost_type[]">
                 </td>
                 <td class="noc">
-                    <input type="number"
+                    <input type="text"
                         class="text-center form-control input-table @error('') is-invalid @enderror d-none"
                         value="{{ old('') }}" name="cost_consultant_num[]" id="ec_CreatorNoc${ecCreator}" max="100">
                 </td>
@@ -647,7 +662,8 @@
                     </fieldset>
                 </td>
                 <td class="nod table-warning">
-                    <input type="number"
+                    <input type="text"
+                        oninput='return this.value = this.value.replace(/[^0-9.]+/g, "")'
                         class="text-center form-control input-table @error('') is-invalid @enderror"
                         value="{{ old('') }}" name="cost_day_num[]" id="ec_CreatorNod${ecCreator}" max="100">
                 </td>
@@ -726,27 +742,32 @@
                         <input type="hidden" value="Lead Facilitator" name="cost_type[]">
                     </td>
                     <td class="noc mgt-td-dark-bg">
-                        <input type="number"
+                        <input type="text"
+                            oninput='return this.value = this.value.replace(/[^0-9.]+/g, "")'
                             class="text-center form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_consultant_num[]" id="ec_LeadfacilitatorsNoc${ecLeadFacilitator}" max="100">
                     </td>
                     <td class="pd mgt-td-dark-bg">
                         <input type="text"
+                            oninput='return this.value = this.value.replace(/[^0-9]+/g, "").replace(/\\B(?=(\\d{3})+(?!\\d))/g, ",")'
                             class="text-center fw-bold text-center text-dark form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_day_fee[]" id="ec_LeadfacilitatorsPd${ecLeadFacilitator}">
                     </td>
                     <td class="nod mgt-td-dark-bg">
-                        <input type="number"
+                        <input type="text"
+                            oninput='return this.value = this.value.replace(/[^0-9.]+/g, "")'
                             class="text-center form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_day_num[]" id="ec_LeadfacilitatorsNod${ecLeadFacilitator}">
                     </td>
                     <td class="atd mgt-td-dark-bg">
-                        <input type="number"
+                        <input type="text"
+                            oninput='return this.value = this.value.replace(/[^0-9.]+/g, "")'
                             class="text-center form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_day_atd[]" id="ec_LeadfacilitatorsAtd${ecLeadFacilitator}">
                     </td>
                     <td class="nwh mgt-td-dark-bg">
-                        <input type="number"
+                        <input type="text"
+                            oninput='return this.value = this.value.replace(/[^0-9.]+/g, "")'
                             class="text-center form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_nswh[]" id="ec_LeadfacilitatorsNwh${ecLeadFacilitator}">
                     </td>
@@ -827,27 +848,32 @@
                         <input type="hidden" value="Co-lead" name="cost_type[]">
                     </td>
                     <td class="noc table-warning">
-                        <input type="number"
+                        <input type="text"
+                            oninput='return this.value = this.value.replace(/[^0-9.]+/g, "")'
                             class="text-center text-dark form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_consultant_num[]" id="ec_CoLeadNoc${ecCoLead}" max="100">
                     </td>
                     <td class="pd bg-white">
                         <input type="text"
+                            oninput='return this.value = this.value.replace(/[^0-9]+/g, "").replace(/\\B(?=(\\d{3})+(?!\\d))/g, ",")'
                             class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_day_fee[]" id="ec_CoLeadPd${ecCoLead}">
                     </td>
                     <td class="nod table-warning">
-                        <input type="number"
+                        <input type="text"
+                            oninput='return this.value = this.value.replace(/[^0-9.]+/g, "")'
                             class="text-center text-dark form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_day_num[]" id="ec_CoLeadNod${ecCoLead}">
                     </td>
                     <td class="atd table-warning">
-                        <input type="number"
+                        <input type="text"
+                            oninput='return this.value = this.value.replace(/[^0-9.]+/g, "")'
                             class="text-center text-dark form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_day_atd[]" id="ec_CoLeadAtd${ecCoLead}">
                     </td>
                     <td class="nwh table-warning">
-                        <input type="number"
+                        <input type="text"
+                            oninput='return this.value = this.value.replace(/[^0-9.]+/g, "")'
                             class="text-center text-dark form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_nswh[]" id="ec_CoLeadNwh${ecCoLead}">
                     </td>
@@ -928,27 +954,32 @@
                         <input type="hidden" value="Co-Facilitator / Resource Speaker" name="cost_type[]">
                     </td>
                     <td class="noc mgt-td-dark-bg">
-                        <input type="number"
+                        <input type="text"
+                            oninput='return this.value = this.value.replace(/[^0-9.]+/g, "")'
                             class="text-center text-dark form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_consultant_num[]" id="ec_CofacilitatorsNoc${ecCoFacilitator}" max="100">
                     </td>
                     <td class="pd mgt-td-dark-bg">
                         <input type="text"
+                            oninput='return this.value = this.value.replace(/[^0-9]+/g, "").replace(/\\B(?=(\\d{3})+(?!\\d))/g, ",")'
                             class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_day_fee[]" id="ec_CofacilitatorsPd${ecCoFacilitator}">
                     </td>
                     <td class="nod mgt-td-dark-bg">
-                        <input type="number"
+                        <input type="text"
+                            oninput='return this.value = this.value.replace(/[^0-9.]+/g, "")'
                             class="text-center text-dark form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_day_num[]" id="ec_CofacilitatorsNod${ecCoFacilitator}">
                     </td>
                     <td class="atd mgt-td-dark-bg">
-                        <input type="number"
+                        <input type="text"
+                            oninput='return this.value = this.value.replace(/[^0-9.]+/g, "")'
                             class="text-center text-dark form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_day_atd[]" id="ec_CofacilitatorsAtd${ecCoFacilitator}">
                     </td>
                     <td class="nwh mgt-td-dark-bg">
-                        <input type="number"
+                        <input type="text"
+                            oninput='return this.value = this.value.replace(/[^0-9.]+/g, "")'
                             class="text-center text-dark form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_nswh[]" id="ec_CofacilitatorsNwh${ecCoFacilitator}">
                     </td>
@@ -1029,27 +1060,32 @@
                         <input type="hidden" value="Action Learning Coach" name="cost_type[]">
                     </td>
                     <td class="mgt-td-dark-bg">
-                        <input type="number"
+                        <input type="text"
+                            oninput='return this.value = this.value.replace(/[^0-9.]+/g, "")'
                             class="text-dark text-center form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_consultant_num[]" id="ec_ActionlearningcoachNoc${ecActionLearning}" max="100">
                     </td>
                     <td class="bg-white">
                         <input type="text"
+                            oninput='return this.value = this.value.replace(/[^0-9]+/g, "").replace(/\\B(?=(\\d{3})+(?!\\d))/g, ",")'
                             class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_day_fee[]" id="ec_ActionlearningcoachPd${ecActionLearning}">
                     </td>
                     <td class="mgt-td-dark-bg">
-                        <input type="number"
+                        <input type="text"
+                            oninput='return this.value = this.value.replace(/[^0-9.]+/g, "")'
                             class="text-dark text-center form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_day_num[]" id="ec_ActionlearningcoachNod${ecActionLearning}">
                     </td>
                     <td class="mgt-td-dark-bg">
-                        <input type="number"
+                        <input type="text"
+                            oninput='return this.value = this.value.replace(/[^0-9.]+/g, "")'
                             class="text-dark text-center form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_day_atd[]" id="ec_ActionlearningcoachAtd${ecActionLearning}">
                     </td>
                     <td class="mgt-td-dark-bg">
-                        <input type="number"
+                        <input type="text"
+                            oninput='return this.value = this.value.replace(/[^0-9.]+/g, "")'
                             class="text-dark text-center form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_nswh[]" id="ec_ActionlearningcoachNwh${ecActionLearning}">
                     </td>
@@ -1130,27 +1166,32 @@
                         <input type="hidden" value="Marshal" name="cost_type[]">
                     </td>
                     <td class="mgt-td-dark-bg">
-                        <input type="number"
+                        <input type="text"
+                            oninput='return this.value = this.value.replace(/[^0-9.]+/g, "")'
                             class="text-center form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_consultant_num[]" id="ec_MarshalNoc${ecMarshal}">
                     </td>
                     <td class="mgt-td-dark-bg">
                         <input type="text"
+                            oninput='return this.value = this.value.replace(/[^0-9]+/g, "").replace(/\\B(?=(\\d{3})+(?!\\d))/g, ",")'
                             class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_day_fee[]" id="ec_MarshalPd${ecMarshal}">
                     </td>
                     <td class="mgt-td-dark-bg">
-                        <input type="number"
+                        <input type="text"
+                            oninput='return this.value = this.value.replace(/[^0-9.]+/g, "")'
                             class="text-center  form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_day_num[]" id="ec_MarshalNod${ecMarshal}">
                     </td>
                     <td class="mgt-td-dark-bg">
-                        <input type="number"
+                        <input type="text"
+                            oninput='return this.value = this.value.replace(/[^0-9.]+/g, "")'
                             class="text-center form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_day_atd[]" id="ec_MarshalAtd${ecMarshal}">
                     </td>
                     <td class="mgt-td-dark-bg">
-                        <input type="number"
+                        <input type="text"
+                            oninput='return this.value = this.value.replace(/[^0-9.]+/g, "")'
                             class="text-center  form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_nswh[]" id="ec_MarshalNwh${ecMarshal}">
                     </td>
@@ -1231,7 +1272,8 @@
                     <input type="hidden" value="On-site PC" name="cost_type[]">
                 </td>
                 <td class="mgt-td-dark-bg">
-                    <input type="number"
+                    <input type="text"
+                        oninput='return this.value = this.value.replace(/[^0-9.]+/g, "")'
                         class="text-center form-control input-table @error('') is-invalid @enderror"
                         value="{{ old('') }}" name="cost_consultant_num[]" id="ec_OnsitepcNoc${ecOnsite}">
                 </td>
@@ -1271,17 +1313,20 @@
                 </fieldset>
                 </td>
                 <td class="mgt-td-dark-bg">
-                    <input type="number"
+                    <input type="text"
+                        oninput='return this.value = this.value.replace(/[^0-9.]+/g, "")'
                         class="text-center  form-control input-table @error('') is-invalid @enderror"
                         value="{{ old('') }}" name="cost_day_num[]" id="ec_OnsitepcNod${ecOnsite}">
                 </td>
                 <td class="mgt-td-dark-bg">
-                    <input type="number"
+                    <input type="text"
+                        oninput='return this.value = this.value.replace(/[^0-9.]+/g, "")'
                         class="text-center form-control input-table @error('') is-invalid @enderror"
                         value="{{ old('') }}" name="cost_day_atd[]" id="ec_OnsitepcAtd${ecOnsite}">
                 </td>
                 <td class="mgt-td-dark-bg">
-                    <input type="number"
+                    <input type="text"
+                        oninput='return this.value = this.value.replace(/[^0-9.]+/g, "")'
                         class="text-center form-control input-table @error('') is-invalid @enderror"
                         value="{{ old('') }}" name="cost_nswh[]" id="ec_OnsitepcNwh${ecOnsite}">
                 </td>
@@ -1362,25 +1407,30 @@
                         <input type="hidden" value="Documentor" name="cost_type[]">
                     </td>
                     <td class="mgt-td-dark-bg">
-                        <input type="number" class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror" value="{{ old('') }}" name="cost_consultant_num[]" id="ec_DocumentorsNoc${ecDocumentor}" max="100" >
+                        <input type="text" class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror" value="{{ old('') }}" name="cost_consultant_num[]" id="ec_DocumentorsNoc${ecDocumentor}" max="100" 
+                        oninput='return this.value = this.value.replace(/[^0-9.]+/g, "")'>
                     </td>
                     <td class="bg-white">
                         <input type="text"
+                            oninput='return this.value = this.value.replace(/[^0-9]+/g, "").replace(/\\B(?=(\\d{3})+(?!\\d))/g, ",")'
                             class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_day_fee[]" id="ec_DocumentorsPd${ecDocumentor}">
                     </td>
                     <td class="mgt-td-dark-bg">
-                        <input type="number"
+                        <input type="text"
+                            oninput='return this.value = this.value.replace(/[^0-9.]+/g, "")'
                             class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_day_num[]" id="ec_DocumentorsNod${ecDocumentor}">
                     </td>
                     <td class="mgt-td-dark-bg">
-                        <input type="number"
+                        <input type="text"
+                            oninput='return this.value = this.value.replace(/[^0-9.]+/g, "")'
                             class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_day_atd[]" id="ec_DocumentorsAtd${ecDocumentor}">
                     </td>
                     <td class="mgt-td-dark-bg">
-                        <input type="number"
+                        <input type="text"
+                            oninput='return this.value = this.value.replace(/[^0-9.]+/g, "")'
                             class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_nswh[]" id="ec_DocumentorsNwh${ecDocumentor}">
                     </td>
@@ -1461,17 +1511,20 @@
                         <input type="hidden" value="Per Diem" name="cost_type[]">
                     </th>
                     <td class="table-warning">
-                        <input type="number"
+                        <input type="text"
+                            oninput='return this.value = this.value.replace(/[^0-9.]+/g, "")'
                             class="text-center form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_consultant_num[]" id="ec_PerdiemNoc${ecPerDiem}" max="100">
                     </td>
                     <td class="bg-white">
                         <input type="text"
+                            oninput='return this.value = this.value.replace(/[^0-9]+/g, "").replace(/\\B(?=(\\d{3})+(?!\\d))/g, ",")'
                             class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_day_fee[]" id="ec_PerdiemPd${ecPerDiem}">
                     </td>
                     <td class="mgt-td-dark-bg">
-                        <input type="number"
+                        <input type="text"
+                        oninput='return this.value = this.value.replace(/[^0-9.]+/g, "")'
                             class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_day_num[]" id="ec_PerdiemNod${ecPerDiem}">
                     </td>
@@ -1553,7 +1606,8 @@
                         Off-Program fee
                         <input type="hidden" value="Off-Program fee" name="cost_type[]"></td>
                     <td class="table-warning">
-                        <input type="number"
+                        <input type="text"
+                            oninput='return this.value = this.value.replace(/[^0-9.]+/g, "")'
                             class="input js-mytooltip text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
                             value="{{ old('') }}" name="cost_consultant_num[]" id="ec_OffprogramsNoc${ecOffProgram}" max="100"
                             data-mytooltip-content="<i>
@@ -1567,7 +1621,8 @@
                     <td class="bg-white">
                         <input type="text"
                             class="text-center text-dark fw-bold form-control input-table @error('') is-invalid @enderror"
-                            value="{{ old('') }}"  name="cost_day_fee[]" id="ec_OffprogramsPd${ecOffProgram}">
+                            value="{{ old('') }}"  name="cost_day_fee[]" id="ec_OffprogramsPd${ecOffProgram}"
+                            oninput='return this.value = this.value.replace(/[^0-9]+/g, "").replace(/\\B(?=(\\d{3})+(?!\\d))/g, ",")'>
                     </td>
                     <td><input type="hidden" value="0" name="cost_day_num[]"></td>
                     <td><input type="hidden" value="0" name="cost_day_atd[]"></td>

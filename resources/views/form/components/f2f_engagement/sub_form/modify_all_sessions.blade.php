@@ -1,4 +1,5 @@
 @section('title', 'MODIFY SESSIONS')
+<link rel="shortcut icon" type="image/png" href="{{ URL::to('assets/images/logo/logo.png') }}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
 <link rel="stylesheet" href="{{ URL::asset('css/custom.css') }}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.min.css" integrity="sha512-kq3FES+RuuGoBW3a9R2ELYKRywUEQv0wvPTItv3DSGqjpbNtGWVdvT8qwdKkqvPzT93jp8tSF4+oN4IeTEIlQA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -40,8 +41,11 @@
                         <span style="font-size:10pt">Client</span>
                         <h5 id="clientName">{{$getClient[0]->company_name }}</h5>
                         
-                        <span style="font-size:10pt">Engagement Title</span>
-                        <h5 id="engType">{{ $parentData[0]->engagement_title }}</h5>
+                        <a href="{{ url('update_ftf_eng/' . $parentData[0]->id ) }}" target="_blank">
+                            <h5 id="engType" style="text-decoration: underline">
+                                {{ $parentData[0]->engagement_title }}
+                            </h5>
+                        </a>
                     </div>
                     <div class="col-lg-6 col-md-6"> 
                         <span style="font-size:10pt">Form ID</span>
@@ -176,7 +180,7 @@
                                                 @if($subCostData_record->ftf_sub_informations_id ==  $subInfo_data->id && $subCostData_record->type == 'Sales')
                                                     <input type="hidden" value="{{$subCostData_record->id}}" name="subcost_id[{{ $recordCount }}][]">
                                                     <input type="text" class="d-none" value="{{$subCostData_record->type}}" name="cost_type[{{ $recordCount }}][]" readonly>
-                                                    <input type="text" class="text-uppercase form-control input-table" name="cost_rooster[{{ $recordCount }}][]" 
+                                                    <input type="text" class="form-control input-table" name="cost_rooster[{{ $recordCount }}][]" 
                                                     id="roster_batch{{ $subInfo_data->batch_number }}session{{ $subInfo_data->session_number }}_subinfo{{$subInfo_data->id}}_subcos{{$subCostData_record->id}}"
                                                     value="{{$subCostData_record->rooster}}"
                                                     oninput="filterConsultant(`roster_batch{{ $subInfo_data->batch_number }}session{{ $subInfo_data->session_number }}_subinfo{{$subInfo_data->id}}_subcos{{$subCostData_record->id}}`)"
@@ -194,7 +198,7 @@
                                                 @if($subCostData_record->ftf_sub_informations_id ==  $subInfo_data->id && $subCostData_record->type == 'Referral')
                                                     <input type="hidden" value="{{$subCostData_record->id}}" name="subcost_id[{{ $recordCount }}][]">
                                                     <input type="text" class="d-none" value="{{$subCostData_record->type}}" name="cost_type[{{ $recordCount }}][]" readonly>
-                                                    <input type="text" class="text-uppercase form-control input-table" name="cost_rooster[{{ $recordCount }}][]" 
+                                                    <input type="text" class="form-control input-table" name="cost_rooster[{{ $recordCount }}][]" 
                                                     id="roster_batch{{ $subInfo_data->batch_number }}session{{ $subInfo_data->session_number }}_subinfo{{$subInfo_data->id}}_subcos{{$subCostData_record->id}}"
                                                     value="{{$subCostData_record->rooster}}"
                                                     oninput="filterConsultant(`roster_batch{{ $subInfo_data->batch_number }}session{{ $subInfo_data->session_number }}_subinfo{{$subInfo_data->id}}_subcos{{$subCostData_record->id}}`)"
@@ -212,7 +216,7 @@
                                                 @if($subCostData_record->ftf_sub_informations_id ==  $subInfo_data->id && $subCostData_record->type == 'Engagement Manager')
                                                     <input type="hidden" value="{{$subCostData_record->id}}" name="subcost_id[{{ $recordCount }}][]">
                                                     <input type="text" class="d-none" value="{{$subCostData_record->type}}" name="cost_type[{{ $recordCount }}][]" readonly>
-                                                    <input type="text" class="text-uppercase form-control input-table" name="cost_rooster[{{ $recordCount }}][]" 
+                                                    <input type="text" class="form-control input-table" name="cost_rooster[{{ $recordCount }}][]" 
                                                     id="roster_batch{{ $subInfo_data->batch_number }}session{{ $subInfo_data->session_number }}_subinfo{{$subInfo_data->id}}_subcos{{$subCostData_record->id}}"
                                                     value="{{$subCostData_record->rooster}}"
                                                     oninput="filterConsultant(`roster_batch{{ $subInfo_data->batch_number }}session{{ $subInfo_data->session_number }}_subinfo{{$subInfo_data->id}}_subcos{{$subCostData_record->id}}`)"
@@ -230,7 +234,7 @@
                                                 @if($subCostData_record->ftf_sub_informations_id ==  $subInfo_data->id && $subCostData_record->type == 'Offsite PC')
                                                     <input type="hidden" value="{{$subCostData_record->id}}" name="subcost_id[{{ $recordCount }}][]">
                                                     <input type="text" class="d-none" value="{{$subCostData_record->type}}" name="cost_type[{{ $recordCount }}][]" readonly>
-                                                    <input type="text" class="text-uppercase form-control input-table" name="cost_rooster[{{ $recordCount }}][]" 
+                                                    <input type="text" class="form-control input-table" name="cost_rooster[{{ $recordCount }}][]" 
                                                     id="roster_batch{{ $subInfo_data->batch_number }}session{{ $subInfo_data->session_number }}_subinfo{{$subInfo_data->id}}_subcos{{$subCostData_record->id}}"
                                                     value="{{$subCostData_record->rooster}}"
                                                     oninput="filterConsultant(`roster_batch{{ $subInfo_data->batch_number }}session{{ $subInfo_data->session_number }}_subinfo{{$subInfo_data->id}}_subcos{{$subCostData_record->id}}`)"
@@ -248,7 +252,7 @@
                                                 @if($subCostData_record->ftf_sub_informations_id ==  $subInfo_data->id && $subCostData_record->type == 'Lead Consultant')
                                                     <input type="hidden" value="{{$subCostData_record->id}}" name="subcost_id[{{ $recordCount }}][]">
                                                     <input type="text" class="d-none" value="{{$subCostData_record->type}}" name="cost_type[{{ $recordCount }}][]" readonly>
-                                                    <input type="text" class="text-uppercase form-control input-table" name="cost_rooster[{{ $recordCount }}][]" 
+                                                    <input type="text" class="form-control input-table" name="cost_rooster[{{ $recordCount }}][]" 
                                                     id="roster_batch{{ $subInfo_data->batch_number }}session{{ $subInfo_data->session_number }}_subinfo{{$subInfo_data->id}}_subcos{{$subCostData_record->id}}"
                                                     value="{{$subCostData_record->rooster}}"
                                                     oninput="filterConsultant(`roster_batch{{ $subInfo_data->batch_number }}session{{ $subInfo_data->session_number }}_subinfo{{$subInfo_data->id}}_subcos{{$subCostData_record->id}}`,``,`leadConsultant`)"
@@ -266,7 +270,7 @@
                                                 @if($subCostData_record->ftf_sub_informations_id ==  $subInfo_data->id && $subCostData_record->type == 'Analyst')
                                                     <input type="hidden" value="{{$subCostData_record->id}}" name="subcost_id[{{ $recordCount }}][]">
                                                     <input type="text" class="d-none" value="{{$subCostData_record->type}}" name="cost_type[{{ $recordCount }}][]" readonly>
-                                                    <input type="text" class="text-uppercase form-control input-table" name="cost_rooster[{{ $recordCount }}][]" 
+                                                    <input type="text" class="form-control input-table" name="cost_rooster[{{ $recordCount }}][]" 
                                                     id="roster_batch{{ $subInfo_data->batch_number }}session{{ $subInfo_data->session_number }}_subinfo{{$subInfo_data->id}}_subcos{{$subCostData_record->id}}"
                                                     value="{{$subCostData_record->rooster}}"
                                                     oninput="filterConsultant(`roster_batch{{ $subInfo_data->batch_number }}session{{ $subInfo_data->session_number }}_subinfo{{$subInfo_data->id}}_subcos{{$subCostData_record->id}}`)"
@@ -285,7 +289,7 @@
                                                 @if($subCostData_record->ftf_sub_informations_id ==  $subInfo_data->id && $subCostData_record->type == 'Designer')
                                                     <input type="hidden" value="{{$subCostData_record->id}}" name="subcost_id[{{ $recordCount }}][]">
                                                     <input type="text" class="d-none" value="{{$subCostData_record->type}}" name="cost_type[{{ $recordCount }}][]" readonly>
-                                                    <input type="text" class="text-uppercase form-control input-table" name="cost_rooster[{{ $recordCount }}][]" 
+                                                    <input type="text" class="form-control input-table" name="cost_rooster[{{ $recordCount }}][]" 
                                                     id="roster_batch{{ $subInfo_data->batch_number }}session{{ $subInfo_data->session_number }}_subinfo{{$subInfo_data->id}}_subcos{{$subCostData_record->id}}"
                                                     value="{{$subCostData_record->rooster}}"
                                                     oninput="filterConsultant(`roster_batch{{ $subInfo_data->batch_number }}session{{ $subInfo_data->session_number }}_subinfo{{$subInfo_data->id}}_subcos{{$subCostData_record->id}}`,``,`designer`)"
@@ -303,7 +307,7 @@
                                                 @if($subCostData_record->ftf_sub_informations_id ==  $subInfo_data->id && $subCostData_record->type == 'Creators Fees')
                                                     <input type="hidden" value="{{$subCostData_record->id}}" name="subcost_id[{{ $recordCount }}][]">
                                                     <input type="text" class="d-none" value="{{$subCostData_record->type}}" name="cost_type[{{ $recordCount }}][]" readonly>
-                                                    <input type="text" class="text-uppercase form-control input-table" name="cost_rooster[{{ $recordCount }}][]" 
+                                                    <input type="text" class="form-control input-table" name="cost_rooster[{{ $recordCount }}][]" 
                                                     id="roster_batch{{ $subInfo_data->batch_number }}session{{ $subInfo_data->session_number }}_subinfo{{$subInfo_data->id}}_subcos{{$subCostData_record->id}}"
                                                     value="{{$subCostData_record->rooster}}"
                                                     oninput="filterConsultant(`roster_batch{{ $subInfo_data->batch_number }}session{{ $subInfo_data->session_number }}_subinfo{{$subInfo_data->id}}_subcos{{$subCostData_record->id}}`)"
@@ -353,7 +357,7 @@
                                                 @if($subCostData_record->ftf_sub_informations_id ==  $subInfo_data->id && $subCostData_record->type == 'Lead Facilitator')
                                                     <input type="hidden" value="{{$subCostData_record->id}}" name="subcost_id[{{ $recordCount }}][]">
                                                     <input type="text" class="d-none" value="{{$subCostData_record->type}}" name="cost_type[{{ $recordCount }}][]" readonly>
-                                                    <input type="text" class="text-uppercase form-control input-table" name="cost_rooster[{{ $recordCount }}][]" 
+                                                    <input type="text" class="form-control input-table" name="cost_rooster[{{ $recordCount }}][]" 
                                                     id="roster_batch{{ $subInfo_data->batch_number }}session{{ $subInfo_data->session_number }}_subinfo{{$subInfo_data->id}}_subcos{{$subCostData_record->id}}"
                                                     value="{{$subCostData_record->rooster}}"
                                                     oninput="filterConsultant(`roster_batch{{ $subInfo_data->batch_number }}session{{ $subInfo_data->session_number }}_subinfo{{$subInfo_data->id}}_subcos{{$subCostData_record->id}}`,``,`leadFacilitator`)"
@@ -371,7 +375,7 @@
                                                 @if($subCostData_record->ftf_sub_informations_id ==  $subInfo_data->id && $subCostData_record->type == 'Co-lead')
                                                     <input type="hidden" value="{{$subCostData_record->id}}" name="subcost_id[{{ $recordCount }}][]">
                                                     <input type="text" class="d-none" value="{{$subCostData_record->type}}" name="cost_type[{{ $recordCount }}][]" readonly>
-                                                    <input type="text" class="text-uppercase form-control input-table" name="cost_rooster[{{ $recordCount }}][]" 
+                                                    <input type="text" class="form-control input-table" name="cost_rooster[{{ $recordCount }}][]" 
                                                     id="roster_batch{{ $subInfo_data->batch_number }}session{{ $subInfo_data->session_number }}_subinfo{{$subInfo_data->id}}_subcos{{$subCostData_record->id}}"
                                                     value="{{$subCostData_record->rooster}}"
                                                     oninput="filterConsultant(`roster_batch{{ $subInfo_data->batch_number }}session{{ $subInfo_data->session_number }}_subinfo{{$subInfo_data->id}}_subcos{{$subCostData_record->id}}`,``,`coLead`)"
@@ -389,7 +393,7 @@
                                                 @if($subCostData_record->ftf_sub_informations_id ==  $subInfo_data->id && $subCostData_record->type == 'Action Learning Coach')
                                                     <input type="hidden" value="{{$subCostData_record->id}}" name="subcost_id[{{ $recordCount }}][]">
                                                     <input type="text" class="d-none" value="{{$subCostData_record->type}}" name="cost_type[{{ $recordCount }}][]" readonly>
-                                                    <input type="text" class="text-uppercase form-control input-table" name="cost_rooster[{{ $recordCount }}][]" 
+                                                    <input type="text" class="form-control input-table" name="cost_rooster[{{ $recordCount }}][]" 
                                                     id="roster_batch{{ $subInfo_data->batch_number }}session{{ $subInfo_data->session_number }}_subinfo{{$subInfo_data->id}}_subcos{{$subCostData_record->id}}"
                                                     value="{{$subCostData_record->rooster}}"
                                                     oninput="filterConsultant(`roster_batch{{ $subInfo_data->batch_number }}session{{ $subInfo_data->session_number }}_subinfo{{$subInfo_data->id}}_subcos{{$subCostData_record->id}}`,``,`alCoach`)"
@@ -407,7 +411,7 @@
                                                 @if($subCostData_record->ftf_sub_informations_id ==  $subInfo_data->id && $subCostData_record->type == 'Co-Facilitator / Resource Speaker')
                                                     <input type="hidden" value="{{$subCostData_record->id}}" name="subcost_id[{{ $recordCount }}][]">
                                                     <input type="text" class="d-none" value="{{$subCostData_record->type}}" name="cost_type[{{ $recordCount }}][]" readonly>
-                                                    <input type="text" class="text-uppercase form-control input-table" name="cost_rooster[{{ $recordCount }}][]" 
+                                                    <input type="text" class="form-control input-table" name="cost_rooster[{{ $recordCount }}][]" 
                                                     id="roster_batch{{ $subInfo_data->batch_number }}session{{ $subInfo_data->session_number }}_subinfo{{$subInfo_data->id}}_subcos{{$subCostData_record->id}}"
                                                     value="{{$subCostData_record->rooster}}"
                                                     oninput="filterConsultant(`roster_batch{{ $subInfo_data->batch_number }}session{{ $subInfo_data->session_number }}_subinfo{{$subInfo_data->id}}_subcos{{$subCostData_record->id}}`,``,`coFaci`)"
@@ -425,7 +429,7 @@
                                                 @if($subCostData_record->ftf_sub_informations_id ==  $subInfo_data->id && $subCostData_record->type == 'Marshal')
                                                     <input type="hidden" value="{{$subCostData_record->id}}" name="subcost_id[{{ $recordCount }}][]">
                                                     <input type="text" class="d-none" value="{{$subCostData_record->type}}" name="cost_type[{{ $recordCount }}][]" readonly>
-                                                    <input type="text" class="text-uppercase form-control input-table" name="cost_rooster[{{ $recordCount }}][]" 
+                                                    <input type="text" class="form-control input-table" name="cost_rooster[{{ $recordCount }}][]" 
                                                     id="roster_batch{{ $subInfo_data->batch_number }}session{{ $subInfo_data->session_number }}_subinfo{{$subInfo_data->id}}_subcos{{$subCostData_record->id}}"
                                                     value="{{$subCostData_record->rooster}}"
                                                     oninput="filterConsultant(`roster_batch{{ $subInfo_data->batch_number }}session{{ $subInfo_data->session_number }}_subinfo{{$subInfo_data->id}}_subcos{{$subCostData_record->id}}`,``,`moderator`)"
@@ -443,7 +447,7 @@
                                                 @if($subCostData_record->ftf_sub_informations_id ==  $subInfo_data->id && $subCostData_record->type == 'On-site PC')
                                                     <input type="hidden" value="{{$subCostData_record->id}}" name="subcost_id[{{ $recordCount }}][]">
                                                     <input type="text" class="d-none" value="{{$subCostData_record->type}}" name="cost_type[{{ $recordCount }}][]" readonly>
-                                                    <input type="text" class="text-uppercase form-control input-table" name="cost_rooster[{{ $recordCount }}][]" 
+                                                    <input type="text" class="form-control input-table" name="cost_rooster[{{ $recordCount }}][]" 
                                                     id="roster_batch{{ $subInfo_data->batch_number }}session{{ $subInfo_data->session_number }}_subinfo{{$subInfo_data->id}}_subcos{{$subCostData_record->id}}"
                                                     value="{{$subCostData_record->rooster}}"
                                                     oninput="filterConsultant(`roster_batch{{ $subInfo_data->batch_number }}session{{ $subInfo_data->session_number }}_subinfo{{$subInfo_data->id}}_subcos{{$subCostData_record->id}}`,``,`producer`)"
@@ -461,7 +465,7 @@
                                                 @if($subCostData_record->ftf_sub_informations_id ==  $subInfo_data->id && $subCostData_record->type == 'Documentor')
                                                     <input type="hidden" value="{{$subCostData_record->id}}" name="subcost_id[{{ $recordCount }}][]">
                                                     <input type="text" class="d-none" value="{{$subCostData_record->type}}" name="cost_type[{{ $recordCount }}][]" readonly>
-                                                    <input type="text" class="text-uppercase form-control input-table" name="cost_rooster[{{ $recordCount }}][]" 
+                                                    <input type="text" class="form-control input-table" name="cost_rooster[{{ $recordCount }}][]" 
                                                     id="roster_batch{{ $subInfo_data->batch_number }}session{{ $subInfo_data->session_number }}_subinfo{{$subInfo_data->id}}_subcos{{$subCostData_record->id}}"
                                                     value="{{$subCostData_record->rooster}}"
                                                     oninput="filterConsultant(`roster_batch{{ $subInfo_data->batch_number }}session{{ $subInfo_data->session_number }}_subinfo{{$subInfo_data->id}}_subcos{{$subCostData_record->id}}`,``,``)"
@@ -479,7 +483,7 @@
                                                 @if($subCostData_record->ftf_sub_informations_id ==  $subInfo_data->id && $subCostData_record->type == 'Per Diem')
                                                     <input type="hidden" value="{{$subCostData_record->id}}" name="subcost_id[{{ $recordCount }}][]">
                                                     <input type="text" class="d-none" value="{{$subCostData_record->type}}" name="cost_type[{{ $recordCount }}][]" readonly>
-                                                    <input type="text" class="text-uppercase form-control input-table" name="cost_rooster[{{ $recordCount }}][]" 
+                                                    <input type="text" class="form-control input-table" name="cost_rooster[{{ $recordCount }}][]" 
                                                     id="roster_batch{{ $subInfo_data->batch_number }}session{{ $subInfo_data->session_number }}_subinfo{{$subInfo_data->id}}_subcos{{$subCostData_record->id}}"
                                                     value="{{$subCostData_record->rooster}}"
                                                     oninput="filterConsultant(`roster_batch{{ $subInfo_data->batch_number }}session{{ $subInfo_data->session_number }}_subinfo{{$subInfo_data->id}}_subcos{{$subCostData_record->id}}`)"
@@ -497,7 +501,7 @@
                                                 @if($subCostData_record->ftf_sub_informations_id ==  $subInfo_data->id && $subCostData_record->type == 'Off-Program fee')
                                                     <input type="hidden" value="{{$subCostData_record->id}}" name="subcost_id[{{ $recordCount }}][]">
                                                     <input type="text" class="d-none" value="{{$subCostData_record->type}}" name="cost_type[{{ $recordCount }}][]" readonly>
-                                                    <input type="text" class="text-uppercase form-control input-table" name="cost_rooster[{{ $recordCount }}][]" 
+                                                    <input type="text" class="form-control input-table" name="cost_rooster[{{ $recordCount }}][]" 
                                                     id="roster_batch{{ $subInfo_data->batch_number }}session{{ $subInfo_data->session_number }}_subinfo{{$subInfo_data->id}}_subcos{{$subCostData_record->id}}"
                                                     value="{{$subCostData_record->rooster}}"
                                                     oninput="filterConsultant(`roster_batch{{ $subInfo_data->batch_number }}session{{ $subInfo_data->session_number }}_subinfo{{$subInfo_data->id}}_subcos{{$subCostData_record->id}}`)"
@@ -521,7 +525,7 @@
                                 <button class="btn btn-success ml-auto js-btn-next" type="submit" title="Save Record" onclick="this.readonly = true;">Save</button>
                             </div>         
                             <!-- AUTO COMPLETE -->
-                            <template id="all_consultant_list">
+                            {{-- <template id="all_consultant_list">
                                 @foreach ($consultantFee as $key => $feeData)
                                     <option 
                                         value="{{ strtoupper($feeData->first_name) }} {{ strtoupper($feeData->last_name) }}" 
@@ -540,8 +544,27 @@
                                         {{ strtoupper($feeData->first_name) }} {{ strtoupper($feeData->last_name) }}
                                     </option>
                                 @endforeach
-                            </template>
-                            <datalist id="filtered_consultant_list"></datalist>
+                            </template> --}}
+                            <datalist id="filtered_consultant_list">
+                                @foreach ($consultantFee as $key => $feeData)
+                                    <option 
+                                        value="{{ $feeData->first_name }} {{ $feeData->last_name }}" 
+                                        data-id="{{$feeData->id}}"
+                                        data-feeleadfaci="{{$feeData->lead_faci}}"
+                                        data-cofaci="{{$feeData->co_faci}}",
+                                        data-marshal="{{$feeData->marshal}}",
+                                        data-leadconsultant="{{$feeData->lead_consultant}}",
+                                        data-consulting="{{$feeData->consulting}}",
+                                        data-designer="{{$feeData->designer}}",
+                                        data-moderator="{{$feeData->moderator}}",
+                                        data-producer="{{$feeData->producer}}",
+                                        data-colead="{{$feeData->co_lead}}",
+                                        data-coleadf2f="{{$feeData->co_lead_f2f}}"
+                                        >
+                                        {{ $feeData->first_name }} {{ $feeData->last_name }}
+                                    </option>
+                                @endforeach
+                            </datalist>
                             <!-- END AUTO COMPLETE -->
                         </section>
                         
@@ -574,63 +597,79 @@
 <script type="text/javascript" src="/js/engagement_show_roster.js"></script>
 <script>
 var results = document.querySelector('#filtered_consultant_list');
-var templateContent = document.querySelector('#all_consultant_list').content;
+// var templateContent = document.querySelector('#all_consultant_list').content;
 
 function filterConsultant(rosterFieldID, hourlyFeeID = '', costType = '') {
-    var search = document.querySelector('#' + rosterFieldID);
+    // var search = document.querySelector('#' + rosterFieldID);
 
-    while (results.children.length) {
-        results.removeChild(results.firstChild);
-    }
-    var inputVal = new RegExp('^'+search.value.trim(), 'i');
-    var clonedOptions = templateContent.cloneNode(true);
-    var set = Array.prototype.reduce.call(clonedOptions.children, 
-        function searchFilter(frag, el) {
-          if (inputVal.test(el.textContent.trim()) && frag.children.length < 10) { 
-            frag.appendChild(el)
-        };
-        return frag;
-        }
-    , document.createDocumentFragment());
-    results.appendChild(set);
+    // while (results.children.length) {
+    //     results.removeChild(results.firstChild);
+    // }
+    // var inputVal = new RegExp('^'+search.value.trim(), 'i');
+    // var clonedOptions = templateContent.cloneNode(true);
+    // var set = Array.prototype.reduce.call(clonedOptions.children, 
+    //     function searchFilter(frag, el) {
+    //       if (inputVal.test(el.textContent.trim()) && frag.children.length < 10) { 
+    //         frag.appendChild(el)
+    //     };
+    //     return frag;
+    //     }
+    // , document.createDocumentFragment());
+    // results.appendChild(set);
 
     getFee(rosterFieldID, hourlyFeeID, costType);
 }
 
 function getFee(rosterFieldID, hourlyFeeID = '', costType = '') {
     var rosterValue = document.querySelector('#' + rosterFieldID);
-    var getFee = $('#filtered_consultant_list option[value="' + rosterValue.value.toUpperCase() + '"]');
-    $('#id_' + rosterFieldID).val(getFee.data('id'));
-    if (hourlyFeeID != '') {
+    // var getFee = $('#filtered_consultant_list option[value="' + rosterValue.value.toUpperCase() + '"]');
+    var getFee = $('#filtered_consultant_list option[value="' + rosterValue.value + '"]');
+    (getFee) ? $('#id_' + rosterFieldID).val(getFee.data('id')) : '';
+    if (costType != '') {
         let currency = Intl.NumberFormat("en-US");
         switch(costType) {
             case 'leadConsultant':
-                $('#' + hourlyFeeID).val(currency.format(getFee.data('leadconsultant').replace(/,/g, "") * 8));
+                if(getFee.data('leadconsultant') != undefined) {    
+                    $('#cost_hourfee_' + rosterFieldID).val(currency.format(getFee.data('leadconsultant').replace(/,/g, "") * 8));
+                }
+                console.log('lead consultant');
                 break; 
             case 'designer':
-                $('#' + hourlyFeeID).val(currency.format(getFee.data('designer').replace(/,/g, "") * 8));
-                
+                if(getFee.data('designer') != undefined) {   
+                    $('#cost_hourfee_' + rosterFieldID).val(currency.format(getFee.data('designer').replace(/,/g, "") * 8));
+                }
                 break; 
             case 'leadFacilitator':
-                $('#' + hourlyFeeID).val(currency.format(getFee.data('feeleadfaci').replace(/,/g, "") * 8));
-                
+                if(getFee.data('feeleadfaci') != undefined) {
+                    $('#cost_hourfee_' + rosterFieldID).val(currency.format(getFee.data('feeleadfaci').replace(/,/g, "") * 8));
+                }
                 break; 
             case 'coLead':
-                $('#' + hourlyFeeID).val(currency.format(getFee.data('coleadf2f').replace(/,/g, "") * 8));                
+                if(getFee.data('coleadf2f') != undefined) {
+                    $('#cost_hourfee_' + rosterFieldID).val(currency.format(getFee.data('coleadf2f').replace(/,/g, "") * 8));  
+                }              
                 break; 
             case 'alCoach':
                 break;
             case 'coFaci':
-                $('#' + hourlyFeeID).val(currency.format(getFee.data('cofaci').replace(/,/g, "") * 8));                
+                if(getFee.data('cofaci') != undefined) {
+                    $('#cost_hourfee_' + rosterFieldID).val(currency.format(getFee.data('cofaci').replace(/,/g, "") * 8));                
+                }
                 break; 
-            case 'marshal':
-                $('#' + hourlyFeeID).val(currency.format(getFee.data('marshal').replace(/,/g, "") * 8));                
+            case 'marshal': 
+                if(getFee.data('marshal') != undefined) {           
+                    $('#cost_hourfee_' + rosterFieldID).val(currency.format(getFee.data('marshal') * 8)); 
+                }
                 break; 
             case 'moderator':
-                $('#' + hourlyFeeID).val(currency.format(getFee.data('moderator').replace(/,/g, "") * 8));                
+                if(getFee.data('moderator') != undefined) {  
+                    $('#cost_hourfee_' + rosterFieldID).val(currency.format(getFee.data('moderator').replace(/,/g, "") * 8));         
+                }       
                 break; 
             case 'producer':
-                $('#' + hourlyFeeID).val(currency.format(getFee.data('producer').replace(/,/g, "") * 8));                
+                if(getFee.data('producer') != undefined) {  
+                    $('#cost_hourfee_' + rosterFieldID).val(currency.format(getFee.data('producer').replace(/,/g, "") * 8));   
+                }             
                 break; 
             default: 
                 break;

@@ -43,7 +43,7 @@
     <!------------ CUSTOMIZED TYPE ------------>
     <div class="form-group row">
         <div class="col-md-2">
-            <label class="fw-bold required">Customized Type: </label>
+            <label class="fw-bold required">Engagement Type: </label>
         </div>
         <div class="col-md-6">
             <div class="form-group has-icon-left">
@@ -100,7 +100,7 @@
                 <div class="position-relative">
                     <select class="select select2s-hidden-accessible" style="width: 100%;" tabindex="-1"
                         aria-hidden="true" id="client_id" name="client_id" required>
-                        <option value="Select">-- Select --</option>
+                        <option value="">-- Select --</option>
                         @foreach ($companyList as $key => $clients)
                             <option value="{{ $clients->id }}" data-first_eng={{ $clients->first_eng }}>
                                 {{ $clients->company_name }}</option>
@@ -114,6 +114,7 @@
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
+                    <span class="invalid-feedback" id="invalid-feedback-custom" role="alert"></span>
                 </div>
             </div>
         </div>

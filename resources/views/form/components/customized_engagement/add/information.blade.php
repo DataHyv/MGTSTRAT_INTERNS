@@ -5,10 +5,10 @@
             <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
             @if($data)                                                    
                 @if($data->cstmzd_eng_form_id)
-                    <button class="btn btn-success mx-0 js-btn-next" type="submit" title="Submit">Save</button>
+                    <button class="btn btn-success mx-0 js-btn-next" type="button" title="Submit" onclick="validate_required_field()">Save</button>
                 @endif
             @else
-                    <button class="btn btn-success mx-0 js-btn-next" type="submit" title="Submit">Submit</button>
+                    <button class="btn btn-success mx-0 js-btn-next" type="button" title="Submit" onclick="validate_required_field()">Submit</button>
             @endif
         </div>
     </div>
@@ -158,10 +158,10 @@
                                 data-mytooltip-theme="dark"
                                 data-mytooltip-action="focus"
                                 data-mytooltip-direction="right">
-                                <option value="Hybrid" {{ old('customized_type') == 'Hybrid' ? 'selected="selected"' : '' }}>Hybrid
-                                </option>
                                 <option value="Virtual" {{ old('customized_type') == 'Virtual' ? 'selected="selected"' : '' }} selected>
                                     Virtual
+                                </option>
+                                <option value="Hybrid" {{ old('customized_type') == 'Hybrid' ? 'selected="selected"' : '' }}>Hybrid
                                 </option>
                                 <option value="G.A Hybrid" {{ old('customized_type') == 'G.A Hybrid' ? 'selected="selected"' : '' }}>
                                     G.A Hybrid
@@ -222,11 +222,12 @@
                             name="client_id"
                             style="width: 100%;"
                             tabindex="-1"
-                            aria-hidden="true">
-                                <option value="Select">-- Select --</option>
+                            aria-hidden="true" required>
+                                <option value="">-- Select --</option>
                                 @foreach ($companyList as $key=>$client)
                                     <option value="{{ $client->id }}"
-                                        data-first_eng={{ $client->first_eng }}>
+                                        data-first_eng="{{ $client->first_eng }}" 
+                                        {{ old("client_id") == $client->id ? 'selected="selected"' : '' }}>
                                         {{ $client->company_name }}
                                     </option>
                                 @endforeach
@@ -239,6 +240,7 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
+                            <span class="invalid-feedback" id="invalid-feedback-custom" role="alert"></span>
                         </div>
                     </div>
                 </div>
@@ -254,8 +256,8 @@
                 <div class="col-md-6">
                     <div class="form-group has-icon-left">
                         <div class="position-relative">
-                            <input type="text" class="form-control @error('engagement_title') is-invalid @enderror" value="{{ old('engagement_title') }}"
-                                name="engagement_title" id="engagement_title">
+                            <input type="text" class="form-control" value=""
+                                name="engagement_title" id="engagement_title" required>
                             <div class="form-control-icon">
                                 <i class="fa-solid fa-t"></i>
                             </div>
@@ -285,7 +287,7 @@
                         <div class="position-relative">
                             <input type="number" class="form-control @error('pax_number') is-invalid @enderror"
                                 value="{{ old('pax_number') }}" name="pax_number" id="pax_number" placeholder="Enter # of Pax" min="0"
-                                oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null">
+                                oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" required>
                             <div class="form-control-icon">
                                 <i class="fa-solid fa-users"></i>
                             </div>
@@ -311,7 +313,7 @@
                         <div class="position-relative">
                             <input type="number" class="form-control @error('start_batch_number') is-invalid @enderror"
                                 value="{{ old('start_batch_number') }}" name="start_batch_number" id="str_BatchNumber" placeholder="Enter # of Batches" min="0"
-                                oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null">
+                                oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" required>
                             <div class="form-control-icon">
                                 <i class="fa-regular fa-calendar-days"></i>
                             </div>
@@ -334,7 +336,7 @@
                         <div class="position-relative">
                             <input type="number" class="form-control @error('batch_number') is-invalid @enderror"
                                 value="{{ old('batch_number') }}" name="batch_number" id="BatchNumber" placeholder="Enter # of Batches" min="0"
-                                oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null">
+                                oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" required>
                             <div class="form-control-icon">
                                 <i class="fa-regular fa-calendar-days"></i>
                             </div>
@@ -357,7 +359,7 @@
                         <div class="position-relative">
                             <input type="number" class="form-control @error('session_number') is-invalid @enderror"
                                 value="{{ old('session_number') }}" name="session_number" id="SessionNumber" placeholder="Enter # of Session" min="0"
-                                oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null">
+                                oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" required>
                             <div class="form-control-icon">
                                 <i class="fa-solid fa-clock-rotate-left"></i>
                             </div>
@@ -475,8 +477,9 @@
                 document.getElementById('SessionNumber').value = '{{ $data->session_number}}';
 
                 document.getElementById('strt_batchNumber').style.display = 'none';
+                document.getElementById('str_BatchNumber').removeAttribute('required');
                 document.getElementById('BatchNumber').readOnly = true;
-                document.getElementById('SessionNumber').readOnly = true;
+                document.getElementById('SessionNumber').readOnly = true;                
             } );
         </script>
     @endif

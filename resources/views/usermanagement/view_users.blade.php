@@ -30,14 +30,13 @@
             <div class="page-title">
                 <div class="row">
                     <div class="col-12 col-md-6 order-md-1 order-last">
-                        <h3>User Management View</h3>
-                        <p class="text-subtitle text-muted">For user to check they list</p>
+                        <h3>Update User Record</h3>
                     </div>
                     <div class="col-12 col-md-6 order-md-2 order-first">
                         <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">User Mangement View</li>
+                                <li class="breadcrumb-item active" aria-current="page">Update User Record</li>
                             </ol>
                         </nav>
                     </div>
@@ -46,24 +45,24 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">User View Detial</h4>
+                        <!-- <h4 class="card-title">User View Detial</h4> -->
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form form-horizontal" action="{{ route('update') }}" method="POST"
+                            <form class="form form-horizontal" action="{{ route('maintenance/user-management/detail/update') }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
                                 <input type="hidden" name="id" value="{{ $data[0]->id }}">
                                 <div class="form-body">
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <label>Full Name</label>
+                                            <label><b>Full Name</b></label>
                                         </div>
                                         <div class="col-md-8">
                                             <div class="form-group has-icon-left">
                                                 <div class="position-relative">
                                                     <input type="text" class="form-control" placeholder="Name"
-                                                        id="first-name-icon" name="fullName" value="{{ $data[0]->name }}">
+                                                        id="first-name-icon" name="fullName" value="{{ $data[0]->name }}" required>
                                                     <div class="form-control-icon">
                                                         <i class="bi bi-person"></i>
                                                     </div>
@@ -72,7 +71,7 @@
                                         </div>
 
                                         <div class="col-md-4">
-                                            <label>Photo</label>
+                                            <label><b>Photo</b></label>
                                         </div>
                                         <div class="col-md-8">
                                             <div class="form-group has-icon-lefts">
@@ -89,13 +88,13 @@
                                         </div>
 
                                         <div class="col-md-4">
-                                            <label>Email Address</label>
+                                            <label><b>Email Address</b></label>
                                         </div>
                                         <div class="col-md-8">
                                             <div class="form-group has-icon-left">
                                                 <div class="position-relative">
                                                     <input type="email" class="form-control" placeholder="Email"
-                                                        id="first-name-icon" name="email" value="{{ $data[0]->email }}">
+                                                        id="first-name-icon" name="email" value="{{ $data[0]->email }}" required>
                                                     <div class="form-control-icon">
                                                         <i class="bi bi-envelope"></i>
                                                     </div>
@@ -103,13 +102,14 @@
                                             </div>
                                         </div>
                                         <div class="col-md-4">
-                                            <label>Mobile Number</label>
+                                            <label><b>Mobile Number</b></label>
                                         </div>
                                         <div class="col-md-8">
                                             <div class="form-group has-icon-left">
                                                 <div class="position-relative">
-                                                    <input type="number" class="form-control" placeholder="Mobile"
-                                                        name="phone_number" value="{{ $data[0]->phone_number }}">
+                                                    <input type="text" class="form-control" placeholder="Mobile"
+                                                        name="phone_number" value="{{ $data[0]->phone_number }}" maxlength="13" 
+                                                        oninput='formatPhoneNumber(this)' required>
                                                     <div class="form-control-icon">
                                                         <i class="bi bi-phone"></i>
                                                     </div>
@@ -118,16 +118,12 @@
                                         </div>
 
                                         <div class="col-md-4">
-                                            <label>Status</label>
+                                            <label><b>Status</b></label>
                                         </div>
                                         <div class="col-md-8">
                                             <div class="form-group position-relative has-icon-left mb-4">
                                                 <fieldset class="form-group">
-                                                    <select class="form-select" name="status" id="status">
-                                                        <option value="{{ $data[0]->status }}"
-                                                            {{ $data[0]->status == $data[0]->status ? 'selected' : '' }}>
-                                                            {{ $data[0]->status }}
-                                                        </option>
+                                                    <select class="form-select" name="status" id="status" style="padding-left: 40px" required>
                                                         @foreach ($userStatus as $key => $value)
                                                             <option value="{{ $value->type_name }}">
                                                                 {{ $value->type_name }}</option>
@@ -142,16 +138,12 @@
 
 
                                         <div class="col-md-4">
-                                            <label>Role Name</label>
+                                            <label><b>Role Name</b></label>
                                         </div>
                                         <div class="col-md-8">
                                             <div class="form-group position-relative has-icon-left mb-4">
                                                 <fieldset class="form-group">
-                                                    <select class="form-select" name="role_name" id="role_name">
-                                                        <option value="{{ $data[0]->role_name }}"
-                                                            {{ $data[0]->role_name == $data[0]->role_name ? 'selected' : '' }}>
-                                                            {{ $data[0]->role_name }}
-                                                        </option>
+                                                    <select class="form-select" name="role_name" id="role_name" style="padding-left: 40px" required>
                                                         @foreach ($roleName as $key => $value)
                                                             <option value="{{ $value->role_type }}">
                                                                 {{ $value->role_type }}</option>
@@ -165,9 +157,10 @@
                                         </div>
 
                                         <div class="col-12 d-flex justify-content-end">
-                                            <button type="submit" class="btn btn-primary me-1 mb-1">Update</button>
-                                            <a href="{{ route('maintenance/user-management') }}"
-                                                class="btn btn-light-secondary me-1 mb-1">Back</a>
+                                            <button type="submit" class="btn btn-primary">Save</button>                                            
+                                            <button type="button" class="btn btn-secondary ml-2" data-dismiss="modal" fdprocessedid="xsucm" style="margin-left: 10px">
+                                            <a href="{{ route('maintenance/user-management') }}" style="color: white; text-decoration: none;">
+                                            Back</a></button>
                                         </div>
                                     </div>
                                 </div>
@@ -189,4 +182,25 @@
             </div>
         </footer>
     </div>
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#status').val('{{ $data[0]->status }}');
+        $('#role_name').val('{{ $data[0]->role_name }}');
+    });
+    function formatPhoneNumber(element) {
+        element.value = element.value.replace(/[^0-9]+/g, '')
+        i = 1;
+        var numbervalue = '';
+        for(var x of element.value){
+            numbervalue += x;
+            if (i == 4 || i == 7 ) {
+                numbervalue += ' ';
+            }
+        i++;
+        }
+        return element.value = numbervalue;
+    }
+</script>
 @endsection

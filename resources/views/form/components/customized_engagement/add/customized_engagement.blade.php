@@ -1,5 +1,11 @@
-@section('title', 'NEW RECORD')
-{{-- <link rel="shortcut icon" type="image/png" href="{{ URL::to('assets/images/logo/logo.png') }}"> --}}
+@if($data)                                                    
+    @if($data->cstmzd_eng_form_id)
+        @section('title', 'UPDATE RECORD')     
+    @endif
+@else
+    @section('title', 'NEW RECORD')
+@endif
+<link rel="shortcut icon" type="image/png" href="{{ URL::to('assets/images/logo/logo.png') }}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
 <link rel="stylesheet" href="{{ URL::asset('css/custom.css') }}">
 {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> --}}
@@ -36,7 +42,7 @@
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-8 ml-auto mr-auto mb-4">
                     <div class="multisteps-form__progress">
-                        <button class="multisteps-form__progress-btn js-active" type="button"
+                        <button class="multisteps-form__progress-btn js-active" type="button" id="customized_engagement_info"
                             title="User Info">Information</button>
                         <button class="multisteps-form__progress-btn engagement_fees" type="button" title="Engagement Fees">Engagement
                             Fees</button>
@@ -63,12 +69,12 @@
                                     @if($data->cstmzd_eng_form_id)
                                         <form class="form form-horizontal multisteps-form__form" 
                                         action="{{ route('update_custom_eng') }}"
-                                        method="POST" autocomplete="off" onsubmit="submitForm(event)">     
+                                        method="POST" autocomplete="off" onsubmit="submitForm(event)" name="customized_engagement_form" id="customized_engagement_form">     
                                     @endif
                                 @else
                                    <form class="form form-horizontal multisteps-form__form" 
                                     action="{{ route('save') }}"
-                                    method="POST" autocomplete="off" onsubmit="submitForm(event)">  
+                                    method="POST" autocomplete="off" onsubmit="submitForm(event)" name="customized_engagement_form" id="customized_engagement_form">  
                                 @endif
                                     @csrf 
 
@@ -117,10 +123,10 @@
                                                 <button class="btn btn-secondary mx-2 js-btn-prev" type="button" title="Prev">Prev</button>
                                                 @if($data)                                                    
                                                     @if($data->cstmzd_eng_form_id)
-                                                        <button class="btn btn-success mx-2 js-btn-next" type="submit" title="Submit">Save</button>
+                                                        <button class="btn btn-success mx-2 js-btn-next" type="button" title="Submit" onclick="validate_required_field()">Save</button>
                                                     @endif
                                                 @else
-                                                        <button class="btn btn-success mx-2 js-btn-next" type="submit" title="Submit">Submit</button>
+                                                        <button class="btn btn-success mx-2 js-btn-next" type="button" title="Submit" onclick="validate_required_field()">Submit</button>
                                                 @endif
                                             </div>
                                         </div>
@@ -159,8 +165,28 @@
 
         $( document ).ready(function() {
             // document.getElementById("ef_Totalpackage").defaultValue = $("#total-standard").html();
-            document.getElementById("ef_Totalpackage").defaultValue = '0';
+            document.getElementById("ef_Totalpackage").defaultValue = '0';      
         });
+
+        function validate_required_field() {           
+
+            if ($('#client_id').val() == '') {
+                $('#invalid-feedback-custom').html('<strong>Please select Client<strong>');
+            } else {
+                $('#invalid-feedback-custom').html('');
+            }
+
+            var forms = document.getElementById('customized_engagement_form');
+            if (forms.checkValidity() === false) {
+                forms.classList.add('was-validated');
+                document.getElementById('customized_engagement_info').click();
+                event.preventDefault();
+                event.stopPropagation();
+            } else {
+                forms.submit();
+            }
+        }
+
     </script>
     <!-- <script type="text/javascript" src="/js/engagement_show_roster.js"></script> -->
     <script type="text/javascript" src="/js/ceform.js"></script>

@@ -5,10 +5,10 @@
         <button class="btn btn-secondary mx-0 js-btn-prev" type="button" title="Prev">Prev</button>
         @if($data)                                                    
             @if($data->cstmzd_eng_form_id)
-                <button class="btn btn-success mx-0 js-btn-next" type="submit" title="Submit">Save</button>
+                <button class="btn btn-success mx-0 js-btn-next" type="button" title="Submit" onclick="validate_required_field()">Save</button>
             @endif
         @else
-                <button class="btn btn-success mx-0 js-btn-next" type="submit" title="Submit">Submit</button>
+                <button class="btn btn-success mx-0 js-btn-next" type="button" title="Submit" onclick="validate_required_field()">Submit</button>
         @endif
     </div>
 </div>

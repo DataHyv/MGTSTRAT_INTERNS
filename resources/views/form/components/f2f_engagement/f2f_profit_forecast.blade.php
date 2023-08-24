@@ -88,7 +88,7 @@
                         <td class="profit-forecast-middle" scope="col" width=15%></td>
                         <td class="profit-forecast-middle" scope="col"></td>
                         <td class="profit-forecast-middle" scope="col"width=10%></td>
-                        <td class="profit-forecast-middle text-center mgt-td-dark-bg" scope="col" width=15%>
+                        <td class="profit-forecast-middle text-center mgt-td-dark-bg" id="profitMargin-td" scope="col" width=15%>
                             <h5 id="ProfitMargin" class="text-danger">-</h5>
                         </td>
                         <td class="profit-forecast-end" scope="col" width=15%></td>
