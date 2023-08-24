@@ -102,7 +102,7 @@ $(document).on(
 );
 
 //ENGAGEMENT FEES VALUE PASS TO ENGAGEMENT COST VALUE
-$(document).on(
+/* $(document).on(
     "load change click",
     "#ec_tableEngagementFees, #ec_tableEngagementCost",
     function () {
@@ -127,6 +127,86 @@ $(document).on(
         document.getElementById("ec_ProducerNoc1").value = $("#ef_ProducerNoc1").val();
         document.getElementById("ec_ProducerNoh1").value = $("#ef_ProducerNoh1").val();
         document.getElementById("ec_ProducerNwh1").value = $("#ef_ProducerNwh1").val();
+        document.getElementById("ec_DocumentorNoc1").value = $("#ef_DocumentorNoc1").val();
+        document.getElementById("ec_DocumentorNoh1").value = $("#ef_DocumentorNoh1").val();
+        document.getElementById("ec_DocumentorNwh1").value = $("#ef_DocumentorNwh1").val();
+    }
+); */
+
+$(document).on(
+    "load change click",
+    "#tableLeadconsultant input, #tableLeadconsultant select",
+    function () {
+        document.getElementById("ec_LeadconsultantNoc1").value = $("#ef_LeadconsultantNoc1").val();
+        document.getElementById("ec_LeadconsultantNoh1").value = $("#ef_LeadconsultantNoh1").val();
+        document.getElementById("ec_LeadconsultantNwh1").value = $("#ef_LeadconsultantNwh1").val();
+    }
+);
+
+$(document).on(
+    "load change click",
+    "#tableAnalyst input, #tableAnalyst select",
+    function () {
+        document.getElementById("ec_AnalystNoc1").value = $("#ef_AnalystNoc1").val();
+        document.getElementById("ec_AnalystNoh1").value = $("#ef_AnalystNoh1").val();
+        document.getElementById("ec_AnalystNwh1").value = $("#ef_AnalystNwh1").val();
+    }
+);
+
+$(document).on(
+    "load change click",
+    "#tableDesigner input, #tableDesigner select",
+    function () {
+        document.getElementById("ec_DesignerNoc1").value = $("#ef_DesignerNoc1").val();
+        document.getElementById("ec_DesignerNoh1").value = $("#ef_DesignerNoh1").val();
+        document.getElementById("ec_DesignerNwh1").value = $("#ef_DesignerNwh1").val();
+    }
+);
+
+$(document).on(
+    "load change click",
+    "#tableLeadfaci input, #tableLeadfaci select",
+    function () {
+        document.getElementById("ec_LeadfacilitatorNoc1").value = $("#ef_LeadfacilitatorNoc1").val();
+        document.getElementById("ec_LeadfacilitatorNoh1").value = $("#ef_LeadfacilitatorNoh1").val();
+        document.getElementById("ec_LeadfacilitatorNwh1").value = $("#ef_LeadfacilitatorNwh1").val();
+    }
+);
+
+$(document).on(
+    "load change click",
+    "#tableCofaci input, #tableCofaci select",
+    function () {
+        document.getElementById("ec_CofacilitatorNoc1").value = $("#ef_CofaciNoc1").val();
+        document.getElementById("ec_CofacilitatorNoh1").value = $("#ef_CofaciNoh1").val();
+        document.getElementById("ec_CofacilitatorNwh1").value = $("#ef_CofaciNwh1").val();
+    }
+);
+
+$(document).on(
+    "load change click",
+    "#tableModerator input, #tableModerator select",
+    function () {
+        document.getElementById("ec_ModeratorNoc1").value = $("#ef_ModeratorNoc1").val();
+        document.getElementById("ec_ModeratorNoh1").value = $("#ef_ModeratorNoh1").val();
+        document.getElementById("ec_ModeratorNwh1").value = $("#ef_ModeratorNwh1").val();
+    }
+);
+
+$(document).on(
+    "load change click",
+    "#tableProducer input, #tableProducer select",
+    function () {
+        document.getElementById("ec_ProducerNoc1").value = $("#ef_ProducerNoc1").val();
+        document.getElementById("ec_ProducerNoh1").value = $("#ef_ProducerNoh1").val();
+        document.getElementById("ec_ProducerNwh1").value = $("#ef_ProducerNwh1").val();
+    }
+);
+
+$(document).on(
+    "load change click",
+    "#tableDocumentor input, #tableDocumentor select",
+    function () {
         document.getElementById("ec_DocumentorNoc1").value = $("#ef_DocumentorNoc1").val();
         document.getElementById("ec_DocumentorNoh1").value = $("#ef_DocumentorNoh1").val();
         document.getElementById("ec_DocumentorNwh1").value = $("#ef_DocumentorNwh1").val();
@@ -181,37 +261,10 @@ document.addEventListener("keypress", function (e) {
     }
 });
 
-// $(document).ready(function(){
-//     $('#client_id').on('change',function(){
-//         $value = $(this).val();
-//         // $('#BatchNumber').val($value);
-//         $('#ce_client_id').val($value);
-//     })
-// });
-
-//SESSION AND BATCH NUMBER FUNCTION
-// $(document).on( "load keyup", "#main", function () {
-//     var session_count = $('#SessionNumber').val();
-//     var batch_count = $('#BatchNumber').val();
-//     var total_count = $('#SessionNumber').val() * $('#BatchNumber').val();
-
-//         $(`#ef_LeadconsultantNoh1`).attr('value', total_count);
-//         $(`#ef_AnalystNoh1`).attr('value', total_count);
-//         $(`#ef_DesignerNoh1`).attr('value', total_count);
-//         $(`#ef_AnalystNoh1`).attr('value', total_count);
-//         $(`#ef_LeadfacilitatorNoh1`).attr('value', total_count);
-//         $(`#ef_CofaciNoh1`).attr('value', total_count);
-//         $(`#ef_ModeratorNoh1`).attr('value', total_count);
-//         $(`#ef_ProducerNoh1`).attr('value', total_count);
-//         $(`#ef_DocumentorNoh1`).attr('value', total_count);
-// });
-
 //ROSTER RATE AUTO INPUT
 
-$(document).on(
-    "load blur",
-    "#main, #ec_tableEngagementFees",
-    function () {
+// $(document).on("load blur", "#main, #ec_tableEngagementFees",
+$(document).ready(function () {
     // LEAD CONSULTANT
     leadConsultant = 0;
     $("#ec_tableLeadConsultant > tr").each(function () {
@@ -220,7 +273,7 @@ $(document).on(
         hourlyFees = 2550;
         if (roster == '' || roster.toUpperCase() == 'TBA') {
             document.getElementById(`roster${leadConsultant}`).value = 'TBA';
-            $(`#ec_LeadconsultantHf${leadConsultant}`).prop('readonly', true).val( currency.format(Math.ceil(hourlyFees)) );
+            $(`#ec_LeadconsultantHf${leadConsultant}`).val( currency.format(Math.ceil(hourlyFees)) );
             
         } else {
             filterConsultant(`roster${leadConsultant}`, `ec_LeadconsultantHf${leadConsultant}`, `leadConsultant`);
@@ -235,7 +288,7 @@ $(document).on(
         hourlyFees = 2250;        
         if (roster == '' || roster.toUpperCase() == 'TBA') {
             document.getElementById(`roster2${designer}`).value = 'TBA';
-            $(`#ec_DesignerHf${designer}`).prop('readonly', true).val( currency.format(Math.ceil(hourlyFees)) );
+            $(`#ec_DesignerHf${designer}`).val( currency.format(Math.ceil(hourlyFees)) );
         } else {
             filterConsultant(`roster2${leadConsultant}`, `ec_DesignerHf${leadConsultant}`, `designer`);
         }        
@@ -250,7 +303,7 @@ $(document).on(
         
         if (roster == '' || roster.toUpperCase() == 'TBA') {
             document.getElementById(`roster3${leadfaci}`).value = 'TBA';
-            $(`#ec_LeadfacilitatorHf${leadfaci}`).prop('readonly', true).val( currency.format(Math.ceil(hourlyFees)) );
+            $(`#ec_LeadfacilitatorHf${leadfaci}`).val( currency.format(Math.ceil(hourlyFees)) );
         } else {
             filterConsultant(`roster3${leadConsultant}`, `ec_LeadfacilitatorHf${leadConsultant}`, `leadFacilitator`);
         }  
@@ -265,7 +318,7 @@ $(document).on(
         hourlyFees = 1900;
         if (roster == '' || roster.toUpperCase() == 'TBA') {
             document.getElementById(`roster4${colead}`).value = 'TBA';
-            $(`#ec_CoLeadfacilitatorHf${colead}`).prop('readonly', true).val( currency.format(Math.ceil(hourlyFees)) );
+            $(`#ec_CoLeadfacilitatorHf${colead}`).val( currency.format(Math.ceil(hourlyFees)) );
         } else {
             filterConsultant(`roster4${leadConsultant}`, `ec_CoLeadfacilitatorHf${leadConsultant}`, `coLead`);
         }          
@@ -279,7 +332,7 @@ $(document).on(
         hourlyFees = 1900;
         if (roster == '' || roster.toUpperCase() == 'TBA') {
             document.getElementById(`roster10${alcoach}`).value = 'TBA';
-            $(`#ec_AlCoachHf${alcoach}`).prop('readonly', true).val( currency.format(Math.ceil(hourlyFees)) );
+            $(`#ec_AlCoachHf${alcoach}`).val( currency.format(Math.ceil(hourlyFees)) );
         } else {
             filterConsultant(`roster10${leadConsultant}`, `ec_AlCoachHf${leadConsultant}`, `alCoach`);
         }         
@@ -293,7 +346,7 @@ $(document).on(
         hourlyFees = 1800;
         if (roster == '' || roster.toUpperCase() == 'TBA') {
             document.getElementById(`roster5${cofaci}`).value = 'TBA';
-            $(`#ec_CofacilitatorHf${cofaci}`).prop('readonly', true).val( currency.format(Math.ceil(hourlyFees)) );
+            $(`#ec_CofacilitatorHf${cofaci}`).val( currency.format(Math.ceil(hourlyFees)) );
         } else {
             filterConsultant(`roster5${leadConsultant}`, `ec_CofacilitatorHf${leadConsultant}`, `coFaci`);
         }  
@@ -308,7 +361,7 @@ $(document).on(
         hourlyFees = 1100;
         if (roster == '' || roster.toUpperCase() == 'TBA') {
             document.getElementById(`roster6${moderator}`).value = 'TBA';
-            $(`#ec_ModeratorHf${moderator}`).prop('readonly', true).val( currency.format(Math.ceil(hourlyFees)) );
+            $(`#ec_ModeratorHf${moderator}`).val( currency.format(Math.ceil(hourlyFees)) );
         } else {
             filterConsultant(`roster6${leadConsultant}`, `ec_ModeratorHf${leadConsultant}`, `moderator`);
         }  
@@ -322,7 +375,7 @@ $(document).on(
         hourlyFees = 550;       
         if (roster == '' || roster.toUpperCase() == 'TBA') {
             document.getElementById(`roster7${producer}`).value = 'TBA';
-            $(`#ec_ProducerHf${producer}`).prop('readonly', true).val( currency.format(Math.ceil(hourlyFees)) );
+            $(`#ec_ProducerHf${producer}`).val( currency.format(Math.ceil(hourlyFees)) );
         } else {
             filterConsultant(`roster7${leadConsultant}`, `ec_ProducerHf${leadConsultant}`, `producer`);
         }  

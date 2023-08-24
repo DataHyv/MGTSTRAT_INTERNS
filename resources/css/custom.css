@@ -464,3 +464,12 @@ background-color: #eceff1;
 .text-link:hover {
     text-decoration: underline;
 }
+
+.select2-selection--single {
+    height: 40px !important;
+    border: 1px solid #dce7f1 !important;
+}
+
+#select2-client_id-container {
+    padding-top: 5px !important;
+}

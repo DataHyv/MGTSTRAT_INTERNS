@@ -31,7 +31,9 @@ class F2fEngagementController extends Controller
         // Query Consultant Fees
         $consultantSelect = ['id', 'first_name', 'last_name', 'lead_faci', 'co_lead', 'co_lead_f2f', 'co_faci', 'lead_consultant', 'consulting', 'designer', 'moderator', 'producer', 'marshal', 'mod_opt'];
         $consultantWhere['active'] = 1;
-        $this->getConsultantFee = $this->common_model->select_to_table('consultantfees', $consultantSelect, $consultantWhere);
+        $consultantWhereColumnName = 'first_name';
+        $consultantWhere_ascdesc = 'ASC';
+        $this->getConsultantFee = $this->common_model->select_to_table_orderBy('consultantfees', $consultantSelect, $consultantWhere, $consultantWhereColumnName, $consultantWhere_ascdesc);
     }
 
     public function index() {
@@ -89,6 +91,11 @@ class F2fEngagementController extends Controller
             
             $this->create_parent_fee_cost($request, $parentId, $feeTypeCount, $costTypeCount);
             $this->create_subfees($request, $parentId, $feeTypeCount, $costTypeCount); // Create Big Budget Data (Sub information, Sub Fee, Sub Cost)
+
+            if ( $request->status == 'Completed') {
+                $this->common_model->setClientFirstLast_Engagement((int)$request->client_id, 'FACE-TO-FACE', $parentId);
+            }
+
             DB::commit();   
             return redirect()->route('form/f2f_engagement/index')->with('success', '<b>'.$request->engagement_title.'</b><br>Added Successfully!');         
             
@@ -338,7 +345,14 @@ class F2fEngagementController extends Controller
         // Parent Information
         $parentInfoSelect = ['*'];
         $parentInfoWhere['id'] = $id;
-        $parentInfoList = $this->common_model->select_to_table('ftf_engagement_forms_tbl', $parentInfoSelect, $parentInfoWhere)[0];
+        // $parentInfoList = $this->common_model->select_to_table('ftf_engagement_forms_tbl', $parentInfoSelect, $parentInfoWhere)[0];
+        $parentInfoList = $this->common_model->select_to_table('ftf_engagement_forms_tbl', $parentInfoSelect, $parentInfoWhere);
+
+        if (count($parentInfoList) <= 0) {
+            return redirect()->route('forms/no_record');
+        }
+
+        $parentInfoList = $parentInfoList[0];
 
         // Parent Fee
         $parentFeeSelect = ['*'];
@@ -408,6 +422,10 @@ class F2fEngagementController extends Controller
             $this->create_parent_fee_cost($request, $parent_id, $feeTypeCount, $costTypeCount);
             $this->create_subfees($request, $parent_id, $feeTypeCount, $costTypeCount); // Create Big Budget Data (Sub information, Sub Fee, Sub Cost)
 
+            if ( $request->status == 'Completed') {
+                $this->common_model->setClientFirstLast_Engagement((int)$request->client_id, 'FACE-TO-FACE', $parent_id);
+            }
+
             DB::commit(); 
             return redirect()->back()->with('success', '<b>'.$request->engagement_title.'</b><br>Updated successfully');
 
@@ -430,6 +448,10 @@ class F2fEngagementController extends Controller
         $subInfoWhere['id'] = $id;
         $subInfoList = $this->common_model->select_to_table('ftf_sub_informations_tbl', $subInfoSelect, $subInfoWhere);
 
+        if (count($subInfoList) <= 0) {
+            return redirect()->route('forms/no_record');
+        }
+
         // Sub Fee
         $subFeeSelect = ['*'];
         $subFeeWhere['ftf_sub_informations_id'] = $id;
@@ -445,10 +467,16 @@ class F2fEngagementController extends Controller
         $parentInfoWhere['id'] = $subInfoList[0]->ftf_engagement_forms_id;
         $parentData = $this->common_model->select_to_table('ftf_engagement_forms_tbl', $parentInfoSelect, $parentInfoWhere);
 
+        // Sub Info
+        $subInfosSelect = ['*'];
+        $subInfosWhere['active'] = 1;
+        $subInfosWhere['ftf_engagement_forms_id'] = $parentData[0]->id;
+        $subInfosList = $this->common_model->select_to_table('ftf_sub_informations_tbl', $subInfosSelect, $subInfosWhere);
+
         $getClient = Client::orderBy('company_name')->where('id', $parentData[0]->client_id)->get();
 
         return view('form.components.f2f_engagement.sub_form.ftf_sub_information',
-        compact('companyList','consultantFee','subInfoList','subFeeList', 'subCostList', 'parentData', 'getClient', 'data'));
+        compact('companyList','consultantFee','subInfoList','subFeeList', 'subCostList', 'parentData', 'getClient', 'data', 'subInfosList'));
 
     }
 
@@ -524,6 +552,10 @@ class F2fEngagementController extends Controller
         $parentInfoWhere['id'] = $id;
         $parentData = $this->common_model->select_to_table('ftf_engagement_forms_tbl', $parentInfoSelect, $parentInfoWhere);
 
+        if (count($parentData) <= 0) {
+            return redirect()->route('forms/no_record');
+        }
+
         $getClient = Client::orderBy('company_name')->where('id', $parentData[0]->client_id)->get();
         $cluster =  DB::table('clusters')->where('active',1)->get();
         $coreArea =  DB::table('core_areas')->where('active',1)->get();
@@ -546,33 +578,7 @@ class F2fEngagementController extends Controller
     }
 
     public function save_modified_sessions(Request $request) {
-        // print_r('DEVI');
-        // $dataCount = 0;
-        // print_r($request->subinfo_id);
-        // print_r($request->date);
-    //     $dataCount = 0;
-    //     echo '<pre>';
-    //     foreach($request->subinfo_id as $subinfoData) {
-    //         $subCostdataCount = 0;
-    //     foreach($request->subcost_id[$dataCount] as $cost_ids => $cost_id) {     
-    //         $update_subCost = [];                             
-    //         $update_subCost['rooster'] = $request->cost_rooster[$dataCount][$subCostdataCount];  
-    //         if ($update_subCost['rooster'] != 'TBA') {
-    //             $update_subCost['consultant_id'] = $request->cost_rooster_id[$dataCount][$subCostdataCount];
-    //         }    
-    //         if (!in_array($request->cost_type[$dataCount][$subCostdataCount], $tbaConsultant)) {
-    //             $update_subCost['day_fee'] = $request->cost_day_fee[$dataCount][$subCostdataCount];
-    //         }
-    //         if ($request->cost_type[$dataCount][$subCostdataCount] == 'Creators Fees') {
-    //             $update_subCost['day_fee'] = $request->cost_day_fee[$dataCount][$subCostdataCount];
-    //         }
 
-    //         print_r($update_subCost);
-    //         $subCostdataCount++;
-    //     } $dataCount++;
-    // }
-    //     echo '<pre>';
-    //     exit;
         DB::beginTransaction();
         try {
 

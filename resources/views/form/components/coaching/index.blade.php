@@ -127,7 +127,7 @@
                                                                 <h5 class="text-center mx-5">Are you sure want to delete
                                                                     <b>Test</b>?</h5>
                                                             </div>
-                                                            <form action="{{ route('deleteRecord') }}" method="POST">
+                                                            <form action="" method="POST">
                                                                 @csrf
                                                                 <input type="hidden" name="id" class="e_id" value="">
                                                                 <input type="hidden" name="cstmzd_eng_form_id" class="budget_number" value="">

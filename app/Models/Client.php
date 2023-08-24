@@ -21,8 +21,4 @@ class Client extends Model
     	// return $this->hasMany('App\Models\Customized_engagement_form');
         // return $this->belongsTo('App\Models\Customized_engagement_form');
     }
-    public function f2f_informations()
-    {
-        return $this->hasMany(F2f_information::class, 'client_id');
-    }
 }

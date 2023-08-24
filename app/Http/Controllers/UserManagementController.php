@@ -30,8 +30,7 @@ class UserManagementController extends Controller
 
     }
     // view detail
-    public function viewDetail($id)
-    {
+    public function viewDetail($id) {
         if (Auth::user()->role_name=='Admin')
         {
             $data = DB::table('users')->where('id',$id)->get();
@@ -39,8 +38,7 @@ class UserManagementController extends Controller
             $userStatus = DB::table('user_types')->get();
             return view('usermanagement.view_users',compact('data','roleName','userStatus'));
         }
-        else
-        {
+        else {
             return redirect()->route('home');
         }
     }
@@ -66,18 +64,18 @@ class UserManagementController extends Controller
     // add new user
     public function addNewUser()
     {
-        return view('usermanagement.add_new_user');
+        $roleName = DB::table('role_type_users')->get();
+        return view('usermanagement.add_new_user', compact('roleName'));
     }
 
      // save new user
-     public function addNewUserSave(Request $request)
-     {
+     public function addNewUserSave(Request $request) {
 
         $request->validate([
             'name'      => 'required|string|max:255',
             'image'     => 'required|image',
             'email'     => 'required|string|email|max:255|unique:users',
-            'phone'     => 'required|min:11|numeric',
+            'phone'     => 'required|min:11',
             'role_name' => 'required|string|max:255',
             'password'  => 'required|string|min:8|confirmed',
             'password_confirmation' => 'required',
@@ -93,16 +91,17 @@ class UserManagementController extends Controller
         $user->phone_number = $request->phone;
         $user->role_name    = $request->role_name;
         $user->password     = Hash::make($request->password);
+        $user->status       = 'Active';
 
         $user->save();
 
-        Toastr::success('Create new account successfully :)','Success');
-        return redirect()->route('userManagement');
+        // Toastr::success('New use created successfully :)','Success');
+        return redirect()->route('maintenance/user-management')->with('success', '<b>'.$request->name.'</b><br>Added successfully');
+        // return redirect()->back();
     }
 
     // update
-    public function update(Request $request)
-    {
+    public function update(Request $request) {
         $id           = $request->id;
         $fullName     = $request->fullName;
         $email        = $request->email;
@@ -118,15 +117,13 @@ class UserManagementController extends Controller
         $image_name = $request->hidden_image;
         $image = $request->file('image');
 
-        if($old_image->avatar=='photo_defaults.jpg')
-        {
+        if($old_image->avatar=='photo_defaults.jpg') {
             if($image != '')
             {
                 $image_name = rand() . '.' . $image->getClientOriginalExtension();
                 $image->move(public_path('images'), $image_name);
             }
-        }
-        else{
+        } else{
 
             if($image != '')
             {
@@ -135,7 +132,6 @@ class UserManagementController extends Controller
                 unlink('images/'.$old_image->avatar);
             }
         }
-
 
         $update = [
 
@@ -149,7 +145,6 @@ class UserManagementController extends Controller
         ];
 
         $activityLog = [
-
             'user_name'    => $fullName,
             'email'        => $email,
             'phone_number' => $phone_number,
@@ -161,8 +156,8 @@ class UserManagementController extends Controller
 
         DB::table('user_activity_logs')->insert($activityLog);
         User::where('id',$request->id)->update($update);
-        Toastr::success('User updated successfully','Success');
-        return redirect()->route('maintenance/user-management');
+        // Toastr::success('User updated successfully','Success');
+        return redirect()->route('maintenance/user-management')->with('success', '<b>'.$fullName.'</b><br>Record updated successfully');
     }
     // delete
     public function delete($id)
@@ -196,7 +191,8 @@ class UserManagementController extends Controller
         $delete = User::find($id);
         // unlink('images/'.$delete->avatar);
         $delete->delete();
-        Toastr::success('User deleted successfully :)','Success');
+        // Toastr::success('User deleted successfully :)','Success');
+        return redirect()->route('maintenance/user-management')->with('success', 'Record deleted successfully');
         return redirect()->route('maintenance/user-management');
     }
 

@@ -1,5 +1,6 @@
 @section('title', 'CLIENTS')
 <link rel="stylesheet" href="{{ URL::asset('css/custom.css') }}">
+<link rel="shortcut icon" type="image/png" href="{{ URL::to('assets/images/logo/logo.png') }}">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 @extends('layouts.master')
 @section('menu')
@@ -75,10 +76,38 @@
                                             <span class="badge bg-success"><i class="bi bi-pencil-square" data-target="#exampleModal"></i></span>
                                         </a>
 
-                                        <a href="{{ url('deleteClients/' . $client->id) }}"
-                                            onclick="return confirm('Are you sure to want to delete it?')"><span
-                                                class="badge bg-danger"><i class="bi bi-trash"></i></span>
+                                        <a href="#" data-toggle="modal" data-target="#delete_client{{$client->id}}"><span
+                                            class="badge bg-danger"><i class="bi bi-trash"></i></span>
                                         </a>
+
+                                        <!-- Modal -->
+                                        <div class="modal custom-modal fade" id="delete_client{{$client->id}}" role="dialog">
+                                            <div class="modal-dialog modal-dialog-centered modal-md">
+                                                <div class="modal-content">
+                                                    <div class="modal-header" style="display: block">
+                                                        <h3 class="mb-2 text-center">Clients</h3>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="form-header">
+                                                            <h5 class="text-center">Are you sure want to delete <br>
+                                                                <b>{{$client->company_name}}</b>?
+                                                            </h5>
+                                                        </div>
+                                                        <form action="{{ url('deleteClients/' . $client->id) }}" method="GET">
+                                                            @csrf
+                                                            <div class="modal-footer">
+                                                                <div class="">
+                                                                    <button type="submit" class="btn btn-primary continue-btn submit-btn">Delete</button>
+                                                                </div>
+                                                                <div class="">
+                                                                    <a href="javascript:void(0);" data-dismiss="modal" class="btn btn-secondary cancel-btn">Cancel</a>
+                                                                </div>
+                                                            </div>  
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach

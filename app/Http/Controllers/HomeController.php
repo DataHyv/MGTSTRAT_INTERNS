@@ -34,6 +34,7 @@ class HomeController extends Controller
 
     public function SalesReport()
     {
-        return view('SalesReport');
+        // return view('SalesReport');
+        return view('SalesReport_v2');
     }
 }
